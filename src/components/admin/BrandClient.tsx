@@ -245,212 +245,158 @@ export default function BrandClient() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
           >
-            {/* ── SVG Logo Opsiyonları — Karşılaştırma ── */}
+            {/* ── Tipografik Logo Font Varyasyonları ── */}
             <div className="mb-8">
-              <div className="flex items-center justify-between mb-4">
-                <div>
-                  <h3 className="text-white font-semibold">SVG Logo Opsiyonları</h3>
-                  <p className="text-[#4C4462] text-xs mt-0.5">Her opsiyonu koyu / açık / lime zeminde incele, birini seç</p>
-                </div>
+              <div className="flex items-center justify-between mb-1">
+                <h3 className="text-white font-semibold">Tipografik Logo — Font Varyasyonları</h3>
                 {selectedLogo && (
                   <div className="flex items-center gap-2 bg-[#A3E635]/10 border border-[#A3E635]/30 px-4 py-2 rounded-lg">
                     <svg className="w-4 h-4 text-[#A3E635]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                    <span className="text-[#A3E635] text-xs font-medium">Opsiyon {selectedLogo} seçildi</span>
+                    <span className="text-[#A3E635] text-xs font-medium">Varyasyon {selectedLogo} seçildi</span>
                   </div>
                 )}
               </div>
+              <p className="text-[#4C4462] text-xs mb-5">Her sütun farklı bir font karakteri. &quot;verim&quot; ve &quot;io&quot; renk bölümlemesi sabit. Tıkla → seç.</p>
 
+              {/* 3 sütun — A, B, C font varyasyonu */}
               <div className="grid grid-cols-3 gap-4">
-                {/* ── Opsiyon A — V-Flow ── */}
+
+                {/* ── A — Güçlü & Bold (Inter Black, wide tracking) ── */}
                 <div
                   onClick={() => setSelectedLogo('A')}
                   className={`cursor-pointer rounded-xl border-2 overflow-hidden transition-all ${selectedLogo === 'A' ? 'border-[#A3E635]' : 'border-[#1A1030] hover:border-[#2E1065]'}`}
                 >
                   <div className="bg-[#0F0A1E] px-4 py-2.5 border-b border-[#1A1030] flex items-center justify-between">
-                    <span className="text-white text-xs font-semibold">A — V-Flow</span>
-                    <span className="text-[#4C4462] text-xs">Akış & Hareket</span>
+                    <span className="text-white text-xs font-semibold">A — Bold Geniş</span>
+                    <span className="text-[#4C4462] text-xs">Güçlü · Baskın</span>
                   </div>
-                  {/* Koyu zemin */}
-                  <div className="bg-[#2E1065] p-6 flex items-center justify-center">
-                    <svg width="160" height="40" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      {/* V-Flow ikon */}
-                      <g>
-                        {/* Sol çizgi — Indigo */}
-                        <line x1="4" y1="4" x2="20" y2="36" stroke="#FFFFFF" strokeWidth="3.5" strokeLinecap="round"/>
-                        {/* Sağ çizgi — Lime */}
-                        <line x1="20" y1="36" x2="36" y2="4" stroke="#A3E635" strokeWidth="3.5" strokeLinecap="round"/>
-                        {/* Lime nokta — kesişim vurgusu */}
-                        <circle cx="20" cy="36" r="3" fill="#A3E635"/>
-                      </g>
-                      {/* Wordmark */}
-                      <text x="50" y="27" fontFamily="system-ui, -apple-system, sans-serif" fontWeight="800" fontSize="20" letterSpacing="1" fill="#FFFFFF">Veri</text>
-                      <text x="98" y="27" fontFamily="system-ui, -apple-system, sans-serif" fontWeight="800" fontSize="20" letterSpacing="1" fill="#A3E635">mio</text>
-                    </svg>
-                  </div>
-                  {/* Açık zemin */}
-                  <div className="bg-white p-4 flex items-center justify-center border-t border-[#F0F0F0]">
-                    <svg width="140" height="36" viewBox="0 0 140 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <line x1="4" y1="4" x2="18" y2="32" stroke="#2E1065" strokeWidth="3" strokeLinecap="round"/>
-                      <line x1="18" y1="32" x2="32" y2="4" stroke="#A3E635" strokeWidth="3" strokeLinecap="round"/>
-                      <circle cx="18" cy="32" r="2.5" fill="#A3E635"/>
-                      <text x="44" y="25" fontFamily="system-ui, -apple-system, sans-serif" fontWeight="800" fontSize="18" letterSpacing="0.5" fill="#2E1065">Veri</text>
-                      <text x="88" y="25" fontFamily="system-ui, -apple-system, sans-serif" fontWeight="800" fontSize="18" letterSpacing="0.5" fill="#A3E635">mio</text>
-                    </svg>
-                  </div>
-                  {/* Favicon önizleme */}
-                  <div className="bg-[#0F0A1E] p-3 flex items-center gap-3 border-t border-[#1A1030]">
-                    <span className="text-[#4C4462] text-xs">Favicon:</span>
-                    <div className="bg-[#2E1065] w-8 h-8 rounded flex items-center justify-center">
-                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                        <line x1="2" y1="2" x2="9" y2="16" stroke="#FFFFFF" strokeWidth="2.5" strokeLinecap="round"/>
-                        <line x1="9" y1="16" x2="16" y2="2" stroke="#A3E635" strokeWidth="2.5" strokeLinecap="round"/>
-                        <circle cx="9" cy="16" r="2" fill="#A3E635"/>
-                      </svg>
+                  {/* Koyu */}
+                  <div className="bg-[#2E1065] px-5 py-6 flex items-center justify-center min-h-[88px]">
+                    <div className="flex items-baseline gap-0" style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontWeight: 900, fontSize: '28px', letterSpacing: '0.12em', lineHeight: 1 }}>
+                      <span style={{ color: '#FFFFFF' }}>verim</span><span style={{ color: '#A3E635' }}>io</span>
                     </div>
-                    <div className="bg-white w-8 h-8 rounded flex items-center justify-center border border-[#E5E7EB]">
-                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                        <line x1="2" y1="2" x2="9" y2="16" stroke="#2E1065" strokeWidth="2.5" strokeLinecap="round"/>
-                        <line x1="9" y1="16" x2="16" y2="2" stroke="#A3E635" strokeWidth="2.5" strokeLinecap="round"/>
-                        <circle cx="9" cy="16" r="2" fill="#A3E635"/>
-                      </svg>
+                  </div>
+                  {/* Açık */}
+                  <div className="bg-white px-5 py-4 flex items-center justify-center min-h-[72px] border-t border-[#F0F0F0]">
+                    <div className="flex items-baseline gap-0" style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontWeight: 900, fontSize: '24px', letterSpacing: '0.12em' }}>
+                      <span style={{ color: '#2E1065' }}>verim</span><span style={{ color: '#A3E635' }}>io</span>
+                    </div>
+                  </div>
+                  {/* Lime zemin */}
+                  <div className="bg-[#A3E635] px-5 py-4 flex items-center justify-center min-h-[72px] border-t border-[#8FCC25]">
+                    <div className="flex items-baseline gap-0" style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontWeight: 900, fontSize: '24px', letterSpacing: '0.12em' }}>
+                      <span style={{ color: '#2E1065' }}>verim</span><span style={{ color: '#1A0A3E' }}>io</span>
+                    </div>
+                  </div>
+                  {/* Küçük ölçek */}
+                  <div className="bg-[#0F0A1E] px-4 py-2.5 flex items-center gap-3 border-t border-[#1A1030]">
+                    <span className="text-[#4C4462] text-xs">Küçük:</span>
+                    <div className="flex items-baseline gap-0" style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontWeight: 900, fontSize: '13px', letterSpacing: '0.1em' }}>
+                      <span style={{ color: '#FFFFFF' }}>verim</span><span style={{ color: '#A3E635' }}>io</span>
+                    </div>
+                    <div className="flex items-baseline gap-0 ml-2" style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontWeight: 900, fontSize: '10px', letterSpacing: '0.08em' }}>
+                      <span style={{ color: '#FFFFFF' }}>verim</span><span style={{ color: '#A3E635' }}>io</span>
                     </div>
                   </div>
                 </div>
 
-                {/* ── Opsiyon B — Hexagon Circuit ★ ── */}
+                {/* ── B — Minimal & Elegant (Light weight, tight tracking) ── */}
                 <div
                   onClick={() => setSelectedLogo('B')}
-                  className={`cursor-pointer rounded-xl border-2 overflow-hidden transition-all ${selectedLogo === 'B' ? 'border-[#A3E635]' : 'border-[#2E1065] hover:border-[#A3E635]/50'}`}
+                  className={`cursor-pointer rounded-xl border-2 overflow-hidden transition-all ${selectedLogo === 'B' ? 'border-[#A3E635]' : 'border-[#1A1030] hover:border-[#2E1065]'}`}
                 >
                   <div className="bg-[#0F0A1E] px-4 py-2.5 border-b border-[#1A1030] flex items-center justify-between">
-                    <span className="text-white text-xs font-semibold">B — Hexagon Circuit</span>
-                    <span className="text-[#A3E635] text-xs font-medium">Önerilen ★</span>
+                    <span className="text-white text-xs font-semibold">B — İnce Şık</span>
+                    <span className="text-[#4C4462] text-xs">Minimal · Zarif</span>
                   </div>
-                  {/* Koyu zemin */}
-                  <div className="bg-[#2E1065] p-6 flex items-center justify-center">
-                    <svg width="172" height="40" viewBox="0 0 172 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      {/* Hexagon — beyaz stroke */}
-                      <polygon points="20,2 36,11 36,29 20,38 4,29 4,11" fill="none" stroke="#FFFFFF" strokeWidth="1.8"/>
-                      {/* İç çizgi — sol alt → sağ üst, Lime */}
-                      <line x1="9" y1="29" x2="31" y2="11" stroke="#A3E635" strokeWidth="1.8" strokeLinecap="round"/>
-                      {/* Başlangıç noktası */}
-                      <circle cx="9" cy="29" r="2.2" fill="#A3E635"/>
-                      {/* Ok ucu */}
-                      <polygon points="31,11 25,13 29,17" fill="#A3E635"/>
-                      {/* Wordmark */}
-                      <text x="50" y="27" fontFamily="system-ui, -apple-system, sans-serif" fontWeight="800" fontSize="19" letterSpacing="2" fill="#FFFFFF">VERI</text>
-                      <text x="108" y="27" fontFamily="system-ui, -apple-system, sans-serif" fontWeight="800" fontSize="19" letterSpacing="2" fill="#A3E635">MIO</text>
-                    </svg>
-                  </div>
-                  {/* Açık zemin */}
-                  <div className="bg-white p-4 flex items-center justify-center border-t border-[#F0F0F0]">
-                    <svg width="152" height="36" viewBox="0 0 152 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <polygon points="18,2 32,10 32,26 18,34 4,26 4,10" fill="none" stroke="#2E1065" strokeWidth="1.8"/>
-                      <line x1="8" y1="26" x2="28" y2="10" stroke="#A3E635" strokeWidth="1.8" strokeLinecap="round"/>
-                      <circle cx="8" cy="26" r="2" fill="#A3E635"/>
-                      <polygon points="28,10 23,12 26,16" fill="#A3E635"/>
-                      <text x="44" y="24" fontFamily="system-ui, -apple-system, sans-serif" fontWeight="800" fontSize="17" letterSpacing="1.5" fill="#2E1065">VERI</text>
-                      <text x="96" y="24" fontFamily="system-ui, -apple-system, sans-serif" fontWeight="800" fontSize="17" letterSpacing="1.5" fill="#A3E635">MIO</text>
-                    </svg>
-                  </div>
-                  {/* Favicon önizleme */}
-                  <div className="bg-[#0F0A1E] p-3 flex items-center gap-3 border-t border-[#1A1030]">
-                    <span className="text-[#4C4462] text-xs">Favicon:</span>
-                    <div className="bg-[#2E1065] w-8 h-8 rounded flex items-center justify-center">
-                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <polygon points="10,1 18,5.5 18,14.5 10,19 2,14.5 2,5.5" fill="none" stroke="#FFFFFF" strokeWidth="1.5"/>
-                        <line x1="4.5" y1="14.5" x2="15.5" y2="5.5" stroke="#A3E635" strokeWidth="1.5" strokeLinecap="round"/>
-                        <circle cx="4.5" cy="14.5" r="1.5" fill="#A3E635"/>
-                        <polygon points="15.5,5.5 12,6.5 14,9" fill="#A3E635"/>
-                      </svg>
+                  {/* Koyu */}
+                  <div className="bg-[#2E1065] px-5 py-6 flex items-center justify-center min-h-[88px]">
+                    <div className="flex items-baseline gap-0" style={{ fontFamily: 'Georgia, "Times New Roman", serif', fontWeight: 300, fontSize: '30px', letterSpacing: '0.18em', lineHeight: 1 }}>
+                      <span style={{ color: '#FFFFFF' }}>verim</span><span style={{ color: '#A3E635' }}>io</span>
                     </div>
-                    <div className="bg-white w-8 h-8 rounded flex items-center justify-center border border-[#E5E7EB]">
-                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <polygon points="10,1 18,5.5 18,14.5 10,19 2,14.5 2,5.5" fill="none" stroke="#2E1065" strokeWidth="1.5"/>
-                        <line x1="4.5" y1="14.5" x2="15.5" y2="5.5" stroke="#A3E635" strokeWidth="1.5" strokeLinecap="round"/>
-                        <circle cx="4.5" cy="14.5" r="1.5" fill="#A3E635"/>
-                        <polygon points="15.5,5.5 12,6.5 14,9" fill="#A3E635"/>
-                      </svg>
+                  </div>
+                  {/* Açık */}
+                  <div className="bg-white px-5 py-4 flex items-center justify-center min-h-[72px] border-t border-[#F0F0F0]">
+                    <div className="flex items-baseline gap-0" style={{ fontFamily: 'Georgia, "Times New Roman", serif', fontWeight: 300, fontSize: '26px', letterSpacing: '0.18em' }}>
+                      <span style={{ color: '#2E1065' }}>verim</span><span style={{ color: '#A3E635' }}>io</span>
+                    </div>
+                  </div>
+                  {/* Lime zemin */}
+                  <div className="bg-[#A3E635] px-5 py-4 flex items-center justify-center min-h-[72px] border-t border-[#8FCC25]">
+                    <div className="flex items-baseline gap-0" style={{ fontFamily: 'Georgia, "Times New Roman", serif', fontWeight: 300, fontSize: '26px', letterSpacing: '0.18em' }}>
+                      <span style={{ color: '#2E1065' }}>verim</span><span style={{ color: '#1A0A3E' }}>io</span>
+                    </div>
+                  </div>
+                  {/* Küçük ölçek */}
+                  <div className="bg-[#0F0A1E] px-4 py-2.5 flex items-center gap-3 border-t border-[#1A1030]">
+                    <span className="text-[#4C4462] text-xs">Küçük:</span>
+                    <div className="flex items-baseline gap-0" style={{ fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: '13px', letterSpacing: '0.14em' }}>
+                      <span style={{ color: '#FFFFFF' }}>verim</span><span style={{ color: '#A3E635' }}>io</span>
+                    </div>
+                    <div className="flex items-baseline gap-0 ml-2" style={{ fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: '10px', letterSpacing: '0.1em' }}>
+                      <span style={{ color: '#FFFFFF' }}>verim</span><span style={{ color: '#A3E635' }}>io</span>
                     </div>
                   </div>
                 </div>
 
-                {/* ── Opsiyon C — Tipografik ── */}
+                {/* ── C — Modern Geometric (Medium weight, mixed case, tight) ── */}
                 <div
                   onClick={() => setSelectedLogo('C')}
                   className={`cursor-pointer rounded-xl border-2 overflow-hidden transition-all ${selectedLogo === 'C' ? 'border-[#A3E635]' : 'border-[#1A1030] hover:border-[#2E1065]'}`}
                 >
                   <div className="bg-[#0F0A1E] px-4 py-2.5 border-b border-[#1A1030] flex items-center justify-between">
-                    <span className="text-white text-xs font-semibold">C — Tipografik</span>
-                    <span className="text-[#4C4462] text-xs">Saf Tipografi</span>
+                    <span className="text-white text-xs font-semibold">C — Modern Sıkışık</span>
+                    <span className="text-[#4C4462] text-xs">Seksi · Dengeli</span>
                   </div>
-                  {/* Koyu zemin */}
-                  <div className="bg-[#2E1065] p-6 flex items-center justify-center">
-                    <svg width="164" height="44" viewBox="0 0 164 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      {/* V büyük — beyaz */}
-                      <text x="0" y="34" fontFamily="system-ui, -apple-system, sans-serif" fontWeight="900" fontSize="32" fill="#FFFFFF">V</text>
-                      {/* Lime pixel nokta V altında */}
-                      <rect x="7" y="38" width="6" height="6" fill="#A3E635"/>
-                      {/* ERIM — beyaz, küçük */}
-                      <text x="24" y="32" fontFamily="system-ui, -apple-system, sans-serif" fontWeight="800" fontSize="22" letterSpacing="1" fill="#FFFFFF">ERIM</text>
-                      {/* IO — Lime */}
-                      <text x="106" y="32" fontFamily="system-ui, -apple-system, sans-serif" fontWeight="800" fontSize="22" letterSpacing="1" fill="#A3E635">IO</text>
-                    </svg>
-                  </div>
-                  {/* Açık zemin */}
-                  <div className="bg-white p-4 flex items-center justify-center border-t border-[#F0F0F0]">
-                    <svg width="148" height="40" viewBox="0 0 148 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <text x="0" y="30" fontFamily="system-ui, -apple-system, sans-serif" fontWeight="900" fontSize="28" fill="#2E1065">V</text>
-                      <rect x="6" y="34" width="5" height="5" fill="#A3E635"/>
-                      <text x="22" y="28" fontFamily="system-ui, -apple-system, sans-serif" fontWeight="800" fontSize="20" letterSpacing="0.5" fill="#2E1065">ERIM</text>
-                      <text x="96" y="28" fontFamily="system-ui, -apple-system, sans-serif" fontWeight="800" fontSize="20" letterSpacing="0.5" fill="#A3E635">IO</text>
-                    </svg>
-                  </div>
-                  {/* Favicon önizleme */}
-                  <div className="bg-[#0F0A1E] p-3 flex items-center gap-3 border-t border-[#1A1030]">
-                    <span className="text-[#4C4462] text-xs">Favicon:</span>
-                    <div className="bg-[#2E1065] w-8 h-8 rounded flex items-center justify-center">
-                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                        <text x="1" y="15" fontFamily="system-ui, -apple-system, sans-serif" fontWeight="900" fontSize="16" fill="#FFFFFF">V</text>
-                        <rect x="4" y="15" width="3" height="3" fill="#A3E635"/>
-                      </svg>
+                  {/* Koyu */}
+                  <div className="bg-[#2E1065] px-5 py-6 flex items-center justify-center min-h-[88px]">
+                    <div className="flex items-baseline gap-0" style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontWeight: 600, fontSize: '29px', letterSpacing: '-0.02em', lineHeight: 1 }}>
+                      <span style={{ color: '#FFFFFF' }}>verim</span><span style={{ color: '#A3E635', fontWeight: 800 }}>io</span>
                     </div>
-                    <div className="bg-white w-8 h-8 rounded flex items-center justify-center border border-[#E5E7EB]">
-                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                        <text x="1" y="15" fontFamily="system-ui, -apple-system, sans-serif" fontWeight="900" fontSize="16" fill="#2E1065">V</text>
-                        <rect x="4" y="15" width="3" height="3" fill="#A3E635"/>
-                      </svg>
+                  </div>
+                  {/* Açık */}
+                  <div className="bg-white px-5 py-4 flex items-center justify-center min-h-[72px] border-t border-[#F0F0F0]">
+                    <div className="flex items-baseline gap-0" style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontWeight: 600, fontSize: '25px', letterSpacing: '-0.02em' }}>
+                      <span style={{ color: '#2E1065' }}>verim</span><span style={{ color: '#A3E635', fontWeight: 800 }}>io</span>
+                    </div>
+                  </div>
+                  {/* Lime zemin */}
+                  <div className="bg-[#A3E635] px-5 py-4 flex items-center justify-center min-h-[72px] border-t border-[#8FCC25]">
+                    <div className="flex items-baseline gap-0" style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontWeight: 600, fontSize: '25px', letterSpacing: '-0.02em' }}>
+                      <span style={{ color: '#2E1065' }}>verim</span><span style={{ color: '#0A0A0A', fontWeight: 800 }}>io</span>
+                    </div>
+                  </div>
+                  {/* Küçük ölçek */}
+                  <div className="bg-[#0F0A1E] px-4 py-2.5 flex items-center gap-3 border-t border-[#1A1030]">
+                    <span className="text-[#4C4462] text-xs">Küçük:</span>
+                    <div className="flex items-baseline gap-0" style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontWeight: 600, fontSize: '13px', letterSpacing: '-0.01em' }}>
+                      <span style={{ color: '#FFFFFF' }}>verim</span><span style={{ color: '#A3E635', fontWeight: 800 }}>io</span>
+                    </div>
+                    <div className="flex items-baseline gap-0 ml-2" style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontWeight: 600, fontSize: '10px', letterSpacing: '-0.01em' }}>
+                      <span style={{ color: '#FFFFFF' }}>verim</span><span style={{ color: '#A3E635', fontWeight: 800 }}>io</span>
                     </div>
                   </div>
                 </div>
+
               </div>
 
-              {/* Seçim rehberi */}
-              <div className="mt-4 grid grid-cols-3 gap-4 text-xs text-[#4C4462]">
-                <div className="bg-[#0F0A1E] border border-[#1A1030] rounded-lg p-3 space-y-1">
-                  <p className="text-white font-medium">A — V-Flow</p>
-                  <p>+ Hareket hissi güçlü</p>
-                  <p>+ Sade, minimalist</p>
-                  <p className="text-[#2E1065]">− Favicon'da zayıf kalabilir</p>
+              {/* Karakter notu */}
+              <div className="mt-3 grid grid-cols-3 gap-3 text-xs">
+                <div className={`rounded-lg p-3 border transition-all ${selectedLogo === 'A' ? 'border-[#A3E635] bg-[#A3E635]/5' : 'border-[#1A1030] bg-[#0F0A1E]'}`}>
+                  <p className="text-[#78716C]">Büyük harfle de çalışır. Güçlü, otoriter his. Plakatlarda, slide başlıklarında etkili.</p>
                 </div>
-                <div className="bg-[#0F0A1E] border border-[#2E1065] rounded-lg p-3 space-y-1">
-                  <p className="text-[#A3E635] font-medium">B — Hexagon ★ Önerilen</p>
-                  <p>+ PDF rapor ile sıfır iş uyumu</p>
-                  <p>+ Favicon'da en okunabilir</p>
-                  <p>+ Tech/data çağrışımı güçlü</p>
+                <div className={`rounded-lg p-3 border transition-all ${selectedLogo === 'B' ? 'border-[#A3E635] bg-[#A3E635]/5' : 'border-[#1A1030] bg-[#0F0A1E]'}`}>
+                  <p className="text-[#78716C]">Serif + ince = lüks danışmanlık hissi. E-postada, kartvizitte çok iyi durur. Dijitalde daha nadir görülür.</p>
                 </div>
-                <div className="bg-[#0F0A1E] border border-[#1A1030] rounded-lg p-3 space-y-1">
-                  <p className="text-white font-medium">C — Tipografik</p>
-                  <p>+ Her boyutta okunabilir</p>
-                  <p>+ Baskıda en iyi çalışır</p>
-                  <p className="text-[#2E1065]">− Favicon için sadece V harfi</p>
+                <div className={`rounded-lg p-3 border transition-all ${selectedLogo === 'C' ? 'border-[#A3E635] bg-[#A3E635]/5' : 'border-[#1A1030] bg-[#0F0A1E]'}`}>
+                  <p className="text-[#78716C]">Sıkışık tracking modern tech startuplarının tonu. &quot;io&quot; ağırlıklı = suffix vurgusu, domain çağrışımı.</p>
                 </div>
               </div>
             </div>
 
             {/* Logo seçenekleri — fal.ai */}
-            <h3 className="text-white font-semibold mb-3">fal.ai ile AI Varyasyon Üret</h3>
-            <p className="text-[#4C4462] text-xs mb-5">SVG opsiyonlardan birini seçtikten sonra fal.ai ile farklı yorumlar da üretebilirsin.</p>
+            <h3 className="text-white font-semibold mb-3">fal.ai ile Görsel Varyasyon Üret</h3>
+            <p className="text-[#4C4462] text-xs mb-5">Font seçiminden bağımsız olarak AI ile farklı logo yorumları da üretebilirsin.</p>
 
             <div className="space-y-4">
               {LOGO_OPTIONS.map((opt) => (
