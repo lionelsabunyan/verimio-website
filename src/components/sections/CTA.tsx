@@ -1,35 +1,29 @@
 "use client";
 
-import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
 import { CTA_CONTENT, BRAND } from "@/lib/constants";
 import { FadeIn } from "@/components/ui/motion";
+import Button from "@/components/ui/Button";
 
 export default function CTA() {
   return (
     <section className="relative overflow-hidden">
-      {/* Background */}
       <div className="absolute inset-0 bg-dark" />
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent" />
-
-      {/* Decorative circles */}
-      <div className="absolute -top-40 -right-40 w-80 h-80 rounded-full bg-primary-light/5" />
-      <div className="absolute -bottom-40 -left-40 w-80 h-80 rounded-full bg-secondary/5" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary-light/10 via-primary/5 to-transparent" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-20 bg-gradient-to-b from-secondary/40 to-transparent" />
+      <div className="absolute -top-px left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-secondary/30 to-transparent" />
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 text-center">
-        {/* Label */}
         <FadeIn>
-          <div className="flex items-center justify-center gap-2 mb-6">
-            <div className="w-2.5 h-2.5 rounded-full bg-secondary" />
-            <div className="w-2.5 h-2.5 rounded-full bg-secondary/30" />
-            <span className="text-sm font-medium text-cream/60 ml-1">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-secondary/20 bg-secondary/5 mb-8">
+            <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
+            <span className="text-xs font-medium text-secondary/80 tracking-wide">
               {CTA_CONTENT.label}
             </span>
           </div>
         </FadeIn>
 
         <FadeIn delay={0.1}>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
             {CTA_CONTENT.headline}
           </h2>
         </FadeIn>
@@ -42,27 +36,24 @@ export default function CTA() {
 
         <FadeIn delay={0.3}>
           <div className="flex flex-wrap items-center justify-center gap-4">
-            <Link
-              href={BRAND.tallyFormUrl}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-secondary text-primary font-semibold rounded-full hover:bg-secondary/90 transition-all duration-200 hover:shadow-lg hover:shadow-secondary/25"
-            >
+            <Button href={BRAND.tallyFormUrl} size="lg">
               {CTA_CONTENT.ctaPrimary}
-              <ArrowUpRight className="w-5 h-5" />
-            </Link>
-            <Link
-              href="/hizmetler"
-              className="inline-flex items-center gap-2 px-8 py-4 border border-cream/20 text-cream font-medium rounded-full hover:border-secondary hover:text-secondary transition-all duration-200"
-            >
+            </Button>
+            <Button href="/hizmetler" variant="outline" size="lg" className="border-cream/20 text-cream hover:border-secondary hover:text-secondary hover:bg-transparent">
               {CTA_CONTENT.ctaSecondary}
-              <ArrowUpRight className="w-5 h-5" />
-            </Link>
+            </Button>
           </div>
         </FadeIn>
 
         <FadeIn delay={0.4}>
-          <p className="mt-8 text-sm text-cream/40">
-            ⏱️ Sadece 3 dakika • 💳 Kredi kartı yok • 📞 Satış araması yok
-          </p>
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-6">
+            {["Sadece 3 dakika", "Kredi kartı yok", "Satış araması yok"].map((item) => (
+              <span key={item} className="flex items-center gap-1.5 text-sm text-cream/40">
+                <span className="w-1 h-1 rounded-full bg-secondary/60" />
+                {item}
+              </span>
+            ))}
+          </div>
         </FadeIn>
       </div>
     </section>

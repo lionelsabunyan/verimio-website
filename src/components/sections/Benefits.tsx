@@ -1,55 +1,45 @@
 "use client";
 
-import Link from "next/link";
-import { ArrowUpRight, Check } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import { BENEFITS, BRAND } from "@/lib/constants";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/motion";
+import Button from "@/components/ui/Button";
 
 export default function Benefits() {
   return (
-    <section className="section-padding bg-white">
+    <section className="section-padding bg-cream">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left - Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+          {/* Left */}
           <FadeIn direction="left">
-            <div>
-              {/* Label */}
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-2.5 h-2.5 rounded-full bg-primary" />
-                <div className="w-2.5 h-2.5 rounded-full bg-primary-light/30" />
-                <span className="text-sm font-medium text-muted ml-1">
-                  Raporunuzda Ne Var?
-                </span>
-              </div>
-
-              <h2 className="text-3xl sm:text-4xl font-bold mb-6">
-                Raporunuzda Neler{" "}
-                <span className="gradient-text">Bulacaksınız?</span>
-              </h2>
-              <p className="text-lg text-muted mb-8">
-                AI analiziniz sadece genel öneriler değil, firmanıza özel somut
-                aksiyon planı içerir.
-              </p>
-
-              <Link
-                href={BRAND.tallyFormUrl}
-                className="inline-flex items-center gap-2 px-7 py-3.5 bg-secondary text-primary font-semibold text-sm rounded-full hover:bg-secondary/90 transition-all duration-200 hover:shadow-lg hover:shadow-secondary/25"
-              >
-                Ücretsiz Analiz Başlat
-                <ArrowUpRight className="w-4 h-4" />
-              </Link>
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-2 h-2 rounded-full bg-primary" />
+              <div className="w-2 h-2 rounded-full bg-primary-light/30" />
+              <span className="text-sm font-medium text-muted ml-1">Raporunuzda Ne Var?</span>
             </div>
+
+            <h2 className="text-3xl sm:text-4xl font-bold mb-5">
+              Raporunuzda Neler{" "}
+              <span className="gradient-text">Bulacaksınız?</span>
+            </h2>
+            <p className="text-lg text-muted mb-8 leading-relaxed">
+              AI analiziniz sadece genel öneriler değil, firmanıza özel somut
+              aksiyon planı içerir.
+            </p>
+
+            <Button href={BRAND.tallyFormUrl} size="lg">
+              Ücretsiz Analiz Başlat
+            </Button>
           </FadeIn>
 
-          {/* Right - Checklist */}
-          <StaggerContainer className="space-y-4" staggerDelay={0.08}>
+          {/* Right — Checklist */}
+          <StaggerContainer className="space-y-3" staggerDelay={0.07}>
             {BENEFITS.map((benefit, index) => (
               <StaggerItem key={index}>
-                <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-background transition-colors duration-200">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center">
-                    <Check className="w-4 h-4 text-primary" />
-                  </div>
-                  <span className="text-foreground font-medium pt-1">
+                <div className="flex items-center gap-4 p-4 rounded-xl bg-white border border-foreground/5 hover:border-primary/15 hover:shadow-sm transition-all duration-200 group">
+                  <CheckCircle2 className="w-5 h-5 text-secondary flex-shrink-0 group-hover:text-primary transition-colors duration-200" />
+                  <span className="text-sm font-medium text-foreground/80 group-hover:text-foreground transition-colors duration-200">
                     {benefit}
                   </span>
                 </div>

@@ -5,7 +5,7 @@ export const BRAND = {
   tagline: "İş Süreçlerinizi AI ile Dönüştürün",
   email: "analiz@verimio.com.tr",
   website: "verimio.com.tr",
-  tallyFormUrl: "#", // Will be replaced with actual Tally.so URL
+  tallyFormUrl: "/analiz",
   calendlyUrl: "#", // Will be replaced with actual Calendly URL
 } as const;
 
