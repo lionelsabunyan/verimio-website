@@ -121,7 +121,7 @@ export default function BrandPreviewClient() {
     <div style={{ minHeight: '100vh', background: '#0A0514', fontFamily: 'var(--font-dm-sans, system-ui)', color: '#FFFFFF' }}>
 
       {/* Header */}
-      <div style={{ borderBottom: '1px solid #1A1030', padding: '20px 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+      <div style={{ borderBottom: '1px solid #1A1030', padding: '16px 32px', display: 'flex', flexDirection: 'column', gap: 12 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <div style={{ width: 32, height: 32, borderRadius: 8, background: '#A3E635', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <span style={{ color: '#2E1065', fontWeight: 900, fontSize: 16 }}>V</span>
@@ -131,7 +131,7 @@ export default function BrandPreviewClient() {
             <div style={{ fontSize: 11, color: '#4C4462' }}>Kurumsal Kimlik Sistemi — 2025</div>
           </div>
         </div>
-        <div style={{ display: 'flex', gap: 8 }}>
+        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
           {(['logo', 'colors', 'typography', 'social'] as const).map((s) => (
             <button
               key={s}
