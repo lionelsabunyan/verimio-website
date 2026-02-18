@@ -99,6 +99,14 @@ const FONT_SAMPLES = [
   { label: 'Mono — 14px', size: 14, weight: 400, text: '#2E1065  #A3E635  font-weight: 700', mono: true },
 ]
 
+// ─── Sosyal Medya Profil Şablonları ──────────────────────────────────────────
+const SOCIAL_PROFILES = [
+  { id: 'linkedin', label: 'LinkedIn Profil', size: '400×400', bg: '#2E1065', v: '#FFFFFF', dot: '#A3E635', border: '#A3E635' },
+  { id: 'twitter', label: 'Twitter/X Profil', size: '400×400', bg: '#000000', v: '#FFFFFF', dot: '#A3E635', border: '#1A1A1A' },
+  { id: 'instagram', label: 'Instagram Profil', size: '400×400', bg: '#1E0A46', v: '#FFFFFF', dot: '#A3E635', border: '#8B5CF6' },
+  { id: 'whatsapp', label: 'WhatsApp / iMessage', size: '400×400', bg: '#A3E635', v: '#2E1065', dot: '#1E0A46', border: '#A3E635' },
+]
+
 export default function BrandPreviewClient() {
   const [section, setSection] = useState<'logo' | 'colors' | 'typography'>('logo')
   const [copied, setCopied] = useState<string | null>(null)
@@ -210,7 +218,7 @@ export default function BrandPreviewClient() {
               <h2 style={{ fontSize: 22, fontWeight: 700, marginBottom: 4 }}>Boyut Skalası</h2>
               <p style={{ color: '#4C4462', fontSize: 14 }}>Dark bg üzerinde — favicon'dan billboard'a</p>
             </div>
-            <div style={{ background: '#2E1065', borderRadius: 16, padding: '40px 48px', border: '1px solid #1A1030', display: 'flex', alignItems: 'center', gap: 48, flexWrap: 'wrap' }}>
+            <div style={{ background: '#2E1065', borderRadius: 16, padding: '40px 48px', border: '1px solid #1A1030', display: 'flex', alignItems: 'center', gap: 48, flexWrap: 'wrap', marginBottom: 48 }}>
               {[16, 24, 32, 48, 72, 96].map((size) => (
                 <div key={size} style={{ textAlign: 'center' }}>
                   <div style={{ fontWeight: 700, fontSize: size, letterSpacing: '-0.02em', lineHeight: 1 }}>
@@ -218,6 +226,56 @@ export default function BrandPreviewClient() {
                     <span style={{ color: '#A3E635' }}>io</span>
                   </div>
                   <div style={{ fontSize: 11, color: '#4C4462', marginTop: 8 }}>{size}px</div>
+                </div>
+              ))}
+            </div>
+
+            {/* Sosyal Medya Profil Şablonları */}
+            <div style={{ marginBottom: 24 }}>
+              <h2 style={{ fontSize: 22, fontWeight: 700, marginBottom: 4 }}>Sosyal Medya Profil Fotoğrafları</h2>
+              <p style={{ color: '#4C4462', fontSize: 14 }}>Platform bazında profil icon görünümleri</p>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }}>
+              {SOCIAL_PROFILES.map((p) => (
+                <div key={p.id} style={{ borderRadius: 16, overflow: 'hidden', border: '1px solid #1A1030' }}>
+                  <div style={{ background: '#0F0A1E', padding: '32px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16 }}>
+                    {/* Circular profile preview */}
+                    <div style={{
+                      width: 96,
+                      height: 96,
+                      borderRadius: '50%',
+                      background: p.bg,
+                      border: `3px solid ${p.border}`,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}>
+                      <svg width="52" height="52" viewBox="0 0 64 64" fill="none">
+                        <path d="M8 12 L32 52 L56 12" stroke={p.v} strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+                        <circle cx="32" cy="10" r="6" fill={p.dot}/>
+                      </svg>
+                    </div>
+                    {/* Square preview */}
+                    <div style={{
+                      width: 80,
+                      height: 80,
+                      borderRadius: 18,
+                      background: p.bg,
+                      border: `2px solid ${p.border}`,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}>
+                      <svg width="44" height="44" viewBox="0 0 64 64" fill="none">
+                        <path d="M8 12 L32 52 L56 12" stroke={p.v} strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+                        <circle cx="32" cy="10" r="6" fill={p.dot}/>
+                      </svg>
+                    </div>
+                  </div>
+                  <div style={{ background: '#0F0A1E', borderTop: '1px solid #1A1030', padding: '12px 16px' }}>
+                    <div style={{ fontSize: 12, color: '#78716C', fontWeight: 500 }}>{p.label}</div>
+                    <div style={{ fontSize: 11, color: '#4C4462', marginTop: 2 }}>{p.size}</div>
+                  </div>
                 </div>
               ))}
             </div>
