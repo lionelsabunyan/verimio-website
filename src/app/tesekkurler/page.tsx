@@ -2,9 +2,15 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowLeft, Mail, Clock } from "lucide-react";
+import { ArrowLeft, Mail, Clock, Calendar } from "lucide-react";
+import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
-export default function TesekkurlerPage() {
+function TesekkurlerContent() {
+  const searchParams = useSearchParams();
+  const tip = searchParams.get("tip"); // "rapor" | "gorusme"
+  const isGorusme = tip === "gorusme";
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary/4 via-background to-secondary/3 pt-20 flex items-center justify-center px-4">
       <div className="max-w-md w-full text-center space-y-8">
@@ -17,7 +23,6 @@ export default function TesekkurlerPage() {
         >
           <div className="relative w-24 h-24">
             <svg viewBox="0 0 100 100" className="w-24 h-24">
-              {/* Circle */}
               <motion.circle
                 cx="50"
                 cy="50"
@@ -30,7 +35,6 @@ export default function TesekkurlerPage() {
                 animate={{ pathLength: 1 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
               />
-              {/* Check */}
               <motion.path
                 d="M28 52 L43 67 L72 36"
                 fill="none"
@@ -54,11 +58,12 @@ export default function TesekkurlerPage() {
           className="space-y-3"
         >
           <h1 className="text-3xl font-bold text-foreground">
-            Teşekkürler!
+            {isGorusme ? "Görüşme Talebiniz Alındı!" : "Teşekkürler!"}
           </h1>
           <p className="text-muted leading-relaxed">
-            Cevaplarınız alındı. Şirketinize özel AI analiz raporunuz
-            hazırlanıyor.
+            {isGorusme
+              ? "Ücretsiz görüşme talebiniz alındı. Zoom davet linki e-posta adresinize gönderilecek."
+              : "Cevaplarınız alındı. Şirketinize özel AI analiz raporunuz hazırlanıyor."}
           </p>
         </motion.div>
 
@@ -69,24 +74,49 @@ export default function TesekkurlerPage() {
           transition={{ delay: 0.6, duration: 0.5 }}
           className="space-y-3"
         >
-          <div className="flex items-center gap-3 p-4 rounded-xl bg-white border border-foreground/8 text-left">
-            <div className="w-9 h-9 rounded-xl bg-secondary/15 flex items-center justify-center flex-shrink-0">
-              <Clock className="w-4 h-4 text-primary" />
-            </div>
-            <div>
-              <p className="text-sm font-medium text-foreground">1-2 dakika içinde</p>
-              <p className="text-xs text-muted">Raporunuz e-postanıza gönderilecek</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-3 p-4 rounded-xl bg-white border border-foreground/8 text-left">
-            <div className="w-9 h-9 rounded-xl bg-secondary/15 flex items-center justify-center flex-shrink-0">
-              <Mail className="w-4 h-4 text-primary" />
-            </div>
-            <div>
-              <p className="text-sm font-medium text-foreground">Spam klasörünüzü kontrol edin</p>
-              <p className="text-xs text-muted">Bazen filtrelere takılabiliyor</p>
-            </div>
-          </div>
+          {isGorusme ? (
+            <>
+              <div className="flex items-center gap-3 p-4 rounded-xl bg-white border border-foreground/8 text-left">
+                <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <Calendar className="w-4 h-4 text-primary" />
+                </div>
+                <div>
+                  <p className="text-sm font-medium text-foreground">20 dakikalık ücretsiz görüşme</p>
+                  <p className="text-xs text-muted">Zoom üzerinden, size uygun saatte</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 p-4 rounded-xl bg-white border border-foreground/8 text-left">
+                <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <Mail className="w-4 h-4 text-primary" />
+                </div>
+                <div>
+                  <p className="text-sm font-medium text-foreground">Davet e-postanıza gelecek</p>
+                  <p className="text-xs text-muted">Spam klasörünüzü de kontrol edin</p>
+                </div>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="flex items-center gap-3 p-4 rounded-xl bg-white border border-foreground/8 text-left">
+                <div className="w-9 h-9 rounded-xl bg-secondary/15 flex items-center justify-center flex-shrink-0">
+                  <Clock className="w-4 h-4 text-primary" />
+                </div>
+                <div>
+                  <p className="text-sm font-medium text-foreground">48 saat içinde</p>
+                  <p className="text-xs text-muted">Sektöre özel raporunuz e-postanıza gelecek</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 p-4 rounded-xl bg-white border border-foreground/8 text-left">
+                <div className="w-9 h-9 rounded-xl bg-secondary/15 flex items-center justify-center flex-shrink-0">
+                  <Mail className="w-4 h-4 text-primary" />
+                </div>
+                <div>
+                  <p className="text-sm font-medium text-foreground">Spam klasörünüzü kontrol edin</p>
+                  <p className="text-xs text-muted">Bazen filtrelere takılabiliyor</p>
+                </div>
+              </div>
+            </>
+          )}
         </motion.div>
 
         {/* Back link */}
@@ -105,5 +135,13 @@ export default function TesekkurlerPage() {
         </motion.div>
       </div>
     </div>
+  );
+}
+
+export default function TesekkurlerPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen" />}>
+      <TesekkurlerContent />
+    </Suspense>
   );
 }

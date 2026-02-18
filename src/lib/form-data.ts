@@ -9,252 +9,206 @@ export type Sector =
   | "Diğer";
 
 export interface FormData {
-  // Step 1 — Temel Bilgiler
-  email: string;
-  phone: string;
-  // Step 2 — Şirket
+  // Step 1 — Sektör + Ekip
   sector: Sector | "";
   teamSize: string;
-  tools: string[];
-  // Step 3 — Sektöre Özel (4 soru)
+  // Step 2 — Sektöre Özel Sorular + Araçlar
   s6: string;
   s7: string;
-  s8: string;
-  s9: string;
-  // Step 4 — Haftalık Saatler
-  hoursDataEntry: string;
-  hoursReporting: string;
-  hoursCustomer: string;
-  hoursContent: string;
-  hoursFiles: string;
-  // Step 5 — Son
+  s8: string; // Diğer sektöründe boş
+  tools: string[];
+  // Step 3 — İletişim + Ağrı Noktası
+  email: string;
+  phone: string;
   biggestPain: string;
-  aiExperience: string;
-  wantsCall: string;
 }
 
 export const INITIAL_FORM_DATA: FormData = {
-  email: "",
-  phone: "",
   sector: "",
   teamSize: "",
-  tools: [],
   s6: "",
   s7: "",
   s8: "",
-  s9: "",
-  hoursDataEntry: "",
-  hoursReporting: "",
-  hoursCustomer: "",
-  hoursContent: "",
-  hoursFiles: "",
+  tools: [],
+  email: "",
+  phone: "",
   biggestPain: "",
-  aiExperience: "",
-  wantsCall: "",
 };
 
-// Conditional questions per sector
+export const TEAM_SIZE_OPTIONS = [
+  "Sadece ben",
+  "2-5 kişi",
+  "6-15 kişi",
+  "16-50 kişi",
+  "50+ kişi",
+];
+
+export const TOOLS_OPTIONS = [
+  "Excel / Google Sheets",
+  "WhatsApp Business",
+  "Muhasebe Yazılımı (Logo, Mikro vb.)",
+  "CRM (Salesforce, HubSpot vb.)",
+  "E-posta Pazarlama",
+  "Proje Yönetimi (Trello, Asana vb.)",
+  "ERP Sistemi",
+  "Hiçbiri",
+];
+
+// Conditional questions per sector (3 per sector)
 export const SECTOR_QUESTIONS: Record<
   Sector,
-  { s6: string[]; s7: string[]; s8: string[]; s9: string[] }
+  { s6: string[]; s7: string[]; s8: string[] }
 > = {
   "E-ticaret / Perakende": {
     s6: [
-      "Her soruyu manuel yanıtlıyoruz (zaman alıyor)",
+      "Her soruyu manuel yanıtlıyoruz (WhatsApp, e-posta)",
       "Hazır şablonlarımız var ama yine de manuel",
       "Kısmen otomatik (chatbot veya makro kullanıyoruz)",
-      "Tamamen otomatik sistem var",
+      "Tamamen otomatik sistem kurulu",
     ],
     s7: [
-      "Her ürün için manuel yazıyoruz",
-      "Şablon kullanıyoruz (copy-paste + düzenleme)",
-      "AI araçlarıyla yazıyoruz (ChatGPT vb.)",
-      "Tamamen otomatik sürecimiz var",
+      "Tamamen manuel (kağıt, Excel, platform paneli)",
+      "Platform üzerinden takip (Trendyol, Shopify vb.)",
+      "ERP / stok yazılımı kullanıyoruz",
+      "Otomatik sistem var, çok az müdahale",
     ],
     s8: [
-      "Excel / Google Sheets",
-      "Platform üzerinden (Trendyol, Shopify vb.)",
-      "Özel yazılım / ERP",
-      "Manuel takip (not defteri, kağıt vb.)",
-    ],
-    s9: [
-      "1-2 saat",
-      "3-8 saat",
-      "8+ saat",
-      "Hiç yapmıyoruz",
+      "Müşteri iletişimi ve destek",
+      "Ürün listeleme ve içerik üretimi",
+      "Sipariş / iade takibi",
+      "Raporlama ve analiz",
     ],
   },
   "Ajans (Reklam / Dijital / Kreatif)": {
     s6: [
-      "Manuel, her müşteri için ayrı hazırlık",
+      "Manuel, her müşteri için ayrı hazırlık (saatler süruyor)",
       "Şablonumuz var ama veri toplama manuel",
       "Araçlarla kısmen otomatik (Google Data Studio vb.)",
       "Tamamen otomatik dashboard'larımız var",
     ],
     s7: [
-      "Tamamen manuel (ekip brainstorm + yazım)",
-      "Şablonlar kullanıyoruz ama yine manuel",
-      "AI destekli (ChatGPT, Jasper vb.)",
-      "Büyük ölçüde otomatikleştirilmiş",
+      "Tamamen manuel (ekip yazıyor, düzeltiyor)",
+      "AI destekli ama editöre ihtiyaç var",
+      "Şablon + AI ile hızlı üretiyoruz",
+      "Büyük ölçüde otomatikleştirildi",
     ],
     s8: [
-      "Birden fazla kanal (e-posta, WhatsApp, Slack vb.)",
-      "Merkezi bir araç (CRM, proje yönetimi)",
-      "Sadece e-posta",
-      "Her müşteri farklı kanal tercih ediyor",
-    ],
-    s9: [
-      "E-posta ve sözlü (takip zor)",
-      "Proje yönetim aracı (Asana, Trello vb.)",
-      "Özel sürecimiz var ve işliyor",
-      "Kaotik, her proje farklı",
+      "Müşteri takibi ve brief alma süreci",
+      "İçerik üretimi ve onay süreçleri",
+      "Raporlama ve performans analizi",
+      "Fatura ve muhasebe takibi",
     ],
   },
   "B2B Hizmet (Danışmanlık / Muhasebe / Hukuk)": {
     s6: [
-      "Klasörler ve manuel arama (kaos)",
+      "Klasörler ve e-posta (dosya bulmak zaman alıyor)",
       "Bulut depolama (Drive, Dropbox) ama düzensiz",
-      "Organize belge yönetim sistemimiz var",
+      "Organize bir belge yönetim sistemimiz var",
       "DMS (Document Management System) kullanıyoruz",
     ],
     s7: [
-      "E-posta ve telefon (takip zor)",
-      "Excel / Google Sheets",
-      "CRM kullanıyoruz",
-      "Otomatik hatırlatma sistemimiz var",
+      "Manuel, her seferinde sıfırdan hazırlıyoruz",
+      "Şablonlarımız var ama ciddi düzenleme gerekiyor",
+      "CRM veya araçla kısmen otomatik",
+      "Tamamen dijital ve standart süreç",
     ],
     s8: [
-      "Manuel, her seferinde sıfırdan",
-      "Şablonlarımız var ama düzenleme gerekiyor",
-      "CRM veya araçla kısmen otomatik",
-      "Tamamen dijital ve otomatik",
-    ],
-    s9: [
-      "1-2 saat",
-      "3-8 saat",
-      "8+ saat",
-      "Hiç yapmıyoruz",
+      "Müşteri takibi ve hatırlatmalar",
+      "Teklif ve sözleşme hazırlama",
+      "Belge ve dosya yönetimi",
+      "Raporlama ve analiz",
     ],
   },
   "Üretim / Lojistik": {
     s6: [
-      "Excel / Google Sheets",
+      "Excel / Google Sheets ile takip",
       "Manuel kayıt (kağıt, defter)",
-      "ERP sistemi (SAP, Logo vb.)",
-      "Özel yazılım",
+      "ERP sistemi var (SAP, Logo vb.)",
+      "Otomatik sensör / sistem entegrasyonu",
     ],
     s7: [
-      "Tamamen manuel",
-      "Kısmen otomatik (bazı adımlar)",
-      "Büyük ölçüde otomatik",
-      "Tamamen dijital ve entegre",
+      "Telefon ve e-posta (takip çok zor)",
+      "Merkezi bir platform veya ERP üzerinden",
+      "WhatsApp grupları ile iletişim",
+      "Entegre sistem, otomatik bildirimler",
     ],
     s8: [
-      "Telefon ve e-posta (takip zor)",
-      "Merkezi bir platform",
-      "ERP üzerinden",
-      "Manuel tablo / liste",
-    ],
-    s9: [
-      "Manuel kontrol ve kağıt kayıt",
-      "Excel tabanlı",
-      "Dijital form / uygulama",
-      "Otomatik sensör / sistem",
+      "Stok ve üretim takibi",
+      "Tedarikçi iletişimi ve sipariş",
+      "Sevkiyat ve lojistik planlama",
+      "Kalite kontrol ve raporlama",
     ],
   },
   "Teknoloji / Yazılım": {
     s6: [
-      "Manuel deployment (FTP, SSH vb.)",
-      "Kısmen CI/CD var",
-      "Tam CI/CD pipeline (GitHub Actions vb.)",
-      "GitOps / tam otomasyon",
+      "E-posta ve Slack (dağınık, takip zor)",
+      "Ticket sistemi var (Freshdesk, Zendesk vb.)",
+      "AI destekli chatbot + insan desteği",
+      "Self-serve dokümantasyon ve otomatik yanıtlar",
     ],
     s7: [
-      "E-posta (manuel takip)",
-      "Ticket sistemi (Freshdesk, Zendesk vb.)",
-      "AI destekli chatbot + insan",
-      "Tamamen self-serve dokümantasyon",
+      "Manuel (her görev el ile tetikleniyor)",
+      "Kısmen CI/CD var, bazı şeyler hâlâ manuel",
+      "Tam CI/CD pipeline kurulu",
+      "GitOps / tam otomasyon ve monitoring",
     ],
     s8: [
-      "Manuel (Excel, elle hesaplama)",
-      "Dashboard araçları (Tableau, Looker vb.)",
-      "Otomatik raporlama sistemi",
-      "Real-time monitoring",
-    ],
-    s9: [
-      "E-posta ve Slack (dağınık)",
-      "Proje yönetim aracı ama disiplin yok",
-      "Agile / Scrum uyguluyoruz",
-      "Tam entegre DevOps süreci",
+      "Müşteri desteği ve ticketing",
+      "Deployment ve test süreçleri",
+      "İç raporlama ve proje takibi",
+      "Fatura ve muhasebe süreçleri",
     ],
   },
   Diğer: {
     s6: [
       "Müşteri iletişimi / destek",
       "Raporlama ve analiz",
-      "İçerik üretimi",
+      "İçerik üretimi ve pazarlama",
       "Belge ve dosya yönetimi",
       "Veri girişi ve takip",
     ],
     s7: [
-      "Tamamen manuel",
-      "Kısmen araçlarla destekleniyor",
+      "Tamamen manuel (hiç araç yok)",
+      "Bazı araçlar kullanıyoruz ama yine de çok zaman alıyor",
+      "Kısmen otomatik, iyileştirmeye açık",
       "Büyük ölçüde otomatik",
-      "Tamamen otomatik",
     ],
-    s8: [],
-    s9: [],
+    s8: [], // Diğer sektöründe 3. soru yok
   },
 };
 
 export const SECTOR_QUESTION_LABELS: Record<
   Sector,
-  { s6: string; s7: string; s8: string; s9: string }
+  { s6: string; s7: string; s8: string }
 > = {
   "E-ticaret / Perakende": {
-    s6: "Müşteri sorularını nasıl yanıtlıyorsunuz?",
-    s7: "Ürün açıklamalarını nasıl yazıyorsunuz?",
-    s8: "Sipariş/stok verilerinizi nasıl yönetiyorsunuz?",
-    s9: "Haftada kaç saat raporlama/analiz yapıyorsunuz?",
+    s6: "Müşteri sorularını nasıl yönetiyorsunuz?",
+    s7: "Sipariş ve stok takibiniz nasıl?",
+    s8: "En çok vakit kaybettiğiniz alan hangisi?",
   },
   "Ajans (Reklam / Dijital / Kreatif)": {
     s6: "Müşteri raporlarını nasıl hazırlıyorsunuz?",
-    s7: "İçerik üretimini nasıl yapıyorsunuz?",
-    s8: "Müşteri iletişimini nasıl yönetiyorsunuz?",
-    s9: "Brief / proje yönetimi süreciniz nasıl?",
+    s7: "İçerik üretim süreciniz nasıl işliyor?",
+    s8: "En çok vakit kaybettiğiniz alan hangisi?",
   },
   "B2B Hizmet (Danışmanlık / Muhasebe / Hukuk)": {
-    s6: "Müşteri dokümanlarını nasıl yönetiyorsunuz?",
-    s7: "Müşteri takibini nasıl yapıyorsunuz?",
-    s8: "Teklif / sözleşme süreciniz nasıl?",
-    s9: "Haftada kaç saat raporlama/analiz yapıyorsunuz?",
+    s6: "Müşteri belgelerini ve dosyaları nasıl yönetiyorsunuz?",
+    s7: "Teklif ve sözleşme süreciniz nasıl?",
+    s8: "En çok vakit kaybettiğiniz alan hangisi?",
   },
   "Üretim / Lojistik": {
-    s6: "Üretim/stok takibini nasıl yapıyorsunuz?",
-    s7: "Sipariş/sevkiyat süreciniz nasıl?",
-    s8: "Tedarikçi iletişimini nasıl yönetiyorsunuz?",
-    s9: "Kalite kontrol süreciniz nasıl?",
+    s6: "Stok ve üretim takibini nasıl yapıyorsunuz?",
+    s7: "Tedarikçi iletişimini nasıl yönetiyorsunuz?",
+    s8: "En çok vakit kaybettiğiniz alan hangisi?",
   },
   "Teknoloji / Yazılım": {
-    s6: "Deployment süreciniz nasıl?",
-    s7: "Müşteri destek süreciniz nasıl?",
-    s8: "Raporlama / analiz süreciniz nasıl?",
-    s9: "Proje yönetimi süreciniz nasıl?",
+    s6: "Müşteri desteğinizi nasıl yönetiyorsunuz?",
+    s7: "Tekrarlayan süreçleriniz (deploy, test vb.) nasıl?",
+    s8: "En çok vakit kaybettiğiniz alan hangisi?",
   },
   Diğer: {
     s6: "En çok zaman aldığını düşündüğünüz iş süreci hangisi?",
-    s7: "Bu süreçleri nasıl yönetiyorsunuz?",
+    s7: "Bu süreci şu an nasıl yönetiyorsunuz?",
     s8: "",
-    s9: "",
   },
 };
-
-export const HOURS_OPTIONS = ["0-2 saat", "3-5 saat", "6-10 saat", "10+ saat"];
-
-export const HOURS_CATEGORIES = [
-  { key: "hoursDataEntry" as const, label: "Veri girişi ve güncelleme" },
-  { key: "hoursReporting" as const, label: "Raporlama ve analiz" },
-  { key: "hoursCustomer" as const, label: "Müşteri iletişimi" },
-  { key: "hoursContent" as const, label: "İçerik üretimi" },
-  { key: "hoursFiles" as const, label: "Dosya / belge yönetimi" },
-];

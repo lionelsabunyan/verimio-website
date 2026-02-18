@@ -1,31 +1,31 @@
 "use client";
 
-import { ClipboardList, Bot, FileText } from "lucide-react";
+import { ClipboardList, Search, Rocket } from "lucide-react";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/motion";
 
-const stepIcons = [ClipboardList, Bot, FileText];
+const stepIcons = [ClipboardList, Search, Rocket];
 
 const steps = [
   {
     step: "01",
     icon: 0,
-    title: "Form Doldur",
+    title: "Durumunuzu Anlatın",
     description:
-      "3 dakikada iş süreçleriniz hakkında sorular yanıtlayın. Sektörünüze özel sorularla firmanızı tanıyalım.",
+      "3 dakikada sektörünüze özel 6 soruyu yanıtlayın. Sonunda rapor veya ücretsiz görüşme — siz seçin.",
   },
   {
     step: "02",
     icon: 1,
-    title: "AI Analiz Yapsın",
+    title: "Analiz Edelim",
     description:
-      "Yapay zeka cevaplarınızı analiz edip firmanıza özel otomasyon fırsatlarını ve ROI hesaplarını çıkarır.",
+      "Cevaplarınızı uzman gözüyle değerlendirip firmanıza özel otomasyon fırsatlarını ve ROI potansiyelini belirliyoruz.",
   },
   {
     step: "03",
     icon: 2,
-    title: "Raporu Al",
+    title: "Harekete Geçelim",
     description:
-      "1-2 dakika içinde e-postanıza detaylı PDF rapor gelir. Öncelik matrisi, araç önerileri ve 90 günlük yol haritası dahil.",
+      "Somut bir plan ve öncelik matrisiyle uygulamaya geçiyoruz. İster kendiniz yapın, ister biz yapalım.",
   },
 ];
 
@@ -47,8 +47,8 @@ export default function HowItWorks() {
             <span className="gradient-text">AI Dönüşümü</span>
           </h2>
           <p className="text-lg text-muted max-w-2xl mb-16">
-            Karmaşık danışmanlık süreçlerini unutun. Sadece 3 dakikada firmanızın
-            AI potansiyelini keşfedin.
+            Karmaşık danışmanlık süreçlerini unutun. Sektörünüze özel bir analizle
+            nerede başlayacağınızı netleştirin.
           </p>
         </FadeIn>
 

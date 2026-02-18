@@ -6,7 +6,7 @@ export const BRAND = {
   email: "analiz@verimio.com.tr",
   website: "verimio.com.tr",
   tallyFormUrl: "/analiz",
-  calendlyUrl: "#", // Will be replaced with actual Calendly URL
+  calendlyUrl: "#", // Cal.com URL — kurulum sonra güncellenecek
 } as const;
 
 export const NAV_LINKS = [
@@ -41,10 +41,10 @@ export const HERO_CONTENT = {
 } as const;
 
 export const TRUST_BADGES = [
-  { icon: "✓", text: "Tamamen Ücretsiz" },
-  { icon: "⏱", text: "3 Dakikada Tamamla" },
-  { icon: "📄", text: "Anında PDF Rapor" },
-  { icon: "📞", text: "Satış Araması Yok" },
+  { icon: "check", text: "Ücretsiz İlk Görüşme" },
+  { icon: "layers", text: "Sektöre Özel Analiz" },
+  { icon: "shield", text: "NDA ile Gizlilik" },
+  { icon: "phone-off", text: "Satış Baskısı Yok" },
 ] as const;
 
 export const ABOUT_CONTENT = {
@@ -55,33 +55,33 @@ export const ABOUT_CONTENT = {
 } as const;
 
 export const STATS = [
-  { value: "50+", label: "Firma Analiz Edildi" },
-  { value: "%65", label: "Ortalama Otomasyon Potansiyeli" },
-  { value: "₺17K+", label: "Ortalama Aylık Tasarruf" },
-  { value: "<2dk", label: "Rapor Teslim Süresi" },
+  { value: "10+", label: "Firma Analiz Edildi" },
+  { value: "%60+", label: "Ortalama Otomasyon Potansiyeli" },
+  { value: "4 Alan", label: "Hizmet Kategorisi" },
+  { value: "48 saat", label: "Rapor Teslim Süresi" },
 ] as const;
 
 export const HOW_IT_WORKS = [
   {
     step: "01",
-    icon: "📝",
-    title: "Form Doldur",
+    icon: "clipboard-list",
+    title: "Durumunuzu Anlatın",
     description:
-      "3 dakikada iş süreçleriniz hakkında 11 soru yanıtlayın. Sektörünüze özel sorularla firmanızı tanıyalım.",
+      "3 dakikada sektörünüze özel 6 soruyu yanıtlayın. Sonunda rapor veya ücretsiz görüşme — siz seçin.",
   },
   {
     step: "02",
-    icon: "🤖",
-    title: "AI Analiz Yapsın",
+    icon: "search",
+    title: "Analiz Edelim",
     description:
-      "Yapay zeka cevaplarınızı analiz edip, firmanıza özel otomasyon fırsatlarını ve ROI hesaplarını çıkarır.",
+      "Cevaplarınızı uzman gözüyle değerlendirip firmanıza özel otomasyon fırsatlarını ve ROI potansiyelini belirliyoruz.",
   },
   {
     step: "03",
-    icon: "📊",
-    title: "Raporu Al",
+    icon: "rocket",
+    title: "Harekete Geçelim",
     description:
-      "1-2 dakika içinde e-postanıza detaylı PDF rapor gelir. Öncelik matrisi, araç önerileri ve 90 günlük yol haritası dahil.",
+      "Somut bir plan ve öncelik matrisiyle uygulamaya geçiyoruz. İster kendiniz yapın, ister biz yapalım.",
   },
 ] as const;
 
@@ -137,11 +137,11 @@ export const TESTIMONIALS = [
 ] as const;
 
 export const EXPERTISE_ITEMS = [
-  "Süreç Otomasyonu",
-  "AI Chatbot Kurulumu",
-  "Otomatik Raporlama",
-  "İçerik Üretimi (AI)",
-  "Veri Analizi & Dashboard",
+  "AI Süreç Danışmanlığı",
+  "İş Akışı Otomasyonu (n8n / Make)",
+  "Sesli AI Agent (Vapi)",
+  "Özel AI Entegrasyonu",
+  "Dijital Varlık Optimizasyonu",
 ] as const;
 
 export const FAQ_ITEMS = [

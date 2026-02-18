@@ -2,13 +2,7 @@
 
 import { motion } from "framer-motion";
 
-const STEP_LABELS = [
-  "Temel Bilgiler",
-  "Şirket",
-  "İş Süreçleri",
-  "Haftalık Saatler",
-  "Son",
-];
+const STEP_LABELS = ["Sektör", "Süreçler", "İletişim"];
 
 interface StepIndicatorProps {
   currentStep: number;
@@ -17,7 +11,7 @@ interface StepIndicatorProps {
 
 export default function StepIndicator({
   currentStep,
-  totalSteps = 5,
+  totalSteps = 3,
 }: StepIndicatorProps) {
   const progress = (currentStep / totalSteps) * 100;
 

@@ -3,20 +3,18 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft, Mail, Calendar } from "lucide-react";
 
 import type { FormData, Sector } from "@/lib/form-data";
 import { INITIAL_FORM_DATA } from "@/lib/form-data";
 import { validateStep } from "@/lib/form-validation";
-import Button from "@/components/ui/Button";
+import { BRAND } from "@/lib/constants";
 import StepIndicator from "./StepIndicator";
-import Step1Basic from "./steps/Step1Basic";
-import Step2Company from "./steps/Step2Company";
-import Step3Process from "./steps/Step3Process";
-import Step4Hours from "./steps/Step4Hours";
-import Step5Final from "./steps/Step5Final";
+import Step1Sector from "./steps/Step1Sector";
+import Step2Questions from "./steps/Step2Questions";
+import Step3Contact from "./steps/Step3Contact";
 
-const TOTAL_STEPS = 5;
+const TOTAL_STEPS = 3;
 
 const LOADING_MESSAGES = [
   "Sektör profili oluşturuluyor...",
@@ -74,7 +72,6 @@ export default function MultiStepForm() {
       s6: "",
       s7: "",
       s8: "",
-      s9: "",
     }));
     if (errors.sector) setErrors((prev) => ({ ...prev, sector: undefined }));
   };
@@ -98,38 +95,23 @@ export default function MultiStepForm() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const buildSupabasePayload = (data: FormData) => {
-    const hoursMap: Record<string, number> = {
-      "0-2 saat": 1,
-      "3-5 saat": 4,
-      "6-10 saat": 8,
-      "10+ saat": 12,
-    };
-    return {
-      email: data.email,
-      phone: data.phone || null,
-      sector: data.sector,
-      team_size: data.teamSize,
-      tools: data.tools,
-      pain_points: {
-        s6: data.s6,
-        s7: data.s7,
-        ...(data.sector !== "Diğer" && { s8: data.s8, s9: data.s9 }),
-      },
-      hours_data_entry: hoursMap[data.hoursDataEntry] ?? 0,
-      hours_reporting: hoursMap[data.hoursReporting] ?? 0,
-      hours_customer_comm: hoursMap[data.hoursCustomer] ?? 0,
-      hours_content: hoursMap[data.hoursContent] ?? 0,
-      hours_file_mgmt: hoursMap[data.hoursFiles] ?? 0,
-      biggest_pain: data.biggestPain,
-      ai_experience: data.aiExperience,
-      wants_call: data.wantsCall === "Evet, görüşmek isterim",
-      status: "new",
-    };
-  };
+  const buildPayload = (data: FormData) => ({
+    email: data.email,
+    phone: data.phone || null,
+    sector: data.sector,
+    team_size: data.teamSize,
+    tools: data.tools,
+    pain_points: {
+      s6: data.s6,
+      s7: data.s7,
+      ...(data.sector !== "Diğer" && { s8: data.s8 }),
+    },
+    biggest_pain: data.biggestPain,
+    status: "new",
+  });
 
-  const handleSubmit = async () => {
-    const validationErrors = validateStep(5, formData);
+  const handleSubmitReport = async () => {
+    const validationErrors = validateStep(3, formData);
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       return;
@@ -138,18 +120,32 @@ export default function MultiStepForm() {
     setSubmitError(null);
 
     try {
-      const supabasePayload = buildSupabasePayload(formData);
+      const payload = buildPayload(formData);
       // FAZ 6'da Supabase + n8n entegrasyonu yapılacak
-      console.log("Supabase payload:", supabasePayload);
-      console.log("n8n webhook payload:", formData);
+      console.log("Payload:", payload);
 
-      // Simulate async (FAZ 6'da gerçek API çağrısı olacak)
       await new Promise((resolve) => setTimeout(resolve, 3000));
-
-      router.push("/tesekkurler");
+      router.push("/tesekkurler?tip=rapor");
     } catch {
       setSubmitError("Bir hata oluştu. Lütfen tekrar deneyin.");
       setIsSubmitting(false);
+    }
+  };
+
+  const handleBookMeeting = async () => {
+    const validationErrors = validateStep(3, formData);
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
+    // Cal.com URL kurulumdan sonra dolu olacak
+    if (BRAND.calendlyUrl && BRAND.calendlyUrl !== "#") {
+      window.open(BRAND.calendlyUrl, "_blank");
+      router.push("/tesekkurler?tip=gorusme");
+    } else {
+      // Cal.com henüz kurulmamış → rapor akışına düş
+      await handleSubmitReport();
     }
   };
 
@@ -204,24 +200,26 @@ export default function MultiStepForm() {
             transition={stepTransition}
           >
             {currentStep === 1 && (
-              <Step1Basic formData={formData} errors={errors} updateField={updateField} />
-            )}
-            {currentStep === 2 && (
-              <Step2Company
+              <Step1Sector
                 formData={formData}
                 errors={errors}
                 updateField={updateField}
                 onSectorChange={handleSectorChange}
               />
             )}
+            {currentStep === 2 && (
+              <Step2Questions
+                formData={formData}
+                errors={errors}
+                updateField={updateField}
+              />
+            )}
             {currentStep === 3 && (
-              <Step3Process formData={formData} errors={errors} updateField={updateField} />
-            )}
-            {currentStep === 4 && (
-              <Step4Hours formData={formData} errors={errors} updateField={updateField} />
-            )}
-            {currentStep === 5 && (
-              <Step5Final formData={formData} errors={errors} updateField={updateField} />
+              <Step3Contact
+                formData={formData}
+                errors={errors}
+                updateField={updateField}
+              />
             )}
           </motion.div>
         </AnimatePresence>
@@ -233,31 +231,94 @@ export default function MultiStepForm() {
       )}
 
       {/* Navigation */}
-      <div className="flex items-center justify-between pt-2">
-        {currentStep > 1 ? (
+      {currentStep < TOTAL_STEPS ? (
+        <div className="flex items-center justify-between pt-2">
+          {currentStep > 1 ? (
+            <motion.button
+              type="button"
+              onClick={goBack}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 text-sm font-medium text-muted hover:text-foreground transition-colors rounded-xl hover:bg-foreground/5"
+            >
+              <ChevronLeft className="w-4 h-4" />
+              Geri
+            </motion.button>
+          ) : (
+            <div />
+          )}
           <motion.button
             type="button"
-            onClick={goBack}
-            whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center gap-1.5 px-4 py-2.5 text-sm font-medium text-muted hover:text-foreground transition-colors rounded-xl hover:bg-foreground/5"
+            onClick={goNext}
+            whileTap={{ scale: 0.96 }}
+            whileHover={{ scale: 1.02 }}
+            transition={{ type: "spring" as const, stiffness: 400, damping: 25 }}
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold rounded-full bg-primary text-white hover:bg-primary/90 shadow-sm"
           >
-            <ChevronLeft className="w-4 h-4" />
-            Geri
-          </motion.button>
-        ) : (
-          <div />
-        )}
-
-        {currentStep < TOTAL_STEPS ? (
-          <Button variant="secondary" size="md" onClick={goNext}>
             Devam Et
-          </Button>
-        ) : (
-          <Button variant="primary" size="md" onClick={handleSubmit} icon={false}>
-            Ücretsiz Raporumu Al →
-          </Button>
-        )}
-      </div>
+          </motion.button>
+        </div>
+      ) : (
+        /* Step 3 — Dual CTA */
+        <div className="space-y-3 pt-2">
+          {currentStep > 1 && (
+            <motion.button
+              type="button"
+              onClick={goBack}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-muted hover:text-foreground transition-colors rounded-xl hover:bg-foreground/5 mb-1"
+            >
+              <ChevronLeft className="w-4 h-4" />
+              Geri
+            </motion.button>
+          )}
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {/* Option A: Get Report */}
+            <motion.button
+              type="button"
+              onClick={handleSubmitReport}
+              whileTap={{ scale: 0.97 }}
+              whileHover={{ scale: 1.01 }}
+              transition={{ type: "spring" as const, stiffness: 400, damping: 25 }}
+              className="flex flex-col items-center gap-2 px-5 py-4 rounded-2xl border-2 border-secondary bg-secondary/8 hover:bg-secondary/15 transition-colors duration-150 text-center"
+            >
+              <Mail className="w-5 h-5 text-secondary" />
+              <div>
+                <p className="text-sm font-semibold text-foreground">
+                  Detaylı Raporumu Gönder
+                </p>
+                <p className="text-xs text-muted mt-0.5">
+                  48 saat içinde e-postanıza gelir
+                </p>
+              </div>
+            </motion.button>
+
+            {/* Option B: Book Meeting */}
+            <motion.button
+              type="button"
+              onClick={handleBookMeeting}
+              whileTap={{ scale: 0.97 }}
+              whileHover={{ scale: 1.01 }}
+              transition={{ type: "spring" as const, stiffness: 400, damping: 25 }}
+              className="flex flex-col items-center gap-2 px-5 py-4 rounded-2xl border-2 border-primary bg-primary hover:bg-primary/90 transition-colors duration-150 text-center shadow-sm"
+            >
+              <Calendar className="w-5 h-5 text-white" />
+              <div>
+                <p className="text-sm font-semibold text-white">
+                  Ücretsiz Görüşme Planla
+                </p>
+                <p className="text-xs text-white/70 mt-0.5">
+                  20 dakika · Zoom · Hemen rezerve et
+                </p>
+              </div>
+            </motion.button>
+          </div>
+
+          <p className="text-xs text-muted text-center pt-1">
+            İkisi de tamamen ücretsiz · Satış baskısı yok
+          </p>
+        </div>
+      )}
     </div>
   );
 }

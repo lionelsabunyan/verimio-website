@@ -1,10 +1,10 @@
-import { CheckCircle, Clock, FileText, PhoneOff } from "lucide-react";
+import { CheckCircle, Layers, Shield, PhoneOff } from "lucide-react";
 
 const badges = [
-  { icon: CheckCircle, text: "Tamamen Ücretsiz" },
-  { icon: Clock, text: "3 Dakikada Tamamla" },
-  { icon: FileText, text: "Anında PDF Rapor" },
-  { icon: PhoneOff, text: "Satış Araması Yok" },
+  { icon: CheckCircle, text: "Ücretsiz İlk Görüşme" },
+  { icon: Layers, text: "Sektöre Özel Analiz" },
+  { icon: Shield, text: "NDA ile Gizlilik" },
+  { icon: PhoneOff, text: "Satış Baskısı Yok" },
 ];
 
 export default function TrustBadges() {
