@@ -159,9 +159,9 @@ export default function Hero() {
               className="grid grid-cols-3 gap-3 pt-2"
             >
               {[
-                { value: "50+", label: "Firma" },
-                { value: "%65", label: "Ort. potansiyel" },
-                { value: "2dk", label: "Rapor süresi" },
+                { value: "10+", label: "Firma" },
+                { value: "%60+", label: "Ort. potansiyel" },
+                { value: "3dk", label: "Form süresi" },
               ].map((stat) => (
                 <div key={stat.label} className="text-center p-3 rounded-xl bg-surface border border-border">
                   <div className="text-xl font-bold text-primary dark:text-primary-light">{stat.value}</div>
