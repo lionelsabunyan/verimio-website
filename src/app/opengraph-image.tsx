@@ -17,28 +17,9 @@ export default function OGImage() {
           justifyContent: 'space-between',
           padding: '72px 80px',
           fontFamily: 'system-ui',
+          position: 'relative',
         }}
       >
-        {/* Arka plan accent */}
-        <div style={{
-          position: 'absolute',
-          top: -120,
-          right: -120,
-          width: 480,
-          height: 480,
-          borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(163,230,53,0.15) 0%, transparent 70%)',
-        }} />
-        <div style={{
-          position: 'absolute',
-          bottom: -80,
-          left: -80,
-          width: 320,
-          height: 320,
-          borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(139,92,246,0.2) 0%, transparent 70%)',
-        }} />
-
         {/* Logo */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
           <div style={{
@@ -55,10 +36,10 @@ export default function OGImage() {
               <circle cx="32" cy="10" r="6" fill="#1E0A46"/>
             </svg>
           </div>
-          <span style={{ color: 'white', fontSize: 32, fontWeight: 700, letterSpacing: '-0.02em' }}>
-            <span style={{ color: '#FFFFFF' }}>verim</span>
-            <span style={{ color: '#A3E635' }}>io</span>
-          </span>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <span style={{ color: '#FFFFFF', fontSize: 32, fontWeight: 700, letterSpacing: '-0.02em' }}>verim</span>
+            <span style={{ color: '#A3E635', fontSize: 32, fontWeight: 700, letterSpacing: '-0.02em' }}>io</span>
+          </div>
         </div>
 
         {/* Ana metin */}
@@ -69,17 +50,13 @@ export default function OGImage() {
             fontWeight: 700,
             lineHeight: 1.1,
             letterSpacing: '-0.03em',
-            maxWidth: 820,
           }}>
-            İş Süreçlerinizi<br />
-            <span style={{ color: '#A3E635' }}>AI ile</span> Dönüştürün
+            İş Süreçlerinizi AI ile Dönüştürün
           </div>
           <div style={{
             color: '#78716C',
             fontSize: 26,
             fontWeight: 400,
-            lineHeight: 1.5,
-            maxWidth: 700,
           }}>
             3 dakikada şirketinizin AI hazırlık seviyesini öğrenin.
           </div>
@@ -94,6 +71,7 @@ export default function OGImage() {
             borderRadius: 12,
             fontSize: 20,
             fontWeight: 700,
+            display: 'flex',
           }}>
             Ücretsiz Başla
           </div>
