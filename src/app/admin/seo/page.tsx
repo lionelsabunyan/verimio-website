@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic'
 import Header from '@/components/admin/Header'
 import SEOClient from '@/components/admin/SEOClient'
 

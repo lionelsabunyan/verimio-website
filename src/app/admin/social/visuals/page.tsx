@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic'
 import Header from '@/components/admin/Header'
 import ImageGeneratorClient from '@/components/admin/ImageGeneratorClient'
 import { createClient } from '@/lib/supabase/server'

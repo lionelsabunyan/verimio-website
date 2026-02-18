@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic'
 import { createClient } from '@/lib/supabase/server'
 import Header from '@/components/admin/Header'
 import DashboardClient from '@/components/admin/DashboardClient'

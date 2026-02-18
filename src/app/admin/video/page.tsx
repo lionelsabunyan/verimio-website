@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic'
 import Header from '@/components/admin/Header'
 import VideoGeneratorClient from '@/components/admin/VideoGeneratorClient'
 import { createClient } from '@/lib/supabase/server'
