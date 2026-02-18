@@ -194,11 +194,32 @@ export const BLOG_POSTS = [
     date: "5 Şubat 2026",
     slug: "excel-dashboard-otomasyon",
   },
+  {
+    title: "AI Otomasyon ROI Hesaplama Rehberi",
+    excerpt:
+      "Yapay zeka yatırımınızın geri dönüşünü nasıl hesaplarsınız? Adım adım ROI analizi rehberi.",
+    date: "1 Şubat 2026",
+    slug: "ai-otomasyon-roi-hesaplama",
+  },
+  {
+    title: "Küçük İşletmeler İçin CRM Otomasyonu",
+    excerpt:
+      "Müşteri ilişkilerinizi AI ile güçlendirin. CRM otomasyon araçları ve en iyi uygulamalar.",
+    date: "25 Ocak 2026",
+    slug: "kucuk-isletmeler-crm-otomasyon",
+  },
+  {
+    title: "Veri Güvenliği ve AI: Bilmeniz Gerekenler",
+    excerpt:
+      "AI araçlarını kullanırken verilerinizi nasıl korursunuz? KVKK uyumlu AI kullanım rehberi.",
+    date: "20 Ocak 2026",
+    slug: "veri-guvenligi-ai-rehber",
+  },
 ] as const;
 
 export const CTA_CONTENT = {
   label: "AI Dönüşümüne Hazır mısınız?",
-  headline: "Geride Kalmayın",
+  headline: "İlk Adımı Birlikte Atalım",
   description:
     "Firmanızın AI potansiyelini keşfedin. Kişiselleştirilmiş analiz raporunuz 3 dakika içinde e-postanızda olsun.",
   ctaPrimary: "Ücretsiz Analiz Başlat",

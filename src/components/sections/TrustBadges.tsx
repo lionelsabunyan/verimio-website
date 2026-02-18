@@ -9,10 +9,10 @@ const badges = [
 
 export default function TrustBadges() {
   return (
-    <section className="py-6 border-y border-foreground/6 bg-cream">
+    <section className="py-6 border-y border-border bg-background-secondary">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
-          <span className="text-sm text-muted font-medium hidden sm:block">
+          <span className="text-sm text-foreground-secondary font-medium hidden sm:block">
             Neden Verimio?
           </span>
           {badges.map((badge, index) => {

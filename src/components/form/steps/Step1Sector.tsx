@@ -77,16 +77,16 @@ export default function Step1Sector({
                 transition={{ type: "spring" as const, stiffness: 400, damping: 25 }}
                 className={`flex flex-col items-center text-center gap-2 p-4 rounded-xl border transition-all duration-150 ${
                   selected
-                    ? "border-primary bg-primary/6 text-primary"
-                    : "border-foreground/12 text-foreground/60 hover:border-primary/30 hover:text-foreground hover:bg-foreground/2"
+                    ? "border-primary bg-primary/6 text-primary dark:text-primary-light"
+                    : "border-border text-foreground-secondary hover:border-border-accent hover:text-foreground hover:bg-foreground/2"
                 }`}
               >
                 <span className="text-2xl leading-none">{s.emoji}</span>
                 <div>
-                  <p className={`text-sm font-semibold leading-tight ${selected ? "text-primary" : "text-foreground"}`}>
+                  <p className={`text-sm font-semibold leading-tight ${selected ? "text-primary dark:text-primary-light" : "text-foreground"}`}>
                     {s.label}
                   </p>
-                  <p className="text-xs text-muted mt-0.5 leading-tight">{s.sub}</p>
+                  <p className="text-xs text-foreground-muted mt-0.5 leading-tight">{s.sub}</p>
                 </div>
               </motion.button>
             );
@@ -99,7 +99,7 @@ export default function Step1Sector({
 
       {/* Team size */}
       <div>
-        <p className="text-sm font-medium text-foreground/80 mb-2">
+        <p className="text-sm font-medium text-foreground-secondary mb-2">
           Ekip büyüklüğünüz?
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
@@ -115,7 +115,7 @@ export default function Step1Sector({
                 className={`py-2.5 px-3 rounded-lg border text-xs font-medium text-center transition-colors duration-150 ${
                   selected
                     ? "bg-primary text-white border-primary"
-                    : "border-foreground/15 text-foreground/60 hover:border-primary/30 hover:text-foreground"
+                    : "border-border text-foreground-secondary hover:border-border-accent hover:text-foreground"
                 }`}
               >
                 {opt}

@@ -159,10 +159,10 @@ export default function MultiStepForm() {
           className="w-12 h-12 rounded-full border-4 border-secondary/20 border-t-secondary"
         />
         <div>
-          <h3 className="text-lg font-semibold text-primary">
+          <h3 className="text-lg font-semibold text-primary dark:text-primary-light">
             Analiziniz hazırlanıyor...
           </h3>
-          <p className="text-sm text-muted mt-1">
+          <p className="text-sm text-foreground-secondary mt-1">
             Cevaplarınız işleniyor. Birkaç saniye sürebilir.
           </p>
         </div>
@@ -173,7 +173,7 @@ export default function MultiStepForm() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -5 }}
             transition={{ duration: 0.3 }}
-            className="text-xs text-muted/60"
+            className="text-xs text-foreground-muted"
           >
             {LOADING_MESSAGES[loadingMessageIndex]}
           </motion.p>
@@ -238,7 +238,7 @@ export default function MultiStepForm() {
               type="button"
               onClick={goBack}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-1.5 px-4 py-2.5 text-sm font-medium text-muted hover:text-foreground transition-colors rounded-xl hover:bg-foreground/5"
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 text-sm font-medium text-foreground-secondary hover:text-foreground transition-colors rounded-xl hover:bg-foreground/5"
             >
               <ChevronLeft className="w-4 h-4" />
               Geri
@@ -265,7 +265,7 @@ export default function MultiStepForm() {
               type="button"
               onClick={goBack}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-muted hover:text-foreground transition-colors rounded-xl hover:bg-foreground/5 mb-1"
+              className="inline-flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-foreground-secondary hover:text-foreground transition-colors rounded-xl hover:bg-foreground/5 mb-1"
             >
               <ChevronLeft className="w-4 h-4" />
               Geri
@@ -287,7 +287,7 @@ export default function MultiStepForm() {
                 <p className="text-sm font-semibold text-foreground">
                   Detaylı Raporumu Gönder
                 </p>
-                <p className="text-xs text-muted mt-0.5">
+                <p className="text-xs text-foreground-secondary mt-0.5">
                   48 saat içinde e-postanıza gelir
                 </p>
               </div>
@@ -314,7 +314,7 @@ export default function MultiStepForm() {
             </motion.button>
           </div>
 
-          <p className="text-xs text-muted text-center pt-1">
+          <p className="text-xs text-foreground-muted text-center pt-1">
             İkisi de tamamen ücretsiz · Satış baskısı yok
           </p>
         </div>

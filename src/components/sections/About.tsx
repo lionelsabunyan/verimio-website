@@ -3,19 +3,14 @@
 import { ABOUT_CONTENT } from "@/lib/constants";
 import { FadeIn } from "@/components/ui/motion";
 import Button from "@/components/ui/Button";
+import SectionLabel from "@/components/ui/SectionLabel";
 
 export default function About() {
   return (
     <section className="section-padding">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeIn>
-          <div className="flex items-center gap-2 mb-8">
-            <div className="w-2 h-2 rounded-full bg-primary" />
-            <div className="w-2 h-2 rounded-full bg-primary-light/30" />
-            <span className="text-sm font-medium text-muted ml-1">
-              {ABOUT_CONTENT.label}
-            </span>
-          </div>
+          <SectionLabel className="mb-8">{ABOUT_CONTENT.label}</SectionLabel>
         </FadeIn>
 
         <FadeIn delay={0.1}>

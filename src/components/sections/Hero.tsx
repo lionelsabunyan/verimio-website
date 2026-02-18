@@ -5,6 +5,7 @@ import { ChevronDown, Zap, TrendingUp, Map } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { HERO_CONTENT, BRAND } from "@/lib/constants";
 import Button from "@/components/ui/Button";
+import { RadialGlow } from "@/components/brand/Decoratives";
 
 const cardIcons = [Zap, TrendingUp, Map];
 
@@ -13,9 +14,10 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-      {/* Subtle background gradient */}
+      {/* Background decoratives */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/3 via-transparent to-secondary/3 pointer-events-none" />
-      <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary-light/5 rounded-full blur-3xl pointer-events-none" />
+      <RadialGlow color="lime" size={500} opacity={0.06} className="top-20 -right-40" />
+      <RadialGlow color="purple" size={400} opacity={0.05} className="-bottom-20 -left-40" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -26,10 +28,10 @@ export default function Hero() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.1 }}
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/20 bg-primary/5"
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border-accent bg-primary/5 dark:bg-primary-light/5"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
-              <span className="text-xs font-medium text-primary/80 tracking-wide">
+              <span className="text-xs font-medium text-primary/80 dark:text-primary-light/80 tracking-wide">
                 Türk KOBİ&apos;leri için AI Danışmanlığı
               </span>
             </motion.div>
@@ -51,7 +53,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.35 }}
-              className="text-lg text-muted max-w-lg leading-relaxed"
+              className="text-lg text-foreground-secondary max-w-lg leading-relaxed"
             >
               {HERO_CONTENT.subheadline}
             </motion.p>
@@ -78,7 +80,7 @@ export default function Hero() {
               className="flex flex-wrap gap-x-6 gap-y-2"
             >
               {["Tamamen ücretsiz", "3 dakikada tamamla", "Satış araması yok"].map((item) => (
-                <span key={item} className="flex items-center gap-1.5 text-sm text-muted">
+                <span key={item} className="flex items-center gap-1.5 text-sm text-foreground-secondary">
                   <span className="w-1 h-1 rounded-full bg-secondary" />
                   {item}
                 </span>
@@ -102,20 +104,20 @@ export default function Hero() {
                   onClick={() => setOpenCard(isOpen ? -1 : index)}
                   className={`rounded-2xl p-5 cursor-pointer border transition-colors duration-200 ${
                     isOpen
-                      ? "bg-primary/5 border-primary/15"
-                      : "bg-foreground/3 border-transparent hover:bg-foreground/5 hover:border-foreground/8"
+                      ? "bg-primary/5 dark:bg-primary-light/10 border-border-accent"
+                      : "bg-surface border-border hover:bg-foreground/5 hover:border-border-hover"
                   }`}
                   layout
                 >
                   <div className="flex items-center justify-between gap-4">
                     <div className="flex items-center gap-3">
                       <div className={`w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors duration-200 ${
-                        isOpen ? "bg-primary text-white" : "bg-foreground/8 text-muted"
+                        isOpen ? "bg-primary text-white" : "bg-foreground/8 text-foreground-secondary"
                       }`}>
                         <Icon className="w-4 h-4" />
                       </div>
                       <h3 className={`text-base font-semibold transition-colors duration-200 ${
-                        isOpen ? "text-primary" : "text-foreground"
+                        isOpen ? "text-primary dark:text-primary-light" : "text-foreground"
                       }`}>
                         {card.title}
                       </h3>
@@ -125,7 +127,7 @@ export default function Hero() {
                       transition={{ duration: 0.2 }}
                     >
                       <ChevronDown className={`w-4 h-4 flex-shrink-0 transition-colors duration-200 ${
-                        isOpen ? "text-primary" : "text-muted"
+                        isOpen ? "text-primary dark:text-primary-light" : "text-foreground-muted"
                       }`} />
                     </motion.div>
                   </div>
@@ -139,7 +141,7 @@ export default function Hero() {
                         transition={{ duration: 0.25, ease: [0.21, 0.47, 0.32, 0.98] }}
                         className="overflow-hidden"
                       >
-                        <p className="mt-3 ml-12 text-sm text-muted leading-relaxed">
+                        <p className="mt-3 ml-12 text-sm text-foreground-secondary leading-relaxed">
                           {card.description}
                         </p>
                       </motion.div>
@@ -161,9 +163,9 @@ export default function Hero() {
                 { value: "%65", label: "Ort. potansiyel" },
                 { value: "2dk", label: "Rapor süresi" },
               ].map((stat) => (
-                <div key={stat.label} className="text-center p-3 rounded-xl bg-foreground/3 border border-foreground/5">
-                  <div className="text-xl font-bold text-primary">{stat.value}</div>
-                  <div className="text-xs text-muted mt-0.5">{stat.label}</div>
+                <div key={stat.label} className="text-center p-3 rounded-xl bg-surface border border-border">
+                  <div className="text-xl font-bold text-primary dark:text-primary-light">{stat.value}</div>
+                  <div className="text-xs text-foreground-muted mt-0.5">{stat.label}</div>
                 </div>
               ))}
             </motion.div>

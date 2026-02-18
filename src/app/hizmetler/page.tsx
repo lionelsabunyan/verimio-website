@@ -10,6 +10,7 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import { BRAND } from "@/lib/constants";
+import { getServiceIconStyle } from "@/lib/brand-colors";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -30,7 +31,6 @@ const services = [
       "Onay süreçlerinin dijitalleştirilmesi",
       "Entegrasyon çözümleri (API, webhook)",
     ],
-    color: "bg-violet-500/10 text-violet-600",
   },
   {
     icon: Bot,
@@ -43,7 +43,6 @@ const services = [
       "Canlı destek entegrasyonu",
       "Performans analizi ve iyileştirme",
     ],
-    color: "bg-emerald-500/10 text-emerald-600",
   },
   {
     icon: BarChart3,
@@ -56,7 +55,6 @@ const services = [
       "Periyodik rapor oluşturma",
       "Veri görselleştirme ve analiz",
     ],
-    color: "bg-blue-500/10 text-blue-600",
   },
   {
     icon: Sparkles,
@@ -69,7 +67,6 @@ const services = [
       "Çoklu dil desteği",
       "İçerik takvimi planlaması",
     ],
-    color: "bg-amber-500/10 text-amber-600",
   },
   {
     icon: Database,
@@ -82,7 +79,6 @@ const services = [
       "Tahminsel analiz (Predictive Analytics)",
       "KPI takibi ve raporlama",
     ],
-    color: "bg-rose-500/10 text-rose-600",
   },
   {
     icon: FileText,
@@ -95,7 +91,6 @@ const services = [
       "OCR ve veri çıkarma",
       "Güvenli arşivleme çözümleri",
     ],
-    color: "bg-cyan-500/10 text-cyan-600",
   },
 ];
 
@@ -130,9 +125,9 @@ export default function HizmetlerPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <div className="flex items-center gap-2 mb-6">
-              <div className="w-2.5 h-2.5 rounded-full bg-secondary" />
-              <div className="w-2.5 h-2.5 rounded-full bg-secondary/30" />
-              <span className="text-sm font-medium text-muted ml-1">Hizmetlerimiz</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
+              <span className="w-1.5 h-1.5 rounded-full bg-secondary/60" />
+              <span className="text-sm font-medium text-foreground-secondary tracking-wide uppercase ml-1">Hizmetlerimiz</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
@@ -140,14 +135,14 @@ export default function HizmetlerPage() {
               <span className="gradient-text">AI Çözümleri</span>
             </h1>
 
-            <p className="text-lg text-muted leading-relaxed mb-8 max-w-2xl">
+            <p className="text-lg text-foreground-secondary leading-relaxed mb-8 max-w-2xl">
               Sektörünüze ve ihtiyaçlarınıza göre özelleştirilmiş yapay zeka çözümleri
               sunuyoruz. Her çözüm, somut ROI hesapları ve uygulama planıyla birlikte gelir.
             </p>
 
             <Link
               href={BRAND.tallyFormUrl}
-              className="inline-flex items-center gap-2 px-7 py-3.5 bg-secondary text-primary font-semibold rounded-full hover:bg-secondary/90 transition-all duration-200 hover:shadow-lg hover:shadow-secondary/25 text-sm"
+              className="inline-flex items-center gap-2 px-7 py-3.5 bg-secondary text-primary font-semibold rounded-full hover:bg-secondary-hover transition-all duration-200 hover:shadow-lg hover:shadow-secondary/25 text-sm"
             >
               Hangi Çözüm Bana Uygun?
               <ArrowUpRight className="w-4 h-4" />
@@ -157,35 +152,38 @@ export default function HizmetlerPage() {
       </section>
 
       {/* Services Grid */}
-      <section className="section-padding bg-foreground/[0.02]">
+      <section className="section-padding bg-background-secondary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <div
-                key={index}
-                className="p-8 rounded-2xl border border-foreground/5 hover:border-primary-light/20 transition-all duration-300 bg-white group"
-              >
+            {services.map((service, index) => {
+              const style = getServiceIconStyle(index);
+              return (
                 <div
-                  className={`w-12 h-12 rounded-xl ${service.color} flex items-center justify-center mb-6`}
+                  key={index}
+                  className="p-8 rounded-2xl border border-border hover:border-border-accent transition-all duration-300 bg-surface group"
                 >
-                  <service.icon className="w-6 h-6" />
+                  <div
+                    className={`w-12 h-12 rounded-xl ${style.bg} ${style.text} flex items-center justify-center mb-6`}
+                  >
+                    <service.icon className="w-6 h-6" />
+                  </div>
+
+                  <h3 className="text-xl font-bold mb-3 group-hover:text-primary dark:group-hover:text-primary-light transition-colors">
+                    {service.title}
+                  </h3>
+                  <p className="text-foreground-secondary leading-relaxed mb-6">{service.description}</p>
+
+                  <ul className="space-y-2">
+                    {service.features.map((feature, i) => (
+                      <li key={i} className="flex items-start gap-2 text-sm text-foreground-secondary">
+                        <CheckCircle2 className="w-4 h-4 text-secondary mt-0.5 shrink-0" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-
-                <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
-                  {service.title}
-                </h3>
-                <p className="text-muted leading-relaxed mb-6">{service.description}</p>
-
-                <ul className="space-y-2">
-                  {service.features.map((feature, i) => (
-                    <li key={i} className="flex items-start gap-2 text-sm text-muted">
-                      <CheckCircle2 className="w-4 h-4 text-secondary mt-0.5 shrink-0" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -195,14 +193,14 @@ export default function HizmetlerPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <div className="flex items-center justify-center gap-2 mb-4">
-              <div className="w-2.5 h-2.5 rounded-full bg-primary" />
-              <div className="w-2.5 h-2.5 rounded-full bg-primary-light/30" />
-              <span className="text-sm font-medium text-muted ml-1">Süreç</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+              <span className="w-1.5 h-1.5 rounded-full bg-primary opacity-60" />
+              <span className="text-sm font-medium text-foreground-secondary tracking-wide uppercase ml-1">Süreç</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
               Nasıl <span className="gradient-text">Başlarsınız?</span>
             </h2>
-            <p className="text-muted leading-relaxed">
+            <p className="text-foreground-secondary leading-relaxed">
               4 basit adımda AI dönüşümünüzü başlatın.
             </p>
           </div>
@@ -214,7 +212,7 @@ export default function HizmetlerPage() {
                   {item.step}
                 </div>
                 <h3 className="font-bold text-lg mb-2">{item.title}</h3>
-                <p className="text-sm text-muted leading-relaxed">{item.description}</p>
+                <p className="text-sm text-foreground-secondary leading-relaxed">{item.description}</p>
               </div>
             ))}
           </div>
@@ -229,21 +227,21 @@ export default function HizmetlerPage() {
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
             Firmanıza En Uygun Çözümü Bulalım
           </h2>
-          <p className="text-lg text-cream/60 max-w-2xl mx-auto mb-10 leading-relaxed">
+          <p className="text-lg text-white/60 max-w-2xl mx-auto mb-10 leading-relaxed">
             3 dakikalık ücretsiz analizimizle hangi AI çözümlerinin firmanıza en çok fayda
             sağlayacağını öğrenin.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link
               href={BRAND.tallyFormUrl}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-secondary text-primary font-semibold rounded-full hover:bg-secondary/90 transition-all duration-200 hover:shadow-lg hover:shadow-secondary/25"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-secondary text-primary font-semibold rounded-full hover:bg-secondary-hover transition-all duration-200 hover:shadow-lg hover:shadow-secondary/25"
             >
               Ücretsiz Analiz Başlat
               <ArrowUpRight className="w-5 h-5" />
             </Link>
             <Link
               href="/iletisim"
-              className="inline-flex items-center gap-2 px-8 py-4 border border-cream/20 text-cream font-medium rounded-full hover:border-secondary hover:text-secondary transition-all duration-200"
+              className="inline-flex items-center gap-2 px-8 py-4 border border-white/20 text-white font-medium rounded-full hover:border-secondary hover:text-secondary transition-all duration-200"
             >
               Bize Ulaşın
               <ArrowUpRight className="w-5 h-5" />

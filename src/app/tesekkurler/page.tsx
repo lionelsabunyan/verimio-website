@@ -60,7 +60,7 @@ function TesekkurlerContent() {
           <h1 className="text-3xl font-bold text-foreground">
             {isGorusme ? "Görüşme Talebiniz Alındı!" : "Teşekkürler!"}
           </h1>
-          <p className="text-muted leading-relaxed">
+          <p className="text-foreground-secondary leading-relaxed">
             {isGorusme
               ? "Ücretsiz görüşme talebiniz alındı. Zoom davet linki e-posta adresinize gönderilecek."
               : "Cevaplarınız alındı. Şirketinize özel AI analiz raporunuz hazırlanıyor."}
@@ -76,43 +76,43 @@ function TesekkurlerContent() {
         >
           {isGorusme ? (
             <>
-              <div className="flex items-center gap-3 p-4 rounded-xl bg-white border border-foreground/8 text-left">
+              <div className="flex items-center gap-3 p-4 rounded-xl bg-surface border border-border text-left">
                 <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <Calendar className="w-4 h-4 text-primary" />
+                  <Calendar className="w-4 h-4 text-primary dark:text-primary-light" />
                 </div>
                 <div>
                   <p className="text-sm font-medium text-foreground">20 dakikalık ücretsiz görüşme</p>
-                  <p className="text-xs text-muted">Zoom üzerinden, size uygun saatte</p>
+                  <p className="text-xs text-foreground-secondary">Zoom üzerinden, size uygun saatte</p>
                 </div>
               </div>
-              <div className="flex items-center gap-3 p-4 rounded-xl bg-white border border-foreground/8 text-left">
+              <div className="flex items-center gap-3 p-4 rounded-xl bg-surface border border-border text-left">
                 <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <Mail className="w-4 h-4 text-primary" />
+                  <Mail className="w-4 h-4 text-primary dark:text-primary-light" />
                 </div>
                 <div>
                   <p className="text-sm font-medium text-foreground">Davet e-postanıza gelecek</p>
-                  <p className="text-xs text-muted">Spam klasörünüzü de kontrol edin</p>
+                  <p className="text-xs text-foreground-secondary">Spam klasörünüzü de kontrol edin</p>
                 </div>
               </div>
             </>
           ) : (
             <>
-              <div className="flex items-center gap-3 p-4 rounded-xl bg-white border border-foreground/8 text-left">
+              <div className="flex items-center gap-3 p-4 rounded-xl bg-surface border border-border text-left">
                 <div className="w-9 h-9 rounded-xl bg-secondary/15 flex items-center justify-center flex-shrink-0">
-                  <Clock className="w-4 h-4 text-primary" />
+                  <Clock className="w-4 h-4 text-primary dark:text-primary-light" />
                 </div>
                 <div>
                   <p className="text-sm font-medium text-foreground">48 saat içinde</p>
-                  <p className="text-xs text-muted">Sektöre özel raporunuz e-postanıza gelecek</p>
+                  <p className="text-xs text-foreground-secondary">Sektöre özel raporunuz e-postanıza gelecek</p>
                 </div>
               </div>
-              <div className="flex items-center gap-3 p-4 rounded-xl bg-white border border-foreground/8 text-left">
+              <div className="flex items-center gap-3 p-4 rounded-xl bg-surface border border-border text-left">
                 <div className="w-9 h-9 rounded-xl bg-secondary/15 flex items-center justify-center flex-shrink-0">
-                  <Mail className="w-4 h-4 text-primary" />
+                  <Mail className="w-4 h-4 text-primary dark:text-primary-light" />
                 </div>
                 <div>
                   <p className="text-sm font-medium text-foreground">Spam klasörünüzü kontrol edin</p>
-                  <p className="text-xs text-muted">Bazen filtrelere takılabiliyor</p>
+                  <p className="text-xs text-foreground-secondary">Bazen filtrelere takılabiliyor</p>
                 </div>
               </div>
             </>
@@ -127,7 +127,7 @@ function TesekkurlerContent() {
         >
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-sm text-muted hover:text-foreground transition-colors"
+            className="inline-flex items-center gap-2 text-sm text-foreground-secondary hover:text-foreground transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             Ana sayfaya dön

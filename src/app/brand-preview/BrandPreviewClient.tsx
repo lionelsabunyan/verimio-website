@@ -108,7 +108,7 @@ const SOCIAL_PROFILES = [
 ]
 
 export default function BrandPreviewClient() {
-  const [section, setSection] = useState<'logo' | 'social'>('logo')
+  const [section, setSection] = useState<'logo' | 'colors' | 'typography' | 'social'>('logo')
   const [copied, setCopied] = useState<string | null>(null)
 
   const copy = (hex: string) => {
@@ -133,7 +133,7 @@ export default function BrandPreviewClient() {
           </div>
         </div>
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-          {(['logo', 'social'] as const).map((s) => (
+          {(['logo', 'colors', 'typography', 'social'] as const).map((s) => (
             <button
               key={s}
               onClick={() => setSection(s)}

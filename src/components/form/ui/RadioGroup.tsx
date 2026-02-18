@@ -30,7 +30,7 @@ export default function RadioGroup({
   return (
     <div className="space-y-2">
       {label && (
-        <p className="text-sm font-medium text-foreground/80">{label}</p>
+        <p className="text-sm font-medium text-foreground-secondary">{label}</p>
       )}
       <div
         className={
@@ -50,17 +50,17 @@ export default function RadioGroup({
               transition={{ type: "spring", stiffness: 400, damping: 25 }}
               className={`flex items-center gap-3 px-4 py-3 rounded-xl border text-sm text-left transition-colors duration-150 ${
                 selected
-                  ? "bg-primary/8 border-primary/40 text-primary font-medium"
-                  : "border-foreground/15 text-foreground/70 hover:border-primary/20 hover:bg-primary/3"
+                  ? "bg-primary/8 border-primary/40 text-primary dark:text-primary-light font-medium"
+                  : "border-border text-foreground-secondary hover:border-border-accent hover:bg-foreground/3"
               }`}
             >
               <span
                 className={`flex-shrink-0 w-4 h-4 rounded-full border-2 flex items-center justify-center transition-colors duration-150 ${
-                  selected ? "border-primary" : "border-foreground/25"
+                  selected ? "border-primary dark:border-primary-light" : "border-foreground-muted"
                 }`}
               >
                 {selected && (
-                  <span className="w-2 h-2 rounded-full bg-primary block" />
+                  <span className="w-2 h-2 rounded-full bg-primary dark:bg-primary-light block" />
                 )}
               </span>
               {option}

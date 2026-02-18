@@ -23,10 +23,10 @@ export default function FormInput({
 }: FormInputProps) {
   return (
     <div className="space-y-1.5">
-      <label className="block text-sm font-medium text-foreground/80">
+      <label className="block text-sm font-medium text-foreground-secondary">
         {label}
         {optional && (
-          <span className="ml-1.5 text-xs text-muted font-normal">(opsiyonel)</span>
+          <span className="ml-1.5 text-xs text-foreground-muted font-normal">(opsiyonel)</span>
         )}
         {required && <span className="ml-0.5 text-primary-light">*</span>}
       </label>
@@ -34,7 +34,7 @@ export default function FormInput({
         className={`flex items-center rounded-xl border transition-all duration-200 ${
           error
             ? "border-red-400 ring-2 ring-red-400/10"
-            : "border-foreground/20 focus-within:border-primary/50 focus-within:ring-2 focus-within:ring-primary/10"
+            : "border-border focus-within:border-primary-light focus-within:ring-2 focus-within:ring-primary-light/15"
         }`}
       >
         <input
@@ -42,7 +42,7 @@ export default function FormInput({
           value={value}
           onChange={(e) => onChange(e.target.value)}
           placeholder={placeholder}
-          className="w-full px-4 py-3 bg-transparent text-sm text-foreground placeholder:text-muted/50 outline-none rounded-xl"
+          className="w-full px-4 py-3 bg-surface text-sm text-foreground placeholder:text-foreground-muted outline-none rounded-xl"
         />
       </div>
       {error && <p className="text-xs text-red-500 mt-1">{error}</p>}

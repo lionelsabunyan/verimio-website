@@ -5,6 +5,7 @@ import { Plus, Minus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FAQ_ITEMS } from "@/lib/constants";
 import { FadeIn } from "@/components/ui/motion";
+import SectionLabel from "@/components/ui/SectionLabel";
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -16,23 +17,19 @@ export default function FAQ() {
           {/* Left */}
           <div className="lg:col-span-2">
             <FadeIn>
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-2 h-2 rounded-full bg-primary" />
-                <div className="w-2 h-2 rounded-full bg-primary-light/30" />
-                <span className="text-sm font-medium text-muted ml-1">SSS</span>
-              </div>
+              <SectionLabel className="mb-4">SSS</SectionLabel>
               <h2 className="text-3xl sm:text-4xl font-bold mb-4">
                 Merak{" "}
                 <span className="gradient-text">Ettikleriniz</span>
               </h2>
-              <p className="text-muted leading-relaxed">
+              <p className="text-foreground-secondary leading-relaxed">
                 Aklınızdaki soruların cevabını burada bulamazsanız bize yazın.
               </p>
             </FadeIn>
           </div>
 
           {/* Right — Accordion */}
-          <div className="lg:col-span-3 space-y-0 divide-y divide-foreground/8">
+          <div className="lg:col-span-3 space-y-0 divide-y divide-border">
             {FAQ_ITEMS.map((item, index) => (
               <div key={index}>
                 <motion.button
@@ -41,12 +38,12 @@ export default function FAQ() {
                   whileTap={{ scale: 0.995 }}
                 >
                   <span className={`text-base font-medium pr-6 transition-colors duration-200 ${
-                    openIndex === index ? "text-primary" : "text-foreground group-hover:text-primary/80"
+                    openIndex === index ? "text-primary dark:text-primary-light" : "text-foreground group-hover:text-primary/80 dark:group-hover:text-primary-light/80"
                   }`}>
                     {item.question}
                   </span>
                   <div className={`flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center transition-colors duration-200 ${
-                    openIndex === index ? "bg-primary text-white" : "bg-foreground/6 text-muted group-hover:bg-foreground/10"
+                    openIndex === index ? "bg-primary text-white" : "bg-foreground/6 text-foreground-secondary group-hover:bg-foreground/10"
                   }`}>
                     {openIndex === index
                       ? <Minus className="w-3.5 h-3.5" />
@@ -64,7 +61,7 @@ export default function FAQ() {
                       transition={{ duration: 0.25, ease: [0.21, 0.47, 0.32, 0.98] }}
                       className="overflow-hidden"
                     >
-                      <p className="pb-5 text-sm text-muted leading-relaxed">
+                      <p className="pb-5 text-sm text-foreground-secondary leading-relaxed">
                         {item.answer}
                       </p>
                     </motion.div>

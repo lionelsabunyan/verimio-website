@@ -18,7 +18,7 @@ export default function StepIndicator({
   return (
     <div className="space-y-4">
       {/* Progress bar */}
-      <div className="relative h-1 bg-foreground/10 rounded-full overflow-hidden">
+      <div className="relative h-1 bg-border rounded-full overflow-hidden">
         <motion.div
           className="absolute inset-y-0 left-0 bg-secondary rounded-full"
           initial={{ width: 0 }}
@@ -40,8 +40,8 @@ export default function StepIndicator({
                   done
                     ? "bg-secondary"
                     : active
-                    ? "bg-primary ring-2 ring-primary/25 ring-offset-1"
-                    : "bg-foreground/20"
+                    ? "bg-primary ring-2 ring-primary/25 ring-offset-1 ring-offset-background"
+                    : "bg-foreground-muted"
                 }`}
                 animate={{ scale: active ? 1.2 : 1 }}
                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
@@ -49,10 +49,10 @@ export default function StepIndicator({
               <span
                 className={`hidden md:block text-xs transition-colors duration-200 ${
                   active
-                    ? "text-primary font-semibold"
+                    ? "text-primary dark:text-primary-light font-semibold"
                     : done
                     ? "text-secondary font-medium"
-                    : "text-muted"
+                    : "text-foreground-muted"
                 }`}
               >
                 {label}
@@ -63,9 +63,9 @@ export default function StepIndicator({
       </div>
 
       {/* Mobile label */}
-      <p className="md:hidden text-xs text-muted text-center">
+      <p className="md:hidden text-xs text-foreground-muted text-center">
         Adım{" "}
-        <span className="font-semibold text-primary">{currentStep}</span> /{" "}
+        <span className="font-semibold text-primary dark:text-primary-light">{currentStep}</span> /{" "}
         {totalSteps} —{" "}
         <span className="text-foreground">{STEP_LABELS[currentStep - 1]}</span>
       </p>

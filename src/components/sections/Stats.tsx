@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 export default function Stats() {
   return (
-    <section className="section-padding bg-white">
+    <section className="section-padding bg-surface">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <StaggerContainer className="grid grid-cols-2 md:grid-cols-4 gap-4" staggerDelay={0.1}>
           {STATS.map((stat, index) => (
@@ -22,7 +22,7 @@ export default function Stats() {
                   <div className="text-3xl sm:text-4xl font-bold text-secondary mb-1.5 tabular-nums">
                     {stat.value}
                   </div>
-                  <div className="text-xs text-cream/50 leading-snug">{stat.label}</div>
+                  <div className="text-xs text-white/50 leading-snug">{stat.label}</div>
                 </div>
               </motion.div>
             </StaggerItem>

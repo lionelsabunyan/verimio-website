@@ -25,7 +25,7 @@ export default function Textarea({
 
   return (
     <div className="space-y-1.5">
-      <label className="block text-sm font-medium text-foreground/80">
+      <label className="block text-sm font-medium text-foreground-secondary">
         {label}
         {required && <span className="ml-0.5 text-primary-light">*</span>}
       </label>
@@ -33,7 +33,7 @@ export default function Textarea({
         className={`rounded-xl border transition-all duration-200 ${
           error
             ? "border-red-400 ring-2 ring-red-400/10"
-            : "border-foreground/20 focus-within:border-primary/50 focus-within:ring-2 focus-within:ring-primary/10"
+            : "border-border focus-within:border-primary-light focus-within:ring-2 focus-within:ring-primary-light/15"
         }`}
       >
         <textarea
@@ -42,7 +42,7 @@ export default function Textarea({
           placeholder={placeholder}
           maxLength={maxLength}
           rows={rows}
-          className="w-full px-4 py-3 bg-transparent text-sm text-foreground placeholder:text-muted/50 outline-none resize-none rounded-xl"
+          className="w-full px-4 py-3 bg-surface text-sm text-foreground placeholder:text-foreground-muted outline-none resize-none rounded-xl"
         />
       </div>
       <div className="flex items-center justify-between">
@@ -51,7 +51,7 @@ export default function Textarea({
         ) : (
           <span />
         )}
-        <span className={`text-xs tabular-nums ${nearLimit ? "text-red-400" : "text-muted/50"}`}>
+        <span className={`text-xs tabular-nums ${nearLimit ? "text-red-400" : "text-foreground-muted"}`}>
           {value.length}/{maxLength}
         </span>
       </div>

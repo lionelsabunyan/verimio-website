@@ -13,9 +13,9 @@ export default function AnalizPage() {
       <div className="max-w-2xl mx-auto px-4 py-10 pb-20">
         {/* Header */}
         <div className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-secondary/30 bg-secondary/8 mb-5">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border-accent bg-secondary/8 mb-5">
             <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
-            <span className="text-xs font-medium text-primary/70 tracking-wide">
+            <span className="text-xs font-medium text-foreground-secondary tracking-wide">
               Tamamen Ücretsiz · 3 Dakika
             </span>
           </div>
@@ -23,7 +23,7 @@ export default function AnalizPage() {
             AI Hazırlık{" "}
             <span className="gradient-text">Testiniz</span>
           </h1>
-          <p className="text-muted text-sm sm:text-base max-w-md mx-auto leading-relaxed">
+          <p className="text-foreground-secondary text-sm sm:text-base max-w-md mx-auto leading-relaxed">
             Şirketinize özel otomasyon fırsatlarını, tasarruf potansiyelini ve
             90 günlük yol haritasını içeren raporunuzu alın.
           </p>
