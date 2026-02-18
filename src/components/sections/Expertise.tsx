@@ -56,10 +56,10 @@ export default function Expertise() {
             <StaggerItem key={index}>
               <div className="border-t border-white/10 py-8 group cursor-default">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white/20 group-hover:text-secondary transition-colors duration-500">
+                  <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white/40 group-hover:text-secondary transition-colors duration-500">
                     {item}
                   </h3>
-                  <ArrowUpRight className="w-6 h-6 text-white/20 group-hover:text-secondary transition-colors duration-500" />
+                  <ArrowUpRight className="w-6 h-6 text-white/40 group-hover:text-secondary transition-colors duration-500" />
                 </div>
               </div>
             </StaggerItem>

@@ -60,14 +60,14 @@ export default function HowItWorks() {
             const Icon = stepIcons[step.icon];
             return (
               <StaggerItem key={index}>
-                <div className="relative z-10 flex flex-col h-full p-7 rounded-2xl border border-border bg-surface hover:border-border-accent hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 group">
+                <div className="relative z-10 flex flex-col h-full p-7 rounded-2xl border border-border bg-surface hover:border-border-accent hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 group" style={{boxShadow: "0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04)"}}>
                   {/* Icon circle */}
                   <div className="w-12 h-12 rounded-2xl bg-primary/8 flex items-center justify-center mb-5 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
                     <Icon className="w-5 h-5 text-primary group-hover:text-white transition-colors duration-300" />
                   </div>
 
                   {/* Step number */}
-                  <div className="text-5xl font-bold text-foreground/5 dark:text-foreground/10 absolute top-5 right-6 select-none group-hover:text-primary/8 transition-colors duration-300">
+                  <div className="text-5xl font-bold text-foreground/8 dark:text-foreground/10 absolute top-5 right-6 select-none group-hover:text-primary/10 transition-colors duration-300">
                     {step.step}
                   </div>
 

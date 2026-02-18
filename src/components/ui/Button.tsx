@@ -24,9 +24,9 @@ const variants = {
   secondary:
     "bg-primary text-white font-semibold hover:bg-primary/90 shadow-sm hover:shadow-primary/20",
   outline:
-    "border border-foreground/20 text-foreground font-medium hover:border-foreground/50 hover:bg-foreground/5",
+    "border border-foreground/30 text-foreground font-medium hover:border-foreground/60 hover:bg-foreground/5",
   ghost:
-    "text-foreground/70 font-medium hover:text-foreground hover:bg-foreground/5",
+    "text-foreground-secondary font-medium hover:text-foreground hover:bg-foreground/5",
 };
 
 const sizes = {

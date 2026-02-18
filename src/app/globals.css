@@ -19,9 +19,9 @@
   --muted: #78716C;
   --cream: #F5F5F4;
 
-  --border: rgba(28, 25, 23, 0.08);
-  --border-hover: rgba(28, 25, 23, 0.15);
-  --border-accent: rgba(139, 92, 246, 0.2);
+  --border: rgba(28, 25, 23, 0.12);
+  --border-hover: rgba(28, 25, 23, 0.20);
+  --border-accent: rgba(139, 92, 246, 0.25);
 
   /* Semantic */
   --success: #22C55E;
@@ -36,7 +36,7 @@
   --background-secondary: #0F0A1E;
   --foreground: #F5F5F4;
   --foreground-secondary: #A8A29E;
-  --foreground-muted: #4C4462;
+  --foreground-muted: #7C6B9E;
 
   --surface: #0F0A1E;
   --surface-elevated: #150D2E;
