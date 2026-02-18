@@ -51,7 +51,7 @@ export default function CheckboxGroup({
               className={`flex items-center gap-3 px-4 py-3 rounded-xl border text-sm text-left transition-colors duration-150 ${
                 checked
                   ? "bg-secondary/10 border-secondary/50 text-foreground font-medium"
-                  : "border-border text-foreground-secondary hover:border-border-accent hover:bg-secondary/5"
+                  : "border-border dark:border-white/10 text-foreground-secondary hover:border-border-accent dark:hover:border-white/20 hover:bg-secondary/5"
               }`}
             >
               <span

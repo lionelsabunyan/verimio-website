@@ -50,8 +50,8 @@ export default function RadioGroup({
               transition={{ type: "spring", stiffness: 400, damping: 25 }}
               className={`flex items-center gap-3 px-4 py-3 rounded-xl border text-sm text-left transition-colors duration-150 ${
                 selected
-                  ? "bg-primary/8 border-primary/40 text-primary dark:text-primary-light font-medium"
-                  : "border-border text-foreground-secondary hover:border-border-accent hover:bg-foreground/3"
+                  ? "bg-primary/8 border-primary/40 dark:border-primary-light/40 text-primary dark:text-primary-light font-medium"
+                  : "border-border dark:border-white/10 text-foreground-secondary hover:border-border-accent dark:hover:border-white/20 hover:bg-foreground/3"
               }`}
             >
               <span

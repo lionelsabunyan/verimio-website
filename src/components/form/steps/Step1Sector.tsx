@@ -77,8 +77,8 @@ export default function Step1Sector({
                 transition={{ type: "spring" as const, stiffness: 400, damping: 25 }}
                 className={`flex flex-col items-center text-center gap-2 p-4 rounded-xl border transition-all duration-150 ${
                   selected
-                    ? "border-primary bg-primary/6 text-primary dark:text-primary-light"
-                    : "border-border text-foreground-secondary hover:border-border-accent hover:text-foreground hover:bg-foreground/2"
+                    ? "border-primary bg-primary/10 text-primary dark:border-primary-light dark:bg-primary-light/10 dark:text-primary-light"
+                    : "border-border dark:border-white/10 text-foreground-secondary hover:border-border-accent dark:hover:border-white/20 hover:text-foreground hover:bg-foreground/5"
                 }`}
               >
                 <span className="text-2xl leading-none">{s.emoji}</span>
@@ -114,8 +114,8 @@ export default function Step1Sector({
                 transition={{ type: "spring" as const, stiffness: 400, damping: 25 }}
                 className={`py-2.5 px-3 rounded-lg border text-xs font-medium text-center transition-colors duration-150 ${
                   selected
-                    ? "bg-primary text-white border-primary"
-                    : "border-border text-foreground-secondary hover:border-border-accent hover:text-foreground"
+                    ? "bg-primary text-white border-primary dark:bg-primary-light dark:border-primary-light"
+                    : "border-border dark:border-white/10 text-foreground-secondary hover:border-border-accent dark:hover:border-white/20 hover:text-foreground"
                 }`}
               >
                 {opt}

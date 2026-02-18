@@ -49,9 +49,9 @@
   --muted: #78716C;
   --cream: #F5F5F4;
 
-  --border: rgba(245, 245, 244, 0.06);
-  --border-hover: rgba(245, 245, 244, 0.12);
-  --border-accent: rgba(163, 230, 53, 0.15);
+  --border: rgba(245, 245, 244, 0.10);
+  --border-hover: rgba(245, 245, 244, 0.18);
+  --border-accent: rgba(163, 230, 53, 0.20);
 }
 
 @theme inline {
