@@ -660,18 +660,21 @@ export default function BrandClient() {
                 <h4 className="text-[#4C4462] text-xs font-medium uppercase tracking-widest mb-4">Font Ailesi</h4>
                 <div className="space-y-4">
                   <div className="border-b border-[#1A1030] pb-4">
-                    <p className="text-[#A3E635] text-xs mb-1">Başlıklar</p>
-                    <p className="text-white text-2xl font-bold">Inter Bold</p>
-                    <p className="text-[#4C4462] text-xs mt-1">Geist (Next.js default) veya Inter Bold</p>
+                    <p className="text-[#A3E635] text-xs mb-1">Başlıklar & Gövde</p>
+                    <p className="text-white text-2xl font-bold" style={{ fontFamily: 'var(--font-dm-sans)' }}>DM Sans</p>
+                    <p className="text-[#4C4462] text-xs mt-1">300 · 400 · 500 · 600 · 700 — tek aile, tüm kullanım</p>
                   </div>
                   <div className="border-b border-[#1A1030] pb-4">
-                    <p className="text-[#A3E635] text-xs mb-1">Gövde Metni</p>
-                    <p className="text-white text-lg">Inter Regular / Medium</p>
-                    <p className="text-[#4C4462] text-xs mt-1">16–18px, 1.6 satır aralığı</p>
+                    <p className="text-[#A3E635] text-xs mb-1">Ağırlıklar</p>
+                    <div className="flex gap-3 flex-wrap mt-1">
+                      {[['Light', '300'], ['Regular', '400'], ['Medium', '500'], ['SemiBold', '600'], ['Bold', '700']].map(([name, w]) => (
+                        <span key={w} className="text-white text-sm" style={{ fontWeight: Number(w) }}>{name}</span>
+                      ))}
+                    </div>
                   </div>
                   <div>
                     <p className="text-[#A3E635] text-xs mb-1">Teknik / Kod</p>
-                    <p className="text-white text-lg font-mono">Geist Mono</p>
+                    <p className="text-white text-lg font-mono">DM Mono</p>
                     <p className="text-[#4C4462] text-xs mt-1">Kod blokları, hex renk değerleri</p>
                   </div>
                 </div>
