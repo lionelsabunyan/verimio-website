@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { ArrowUpRight, Users, Target, Lightbulb, TrendingUp } from "lucide-react";
 import { BRAND } from "@/lib/constants";
+import FAQ from "@/components/sections/FAQ";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Hakkımızda | Verimio - AI Dönüşüm Danışmanlığı",
+  title: "Hakkımızda | Verimio - Kurumsal AI Danışmanlığı",
   description:
-    "Verimio, Türk KOBİ'lerinin yapay zeka ile dijital dönüşümüne odaklanan bir AI danışmanlık firmasıdır.",
+    "Verimio, şirketlerin iş süreçlerini analiz eden, darboğazları tespit eden ve kurumsal AI dönüşümünde rehberlik eden bir danışmanlık firmasıdır.",
 };
 
 const values = [
@@ -14,25 +15,25 @@ const values = [
     icon: Target,
     title: "Misyonumuz",
     description:
-      "Türk KOBİ'lerinin yapay zeka teknolojilerinden en verimli şekilde faydalanmasını sağlamak. Karmaşık teknolojiyi basit, uygulanabilir çözümlere dönüştürüyoruz.",
+      "Şirketlerin yapay zeka teknolojilerinden en verimli şekilde faydalanmasını sağlamak. Karmaşık teknolojiyi basit, uygulanabilir danışmanlık çözümlerine dönüştürüyoruz.",
   },
   {
     icon: Lightbulb,
     title: "Vizyonumuz",
     description:
-      "Türkiye'nin en güvenilir AI dönüşüm partneri olmak. Her ölçekteki işletmenin yapay zekayı günlük operasyonlarına entegre edebildiği bir gelecek inşa ediyoruz.",
+      "Türkiye'nin en güvenilir kurumsal AI danışmanlık partneri olmak. Her ölçekteki şirketin yapay zekayı günlük operasyonlarına entegre edebildiği bir gelecek inşa ediyoruz.",
   },
   {
     icon: Users,
     title: "Yaklaşımımız",
     description:
-      "Her firmanın kendine özgü ihtiyaçları olduğuna inanıyoruz. Standart çözümler yerine, iş süreçlerinize özel AI stratejileri geliştiriyoruz.",
+      "Her firmanın kendine özgü ihtiyaçları olduğuna inanıyoruz. Standart çözümler yerine, iş süreçlerinize özel AI stratejileri ve danışmanlık yürütüyoruz.",
   },
   {
     icon: TrendingUp,
     title: "Sonuç Odaklılık",
     description:
-      "Sadece rapor vermiyoruz, sonuç üretiyoruz. ROI hesaplarımız gerçekçi, önerilerimiz uygulanabilir. Her adımda yanınızdayız.",
+      "Sadece rapor vermiyoruz, sonuç üretiyoruz. ROI hesaplarımız gerçekçi, önerilerimiz uygulanabilir. Sürecin her adımında danışmanınız oluyoruz.",
   },
 ];
 
@@ -40,12 +41,12 @@ const timeline = [
   {
     year: "2025",
     title: "Fikir Aşaması",
-    description: "KOBİ'lerin AI dönüşümündeki boşluğu fark ettik. Araştırma ve planlama sürecine başladık.",
+    description: "Kurumsal firmaların AI dönüşümündeki boşluğu fark ettik. Araştırma ve planlama sürecine başladık.",
   },
   {
     year: "2026 Q1",
     title: "Lansman",
-    description: "Ücretsiz AI check-up formumuzla ilk firmalarla çalışmaya başladık. İlk 50 firma analiz edildi.",
+    description: "Ücretsiz şirket check-up formuyla ilk firmalarla çalışmaya başladık ve danışmanlık hizmetimizi hayata geçirdik.",
   },
   {
     year: "2026 Q2",
@@ -73,9 +74,9 @@ export default function HakkimizdaPage() {
             </h1>
 
             <p className="text-lg text-foreground-secondary leading-relaxed mb-8 max-w-2xl">
-              Türk KOBİ&apos;lerinin dijital dönüşümüne odaklanan bir AI danışmanlık
-              firmasıyız. İster dijital dünyada deneyimli olun, ister ilk adımlarınızı
-              atıyor olun — firmanıza özel AI çözümleri sunuyoruz.
+              İş süreçlerinizi analiz eder, verimliliği engelleyen darboğazları tespit eder
+              ve size özel çözümlerle hem zamanınızı hem bütçenizi koruruz.
+              AI dönüşümünde tek muhatabınız — danışmanınız — oluyoruz.
             </p>
 
             <div className="flex flex-wrap items-center gap-4">
@@ -83,7 +84,7 @@ export default function HakkimizdaPage() {
                 href={BRAND.tallyFormUrl}
                 className="inline-flex items-center gap-2 px-7 py-3.5 bg-secondary text-primary font-semibold rounded-full hover:bg-secondary-hover transition-all duration-200 hover:shadow-lg hover:shadow-secondary/25 text-sm"
               >
-                Ücretsiz Analiz Başlat
+                Ücretsiz Check-Up Başlatın
                 <ArrowUpRight className="w-4 h-4" />
               </Link>
               <Link
@@ -166,6 +167,9 @@ export default function HakkimizdaPage() {
         </div>
       </section>
 
+      {/* FAQ */}
+      <FAQ />
+
       {/* CTA */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-dark" />
@@ -175,14 +179,14 @@ export default function HakkimizdaPage() {
             Birlikte Çalışalım
           </h2>
           <p className="text-lg text-white/60 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Firmanızın AI potansiyelini keşfetmek için ilk adımı atın. Ücretsiz
-            analiziniz sizi bekliyor.
+            Firmanızın verimliliğini ve AI hazırlığını analiz ediyoruz.
+            Size özel yol haritanız 48 saat içinde hazır.
           </p>
           <Link
             href={BRAND.tallyFormUrl}
             className="inline-flex items-center gap-2 px-8 py-4 bg-secondary text-primary font-semibold rounded-full hover:bg-secondary-hover transition-all duration-200 hover:shadow-lg hover:shadow-secondary/25"
           >
-            Ücretsiz Analiz Başlat
+            Ücretsiz Check-Up Başlatın
             <ArrowUpRight className="w-5 h-5" />
           </Link>
         </div>

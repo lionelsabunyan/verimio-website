@@ -103,7 +103,7 @@ function TesekkurlerContent() {
                 </div>
                 <div>
                   <p className="text-sm font-medium text-foreground">48 saat içinde</p>
-                  <p className="text-xs text-foreground-secondary">Sektöre özel raporunuz e-postanıza gelecek</p>
+                  <p className="text-xs text-foreground-secondary">Check-up raporunuz e-postanıza gelecek</p>
                 </div>
               </div>
               <div className="flex items-center gap-3 p-4 rounded-xl bg-surface border border-border text-left">

@@ -24,7 +24,7 @@ export default function Expertise() {
               </SectionLabel>
 
               <h2 className="text-3xl sm:text-4xl font-bold text-white leading-tight">
-                İşletmenizi bir üst
+                Şirketinizi bir üst
                 <br />
                 seviyeye taşıyoruz
               </h2>
@@ -35,8 +35,8 @@ export default function Expertise() {
             <div className="flex items-end h-full">
               <div>
                 <p className="text-white/60 mb-6 max-w-md">
-                  AI dönüşümünde uzmanız. Her alanda somut çözümler ve
-                  gerçekçi ROI hesaplarıyla firmanızı geleceğe hazırlıyoruz.
+                  İş süreçlerinizi bugünün teknolojisiyle yeniden tasarlıyor,
+                  ölçülebilir sonuçlar üretiyoruz.
                 </p>
                 <Link
                   href="/hizmetler"

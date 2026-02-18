@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import MultiStepForm from "@/components/form/MultiStepForm";
+import Benefits from "@/components/sections/Benefits";
 
 export const metadata: Metadata = {
-  title: "Ücretsiz AI Analizi | Verimio",
+  title: "Şirket Check-Up'ı | Verimio",
   description:
-    "3 dakikada şirketinizin AI potansiyelini keşfedin. Kişiselleştirilmiş rapor anında e-postanızda.",
+    "Şirketinizin operasyonel verimliliğini ve AI hazırlığını analiz ediyoruz. 48 saat içinde size özel rapor.",
 };
 
 export default function AnalizPage() {
@@ -16,22 +17,26 @@ export default function AnalizPage() {
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border-accent bg-secondary/8 mb-5">
             <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
             <span className="text-xs font-medium text-foreground-secondary tracking-wide">
-              Tamamen Ücretsiz · 3 Dakika
+              Ücretsiz
             </span>
           </div>
           <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-3">
-            AI Hazırlık{" "}
-            <span className="gradient-text">Testiniz</span>
+            Şirket{" "}
+            <span className="gradient-text">Check-Up&apos;ı</span>
           </h1>
           <p className="text-foreground-secondary text-sm sm:text-base max-w-md mx-auto leading-relaxed">
-            Şirketinize özel otomasyon fırsatlarını, tasarruf potansiyelini ve
-            90 günlük yol haritasını içeren raporunuzu alın.
+            Şirketinizi tanıyoruz, eksiklerinizi analiz ediyoruz. Size özel otomasyon
+            fırsatlarını, tasarruf potansiyelini ve 90 günlük yol haritasını içeren
+            raporunuzu alın.
           </p>
         </div>
 
         {/* Form */}
         <MultiStepForm />
       </div>
+
+      {/* Benefits — what's in the report */}
+      <Benefits />
     </div>
   );
 }

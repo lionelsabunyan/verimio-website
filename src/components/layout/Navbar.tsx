@@ -68,7 +68,7 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-3">
             <ThemeToggle />
             <Button href={BRAND.tallyFormUrl} size="sm">
-              Ücretsiz Analiz
+              Check-Up Başlatın
             </Button>
           </div>
 
@@ -147,7 +147,7 @@ export default function Navbar() {
                   size="sm"
                   onClick={() => setIsOpen(false)}
                 >
-                  Ücretsiz Analiz
+                  Check-Up Başlatın
                 </Button>
               </motion.div>
             </div>

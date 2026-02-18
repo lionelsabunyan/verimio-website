@@ -43,16 +43,16 @@ const contactMethods = [
 
 const faqQuick = [
   {
-    q: "Ücretsiz analiz gerçekten ücretsiz mi?",
-    a: "Evet, AI analiz raporumuz tamamen ücretsizdir. Herhangi bir kredi kartı bilgisi istenmez.",
+    q: "Şirket check-up'ı gerçekten ücretsiz mi?",
+    a: "Evet, şirket check-up'ı ve analiz raporumuz tamamen ücretsizdir. Herhangi bir ödeme bilgisi istenmez.",
   },
   {
     q: "Danışmanlık görüşmesi zorunlu mu?",
-    a: "Hayır, tamamen isteğe bağlıdır. Raporunuzu aldıktan sonra isterseniz ücretsiz 20 dakikalık görüşme planlayabilirsiniz.",
+    a: "Hayır, tamamen isteğe bağlıdır. Raporunuzu aldıktan sonra isterseniz ücretsiz görüşme planlayabilirsiniz.",
   },
   {
-    q: "Hangi sektörlere hizmet veriyorsunuz?",
-    a: "E-ticaret, ajanslar, B2B hizmetler, üretim/lojistik, teknoloji ve daha birçok sektörde AI çözümleri sunuyoruz.",
+    q: "Hangi sektörlerde çalışıyorsunuz?",
+    a: "Üretim, lojistik, profesyonel hizmetler, finans, e-ticaret ve teknoloji başta olmak üzere kurumsal yapıdaki tüm sektörlerde hizmet veriyoruz.",
   },
 ];
 
@@ -120,12 +120,12 @@ export default function IletisimPage() {
               <div className="bg-primary rounded-3xl p-8 md:p-10 text-white">
                 <h2 className="text-2xl font-bold mb-4">En Hızlı Başlangıç</h2>
                 <p className="text-white/70 leading-relaxed mb-8">
-                  İletişime geçmeden önce, 3 dakikalık ücretsiz AI analizimizi
-                  deneyin. Firmanıza özel rapor otomatik olarak e-postanıza gelsin.
+                  İletişime geçmeden önce ücretsiz şirket check-up&apos;ımızı
+                  deneyin. Firmanıza özel rapor 48 saat içinde e-postanıza gelir.
                 </p>
 
                 <div className="space-y-4 mb-8">
-                  {["3 dakikalık formu doldurun", "AI analiz raporunuzu alın", "İsterseniz ücretsiz görüşme planlayın"].map((text, i) => (
+                  {["Check-up formunu doldurun", "Size özel analiz raporunuzu alın", "İsterseniz ücretsiz görüşme planlayın"].map((text, i) => (
                     <div key={i} className="flex items-center gap-3">
                       <div className="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center text-secondary text-sm font-bold">
                         {i + 1}
@@ -139,12 +139,12 @@ export default function IletisimPage() {
                   href={BRAND.tallyFormUrl}
                   className="inline-flex items-center gap-2 px-7 py-3.5 bg-secondary text-primary font-semibold rounded-full hover:bg-secondary-hover transition-all duration-200 text-sm w-full justify-center"
                 >
-                  Ücretsiz Analiz Başlat
+                  Ücretsiz Check-Up Başlatın
                   <ArrowUpRight className="w-4 h-4" />
                 </Link>
 
                 <p className="text-center text-xs text-white/40 mt-4">
-                  Kredi kartı gerekmez • Satış araması yok
+                  Gizliliğiniz güvende
                 </p>
               </div>
             </div>

@@ -19,22 +19,22 @@ const dmMono = DM_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Verimio | İş Süreçlerinizi AI ile Dönüştürün",
+  title: "Verimio | Kurumsal AI Danışmanlığı",
   description:
-    "3 dakikada firmanızın AI potansiyelini keşfedin. Kişiselleştirilmiş analiz raporunuzu anında alın. Türk KOBİ'leri için AI dönüşüm danışmanlığı.",
+    "Şirketinizin operasyonel verimliliğini ve AI hazırlığını analiz ediyoruz. Size özel yol haritasıyla hem zamandan hem maliyetten tasarruf edin.",
   keywords: [
     "AI danışmanlık",
     "yapay zeka",
     "otomasyon",
-    "KOBİ",
+    "kurumsal",
     "dijital dönüşüm",
     "verimlilik",
     "Türkiye",
   ],
   openGraph: {
-    title: "Verimio | İş Süreçlerinizi AI ile Dönüştürün",
+    title: "Verimio | Kurumsal AI Danışmanlığı",
     description:
-      "3 dakikada firmanızın AI potansiyelini keşfedin. Ücretsiz analiz raporu alın.",
+      "Şirketinizin AI hazırlığını analiz ediyoruz. 48 saat içinde size özel yol haritası.",
     type: "website",
     locale: "tr_TR",
   },

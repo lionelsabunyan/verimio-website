@@ -12,7 +12,7 @@ export default function Blog() {
         <div className="flex items-center justify-between mb-12">
           <div>
             <SectionLabel className="mb-4">Blog</SectionLabel>
-            <h2 className="text-3xl sm:text-4xl font-bold">Son Yazılar</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold">Güncel İçerikler</h2>
           </div>
           <Link
             href="/blog"

@@ -3,32 +3,9 @@
 import { ClipboardList, Search, Rocket } from "lucide-react";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/motion";
 import SectionLabel from "@/components/ui/SectionLabel";
+import { HOW_IT_WORKS } from "@/lib/constants";
 
 const stepIcons = [ClipboardList, Search, Rocket];
-
-const steps = [
-  {
-    step: "01",
-    icon: 0,
-    title: "Durumunuzu Anlatın",
-    description:
-      "3 dakikada sektörünüze özel 6 soruyu yanıtlayın. Sonunda rapor veya ücretsiz görüşme — siz seçin.",
-  },
-  {
-    step: "02",
-    icon: 1,
-    title: "Analiz Edelim",
-    description:
-      "Cevaplarınızı uzman gözüyle değerlendirip firmanıza özel otomasyon fırsatlarını ve ROI potansiyelini belirliyoruz.",
-  },
-  {
-    step: "03",
-    icon: 2,
-    title: "Harekete Geçelim",
-    description:
-      "Somut bir plan ve öncelik matrisiyle uygulamaya geçiyoruz. İster kendiniz yapın, ister biz yapalım.",
-  },
-];
 
 export default function HowItWorks() {
   return (
@@ -40,12 +17,10 @@ export default function HowItWorks() {
 
         <FadeIn delay={0.1}>
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            3 Adımda{" "}
-            <span className="gradient-text">AI Dönüşümü</span>
+            <span className="gradient-text">Danışmanlık Sürecimiz</span>
           </h2>
           <p className="text-lg text-foreground-secondary max-w-2xl mb-16">
-            Karmaşık danışmanlık süreçlerini unutun. Sektörünüze özel bir analizle
-            nerede başlayacağınızı netleştirin.
+            Firmanıza özgü bir süreçle, doğru adımları birlikte atıyoruz.
           </p>
         </FadeIn>
 
@@ -56,8 +31,8 @@ export default function HowItWorks() {
           {/* Connector line (desktop only) */}
           <div className="hidden md:block absolute top-10 left-[calc(16.66%+1rem)] right-[calc(16.66%+1rem)] h-px bg-gradient-to-r from-border via-border-accent to-border z-0" />
 
-          {steps.map((step, index) => {
-            const Icon = stepIcons[step.icon];
+          {HOW_IT_WORKS.map((step, index) => {
+            const Icon = stepIcons[index];
             return (
               <StaggerItem key={index}>
                 <div className="relative z-10 flex flex-col h-full p-7 rounded-2xl border border-border bg-surface hover:border-border-accent hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 group" style={{boxShadow: "0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04)"}}>

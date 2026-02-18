@@ -11,7 +11,7 @@ const footerLinks = {
     { label: "Blog", href: "/blog" },
   ],
   support: [
-    { label: "SSS", href: "/#faq" },
+    { label: "SSS", href: "/hakkimizda#faq" },
     { label: "Gizlilik Politikası", href: "/gizlilik" },
     { label: "Kullanım Şartları", href: "/kullanim-sartlari" },
     { label: "İletişim", href: "/iletisim" },
@@ -44,8 +44,7 @@ export default function Footer() {
               <Wordmark size="md" className="text-white" />
             </Link>
             <p className="mt-4 text-sm text-white/60 leading-relaxed">
-              İş süreçlerinizi AI ile dönüştürün. Türk KOBİ&apos;leri için yapay
-              zeka danışmanlığı.
+              Şirketler için kurumsal AI danışmanlığı.
             </p>
             <a
               href={`mailto:${BRAND.email}`}

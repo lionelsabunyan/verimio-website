@@ -2,7 +2,7 @@
 
 export const BRAND = {
   name: "Verimio",
-  tagline: "İş Süreçlerinizi AI ile Dönüştürün",
+  tagline: "Süreçlerinizi netleştirin, maliyetlerinizi düşürün.",
   email: "analiz@verimio.com.tr",
   website: "verimio.com.tr",
   tallyFormUrl: "/analiz",
@@ -18,70 +18,59 @@ export const NAV_LINKS = [
 ] as const;
 
 export const HERO_CONTENT = {
-  headline: "İş Süreçlerinizi",
-  headlineHighlight: "AI ile Dönüştürün",
+  badge: "Kurumsal AI Danışmanlığı",
+  headline: "Süreçlerinizi netleştirin,",
+  headlineHighlight: "maliyetlerinizi düşürün.",
   subheadline:
-    "3 dakikada firmanızın yapay zeka potansiyelini keşfedin. Kişiselleştirilmiş analiz raporunuzu anında alın.",
-  ctaPrimary: "Ücretsiz Analiz Başlat",
+    "Firmanızın operasyonel verimliliğini ve AI hazırlığını analiz ediyoruz. Size özel yol haritasıyla hem zamandan hem maliyetten tasarruf edin.",
+  ctaPrimary: "Ücretsiz Check-Up Başlatın",
   ctaSecondary: "Nasıl Çalışır?",
   cards: [
     {
-      title: "Süreç Otomasyonu",
-      description: "Tekrarlayan işlerinizi AI ile otomatikleştirin",
+      title: "Zaman Tasarrufu",
+      description:
+        "Tekrarlayan süreçleri kaldırın, ekibiniz stratejik işlere odaklansın.",
     },
     {
-      title: "Maliyet Analizi",
-      description: "Otomasyon potansiyelinizi ve tasarrufunuzu öğrenin",
+      title: "Maliyet Kontrolü",
+      description:
+        "Kaynak israfını tespit edin, operasyonel maliyetinizi düşürün.",
     },
     {
-      title: "AI Yol Haritası",
-      description: "90 günlük kişiselleştirilmiş dönüşüm planı alın",
+      title: "Net Yol Haritası",
+      description: "90 günlük, önceliklendirilmiş uygulama planınızı alın.",
     },
   ],
 } as const;
 
-export const TRUST_BADGES = [
-  { icon: "check", text: "Ücretsiz İlk Görüşme" },
-  { icon: "layers", text: "Sektöre Özel Analiz" },
-  { icon: "shield", text: "NDA ile Gizlilik" },
-  { icon: "phone-off", text: "Satış Baskısı Yok" },
-] as const;
-
 export const ABOUT_CONTENT = {
   label: "Biz Kimiz?",
-  text: "Türk KOBİ'lerinin dijital dönüşümüne odaklanan bir AI danışmanlık firmasıyız. İster dijital dünyada deneyimli olun, ister ilk adımlarınızı atıyor olun — firmanıza özel AI çözümleri sunuyoruz.",
-  ctaPrimary: "Verimio Hakkında",
-  ctaSecondary: "Nasıl Çalışıyoruz?",
+  text: "İş süreçlerinizi analiz eder, verimliliği engelleyen darboğazları tespit eder ve size özel çözümlerle hem zamanınızı hem bütçenizi koruruz. AI dönüşümünde tek muhatabınız — danışmanınız — oluyoruz.",
+  ctaPrimary: "Hakkımızda",
+  ctaSecondary: "Hizmetlerimize Bakın",
 } as const;
-
-export const STATS = [
-  { value: "10+", label: "Firma Analiz Edildi" },
-  { value: "%60+", label: "Ortalama Otomasyon Potansiyeli" },
-  { value: "4 Alan", label: "Hizmet Kategorisi" },
-  { value: "48 saat", label: "Rapor Teslim Süresi" },
-] as const;
 
 export const HOW_IT_WORKS = [
   {
     step: "01",
     icon: "clipboard-list",
-    title: "Durumunuzu Anlatın",
+    title: "Şirketinizi Tanıyalım",
     description:
-      "3 dakikada sektörünüze özel 6 soruyu yanıtlayın. Sonunda rapor veya ücretsiz görüşme — siz seçin.",
+      "Sektörünüze ve yapınıza özel sorularla başlıyoruz. Hedef: operasyonunuzu gerçekten anlamak.",
   },
   {
     step: "02",
     icon: "search",
-    title: "Analiz Edelim",
+    title: "Analiz Edip Raporlayalım",
     description:
-      "Cevaplarınızı uzman gözüyle değerlendirip firmanıza özel otomasyon fırsatlarını ve ROI potansiyelini belirliyoruz.",
+      "Uzman ekibimiz cevaplarınızı değerlendirir, fırsatları ve tasarruf potansiyelini somut rakamlarla ortaya koyar.",
   },
   {
     step: "03",
     icon: "rocket",
-    title: "Harekete Geçelim",
+    title: "Birlikte Harekete Geçelim",
     description:
-      "Somut bir plan ve öncelik matrisiyle uygulamaya geçiyoruz. İster kendiniz yapın, ister biz yapalım.",
+      "Öncelik matrisine göre planı hayata geçiriyoruz. Her adımda yanınızdayız — danışmanlık, sadece rapor değil.",
   },
 ] as const;
 
@@ -94,91 +83,70 @@ export const BENEFITS = [
   "90 günlük uygulama yol haritası",
 ] as const;
 
-export const SUCCESS_STORIES = [
-  {
-    title: "E-ticaret Otomasyonu",
-    subtitle: "Müşteri Desteği Dönüşümü",
-    result: "Müşteri desteğinde %60 otomasyon",
-    date: "Ocak 2026",
-  },
-  {
-    title: "Ajans Verimliliği",
-    subtitle: "Raporlama Otomasyonu",
-    result: "Raporlama süresinde %80 tasarruf",
-    date: "Şubat 2026",
-  },
-  {
-    title: "B2B Süreç İyileştirme",
-    subtitle: "Belge Yönetim Sistemi",
-    result: "Haftalık 15 saat tasarruf",
-    date: "Şubat 2026",
-  },
-] as const;
-
 export const TESTIMONIALS = [
   {
     quote:
-      "Verimio sayesinde müşteri destek süremiz 4 saatten 10 dakikaya düştü. AI chatbot önerisi hayat kurtardı!",
+      "Operasyon süreçlerimizde ciddi darboğazlar vardı. Verimio'nun analizi bu noktaları net şekilde ortaya koydu ve uyguladığımız çözümlerle kayda değer bir verimlilik artışı sağladık.",
     name: "Ahmet Y.",
-    role: "E-ticaret Firma Sahibi",
+    role: "Operasyon Direktörü, Lojistik Sektörü",
   },
   {
     quote:
-      "Raporlama dashboard önerisi ile haftada 6 saat tasarruf ettik. Üstelik rapor tamamen ücretsizdi!",
+      "Raporlama altyapımızı otomatize ettik. Ekibimizin harcadığı zaman dramatik biçimde azaldı; o zamanı artık analiz ve stratejiye ayırabiliyoruz.",
     name: "Elif K.",
-    role: "Dijital Ajans Müdürü",
+    role: "Genel Müdür, Profesyonel Hizmetler",
   },
   {
     quote:
-      "Belge yönetim sistemini kurduk, artık dosya aramak için vakit kaybetmiyoruz. ROI hesabı çok gerçekçiydi.",
+      "Verimio sadece analiz yapan bir firma değil, süreci başından sonuna kadar bizimle birlikte yürüyen bir danışman gibi çalıştı. Bu fark gerçekten hissedildi.",
     name: "Murat S.",
-    role: "Muhasebe Firması Ortağı",
+    role: "İş Geliştirme Yöneticisi, B2B Hizmetler",
   },
 ] as const;
 
 export const EXPERTISE_ITEMS = [
-  "AI Süreç Danışmanlığı",
-  "İş Akışı Otomasyonu (n8n / Make)",
-  "Sesli AI Agent (Vapi)",
-  "Özel AI Entegrasyonu",
-  "Dijital Varlık Optimizasyonu",
+  "Süreç Danışmanlığı ve Optimizasyonu",
+  "İş Akışı Tasarımı ve Otomasyonu",
+  "AI Entegrasyon Stratejisi",
+  "Sesli ve Yazılı Müşteri Deneyimi",
+  "Operasyonel Verimlilik Analizi",
 ] as const;
 
 export const FAQ_ITEMS = [
   {
-    question: "Bu gerçekten ücretsiz mi?",
+    question: "Check-up süreci nasıl işliyor?",
     answer:
-      "Evet, AI analiz raporu tamamen ücretsiz. İsterseniz sonrasında danışmanlık hizmeti alabilirsiniz, ancak herhangi bir zorunluluk yoktur.",
+      "Sektörünüze ve şirket yapınıza özel birkaç soruyu yanıtlıyorsunuz. Uzman ekibimiz cevaplarınızı değerlendirip 48 saat içinde size özel bir rapor hazırlıyor.",
   },
   {
-    question: "Raporumu ne zaman alırım?",
+    question: "Raporumda neler yer alıyor?",
     answer:
-      "Form gönderiminden sonra 1-2 dakika içinde e-postanıza detaylı PDF rapor gelir. Spam klasörünü kontrol etmeyi unutmayın.",
+      "Otomasyon potansiyeliniz, tasarruf tahminleri, öncelikli aksiyon alanları ve 90 günlük uygulama yol haritası. Genel öneriler değil, firmanıza özel somut bulgular.",
   },
   {
-    question: "Satış araması yapacak mısınız?",
+    question: "Danışmanlık hizmeti zorunlu mu?",
     answer:
-      "Hayır. Sadece siz isterseniz ücretsiz 20 dakikalık danışmanlık görüşmesi planlarsınız. Biz asla arayıp satış yapmayız.",
+      "Hayır. Raporu aldıktan sonra nasıl ilerleyeceğiniz tamamen size bağlı. İsterseniz ücretsiz bir görüşmeyle soruları netleştirebilirsiniz.",
   },
   {
-    question: "Bilgilerim güvende mi?",
+    question: "Hangi sektörlerde çalışıyorsunuz?",
     answer:
-      "Evet, verileriniz şifrelenir ve sadece analiz için kullanılır. Üçüncü taraflarla paylaşılmaz.",
+      "Üretim, lojistik, profesyonel hizmetler, finans, e-ticaret ve teknoloji başta olmak üzere kurumsal yapıdaki tüm sektörlerde hizmet veriyoruz.",
   },
   {
-    question: "Hangi sektörlere hizmet veriyorsunuz?",
+    question: "Verilerimizin gizliliği nasıl korunuyor?",
     answer:
-      "E-ticaret, ajanslar, B2B hizmetler (danışmanlık, muhasebe, hukuk), üretim/lojistik, teknoloji/yazılım ve daha fazlası. Formda sektörünüze özel sorular karşınıza gelir.",
+      "Paylaştığınız bilgiler yalnızca analiz amacıyla kullanılır, şifrelenerek saklanır ve üçüncü taraflarla kesinlikle paylaşılmaz. Talep halinde NDA imzalayabiliriz.",
   },
 ] as const;
 
 export const BLOG_POSTS = [
   {
-    title: "2026'da KOBİ'ler için En İyi AI Araçları",
+    title: "2026'da Şirketler için En İyi AI Araçları",
     excerpt:
-      "Küçük ve orta ölçekli işletmeler için en uygun ve uygun fiyatlı AI araçlarını inceliyoruz.",
+      "Kurumsal operasyonlarda verimliliği artıran, ölçeklenebilir AI araçlarını inceliyoruz.",
     date: "15 Şubat 2026",
-    slug: "kobi-ai-araclari-2026",
+    slug: "kurumsal-ai-araclari-2026",
   },
   {
     title: "Müşteri Desteğinde AI: Başlangıç Rehberi",
@@ -202,11 +170,11 @@ export const BLOG_POSTS = [
     slug: "ai-otomasyon-roi-hesaplama",
   },
   {
-    title: "Küçük İşletmeler İçin CRM Otomasyonu",
+    title: "Kurumsal CRM Otomasyonu: Nereden Başlanır?",
     excerpt:
       "Müşteri ilişkilerinizi AI ile güçlendirin. CRM otomasyon araçları ve en iyi uygulamalar.",
     date: "25 Ocak 2026",
-    slug: "kucuk-isletmeler-crm-otomasyon",
+    slug: "kurumsal-crm-otomasyon",
   },
   {
     title: "Veri Güvenliği ve AI: Bilmeniz Gerekenler",
@@ -218,10 +186,46 @@ export const BLOG_POSTS = [
 ] as const;
 
 export const CTA_CONTENT = {
-  label: "AI Dönüşümüne Hazır mısınız?",
+  label: "Bir Sonraki Adım",
   headline: "İlk Adımı Birlikte Atalım",
   description:
-    "Firmanızın AI potansiyelini keşfedin. Kişiselleştirilmiş analiz raporunuz 3 dakika içinde e-postanızda olsun.",
-  ctaPrimary: "Ücretsiz Analiz Başlat",
-  ctaSecondary: "Daha Fazla Bilgi",
+    "Firmanızın verimliliğini ve AI hazırlığını analiz ediyoruz. Size özel yol haritanız 48 saat içinde hazır.",
+  ctaPrimary: "Ücretsiz Check-Up Başlatın",
+  ctaSecondary: "Hizmetlerimizi İnceleyin",
 } as const;
+
+// Geriye dönük uyumluluk için (kullanımda olanlar)
+export const TRUST_BADGES = [
+  { icon: "check", text: "Ücretsiz İlk Görüşme" },
+  { icon: "layers", text: "Sektöre Özel Analiz" },
+  { icon: "shield", text: "NDA ile Gizlilik" },
+  { icon: "phone-off", text: "Satış Baskısı Yok" },
+] as const;
+
+export const STATS = [
+  { value: "10+", label: "Firma Analiz Edildi" },
+  { value: "%60+", label: "Ortalama Otomasyon Potansiyeli" },
+  { value: "4 Alan", label: "Hizmet Kategorisi" },
+  { value: "48 saat", label: "Rapor Teslim Süresi" },
+] as const;
+
+export const SUCCESS_STORIES = [
+  {
+    title: "E-ticaret Otomasyonu",
+    subtitle: "Müşteri Desteği Dönüşümü",
+    result: "Müşteri desteğinde %60 otomasyon",
+    date: "Ocak 2026",
+  },
+  {
+    title: "Ajans Verimliliği",
+    subtitle: "Raporlama Otomasyonu",
+    result: "Raporlama süresinde %80 tasarruf",
+    date: "Şubat 2026",
+  },
+  {
+    title: "B2B Süreç İyileştirme",
+    subtitle: "Belge Yönetim Sistemi",
+    result: "Haftalık 15 saat tasarruf",
+    date: "Şubat 2026",
+  },
+] as const;

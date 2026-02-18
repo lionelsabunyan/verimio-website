@@ -5,9 +5,9 @@ import BlogCardImage from "@/components/brand/BlogCardImage";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog | Verimio - AI & Otomasyon İpuçları",
+  title: "Blog | Verimio - AI & Otomasyon İçerikleri",
   description:
-    "KOBİ'ler için AI araçları, otomasyon stratejileri ve dijital dönüşüm ipuçları. Verimio blog.",
+    "Şirketler için AI araçları, otomasyon stratejileri ve operasyonel verimlilik içerikleri. Verimio blog.",
 };
 
 export default function BlogPage() {
@@ -29,8 +29,8 @@ export default function BlogPage() {
             </h1>
 
             <p className="text-lg text-foreground-secondary leading-relaxed max-w-2xl">
-              Türk KOBİ&apos;leri için yapay zeka, otomasyon ve dijital dönüşüm
-              hakkında güncel içerikler. Pratik ipuçları ve adım adım rehberler.
+              Yapay zeka, otomasyon ve operasyonel verimlilik hakkında güncel
+              içerikler. Uygulamalı rehberler ve sektörel analizler.
             </p>
           </div>
         </div>

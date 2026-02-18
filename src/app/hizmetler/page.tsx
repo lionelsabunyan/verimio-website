@@ -14,34 +14,34 @@ import { getServiceIconStyle } from "@/lib/brand-colors";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Hizmetler | Verimio - AI Çözümleri & Otomasyon",
+  title: "Hizmetler | Verimio - Kurumsal AI Danışmanlığı",
   description:
-    "Süreç otomasyonu, AI chatbot, raporlama otomasyonu, içerik üretimi ve veri analizi. Firmanıza özel AI çözümleri.",
+    "Süreç danışmanlığı, iş akışı otomasyonu, AI entegrasyonu ve operasyonel verimlilik analizi. Şirketinize özel danışmanlık çözümleri.",
 };
 
 const services = [
   {
     icon: Workflow,
-    title: "Süreç Otomasyonu",
+    title: "Süreç Danışmanlığı",
     description:
-      "Tekrarlayan iş süreçlerinizi yapay zeka ile otomatikleştirin. Veri girişinden onay süreçlerine kadar her adımda verimlilik sağlayın.",
+      "İş süreçlerinizi baştan sona analiz ediyor, darboğazları tespit ediyor ve operasyonel verimliliği artıracak çözümler tasarlıyoruz.",
     features: [
       "İş akışı analizi ve optimizasyonu",
-      "Otomatik veri girişi ve işleme",
+      "Otomatik veri işleme ve entegrasyon",
       "Onay süreçlerinin dijitalleştirilmesi",
-      "Entegrasyon çözümleri (API, webhook)",
+      "Sistemler arası entegrasyon tasarımı",
     ],
   },
   {
     icon: Bot,
-    title: "AI Chatbot Kurulumu",
+    title: "Müşteri Deneyimi Otomasyonu",
     description:
-      "7/24 müşteri desteği sağlayan akıllı chatbot çözümleri. Sık sorulan soruları otomatik yanıtlayın, müşteri memnuniyetini artırın.",
+      "7/24 müşteri desteği sağlayan akıllı çözümler. Sık sorulan soruları otomatik yanıtlayın, müşteri memnuniyetini ve ekip verimliliğini artırın.",
     features: [
-      "Firmanıza özel eğitilmiş chatbot",
+      "Firmanıza özel eğitilmiş dijital asistan",
       "Çoklu kanal desteği (web, WhatsApp)",
-      "Canlı destek entegrasyonu",
-      "Performans analizi ve iyileştirme",
+      "Canlı destek sistemi entegrasyonu",
+      "Performans izleme ve sürekli iyileştirme",
     ],
   },
   {
@@ -58,9 +58,9 @@ const services = [
   },
   {
     icon: Sparkles,
-    title: "AI ile İçerik Üretimi",
+    title: "AI Destekli İçerik Stratejisi",
     description:
-      "Ürün açıklamalarından sosyal medya paylaşımlarına, blog yazılarından e-posta kampanyalarına — AI destekli içerik üretimi.",
+      "Ürün açıklamalarından kurumsal iletişime, blog yazılarından e-posta kampanyalarına — AI destekli içerik üretimi ve yönetimi.",
     features: [
       "Marka sesinize uygun içerik",
       "SEO optimizasyonlu metin üretimi",
@@ -76,19 +76,19 @@ const services = [
     features: [
       "Veri temizleme ve yapılandırma",
       "İş zekası dashboard'ları",
-      "Tahminsel analiz (Predictive Analytics)",
+      "Tahminsel analiz",
       "KPI takibi ve raporlama",
     ],
   },
   {
     icon: FileText,
-    title: "Belge Yönetimi",
+    title: "Belge ve Bilgi Yönetimi",
     description:
-      "Dosya aramanın son bulduğu yer. AI destekli belge sınıflandırma, arama ve yönetim çözümleri ile verimliliğinizi artırın.",
+      "Dosya aramanın son bulduğu yer. AI destekli belge sınıflandırma, arama ve yönetim çözümleri ile kurumsal verimliliğinizi artırın.",
     features: [
       "Otomatik belge sınıflandırma",
       "Akıllı arama ve indeksleme",
-      "OCR ve veri çıkarma",
+      "Optik karakter tanıma ve veri çıkarma",
       "Güvenli arşivleme çözümleri",
     ],
   },
@@ -97,23 +97,23 @@ const services = [
 const process = [
   {
     step: "01",
-    title: "Ücretsiz Analiz",
-    description: "3 dakikalık formu doldurun, AI'ımız firmanızı analiz etsin.",
+    title: "Şirket Check-Up'ı",
+    description: "Sektörünüze özel soruları yanıtlayın, firmanızı tanıyalım.",
   },
   {
     step: "02",
     title: "Detaylı Rapor",
-    description: "Kişiselleştirilmiş PDF raporunuz e-postanıza gelsin.",
+    description: "48 saat içinde size özel analiz raporunuz hazırlanır.",
   },
   {
     step: "03",
-    title: "Danışmanlık",
-    description: "İsterseniz 20 dakikalık ücretsiz görüşme ile yol haritanızı netleştirin.",
+    title: "Danışmanlık Görüşmesi",
+    description: "İsterseniz ücretsiz görüşmeyle yol haritanızı birlikte netleştirin.",
   },
   {
     step: "04",
     title: "Uygulama",
-    description: "Seçtiğiniz çözümleri birlikte hayata geçirelim.",
+    description: "Seçtiğiniz çözümleri her adımda yanınızda olarak hayata geçirelim.",
   },
 ];
 
@@ -131,12 +131,12 @@ export default function HizmetlerPage() {
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-              İşletmenize Özel{" "}
-              <span className="gradient-text">AI Çözümleri</span>
+              Şirketinize Özel{" "}
+              <span className="gradient-text">AI Danışmanlığı</span>
             </h1>
 
             <p className="text-lg text-foreground-secondary leading-relaxed mb-8 max-w-2xl">
-              Sektörünüze ve ihtiyaçlarınıza göre özelleştirilmiş yapay zeka çözümleri
+              Sektörünüze ve ihtiyaçlarınıza göre özelleştirilmiş danışmanlık çözümleri
               sunuyoruz. Her çözüm, somut ROI hesapları ve uygulama planıyla birlikte gelir.
             </p>
 
@@ -201,7 +201,7 @@ export default function HizmetlerPage() {
               Nasıl <span className="gradient-text">Başlarsınız?</span>
             </h2>
             <p className="text-foreground-secondary leading-relaxed">
-              4 basit adımda AI dönüşümünüzü başlatın.
+              4 adımda danışmanlık sürecinizi başlatın.
             </p>
           </div>
 
@@ -228,15 +228,15 @@ export default function HizmetlerPage() {
             Firmanıza En Uygun Çözümü Bulalım
           </h2>
           <p className="text-lg text-white/60 max-w-2xl mx-auto mb-10 leading-relaxed">
-            3 dakikalık ücretsiz analizimizle hangi AI çözümlerinin firmanıza en çok fayda
-            sağlayacağını öğrenin.
+            Ücretsiz check-up ile hangi danışmanlık alanlarının firmanıza en çok fayda
+            sağlayacağını birlikte belirleyelim.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link
               href={BRAND.tallyFormUrl}
               className="inline-flex items-center gap-2 px-8 py-4 bg-secondary text-primary font-semibold rounded-full hover:bg-secondary-hover transition-all duration-200 hover:shadow-lg hover:shadow-secondary/25"
             >
-              Ücretsiz Analiz Başlat
+              Ücretsiz Check-Up Başlatın
               <ArrowUpRight className="w-5 h-5" />
             </Link>
             <Link

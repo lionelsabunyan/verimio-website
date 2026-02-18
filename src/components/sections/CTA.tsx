@@ -69,16 +69,6 @@ export default function CTA() {
           </div>
         </FadeUp>
 
-        <FadeUp delay={0.4}>
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-6">
-            {["Sadece 3 dakika", "Kredi kartı yok", "Satış araması yok"].map((item) => (
-              <span key={item} className="flex items-center gap-1.5 text-sm text-white/50">
-                <span className="w-1 h-1 rounded-full bg-secondary/60" />
-                {item}
-              </span>
-            ))}
-          </div>
-        </FadeUp>
       </div>
     </section>
   );

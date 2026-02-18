@@ -14,19 +14,19 @@ export default function Benefits() {
 
           {/* Left */}
           <FadeIn direction="left">
-            <SectionLabel className="mb-4">Raporunuzda Ne Var?</SectionLabel>
+            <SectionLabel className="mb-4">Check-Up Raporunuzda</SectionLabel>
 
             <h2 className="text-3xl sm:text-4xl font-bold mb-5">
               Raporunuzda Neler{" "}
               <span className="gradient-text">Bulacaksınız?</span>
             </h2>
             <p className="text-lg text-foreground-secondary mb-8 leading-relaxed">
-              AI analiziniz sadece genel öneriler değil, firmanıza özel somut
-              aksiyon planı içerir.
+              Check-up raporunuz genel öneriler değil, firmanıza özel somut
+              aksiyon planı ve 90 günlük yol haritası içerir.
             </p>
 
             <Button href={BRAND.tallyFormUrl} size="lg">
-              Ücretsiz Analiz Başlat
+              Ücretsiz Check-Up Başlatın
             </Button>
           </FadeIn>
 
