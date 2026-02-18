@@ -119,6 +119,7 @@ export default function BrandPreviewClient() {
 
   return (
     <div style={{ minHeight: '100vh', background: '#0A0514', fontFamily: 'var(--font-dm-sans, system-ui)', color: '#FFFFFF' }}>
+      <style>{`nav, footer, header { display: none !important; }`}</style>
 
       {/* Header */}
       <div style={{ borderBottom: '1px solid #1A1030', padding: '16px 32px', display: 'flex', flexDirection: 'column', gap: 12 }}>
