@@ -137,6 +137,20 @@ VIDU: 'fal-ai/vidu/vidu-q1'
 
 ---
 
+## Kurumsal Kimlik (Özet)
+
+**Tam kılavuz:** `docs/BRAND.md`
+
+**Logo:** `verim` (beyaz #FFFFFF) + `io` (lime #A3E635) — lowercase, font-weight 700, letter-spacing -0.02em  
+**V Monogram:** beyaz V + lime nokta, #2E1065 arka plan  
+**Font:** DM Sans (300–700) + DM Mono — Geist kullanma  
+**Ana renkler:** Deep Indigo `#2E1065` · Vivid Lime `#A3E635` · Dark Indigo `#1E0A46` · Soft Purple `#8B5CF6`  
+**CTA buton:** her zaman lime bg (`#A3E635`) + indigo text (`#2E1065`) + bold  
+**Tutarlılık:** yeni component yaparken `docs/BRAND.md` §6.4 kontrol listesine bak  
+**Brand preview:** `https://verimio-website.vercel.app/brand-preview?token=verimio2025`
+
+---
+
 ## Renk Paleti (Admin Dark Theme)
 
 ```
