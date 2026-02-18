@@ -108,7 +108,7 @@ const SOCIAL_PROFILES = [
 ]
 
 export default function BrandPreviewClient() {
-  const [section, setSection] = useState<'logo' | 'colors' | 'typography'>('logo')
+  const [section, setSection] = useState<'logo' | 'colors' | 'typography' | 'social'>('logo')
   const [copied, setCopied] = useState<string | null>(null)
 
   const copy = (hex: string) => {
@@ -132,7 +132,7 @@ export default function BrandPreviewClient() {
           </div>
         </div>
         <div style={{ display: 'flex', gap: 8 }}>
-          {(['logo', 'colors', 'typography'] as const).map((s) => (
+          {(['logo', 'colors', 'typography', 'social'] as const).map((s) => (
             <button
               key={s}
               onClick={() => setSection(s)}
@@ -148,7 +148,7 @@ export default function BrandPreviewClient() {
                 transition: 'all 0.15s',
               }}
             >
-              {s === 'logo' ? 'Logo' : s === 'colors' ? 'Renkler' : 'Tipografi'}
+              {s === 'logo' ? 'Logo' : s === 'colors' ? 'Renkler' : s === 'typography' ? 'Tipografi' : 'Sosyal Medya'}
             </button>
           ))}
         </div>
@@ -407,6 +407,192 @@ export default function BrandPreviewClient() {
             </div>
           </div>
         )}
+
+        {/* ── SOSYAL MEDYA ── */}
+        {section === 'social' && (
+          <div>
+
+            {/* LinkedIn Banner 1584×396 */}
+            <div style={{ marginBottom: 24 }}>
+              <h2 style={{ fontSize: 22, fontWeight: 700, marginBottom: 4 }}>LinkedIn Banner</h2>
+              <p style={{ color: '#4C4462', fontSize: 14 }}>1584 × 396px</p>
+            </div>
+            <div style={{ marginBottom: 48, borderRadius: 16, overflow: 'hidden', border: '1px solid #1A1030' }}>
+              <div style={{
+                background: '#2E1065',
+                width: '100%',
+                aspectRatio: '1584/396',
+                position: 'relative',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                padding: '0 6%',
+                overflow: 'hidden',
+              }}>
+                {/* BG aksan */}
+                <div style={{ position: 'absolute', right: '-5%', top: '-40%', width: '45%', aspectRatio: '1', borderRadius: '50%', background: 'radial-gradient(circle, rgba(163,230,53,0.12) 0%, transparent 70%)' }} />
+                <div style={{ position: 'absolute', left: '20%', bottom: '-60%', width: '30%', aspectRatio: '1', borderRadius: '50%', background: 'radial-gradient(circle, rgba(139,92,246,0.15) 0%, transparent 70%)' }} />
+                {/* Sol: logo + slogan */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '2%' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '2%' }}>
+                    <div style={{ width: '5%', aspectRatio: '1', minWidth: 32, background: '#A3E635', borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <svg viewBox="0 0 64 64" fill="none" style={{ width: '60%', height: '60%' }}>
+                        <path d="M8 12 L32 52 L56 12" stroke="#2E1065" strokeWidth="9" strokeLinecap="round" strokeLinejoin="round"/>
+                        <circle cx="32" cy="10" r="6" fill="#1E0A46"/>
+                      </svg>
+                    </div>
+                    <span style={{ color: '#fff', fontSize: 'clamp(14px, 2.5vw, 28px)', fontWeight: 700, letterSpacing: '-0.02em' }}>
+                      <span>verim</span><span style={{ color: '#A3E635' }}>io</span>
+                    </span>
+                  </div>
+                  <div style={{ color: '#FFFFFF', fontSize: 'clamp(10px, 1.8vw, 20px)', fontWeight: 700, lineHeight: 1.2 }}>
+                    İş Süreçlerini<br /><span style={{ color: '#A3E635' }}>AI ile</span> Dönüştürün
+                  </div>
+                </div>
+                {/* Sağ: CTA */}
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '3%' }}>
+                  <div style={{ color: '#78716C', fontSize: 'clamp(8px, 1.2vw, 14px)', textAlign: 'right' }}>
+                    3 dakikada AI hazırlık seviyenizi öğrenin
+                  </div>
+                  <div style={{ background: '#A3E635', color: '#2E1065', padding: '6px 16px', borderRadius: 8, fontSize: 'clamp(8px, 1.2vw, 14px)', fontWeight: 700 }}>
+                    Ücretsiz Başla →
+                  </div>
+                  <div style={{ color: '#4C4462', fontSize: 'clamp(7px, 1vw, 12px)' }}>verimio.com</div>
+                </div>
+              </div>
+              <div style={{ background: '#0F0A1E', padding: '10px 16px', fontSize: 12, color: '#4C4462' }}>LinkedIn Banner — 1584×396</div>
+            </div>
+
+            {/* Twitter/X Header 1500×500 */}
+            <div style={{ marginBottom: 24 }}>
+              <h2 style={{ fontSize: 22, fontWeight: 700, marginBottom: 4 }}>Twitter / X Header</h2>
+              <p style={{ color: '#4C4462', fontSize: 14 }}>1500 × 500px</p>
+            </div>
+            <div style={{ marginBottom: 48, borderRadius: 16, overflow: 'hidden', border: '1px solid #1A1030' }}>
+              <div style={{
+                background: '#000000',
+                width: '100%',
+                aspectRatio: '1500/500',
+                position: 'relative',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                overflow: 'hidden',
+              }}>
+                <div style={{ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%,-50%)', width: '60%', aspectRatio: '1', borderRadius: '50%', background: 'radial-gradient(circle, rgba(163,230,53,0.08) 0%, transparent 70%)' }} />
+                <div style={{ textAlign: 'center', position: 'relative' }}>
+                  <div style={{ color: '#fff', fontSize: 'clamp(18px, 4vw, 52px)', fontWeight: 700, letterSpacing: '-0.03em', lineHeight: 1.1, marginBottom: 8 }}>
+                    <span>verim</span><span style={{ color: '#A3E635' }}>io</span>
+                  </div>
+                  <div style={{ color: '#78716C', fontSize: 'clamp(10px, 1.5vw, 18px)' }}>
+                    İş süreçlerini AI ile dönüştür · verimio.com
+                  </div>
+                </div>
+              </div>
+              <div style={{ background: '#0F0A1E', padding: '10px 16px', fontSize: 12, color: '#4C4462' }}>Twitter/X Header — 1500×500</div>
+            </div>
+
+            {/* Instagram Post 1080×1080 */}
+            <div style={{ marginBottom: 24 }}>
+              <h2 style={{ fontSize: 22, fontWeight: 700, marginBottom: 4 }}>Instagram Post</h2>
+              <p style={{ color: '#4C4462', fontSize: 14 }}>1080 × 1080px — kare format</p>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16, marginBottom: 48 }}>
+              {/* Tip 1: Dark full */}
+              <div style={{ borderRadius: 16, overflow: 'hidden', border: '1px solid #1A1030' }}>
+                <div style={{ background: '#2E1065', aspectRatio: '1', position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '12%', overflow: 'hidden' }}>
+                  <div style={{ position: 'absolute', bottom: '-20%', right: '-20%', width: '60%', aspectRatio: '1', borderRadius: '50%', background: 'radial-gradient(circle, rgba(163,230,53,0.2) 0%, transparent 70%)' }} />
+                  <svg viewBox="0 0 64 64" fill="none" style={{ width: '30%', marginBottom: '8%' }}>
+                    <path d="M8 12 L32 52 L56 12" stroke="white" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round"/>
+                    <circle cx="32" cy="10" r="6" fill="#A3E635"/>
+                  </svg>
+                  <div style={{ color: '#fff', fontSize: 'clamp(14px, 3.5vw, 24px)', fontWeight: 700, textAlign: 'center', letterSpacing: '-0.02em' }}>
+                    <span>verim</span><span style={{ color: '#A3E635' }}>io</span>
+                  </div>
+                  <div style={{ color: '#78716C', fontSize: 'clamp(8px, 1.5vw, 11px)', textAlign: 'center', marginTop: '4%' }}>İş Süreçlerini AI ile Dönüştür</div>
+                </div>
+                <div style={{ background: '#0F0A1E', padding: '10px 14px', fontSize: 11, color: '#4C4462' }}>Dark — Monogram</div>
+              </div>
+              {/* Tip 2: Lime accent */}
+              <div style={{ borderRadius: 16, overflow: 'hidden', border: '1px solid #1A1030' }}>
+                <div style={{ background: '#1E0A46', aspectRatio: '1', position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'flex-end', padding: '12%', overflow: 'hidden' }}>
+                  <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: '#A3E635' }} />
+                  <div style={{ color: '#A3E635', fontSize: 'clamp(8px, 1.5vw, 11px)', fontWeight: 600, letterSpacing: '0.1em', marginBottom: '4%' }}>AI DANIŞMANLIK</div>
+                  <div style={{ color: '#fff', fontSize: 'clamp(12px, 3vw, 20px)', fontWeight: 700, lineHeight: 1.2, marginBottom: '6%' }}>3 dakikada<br />AI hazırlık<br />seviyeni öğren</div>
+                  <div style={{ background: '#A3E635', color: '#2E1065', padding: '6px 14px', borderRadius: 8, fontSize: 'clamp(8px, 1.2vw, 11px)', fontWeight: 700 }}>Ücretsiz →</div>
+                </div>
+                <div style={{ background: '#0F0A1E', padding: '10px 14px', fontSize: 11, color: '#4C4462' }}>Dark — İçerik Post</div>
+              </div>
+              {/* Tip 3: Light */}
+              <div style={{ borderRadius: 16, overflow: 'hidden', border: '1px solid #1A1030' }}>
+                <div style={{ background: '#F5F5F4', aspectRatio: '1', position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '12%', overflow: 'hidden' }}>
+                  <div style={{ position: 'absolute', top: '8%', right: '8%', width: '20%', aspectRatio: '1', borderRadius: '50%', background: 'rgba(163,230,53,0.3)' }} />
+                  <svg viewBox="0 0 64 64" fill="none" style={{ width: '28%', marginBottom: '8%' }}>
+                    <path d="M8 12 L32 52 L56 12" stroke="#2E1065" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round"/>
+                    <circle cx="32" cy="10" r="6" fill="#4D7C0F"/>
+                  </svg>
+                  <div style={{ color: '#2E1065', fontSize: 'clamp(14px, 3.5vw, 24px)', fontWeight: 700, textAlign: 'center', letterSpacing: '-0.02em' }}>
+                    <span>verim</span><span style={{ color: '#4D7C0F' }}>io</span>
+                  </div>
+                  <div style={{ color: '#78716C', fontSize: 'clamp(8px, 1.5vw, 11px)', textAlign: 'center', marginTop: '4%' }}>verimio.com</div>
+                </div>
+                <div style={{ background: '#0F0A1E', padding: '10px 14px', fontSize: 11, color: '#4C4462' }}>Light — Monogram</div>
+              </div>
+            </div>
+
+            {/* OG / Link Preview */}
+            <div style={{ marginBottom: 24 }}>
+              <h2 style={{ fontSize: 22, fontWeight: 700, marginBottom: 4 }}>OG / Link Önizleme</h2>
+              <p style={{ color: '#4C4462', fontSize: 14 }}>1200 × 630px — WhatsApp, Slack, Twitter link paylaşımı</p>
+            </div>
+            <div style={{ borderRadius: 16, overflow: 'hidden', border: '1px solid #1A1030' }}>
+              <div style={{
+                background: '#2E1065',
+                width: '100%',
+                aspectRatio: '1200/630',
+                position: 'relative',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'flex-start',
+                justifyContent: 'space-between',
+                padding: '6%',
+                overflow: 'hidden',
+              }}>
+                <div style={{ position: 'absolute', top: '-15%', right: '-10%', width: '40%', aspectRatio: '1', borderRadius: '50%', background: 'radial-gradient(circle, rgba(163,230,53,0.15) 0%, transparent 70%)' }} />
+                <div style={{ position: 'absolute', bottom: '-10%', left: '-5%', width: '25%', aspectRatio: '1', borderRadius: '50%', background: 'radial-gradient(circle, rgba(139,92,246,0.2) 0%, transparent 70%)' }} />
+                {/* Logo */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1.5%' }}>
+                  <div style={{ width: '5%', minWidth: 28, aspectRatio: '1', background: '#A3E635', borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <svg viewBox="0 0 64 64" fill="none" style={{ width: '60%', height: '60%' }}>
+                      <path d="M8 12 L32 52 L56 12" stroke="#2E1065" strokeWidth="9" strokeLinecap="round" strokeLinejoin="round"/>
+                      <circle cx="32" cy="10" r="6" fill="#1E0A46"/>
+                    </svg>
+                  </div>
+                  <span style={{ color: '#fff', fontSize: 'clamp(12px, 2vw, 26px)', fontWeight: 700, letterSpacing: '-0.02em' }}>
+                    <span>verim</span><span style={{ color: '#A3E635' }}>io</span>
+                  </span>
+                </div>
+                {/* Orta metin */}
+                <div>
+                  <div style={{ color: '#fff', fontSize: 'clamp(16px, 4vw, 56px)', fontWeight: 700, lineHeight: 1.1, letterSpacing: '-0.03em', marginBottom: '2%' }}>
+                    İş Süreçlerinizi<br /><span style={{ color: '#A3E635' }}>AI ile</span> Dönüştürün
+                  </div>
+                  <div style={{ color: '#78716C', fontSize: 'clamp(9px, 1.5vw, 20px)' }}>
+                    3 dakikada şirketinizin AI hazırlık seviyesini öğrenin.
+                  </div>
+                </div>
+                {/* Alt CTA */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '2%' }}>
+                  <div style={{ background: '#A3E635', color: '#2E1065', padding: '8px 20px', borderRadius: 10, fontSize: 'clamp(9px, 1.3vw, 16px)', fontWeight: 700 }}>Ücretsiz Başla</div>
+                  <span style={{ color: '#4C4462', fontSize: 'clamp(8px, 1vw, 14px)' }}>verimio.com</span>
+                </div>
+              </div>
+              <div style={{ background: '#0F0A1E', padding: '10px 16px', fontSize: 12, color: '#4C4462' }}>OG Image — 1200×630 (otomatik oluşturuluyor)</div>
+            </div>
+
+          </div>
+        )}
+
       </div>
     </div>
   )
