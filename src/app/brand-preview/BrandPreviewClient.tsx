@@ -21,6 +21,7 @@ import BlogCardImage from '@/components/brand/BlogCardImage'
 import ArticlePostTemplate from '@/components/brand/social/ArticlePostTemplate'
 import TipCardTemplate from '@/components/brand/social/TipCardTemplate'
 import type { SocialAspect } from '@/components/brand/social/ArticlePostTemplate'
+import BlogSocialCard from '@/components/brand/BlogSocialCard'
 
 // ─── Renk Sistemi ────────────────────────────────────────────────────────────
 const COLORS = {
@@ -116,6 +117,31 @@ const BLOG_CATEGORIES = [
   { category: 'customer' as const, label: 'Müşteri Deneyimi' },
   { category: 'roi' as const, label: 'ROI & Verimlilik' },
   { category: 'tutorial' as const, label: 'Rehber' },
+]
+
+// ─── Hybrid Blog Görselleri (v3 — Blog A + C hybrid) ─────────────────────────
+const FLUX_V3_HYBRID = [
+  {
+    id: "hybrid-1",
+    label: "Hybrid 1 — Editorial Geometrik",
+    desc: "HBR stili · krem zemin · indigo dikdörtgen · lime aksan köşe",
+    size: "landscape_16_9",
+    url: "https://v3b.fal.media/files/b/0a8f1da1/yht2u2fKwI416RhjTKkmv_70f95f2bec4840bba18c2ccdf3c9ae7b.jpg",
+  },
+  {
+    id: "hybrid-2",
+    label: "Hybrid 2 — Diagonal Stroke",
+    desc: "McKinsey stili · krem→gri gradient · çapraz indigo fırça · lime çizgi",
+    size: "landscape_16_9",
+    url: "https://v3b.fal.media/files/b/0a8f1da1/1Bs67SqzRp9sgd5H4mZfV_8bb4be8520a1419f896990111d923927.jpg",
+  },
+  {
+    id: "hybrid-3",
+    label: "Hybrid 3 — Halo & Dots",
+    desc: "Stripe stili · krem kağıt doku · indigo halo · nokta grid · lime aksanlar",
+    size: "landscape_16_9",
+    url: "https://v3b.fal.media/files/b/0a8f1da1/5Oq7anHFhpI-TGv0xxkoo_d41ae8d9e8a441d98329b5a4724f20c4.jpg",
+  },
 ]
 
 // ─── Yeni FLUX Görselleri (v2 — Açık & temiz, FLUX only) ─────────────────────
@@ -252,7 +278,7 @@ type AICategory = keyof typeof AI_PROMPTS
 type AIImageState = Record<string, { url?: string; loading?: boolean; error?: string }>
 
 // ─── Tab Types ────────────────────────────────────────────────────────────────
-type Section = 'logo' | 'colors' | 'typography' | 'social' | 'icons' | 'illustration' | 'blog' | 'templates' | 'ai'
+type Section = 'logo' | 'colors' | 'typography' | 'social' | 'icons' | 'illustration' | 'blog' | 'templates' | 'social-blog' | 'ai'
 
 const TABS: { id: Section; label: string }[] = [
   { id: 'logo', label: 'Logo' },
@@ -262,8 +288,9 @@ const TABS: { id: Section; label: string }[] = [
   { id: 'illustration', label: 'İllüstrasyon' },
   { id: 'blog', label: 'Blog Görselleri' },
   { id: 'templates', label: 'Sosyal Şablonlar' },
+  { id: 'social-blog', label: '✦ Blog Sosyal' },
   { id: 'social', label: 'Sosyal Profil' },
-  { id: 'ai', label: '✦ AI Görseller' },
+  { id: 'ai', label: 'AI Lab' },
 ]
 
 // ─── Ortak yardımcılar ────────────────────────────────────────────────────────
@@ -916,6 +943,84 @@ export default function BrandPreviewClient() {
           </div>
         )}
 
+        {/* ══ BLOG SOSYAL ══ */}
+        {section === 'social-blog' && (
+          <div>
+            <div style={{ marginBottom: 40 }}>
+              <h2 style={{ fontSize: 22, fontWeight: 700, marginBottom: 4 }}>Blog → Sosyal Medya Kartı</h2>
+              <p style={{ color: '#4C4462', fontSize: 14, maxWidth: 600 }}>
+                Blog kapak görseli üzerine gradient overlay + kategori pill + başlık + indigo şerit + logo.
+                3 hybrid görsel (v3) × 4 platform = 12 kombinasyon.
+              </p>
+            </div>
+
+            {/* Hybrid Blog Görselleri — v3 */}
+            {(() => {
+              const HYBRID_IMAGES = [
+                {
+                  id: 'hybrid-1',
+                  url: 'https://v3b.fal.media/files/b/0a8f1da1/yht2u2fKwI416RhjTKkmv_70f95f2bec4840bba18c2ccdf3c9ae7b.jpg',
+                  label: 'Hybrid 1 — Editorial Geometrik',
+                },
+                {
+                  id: 'hybrid-2',
+                  url: 'https://v3b.fal.media/files/b/0a8f1da1/1Bs67SqzRp9sgd5H4mZfV_8bb4be8520a1419f896990111d923927.jpg',
+                  label: 'Hybrid 2 — Diagonal Stroke',
+                },
+                {
+                  id: 'hybrid-3',
+                  url: 'https://v3b.fal.media/files/b/0a8f1da1/5Oq7anHFhpI-TGv0xxkoo_d41ae8d9e8a441d98329b5a4724f20c4.jpg',
+                  label: 'Hybrid 3 — Halo & Dots',
+                },
+              ]
+              const SAMPLE_POSTS = [
+                { title: 'ChatGPT\'yi İş Süreçlerine Entegre Etmenin 5 Adımı', category: 'AI Araçları', date: '19 Şubat 2026' },
+                { title: 'Muhasebe Süreçlerini Otomatikleştirmenin Tam Rehberi', category: 'Otomasyon', date: '12 Şubat 2026' },
+                { title: 'AI Yatırımınızın Geri Dönüşünü Nasıl Ölçersiniz?', category: 'ROI & Verimlilik', date: '5 Şubat 2026' },
+              ]
+
+              return (
+                <div>
+                  {/* Platform seçici */}
+                  {(['linkedin', 'instagram', 'twitter', 'story'] as SocialAspect[]).map((asp, aspIdx) => (
+                    <div key={asp} style={{ marginBottom: 56 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
+                        <div style={{ fontSize: 13, fontWeight: 700, color: '#FFFFFF' }}>
+                          {asp === 'linkedin' ? 'LinkedIn — 1200×628' : asp === 'instagram' ? 'Instagram — 1080×1080' : asp === 'twitter' ? 'Twitter — 1200×675' : 'Story — 1080×1920'}
+                        </div>
+                        <div style={{ height: 1, flex: 1, background: '#1A1030' }} />
+                      </div>
+                      <div style={{ display: 'grid', gridTemplateColumns: asp === 'story' ? 'repeat(3, 1fr)' : 'repeat(3, 1fr)', gap: 24 }}>
+                        {HYBRID_IMAGES.map((img, imgIdx) => (
+                          <div key={img.id} style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                            <div style={{ fontSize: 11, color: '#4C4462', fontFamily: 'monospace' }}>{img.label}</div>
+                            <div style={card({ padding: 12 })}>
+                              <BlogSocialCard
+                                imageUrl={img.url}
+                                title={SAMPLE_POSTS[imgIdx % 3].title}
+                                category={SAMPLE_POSTS[imgIdx % 3].category}
+                                date={asp === 'linkedin' || asp === 'story' ? SAMPLE_POSTS[imgIdx % 3].date : undefined}
+                                aspect={asp}
+                                width={asp === 'story' ? 220 : 340}
+                              />
+                            </div>
+                            {aspIdx === 0 && (
+                              <a href={img.url} target="_blank" rel="noopener noreferrer"
+                                style={{ fontSize: 11, color: '#A3E635', textDecoration: 'none', textAlign: 'center' }}>
+                                ↗ Ham görsel
+                              </a>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )
+            })()}
+          </div>
+        )}
+
         {/* ══ AI GÖRSELLER ══ */}
         {section === 'ai' && (
           <div>
@@ -926,6 +1031,40 @@ export default function BrandPreviewClient() {
                   Recraft V3 (illüstrasyon) + FLUX 1.1 Pro (fotoğrafik/blog) modelleri. Her kategori için 3 farklı örnek üretilebilir.
                   FAL_KEY gerekli — <span style={{ color: '#A3E635', fontFamily: 'monospace' }}>.env.local</span>'de olmalı.
                 </p>
+              </div>
+            </div>
+
+            {/* ── v3: Hybrid Blog Görselleri ───────────────────────────────── */}
+            <div style={{ marginBottom: 56 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 6 }}>
+                <h3 style={{ fontSize: 18, fontWeight: 700, margin: 0 }}>v3 — Hybrid Blog Görselleri</h3>
+                <span style={{ background: '#A3E635', color: '#2E1065', fontSize: 10, fontWeight: 700, padding: '3px 10px', borderRadius: 6 }}>FLUX only</span>
+                <span style={{ background: '#1A1030', color: '#78716C', fontSize: 10, fontWeight: 600, padding: '3px 10px', borderRadius: 6 }}>Blog A + C hybrid · açık zemin</span>
+              </div>
+              <p style={{ color: '#4C4462', fontSize: 13, marginBottom: 24 }}>
+                HBR editorial + Stripe minimal karışımı — sosyal karta hazır altyapı
+              </p>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20, marginBottom: 8 }}>
+                {FLUX_V3_HYBRID.map((item) => (
+                  <div key={item.id} style={card()}>
+                    <div style={{ aspectRatio: '16/9', overflow: 'hidden', position: 'relative' }}>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={item.url} alt={item.label} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                      <div style={{ position: 'absolute', top: 10, right: 10, background: 'rgba(163,230,53,0.9)', color: '#2E1065', fontSize: 10, fontWeight: 700, padding: '3px 8px', borderRadius: 6 }}>FLUX 1.1 Pro</div>
+                    </div>
+                    <div style={{ padding: '14px 16px' }}>
+                      <div style={{ fontSize: 13, fontWeight: 600, color: '#FFFFFF', marginBottom: 4 }}>{item.label}</div>
+                      <div style={{ fontSize: 11, color: '#4C4462', lineHeight: 1.5, marginBottom: 12 }}>{item.desc}</div>
+                      <a href={item.url} target="_blank" rel="noopener noreferrer"
+                        style={{ fontSize: 12, color: '#A3E635', textDecoration: 'none', fontWeight: 600 }}>
+                        ↗ Tam boyut
+                      </a>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div style={{ fontSize: 12, color: '#4C4462', marginBottom: 8 }}>
+                → Sosyal kart önizlemesi için <strong style={{ color: '#A3E635' }}>✦ Blog Sosyal</strong> sekmesine bak
               </div>
             </div>
 
