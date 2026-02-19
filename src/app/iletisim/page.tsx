@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight, Mail, Clock, MapPin, Shield, XCircle, Timer, CalendarClock } from "lucide-react";
+import { ArrowUpRight, Mail, Clock, MapPin, Shield, XCircle, Timer } from "lucide-react";
 import { BRAND } from "@/lib/constants";
 import { getContactIconStyle } from "@/lib/brand-colors";
 import type { Metadata } from "next";
@@ -18,14 +18,6 @@ const contactMethods = [
     value: BRAND.email,
     href: `mailto:${BRAND.email}`,
     active: true,
-  },
-  {
-    icon: CalendarClock,
-    title: "Görüşme Planla",
-    description: "Ücretsiz 20 dakikalık danışmanlık",
-    value: "Yakında aktif olacak",
-    href: null,
-    active: false,
   },
   {
     icon: Clock,

@@ -45,7 +45,11 @@ export default function StepIndicator({
                 }`}
                 animate={{ scale: active ? 1.2 : 1 }}
                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                aria-hidden="true"
               />
+              <span className="sr-only">
+                {done ? `${label} — tamamlandı` : active ? `${label} — geçerli adım` : label}
+              </span>
               <span
                 className={`hidden md:block text-xs transition-colors duration-200 ${
                   active

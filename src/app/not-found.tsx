@@ -4,7 +4,7 @@ import { FloatingShapes, RadialGlow } from "@/components/brand/Decoratives";
 
 export default function NotFound() {
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <main className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Background decoratives */}
       <RadialGlow color="lime" size={400} opacity={0.07} className="top-1/4 -right-20" />
       <RadialGlow color="purple" size={350} opacity={0.06} className="bottom-1/4 -left-20" />
@@ -64,14 +64,22 @@ export default function NotFound() {
           Ana sayfadan devam edebilirsiniz.
         </p>
 
-        <Link
-          href="/"
-          className="inline-flex items-center gap-2 px-7 py-3.5 bg-secondary text-primary font-semibold rounded-full hover:bg-secondary-hover transition-all duration-200 hover:shadow-lg hover:shadow-secondary/25 text-sm"
-        >
-          Ana Sayfaya Dön
-          <ArrowUpRight className="w-4 h-4" />
-        </Link>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+          <button
+            onClick={() => history.back()}
+            className="inline-flex items-center gap-2 px-6 py-3.5 border border-border text-foreground font-medium rounded-full hover:border-border-accent hover:bg-surface transition-all duration-200 text-sm"
+          >
+            ← Geri Git
+          </button>
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 px-7 py-3.5 bg-secondary text-primary font-semibold rounded-full hover:bg-secondary-hover transition-all duration-200 hover:shadow-lg hover:shadow-secondary/25 text-sm"
+          >
+            Ana Sayfaya Dön
+            <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
+          </Link>
+        </div>
       </div>
-    </div>
+    </main>
   );
 }
