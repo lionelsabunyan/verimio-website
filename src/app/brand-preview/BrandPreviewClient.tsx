@@ -139,6 +139,19 @@ const HAKKIMIZDA_HEROES = [
     desc: "Grafik tasarım odaklı · geometrik kompozisyon gücü · brief uygunluğu yüksek",
     url: "https://v3b.fal.media/files/b/0a8f1e08/2tgNjMvxSdsx-4Hlcxj6G_image.png",
   },
+  {
+    id: "mor-varyant",
+    label: "FLUX — Mor Varyant ✦",
+    desc: "Koyu indigo→mor gradient · glowing halo · lime aksanlar · dark mode premium · siteyle uyumlu",
+    url: "https://v3b.fal.media/files/b/0a8f1e22/Tm44LnbK5V3V5D8isVrLN_d8e0a6e84e084ae69a4fa4803a1ce9e1.jpg",
+    highlight: true,
+  },
+  {
+    id: "surec-anlati",
+    label: "FLUX — Süreç Anlatı (deneme)",
+    desc: "Analiz → Otomasyon → Sonuç akışı · krem zemin · süreç ikonları · lime=sonuç vurgusu",
+    url: "https://v3b.fal.media/files/b/0a8f1e22/YEYSDOWltOA8nRzG_omEx_d2a7b9ac1d564e84b55e0c87ea7af35d.jpg",
+  },
 ]
 
 // ─── Hybrid Blog Görselleri (v3 — Blog A + C hybrid) ─────────────────────────
@@ -970,36 +983,48 @@ export default function BrandPreviewClient() {
         {section === 'hakkimizda-heroes' && (
           <div>
             <div style={{ marginBottom: 40 }}>
-              <h2 style={{ fontSize: 22, fontWeight: 700, marginBottom: 4 }}>Hakkımızda Hero — 3 Model Karşılaştırması</h2>
-              <p style={{ color: '#4C4462', fontSize: 14, maxWidth: 620 }}>
-                Hybrid-3 çizgisi (krem zemin · indigo halo · nokta grid · lime aksanlar) — aynı brief, 3 farklı model.
-                Sayfada sol kolon metin, sağ kolon bu görsel olacak.
+              <h2 style={{ fontSize: 22, fontWeight: 700, marginBottom: 4 }}>Hakkımızda Hero — Görsel Yön Araştırması</h2>
+              <p style={{ color: '#4C4462', fontSize: 14, maxWidth: 660 }}>
+                Hybrid-3 çizgisi · 3 model karşılaştırması + 2 yeni yön denemesi (mor varyant & süreç anlatı).
+                Her birinin altında gerçek 2 kolon sayfa simülasyonu.
               </p>
             </div>
 
-            {/* 3 görsel yan yana */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24, marginBottom: 56 }}>
-              {HAKKIMIZDA_HEROES.map((item) => (
+            {/* 5 görsel — ilk 3 üst sıra, son 2 alt sıra vurgulu */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20, marginBottom: 20 }}>
+              {HAKKIMIZDA_HEROES.slice(0, 3).map((item) => (
                 <div key={item.id} style={card()}>
                   <div style={{ aspectRatio: '4/3', overflow: 'hidden', position: 'relative' }}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={item.url} alt={item.label} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-                    <div style={{
-                      position: 'absolute', top: 10, left: 10,
-                      background: 'rgba(10,5,20,0.75)', backdropFilter: 'blur(4px)',
-                      borderRadius: 8, padding: '4px 10px',
-                      fontSize: 11, fontWeight: 700, color: '#A3E635',
-                    }}>
+                    <div style={{ position: 'absolute', top: 10, left: 10, background: 'rgba(10,5,20,0.75)', backdropFilter: 'blur(4px)', borderRadius: 8, padding: '4px 10px', fontSize: 11, fontWeight: 700, color: '#A3E635' }}>
                       {item.label}
                     </div>
                   </div>
-                  <div style={{ padding: '16px 18px' }}>
-                    <div style={{ fontSize: 14, fontWeight: 700, color: '#FFFFFF', marginBottom: 6 }}>{item.label}</div>
-                    <div style={{ fontSize: 12, color: '#4C4462', lineHeight: 1.6, marginBottom: 14 }}>{item.desc}</div>
-                    <a href={item.url} target="_blank" rel="noopener noreferrer"
-                      style={{ fontSize: 12, color: '#A3E635', textDecoration: 'none', fontWeight: 600 }}>
-                      ↗ Tam boyut (orijinal kalite)
-                    </a>
+                  <div style={{ padding: '14px 16px' }}>
+                    <div style={{ fontSize: 13, fontWeight: 700, color: '#FFFFFF', marginBottom: 4 }}>{item.label}</div>
+                    <div style={{ fontSize: 11, color: '#4C4462', lineHeight: 1.5, marginBottom: 10 }}>{item.desc}</div>
+                    <a href={item.url} target="_blank" rel="noopener noreferrer" style={{ fontSize: 11, color: '#A3E635', textDecoration: 'none', fontWeight: 600 }}>↗ Tam boyut</a>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Alt sıra — 2 yeni yön vurgulu */}
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 48 }}>
+              {HAKKIMIZDA_HEROES.slice(3).map((item) => (
+                <div key={item.id} style={{ ...card(), border: '1px solid #A3E635' }}>
+                  <div style={{ background: '#A3E635', padding: '6px 14px', display: 'flex', alignItems: 'center', gap: 8 }}>
+                    <span style={{ fontSize: 11, fontWeight: 700, color: '#2E1065' }}>YENİ YÖN DENEMESİ</span>
+                  </div>
+                  <div style={{ aspectRatio: '4/3', overflow: 'hidden', position: 'relative' }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={item.url} alt={item.label} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                  </div>
+                  <div style={{ padding: '14px 16px' }}>
+                    <div style={{ fontSize: 13, fontWeight: 700, color: '#FFFFFF', marginBottom: 4 }}>{item.label}</div>
+                    <div style={{ fontSize: 11, color: '#4C4462', lineHeight: 1.5, marginBottom: 10 }}>{item.desc}</div>
+                    <a href={item.url} target="_blank" rel="noopener noreferrer" style={{ fontSize: 11, color: '#A3E635', textDecoration: 'none', fontWeight: 600 }}>↗ Tam boyut</a>
                   </div>
                 </div>
               ))}
