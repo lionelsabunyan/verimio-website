@@ -105,38 +105,63 @@ export const TESTIMONIALS = [
 ] as const;
 
 export const EXPERTISE_ITEMS = [
-  "Süreç Danışmanlığı ve Optimizasyonu",
-  "İş Akışı Tasarımı ve Otomasyonu",
-  "AI Entegrasyon Stratejisi",
-  "Sesli ve Yazılı Müşteri Deneyimi",
-  "Operasyonel Verimlilik Analizi",
+  "Süreç Analizi & Optimizasyonu",
+  "İş Akışı Otomasyonu",
+  "Müşteri Deneyimi Otomasyonu",
+  "Veri & Raporlama Otomasyonu",
+  "AI Strateji & Entegrasyon",
 ] as const;
 
 export const FAQ_ITEMS = [
   {
     question: "Check-up süreci nasıl işliyor?",
     answer:
-      "Sektörünüze ve şirket yapınıza özel birkaç soruyu yanıtlıyorsunuz. Uzman ekibimiz cevaplarınızı değerlendirip 48 saat içinde size özel bir rapor hazırlıyor.",
+      "Sektörünüze ve şirket yapınıza özel bir form dolduruyorsunuz. Uzman ekibimiz cevaplarınızı inceleyip 48 saat içinde size özel bir analiz raporu hazırlıyor. Süreç sizden yalnızca 15-20 dakika alıyor.",
   },
   {
     question: "Raporumda neler yer alıyor?",
     answer:
-      "Otomasyon potansiyeliniz, tasarruf tahminleri, öncelikli aksiyon alanları ve 90 günlük uygulama yol haritası. Genel öneriler değil, firmanıza özel somut bulgular.",
+      "Otomasyon potansiyeliniz (saat/hafta), tahmini maliyet tasarrufu (₺/ay), öncelikli aksiyon alanları, her alan için somut çözüm önerileri ve 90 günlük uygulama yol haritası. Genel değerlendirme değil — firmanıza ve operasyonunuza özel bulgular.",
   },
   {
     question: "Danışmanlık hizmeti zorunlu mu?",
     answer:
-      "Hayır. Raporu aldıktan sonra nasıl ilerleyeceğiniz tamamen size bağlı. İsterseniz ücretsiz bir görüşmeyle soruları netleştirebilirsiniz.",
+      "Hayır. Raporu aldıktan sonra nasıl ilerleyeceğinize siz karar veriyorsunuz. Raporu kendi ekibinizle hayata geçirebilir, ya da isterseniz uygulama sürecinde de yanınızda olmamızı talep edebilirsiniz.",
+  },
+  {
+    question: "Danışmanlık süreci ne kadar sürer?",
+    answer:
+      "Bu, firmanızın ihtiyacına göre değişir. Check-up raporu 48 saat içinde teslim edilir. Uygulama danışmanlığı ise projenin kapsamına göre birkaç haftadan birkaç aya kadar uzanabilir. Her süreç netleştirildikten sonra size özel bir zaman çizelgesi hazırlanır.",
+  },
+  {
+    question: "Fiyatlandırma nasıl?",
+    answer:
+      "Şirket Check-Up'ı ücretsizdir. Uygulama danışmanlığı için fiyatlandırma, projenin kapsamına ve sürekliliğine göre belirlenir. Check-up raporunun ardından ihtiyacınıza göre bir teklif sunuyoruz — sürpriz maliyet yok.",
+  },
+  {
+    question: "Ne zaman sonuç görürüz?",
+    answer:
+      "İlk somut etkiler, genellikle uygulama başladıktan 4-8 hafta içinde ölçülebilir hale gelir. ROI hesabı ve beklentiler, check-up raporunda firmanıza özel olarak ortaya konur.",
+  },
+  {
+    question: "Belirli araçlara ya da platformlara bağlı mısınız?",
+    answer:
+      "Hayır. Firmaya özgü en uygun çözümü öneriyoruz. Belirli bir yazılım veya platform satmıyoruz; bağımsız bir danışman olarak yalnızca firmanızın çıkarına en iyi hizmet eden araçları tavsiye ediyoruz.",
   },
   {
     question: "Hangi sektörlerde çalışıyorsunuz?",
     answer:
-      "Üretim, lojistik, profesyonel hizmetler, finans, e-ticaret ve teknoloji başta olmak üzere kurumsal yapıdaki tüm sektörlerde hizmet veriyoruz.",
+      "Üretim, lojistik, profesyonel hizmetler, finans, e-ticaret ve teknoloji başta olmak üzere kurumsal yapıdaki her sektörde hizmet veriyoruz. Ortak nokta: operasyonel verimliliği artırmak isteyen, büyüme odaklı firmalar.",
+  },
+  {
+    question: "Uygulama sonrasında destek sağlıyor musunuz?",
+    answer:
+      "Evet. Danışmanlık ilişkimiz rapor teslimiyle bitmiyor. Uygulama sürecinde takip, ince ayar ve gerektiğinde yeniden planlama desteği sunuyoruz. Süreci birlikte tamamlamak temel çalışma biçimimiz.",
   },
   {
     question: "Verilerimizin gizliliği nasıl korunuyor?",
     answer:
-      "Paylaştığınız bilgiler yalnızca analiz amacıyla kullanılır, şifrelenerek saklanır ve üçüncü taraflarla kesinlikle paylaşılmaz. Talep halinde NDA imzalayabiliriz.",
+      "Paylaştığınız bilgiler yalnızca analiz amacıyla kullanılır, şifrelenerek saklanır ve kesinlikle üçüncü taraflarla paylaşılmaz. Talep etmeniz halinde analiz öncesinde NDA imzalayabiliriz.",
   },
 ] as const;
 
