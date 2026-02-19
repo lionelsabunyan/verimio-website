@@ -119,6 +119,28 @@ const BLOG_CATEGORIES = [
   { category: 'tutorial' as const, label: 'Rehber' },
 ]
 
+// ─── Hakkımızda Hero Görselleri (v4 — 3 farklı model) ───────────────────────
+const HAKKIMIZDA_HEROES = [
+  {
+    id: "hakkimizda-flux",
+    label: "FLUX 1.1 Pro",
+    desc: "Fotoğrafik kalite · hybrid-3 çizgisi · krem zemin · indigo halo · lime nokta aksanlar",
+    url: "https://v3b.fal.media/files/b/0a8f1e05/pJaVCx0JzU_cAFTY7as5m_310a8163c1f14ab79b519cc75bfcb006.jpg",
+  },
+  {
+    id: "hakkimizda-ultra",
+    label: "FLUX 1.1 Pro Ultra",
+    desc: "En yüksek detay · ultra premium kalite · aynı brief farklı render",
+    url: "https://v3b.fal.media/files/b/0a8f1e06/fS-gz4D8q-ESFnjHxQuIk_5cd837778af44e84b13ce4933e743146.jpg",
+  },
+  {
+    id: "hakkimizda-ideogram",
+    label: "Ideogram v3",
+    desc: "Grafik tasarım odaklı · geometrik kompozisyon gücü · brief uygunluğu yüksek",
+    url: "https://v3b.fal.media/files/b/0a8f1e08/2tgNjMvxSdsx-4Hlcxj6G_image.png",
+  },
+]
+
 // ─── Hybrid Blog Görselleri (v3 — Blog A + C hybrid) ─────────────────────────
 const FLUX_V3_HYBRID = [
   {
@@ -278,7 +300,7 @@ type AICategory = keyof typeof AI_PROMPTS
 type AIImageState = Record<string, { url?: string; loading?: boolean; error?: string }>
 
 // ─── Tab Types ────────────────────────────────────────────────────────────────
-type Section = 'logo' | 'colors' | 'typography' | 'social' | 'icons' | 'illustration' | 'blog' | 'templates' | 'social-blog' | 'ai'
+type Section = 'logo' | 'colors' | 'typography' | 'social' | 'icons' | 'illustration' | 'blog' | 'templates' | 'social-blog' | 'hakkimizda-heroes' | 'ai'
 
 const TABS: { id: Section; label: string }[] = [
   { id: 'logo', label: 'Logo' },
@@ -289,6 +311,7 @@ const TABS: { id: Section; label: string }[] = [
   { id: 'blog', label: 'Blog Görselleri' },
   { id: 'templates', label: 'Sosyal Şablonlar' },
   { id: 'social-blog', label: '✦ Blog Sosyal' },
+  { id: 'hakkimizda-heroes', label: '✦ Hakkımızda Hero' },
   { id: 'social', label: 'Sosyal Profil' },
   { id: 'ai', label: 'AI Lab' },
 ]
@@ -940,6 +963,101 @@ export default function BrandPreviewClient() {
               </div>
               <div style={{ background: '#0F0A1E', padding: '10px 16px', fontSize: 12, color: '#4C4462' }}>OG Image — 1200×630 (otomatik oluşturuluyor)</div>
             </div>
+          </div>
+        )}
+
+        {/* ══ HAKKIMIZDAHEROʼLARI ══ */}
+        {section === 'hakkimizda-heroes' && (
+          <div>
+            <div style={{ marginBottom: 40 }}>
+              <h2 style={{ fontSize: 22, fontWeight: 700, marginBottom: 4 }}>Hakkımızda Hero — 3 Model Karşılaştırması</h2>
+              <p style={{ color: '#4C4462', fontSize: 14, maxWidth: 620 }}>
+                Hybrid-3 çizgisi (krem zemin · indigo halo · nokta grid · lime aksanlar) — aynı brief, 3 farklı model.
+                Sayfada sol kolon metin, sağ kolon bu görsel olacak.
+              </p>
+            </div>
+
+            {/* 3 görsel yan yana */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24, marginBottom: 56 }}>
+              {HAKKIMIZDA_HEROES.map((item) => (
+                <div key={item.id} style={card()}>
+                  <div style={{ aspectRatio: '4/3', overflow: 'hidden', position: 'relative' }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={item.url} alt={item.label} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                    <div style={{
+                      position: 'absolute', top: 10, left: 10,
+                      background: 'rgba(10,5,20,0.75)', backdropFilter: 'blur(4px)',
+                      borderRadius: 8, padding: '4px 10px',
+                      fontSize: 11, fontWeight: 700, color: '#A3E635',
+                    }}>
+                      {item.label}
+                    </div>
+                  </div>
+                  <div style={{ padding: '16px 18px' }}>
+                    <div style={{ fontSize: 14, fontWeight: 700, color: '#FFFFFF', marginBottom: 6 }}>{item.label}</div>
+                    <div style={{ fontSize: 12, color: '#4C4462', lineHeight: 1.6, marginBottom: 14 }}>{item.desc}</div>
+                    <a href={item.url} target="_blank" rel="noopener noreferrer"
+                      style={{ fontSize: 12, color: '#A3E635', textDecoration: 'none', fontWeight: 600 }}>
+                      ↗ Tam boyut (orijinal kalite)
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Gerçek sayfa simülasyonu — sağda görsel, solda metin */}
+            <h3 style={{ fontSize: 17, fontWeight: 700, marginBottom: 4 }}>Sayfa Simülasyonu — 2 Kolon Layout</h3>
+            <p style={{ color: '#4C4462', fontSize: 13, marginBottom: 24 }}>
+              /hakkimizda sayfasındaki gerçek görünüm (metin sol · görsel sağ)
+            </p>
+            {HAKKIMIZDA_HEROES.map((item, i) => (
+              <div key={item.id} style={{
+                background: '#2E1065',
+                borderRadius: 20,
+                padding: '48px 56px',
+                border: '1px solid #1A1030',
+                display: 'grid',
+                gridTemplateColumns: '1fr 1fr',
+                gap: 48,
+                alignItems: 'center',
+                marginBottom: 24,
+              }}>
+                {/* Sol — metin */}
+                <div>
+                  <div style={{ fontSize: 11, color: '#A3E635', fontWeight: 700, letterSpacing: '0.1em', marginBottom: 16 }}>
+                    VERİMİO HAKKINDA
+                  </div>
+                  <div style={{ fontSize: 34, fontWeight: 700, color: '#FFFFFF', lineHeight: 1.2, marginBottom: 16 }}>
+                    Operasyonel<br /><span style={{ color: '#A3E635' }}>mükemmelliği</span><br />birlikte inşa edelim.
+                  </div>
+                  <div style={{ fontSize: 15, color: '#78716C', lineHeight: 1.7, marginBottom: 24 }}>
+                    Şirketlerin yapay zeka ve otomasyon teknolojilerini gerçek iş sonuçlarına dönüştürmesine yardımcı oluyoruz.
+                  </div>
+                  <div style={{ display: 'flex', gap: 12 }}>
+                    <div style={{ background: '#A3E635', color: '#2E1065', padding: '10px 22px', borderRadius: 10, fontSize: 13, fontWeight: 700 }}>
+                      Check-Up Başlatın
+                    </div>
+                    <div style={{ border: '1px solid rgba(255,255,255,0.2)', color: '#FFFFFF', padding: '10px 22px', borderRadius: 10, fontSize: 13 }}>
+                      Daha fazla bilgi
+                    </div>
+                  </div>
+                </div>
+                {/* Sağ — görsel */}
+                <div style={{ borderRadius: 16, overflow: 'hidden', boxShadow: '0 24px 64px rgba(0,0,0,0.4)' }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={item.url} alt={item.label}
+                    style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover', display: 'block' }} />
+                </div>
+                {/* Label */}
+                <div style={{ gridColumn: '1/-1', borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: 12,
+                  fontSize: 11, color: '#4C4462', display: 'flex', gap: 8, alignItems: 'center' }}>
+                  <span style={{ background: '#1A1030', padding: '2px 8px', borderRadius: 4, color: '#8B5CF6', fontFamily: 'monospace' }}>
+                    {item.label}
+                  </span>
+                  <span>Varyant {i + 1} / 3</span>
+                </div>
+              </div>
+            ))}
           </div>
         )}
 
