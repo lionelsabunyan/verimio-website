@@ -65,7 +65,7 @@ export default function Testimonials() {
                 </motion.button>
 
                 <div className="flex items-center gap-1.5">
-                  {TESTIMONIALS.map((_, i) => (
+                  {TESTIMONIALS.map((t, i) => (
                     <button
                       key={i}
                       onClick={() => { setDirection(i > current ? 1 : -1); setCurrent(i); }}
@@ -74,7 +74,8 @@ export default function Testimonials() {
                           ? "w-5 h-1.5 bg-secondary"
                           : "w-1.5 h-1.5 bg-foreground/20 hover:bg-foreground/40"
                       }`}
-                      aria-label={`${i + 1}. yorum`}
+                      aria-label={`${i + 1}. yorum: ${t.name}`}
+                      aria-current={i === current ? "true" : undefined}
                     />
                   ))}
                 </div>
@@ -92,7 +93,13 @@ export default function Testimonials() {
           </FadeIn>
 
           {/* Sağ — Testimonial kartı */}
-          <div className="overflow-hidden">
+          <div
+            className="overflow-hidden"
+            role="region"
+            aria-label="Müşteri Yorumları"
+            aria-live="polite"
+            aria-atomic="true"
+          >
             <AnimatePresence mode="wait" custom={direction}>
               <motion.div
                 key={current}

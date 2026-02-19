@@ -36,6 +36,9 @@ export default function FAQ() {
                   onClick={() => setOpenIndex(openIndex === index ? null : index)}
                   className="w-full flex items-center justify-between py-5 text-left group"
                   whileTap={{ scale: 0.995 }}
+                  aria-expanded={openIndex === index}
+                  aria-controls={`faq-answer-${index}`}
+                  id={`faq-button-${index}`}
                 >
                   <span className={`text-base font-medium pr-6 transition-colors duration-200 ${
                     openIndex === index ? "text-primary dark:text-primary-light" : "text-foreground group-hover:text-primary/80 dark:group-hover:text-primary-light/80"
@@ -44,7 +47,7 @@ export default function FAQ() {
                   </span>
                   <div className={`flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center transition-colors duration-200 ${
                     openIndex === index ? "bg-primary text-white" : "bg-foreground/6 text-foreground-secondary group-hover:bg-foreground/10"
-                  }`}>
+                  }`} aria-hidden="true">
                     {openIndex === index
                       ? <Minus className="w-3.5 h-3.5" />
                       : <Plus className="w-3.5 h-3.5" />
@@ -55,6 +58,9 @@ export default function FAQ() {
                 <AnimatePresence initial={false}>
                   {openIndex === index && (
                     <motion.div
+                      id={`faq-answer-${index}`}
+                      role="region"
+                      aria-labelledby={`faq-button-${index}`}
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}

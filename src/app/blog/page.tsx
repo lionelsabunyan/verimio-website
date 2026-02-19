@@ -67,9 +67,10 @@ export default function BlogPage() {
                   <Link
                     href={`/blog/${post.slug}`}
                     className="inline-flex items-center gap-1 text-sm font-medium text-primary-light hover:text-primary dark:hover:text-secondary transition-colors"
+                    aria-label={`Devamını Oku: ${post.title}`}
                   >
                     Devamını Oku
-                    <ArrowUpRight className="w-4 h-4" />
+                    <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
                   </Link>
                 </div>
               </article>

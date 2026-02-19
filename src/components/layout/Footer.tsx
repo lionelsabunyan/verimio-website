@@ -43,7 +43,7 @@ export default function Footer() {
             <Link href="/" className="inline-block">
               <Wordmark size="md" className="text-white" />
             </Link>
-            <p className="mt-4 text-sm text-white/60 leading-relaxed">
+            <p className="mt-4 text-sm text-white/70 leading-relaxed">
               Şirketler için kurumsal AI danışmanlığı.
             </p>
             <a
@@ -64,7 +64,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-white/60 hover:text-secondary transition-colors"
+                    className="text-sm text-white/70 hover:text-secondary transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -83,7 +83,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-white/60 hover:text-secondary transition-colors"
+                    className="text-sm text-white/70 hover:text-secondary transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -97,30 +97,31 @@ export default function Footer() {
             <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
               Sosyal Medya
             </h3>
-            <div className="flex items-center gap-3">
+            <ul role="list" className="flex items-center gap-3">
               {footerLinks.social.map((item) => {
                 const IconComp = item.icon;
                 return (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    className="w-9 h-9 flex items-center justify-center rounded-lg bg-white/5 hover:bg-white/10 text-white/60 hover:text-secondary transition-colors"
-                    aria-label={item.label}
-                  >
-                    <IconComp className="w-4 h-4" />
-                  </a>
+                  <li key={item.label}>
+                    <a
+                      href={item.href}
+                      className="w-9 h-9 flex items-center justify-center rounded-lg bg-white/5 hover:bg-white/10 text-white/70 hover:text-secondary transition-colors"
+                      aria-label={item.label}
+                    >
+                      <IconComp className="w-4 h-4" aria-hidden="true" />
+                    </a>
+                  </li>
                 );
               })}
-            </div>
+            </ul>
           </div>
         </div>
 
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-white/40">
+          <p className="text-sm text-white/60">
             © {new Date().getFullYear()} Verimio. Tüm hakları saklıdır.
           </p>
-          <p className="text-sm text-white/40">
+          <p className="text-sm text-white/60">
             AI ile güçlendirilmiş iş süreçleri danışmanlığı
           </p>
         </div>

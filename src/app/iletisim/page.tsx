@@ -170,7 +170,7 @@ export default function IletisimPage() {
                   <ArrowUpRight className="w-4 h-4" />
                 </Link>
 
-                <p className="text-center text-xs text-white/40 mt-4">
+                <p className="text-center text-xs text-white/60 mt-4">
                   Gizliliğiniz güvende — ödeme bilgisi istenmez
                 </p>
               </div>

@@ -86,7 +86,7 @@ export default function Logo({
 
   if (href) {
     return (
-      <Link href={href} className="inline-flex items-center gap-2 group">
+      <Link href={href} className="inline-flex items-center gap-2 group" aria-label="Verimio ana sayfasına dön">
         {animated ? (
           <motion.div
             className="inline-flex items-center"
