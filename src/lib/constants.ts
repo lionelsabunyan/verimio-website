@@ -105,11 +105,31 @@ export const TESTIMONIALS = [
 ] as const;
 
 export const EXPERTISE_ITEMS = [
-  "Süreç Analizi & Optimizasyonu",
-  "İş Akışı Otomasyonu",
-  "Müşteri Deneyimi Otomasyonu",
-  "Veri & Raporlama Otomasyonu",
-  "AI Strateji & Entegrasyon",
+  {
+    title: "Süreç Analizi & Optimizasyonu",
+    description:
+      "İş süreçlerinizi uçtan uca haritalıyor, zaman ve kaynak kaybına yol açan adımları tespit edip operasyonunuzu sade ve ölçeklenebilir hale getiriyoruz.",
+  },
+  {
+    title: "İş Akışı Otomasyonu",
+    description:
+      "Tekrarlayan, manuel görevleri otomatize ediyoruz. Ekibiniz rutin işler yerine stratejik çalışmaya vakit ayırsın.",
+  },
+  {
+    title: "Müşteri Deneyimi Otomasyonu",
+    description:
+      "7/24 müşteri desteği sağlayan akıllı çözümler. Sık sorulan soruları otomatik yanıtlayın, memnuniyeti artırın.",
+  },
+  {
+    title: "Veri & Raporlama Otomasyonu",
+    description:
+      "Dağınık verilerinizi anlamlı bilgilere dönüştürün. Gerçek zamanlı dashboard'lar ve otomatik raporlarla karar alma sürecinizi hızlandırın.",
+  },
+  {
+    title: "AI Strateji & Entegrasyon",
+    description:
+      "Doğru araçla, doğru süreçte, doğru zamanda AI kullanın. Firmanıza en uygun teknolojiyi seçip entegrasyon sürecini yönetiyoruz.",
+  },
 ] as const;
 
 export const FAQ_ITEMS = [

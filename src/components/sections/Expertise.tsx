@@ -50,18 +50,32 @@ export default function Expertise() {
           </FadeIn>
         </div>
 
-        {/* Large Service List */}
+        {/* Service List */}
         <StaggerContainer className="space-y-0" staggerDelay={0.1}>
           {EXPERTISE_ITEMS.map((item, index) => (
             <StaggerItem key={index}>
-              <div className="border-t border-white/10 py-8 group cursor-default">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white/40 group-hover:text-secondary transition-colors duration-500">
-                    {item}
+              <Link
+                href="/hizmetler"
+                className="border-t border-white/10 py-8 group flex flex-col md:flex-row md:items-start gap-4 md:gap-0"
+              >
+                {/* Left: Number + Title */}
+                <div className="flex items-baseline gap-4 md:w-1/2">
+                  <span className="text-sm font-mono text-white/30 tabular-nums shrink-0">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white/40 group-hover:text-secondary transition-colors duration-500">
+                    {item.title}
                   </h3>
-                  <ArrowUpRight className="w-6 h-6 text-white/40 group-hover:text-secondary transition-colors duration-500" />
                 </div>
-              </div>
+
+                {/* Right: Description + Arrow */}
+                <div className="flex items-start gap-4 md:w-1/2 md:pl-8">
+                  <p className="text-base text-white/50 leading-relaxed group-hover:text-white/70 transition-colors duration-500">
+                    {item.description}
+                  </p>
+                  <ArrowUpRight className="w-5 h-5 text-white/20 group-hover:text-secondary transition-colors duration-500 shrink-0 mt-1" />
+                </div>
+              </Link>
             </StaggerItem>
           ))}
           {/* Last border */}
