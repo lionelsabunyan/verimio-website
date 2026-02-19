@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowUpRight, CheckCircle2, BarChart3, Users2 } from "lucide-react";
 import { BRAND } from "@/lib/constants";
 import FAQ from "@/components/sections/FAQ";
+import HakkimizdaHeroIllustration from "@/components/brand/illustrations/HakkimizdaHeroIllustration";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -37,39 +38,47 @@ export default function HakkimizdaPage() {
       {/* Hero */}
       <section className="section-padding">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="flex items-center gap-2 mb-6">
-              <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-              <span className="w-1.5 h-1.5 rounded-full bg-primary opacity-60" />
-              <span className="text-sm font-medium text-foreground-secondary tracking-wide uppercase ml-1">Hakkımızda</span>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            {/* Sol: İçerik */}
+            <div>
+              <div className="flex items-center gap-2 mb-6">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                <span className="w-1.5 h-1.5 rounded-full bg-primary opacity-60" />
+                <span className="text-sm font-medium text-foreground-secondary tracking-wide uppercase ml-1">Hakkımızda</span>
+              </div>
+
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                Şirketinizin içindeymiş gibi{" "}
+                <span className="gradient-text">düşünen danışmanınız.</span>
+              </h1>
+
+              <p className="text-lg text-foreground-secondary leading-relaxed mb-8 max-w-2xl">
+                AI ve otomasyon dönüşümünü yüzeysel değil, derinlemesine yönetiyoruz.
+                İş süreçlerinizi analiz eder, darboğazları tespit eder ve size özel
+                çözümlerle hem zamanınızı hem bütçenizi koruruz.
+              </p>
+
+              <div className="flex flex-wrap items-center gap-4">
+                <Link
+                  href={BRAND.tallyFormUrl}
+                  className="inline-flex items-center gap-2 px-7 py-3.5 bg-secondary text-primary font-semibold rounded-full hover:bg-secondary-hover transition-all duration-200 hover:shadow-lg hover:shadow-secondary/25 text-sm"
+                >
+                  Ücretsiz Check-Up Başlatın
+                  <ArrowUpRight className="w-4 h-4" />
+                </Link>
+                <Link
+                  href="/hizmetler"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 border border-border text-foreground font-medium rounded-full hover:border-border-hover transition-all duration-200 text-sm"
+                >
+                  Hizmetlerimiz
+                  <ArrowUpRight className="w-4 h-4" />
+                </Link>
+              </div>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-              Şirketinizin içindeymiş gibi{" "}
-              <span className="gradient-text">düşünen danışmanınız.</span>
-            </h1>
-
-            <p className="text-lg text-foreground-secondary leading-relaxed mb-8 max-w-2xl">
-              AI ve otomasyon dönüşümünü yüzeysel değil, derinlemesine yönetiyoruz.
-              İş süreçlerinizi analiz eder, darboğazları tespit eder ve size özel
-              çözümlerle hem zamanınızı hem bütçenizi koruruz.
-            </p>
-
-            <div className="flex flex-wrap items-center gap-4">
-              <Link
-                href={BRAND.tallyFormUrl}
-                className="inline-flex items-center gap-2 px-7 py-3.5 bg-secondary text-primary font-semibold rounded-full hover:bg-secondary-hover transition-all duration-200 hover:shadow-lg hover:shadow-secondary/25 text-sm"
-              >
-                Ücretsiz Check-Up Başlatın
-                <ArrowUpRight className="w-4 h-4" />
-              </Link>
-              <Link
-                href="/hizmetler"
-                className="inline-flex items-center gap-2 px-7 py-3.5 border border-border text-foreground font-medium rounded-full hover:border-border-hover transition-all duration-200 text-sm"
-              >
-                Hizmetlerimiz
-                <ArrowUpRight className="w-4 h-4" />
-              </Link>
+            {/* Sağ: İllüstrasyon */}
+            <div className="hidden lg:flex items-center justify-center">
+              <HakkimizdaHeroIllustration className="max-w-sm xl:max-w-md opacity-90" />
             </div>
           </div>
         </div>

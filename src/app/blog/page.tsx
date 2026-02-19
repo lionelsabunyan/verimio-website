@@ -47,7 +47,7 @@ export default function BlogPage() {
               >
                 {/* Branded Image Pattern */}
                 <div className="p-4 pb-0">
-                  <BlogCardImage index={index} title={post.title} />
+                  <BlogCardImage index={index} title={post.title} category={post.category} />
                 </div>
 
                 <div className="p-6">

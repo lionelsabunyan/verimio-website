@@ -18,8 +18,88 @@ export default function OGImage() {
           padding: '72px 80px',
           fontFamily: 'system-ui',
           position: 'relative',
+          overflow: 'hidden',
         }}
       >
+        {/* Background glow */}
+        <div style={{
+          position: 'absolute',
+          top: -80,
+          right: -60,
+          width: 500,
+          height: 500,
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(163,230,53,0.12) 0%, transparent 70%)',
+          pointerEvents: 'none',
+        }} />
+        <div style={{
+          position: 'absolute',
+          bottom: -100,
+          left: -80,
+          width: 400,
+          height: 400,
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(139,92,246,0.10) 0%, transparent 70%)',
+          pointerEvents: 'none',
+        }} />
+
+        {/* Automation flow nodes — right side decorative */}
+        <div style={{
+          position: 'absolute',
+          right: 80,
+          top: '50%',
+          transform: 'translateY(-50%)',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: 0,
+          opacity: 0.30,
+        }}>
+          {/* Node 1 */}
+          <div style={{
+            width: 56,
+            height: 56,
+            borderRadius: 14,
+            border: '2px solid #8B5CF6',
+            background: 'rgba(139,92,246,0.08)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+            <div style={{ width: 20, height: 20, borderRadius: 5, background: '#8B5CF6', opacity: 0.6 }} />
+          </div>
+          {/* Connector */}
+          <div style={{ width: 2, height: 32, background: 'linear-gradient(to bottom, #8B5CF6, #A3E635)', opacity: 0.5 }} />
+          {/* Node 2 */}
+          <div style={{
+            width: 56,
+            height: 56,
+            borderRadius: 14,
+            border: '2px solid #8B5CF6',
+            background: 'rgba(139,92,246,0.08)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+            <div style={{ width: 20, height: 20, borderRadius: '50%', border: '2px solid #8B5CF6', opacity: 0.6 }} />
+          </div>
+          {/* Connector */}
+          <div style={{ width: 2, height: 32, background: 'linear-gradient(to bottom, #8B5CF6, #A3E635)', opacity: 0.5 }} />
+          {/* Node 3 — lime accent */}
+          <div style={{
+            width: 56,
+            height: 56,
+            borderRadius: 14,
+            border: '2px solid #A3E635',
+            background: 'rgba(163,230,53,0.10)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+            <div style={{ width: 20, height: 4, background: '#A3E635', borderRadius: 2, opacity: 0.8 }} />
+          </div>
+        </div>
+
         {/* Logo */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
           <div style={{
@@ -43,10 +123,10 @@ export default function OGImage() {
         </div>
 
         {/* Ana metin */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 20, maxWidth: 820 }}>
           <div style={{
             color: '#FFFFFF',
-            fontSize: 68,
+            fontSize: 64,
             fontWeight: 700,
             lineHeight: 1.1,
             letterSpacing: '-0.03em',
@@ -54,11 +134,12 @@ export default function OGImage() {
             İş Süreçlerinizi AI ile Dönüştürün
           </div>
           <div style={{
-            color: '#78716C',
+            color: 'rgba(255,255,255,0.55)',
             fontSize: 26,
             fontWeight: 400,
+            lineHeight: 1.4,
           }}>
-            3 dakikada şirketinizin AI hazırlık seviyesini öğrenin.
+            Şirketinizin operasyonel verimliliğini ve AI hazırlığını analiz ediyoruz.
           </div>
         </div>
 
@@ -73,9 +154,9 @@ export default function OGImage() {
             fontWeight: 700,
             display: 'flex',
           }}>
-            Ücretsiz Başla
+            Ücretsiz Check-Up Başlatın
           </div>
-          <span style={{ color: '#4C4462', fontSize: 18 }}>verimio.com</span>
+          <span style={{ color: '#4C4462', fontSize: 18 }}>verimio.com.tr</span>
         </div>
       </div>
     ),

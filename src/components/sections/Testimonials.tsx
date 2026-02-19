@@ -5,6 +5,7 @@ import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { TESTIMONIALS } from "@/lib/constants";
 import { FadeIn } from "@/components/ui/motion";
+import TestimonialAvatar from "@/components/brand/TestimonialAvatar";
 
 export default function Testimonials() {
   const [current, setCurrent] = useState(0);
@@ -50,11 +51,7 @@ export default function Testimonials() {
                 transition={{ duration: 0.25 }}
                 className="flex items-center gap-4"
               >
-                <div className="w-11 h-11 rounded-full bg-primary/10 dark:bg-primary-light/10 border border-border flex items-center justify-center flex-shrink-0">
-                  <span className="text-primary dark:text-primary-light font-bold text-base">
-                    {TESTIMONIALS[current].name[0]}
-                  </span>
-                </div>
+                <TestimonialAvatar name={TESTIMONIALS[current].name} index={current} />
                 <div>
                   <div className="font-semibold text-foreground text-sm">
                     {TESTIMONIALS[current].name}

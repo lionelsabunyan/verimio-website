@@ -192,6 +192,7 @@ export const BLOG_POSTS = [
       "Kurumsal operasyonlarda verimliliği artıran, ölçeklenebilir AI araçlarını inceliyoruz.",
     date: "15 Şubat 2026",
     slug: "kurumsal-ai-araclari-2026",
+    category: "ai-tools" as const,
   },
   {
     title: "Müşteri Desteğinde AI: Başlangıç Rehberi",
@@ -199,6 +200,7 @@ export const BLOG_POSTS = [
       "Chatbot kurulumundan canlı destek entegrasyonuna kadar müşteri desteğinde AI kullanımı.",
     date: "10 Şubat 2026",
     slug: "musteri-destegi-ai-rehber",
+    category: "customer" as const,
   },
   {
     title: "Excel'den Dashboard'a: Raporlama Otomasyonu",
@@ -206,6 +208,7 @@ export const BLOG_POSTS = [
       "Manuel raporlamadan otomatik dashboard'lara geçiş rehberi. Haftada 6+ saat kazanın.",
     date: "5 Şubat 2026",
     slug: "excel-dashboard-otomasyon",
+    category: "data" as const,
   },
   {
     title: "AI Otomasyon ROI Hesaplama Rehberi",
@@ -213,6 +216,7 @@ export const BLOG_POSTS = [
       "Yapay zeka yatırımınızın geri dönüşünü nasıl hesaplarsınız? Adım adım ROI analizi rehberi.",
     date: "1 Şubat 2026",
     slug: "ai-otomasyon-roi-hesaplama",
+    category: "roi" as const,
   },
   {
     title: "Kurumsal CRM Otomasyonu: Nereden Başlanır?",
@@ -220,6 +224,7 @@ export const BLOG_POSTS = [
       "Müşteri ilişkilerinizi AI ile güçlendirin. CRM otomasyon araçları ve en iyi uygulamalar.",
     date: "25 Ocak 2026",
     slug: "kurumsal-crm-otomasyon",
+    category: "automation" as const,
   },
   {
     title: "Veri Güvenliği ve AI: Bilmeniz Gerekenler",
@@ -227,6 +232,7 @@ export const BLOG_POSTS = [
       "AI araçlarını kullanırken verilerinizi nasıl korursunuz? KVKK uyumlu AI kullanım rehberi.",
     date: "20 Ocak 2026",
     slug: "veri-guvenligi-ai-rehber",
+    category: "security" as const,
   },
 ] as const;
 

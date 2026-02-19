@@ -1,12 +1,14 @@
 "use client";
 
-import { Zap, TrendingUp, Map } from "lucide-react";
 import { motion } from "framer-motion";
 import { HERO_CONTENT, BRAND } from "@/lib/constants";
 import Button from "@/components/ui/Button";
 import { RadialGlow } from "@/components/brand/Decoratives";
+import TimeIcon from "@/components/brand/icons/ui/TimeIcon";
+import ROIIcon from "@/components/brand/icons/ui/ROIIcon";
+import RoadmapIcon from "@/components/brand/icons/ui/RoadmapIcon";
 
-const cardIcons = [Zap, TrendingUp, Map];
+const cardIcons = [TimeIcon, ROIIcon, RoadmapIcon];
 
 export default function Hero() {
   return (
@@ -86,7 +88,7 @@ export default function Hero() {
                 >
                   <div className="flex items-start gap-4">
                     <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 bg-primary/8 dark:bg-primary-light/10 text-primary dark:text-primary-light">
-                      <Icon className="w-5 h-5" />
+                      <Icon className="w-5 h-5" size={20} />
                     </div>
                     <div>
                       <h3 className="text-base font-semibold text-foreground mb-1">

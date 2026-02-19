@@ -33,7 +33,7 @@ export default function Blog() {
             >
               <article className="p-6 rounded-2xl border border-border hover:border-border-accent transition-all duration-300 h-full flex flex-col bg-surface-elevated">
                 {/* Branded image pattern */}
-                <BlogCardImage index={index} title={post.title} className="mb-6" />
+                <BlogCardImage index={index} title={post.title} category={post.category} className="mb-6" />
 
                 <div className="text-sm text-foreground-secondary mb-3">{post.date}</div>
                 <h3 className="text-lg font-semibold mb-3 group-hover:text-primary dark:group-hover:text-primary-light transition-colors">
