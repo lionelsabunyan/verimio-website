@@ -216,4 +216,23 @@ git push           # → Vercel otomatik deploy
 
 ---
 
-*Son güncelleme: 18 Şubat 2026*
+*Son güncelleme: 19 Şubat 2026*
+
+---
+
+## Kreatif Direktör Skill
+
+Projeye özel bir AI kreatif direktör skill'i tanımlıdır:
+
+**Dosya:** `.claude/skills/verimio-creative.md`
+
+`/verimio-creative` komutuyla veya "kreatif direktör olarak..." diye başlayan görevlerde bu skill devreye girer.
+
+**Kapsamı:**
+- Görsel kimlik rehberi (tam renk paleti, tipografi, marka kuralları)
+- fal.ai model seçim kılavuzu (FLUX Pro, Ultra, Ideogram, video modelleri)
+- `creative-prompts.ts` entegrasyonu (brief deposu, approved_url yönetimi)
+- Site sayfa görsel durumu (hangi sayfada ne var, ne eksik)
+- Sosyal medya şablon sistemi (4 platform, 2 template bileşen)
+- Güncel tasarım trend rehberi
+- Çalışma protokolü (üret → sun → onay → entegre → commit)
