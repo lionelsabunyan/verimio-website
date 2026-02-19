@@ -118,6 +118,45 @@ const BLOG_CATEGORIES = [
   { category: 'tutorial' as const, label: 'Rehber' },
 ]
 
+// ─── Yeni FLUX Görselleri (v2 — Açık & temiz, FLUX only) ─────────────────────
+const FLUX_V2 = [
+  {
+    id: "hero-abstract",
+    label: "Hero A — Soyut Veri Akışı",
+    desc: "Açık/krem zemin · ince indigo çizgiler · lime nokta aksanlar · danışmanlık firması estetiği",
+    size: "landscape_4_3",
+    url: "https://v3b.fal.media/files/b/0a8f1c76/66d4s6UQBzZUYmVynmu8q_cc5b5ed0871140d0970d0c33ede90bca.jpg",
+  },
+  {
+    id: "hero-photo",
+    label: "Hero B — Premium Ofis",
+    desc: "Gerçek ofis fotoğrafı · doğal ışık · hafif indigo tint overlay · Skandinav minimal",
+    size: "landscape_4_3",
+    url: "https://v3b.fal.media/files/b/0a8f1c76/d1W5A2SCmc5056KbS5U2l_813fa104c66d45e3b9447e71d7fd0c70.jpg",
+  },
+  {
+    id: "blog-editorial",
+    label: "Blog A — Editorial",
+    desc: "NYT/HBR stili · krem zemin · kalın geometrik indigo+lime aksanlar · entelektüel",
+    size: "landscape_16_9",
+    url: "https://v3b.fal.media/files/b/0a8f1c76/VK4aEp0fvAewg1yxPVcog_35bf335741cd4470a130c083bdea99d9.jpg",
+  },
+  {
+    id: "blog-tech",
+    label: "Blog B — Tech Editorial",
+    desc: "Wired/Fast Company stili · indigo-mor gradient · lime glowing aksanlar · dinamik",
+    size: "landscape_16_9",
+    url: "https://v3b.fal.media/files/b/0a8f1c76/w8sETJypbjkcb40I1MHTb_812afabc2cd747648160a1d7012f1f42.jpg",
+  },
+  {
+    id: "blog-minimal",
+    label: "Blog C — Minimal Gradient",
+    desc: "Sade indigo→mor gradient · merkezi lime geometrik ikon · temiz SaaS kart",
+    size: "landscape_16_9",
+    url: "https://v3b.fal.media/files/b/0a8f1c76/3nMHTGDkpLwOZ7XyjyhSF_ffd8fdf395a743c7a67bcbface973922.jpg",
+  },
+]
+
 // ─── AI Prompt Setleri ───────────────────────────────────────────────────────
 const AI_PROMPTS = {
   illustration: [
@@ -888,6 +927,91 @@ export default function BrandPreviewClient() {
                   FAL_KEY gerekli — <span style={{ color: '#A3E635', fontFamily: 'monospace' }}>.env.local</span>'de olmalı.
                 </p>
               </div>
+            </div>
+
+            {/* ── v2: Yeni Yön — FLUX only, açık & temiz ─────────────────────── */}
+            <div style={{ marginBottom: 56 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 6 }}>
+                <h3 style={{ fontSize: 18, fontWeight: 700, margin: 0 }}>v2 — Yeni Görsel Yön</h3>
+                <span style={{ background: '#A3E635', color: '#2E1065', fontSize: 10, fontWeight: 700, padding: '3px 10px', borderRadius: 6 }}>FLUX only</span>
+                <span style={{ background: '#1A1030', color: '#78716C', fontSize: 10, fontWeight: 600, padding: '3px 10px', borderRadius: 6 }}>Açık & Temiz · Foto+Overlay · Lime orta</span>
+              </div>
+              <p style={{ color: '#4C4462', fontSize: 13, marginBottom: 24 }}>
+                2 hero varyantı + 3 blog stili — Wired/HBR/luxury SaaS estetik referansı
+              </p>
+
+              {/* Hero varyantları */}
+              <div style={{ fontSize: 12, color: '#4C4462', fontFamily: 'monospace', letterSpacing: '0.08em', marginBottom: 12 }}>
+                HERO GÖRSELLERİ — 4:3 ratio
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 32 }}>
+                {FLUX_V2.filter(x => x.id.startsWith('hero')).map((item) => (
+                  <div key={item.id} style={card()}>
+                    <div style={{ aspectRatio: '4/3', overflow: 'hidden', position: 'relative' }}>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={item.url} alt={item.label} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                      <div style={{ position: 'absolute', top: 10, right: 10, background: 'rgba(163,230,53,0.9)', color: '#2E1065', fontSize: 10, fontWeight: 700, padding: '3px 8px', borderRadius: 6 }}>
+                        FLUX 1.1 Pro
+                      </div>
+                    </div>
+                    <div style={{ padding: '14px 16px' }}>
+                      <div style={{ fontSize: 13, fontWeight: 600, color: '#FFFFFF', marginBottom: 4 }}>{item.label}</div>
+                      <div style={{ fontSize: 11, color: '#4C4462', lineHeight: 1.5, marginBottom: 12 }}>{item.desc}</div>
+                      <div style={{ display: 'flex', gap: 8 }}>
+                        <button
+                          onClick={() => generate(item.id, '', 'flux', null, item.size)}
+                          style={{ flex: 1, padding: '7px 0', borderRadius: 8, border: '1px solid #1A1030', cursor: 'pointer', fontSize: 11, fontWeight: 600, background: 'transparent', color: '#78716C' }}
+                        >
+                          Yeniden Üret
+                        </button>
+                        <a href={item.url} target="_blank" rel="noopener noreferrer"
+                          style={{ padding: '7px 12px', borderRadius: 8, border: '1px solid #1A1030', fontSize: 11, fontWeight: 600, color: '#A3E635', textDecoration: 'none', background: 'transparent' }}>
+                          ↗ Tam boyut
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Blog varyantları */}
+              <div style={{ fontSize: 12, color: '#4C4462', fontFamily: 'monospace', letterSpacing: '0.08em', marginBottom: 12 }}>
+                BLOG KAPAKLARI — 16:9 ratio
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
+                {FLUX_V2.filter(x => x.id.startsWith('blog')).map((item) => (
+                  <div key={item.id} style={card()}>
+                    <div style={{ aspectRatio: '16/9', overflow: 'hidden', position: 'relative' }}>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={item.url} alt={item.label} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                      <div style={{ position: 'absolute', top: 10, right: 10, background: 'rgba(163,230,53,0.9)', color: '#2E1065', fontSize: 10, fontWeight: 700, padding: '3px 8px', borderRadius: 6 }}>
+                        FLUX 1.1 Pro
+                      </div>
+                    </div>
+                    <div style={{ padding: '14px 16px' }}>
+                      <div style={{ fontSize: 13, fontWeight: 600, color: '#FFFFFF', marginBottom: 4 }}>{item.label}</div>
+                      <div style={{ fontSize: 11, color: '#4C4462', lineHeight: 1.5, marginBottom: 12 }}>{item.desc}</div>
+                      <div style={{ display: 'flex', gap: 8 }}>
+                        <button
+                          onClick={() => generate(item.id, '', 'flux', null, item.size)}
+                          style={{ flex: 1, padding: '7px 0', borderRadius: 8, border: '1px solid #1A1030', cursor: 'pointer', fontSize: 11, fontWeight: 600, background: 'transparent', color: '#78716C' }}
+                        >
+                          Yeniden Üret
+                        </button>
+                        <a href={item.url} target="_blank" rel="noopener noreferrer"
+                          style={{ padding: '7px 12px', borderRadius: 8, border: '1px solid #1A1030', fontSize: 11, fontWeight: 600, color: '#A3E635', textDecoration: 'none', background: 'transparent' }}>
+                          ↗ Tam boyut
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div style={{ borderTop: '1px solid #1A1030', paddingTop: 40, marginBottom: 32 }}>
+              <h3 style={{ fontSize: 16, fontWeight: 700, marginBottom: 4, color: '#78716C' }}>v1 — İlk Tur (Arşiv)</h3>
+              <p style={{ color: '#2A2040', fontSize: 13, marginBottom: 24 }}>Recraft V3 + FLUX — önceki üretimler</p>
             </div>
 
             {/* Kategori seçici */}
