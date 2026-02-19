@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight, Mail, MessageCircle, Clock, MapPin } from "lucide-react";
+import { ArrowUpRight, Mail, Clock, MapPin, Shield, XCircle, Timer, CalendarClock } from "lucide-react";
 import { BRAND } from "@/lib/constants";
 import { getContactIconStyle } from "@/lib/brand-colors";
 import type { Metadata } from "next";
@@ -7,30 +7,33 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "İletişim | Verimio - Bize Ulaşın",
   description:
-    "Verimio ile iletişime geçin. AI dönüşüm danışmanlığı hakkında sorularınızı yanıtlayalım.",
+    "Verimio ile iletişime geçin. Check-up'a hazırsanız formu doldurun; sorularınız varsa bize yazın.",
 };
 
 const contactMethods = [
   {
     icon: Mail,
     title: "E-posta",
-    description: "Sorularınız için bize yazın",
+    description: "Sorularınız için doğrudan yazın",
     value: BRAND.email,
     href: `mailto:${BRAND.email}`,
+    active: true,
   },
   {
-    icon: MessageCircle,
-    title: "Ücretsiz Danışmanlık",
-    description: "20 dakikalık ücretsiz görüşme",
-    value: "Görüşme Planlayın",
-    href: BRAND.calendlyUrl,
+    icon: CalendarClock,
+    title: "Görüşme Planla",
+    description: "Ücretsiz 20 dakikalık danışmanlık",
+    value: "Yakında aktif olacak",
+    href: null,
+    active: false,
   },
   {
     icon: Clock,
     title: "Çalışma Saatleri",
     description: "Hafta içi müsaitiz",
-    value: "09:00 - 18:00",
+    value: "09:00 – 18:00",
     href: null,
+    active: true,
   },
   {
     icon: MapPin,
@@ -38,21 +41,37 @@ const contactMethods = [
     description: "Uzaktan çalışıyoruz",
     value: "İstanbul, Türkiye",
     href: null,
+    active: true,
+  },
+];
+
+const trustSignals = [
+  {
+    icon: Shield,
+    text: "Verileriniz şifrelenerek saklanır, üçüncü taraflarla paylaşılmaz. Talep halinde NDA imzalıyoruz.",
+  },
+  {
+    icon: XCircle,
+    text: "Satış baskısı yok. Raporu aldıktan sonra nasıl ilerleyeceğinize siz karar veriyorsunuz.",
+  },
+  {
+    icon: Timer,
+    text: "Check-up raporunuz 48 saat içinde teslim edilir. Sürpriz bekleme yok.",
   },
 ];
 
 const faqQuick = [
   {
     q: "Şirket check-up'ı gerçekten ücretsiz mi?",
-    a: "Evet, şirket check-up'ı ve analiz raporumuz tamamen ücretsizdir. Herhangi bir ödeme bilgisi istenmez.",
+    a: "Evet, tamamen ücretsizdir. Ödeme bilgisi, kredi kartı veya herhangi bir taahhüt istenmez. Check-up formu ve analiz raporu, firmanızı tanımamız için bir başlangıç noktası.",
   },
   {
     q: "Danışmanlık görüşmesi zorunlu mu?",
-    a: "Hayır, tamamen isteğe bağlıdır. Raporunuzu aldıktan sonra isterseniz ücretsiz görüşme planlayabilirsiniz.",
+    a: "Hayır. Raporu aldıktan sonra istediğiniz gibi ilerleyebilirsiniz — kendi ekibinizle uygulayabilir ya da sonraki adımlarda destek almak isterseniz bizimle devam edebilirsiniz.",
   },
   {
-    q: "Hangi sektörlerde çalışıyorsunuz?",
-    a: "Üretim, lojistik, profesyonel hizmetler, finans, e-ticaret ve teknoloji başta olmak üzere kurumsal yapıdaki tüm sektörlerde hizmet veriyoruz.",
+    q: "Hangi büyüklükteki firmalarla çalışıyorsunuz?",
+    a: "Kurumsal yapıya geçiş sürecindeki her ölçekte firma ile çalışıyoruz. Ortak paydamız: operasyonel verimliliği artırmak isteyen, büyüme odaklı olmak. Sektör ayrımı yapmıyoruz.",
   },
 ];
 
@@ -63,7 +82,7 @@ export default function IletisimPage() {
       <section className="section-padding">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            {/* Left - Info */}
+            {/* Sol — Bilgi */}
             <div>
               <div className="flex items-center gap-2 mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
@@ -72,23 +91,27 @@ export default function IletisimPage() {
               </div>
 
               <h1 className="text-4xl sm:text-5xl font-bold leading-tight mb-6">
-                Bize{" "}
-                <span className="gradient-text">Ulaşın</span>
+                Sorulardan{" "}
+                <span className="gradient-text">doğru yere ulaşın.</span>
               </h1>
 
               <p className="text-lg text-foreground-secondary leading-relaxed mb-10 max-w-lg">
-                AI dönüşümünüz hakkında sorularınız mı var? Size yardımcı olmaktan
-                mutluluk duyarız. En hızlı yanıt için e-posta tercih edin.
+                Check-up'a hazırsanız formu doldurmanız yeterli — 48 saat içinde size özel
+                rapor e-postanıza gelir. Hâlâ sorusu olanlar için biz buradayız.
               </p>
 
-              {/* Contact Methods */}
+              {/* İletişim Kartları */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {contactMethods.map((method, index) => {
                   const style = getContactIconStyle(index);
                   return (
                     <div
                       key={index}
-                      className="p-6 rounded-2xl border border-border hover:border-border-accent transition-all duration-300 bg-surface group"
+                      className={`p-6 rounded-2xl border transition-all duration-300 bg-surface ${
+                        method.active
+                          ? "border-border hover:border-border-accent group"
+                          : "border-border opacity-60"
+                      }`}
                     >
                       <div
                         className={`w-10 h-10 rounded-xl ${style.bg} ${style.text} flex items-center justify-center mb-4`}
@@ -105,7 +128,7 @@ export default function IletisimPage() {
                           {method.value}
                         </a>
                       ) : (
-                        <span className="text-sm font-medium text-foreground">
+                        <span className={`text-sm font-medium ${method.active ? "text-foreground" : "text-foreground-secondary italic"}`}>
                           {method.value}
                         </span>
                       )}
@@ -115,7 +138,7 @@ export default function IletisimPage() {
               </div>
             </div>
 
-            {/* Right - Quick Start */}
+            {/* Sağ — Hızlı Başlangıç */}
             <div className="lg:pt-12">
               <div className="bg-primary rounded-3xl p-8 md:p-10 text-white">
                 <h2 className="text-2xl font-bold mb-4">En Hızlı Başlangıç</h2>
@@ -125,9 +148,13 @@ export default function IletisimPage() {
                 </p>
 
                 <div className="space-y-4 mb-8">
-                  {["Check-up formunu doldurun", "Size özel analiz raporunuzu alın", "İsterseniz ücretsiz görüşme planlayın"].map((text, i) => (
+                  {[
+                    "Check-up formunu doldurun",
+                    "Size özel analiz raporunuzu alın",
+                    "İsterseniz ücretsiz görüşme planlayın",
+                  ].map((text, i) => (
                     <div key={i} className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center text-secondary text-sm font-bold">
+                      <div className="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center text-secondary text-sm font-bold shrink-0">
                         {i + 1}
                       </div>
                       <span className="text-white/80 text-sm">{text}</span>
@@ -144,7 +171,7 @@ export default function IletisimPage() {
                 </Link>
 
                 <p className="text-center text-xs text-white/40 mt-4">
-                  Gizliliğiniz güvende
+                  Gizliliğiniz güvende — ödeme bilgisi istenmez
                 </p>
               </div>
             </div>
@@ -152,7 +179,23 @@ export default function IletisimPage() {
         </div>
       </section>
 
-      {/* Quick FAQ */}
+      {/* Güven Sinyalleri */}
+      <section className="py-10 border-t border-border">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {trustSignals.map((signal, index) => (
+              <div key={index} className="flex items-start gap-4">
+                <div className="w-9 h-9 rounded-xl bg-primary-light/10 flex items-center justify-center shrink-0 mt-0.5">
+                  <signal.icon className="w-4 h-4 text-primary-light" />
+                </div>
+                <p className="text-sm text-foreground-secondary leading-relaxed">{signal.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Hızlı SSS */}
       <section className="section-padding bg-background-secondary">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold mb-8 text-center">
@@ -170,6 +213,14 @@ export default function IletisimPage() {
               </div>
             ))}
           </div>
+
+          <p className="text-center text-sm text-foreground-secondary mt-8">
+            Daha fazla soru için{" "}
+            <Link href="/hakkimizda#sss" className="text-primary-light hover:text-primary dark:hover:text-secondary underline underline-offset-2 transition-colors">
+              tüm SSS bölümüne
+            </Link>{" "}
+            göz atın.
+          </p>
         </div>
       </section>
     </div>
