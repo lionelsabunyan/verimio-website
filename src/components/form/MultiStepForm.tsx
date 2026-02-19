@@ -12,9 +12,10 @@ import { BRAND } from "@/lib/constants";
 import StepIndicator from "./StepIndicator";
 import Step1Sector from "./steps/Step1Sector";
 import Step2Questions from "./steps/Step2Questions";
-import Step3Contact from "./steps/Step3Contact";
+import Step3Goals from "./steps/Step3Goals";
+import Step4Contact from "./steps/Step4Contact";
 
-const TOTAL_STEPS = 3;
+const TOTAL_STEPS = 4;
 
 const LOADING_MESSAGES = [
   "Sektör profili oluşturuluyor...",
@@ -98,6 +99,8 @@ export default function MultiStepForm() {
   const buildPayload = (data: FormData) => ({
     email: data.email,
     phone: data.phone || null,
+    company_name: data.companyName,
+    company_website: data.companyWebsite || null,
     sector: data.sector,
     team_size: data.teamSize,
     tools: data.tools,
@@ -107,11 +110,14 @@ export default function MultiStepForm() {
       ...(data.sector !== "Diğer" && { s8: data.s8 }),
     },
     biggest_pain: data.biggestPain,
+    priority_area: data.priorityArea,
+    expectation: data.expectation,
+    timeline: data.timeline,
     status: "new",
   });
 
   const handleSubmitReport = async () => {
-    const validationErrors = validateStep(3, formData);
+    const validationErrors = validateStep(TOTAL_STEPS, formData);
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       return;
@@ -133,7 +139,7 @@ export default function MultiStepForm() {
   };
 
   const handleBookMeeting = async () => {
-    const validationErrors = validateStep(3, formData);
+    const validationErrors = validateStep(TOTAL_STEPS, formData);
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       return;
@@ -215,7 +221,14 @@ export default function MultiStepForm() {
               />
             )}
             {currentStep === 3 && (
-              <Step3Contact
+              <Step3Goals
+                formData={formData}
+                errors={errors}
+                updateField={updateField}
+              />
+            )}
+            {currentStep === 4 && (
+              <Step4Contact
                 formData={formData}
                 errors={errors}
                 updateField={updateField}
@@ -258,7 +271,7 @@ export default function MultiStepForm() {
           </motion.button>
         </div>
       ) : (
-        /* Step 3 — Dual CTA */
+        /* Step 4 — Dual CTA */
         <div className="space-y-3 pt-2">
           {currentStep > 1 && (
             <motion.button

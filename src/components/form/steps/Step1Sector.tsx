@@ -2,8 +2,9 @@
 
 import { motion } from "framer-motion";
 import FormStep from "../FormStep";
+import FormInput from "../ui/FormInput";
 import type { FormData, Sector } from "@/lib/form-data";
-import { TEAM_SIZE_OPTIONS } from "@/lib/form-data";
+import { SECTORS, TEAM_SIZE_OPTIONS } from "@/lib/form-data";
 
 interface Props {
   formData: FormData;
@@ -11,46 +12,6 @@ interface Props {
   updateField: (key: keyof FormData, value: string | string[]) => void;
   onSectorChange: (sector: Sector) => void;
 }
-
-const SECTORS: { value: Sector; emoji: string; label: string; sub: string }[] =
-  [
-    {
-      value: "E-ticaret / Perakende",
-      emoji: "🛒",
-      label: "E-ticaret",
-      sub: "Online satış, perakende",
-    },
-    {
-      value: "Ajans (Reklam / Dijital / Kreatif)",
-      emoji: "🎨",
-      label: "Ajans",
-      sub: "Reklam, dijital, kreatif",
-    },
-    {
-      value: "B2B Hizmet (Danışmanlık / Muhasebe / Hukuk)",
-      emoji: "💼",
-      label: "B2B Hizmet",
-      sub: "Danışmanlık, muhasebe, hukuk",
-    },
-    {
-      value: "Üretim / Lojistik",
-      emoji: "🏭",
-      label: "Üretim / Lojistik",
-      sub: "İmalat, depo, sevkiyat",
-    },
-    {
-      value: "Teknoloji / Yazılım",
-      emoji: "💻",
-      label: "Teknoloji",
-      sub: "Yazılım, SaaS, IT",
-    },
-    {
-      value: "Diğer",
-      emoji: "🏢",
-      label: "Diğer",
-      sub: "Başka sektör",
-    },
-  ];
 
 export default function Step1Sector({
   formData,
@@ -60,11 +21,14 @@ export default function Step1Sector({
 }: Props) {
   return (
     <FormStep
-      title="Sektörünüzü seçin"
-      description="Firmanızın faaliyet alanını seçin — buna göre size özel sorular gelecek."
+      title="Şirketinizi tanıyalım"
+      description="Sektör ve şirket bilgilerinizi seçin — buna göre size özel sorular gelecek."
     >
       {/* Sector grid */}
       <div>
+        <p className="text-sm font-medium text-foreground-secondary mb-2">
+          Sektörünüz
+        </p>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           {SECTORS.map((s) => {
             const selected = formData.sector === s.value;
@@ -96,6 +60,25 @@ export default function Step1Sector({
           <p className="text-xs text-red-500 mt-2">{errors.sector}</p>
         )}
       </div>
+
+      {/* Company name */}
+      <FormInput
+        label="Şirket adı"
+        value={formData.companyName}
+        onChange={(v) => updateField("companyName", v)}
+        error={errors.companyName}
+        placeholder="Örn: ABC Teknoloji A.Ş."
+        required
+      />
+
+      {/* Company website */}
+      <FormInput
+        label="Şirket websitesi"
+        value={formData.companyWebsite}
+        onChange={(v) => updateField("companyWebsite", v)}
+        placeholder="Örn: www.firma.com"
+        optional
+      />
 
       {/* Team size */}
       <div>

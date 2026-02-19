@@ -2,7 +2,6 @@
 
 import FormStep from "../FormStep";
 import FormInput from "../ui/FormInput";
-import Textarea from "../ui/Textarea";
 import type { FormData } from "@/lib/form-data";
 
 interface Props {
@@ -11,7 +10,7 @@ interface Props {
   updateField: (key: keyof FormData, value: string | string[]) => void;
 }
 
-export default function Step3Contact({ formData, errors, updateField }: Props) {
+export default function Step4Contact({ formData, errors, updateField }: Props) {
   return (
     <FormStep
       title="Nereye gönderelim?"
@@ -34,16 +33,6 @@ export default function Step3Contact({ formData, errors, updateField }: Props) {
         onChange={(v) => updateField("phone", v)}
         placeholder="+90 5xx xxx xx xx"
         optional
-      />
-
-      <Textarea
-        label="İş süreçlerinizde sizi en çok zorlayan şey nedir?"
-        value={formData.biggestPain}
-        onChange={(v) => updateField("biggestPain", v)}
-        error={errors.biggestPain}
-        placeholder="Örn: Müşteri sorularına yetişemiyoruz, raporlar çok zaman alıyor..."
-        maxLength={300}
-        required
       />
     </FormStep>
   );
