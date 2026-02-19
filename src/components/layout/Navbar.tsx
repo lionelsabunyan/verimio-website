@@ -19,8 +19,22 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // ESC ile kapat + body scroll lock
+  useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && isOpen) setIsOpen(false);
+    };
+    window.addEventListener("keydown", handleEsc);
+    document.body.style.overflow = isOpen ? "hidden" : "";
+    return () => {
+      window.removeEventListener("keydown", handleEsc);
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   return (
     <motion.nav
+      aria-label="Ana navigasyon"
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: [0.21, 0.47, 0.32, 0.98] }}
@@ -79,7 +93,9 @@ export default function Navbar() {
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 rounded-lg text-foreground hover:bg-foreground/5 transition-colors"
               whileTap={{ scale: 0.92 }}
-              aria-label="Menü"
+              aria-label={isOpen ? "Menüyü kapat" : "Menüyü aç"}
+              aria-expanded={isOpen}
+              aria-controls="mobile-menu"
             >
               <AnimatePresence mode="wait" initial={false}>
                 {isOpen ? (
@@ -113,6 +129,7 @@ export default function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            id="mobile-menu"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}

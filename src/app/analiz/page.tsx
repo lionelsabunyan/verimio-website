@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function AnalizPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-secondary/4 dark:from-primary/20 dark:via-background dark:to-secondary/8 pt-20">
+    <main className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-secondary/4 dark:from-primary/20 dark:via-background dark:to-secondary/8 pt-20">
       <div className="max-w-2xl mx-auto px-4 py-10 pb-20">
         {/* Header */}
         <div className="text-center mb-10">
@@ -37,6 +37,6 @@ export default function AnalizPage() {
 
       {/* Benefits — what's in the report */}
       <Benefits />
-    </div>
+    </main>
   );
 }

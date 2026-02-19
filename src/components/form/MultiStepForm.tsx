@@ -55,7 +55,7 @@ export default function MultiStepForm() {
     if (!isSubmitting) return;
     const interval = setInterval(() => {
       setLoadingMessageIndex((i) => (i + 1) % LOADING_MESSAGES.length);
-    }, 1800);
+    }, 2500);
     return () => clearInterval(interval);
   }, [isSubmitting]);
 
@@ -285,15 +285,20 @@ export default function MultiStepForm() {
             </motion.button>
           )}
 
+          <div className="rounded-xl bg-foreground/4 border border-border px-4 py-3 text-sm text-foreground-secondary text-center">
+            Bilgilerinizi aldık — raporunuzu nasıl iletmemizi istersiniz?
+          </div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {/* Option A: Get Report */}
             <motion.button
               type="button"
               onClick={handleSubmitReport}
-              whileTap={{ scale: 0.97 }}
-              whileHover={{ scale: 1.01 }}
+              disabled={isSubmitting}
+              whileTap={{ scale: isSubmitting ? 1 : 0.97 }}
+              whileHover={{ scale: isSubmitting ? 1 : 1.01 }}
               transition={{ type: "spring" as const, stiffness: 400, damping: 25 }}
-              className="flex flex-col items-center gap-2 px-5 py-4 rounded-2xl border-2 border-secondary bg-secondary/8 hover:bg-secondary/15 transition-colors duration-150 text-center"
+              className="flex flex-col items-center gap-2 px-5 py-4 rounded-2xl border-2 border-secondary bg-secondary/8 hover:bg-secondary/15 transition-colors duration-150 text-center disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <Mail className="w-5 h-5 text-secondary" />
               <div>
@@ -310,10 +315,11 @@ export default function MultiStepForm() {
             <motion.button
               type="button"
               onClick={handleBookMeeting}
-              whileTap={{ scale: 0.97 }}
-              whileHover={{ scale: 1.01 }}
+              disabled={isSubmitting}
+              whileTap={{ scale: isSubmitting ? 1 : 0.97 }}
+              whileHover={{ scale: isSubmitting ? 1 : 1.01 }}
               transition={{ type: "spring" as const, stiffness: 400, damping: 25 }}
-              className="flex flex-col items-center gap-2 px-5 py-4 rounded-2xl border-2 border-primary bg-primary hover:bg-primary/90 transition-colors duration-150 text-center shadow-sm"
+              className="flex flex-col items-center gap-2 px-5 py-4 rounded-2xl border-2 border-primary bg-primary hover:bg-primary/90 transition-colors duration-150 text-center shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <Calendar className="w-5 h-5 text-white" />
               <div>

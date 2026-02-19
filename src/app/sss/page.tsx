@@ -54,7 +54,7 @@ const categories = [
 
 export default function SSSPage() {
   return (
-    <div className="pt-20">
+    <main className="pt-20">
       {/* Hero */}
       <section className="section-padding">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -134,6 +134,6 @@ export default function SSSPage() {
           </div>
         </div>
       </section>
-    </div>
+    </main>
   );
 }

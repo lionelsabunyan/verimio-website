@@ -8,7 +8,7 @@ import CTA from "@/components/sections/CTA";
 
 export default function Home() {
   return (
-    <>
+    <main>
       <Hero />
       <About />
       <HowItWorks />
@@ -16,6 +16,6 @@ export default function Home() {
       <Blog />
       <Testimonials />
       <CTA />
-    </>
+    </main>
   );
 }
