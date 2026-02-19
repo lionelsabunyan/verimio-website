@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 
 // ─── Yeni bileşenler ──────────────────────────────────────────────────────────
 import ProcessAnalysisIcon from '@/components/brand/icons/services/ProcessAnalysisIcon'
@@ -118,8 +118,102 @@ const BLOG_CATEGORIES = [
   { category: 'tutorial' as const, label: 'Rehber' },
 ]
 
+// ─── AI Prompt Setleri ───────────────────────────────────────────────────────
+const AI_PROMPTS = {
+  illustration: [
+    {
+      id: "hakkimizda",
+      label: "Hakkımızda Hero",
+      desc: "Kurumsal yapı → dönüşüm → sonuç metaforu",
+      prompt: "Abstract geometric corporate technology illustration, dark deep indigo background (#1E0A46), interconnected nodes and data flow lines in soft purple, a structured bottleneck filter transforming chaotic inputs into clean parallel outputs, three rising bar chart columns at bottom with the rightmost bar in vivid lime green (#A3E635), minimal flat vector art style, no text, no people, technical precision",
+      model: "recraft" as const,
+      style: "vector_illustration/bold_stroke",
+      size: "landscape_4_3",
+    },
+    {
+      id: "howitworks",
+      label: "HowItWorks Arka Plan",
+      desc: "3 adımlı süreç akışı illüstrasyonu",
+      prompt: "Three connected process nodes flowing left to right, dark indigo background, first node represents discovery with magnifying glass shape, second node analysis with data grid, third node execution with checkmark in lime green, bezier curves connecting nodes, geometric flat illustration, minimal corporate style, no text",
+      model: "recraft" as const,
+      style: "vector_illustration/bold_stroke",
+      size: "landscape_16_9",
+    },
+    {
+      id: "expertise",
+      label: "Expertise Section",
+      desc: "AI & otomasyon servis görseli",
+      prompt: "Abstract AI brain circuit illustration, central hexagonal node radiating four connection arms to service boxes, dark purple indigo background, circuit board traces in soft purple glow, terminal node glowing in vivid lime green, flat geometric corporate illustration style, no text, clean minimal",
+      model: "recraft" as const,
+      style: "digital_illustration/2d_art_poster",
+      size: "square_hd",
+    },
+  ],
+  blog: [
+    {
+      id: "ai-tools",
+      label: "AI Araçları Kapağı",
+      desc: "Blog kapak — AI tools kategorisi",
+      prompt: "Professional tech blog cover image, AI productivity tools concept, dark indigo background with subtle grid, glowing interface windows floating in 3D space, lime green accent highlights on UI elements, minimalist modern design, cinematic lighting, 16:9 format",
+      model: "flux" as const,
+      style: null,
+      size: "landscape_16_9",
+    },
+    {
+      id: "automation",
+      label: "Otomasyon Kapağı",
+      desc: "Blog kapak — automation kategorisi",
+      prompt: "Business process automation concept, dark navy background, flowing workflow arrows connecting process blocks, robotic arm silhouette in blueprint style, lime green data streams, professional corporate illustration, clean modern aesthetic, 16:9",
+      model: "flux" as const,
+      style: null,
+      size: "landscape_16_9",
+    },
+    {
+      id: "roi",
+      label: "ROI & Verimlilik Kapağı",
+      desc: "Blog kapak — ROI kategorisi",
+      prompt: "ROI and business growth visualization, upward trending chart curve on dark indigo background, data points glowing in lime green, financial growth concept, abstract geometric elements, corporate professional aesthetic, clean minimal design, 16:9",
+      model: "flux" as const,
+      style: null,
+      size: "landscape_16_9",
+    },
+  ],
+  social: [
+    {
+      id: "linkedin-post",
+      label: "LinkedIn Post Görseli",
+      desc: "1200×628 — LinkedIn paylaşım görseli",
+      prompt: "LinkedIn corporate post visual background, dark indigo gradient, abstract geometric shapes with subtle purple glow, professional business technology aesthetic, lime green accent line at left edge, minimal design with space for text overlay, 1.91:1 horizontal ratio",
+      model: "recraft" as const,
+      style: "digital_illustration/2d_art_poster",
+      size: "landscape_16_9",
+    },
+    {
+      id: "instagram-post",
+      label: "Instagram Post Görseli",
+      desc: "1080×1080 — Instagram kare görseli",
+      prompt: "Instagram square post background, deep purple indigo radial gradient, geometric dot cluster bottom left in lime green, concentric ring accent top right in soft purple, minimal corporate design, strong visual hierarchy, space for centered text overlay",
+      model: "recraft" as const,
+      style: "digital_illustration/2d_art_poster",
+      size: "square_hd",
+    },
+    {
+      id: "story-bg",
+      label: "Instagram Story Arka Planı",
+      desc: "1080×1920 — Dikey story formatı",
+      prompt: "Instagram story vertical background, dark indigo bottom to deep purple top gradient, scattered geometric elements, lime green glowing node center composition, abstract data flow lines, corporate tech brand aesthetic, portrait 9:16 format, minimal",
+      model: "recraft" as const,
+      style: "digital_illustration/2d_art_poster",
+      size: "portrait_16_9",
+    },
+  ],
+}
+
+type AICategory = keyof typeof AI_PROMPTS
+type AIImageState = Record<string, { url?: string; loading?: boolean; error?: string }>
+
 // ─── Tab Types ────────────────────────────────────────────────────────────────
-type Section = 'logo' | 'colors' | 'typography' | 'social' | 'icons' | 'illustration' | 'blog' | 'templates'
+type Section = 'logo' | 'colors' | 'typography' | 'social' | 'icons' | 'illustration' | 'blog' | 'templates' | 'ai'
 
 const TABS: { id: Section; label: string }[] = [
   { id: 'logo', label: 'Logo' },
@@ -130,6 +224,7 @@ const TABS: { id: Section; label: string }[] = [
   { id: 'blog', label: 'Blog Görselleri' },
   { id: 'templates', label: 'Sosyal Şablonlar' },
   { id: 'social', label: 'Sosyal Profil' },
+  { id: 'ai', label: '✦ AI Görseller' },
 ]
 
 // ─── Ortak yardımcılar ────────────────────────────────────────────────────────
@@ -176,6 +271,44 @@ export default function BrandPreviewClient() {
   const [section, setSection] = useState<Section>('logo')
   const [copied, setCopied] = useState<string | null>(null)
   const [socialAspect, setSocialAspect] = useState<SocialAspect>('instagram')
+  const [aiImages, setAiImages] = useState<AIImageState>({
+    // Önceden üretilmiş görseller — sayfa açılır açılmaz görünür
+    "hakkimizda":   { url: "https://v3b.fal.media/files/b/0a8f1bfd/OL9kTSIaKeTmp9b6hN9NP_image.svg" },
+    "howitworks":   { url: "https://v3b.fal.media/files/b/0a8f1bfd/bW_8gdjWv4Ca2XaeY--OG_image.svg" },
+    "expertise":    { url: "https://v3b.fal.media/files/b/0a8f1bfc/DPXzehplMGORHQXu7XvSJ_image.webp" },
+    "ai-tools":     { url: "https://v3b.fal.media/files/b/0a8f1bfd/zz3KTrDjovSXHxwvR278J_311b48fe969a45ccad3a5f697dff3b18.jpg" },
+    "automation":   { url: "https://v3b.fal.media/files/b/0a8f1bfd/P5Wz3mg-JHcF9X-mF-zcb_78eada9fd6da40839570c7cfbc651116.jpg" },
+    "roi":          { url: "https://v3b.fal.media/files/b/0a8f1bfd/VTYd-WGimPU4UdclI2zND_45c2aa0685584d1faff8cac8c6cbc651.jpg" },
+    "linkedin-post":  { url: "https://v3b.fal.media/files/b/0a8f1bfc/MKqh4xJAALfVvIs5x3daN_image.webp" },
+    "instagram-post": { url: "https://v3b.fal.media/files/b/0a8f1bfd/eLww8VX9t-ULGXC1KYDQo_image.webp" },
+    "story-bg":     { url: "https://v3b.fal.media/files/b/0a8f1bfd/3RqXDIBmlXqB1c8gIHwQx_image.webp" },
+  })
+  const [aiCategory, setAiCategory] = useState<AICategory>('illustration')
+
+  const generate = useCallback(async (id: string, prompt: string, model: 'recraft' | 'flux', style: string | null, size: string) => {
+    setAiImages((prev) => ({ ...prev, [id]: { loading: true } }))
+    try {
+      const res = await fetch('/api/generate-image', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt, model, style, imageSize: size }),
+      })
+      const data = await res.json()
+      if (data.url) {
+        setAiImages((prev) => ({ ...prev, [id]: { url: data.url } }))
+      } else {
+        setAiImages((prev) => ({ ...prev, [id]: { error: data.error ?? 'Bilinmeyen hata' } }))
+      }
+    } catch (e) {
+      setAiImages((prev) => ({ ...prev, [id]: { error: String(e) } }))
+    }
+  }, [])
+
+  const generateAll = useCallback((category: AICategory) => {
+    for (const item of AI_PROMPTS[category]) {
+      generate(item.id, item.prompt, item.model, item.style, item.size)
+    }
+  }, [generate])
 
   const copy = (hex: string) => {
     navigator.clipboard.writeText(hex)
@@ -741,6 +874,171 @@ export default function BrandPreviewClient() {
               </div>
               <div style={{ background: '#0F0A1E', padding: '10px 16px', fontSize: 12, color: '#4C4462' }}>OG Image — 1200×630 (otomatik oluşturuluyor)</div>
             </div>
+          </div>
+        )}
+
+        {/* ══ AI GÖRSELLER ══ */}
+        {section === 'ai' && (
+          <div>
+            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16, marginBottom: 32 }}>
+              <div>
+                <h2 style={{ fontSize: 22, fontWeight: 700, marginBottom: 4 }}>AI Görsel Üretim Laboratuvarı</h2>
+                <p style={{ color: '#4C4462', fontSize: 14, maxWidth: 520 }}>
+                  Recraft V3 (illüstrasyon) + FLUX 1.1 Pro (fotoğrafik/blog) modelleri. Her kategori için 3 farklı örnek üretilebilir.
+                  FAL_KEY gerekli — <span style={{ color: '#A3E635', fontFamily: 'monospace' }}>.env.local</span>'de olmalı.
+                </p>
+              </div>
+            </div>
+
+            {/* Kategori seçici */}
+            <div style={{ display: 'flex', gap: 8, marginBottom: 32 }}>
+              {(Object.keys(AI_PROMPTS) as AICategory[]).map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setAiCategory(cat)}
+                  style={{
+                    padding: '8px 20px', borderRadius: 10, border: 'none', cursor: 'pointer',
+                    fontSize: 13, fontWeight: 600,
+                    background: aiCategory === cat ? '#A3E635' : '#1A1030',
+                    color: aiCategory === cat ? '#2E1065' : '#78716C',
+                  }}
+                >
+                  {cat === 'illustration' ? '🎨 İllüstrasyon' : cat === 'blog' ? '📝 Blog Kapağı' : '📱 Sosyal Medya'}
+                </button>
+              ))}
+              <button
+                onClick={() => generateAll(aiCategory)}
+                style={{
+                  marginLeft: 'auto', padding: '8px 24px', borderRadius: 10, border: '1px solid #A3E635',
+                  cursor: 'pointer', fontSize: 13, fontWeight: 700,
+                  background: 'transparent', color: '#A3E635',
+                }}
+              >
+                Tümünü Üret →
+              </button>
+            </div>
+
+            {/* Model bilgisi */}
+            <div style={{ display: 'flex', gap: 12, marginBottom: 32, flexWrap: 'wrap' }}>
+              <div style={{ background: '#1A1030', borderRadius: 8, padding: '8px 16px', display: 'flex', gap: 8, alignItems: 'center' }}>
+                <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#8B5CF6' }} />
+                <span style={{ fontSize: 12, color: '#78716C' }}>
+                  <strong style={{ color: '#FFFFFF' }}>Recraft V3</strong> — vector_illustration · brand-safe · $0.04/görsel
+                </span>
+              </div>
+              <div style={{ background: '#1A1030', borderRadius: 8, padding: '8px 16px', display: 'flex', gap: 8, alignItems: 'center' }}>
+                <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#A3E635' }} />
+                <span style={{ fontSize: 12, color: '#78716C' }}>
+                  <strong style={{ color: '#FFFFFF' }}>FLUX 1.1 Pro</strong> — fotoğrafik kalite · blog cover · $0.05/görsel
+                </span>
+              </div>
+            </div>
+
+            {/* Görsel kartları */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
+              {AI_PROMPTS[aiCategory].map((item) => {
+                const state = aiImages[item.id]
+                return (
+                  <div key={item.id} style={card()}>
+                    {/* Görsel alanı */}
+                    <div style={{
+                      aspectRatio: item.size === 'square_hd' ? '1' : item.size === 'portrait_16_9' ? '9/16' : '16/9',
+                      background: '#0A0514',
+                      position: 'relative',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      overflow: 'hidden',
+                    }}>
+                      {state?.loading && (
+                        <div style={{ textAlign: 'center' }}>
+                          <div style={{ width: 40, height: 40, border: '3px solid #1A1030', borderTopColor: '#A3E635', borderRadius: '50%', animation: 'spin 1s linear infinite', margin: '0 auto 12px' }} />
+                          <div style={{ fontSize: 12, color: '#4C4462' }}>Üretiliyor…</div>
+                          <div style={{ fontSize: 11, color: '#2A2040', marginTop: 4 }}>~30–60 saniye</div>
+                        </div>
+                      )}
+                      {state?.url && (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img src={state.url} alt={item.label} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                      )}
+                      {state?.error && (
+                        <div style={{ textAlign: 'center', padding: 20 }}>
+                          <div style={{ fontSize: 24, marginBottom: 8 }}>⚠</div>
+                          <div style={{ fontSize: 12, color: '#EF4444', marginBottom: 4 }}>Hata</div>
+                          <div style={{ fontSize: 11, color: '#4C4462', fontFamily: 'monospace', wordBreak: 'break-all' }}>{state.error}</div>
+                        </div>
+                      )}
+                      {!state && (
+                        <div style={{ textAlign: 'center' }}>
+                          <div style={{ fontSize: 32, marginBottom: 12, opacity: 0.3 }}>✦</div>
+                          <div style={{ fontSize: 13, color: '#4C4462' }}>Henüz üretilmedi</div>
+                        </div>
+                      )}
+
+                      {/* Model badge */}
+                      <div style={{
+                        position: 'absolute', top: 10, right: 10,
+                        background: item.model === 'recraft' ? 'rgba(139,92,246,0.85)' : 'rgba(163,230,53,0.85)',
+                        color: item.model === 'recraft' ? '#FFFFFF' : '#2E1065',
+                        fontSize: 10, fontWeight: 700, padding: '3px 8px', borderRadius: 6,
+                      }}>
+                        {item.model === 'recraft' ? 'Recraft V3' : 'FLUX 1.1 Pro'}
+                      </div>
+                    </div>
+
+                    {/* Alt bilgi + buton */}
+                    <div style={{ padding: '14px 16px', borderTop: '1px solid #1A1030' }}>
+                      <div style={{ fontSize: 13, fontWeight: 600, color: '#FFFFFF', marginBottom: 2 }}>{item.label}</div>
+                      <div style={{ fontSize: 11, color: '#4C4462', marginBottom: 12, lineHeight: 1.5 }}>{item.desc}</div>
+                      <div style={{ display: 'flex', gap: 8 }}>
+                        <button
+                          onClick={() => generate(item.id, item.prompt, item.model, item.style, item.size)}
+                          disabled={state?.loading}
+                          style={{
+                            flex: 1, padding: '8px 0', borderRadius: 8, border: 'none', cursor: state?.loading ? 'wait' : 'pointer',
+                            fontSize: 12, fontWeight: 600,
+                            background: state?.loading ? '#1A1030' : '#A3E635',
+                            color: state?.loading ? '#4C4462' : '#2E1065',
+                          }}
+                        >
+                          {state?.loading ? 'Üretiliyor…' : state?.url ? 'Yeniden Üret' : 'Üret'}
+                        </button>
+                        {state?.url && (
+                          <a
+                            href={state.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{
+                              padding: '8px 12px', borderRadius: 8, border: '1px solid #1A1030',
+                              fontSize: 12, fontWeight: 600, color: '#78716C', textDecoration: 'none',
+                              background: 'transparent', display: 'flex', alignItems: 'center',
+                            }}
+                          >
+                            ↗
+                          </a>
+                        )}
+                      </div>
+                      {/* Prompt önizleme */}
+                      <div
+                        style={{
+                          marginTop: 10, fontSize: 10, color: '#2A2040', fontFamily: 'monospace',
+                          lineHeight: 1.4, maxHeight: 40, overflow: 'hidden',
+                          cursor: 'pointer',
+                        }}
+                        title={item.prompt}
+                      >
+                        {item.prompt.slice(0, 80)}…
+                      </div>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+
+            {/* Spinning animation */}
+            <style>{`
+              @keyframes spin { to { transform: rotate(360deg); } }
+            `}</style>
           </div>
         )}
 
