@@ -5,7 +5,7 @@ import Benefits from "@/components/sections/Benefits";
 export const metadata: Metadata = {
   title: "Şirket Check-Up'ı | Verimio",
   description:
-    "Şirketinizin operasyonel verimliliğini ve AI hazırlığını analiz ediyoruz. 48 saat içinde size özel rapor.",
+    "Şirketinizin operasyonel verimliliğini ve AI hazırlığını analiz ediyoruz. Formu doldurun, size özel raporunuz e-postanıza iletilsin.",
 };
 
 export default function AnalizPage() {

@@ -102,8 +102,8 @@ function TesekkurlerContent() {
                   <Clock className="w-4 h-4 text-primary dark:text-primary-light" />
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-foreground">48 saat içinde</p>
-                  <p className="text-xs text-foreground-secondary">Check-up raporunuz e-postanıza gelecek</p>
+                  <p className="text-sm font-medium text-foreground">Raporunuz hazırlanıyor</p>
+                  <p className="text-xs text-foreground-secondary">Check-up raporunuz en kısa sürede e-postanıza iletilecek</p>
                 </div>
               </div>
               <div className="flex items-center gap-3 p-4 rounded-xl bg-surface border border-border text-left">

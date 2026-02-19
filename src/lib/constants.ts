@@ -116,7 +116,7 @@ export const FAQ_ITEMS = [
   {
     question: "Check-up süreci nasıl işliyor?",
     answer:
-      "Sektörünüze ve şirket yapınıza özel bir form dolduruyorsunuz. Uzman ekibimiz cevaplarınızı inceleyip 48 saat içinde size özel bir analiz raporu hazırlıyor. Süreç sizden yalnızca 15-20 dakika alıyor.",
+      "Sektörünüze ve şirket yapınıza özel bir form dolduruyorsunuz. Uzman ekibimiz cevaplarınızı inceleyip en kısa sürede size özel bir analiz raporu hazırlayıp e-postanıza iletiyor. Süreç sizden yalnızca 15-20 dakika alıyor.",
   },
   {
     question: "Raporumda neler yer alıyor?",
@@ -131,7 +131,7 @@ export const FAQ_ITEMS = [
   {
     question: "Danışmanlık süreci ne kadar sürer?",
     answer:
-      "Bu, firmanızın ihtiyacına göre değişir. Check-up raporu 48 saat içinde teslim edilir. Uygulama danışmanlığı ise projenin kapsamına göre birkaç haftadan birkaç aya kadar uzanabilir. Her süreç netleştirildikten sonra size özel bir zaman çizelgesi hazırlanır.",
+      "Bu, firmanızın ihtiyacına göre değişir. Check-up raporu formunuzu doldurmanızın hemen ardından hazırlanıp e-postanıza iletilir. Uygulama danışmanlığı ise projenin kapsamına göre birkaç haftadan birkaç aya kadar uzanabilir. Her süreç netleştirildikten sonra size özel bir zaman çizelgesi hazırlanır.",
   },
   {
     question: "Fiyatlandırma nasıl?",
@@ -214,7 +214,7 @@ export const CTA_CONTENT = {
   label: "Bir Sonraki Adım",
   headline: "İlk Adımı Birlikte Atalım",
   description:
-    "Firmanızın verimliliğini ve AI hazırlığını analiz ediyoruz. Size özel yol haritanız 48 saat içinde hazır.",
+    "Firmanızın verimliliğini ve AI hazırlığını analiz ediyoruz. Formu doldurun, size özel yol haritanız e-postanıza gelsin.",
   ctaPrimary: "Ücretsiz Check-Up Başlatın",
   ctaSecondary: "Hizmetlerimizi İnceleyin",
 } as const;
@@ -231,7 +231,7 @@ export const STATS = [
   { value: "10+", label: "Firma Analiz Edildi" },
   { value: "%60+", label: "Ortalama Otomasyon Potansiyeli" },
   { value: "4 Alan", label: "Hizmet Kategorisi" },
-  { value: "48 saat", label: "Rapor Teslim Süresi" },
+  { value: "Hızlı", label: "Rapor Teslimi" },
 ] as const;
 
 export const SUCCESS_STORIES = [

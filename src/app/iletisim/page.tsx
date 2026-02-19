@@ -56,7 +56,7 @@ const trustSignals = [
   },
   {
     icon: Timer,
-    text: "Check-up raporunuz 48 saat içinde teslim edilir. Sürpriz bekleme yok.",
+    text: "Formu doldurmanızın hemen ardından raporunuz hazırlanır ve e-postanıza iletilir.",
   },
 ];
 
@@ -96,8 +96,8 @@ export default function IletisimPage() {
               </h1>
 
               <p className="text-lg text-foreground-secondary leading-relaxed mb-10 max-w-lg">
-                Check-up'a hazırsanız formu doldurmanız yeterli — 48 saat içinde size özel
-                rapor e-postanıza gelir. Hâlâ sorusu olanlar için biz buradayız.
+                Check-up'a hazırsanız formu doldurmanız yeterli — size özel
+                raporunuz hemen hazırlanıp e-postanıza iletilir. Hâlâ sorusu olanlar için biz buradayız.
               </p>
 
               {/* İletişim Kartları */}
@@ -144,7 +144,7 @@ export default function IletisimPage() {
                 <h2 className="text-2xl font-bold mb-4">En Hızlı Başlangıç</h2>
                 <p className="text-white/70 leading-relaxed mb-8">
                   İletişime geçmeden önce ücretsiz şirket check-up&apos;ımızı
-                  deneyin. Firmanıza özel rapor 48 saat içinde e-postanıza gelir.
+                  deneyin. Firmanıza özel rapor hemen hazırlanıp e-postanıza iletilir.
                 </p>
 
                 <div className="space-y-4 mb-8">

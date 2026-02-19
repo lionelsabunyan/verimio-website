@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Verimio | Kurumsal AI Danışmanlığı",
     description:
-      "Şirketinizin AI hazırlığını analiz ediyoruz. 48 saat içinde size özel yol haritası.",
+      "Şirketinizin AI hazırlığını analiz ediyoruz. Formu doldurun, size özel yol haritanız e-postanıza gelsin.",
     type: "website",
     locale: "tr_TR",
   },

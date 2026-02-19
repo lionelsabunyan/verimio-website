@@ -167,7 +167,7 @@ export default function HakkimizdaPage() {
           </h2>
           <p className="text-lg text-white/60 max-w-2xl mx-auto mb-10 leading-relaxed">
             Firmanızın verimliliğini ve AI hazırlığını analiz ediyoruz.
-            Size özel yol haritanız 48 saat içinde hazır.
+            Formu doldurun, size özel yol haritanız e-postanıza gelsin.
           </p>
           <Link
             href={BRAND.tallyFormUrl}

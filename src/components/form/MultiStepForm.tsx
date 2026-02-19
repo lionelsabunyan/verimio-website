@@ -288,7 +288,7 @@ export default function MultiStepForm() {
                   Detaylı Raporumu Gönder
                 </p>
                 <p className="text-xs text-foreground-secondary mt-0.5">
-                  48 saat içinde e-postanıza gelir
+                  Hemen hazırlanır, e-postanıza iletilir
                 </p>
               </div>
             </motion.button>

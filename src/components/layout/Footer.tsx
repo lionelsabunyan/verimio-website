@@ -11,7 +11,7 @@ const footerLinks = {
     { label: "Blog", href: "/blog" },
   ],
   support: [
-    { label: "SSS", href: "/hakkimizda#faq" },
+    { label: "SSS", href: "/sss" },
     { label: "Gizlilik Politikası", href: "/gizlilik" },
     { label: "Kullanım Şartları", href: "/kullanim-sartlari" },
     { label: "İletişim", href: "/iletisim" },

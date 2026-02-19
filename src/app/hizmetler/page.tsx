@@ -95,7 +95,7 @@ const steps = [
     step: "02",
     title: "Size özel analiz raporu",
     description:
-      "48 saat içinde otomasyon potansiyelinizi, tasarruf tahminlerinizi ve öncelikli aksiyon alanlarınızı somut rakamlarla ortaya koyuyoruz.",
+      "Formu doldurmanızın hemen ardından otomasyon potansiyelinizi, tasarruf tahminlerinizi ve öncelikli aksiyon alanlarınızı somut rakamlarla ortaya koyan raporunuzu e-postanıza iletiyoruz.",
   },
   {
     step: "03",
