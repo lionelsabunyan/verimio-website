@@ -1,8 +1,8 @@
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowUpRight, CheckCircle2, BarChart3, Users2 } from "lucide-react";
 import { BRAND } from "@/lib/constants";
 import FAQ from "@/components/sections/FAQ";
+import HakkimizdaHeroIllustration from "@/components/brand/illustrations/HakkimizdaHeroIllustration";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -76,18 +76,9 @@ export default function HakkimizdaPage() {
               </div>
             </div>
 
-            {/* Sağ: Hero Görseli */}
+            {/* Sağ: Hero İllüstrasyonu */}
             <div className="hidden lg:block">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-primary/20">
-                <Image
-                  src="https://v3b.fal.media/files/b/0a8f1e05/pJaVCx0JzU_cAFTY7as5m_310a8163c1f14ab79b519cc75bfcb006.jpg"
-                  alt="Verimio — operasyonel mükemmelliği birlikte inşa ediyoruz"
-                  width={600}
-                  height={450}
-                  className="w-full h-auto"
-                  priority
-                />
-              </div>
+              <HakkimizdaHeroIllustration className="w-full max-w-lg mx-auto opacity-90" />
             </div>
           </div>
         </div>

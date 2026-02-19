@@ -78,21 +78,21 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* Newsletter CTA */}
+      {/* CTA */}
       <section className="section-padding">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">
-            AI İpuçlarını <span className="gradient-text">Kaçırmayın</span>
+            Firmanız için <span className="gradient-text">doğru adımı atın</span>
           </h2>
           <p className="text-foreground-secondary leading-relaxed mb-8">
-            Her hafta işinize yarayacak AI ve otomasyon ipuçlarını e-postanıza gönderelim.
-            Abone olun, güncel kalın.
+            Otomasyon potansiyelinizi, tasarruf fırsatlarınızı ve 90 günlük yol haritanızı
+            ücretsiz check-up ile keşfedin.
           </p>
           <Link
             href={BRAND.tallyFormUrl}
             className="inline-flex items-center gap-2 px-7 py-3.5 bg-secondary text-primary font-semibold rounded-full hover:bg-secondary-hover transition-all duration-200 hover:shadow-lg hover:shadow-secondary/25 text-sm"
           >
-            Ücretsiz Analiz ile Başlayın
+            Ücretsiz Check-Up Başlatın
             <ArrowUpRight className="w-4 h-4" />
           </Link>
         </div>

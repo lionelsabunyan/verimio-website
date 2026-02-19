@@ -1,18 +1,11 @@
 import Link from "next/link";
-import {
-  ArrowUpRight,
-  Bot,
-  BarChart3,
-  Workflow,
-  Database,
-  BrainCircuit,
-  CheckCircle2,
-  Clock,
-  HeadphonesIcon,
-  TrendingUp,
-} from "lucide-react";
+import { ArrowUpRight, CheckCircle2, Clock, HeadphonesIcon, TrendingUp } from "lucide-react";
 import { BRAND } from "@/lib/constants";
-import { getServiceIconStyle } from "@/lib/brand-colors";
+import ProcessAnalysisIcon from "@/components/brand/icons/services/ProcessAnalysisIcon";
+import WorkflowAutomationIcon from "@/components/brand/icons/services/WorkflowAutomationIcon";
+import CustomerExperienceIcon from "@/components/brand/icons/services/CustomerExperienceIcon";
+import DataReportingIcon from "@/components/brand/icons/services/DataReportingIcon";
+import AIStrategyIcon from "@/components/brand/icons/services/AIStrategyIcon";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -23,7 +16,7 @@ export const metadata: Metadata = {
 
 const services = [
   {
-    icon: Workflow,
+    icon: ProcessAnalysisIcon,
     title: "Süreç Analizi & Optimizasyonu",
     description:
       "İş süreçlerinizi uçtan uca haritalıyoruz. Zaman ve kaynak kaybına yol açan adımları tespit edip, operasyonunuzu sade ve ölçeklenebilir hale getiriyoruz.",
@@ -35,7 +28,7 @@ const services = [
     ],
   },
   {
-    icon: BrainCircuit,
+    icon: WorkflowAutomationIcon,
     title: "İş Akışı Otomasyonu",
     description:
       "Tekrarlayan, manuel görevleri otomatize ediyoruz. Ekibiniz rutin işler yerine stratejik çalışmaya vakit ayırsın.",
@@ -47,7 +40,7 @@ const services = [
     ],
   },
   {
-    icon: Bot,
+    icon: CustomerExperienceIcon,
     title: "Müşteri Deneyimi Otomasyonu",
     description:
       "7/24 müşteri desteği sağlayan akıllı çözümler. Sık sorulan soruları otomatik yanıtlayın, ekibinizin yükünü azaltın, memnuniyeti artırın.",
@@ -59,7 +52,7 @@ const services = [
     ],
   },
   {
-    icon: BarChart3,
+    icon: DataReportingIcon,
     title: "Veri & Raporlama Otomasyonu",
     description:
       "Dağınık verilerinizi anlamlı bilgilere dönüştürün. Gerçek zamanlı dashboard'lar ve otomatik raporlarla karar alma sürecinizi hızlandırın.",
@@ -71,7 +64,7 @@ const services = [
     ],
   },
   {
-    icon: Database,
+    icon: AIStrategyIcon,
     title: "AI Strateji & Entegrasyon",
     description:
       "Doğru araçla, doğru süreçte, doğru zamanda AI kullanın. Bağımsız danışmanlar olarak firmanıza en uygun teknolojiyi seçip entegrasyon sürecini yönetiyoruz.",
@@ -176,35 +169,30 @@ export default function HizmetlerPage() {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => {
-              const style = getServiceIconStyle(index);
-              return (
-                <div
-                  key={index}
-                  className="p-8 rounded-2xl border border-border hover:border-border-accent transition-all duration-300 bg-surface group"
-                >
-                  <div
-                    className={`w-12 h-12 rounded-xl ${style.bg} ${style.text} flex items-center justify-center mb-6`}
-                  >
-                    <service.icon className="w-6 h-6" />
-                  </div>
-
-                  <h3 className="text-xl font-bold mb-3 group-hover:text-primary dark:group-hover:text-primary-light transition-colors">
-                    {service.title}
-                  </h3>
-                  <p className="text-foreground-secondary leading-relaxed mb-6">{service.description}</p>
-
-                  <ul className="space-y-2">
-                    {service.features.map((feature, i) => (
-                      <li key={i} className="flex items-start gap-2 text-sm text-foreground-secondary">
-                        <CheckCircle2 className="w-4 h-4 text-secondary mt-0.5 shrink-0" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
+            {services.map((service, index) => (
+              <div
+                key={index}
+                className="p-8 rounded-2xl border border-border hover:border-border-accent transition-all duration-300 bg-surface group"
+              >
+                <div className="w-12 h-12 rounded-xl bg-primary/8 dark:bg-primary-light/10 text-primary-light flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                  <service.icon className="w-6 h-6" size={24} />
                 </div>
-              );
-            })}
+
+                <h3 className="text-xl font-bold mb-3 group-hover:text-primary dark:group-hover:text-primary-light transition-colors">
+                  {service.title}
+                </h3>
+                <p className="text-foreground-secondary leading-relaxed mb-6">{service.description}</p>
+
+                <ul className="space-y-2">
+                  {service.features.map((feature, i) => (
+                    <li key={i} className="flex items-start gap-2 text-sm text-foreground-secondary">
+                      <CheckCircle2 className="w-4 h-4 text-secondary mt-0.5 shrink-0" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
       </section>

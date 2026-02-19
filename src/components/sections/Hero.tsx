@@ -7,6 +7,7 @@ import { RadialGlow } from "@/components/brand/Decoratives";
 import TimeIcon from "@/components/brand/icons/ui/TimeIcon";
 import ROIIcon from "@/components/brand/icons/ui/ROIIcon";
 import RoadmapIcon from "@/components/brand/icons/ui/RoadmapIcon";
+import HeroIllustration from "@/components/brand/illustrations/HeroIllustration";
 
 const cardIcons = [TimeIcon, ROIIcon, RoadmapIcon];
 
@@ -72,36 +73,37 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Right — Static Outcome Cards */}
+          {/* Right — Illustration + Outcome Cards */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.3, ease: [0.21, 0.47, 0.32, 0.98] }}
-            className="space-y-4"
+            className="space-y-5"
           >
-            {HERO_CONTENT.cards.map((card, index) => {
-              const Icon = cardIcons[index];
-              return (
-                <div
-                  key={index}
-                  className="rounded-2xl p-6 border bg-surface border-border hover:border-border-hover hover:bg-foreground/3 transition-colors duration-200"
-                >
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 bg-primary/8 dark:bg-primary-light/10 text-primary dark:text-primary-light">
-                      <Icon className="w-5 h-5" size={20} />
+            {/* Structured Flow illüstrasyonu */}
+            <div className="rounded-2xl border border-border bg-surface/60 p-4 overflow-hidden">
+              <HeroIllustration className="w-full opacity-85" />
+            </div>
+
+            {/* Outcome kartları — küçültülmüş, yatay */}
+            <div className="grid grid-cols-3 gap-3">
+              {HERO_CONTENT.cards.map((card, index) => {
+                const Icon = cardIcons[index];
+                return (
+                  <div
+                    key={index}
+                    className="rounded-xl p-4 border bg-surface border-border hover:border-border-accent transition-colors duration-200"
+                  >
+                    <div className="w-8 h-8 rounded-lg flex items-center justify-center mb-3 bg-primary/8 dark:bg-primary-light/10 text-primary dark:text-primary-light">
+                      <Icon className="w-4 h-4" size={16} />
                     </div>
-                    <div>
-                      <h3 className="text-base font-semibold text-foreground mb-1">
-                        {card.title}
-                      </h3>
-                      <p className="text-sm text-foreground-secondary leading-relaxed">
-                        {card.description}
-                      </p>
-                    </div>
+                    <h3 className="text-xs font-semibold text-foreground leading-snug">
+                      {card.title}
+                    </h3>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </motion.div>
         </div>
       </div>
