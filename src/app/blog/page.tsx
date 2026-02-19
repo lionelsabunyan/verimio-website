@@ -20,7 +20,7 @@ export default function BlogPage() {
             <div className="flex items-center gap-2 mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-primary" />
               <span className="w-1.5 h-1.5 rounded-full bg-primary opacity-60" />
-              <span className="text-sm font-medium text-foreground-secondary tracking-wide uppercase ml-1">Blog</span>
+              <span className="text-xs font-semibold text-foreground-secondary tracking-widest uppercase ml-1">Blog</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">

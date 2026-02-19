@@ -31,7 +31,7 @@ export default function SectionLabel({
       <span className={`w-1.5 h-1.5 rounded-full ${dotColor}`} />
       <span className={`w-1.5 h-1.5 rounded-full ${dotColor} opacity-60`} />
       <span
-        className={`text-sm font-medium tracking-wide uppercase ${textColor}`}
+        className={`text-xs font-semibold tracking-widest uppercase ${textColor}`}
       >
         {children}
       </span>

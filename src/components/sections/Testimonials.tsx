@@ -39,7 +39,7 @@ export default function Testimonials() {
               <div className="flex items-center gap-2 mb-4">
                 <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
                 <span className="w-1.5 h-1.5 rounded-full bg-secondary/60" />
-                <span className="text-sm font-medium text-foreground-secondary tracking-wide uppercase ml-1">
+                <span className="text-xs font-semibold text-foreground-secondary tracking-widest uppercase ml-1">
                   Müşterilerimiz
                 </span>
               </div>

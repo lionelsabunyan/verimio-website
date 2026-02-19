@@ -1,11 +1,12 @@
-import Link from "next/link";
-import { ArrowUpRight, CheckCircle2, Clock, HeadphonesIcon, TrendingUp } from "lucide-react";
+import { CheckCircle2, Clock, HeadphonesIcon, TrendingUp } from "lucide-react";
 import { BRAND } from "@/lib/constants";
 import ProcessAnalysisIcon from "@/components/brand/icons/services/ProcessAnalysisIcon";
 import WorkflowAutomationIcon from "@/components/brand/icons/services/WorkflowAutomationIcon";
 import CustomerExperienceIcon from "@/components/brand/icons/services/CustomerExperienceIcon";
 import DataReportingIcon from "@/components/brand/icons/services/DataReportingIcon";
 import AIStrategyIcon from "@/components/brand/icons/services/AIStrategyIcon";
+import CTA from "@/components/sections/CTA";
+import Button from "@/components/ui/Button";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -129,10 +130,10 @@ export default function HizmetlerPage() {
       <section className="section-padding">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <div className="flex items-center gap-2 mb-6">
+            <div className="flex items-center gap-2 mb-4">
               <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
               <span className="w-1.5 h-1.5 rounded-full bg-secondary/60" />
-              <span className="text-sm font-medium text-foreground-secondary tracking-wide uppercase ml-1">Hizmetlerimiz</span>
+              <span className="text-xs font-semibold text-foreground-secondary tracking-widest uppercase ml-1">Hizmetlerimiz</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
@@ -145,13 +146,9 @@ export default function HizmetlerPage() {
               sıralamasıyla çalışır. Şirketinize özgün, rakam temelli çözümler sunuyoruz.
             </p>
 
-            <Link
-              href={BRAND.tallyFormUrl}
-              className="inline-flex items-center gap-2 px-7 py-3.5 bg-secondary text-primary font-semibold rounded-full hover:bg-secondary-hover transition-all duration-200 hover:shadow-lg hover:shadow-secondary/25 text-sm"
-            >
+            <Button href={BRAND.tallyFormUrl} size="md">
               Hangi Çözüm Bana Uygun?
-              <ArrowUpRight className="w-4 h-4" />
-            </Link>
+            </Button>
           </div>
         </div>
       </section>
@@ -162,7 +159,7 @@ export default function HizmetlerPage() {
           <div className="flex items-center gap-2 mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
             <span className="w-1.5 h-1.5 rounded-full bg-secondary/60" />
-            <span className="text-sm font-medium text-foreground-secondary tracking-wide uppercase ml-1">Hizmet Alanları</span>
+            <span className="text-xs font-semibold text-foreground-secondary tracking-widest uppercase ml-1">Hizmet Alanları</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold mb-12">
             5 alanda <span className="gradient-text">danışmanlık.</span>
@@ -204,10 +201,10 @@ export default function HizmetlerPage() {
             <div className="flex items-center justify-center gap-2 mb-4">
               <span className="w-1.5 h-1.5 rounded-full bg-primary" />
               <span className="w-1.5 h-1.5 rounded-full bg-primary opacity-60" />
-              <span className="text-sm font-medium text-foreground-secondary tracking-wide uppercase ml-1">Nasıl Çalışıyoruz?</span>
+              <span className="text-xs font-semibold text-foreground-secondary tracking-widest uppercase ml-1">Nasıl Çalışıyoruz?</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              Tanı'dan uygulamaya{" "}
+              Tanı&apos;dan uygulamaya{" "}
               <span className="gradient-text">4 adım.</span>
             </h2>
             <p className="text-foreground-secondary leading-relaxed">
@@ -235,7 +232,7 @@ export default function HizmetlerPage() {
           <div className="flex items-center gap-2 mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-primary" />
             <span className="w-1.5 h-1.5 rounded-full bg-primary opacity-60" />
-            <span className="text-sm font-medium text-foreground-secondary tracking-wide uppercase ml-1">Nereden Başlayalım?</span>
+            <span className="text-xs font-semibold text-foreground-secondary tracking-widest uppercase ml-1">Nereden Başlayalım?</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
             Hangi sorunu{" "}
@@ -246,7 +243,7 @@ export default function HizmetlerPage() {
             Ücretsiz check-up ile birlikte buluyoruz.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
             {problemCards.map((card, index) => (
               <div
                 key={index}
@@ -262,47 +259,15 @@ export default function HizmetlerPage() {
           </div>
 
           <div className="text-center">
-            <Link
-              href={BRAND.tallyFormUrl}
-              className="inline-flex items-center gap-2 px-7 py-3.5 bg-secondary text-primary font-semibold rounded-full hover:bg-secondary-hover transition-all duration-200 hover:shadow-lg hover:shadow-secondary/25 text-sm"
-            >
+            <Button href={BRAND.tallyFormUrl} size="lg">
               Ücretsiz Check-Up Başlatın
-              <ArrowUpRight className="w-4 h-4" />
-            </Link>
+            </Button>
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-dark" />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent" />
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
-            Firmanıza En Uygun Çözümü Bulalım
-          </h2>
-          <p className="text-lg text-white/60 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Ücretsiz check-up ile hangi danışmanlık alanlarının firmanıza en çok fayda
-            sağlayacağını birlikte belirleyelim.
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-4">
-            <Link
-              href={BRAND.tallyFormUrl}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-secondary text-primary font-semibold rounded-full hover:bg-secondary-hover transition-all duration-200 hover:shadow-lg hover:shadow-secondary/25"
-            >
-              Ücretsiz Check-Up Başlatın
-              <ArrowUpRight className="w-5 h-5" />
-            </Link>
-            <Link
-              href="/iletisim"
-              className="inline-flex items-center gap-2 px-8 py-4 border border-white/20 text-white font-medium rounded-full hover:border-secondary hover:text-secondary transition-all duration-200"
-            >
-              Bize Ulaşın
-              <ArrowUpRight className="w-5 h-5" />
-            </Link>
-          </div>
-        </div>
-      </section>
+      <CTA />
     </div>
   );
 }

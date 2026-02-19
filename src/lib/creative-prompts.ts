@@ -38,12 +38,32 @@ export const BRAND_STYLE = {
 
 // ─── Site Görselleri ───────────────────────────────────────────────────────
 export const SITE_PROMPTS = {
-  hakkimizda_hero: {
-    prompt: `Premium about-us page hero background, ${BRAND_STYLE.light}, 4:3 landscape orientation`,
+  homepage_hero: {
+    prompt: [
+      `Premium AI consulting hero image, editorial photography style, ${BRAND_STYLE.light}`,
+      "abstract data flow visualization — thin curved lines connecting geometric nodes across the canvas",
+      "suggests intelligent process automation and operational clarity",
+      "deep indigo node clusters with vivid lime green (#A3E635) active pulse points",
+      "landscape 4:3, generous breathing room, Stripe-meets-HBR aesthetic",
+    ].join(", "),
     model: "fal-ai/flux-pro/v1.1" as const,
     size: "landscape_4_3" as const,
     /** Onaylanan görsel — üretildi 19 Şubat 2026 */
-    approved_url: "https://v3b.fal.media/files/b/0a8f1e05/pJaVCx0JzU_cAFTY7as5m_310a8163c1f14ab79b519cc75bfcb006.jpg",
+    approved_url: "https://v3b.fal.media/files/b/0a8f1fd9/qIo6-MpoTddKyskLzq1hM_8daae89f905d471aa400c2ed476fd310.jpg" as string | null,
+  },
+
+  hakkimizda_hero: {
+    prompt: [
+      `Premium corporate consulting about-us hero image, editorial photography style, ${BRAND_STYLE.light}`,
+      "minimalist abstract professional scene — layered geometric planes suggesting organizational hierarchy",
+      "clean architectural depth, strategic clarity and operational excellence theme",
+      "deep indigo structural elements, single vivid lime green (#A3E635) focal accent",
+      "landscape 4:3, no faces, no text, high-end consulting firm aesthetic",
+    ].join(", "),
+    model: "fal-ai/flux-pro/v1.1" as const,
+    size: "landscape_4_3" as const,
+    /** Onaylanan görsel — üretildi 19 Şubat 2026 */
+    approved_url: "https://v3b.fal.media/files/b/0a8f1fda/Djz8MV-LlJcjwVcBsgBun_ceed83ff0b3641f489bbaff6e5bd2205.jpg" as string | null,
   },
 
   howitworks_bg: {

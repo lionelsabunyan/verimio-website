@@ -87,10 +87,10 @@ export default function IletisimPage() {
               <div className="flex items-center gap-2 mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
                 <span className="w-1.5 h-1.5 rounded-full bg-secondary/60" />
-                <span className="text-sm font-medium text-foreground-secondary tracking-wide uppercase ml-1">İletişim</span>
+                <span className="text-xs font-semibold text-foreground-secondary tracking-widest uppercase ml-1">İletişim</span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl font-bold leading-tight mb-6">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
                 Sorulardan{" "}
                 <span className="gradient-text">doğru yere ulaşın.</span>
               </h1>
@@ -198,7 +198,7 @@ export default function IletisimPage() {
       {/* Hızlı SSS */}
       <section className="section-padding bg-background-secondary">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold mb-8 text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-center">
             Sık Sorulan <span className="gradient-text">Sorular</span>
           </h2>
 

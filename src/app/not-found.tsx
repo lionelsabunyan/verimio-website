@@ -51,7 +51,7 @@ export default function NotFound() {
         <div className="flex items-center justify-center gap-2 mb-4">
           <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
           <span className="w-1.5 h-1.5 rounded-full bg-secondary/60" />
-          <span className="text-sm font-medium text-foreground-secondary tracking-wide uppercase ml-1">Sayfa Bulunamadı</span>
+          <span className="text-xs font-semibold text-foreground-secondary tracking-widest uppercase ml-1">Sayfa Bulunamadı</span>
         </div>
 
         <h1 className="text-2xl sm:text-3xl font-bold mb-4">

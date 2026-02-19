@@ -23,9 +23,9 @@ export default function About() {
           {/* Sol: Ana metin + butonlar */}
           <div>
             <FadeIn delay={0.1}>
-              <p className="text-2xl sm:text-3xl lg:text-4xl font-medium leading-snug text-foreground/85">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-snug text-foreground/85">
                 {ABOUT_CONTENT.text}
-              </p>
+              </h2>
             </FadeIn>
 
             <FadeIn delay={0.2}>
