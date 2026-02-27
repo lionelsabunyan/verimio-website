@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight, ChevronDown } from "lucide-react";
 import { BRAND, FAQ_ITEMS } from "@/lib/constants";
+import FAQSchema from "@/components/seo/FAQSchema";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -55,6 +56,7 @@ const categories = [
 export default function SSSPage() {
   return (
     <main className="pt-20">
+      <FAQSchema items={allFaqs} />
       {/* Hero */}
       <section className="section-padding">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

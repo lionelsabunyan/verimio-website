@@ -4,6 +4,7 @@ import "./globals.css";
 import NavbarWrapper from "@/components/layout/NavbarWrapper";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import OrganizationSchema from "@/components/seo/OrganizationSchema";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -20,24 +21,54 @@ const dmMono = DM_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Verimio | Kurumsal AI Danışmanlığı",
+  metadataBase: new URL("https://www.verimio.com.tr"),
+  title: {
+    default: "Verimio | Kurumsal AI Danışmanlığı",
+    template: "%s | Verimio",
+  },
   description:
     "Şirketinizin operasyonel verimliliğini ve AI hazırlığını analiz ediyoruz. Size özel yol haritasıyla hem zamandan hem maliyetten tasarruf edin.",
   keywords: [
     "AI danışmanlık",
-    "yapay zeka",
-    "otomasyon",
-    "kurumsal",
+    "yapay zeka danışmanlığı",
+    "iş süreci otomasyonu",
+    "kurumsal AI",
     "dijital dönüşüm",
-    "verimlilik",
-    "Türkiye",
+    "verimlilik artırma",
+    "süreç analizi",
+    "Türkiye AI",
   ],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true },
+  },
   openGraph: {
     title: "Verimio | Kurumsal AI Danışmanlığı",
     description:
       "Şirketinizin AI hazırlığını analiz ediyoruz. Formu doldurun, size özel yol haritanız e-postanıza gelsin.",
     type: "website",
     locale: "tr_TR",
+    url: "https://www.verimio.com.tr",
+    siteName: "Verimio",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Verimio | Kurumsal AI Danışmanlığı",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Verimio | Kurumsal AI Danışmanlığı",
+    description:
+      "Şirketinizin operasyonel verimliliğini ve AI hazırlığını analiz ediyoruz.",
+    images: ["/opengraph-image"],
+  },
+  alternates: {
+    canonical: "https://www.verimio.com.tr",
   },
 };
 
@@ -73,6 +104,7 @@ export default function RootLayout({
         <ThemeProvider>
           <NavbarWrapper>{children}</NavbarWrapper>
         </ThemeProvider>
+        <OrganizationSchema />
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID!} />
       </body>
     </html>
