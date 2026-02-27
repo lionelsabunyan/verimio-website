@@ -3,6 +3,7 @@ import { DM_Sans, DM_Mono } from "next/font/google";
 import "./globals.css";
 import NavbarWrapper from "@/components/layout/NavbarWrapper";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -72,6 +73,7 @@ export default function RootLayout({
         <ThemeProvider>
           <NavbarWrapper>{children}</NavbarWrapper>
         </ThemeProvider>
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID!} />
       </body>
     </html>
   );
