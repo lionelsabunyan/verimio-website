@@ -1,6 +1,7 @@
 import type React from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, ArrowUpRight, Calendar, Clock, Tag } from "lucide-react";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import matter from "gray-matter";
@@ -31,6 +32,12 @@ const categoryLabels: Record<string, string> = {
   "roi": "ROI & Verimlilik",
   "tutorial": "Rehber",
 };
+
+const IMAGES_DIR = path.join(process.cwd(), "public/images/blog");
+
+function hasCoverImage(slug: string): boolean {
+  return fs.existsSync(path.join(IMAGES_DIR, `${slug}.webp`));
+}
 
 function getPostSlugs(): string[] {
   if (!fs.existsSync(CONTENT_DIR)) return [];
@@ -63,6 +70,10 @@ export async function generateMetadata({
     return { title: "Yazı Bulunamadı | Verimio Blog" };
   }
   const { frontmatter } = post;
+  const coverImage = hasCoverImage(slug)
+    ? `/images/blog/${slug}.webp`
+    : null;
+
   return {
     title: `${frontmatter.title} | Verimio Blog`,
     description: frontmatter.excerpt,
@@ -71,6 +82,7 @@ export async function generateMetadata({
       description: frontmatter.excerpt,
       type: "article",
       publishedTime: frontmatter.date,
+      ...(coverImage ? { images: [{ url: coverImage, width: 1200, height: 630 }] } : {}),
     },
   };
 }
@@ -145,6 +157,7 @@ export default async function BlogPostPage({
 
   const { frontmatter, content } = post;
   const catLabel = categoryLabels[frontmatter.category] ?? frontmatter.category;
+  const coverImagePath = hasCoverImage(slug) ? `/images/blog/${slug}.webp` : null;
 
   // Related posts: same category, different slug (from constants)
   const related = BLOG_POSTS.filter(
@@ -196,6 +209,19 @@ export default async function BlogPostPage({
               </span>
             )}
           </div>
+
+          {/* Cover image */}
+          {coverImagePath && (
+            <div className="relative w-full aspect-[1200/630] rounded-2xl overflow-hidden mb-2 -mx-0">
+              <Image
+                src={coverImagePath}
+                alt={frontmatter.title}
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+          )}
         </div>
       </section>
 
