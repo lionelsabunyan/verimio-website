@@ -1,8 +1,13 @@
 import Link from "next/link";
+import Image from "next/image";
+import fs from "fs";
+import path from "path";
 import { ArrowUpRight, Calendar } from "lucide-react";
 import { BLOG_POSTS, BRAND } from "@/lib/constants";
 import BlogCardImage from "@/components/brand/BlogCardImage";
 import type { Metadata } from "next";
+
+const IMAGES_DIR = path.join(process.cwd(), "public/images/blog");
 
 export const metadata: Metadata = {
   title: "Blog | Verimio - AI & Otomasyon İçerikleri",
@@ -45,9 +50,21 @@ export default function BlogPage() {
                 key={index}
                 className="group bg-surface rounded-2xl border border-border overflow-hidden hover:border-border-accent transition-all duration-300"
               >
-                {/* Branded Image Pattern */}
+                {/* Cover image — webp varsa göster, yoksa SVG pattern */}
                 <div className="p-4 pb-0">
-                  <BlogCardImage index={index} title={post.title} category={post.category} />
+                  {fs.existsSync(path.join(IMAGES_DIR, `${post.slug}.webp`)) ? (
+                    <div className="relative w-full aspect-[1200/630] rounded-xl overflow-hidden">
+                      <Image
+                        src={`/images/blog/${post.slug}.webp`}
+                        alt={post.title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      />
+                    </div>
+                  ) : (
+                    <BlogCardImage index={index} title={post.title} category={post.category} />
+                  )}
                 </div>
 
                 <div className="p-6">
