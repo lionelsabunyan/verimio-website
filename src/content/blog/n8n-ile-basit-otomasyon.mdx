@@ -1,0 +1,111 @@
+---
+title: "n8n ile İlk Otomasyonunuzu Kurun: Teknik Bilgi Gerekmez"
+excerpt: "n8n nedir ve Türk şirketleri nasıl kullanır? Teknik olmayan yöneticiler için adım adım otomasyon kurulum rehberi."
+date: "1 Mart 2026"
+category: "tutorial"
+readingTime: "7 dk"
+author: "Verimio Ekibi"
+---
+
+Bir satış ekibi her yeni müşteri için aynı 6 adımı tekrarlıyor: form doldur, CRM'e ekle, Slack'e bildir, karşılama e-postası gönder, takip tarihi belirle, rapor güncelle. Hepsi 15 dakika. Haftada 20 müşteri — 5 saat. Yılda 250 saat, tek bir ekip için.
+
+Bu adımların tamamı kural tabanlı. Karar gerektirmiyor, yargı gerektirmiyor, deneyim gerektirmiyor. Sadece tekrarlanıyor.
+
+n8n bu tür akışları bir kez kurduğunuzda tamamen devre dışı bırakır. Ücretsiz, açık kaynaklı ve tek satır kod gerektirmiyor.
+
+Bu rehberde teknik geçmişi olmayan operasyon yöneticileri için n8n'in ne olduğunu, neden bu aracı seçmeniz gerektiğini ve gerçek bir iş senaryosunu nasıl adım adım otomatize edeceğinizi anlatıyoruz.
+
+## n8n Nedir? Neden Zapier veya Make Değil?
+
+n8n (telaffuz: "n-eight-n"), görsel bir iş akışı otomasyon platformu. Farklı uygulamaları birbirine bağlıyorsunuz, aralarına kurallar koyuyorsunuz ve bir tetikleyici belirlendiğinde akış otomatik olarak çalışıyor.
+
+Kulağa Zapier veya Make.com gibi geliyor. Doğru — ama kritik bir fark var.
+
+### Zapier ve Make'in Görünmez Sınırı
+
+Zapier ve Make işlem başına ücret alır. Aylık 1.000 otomasyon çalıştırırsanız bir ücret ödersiniz, 10.000 çalıştırırsanız çok daha fazla ödersiniz. Şirketiniz büyüdükçe maliyet üstel olarak artar.
+
+n8n'de bu sınır yok. Self-hosted kullanırsanız — yani kendi sunucunuzda veya bulut hesabınızda çalıştırırsanız — işlem sayısına göre ücret ödemezsiniz. Bir kez kurulur, istediğiniz kadar çalışır.
+
+### Veri Sahipliği
+
+Zapier ve Make, verilerinizi kendi sunucularından geçirir. Hassas müşteri bilgileri, fatura verileri veya iç süreç detayları üçüncü taraf altyapıdan geçmiş olur.
+
+n8n'i kendi sunucunuzda çalıştırdığınızda veri sizin altyapınızda kalır.
+
+**Kısaca:** Küçük ölçekte veya test için Zapier gayet iyi çalışır. Ama otomasyon hacminiz artacaksa veya verileriniz hassassa, n8n daha sağlıklı bir başlangıç noktası.
+
+## Hangi İşleri Otomatize Etmek Mantıklı?
+
+Otomasyon araçlarını tanıyan herkesin düştüğü tuzak şu: "Bu araçla ne yapabilirim?" sorusuyla başlamak. Yanlış soru.
+
+Doğru soru: **"Ekibimde hangi görev haftada en sık tekrarlanıyor?"**
+
+Otomatize edilmeye uygun işlerin iki ortak özelliği var:
+- **Tekrarlayan:** Aynı adımlar, aynı sırayla, her seferinde
+- **Kural tabanlı:** "Eğer X olursa Y yap" mantığıyla tanımlanabilir
+
+İşte somut örnekler:
+
+- Müşteri formu gönderildi → CRM'e kayıt ekle + Slack bildirimi gönder
+- Fatura oluşturuldu → Muhasebeciye e-posta at + tabloya kaydet
+- Haftanın son günü → Ekip için haftalık rapor hazırla ve gönder
+- Yeni lead geldi → Satış ekibine SMS at + takvime hatırlatma ekle
+- Blog yazısı yayınlandı → LinkedIn ve Instagram için özet oluştur + sıraya ekle
+
+Bu örneklerin hepsinde bir insan sadece bilgiyi bir yerden alıp başka bir yere taşıyor. n8n bunu sizin yerinize yapar.
+
+## İlk n8n Akışınızı Kurmak: Adım Adım
+
+Başlamak için sunucu kurmanız gerekmiyor. n8n'in bulut sürümü (n8n.cloud) ücretsiz deneme süresiyle geliyor — tarayıcınızdan, kurulum olmadan başlayabilirsiniz.
+
+### Arayüzü Anlayın: 2 Temel Kavram
+
+**Trigger (Tetikleyici):** Akışın başladığı nokta. "Ne olduğunda başlasın?" sorusunun cevabı. Örnekler: bir form gönderildi, bir e-posta geldi, her sabah 09:00, bir webhook çağrıldı.
+
+**Node (Düğüm):** Akışın içindeki her adım. Bir node bir iş yapar: mesaj gönderir, veri okur, tablo günceller, koşul kontrol eder. Node'ları birbirine bağlayarak akışı oluşturursunuz.
+
+### İlk Akış: "Form Gönderildi → Slack Bildirimi" (5 Adım)
+
+Bu akış, bir müşteri formu doldurunca ekip Slack kanalına otomatik bildirim gönderir.
+
+**1. Yeni workflow oluşturun**
+n8n arayüzünde "New Workflow" → boş bir canvas açılır.
+
+**2. Trigger node ekleyin**
+Canvas'a tıklayın → "Add Node" → "Webhook" seçin. n8n size benzersiz bir URL verir. Form aracınız (Tally, Typeform, kendi formunuz) bu URL'e veri gönderecek.
+
+**3. Veriyi test edin**
+Webhook node'unda "Listen for Test Event" butonuna tıklayın → formunuzu gerçekten doldurun. n8n gelen veriyi gösterir. İsim, e-posta, mesaj gibi alanları görebilirsiniz.
+
+**4. Slack node ekleyin**
+Canvas'a yeni node → "Slack" → "Send a Message" operasyonu. Slack hesabınızı bağlayın (OAuth ile, 2 tıkla). Mesaj içeriğine formdan gelen verileri ekleyin: `{{ $json.name }} adlı kişiden yeni form mesajı geldi.`
+
+**5. Akışı aktive edin**
+Sağ üstteki "Active" butonunu açın. Artık her form gönderiminde Slack bildiriminiz otomatik gidiyor.
+
+Bu akışı kurmak gerçekten 20-30 dakika alır. Bir kez kurulunca sonsuza çalışır.
+
+## Dikkat Edilmesi Gereken 3 Nokta
+
+n8n'i ilk kez kuranların en çok hata yaptığı alanlar:
+
+### 1. Test Modunu Kullanmadan Yayına Alma
+
+n8n'in "Test" modu gerçek veriyle çalışır ama akışı aktive etmez. Her yeni akışı önce test modunda birkaç kez çalıştırın — beklenmedik bir veri formatı veya bağlantı hatası varsa canlı sistemi bozmadan yakalamanızı sağlar.
+
+### 2. Hata Bildirimini Kurmayı Unutmak
+
+Otomasyon sessizce çökebilir. Bir API bağlantısı kopar, Slack token süresi dolar — akış durur ama kimse fark etmez. Her kritik akış için bir hata bildirimi ekleyin: en basiti, hata durumunda size e-posta atan bir node.
+
+### 3. Çok Karmaşık Başlamak
+
+"10 adımlı sürecimi bir akışa alalım" düşüncesi ilk hafta sabote eder. Tek adımdan başlayın: form → bildirim. Çalıştığını görün. Sonra bir adım ekleyin. Karmaşıklık zamanla gelir, başlangıçta değil.
+
+## Sonuç: n8n Bir Araç, Otomasyon Bir Strateji
+
+n8n'i kurmak başlangıç. Asıl mesele hangi süreçleri otomatize ettiğiniz — ve hangilerini etmemelisiniz.
+
+Yanlış süreci otomatize etmek, yanlış şeyi hızlı yapmak demek. Doğru süreci bulmak için önce operasyonunuzu haritalamak gerekiyor: hangi adım kaç saat alıyor, hangi hata en çok üretiyor, hangi görev insan kararı gerektirmiyor.
+
+Bu haritayı çıkarmak için yaptığımız Check-Up sürecinde tam olarak bunu yapıyoruz — hangi süreçlerin otomasyona hazır olduğunu ve nereden başlanması gerektiğini birlikte değerlendiriyoruz.

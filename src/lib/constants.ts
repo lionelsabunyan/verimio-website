@@ -187,52 +187,36 @@ export const FAQ_ITEMS = [
 
 export const BLOG_POSTS = [
   {
-    title: "2026'da Şirketler için En İyi AI Araçları",
+    title: "AI Danışmanlık Neden Farklıdır? Yazılım Satıcısından Strateji Ortağına",
     excerpt:
-      "Kurumsal operasyonlarda verimliliği artıran, ölçeklenebilir AI araçlarını inceliyoruz.",
-    date: "15 Şubat 2026",
-    slug: "kurumsal-ai-araclari-2026",
-    category: "ai-tools" as const,
+      "AI danışmanlığı ile yazılım satışı arasındaki fark nedir? Şirketiniz için doğru yaklaşımı nasıl seçersiniz?",
+    date: "2 Mart 2026",
+    slug: "ai-danismanlik-neden-farklidir",
+    category: "strategy" as const,
   },
   {
-    title: "Müşteri Desteğinde AI: Başlangıç Rehberi",
+    title: "n8n ile İlk Otomasyonunuzu Kurun: Teknik Bilgi Gerekmez",
     excerpt:
-      "Chatbot kurulumundan canlı destek entegrasyonuna kadar müşteri desteğinde AI kullanımı.",
-    date: "10 Şubat 2026",
-    slug: "musteri-destegi-ai-rehber",
-    category: "customer" as const,
+      "n8n nedir ve Türk şirketleri nasıl kullanır? Teknik olmayan yöneticiler için adım adım otomasyon kurulum rehberi.",
+    date: "1 Mart 2026",
+    slug: "n8n-ile-basit-otomasyon",
+    category: "tutorial" as const,
   },
   {
-    title: "Excel'den Dashboard'a: Raporlama Otomasyonu",
+    title: "Türk Şirketlerinde Otomasyon Yanlışları: En Sık Yapılan 5 Hata",
     excerpt:
-      "Manuel raporlamadan otomatik dashboard'lara geçiş rehberi. Haftada 6+ saat kazanın.",
-    date: "5 Şubat 2026",
-    slug: "excel-dashboard-otomasyon",
-    category: "data" as const,
-  },
-  {
-    title: "AI Otomasyon ROI Hesaplama Rehberi",
-    excerpt:
-      "Yapay zeka yatırımınızın geri dönüşünü nasıl hesaplarsınız? Adım adım ROI analizi rehberi.",
-    date: "1 Şubat 2026",
-    slug: "ai-otomasyon-roi-hesaplama",
-    category: "roi" as const,
-  },
-  {
-    title: "Kurumsal CRM Otomasyonu: Nereden Başlanır?",
-    excerpt:
-      "Müşteri ilişkilerinizi AI ile güçlendirin. CRM otomasyon araçları ve en iyi uygulamalar.",
-    date: "25 Ocak 2026",
-    slug: "kurumsal-crm-otomasyon",
+      "Otomasyon projeleri neden başarısız olur? Türk şirketlerinin en sık düştüğü tuzakları ve doğru yaklaşımı ele alıyoruz.",
+    date: "25 Şubat 2026",
+    slug: "otomasyon-yanlislari",
     category: "automation" as const,
   },
   {
-    title: "Veri Güvenliği ve AI: Bilmeniz Gerekenler",
+    title: "Şirket Check-Up'ı Nedir? AI Hazırlık Analizini Neden Yaptırmalısınız?",
     excerpt:
-      "AI araçlarını kullanırken verilerinizi nasıl korursunuz? KVKK uyumlu AI kullanım rehberi.",
-    date: "20 Ocak 2026",
-    slug: "veri-guvenligi-ai-rehber",
-    category: "security" as const,
+      "Verimio'nun sunduğu ücretsiz Şirket Check-Up'ı süreci nasıl işler, ne analiz eder ve size hangi çıktıları sunar?",
+    date: "20 Şubat 2026",
+    slug: "sirket-check-up-nedir",
+    category: "strategy" as const,
   },
 ] as const;
 
