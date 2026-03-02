@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { BLOG_POSTS } from "@/lib/constants";
-import BlogCardImage from "@/components/brand/BlogCardImage";
+import BlogCoverImage from "@/components/brand/BlogCoverImage";
 import SectionLabel from "@/components/ui/SectionLabel";
 
 export default function Blog() {
@@ -32,8 +32,7 @@ export default function Blog() {
               className="group"
             >
               <article className="p-6 rounded-2xl border border-border hover:border-border-accent transition-all duration-300 h-full flex flex-col bg-surface-elevated">
-                {/* Branded image pattern */}
-                <BlogCardImage index={index} title={post.title} category={post.category} className="mb-6" />
+                <BlogCoverImage slug={post.slug} title={post.title} category={post.category} index={index} className="mb-6" />
 
                 <div className="text-sm text-foreground-secondary mb-3">{post.date}</div>
                 <h3 className="text-lg font-semibold mb-3 group-hover:text-primary dark:group-hover:text-primary-light transition-colors">

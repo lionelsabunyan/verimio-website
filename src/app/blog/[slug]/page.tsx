@@ -1,7 +1,6 @@
 import type React from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowLeft, ArrowUpRight, Calendar, Clock, Tag } from "lucide-react";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import matter from "gray-matter";
@@ -10,6 +9,7 @@ import path from "path";
 import type { Metadata } from "next";
 import { BRAND, BLOG_POSTS } from "@/lib/constants";
 import BlogCardImage, { type BlogCategory } from "@/components/brand/BlogCardImage";
+import BlogCoverImage from "@/components/brand/BlogCoverImage";
 
 const CONTENT_DIR = path.join(process.cwd(), "src/content/blog");
 
@@ -32,12 +32,6 @@ const categoryLabels: Record<string, string> = {
   "roi": "ROI & Verimlilik",
   "tutorial": "Rehber",
 };
-
-const IMAGES_DIR = path.join(process.cwd(), "public/images/blog");
-
-function hasCoverImage(slug: string): boolean {
-  return fs.existsSync(path.join(IMAGES_DIR, `${slug}.webp`));
-}
 
 function getPostSlugs(): string[] {
   if (!fs.existsSync(CONTENT_DIR)) return [];
@@ -70,9 +64,9 @@ export async function generateMetadata({
     return { title: "Yazı Bulunamadı | Verimio Blog" };
   }
   const { frontmatter } = post;
-  const coverImage = hasCoverImage(slug)
-    ? `/images/blog/${slug}.webp`
-    : null;
+  const webpExists = fs.existsSync(
+    path.join(process.cwd(), "public/images/blog", `${slug}.webp`)
+  );
 
   return {
     title: `${frontmatter.title} | Verimio Blog`,
@@ -82,7 +76,7 @@ export async function generateMetadata({
       description: frontmatter.excerpt,
       type: "article",
       publishedTime: frontmatter.date,
-      ...(coverImage ? { images: [{ url: coverImage, width: 1200, height: 630 }] } : {}),
+      ...(webpExists ? { images: [{ url: `/images/blog/${slug}.webp`, width: 1200, height: 630 }] } : {}),
     },
   };
 }
@@ -157,7 +151,6 @@ export default async function BlogPostPage({
 
   const { frontmatter, content } = post;
   const catLabel = categoryLabels[frontmatter.category] ?? frontmatter.category;
-  const coverImagePath = hasCoverImage(slug) ? `/images/blog/${slug}.webp` : null;
 
   // Related posts: same category, different slug (from constants)
   const related = BLOG_POSTS.filter(
@@ -211,17 +204,12 @@ export default async function BlogPostPage({
           </div>
 
           {/* Cover image */}
-          {coverImagePath && (
-            <div className="relative w-full aspect-[1200/630] rounded-2xl overflow-hidden mb-2 -mx-0">
-              <Image
-                src={coverImagePath}
-                alt={frontmatter.title}
-                fill
-                className="object-cover"
-                priority
-              />
-            </div>
-          )}
+          <BlogCoverImage
+            slug={slug}
+            title={frontmatter.title}
+            category={frontmatter.category}
+            className="mb-2"
+          />
         </div>
       </section>
 
