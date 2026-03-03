@@ -13,6 +13,8 @@ Bu soruyu yanıtsız bırakmak, hem projenin bütçesini tehlikeye atar hem de k
 
 Bu yazıda, soyut "verimlilik artışı" anlatılarını somut rakamlara dönüştürmek için adım adım bir yöntem sunuyoruz.
 
+> **Hızlı Özet:** AI yatırımının ROI'si soyut değil, ölçülebilirdir. Temel formül: [(Kazanım − Maliyet) / Maliyet] × 100. 40 çalışanlı bir lojistik firmasında otomasyon projesinin ROI'si %275'e ulaşabilir. Kilit nokta: zaman tasarrufunu saatlik maliyetle çarpmak ve ölçüm noktalarını proje başında planlamak.
+
 ## ROI Neden AI Projelerinde Sıkça Atlanıyor?
 
 Çoğu şirket AI projelerinde ROI hesaplamaz — çünkü kazanımlar soyut görünür: "ekip daha az yorulur", "süreçler hızlanır", "veri daha temiz olur." Bu söylemler doğru olabilir; ancak CFO'yu ikna etmez.
@@ -35,7 +37,7 @@ AI projesinin gerçek maliyeti genellikle lisans faturasından ibaret değildir.
 
 | Maliyet Kalemi | Örnekler |
 |----------------|----------|
-| **Yazılım & Lisans** | API kullanımı, SaaS aboneliği, n8n Cloud, Make |
+| **Yazılım & Lisans** | API kullanımı, SaaS aboneliği, [n8n Cloud veya Make](/blog/make-vs-n8n-karsilastirma) |
 | **Uygulama** | Danışman ücreti veya iç geliştirici saati |
 | **Altyapı** | Sunucu, VPS, entegrasyon altyapısı |
 | **Eğitim** | Ekip onboarding, süreç uyum süresi |
@@ -104,6 +106,20 @@ ROI modelini oluşturmak yetmez; gerçek rakamlarla karşılaştırmanız gereki
 3. Aylık dashboard: tasarruf edilen saat, işlenen işlem sayısı, hata oranı
 
 Ölçüm altyapısı kurmak karmaşık değil — çoğu zaman bir Google Sheets + otomatik besleme yeterli. Daha kapsamlı kurulumlar için BI araçları (Metabase, Google Looker Studio) öneririz.
+
+## Sık Sorulan Sorular
+
+**AI projesi başlamadan ROI hesaplanabilir mi?**
+Evet. Haftalık zaman tasarrufu tahmini ve saatlik personel maliyetiyle 12 aylık model proje başlamadan kurulabilir. Tahminler gerçekten sapabilir; önemli olan ölçüm noktalarını önceden belirlemektir.
+
+**ROI modelinde hangi maliyet kalemi en çok atlanıyor?**
+İç kaynak maliyeti — bir çalışanın haftada 4 saat harcaması yıllık 200 saate karşılık gelir. Bu kalemi modele eklemeden yapılan hesaplar ROI'yi gerçeğinden yüksek gösterir.
+
+**Geri ödeme süresi ne kadar olmalı?**
+İyi yapılandırılmış otomasyon projeleri genellikle 3-6 ay içinde kendini amorti eder. 12 ayı aşan geri ödeme süresi, ya maliyet tahmini yüksek ya da kazanım tahmini düşük demektir.
+
+**Kazanımları nasıl doğrularım?**
+Proje öncesi baseline ölçümleri (kaç saat, kaç hata) kaydedin. 30, 60 ve 90. gün kontrollerinde gerçek rakamları modelle karşılaştırın. Sapma varsa nedenini analiz edin.
 
 ## Sonuç: Rakamsız AI Olmaz
 

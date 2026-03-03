@@ -11,6 +11,8 @@ Müşteri iletişimini otomatize etmeye karar verdiniz. Önünüzde iki temel yo
 
 Yanlış seçim yapmak maliyetli: müşteri memnuniyeti düşer, ekibinizin iş yükü azalmaz, yatırımınız boşa gider. Bu yazıda iki teknolojiyi dürüstçe karşılaştırıyor, hangi şirketin hangisini seçmesi gerektiğini somut kriterlerle ele alıyoruz.
 
+> **Hızlı Özet:** Chatbot metin tabanlı, asenkron ve düşük maliyetli; voice agent ise sesli, gerçek zamanlı ve daha karmaşık altyapı gerektiriyor. Yüksek hacimli yazılı sorgular için chatbot, telefon ağırlıklı müşteri kitlesi için voice agent öne çıkıyor. En olgun yaklaşım ikisini birleştiren hibrit modeldir.
+
 ## Chatbot Nedir, Voice Agent Nedir?
 
 **Chatbot:** Web sitesi, WhatsApp, e-posta veya uygulama üzerinden yazılı etkileşim sağlayan yapay zeka sistemi. Metin girişini anlayıp metin çıktısı üretir. Kullanıcı başlatır; chatbot yanıt verir.
@@ -67,7 +69,7 @@ Yaşlı bireyler, görme engelliler veya mobil kullanımı sınırlı müşteril
 
 ### Türkçe NLP Olgunluğu
 
-Chatbot tarafında Türkçe destek olgun: GPT-4o, Claude, Gemini gibi modeller Türkçe'yi iyi işler. Entegrasyon araçları (n8n, Make, Botpress) kolayca kurulur.
+Chatbot tarafında Türkçe destek olgun: GPT-4o, Claude, Gemini gibi modeller Türkçe'yi iyi işler. Entegrasyon araçları ([n8n](/blog/n8n-ile-basit-otomasyon), Make, Botpress) kolayca kurulur.
 
 Voice agent tarafında durum farklı. ElevenLabs, Play.ht ve benzeri TTS araçları Türkçe sesini destekliyor; ancak doğal Türkçe konuşma tanıma (STT) hâlâ gelişme aşamasında. Whisper tabanlı çözümler iyi sonuç verir fakat aksan ve bölgesel farklılıklarda hata oranı artar.
 
@@ -86,6 +88,20 @@ Rakip değil, tamamlayıcı. En olgun müşteri deneyimi iki kanalı birleştiri
 - Her iki kanaldan → karmaşık talepler insan temsilciye yönlendirilir
 
 Bu hibrit yapı, hem dijital hem geleneksel müşteri kitlesine hitap eder ve insan kaynaklarını gerçekten değer katan etkileşimlere ayırır.
+
+## Sık Sorulan Sorular
+
+**Chatbot mu, voice agent mi daha pahalı?**
+Voice agent kurulumu ve bakımı genellikle daha maliyetlidir. Chatbot için kurulum maliyeti düşük-orta; voice agent için STT/TTS API maliyetleri ve daha uzun test süreci gerekir. İki-üç katı başlangıç maliyeti beklemek gerçekçidir.
+
+**Türkçe chatbot ne kadar iyi çalışır?**
+GPT-4o, Claude ve Gemini gibi modeller Türkçe'yi akıcı biçimde işler. Entegrasyon araçları (n8n, Make, Botpress) kolayca kurulur. Chatbot entegrasyonlarında Türkçe bugün ciddi bir sorun değildir.
+
+**Voice agent Türkçe için hazır mı?**
+TTS (metin → ses) tarafı oldukça olgun. Ancak doğal Türkçe konuşma tanıma (STT) özellikle aksan farklılıklarında hata üretebilir. Türkçe voice agent projelerinde küçük pilot grupla başlanması ve gerçek konuşmalarla modelin beslenmesi önerilir.
+
+**WhatsApp chatbotu kurabilir miyim?**
+Evet. WhatsApp Business API üzerinden n8n, Make veya özel entegrasyon ile chatbot kurulabilir. Meta'nın onay süreci ve ticari hesap koşulları geçerlidir; kurulum genellikle 2-4 hafta içinde tamamlanabilir.
 
 ## Hangi Teknolojiye Nereden Başlamalı?
 

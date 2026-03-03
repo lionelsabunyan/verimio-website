@@ -15,6 +15,8 @@ Bu cümleyi çok sık duyuyoruz. Genellikle suçlanan araç, model veya danışm
 
 Bu yazıda veri kalitesi sorununu Türk şirketleri bağlamında ele alıyor, pratik bir hazırlık çerçevesi sunuyoruz.
 
+> **Hızlı Özet:** AI projelerinin büyük bölümü veri kalitesi yetersizliği nedeniyle başarısız olur. Kaliteli veri dört boyutla ölçülür: tamlık, tutarlılık, doğruluk ve güncellik. Türk şirketlerinde en sık karşılaşılan sorunlar Excel bağımlılığı, Türkçe karakter tutarsızlığı ve silolar arası veri kopukluğudur.
+
 ## Neden AI Projeleri Beklenen Sonucu Veremiyor?
 
 McKinsey araştırmalarına göre AI projelerinin yaklaşık %70'i pilot aşamasının ötesine geçemiyor. Başarısızlık nedenlerinin başında teknik eksiklik ya da yanlış araç seçimi değil, **veri altyapısının yetersizliği** geliyor.
@@ -94,7 +96,21 @@ Tüm tarihsel veriyi hazırlamak yerine, dar bir zaman dilimini veya ürün kate
 - Veri sahipliği belirsizse (kim neyi güncelliyor bilinmiyorsa)
 - AI projesinin kapsamı stratejik düzeydeyse ve hata maliyeti yüksekse
 
-Veri hazırlığı, AI danışmanlığının teknik kısmı kadar önemli bir sürecidir. Danışmanınız bu aşamayı atlıyorsa dikkatli olun.
+Veri hazırlığı, [AI danışmanlığının](/blog/ai-danismanlik-neden-farklidir) teknik kısmı kadar önemli bir sürecidir. Danışmanınız bu aşamayı atlıyorsa dikkatli olun.
+
+## Sık Sorulan Sorular
+
+**Veri kalitesi değerlendirmesi ne kadar sürer?**
+Kapsamına bağlı. Kritik sistemlerdeki alan doluluğu ve tutarlılık analizi 1-2 hafta içinde yapılabilir. Verimio'nun Check-Up sürecinde veri kalitesi değerlendirmesi analiz raporunun ayrılmaz bir parçasıdır; ek süre gerekmez.
+
+**Veri temizliğine nereden başlamalıyım?**
+Yapılacak AI projesinin ilk fazında hangi veriye ihtiyaç var sorusunu cevaplayın. Pilot proje için gereken alanları önce temizleyin; tüm sistemi mükemmelleştirmeye çalışmak yıllar alır ve projeyi başlatamadan yorar.
+
+**Excel'deki verilerimi AI için kullanabilir miyim?**
+Mümkün, ancak doğrudan değil. Excel verisi önce standartlaştırılmalı (tarih formatı, karakter tutarlılığı, boş alan doldurma), ardından bir veritabanına ya da veri akışına aktarılmalıdır. Bu adımı atlayan projelerin büyük çoğunluğu başarısız olur.
+
+**Etiketli veri neden önemlidir?**
+Makine öğrenmesi modelleri örüntüleri etiketli veriden öğrenir. "Bu müşteri çıkış yaptı mı?" gibi geçmiş kararların tarihsel veride işaretlenmesi olmadan tahminleyici model kurulamaz. Etiketleme çoğu zaman elle yapılan, zaman alan bir süreçtir; proje planınıza dahil edin.
 
 ## Sonuç
 
