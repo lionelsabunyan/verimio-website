@@ -10,7 +10,7 @@ export default function OrganizationSchema() {
     email: "analiz@verimio.com.tr",
     areaServed: "TR",
     inLanguage: "tr-TR",
-    sameAs: [],
+    sameAs: ["https://www.linkedin.com/company/verimio"],
     serviceType: [
       "Süreç Analizi",
       "AI Danışmanlığı",

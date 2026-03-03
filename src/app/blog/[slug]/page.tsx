@@ -10,6 +10,7 @@ import type { Metadata } from "next";
 import { BRAND, BLOG_POSTS } from "@/lib/constants";
 import BlogCardImage, { type BlogCategory } from "@/components/brand/BlogCardImage";
 import BlogCoverImage from "@/components/brand/BlogCoverImage";
+import ArticleSchema from "@/components/seo/ArticleSchema";
 
 const CONTENT_DIR = path.join(process.cwd(), "src/content/blog");
 
@@ -157,8 +158,20 @@ export default async function BlogPostPage({
     (p) => p.category === frontmatter.category && p.slug !== slug
   ).slice(0, 2);
 
+  const webpExists = fs.existsSync(
+    path.join(process.cwd(), "public/images/blog", `${slug}.webp`)
+  );
+
   return (
     <main className="pt-20">
+      <ArticleSchema
+        slug={slug}
+        title={frontmatter.title}
+        excerpt={frontmatter.excerpt}
+        date={frontmatter.date}
+        author={frontmatter.author}
+        webpExists={webpExists}
+      />
       {/* Header */}
       <section className="section-padding pb-0">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
