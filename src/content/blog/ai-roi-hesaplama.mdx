@@ -1,0 +1,114 @@
+---
+title: "AI Projesinin ROI'sini Nasıl Hesaplarsınız? Adım Adım Rehber"
+excerpt: "Yapay zeka yatırımınızın geri dönüşünü somut rakamlarla nasıl ölçersiniz? Türk şirketleri için pratik ROI hesaplama rehberi."
+date: "4 Mart 2026"
+category: "roi"
+readingTime: "8 dk"
+author: "Verimio Ekibi"
+---
+
+Bir AI projesi başlatmadan önce — ya da başlattıktan sonra — yönetim kurulunun soracağı tek soru var: **"Bunu neden yapıyoruz ve ne kazanacağız?"**
+
+Bu soruyu yanıtsız bırakmak, hem projenin bütçesini tehlikeye atar hem de kurum içi desteği yok eder. Oysa AI ROI'si ölçülebilir — yeter ki doğru çerçeveyi kullanın.
+
+Bu yazıda, soyut "verimlilik artışı" anlatılarını somut rakamlara dönüştürmek için adım adım bir yöntem sunuyoruz.
+
+## ROI Neden AI Projelerinde Sıkça Atlanıyor?
+
+Çoğu şirket AI projelerinde ROI hesaplamaz — çünkü kazanımlar soyut görünür: "ekip daha az yorulur", "süreçler hızlanır", "veri daha temiz olur." Bu söylemler doğru olabilir; ancak CFO'yu ikna etmez.
+
+İkinci neden: ölçüm altyapısı kurmak, projeyi geliştirmekten daha can sıkıcı görünür. Ne var ki ölçümsüz bir AI projesi, bir sonraki bütçe döneminde ilk kesilen kalem olur.
+
+**İyi haber:** AI ROI'si tahmin edilebilir bir formüle dayanır ve büyük çoğunlukla proje başlamadan önce makul doğrulukla modellenir.
+
+## Temel Formül
+
+```
+ROI (%) = [(Toplam Kazanım - Toplam Maliyet) / Toplam Maliyet] × 100
+```
+
+Tek bir dönem için değil, **12 aylık bakış açısıyla** hesaplamanızı öneririz. AI projeleri genellikle ilk 1-3 ayda maliyet yoğun, sonrasında kazanım ağırlıklıdır.
+
+## Adım 1 — Maliyet Kalemlerini Belirleyin
+
+AI projesinin gerçek maliyeti genellikle lisans faturasından ibaret değildir.
+
+| Maliyet Kalemi | Örnekler |
+|----------------|----------|
+| **Yazılım & Lisans** | API kullanımı, SaaS aboneliği, n8n Cloud, Make |
+| **Uygulama** | Danışman ücreti veya iç geliştirici saati |
+| **Altyapı** | Sunucu, VPS, entegrasyon altyapısı |
+| **Eğitim** | Ekip onboarding, süreç uyum süresi |
+| **Bakım** | Aylık izleme, güncelleme, ince ayar |
+
+**Pratik not:** İç kaynak maliyetini atlayan şirketler ROI'yi çoğu zaman abarttır. Bir IT çalışanının haftada 4 saat harcaması, yıllık 100+ saat — bunu da modele ekleyin.
+
+## Adım 2 — Kazanım Kalemlerini Ölçün
+
+Kazanımlar üç kategoride toplanır:
+
+### 2a. Zaman Tasarrufu (En Somut Kalem)
+
+Otomasyon en doğrudan kazanımı zaman tasarrufuyla sağlar. Hesap şu:
+
+```
+Haftalık tasarruf (saat) × 52 hafta × saatlik maliyet (₺) = Yıllık tasarruf
+```
+
+**Örnek:** Raporlama sürecini otomatize eden bir şirket, 3 çalışanın toplam 8 saatini haftalık kurtarıyor. Ortalama saatlik maliyet ₺150 ise:
+
+```
+8 saat × 52 hafta × ₺150 = ₺62.400 / yıl
+```
+
+### 2b. Direkt Maliyet Düşüşü
+
+- Dışarıdan satın alınan manuel veri girişi hizmetleri
+- Hatalı işlem düzeltme maliyetleri
+- Müşteri hizmetleri başvurularının azalması (self-servis otomasyon ile)
+
+### 2c. Kapasite Artışı (İkincil Kazanım)
+
+Ekip aynı kaynakla daha fazla iş çıkarabiliyorsa bu "fırsat kazanımı" olarak modellenir. Daha dikkatli tahmin gerektirir; CFO'ya bağımsız kalem olarak sunmak yerine "bonus" olarak çerçeveleyin.
+
+## Adım 3 — Türk Şirketi Senaryosu
+
+**Şirket:** 40 çalışanlı B2B lojistik firması  
+**Proje:** Müşteri sipariş takip bildirimleri + iç durum raporlaması otomasyonu
+
+**Maliyetler (yıllık):**
+- n8n Cloud aboneliği: ₺7.200
+- İlk uygulama (danışmanlık): ₺18.000
+- Bakım (aylık 2 saat iç kaynak): ₺3.600
+- **Toplam: ₺28.800**
+
+**Kazanımlar (yıllık):**
+- 2 operasyon çalışanı × 6 saat/hafta kurtarıldı: ₺93.600
+- Hatalı bildirim nedeniyle gelen müşteri aramaları %40 azaldı → müşteri hizmetleri yükü düştü: ₺14.400
+- **Toplam: ₺108.000**
+
+**ROI Hesabı:**
+```
+ROI = [(108.000 - 28.800) / 28.800] × 100 = %275
+```
+
+Geri ödeme süresi: yaklaşık **3,2 ay**.
+
+## Adım 4 — Sonuçları Nasıl Takip Edersiniz?
+
+ROI modelini oluşturmak yetmez; gerçek rakamlarla karşılaştırmanız gerekir.
+
+**Minimal izleme altyapısı:**
+1. Proje öncesi baseline ölçümleri kaydedin (kaç saat, kaç hata, kaç müşteri şikayeti)
+2. 30. gün, 60. gün, 90. gün ölçüm noktaları belirleyin
+3. Aylık dashboard: tasarruf edilen saat, işlenen işlem sayısı, hata oranı
+
+Ölçüm altyapısı kurmak karmaşık değil — çoğu zaman bir Google Sheets + otomatik besleme yeterli. Daha kapsamlı kurulumlar için BI araçları (Metabase, Google Looker Studio) öneririz.
+
+## Sonuç: Rakamsız AI Olmaz
+
+AI projesine başlamadan önce ROI modelini kağıda dökün. Proje bitmeden izleme noktalarını belirleyin. Gerçek rakamlar modelden saparsa nedenini anlayın.
+
+Bu disiplin hem karar kalitesini artırır, hem de bir sonraki AI yatırımı için kurumsal güven oluşturur.
+
+Şirketinizin otomasyon potansiyelini ve tahmini ROI'yi somut rakamlarla görmek istiyorsanız, [ücretsiz Şirket Check-Up'ı](/analiz) ile başlayın. Haftalık tasarruf tahmini ve 90 günlük yol haritası size özel hazırlanır.

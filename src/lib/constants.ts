@@ -187,6 +187,13 @@ export const FAQ_ITEMS = [
 
 export const BLOG_POSTS = [
   {
+    title: "AI Projesinin ROI'sini Nasıl Hesaplarsınız? Adım Adım Rehber",
+    excerpt: "Yapay zeka yatırımınızın geri dönüşünü somut rakamlarla nasıl ölçersiniz? Türk şirketleri için pratik ROI hesaplama rehberi.",
+    date: "4 Mart 2026",
+    slug: "ai-roi-hesaplama",
+    category: "roi" as const,
+  },
+  {
     title: "Make vs n8n: Türk Şirketleri için Hangi Otomasyon Platformu?",
     excerpt: "Make ve n8n'in güçlü-zayıf yanlarını, fiyatlandırma modellerini ve Türk şirketleri için hangisinin doğru olduğunu karşılaştırıyoruz.",
     date: "3 Mart 2026",
