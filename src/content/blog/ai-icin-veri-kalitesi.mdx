@@ -1,0 +1,103 @@
+---
+title: "Verilerinizi Hazırlamadan AI Kullanmayın: Veri Kalitesi Rehberi"
+excerpt: "AI projeleri neden beklenen sonucu veremiyor? Çoğu zaman yanıt verinin kendisinde gizli. Veri kalitesini nasıl değerlendirirsiniz ve hazırlık süreci nasıl işler?"
+date: "6 Mart 2026"
+category: "data"
+readingTime: "8 dk"
+author: "Verimio Ekibi"
+---
+
+"AI'yı devreye aldık ama sonuçlar beklediğimiz gibi olmadı."
+
+Bu cümleyi çok sık duyuyoruz. Genellikle suçlanan araç, model veya danışmandır. Ancak gerçek neden çoğu zaman daha temel bir yerde: **veri.**
+
+"Garbage in, garbage out" — kirli veri verirseniz kirli çıktı alırsınız. Bu kural AI için yazılım geliştirmeden çok daha sert işler. Zira AI sistemi hataları büyüterek öğrenir; insanın fark edip düzelteceği bir tutarsızlığı, model kalıp olarak benimser.
+
+Bu yazıda veri kalitesi sorununu Türk şirketleri bağlamında ele alıyor, pratik bir hazırlık çerçevesi sunuyoruz.
+
+## Neden AI Projeleri Beklenen Sonucu Veremiyor?
+
+McKinsey araştırmalarına göre AI projelerinin yaklaşık %70'i pilot aşamasının ötesine geçemiyor. Başarısızlık nedenlerinin başında teknik eksiklik ya da yanlış araç seçimi değil, **veri altyapısının yetersizliği** geliyor.
+
+Tipik senaryo şu: Şirket AI araç seçer, entegrasyon yapar, sistemi çalıştırır. İlk sonuçlar gelince tahminler tutarsız, öneriler alakasız, raporlar güvenilmez çıkar. Ekip modeli değiştirmeye, parametreleri ayarlamaya çalışır — ama sorun modelde değil, beslenen veridedir.
+
+Veri hazırlığı, AI projesinin en sıkıcı ama en kritik aşamasıdır.
+
+## Veri Kalitesinin 4 Boyutu
+
+Kaliteli veriyi dört temel kriterle değerlendirin:
+
+### 1. Tamlık (Completeness)
+
+Verinin sahip olması gereken alanların ne kadarı dolu? Müşteri kayıtlarında sektör bilgisi %40 eksikse, sektöre göre segmentasyon yapan bir AI modeli hatalı çalışır.
+
+**Ölçüm:** Her kritik alanda doluluğu yüzde olarak hesaplayın. %80 altı alanlar risk işareti.
+
+### 2. Tutarlılık (Consistency)
+
+Aynı bilgi farklı sistemlerde farklı biçimde mi kayıtlı? "İstanbul", "istanbul", "İst.", "IST" — bunların hepsi aynı şehir ama makine için dört farklı değer.
+
+Türkiye'deki çoğu şirkette ERP, CRM ve muhasebe sistemi farklı standartlarda veri tutar. Bu uyumsuzluk, entegrasyon tabanlı AI sistemlerinin en büyük düşmanıdır.
+
+### 3. Doğruluk (Accuracy)
+
+Veriler gerçeği yansıtıyor mu? Yanlış girilen müşteri telefon numaraları, eski fiyat verileri, hatalı kategori etiketleri — bunlar modelin "öğreneceği" gerçeklikler haline gelir.
+
+**Doğruluk testi:** Rastgele 100 kayıt seçin, elle doğrulayın. Hata oranı %5 üzerindeyse kapsamlı temizlik gerekiyor.
+
+### 4. Güncellik (Timeliness)
+
+Veri ne kadar eski? 2019 satış verisiyle eğitilmiş bir talep tahmin modeli, pandemi sonrası değişen tüketici davranışını yansıtmaz. AI sistemi için "ne zaman toplanmış" sorusu, "ne toplanmış" kadar önemlidir.
+
+## Türk Şirketlerinde En Sık Veri Sorunları
+
+Yüzlerce şirket analizi deneyimimizden derlediğimiz yaygın sorunlar:
+
+**Excel bağımlılığı:** Kritik operasyonel veri hâlâ Excel'de, farklı formatlarda, birden fazla kullanıcı tarafından ayrı güncelleniyor. Makine öğrenmesi için kullanışsız, entegrasyon için kabus.
+
+**Türkçe karakter tutarsızlığı:** "Şirket" vs "Sirket", "özgün" vs "ozgun" — Türkçe karakter sorunları string eşleştirmeli sistemlerde ciddi yanlış sınıflandırmaya yol açar.
+
+**Silolar arası veri kopukluğu:** Satış CRM'i, muhasebe sistemi ve lojistik yazılımı arasında ortak müşteri ID'si yok. Müşteri 360° görünümü oluşturulması imkânsız hale gelir.
+
+**Tarih formatı çeşitliliği:** "15.03.2024", "2024-03-15", "15 Mart 2024" — aynı veri tabanında üç format. Zaman serisi analizi yapan modeller için kritik sorun.
+
+**Etiket yokluğu:** Makine öğrenmesi için etiketli veri şarttır. "Bu müşteri churned mı?" sorusunun yanıtını tarihsel veride bulmak çoğu zaman elle yapılan bir etiketleme sürecini gerektirir.
+
+## Veri Hazırlık Süreci — Adım Adım
+
+AI projesine başlamadan önce şu adımları izleyin:
+
+**1. Veri envanteri çıkarın**
+Hangi sistemde, hangi veri var? Kim sahip, kim günceller, ne sıklıkla yenilenir? Bu harita olmadan başlamak kör uçuştur.
+
+**2. Veri kalitesi değerlendirmesi yapın**
+Yukarıdaki dört boyutu her kritik veri kümesi için puanlayın. Hangi alan ne kadar temiz, ne kadar eksik?
+
+**3. Temizlik önceliklerini belirleyin**
+Her şeyi mükemmelleştirmeye çalışmak yıllar alır. AI projesinin ilk fazında hangi veriye ihtiyaç var? Yalnızca o alanları temizleyin.
+
+**4. Standartları tanımlayın**
+Tarih formatı ne olacak? Şehir adları nasıl yazılacak? Müşteri segmentleri kaç kategori? Bu standartları belgeleyin ve sistemlere yansıtın.
+
+**5. Veri pipeline'ı otomatize edin**
+Temizlik tek seferlik değil, süregelen bir süreçtir. Yeni veri geldiğinde otomatik doğrulama ve normalizasyon kural setleri kurun.
+
+**6. Pilot dataset ile başlayın**
+Tüm tarihsel veriyi hazırlamak yerine, dar bir zaman dilimini veya ürün kategorisini seçin. Pilot'tan öğrenin, sonra genişletin.
+
+## Ne Zaman Dış Destek Almalısınız?
+
+Şirket içinde veri hazırlık kapasitesi olmadığında veya mevcut altyapının gerçek kalitesini nesnel olarak değerlendirmek istediğinizde dış destek değerlidir.
+
+Özellikle şu durumlarda:
+- Birden fazla sistem entegrasyonu gerekiyorsa
+- Veri sahipliği belirsizse (kim neyi güncelliyor bilinmiyorsa)
+- AI projesinin kapsamı stratejik düzeydeyse ve hata maliyeti yüksekse
+
+Veri hazırlığı, AI danışmanlığının teknik kısmı kadar önemli bir sürecidir. Danışmanınız bu aşamayı atlıyorsa dikkatli olun.
+
+## Sonuç
+
+AI yatırımı yapmadan önce bir soru sorun: "Verilerimiz bu sistemi besleyecek kalitede mi?"
+
+Yanıt "bilmiyorum" ise, başlangıç noktanız belli: bir veri kalitesi değerlendirmesi. Bu değerlendirmeyi [ücretsiz Şirket Check-Up'ımız](/analiz) kapsamında yapıyoruz. Mevcut veri altyapınızı, AI hazırlığınızı ve öncelikli aksiyon alanlarını somut bulgularla raporluyoruz.

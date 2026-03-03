@@ -187,6 +187,13 @@ export const FAQ_ITEMS = [
 
 export const BLOG_POSTS = [
   {
+    title: "Verilerinizi Hazırlamadan AI Kullanmayın: Veri Kalitesi Rehberi",
+    excerpt: "AI projeleri neden beklenen sonucu veremiyor? Çoğu zaman yanıt verinin kendisinde gizli. Veri kalitesini nasıl değerlendirirsiniz ve hazırlık süreci nasıl işler?",
+    date: "6 Mart 2026",
+    slug: "ai-icin-veri-kalitesi",
+    category: "data" as const,
+  },
+  {
     title: "Chatbot mu, Voice Agent mi? Müşteri İletişiminde Doğru Seçim",
     excerpt: "Müşteri hizmetleri otomasyonunda chatbot ve voice agent arasında nasıl karar verirsiniz? İki teknolojinin güçlü yanları, sınırları ve Türk şirketleri için rehber.",
     date: "5 Mart 2026",
