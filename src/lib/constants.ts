@@ -187,6 +187,13 @@ export const FAQ_ITEMS = [
 
 export const BLOG_POSTS = [
   {
+    title: "Make vs n8n: Türk Şirketleri için Hangi Otomasyon Platformu?",
+    excerpt: "Make ve n8n'in güçlü-zayıf yanlarını, fiyatlandırma modellerini ve Türk şirketleri için hangisinin doğru olduğunu karşılaştırıyoruz.",
+    date: "3 Mart 2026",
+    slug: "make-vs-n8n-karsilastirma",
+    category: "ai-tools" as const,
+  },
+  {
     title: "AI Danışmanlık Neden Farklıdır? Yazılım Satıcısından Strateji Ortağına",
     excerpt:
       "AI danışmanlığı ile yazılım satışı arasındaki fark nedir? Şirketiniz için doğru yaklaşımı nasıl seçersiniz?",
