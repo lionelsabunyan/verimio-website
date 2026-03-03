@@ -1,0 +1,232 @@
+{
+  "name": "Verimio — Haftalık SEO Raporu",
+  "nodes": [
+    {
+      "id": "a1b2c3d4-0001-0000-0000-000000000001",
+      "name": "Her Pazartesi 08:00",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [250, 300],
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "weeksInterval": 1,
+              "triggerAtDay": [1],
+              "triggerAtHour": 8,
+              "triggerAtMinute": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1b2c3d4-0002-0000-0000-000000000002",
+      "name": "Tarih Hesapla",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [470, 300],
+      "parameters": {
+        "jsCode": "const now = new Date();\n\n// Bu hafta: dün - 7 gün önce\nconst end = new Date(now);\nend.setDate(end.getDate() - 1);\n\nconst start = new Date(end);\nstart.setDate(start.getDate() - 6);\n\n// Önceki hafta: 8 gün önce - 15 gün önce\nconst prevEnd = new Date(now);\nprevEnd.setDate(prevEnd.getDate() - 8);\n\nconst prevStart = new Date(prevEnd);\nprevStart.setDate(prevStart.getDate() - 6);\n\nconst fmt = (d) => d.toISOString().split('T')[0];\n\nreturn [{\n  json: {\n    thisWeekStart: fmt(start),\n    thisWeekEnd: fmt(end),\n    prevWeekStart: fmt(prevStart),\n    prevWeekEnd: fmt(prevEnd),\n    reportLabel: `${fmt(start)} → ${fmt(end)}`\n  }\n}];"
+      }
+    },
+    {
+      "id": "a1b2c3d4-0003-0000-0000-000000000003",
+      "name": "GSC Bu Hafta",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [700, 200],
+      "parameters": {
+        "method": "POST",
+        "url": "https://searchconsole.googleapis.com/webmasters/v3/sites/https%3A%2F%2Fwww.verimio.com.tr%2F/searchAnalytics/query",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleOAuth2Api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"startDate\": \"{{ $json.thisWeekStart }}\",\n  \"endDate\": \"{{ $json.thisWeekEnd }}\",\n  \"dimensions\": [\"page\"],\n  \"rowLimit\": 10,\n  \"dataState\": \"final\"\n}",
+        "options": {}
+      },
+      "credentials": {
+        "googleOAuth2Api": {
+          "id": "GOOGLE_CREDENTIAL_ID",
+          "name": "Verimio GSC OAuth2"
+        }
+      }
+    },
+    {
+      "id": "a1b2c3d4-0004-0000-0000-000000000004",
+      "name": "GSC Önceki Hafta",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [700, 400],
+      "parameters": {
+        "method": "POST",
+        "url": "https://searchconsole.googleapis.com/webmasters/v3/sites/https%3A%2F%2Fwww.verimio.com.tr%2F/searchAnalytics/query",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleOAuth2Api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"startDate\": \"{{ $('Tarih Hesapla').first().json.prevWeekStart }}\",\n  \"endDate\": \"{{ $('Tarih Hesapla').first().json.prevWeekEnd }}\",\n  \"dimensions\": [\"page\"],\n  \"rowLimit\": 10,\n  \"dataState\": \"final\"\n}",
+        "options": {}
+      },
+      "credentials": {
+        "googleOAuth2Api": {
+          "id": "GOOGLE_CREDENTIAL_ID",
+          "name": "Verimio GSC OAuth2"
+        }
+      }
+    },
+    {
+      "id": "a1b2c3d4-0005-0000-0000-000000000005",
+      "name": "Rapor Hazırla",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [950, 300],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "// Bu haftanın verileri\nconst thisWeekRows = $('GSC Bu Hafta').first().json.rows || [];\n// Önceki haftanın verileri\nconst prevWeekRows = $('GSC Önceki Hafta').first().json.rows || [];\nconst reportLabel = $('Tarih Hesapla').first().json.reportLabel;\n\n// Sayfa bazlı harita (slug → position)\nconst prevMap = {};\nfor (const row of prevWeekRows) {\n  const page = row.keys[0];\n  prevMap[page] = row;\n}\n\n// Analiz\nconst drops = [];\nconst lines = [];\nlet totalClicks = 0;\nlet totalImpressions = 0;\n\nfor (const row of thisWeekRows) {\n  const page = row.keys[0];\n  const slug = page.replace('https://www.verimio.com.tr/blog/', '').replace('https://www.verimio.com.tr/', '');\n  const clicks = row.clicks || 0;\n  const impressions = row.impressions || 0;\n  const pos = row.position ? row.position.toFixed(1) : '?';\n  const ctr = row.ctr ? (row.ctr * 100).toFixed(1) + '%' : '?';\n  \n  totalClicks += clicks;\n  totalImpressions += impressions;\n  \n  // Pozisyon karşılaştırması\n  let posChange = '';\n  if (prevMap[page] && prevMap[page].position) {\n    const diff = row.position - prevMap[page].position;\n    if (diff > 5) {\n      drops.push({ slug, diff: diff.toFixed(1), pos });\n      posChange = ` ↓${diff.toFixed(1)}`;\n    } else if (diff < -2) {\n      posChange = ` ↑${Math.abs(diff).toFixed(1)}`;\n    }\n  }\n  \n  lines.push(`📄 /${slug}\\n   👆 ${clicks} tık | 👁 ${impressions} gösterim | #${pos}${posChange} | %${ctr}`);\n}\n\n// Mesaj formatla\nconst emoji = drops.length > 0 ? '⚠️' : '✅';\nlet message = `${emoji} Verimio Haftalık SEO Raporu\\n${reportLabel}\\n\\n`;\nmessage += `📊 ÖZET\\n`;\nmessage += `• Toplam tıklanma: ${totalClicks}\\n`;\nmessage += `• Toplam gösterim: ${totalImpressions}\\n`;\nmessage += `• Ortalama CTR: ${totalClicks && totalImpressions ? ((totalClicks/totalImpressions)*100).toFixed(1) : 0}%\\n\\n`;\nmessage += `📝 SAYFA BAZLI\\n`;\nmessage += lines.join('\\n\\n') || 'Veri yok';\n\nif (drops.length > 0) {\n  message += '\\n\\n🚨 POZİSYON DÜŞÜŞLERİ (5+ basamak)\\n';\n  for (const d of drops) {\n    message += `• /${d.slug}: #${d.pos} (↓${d.diff} basamak)\\n`;\n  }\n}\n\nreturn [{\n  json: {\n    message,\n    drops,\n    hasDrops: drops.length > 0,\n    totalClicks,\n    totalImpressions,\n    reportLabel,\n    topPages: thisWeekRows.slice(0, 5).map(r => r.keys[0])\n  }\n}];"
+      }
+    },
+    {
+      "id": "a1b2c3d4-0006-0000-0000-000000000006",
+      "name": "Telegram Gönder",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1180, 180],
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.telegram.org/bot{{ $env.TELEGRAM_BOT_TOKEN }}/sendMessage",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"chat_id\": \"{{ $env.TELEGRAM_CHAT_ID }}\",\n  \"text\": \"{{ $json.message }}\",\n  \"parse_mode\": \"HTML\"\n}",
+        "options": {}
+      }
+    },
+    {
+      "id": "a1b2c3d4-0007-0000-0000-000000000007",
+      "name": "Notion Haftalık Kayıt",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1180, 340],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.notion.com/v1/pages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {"name": "Authorization", "value": "Bearer ntn_Z1280855753aWSWKbCPMhAq6YUMGV2E0NzWVK71n5kAcUD"},
+            {"name": "Notion-Version", "value": "2022-06-28"},
+            {"name": "Content-Type", "value": "application/json"}
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"parent\": {\"database_id\": \"31304c58-4ec9-81a1-b847-c1a28cd431e1\"},\n  \"properties\": {\n    \"Görev\": {\"title\": [{\"text\": {\"content\": \"SEO Haftalık Rapor: {{ $json.reportLabel }}\"}}]},\n    \"Durum\": {\"select\": {\"name\": \"Tamamlandı\"}},\n    \"Alan\": {\"select\": {\"name\": \"🌐 Ürün & Site\"}},\n    \"Proje\": {\"select\": {\"name\": \"SEO Altyapısı\"}},\n    \"Öncelik\": {\"select\": {\"name\": \"Düşük\"}}\n  }\n}",
+        "options": {}
+      }
+    },
+    {
+      "id": "a1b2c3d4-0008-0000-0000-000000000008",
+      "name": "Pozisyon Düşüşü Var mı?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [1180, 500],
+      "parameters": {
+        "conditions": {
+          "options": {"caseSensitive": true, "leftValue": "", "typeValidation": "strict"},
+          "conditions": [
+            {
+              "id": "cond1",
+              "leftValue": "={{ $json.hasDrops }}",
+              "rightValue": true,
+              "operator": {"type": "boolean", "operation": "equals"}
+            }
+          ],
+          "combinator": "and"
+        }
+      }
+    },
+    {
+      "id": "a1b2c3d4-0009-0000-0000-000000000009",
+      "name": "Notion Uyarı Görevi",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1420, 500],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "// Her düşen sayfa için ayrı Notion görevi oluştur\nconst drops = $input.first().json.drops;\nconst results = [];\n\nfor (const drop of drops) {\n  const payload = JSON.stringify({\n    parent: {database_id: '31304c58-4ec9-81a1-b847-c1a28cd431e1'},\n    properties: {\n      'Görev': {title: [{text: {content: `SEO İnceleme: ${drop.slug} (↓${drop.diff} basamak)`}}]},\n      'Durum': {select: {name: 'Backlog'}},\n      'Alan': {select: {name: '🌐 Ürün & Site'}},\n      'Proje': {select: {name: 'SEO Altyapısı'}},\n      'Öncelik': {select: {name: 'Yüksek'}}\n    }\n  });\n  results.push({json: {payload, slug: drop.slug}});\n}\n\nreturn results;"
+      }
+    },
+    {
+      "id": "a1b2c3d4-0010-0000-0000-000000000010",
+      "name": "Notion Uyarı HTTP",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1660, 500],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.notion.com/v1/pages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {"name": "Authorization", "value": "Bearer ntn_Z1280855753aWSWKbCPMhAq6YUMGV2E0NzWVK71n5kAcUD"},
+            {"name": "Notion-Version", "value": "2022-06-28"},
+            {"name": "Content-Type", "value": "application/json"}
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.payload }}",
+        "options": {}
+      }
+    }
+  ],
+  "connections": {
+    "Her Pazartesi 08:00": {
+      "main": [[{"node": "Tarih Hesapla", "type": "main", "index": 0}]]
+    },
+    "Tarih Hesapla": {
+      "main": [
+        [
+          {"node": "GSC Bu Hafta", "type": "main", "index": 0},
+          {"node": "GSC Önceki Hafta", "type": "main", "index": 0}
+        ]
+      ]
+    },
+    "GSC Bu Hafta": {
+      "main": [[{"node": "Rapor Hazırla", "type": "main", "index": 0}]]
+    },
+    "GSC Önceki Hafta": {
+      "main": [[{"node": "Rapor Hazırla", "type": "main", "index": 1}]]
+    },
+    "Rapor Hazırla": {
+      "main": [
+        [
+          {"node": "Telegram Gönder", "type": "main", "index": 0},
+          {"node": "Notion Haftalık Kayıt", "type": "main", "index": 0},
+          {"node": "Pozisyon Düşüşü Var mı?", "type": "main", "index": 0}
+        ]
+      ]
+    },
+    "Pozisyon Düşüşü Var mı?": {
+      "main": [
+        [{"node": "Notion Uyarı Görevi", "type": "main", "index": 0}],
+        []
+      ]
+    },
+    "Notion Uyarı Görevi": {
+      "main": [[{"node": "Notion Uyarı HTTP", "type": "main", "index": 0}]]
+    }
+  },
+  "settings": {
+    "timezone": "Europe/Istanbul",
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all"
+  },
+  "meta": {
+    "notes": "KURULUM GEREKSİNİMLERİ:\n1. Google OAuth2 Credential: n8n → Settings → Credentials → Google OAuth2 API\n   Scope: https://www.googleapis.com/auth/webmasters.readonly\n   ID'yi 'GOOGLE_CREDENTIAL_ID' ile değiştir\n2. Ortam Değişkenleri (n8n Settings → Environment Variables):\n   TELEGRAM_BOT_TOKEN=<Bing MCP'deki bot token>\n   TELEGRAM_CHAT_ID=<senin Telegram chat ID'n>\n3. Workflow'u aktif et → Vercel deploy tamamlandıktan 30 sn sonra ilk manual test yap"
+  }
+}
