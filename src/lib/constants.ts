@@ -187,6 +187,13 @@ export const FAQ_ITEMS = [
 
 export const BLOG_POSTS = [
   {
+    title: "Chatbot mu, Voice Agent mi? Müşteri İletişiminde Doğru Seçim",
+    excerpt: "Müşteri hizmetleri otomasyonunda chatbot ve voice agent arasında nasıl karar verirsiniz? İki teknolojinin güçlü yanları, sınırları ve Türk şirketleri için rehber.",
+    date: "5 Mart 2026",
+    slug: "chatbot-voice-agent-secimi",
+    category: "customer" as const,
+  },
+  {
     title: "AI Projesinin ROI'sini Nasıl Hesaplarsınız? Adım Adım Rehber",
     excerpt: "Yapay zeka yatırımınızın geri dönüşünü somut rakamlarla nasıl ölçersiniz? Türk şirketleri için pratik ROI hesaplama rehberi.",
     date: "4 Mart 2026",
