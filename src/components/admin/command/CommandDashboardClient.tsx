@@ -18,6 +18,7 @@ interface KPIs {
   pendingApprovals: number
   totalAgents: number
   todayRuns: number
+  activePipelines: number
 }
 
 interface Props {
@@ -37,9 +38,9 @@ export default function CommandDashboardClient({ kpis, recentJobs }: Props) {
 
   const kpiCards = [
     { label: 'Aktif İşler', value: kpis.activeJobs, color: 'text-blue-400', pulse: kpis.activeJobs > 0 },
+    { label: 'Aktif Pipeline', value: kpis.activePipelines, color: 'text-[#8B5CF6]', pulse: kpis.activePipelines > 0 },
     { label: 'Bekleyen Onaylar', value: kpis.pendingApprovals, color: 'text-orange-400', pulse: kpis.pendingApprovals > 0 },
     { label: 'Bugünkü Çalışmalar', value: kpis.todayRuns, color: 'text-[#A3E635]' },
-    { label: 'Toplam Agent', value: kpis.totalAgents, color: 'text-[#8B5CF6]' },
   ]
 
   function timeAgo(dateStr: string) {
@@ -125,6 +126,20 @@ export default function CommandDashboardClient({ kpis, recentJobs }: Props) {
                 </svg>
                 Skill Çalıştır
               </button>
+              <Link
+                href="/admin/command/pipelines"
+                className="w-full flex items-center gap-3 px-4 py-3 bg-[#8B5CF6]/10 text-[#8B5CF6] rounded-lg hover:bg-[#8B5CF6]/20 transition-colors text-sm font-medium"
+              >
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                </svg>
+                Pipeline Başlat
+                {kpis.activePipelines > 0 && (
+                  <span className="ml-auto bg-[#8B5CF6]/20 text-[#8B5CF6] text-xs px-2 py-0.5 rounded-full">
+                    {kpis.activePipelines}
+                  </span>
+                )}
+              </Link>
               <Link
                 href="/admin/command/approvals"
                 className="w-full flex items-center gap-3 px-4 py-3 bg-[#1A1030] text-[#78716C] rounded-lg hover:text-white hover:bg-[#2E1065]/50 transition-colors text-sm border border-[#2E1065]/30"

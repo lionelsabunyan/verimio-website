@@ -39,5 +39,19 @@ export async function PATCH(request: Request) {
     .single()
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+
+  // Pipeline rejection propagation — onay reddedildiğinde pipeline'ı da fail et
+  if (status === 'rejected' && data.pipeline_run_id) {
+    await supabase
+      .from('pipeline_runs')
+      .update({
+        status: 'failed',
+        error: `Onay reddedildi: ${notes || 'Sebep belirtilmedi'}`,
+        completed_at: new Date().toISOString(),
+      })
+      .eq('id', data.pipeline_run_id)
+      .in('status', ['running', 'paused'])
+  }
+
   return NextResponse.json({ approval: data })
 }

@@ -6,7 +6,7 @@ import CommandDashboardClient from '@/components/admin/command/CommandDashboardC
 export default async function CommandCenterPage() {
   const supabase = await createClient()
 
-  const [jobsRes, activeJobsRes, approvalsRes, agentsRes, recentJobsRes] = await Promise.all([
+  const [jobsRes, activeJobsRes, approvalsRes, agentsRes, recentJobsRes, activePipelinesRes] = await Promise.all([
     supabase.from('command_jobs').select('id', { count: 'exact', head: true }),
     supabase.from('command_jobs').select('id', { count: 'exact', head: true })
       .in('status', ['running', 'queued']),
@@ -18,6 +18,8 @@ export default async function CommandCenterPage() {
       .select('*')
       .order('created_at', { ascending: false })
       .limit(10),
+    supabase.from('pipeline_runs').select('id', { count: 'exact', head: true })
+      .in('status', ['running', 'paused']),
   ])
 
   // Bugünkü çalışmalar
@@ -33,6 +35,7 @@ export default async function CommandCenterPage() {
     pendingApprovals: approvalsRes.count || 0,
     totalAgents: agentsRes.count || 0,
     todayRuns: todayRuns || 0,
+    activePipelines: activePipelinesRes.count || 0,
   }
 
   return (

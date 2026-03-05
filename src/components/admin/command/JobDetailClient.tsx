@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 import StatusBadge from './StatusBadge'
 import LogViewer from './LogViewer'
@@ -19,6 +20,8 @@ interface Job {
   started_at: string | null
   completed_at: string | null
   created_by: string
+  pipeline_run_id: string | null
+  step_index: number | null
 }
 
 interface LogLine {
@@ -108,7 +111,20 @@ export default function JobDetailClient({
           <div className="flex items-center gap-3">
             <span className={`w-3 h-3 rounded-full ${job.project === 'verimio' ? 'bg-[#A3E635]' : 'bg-blue-400'}`} />
             <div>
-              <h2 className="text-white text-lg font-semibold">{job.skill}</h2>
+              <div className="flex items-center gap-2">
+                <h2 className="text-white text-lg font-semibold">{job.skill}</h2>
+                {job.pipeline_run_id && (
+                  <Link
+                    href={`/admin/command/pipelines/runs/${job.pipeline_run_id}`}
+                    className="flex items-center gap-1 bg-[#8B5CF6]/20 text-[#8B5CF6] px-2 py-0.5 rounded text-xs hover:bg-[#8B5CF6]/30 transition-colors"
+                  >
+                    <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                    </svg>
+                    {job.step_index !== null ? `Adım ${job.step_index + 1}` : 'Pipeline'}
+                  </Link>
+                )}
+              </div>
               <p className="text-[#4C4462] text-sm">{job.project} — {job.id.slice(0, 8)}</p>
             </div>
           </div>

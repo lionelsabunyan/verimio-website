@@ -2,15 +2,17 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 import StatusBadge from './StatusBadge'
 
 interface Approval {
   id: string
   job_id: string
-  pipeline_id: string | null
+  pipeline_run_id: string | null
   approval_type: string
   title: string
+  description: string | null
   data: Record<string, unknown>
   status: string
   decided_at: string | null
@@ -119,7 +121,24 @@ export default function ApprovalsClient({
                       <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-orange-400" />
                     </span>
                     <div className="text-left">
-                      <p className="text-white text-sm font-medium">{approval.title}</p>
+                      <div className="flex items-center gap-2">
+                        <p className="text-white text-sm font-medium">{approval.title}</p>
+                        {approval.pipeline_run_id && (
+                          <Link
+                            href={`/admin/command/pipelines/runs/${approval.pipeline_run_id}`}
+                            onClick={(e) => e.stopPropagation()}
+                            className="inline-flex items-center gap-1 bg-[#8B5CF6]/15 text-[#8B5CF6] px-2 py-0.5 rounded text-xs hover:bg-[#8B5CF6]/25 transition-colors"
+                          >
+                            <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                            </svg>
+                            Pipeline
+                          </Link>
+                        )}
+                      </div>
+                      {approval.description && (
+                        <p className="text-[#78716C] text-xs mt-0.5">{approval.description}</p>
+                      )}
                       <p className="text-[#4C4462] text-xs">
                         {approval.command_jobs?.skill} — {approval.command_jobs?.project} — {timeAgo(approval.created_at)}
                       </p>
@@ -202,7 +221,20 @@ export default function ApprovalsClient({
                 >
                   <div className="flex items-center gap-3">
                     <div>
-                      <p className="text-white text-sm">{approval.title}</p>
+                      <div className="flex items-center gap-2">
+                        <p className="text-white text-sm">{approval.title}</p>
+                        {approval.pipeline_run_id && (
+                          <Link
+                            href={`/admin/command/pipelines/runs/${approval.pipeline_run_id}`}
+                            className="inline-flex items-center gap-1 bg-[#8B5CF6]/10 text-[#8B5CF6] px-1.5 py-0.5 rounded text-xs hover:bg-[#8B5CF6]/20 transition-colors"
+                          >
+                            <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                            </svg>
+                            Pipeline
+                          </Link>
+                        )}
+                      </div>
                       <p className="text-[#4C4462] text-xs">
                         {approval.command_jobs?.skill} — {approval.decided_via || '—'}
                       </p>
