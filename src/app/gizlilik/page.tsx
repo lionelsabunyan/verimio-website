@@ -4,9 +4,10 @@ import { BRAND } from "@/lib/constants";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Gizlilik Politikası | Verimio",
+  title: "Gizlilik Politikası",
   description:
     "Verimio olarak kişisel verilerinizi nasıl topladığımızı, işlediğimizi ve koruduğumuzu açıklıyoruz. KVKK kapsamındaki haklarınızı öğrenin.",
+  alternates: { canonical: "https://www.verimio.com.tr/gizlilik" },
 };
 
 const sections = [

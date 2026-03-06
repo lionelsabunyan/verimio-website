@@ -5,9 +5,10 @@ import BlogCoverImage from "@/components/brand/BlogCoverImage";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog | Verimio - AI & Otomasyon İçerikleri",
+  title: "Blog - AI & Otomasyon İçerikleri",
   description:
     "Şirketler için AI araçları, otomasyon stratejileri ve operasyonel verimlilik içerikleri. Verimio blog.",
+  alternates: { canonical: "https://www.verimio.com.tr/blog" },
 };
 
 export default function BlogPage() {

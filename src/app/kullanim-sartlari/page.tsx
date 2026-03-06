@@ -4,9 +4,10 @@ import { BRAND } from "@/lib/constants";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Kullanım Şartları | Verimio",
+  title: "Kullanım Şartları",
   description:
     "Verimio hizmetlerini kullanım koşulları, tarafların hak ve yükümlülükleri ile fikri mülkiyet hakkında bilgi edinin.",
+  alternates: { canonical: "https://www.verimio.com.tr/kullanim-sartlari" },
 };
 
 const sections = [

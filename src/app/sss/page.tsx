@@ -5,9 +5,10 @@ import FAQSchema from "@/components/seo/FAQSchema";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Sık Sorulan Sorular | Verimio",
+  title: "Sık Sorulan Sorular",
   description:
     "Verimio şirket check-up'ı, danışmanlık süreci, fiyatlandırma ve gizlilik hakkında merak ettiğiniz her şeyi yanıtlıyoruz.",
+  alternates: { canonical: "https://www.verimio.com.tr/sss" },
 };
 
 const additionalFaqs = [

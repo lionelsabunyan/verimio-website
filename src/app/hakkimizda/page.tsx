@@ -5,9 +5,10 @@ import CTA from "@/components/sections/CTA";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Hakkımızda | Verimio - Kurumsal AI Danışmanlığı",
+  title: "Hakkımızda - Kurumsal AI Danışmanlığı",
   description:
     "Verimio, şirketlerin iş süreçlerini analiz eden, darboğazları tespit eden ve kurumsal AI dönüşümünde rehberlik eden bir danışmanlık firmasıdır.",
+  alternates: { canonical: "https://www.verimio.com.tr/hakkimizda" },
 };
 
 const differentiators = [

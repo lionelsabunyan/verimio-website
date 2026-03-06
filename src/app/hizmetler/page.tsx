@@ -10,9 +10,10 @@ import Button from "@/components/ui/Button";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Hizmetler | Verimio - Kurumsal AI Danışmanlığı",
+  title: "Hizmetler - Kurumsal AI Danışmanlığı",
   description:
     "Süreç analizi, iş akışı otomasyonu, müşteri deneyimi, veri otomasyonu ve AI strateji danışmanlığı. Şirketinize özel, ölçülebilir sonuçlar.",
+  alternates: { canonical: "https://www.verimio.com.tr/hizmetler" },
 };
 
 const services = [

@@ -62,7 +62,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = getPost(slug);
   if (!post) {
-    return { title: "Yazı Bulunamadı | Verimio Blog" };
+    return { title: "Yazı Bulunamadı" };
   }
   const { frontmatter } = post;
   const webpExists = fs.existsSync(
@@ -70,7 +70,7 @@ export async function generateMetadata({
   );
 
   return {
-    title: `${frontmatter.title} | Verimio Blog`,
+    title: frontmatter.title,
     description: frontmatter.excerpt,
     openGraph: {
       title: frontmatter.title,
@@ -79,6 +79,7 @@ export async function generateMetadata({
       publishedTime: frontmatter.date,
       ...(webpExists ? { images: [{ url: `/images/blog/${slug}.webp`, width: 1200, height: 630 }] } : {}),
     },
+    alternates: { canonical: `https://www.verimio.com.tr/blog/${slug}` },
   };
 }
 

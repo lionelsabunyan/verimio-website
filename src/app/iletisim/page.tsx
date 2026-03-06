@@ -5,9 +5,10 @@ import { getContactIconStyle } from "@/lib/brand-colors";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "İletişim | Verimio - Bize Ulaşın",
+  title: "İletişim - Bize Ulaşın",
   description:
     "Verimio ile iletişime geçin. Check-up'a hazırsanız formu doldurun; sorularınız varsa bize yazın.",
+  alternates: { canonical: "https://www.verimio.com.tr/iletisim" },
 };
 
 const contactMethods = [

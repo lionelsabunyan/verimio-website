@@ -3,9 +3,10 @@ import MultiStepForm from "@/components/form/MultiStepForm";
 import Benefits from "@/components/sections/Benefits";
 
 export const metadata: Metadata = {
-  title: "Şirket Check-Up'ı | Verimio",
+  title: "Şirket Check-Up'ı - Ücretsiz AI Hazırlık Analizi",
   description:
     "Şirketinizin operasyonel verimliliğini ve AI hazırlığını analiz ediyoruz. Formu doldurun, size özel raporunuz e-postanıza iletilsin.",
+  alternates: { canonical: "https://www.verimio.com.tr/analiz" },
 };
 
 export default function AnalizPage() {
