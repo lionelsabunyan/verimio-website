@@ -54,7 +54,7 @@ JSON formatında dön: { "linkedin": "...", "instagram": "...", "twitter": "..."
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'claude-opus-4-5',
+        model: 'claude-sonnet-4-20250514',
         max_tokens: 4096,
         system: SYSTEM_PROMPTS[type] || SYSTEM_PROMPTS.blog,
         messages: [{ role: 'user', content: USER_PROMPTS[type] || USER_PROMPTS.blog }],

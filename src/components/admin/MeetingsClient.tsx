@@ -46,10 +46,10 @@ export default function MeetingsClient({ meetings }: { meetings: Meeting[] }) {
 
       {/* Yaklaşan toplantılar */}
       <div>
-        <h2 className="text-white font-medium mb-3">Yaklaşan Toplantılar ({upcoming.length})</h2>
+        <h2 className="text-foreground font-medium mb-3">Yaklaşan Toplantılar ({upcoming.length})</h2>
         {upcoming.length === 0 ? (
-          <div className="bg-[#0F0A1E] border border-[#1A1030] border-dashed rounded-xl p-8 text-center">
-            <p className="text-[#4C4462] text-sm">Yaklaşan toplantı yok</p>
+          <div className="bg-background-secondary border border-border border-dashed rounded-xl p-8 text-center">
+            <p className="text-foreground-muted text-sm">Yaklaşan toplantı yok</p>
           </div>
         ) : (
           <div className="space-y-3">
@@ -59,23 +59,23 @@ export default function MeetingsClient({ meetings }: { meetings: Meeting[] }) {
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.05 }}
-                className="bg-[#0F0A1E] border border-[#2E1065] rounded-xl p-5 flex items-center gap-4"
+                className="bg-background-secondary border border-primary rounded-xl p-5 flex items-center gap-4"
               >
-                <div className="w-12 h-12 bg-[#2E1065] rounded-xl flex items-center justify-center flex-shrink-0">
-                  <span className="text-[#A3E635] font-bold text-lg">
+                <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center flex-shrink-0">
+                  <span className="text-secondary font-bold text-lg">
                     {new Date(meeting.scheduled_at).getDate()}
                   </span>
                 </div>
                 <div className="flex-1">
-                  <div className="text-white text-sm font-medium">{meeting.leads?.email || 'Misafir'}</div>
-                  <div className="text-[#4C4462] text-xs mt-0.5">
+                  <div className="text-foreground text-sm font-medium">{meeting.leads?.email || 'Misafir'}</div>
+                  <div className="text-foreground-muted text-xs mt-0.5">
                     {new Date(meeting.scheduled_at).toLocaleString('tr-TR', {
                       day: '2-digit', month: 'long', hour: '2-digit', minute: '2-digit',
                     })} · {meeting.duration_minutes} dakika
                   </div>
                 </div>
                 {meeting.leads?.sector && (
-                  <span className="text-xs text-[#78716C] bg-[#1A1030] px-2 py-1 rounded-lg">{meeting.leads.sector}</span>
+                  <span className="text-xs text-foreground-secondary bg-surface-elevated px-2 py-1 rounded-lg">{meeting.leads.sector}</span>
                 )}
               </motion.div>
             ))}
@@ -86,24 +86,24 @@ export default function MeetingsClient({ meetings }: { meetings: Meeting[] }) {
       {/* Geçmiş toplantılar */}
       {past.length > 0 && (
         <div>
-          <h2 className="text-[#78716C] font-medium mb-3">Geçmiş ({past.length})</h2>
-          <div className="bg-[#0F0A1E] border border-[#1A1030] rounded-xl overflow-hidden">
+          <h2 className="text-foreground-secondary font-medium mb-3">Geçmiş ({past.length})</h2>
+          <div className="bg-background-secondary border border-border rounded-xl overflow-hidden">
             <table className="w-full">
               <thead>
-                <tr className="border-b border-[#1A1030]">
+                <tr className="border-b border-border">
                   {['Lead', 'Tarih', 'Süre', 'Sonuç'].map((h) => (
-                    <th key={h} className="text-left px-5 py-3 text-[#4C4462] text-xs font-medium uppercase tracking-wider">{h}</th>
+                    <th key={h} className="text-left px-5 py-3 text-foreground-muted text-xs font-medium uppercase tracking-wider">{h}</th>
                   ))}
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#1A1030]">
+              <tbody className="divide-y divide-border">
                 {past.map((meeting) => (
-                  <tr key={meeting.id} className="hover:bg-[#1A1030]/50 transition-colors">
-                    <td className="px-5 py-3 text-white text-sm">{meeting.leads?.email || '—'}</td>
-                    <td className="px-5 py-3 text-[#78716C] text-sm">
+                  <tr key={meeting.id} className="hover:bg-surface-elevated/50 transition-colors">
+                    <td className="px-5 py-3 text-foreground text-sm">{meeting.leads?.email || '—'}</td>
+                    <td className="px-5 py-3 text-foreground-secondary text-sm">
                       {new Date(meeting.scheduled_at).toLocaleDateString('tr-TR')}
                     </td>
-                    <td className="px-5 py-3 text-[#78716C] text-sm">{meeting.duration_minutes} dk</td>
+                    <td className="px-5 py-3 text-foreground-secondary text-sm">{meeting.duration_minutes} dk</td>
                     <td className="px-5 py-3">
                       {meeting.outcome ? (
                         <span className={`text-xs px-2 py-0.5 rounded-full ${OUTCOME_COLORS[meeting.outcome] || 'bg-gray-500/20 text-gray-400'}`}>
@@ -112,7 +112,7 @@ export default function MeetingsClient({ meetings }: { meetings: Meeting[] }) {
                            meeting.outcome === 'rescheduled' ? 'Ertelendi' : 'İptal'}
                         </span>
                       ) : (
-                        <span className="text-[#4C4462] text-xs">—</span>
+                        <span className="text-foreground-muted text-xs">—</span>
                       )}
                     </td>
                   </tr>

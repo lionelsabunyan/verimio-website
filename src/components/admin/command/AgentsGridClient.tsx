@@ -60,7 +60,7 @@ export default function AgentsGridClient({ agents }: { agents: Agent[] }) {
       {/* Filtreler */}
       <div className="flex items-center justify-between">
         <ProjectSwitcher value={project} onChange={setProject} />
-        <span className="text-[#4C4462] text-sm">
+        <span className="text-foreground-muted text-sm">
           {filtered.length} agent aktif
         </span>
       </div>
@@ -68,44 +68,44 @@ export default function AgentsGridClient({ agents }: { agents: Agent[] }) {
       {/* Kategoriye göre gruplar */}
       {Object.entries(grouped).map(([category, categoryAgents]) => (
         <div key={category}>
-          <h3 className="text-[#4C4462] text-xs font-medium uppercase tracking-wider mb-3">
+          <h3 className="text-foreground-muted text-xs font-medium uppercase tracking-wider mb-3">
             {CATEGORY_LABELS[category] || category}
           </h3>
           <div className="grid grid-cols-3 gap-3">
             {categoryAgents.map((agent) => (
               <div
                 key={agent.id}
-                className="bg-[#1A1030] border border-[#2E1065]/30 rounded-xl p-4 hover:border-[#8B5CF6]/40 transition-all group"
+                className="bg-surface-elevated border border-primary/30 rounded-xl p-4 hover:border-primary-light/40 transition-all group"
               >
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-center gap-2.5">
                     <span className="text-2xl">{agent.icon}</span>
                     <div>
-                      <h4 className="text-white text-sm font-medium">{agent.display_name}</h4>
+                      <h4 className="text-foreground text-sm font-medium">{agent.display_name}</h4>
                       <div className="flex items-center gap-1.5">
-                        <span className={`w-1.5 h-1.5 rounded-full ${agent.project === 'verimio' ? 'bg-[#A3E635]' : 'bg-blue-400'}`} />
-                        <span className="text-[#4C4462] text-xs">{agent.project}</span>
+                        <span className={`w-1.5 h-1.5 rounded-full ${agent.project === 'verimio' ? 'bg-secondary' : 'bg-blue-400'}`} />
+                        <span className="text-foreground-muted text-xs">{agent.project}</span>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <p className="text-[#78716C] text-xs mb-3 line-clamp-2">{agent.description}</p>
+                <p className="text-foreground-secondary text-xs mb-3 line-clamp-2">{agent.description}</p>
 
-                <div className="flex items-center justify-between pt-3 border-t border-[#2E1065]/20">
+                <div className="flex items-center justify-between pt-3 border-t border-primary/20">
                   <div className="flex items-center gap-3">
                     <div className="text-center">
-                      <p className="text-white text-xs font-medium">{agent.total_runs}</p>
-                      <p className="text-[#4C4462] text-[10px]">çalışma</p>
+                      <p className="text-foreground text-xs font-medium">{agent.total_runs}</p>
+                      <p className="text-foreground-muted text-[10px]">çalışma</p>
                     </div>
                     <div className="text-center">
-                      <p className="text-white text-xs font-medium">{timeAgo(agent.last_used_at)}</p>
-                      <p className="text-[#4C4462] text-[10px]">son kullanım</p>
+                      <p className="text-foreground text-xs font-medium">{timeAgo(agent.last_used_at)}</p>
+                      <p className="text-foreground-muted text-[10px]">son kullanım</p>
                     </div>
                   </div>
                   <button
                     onClick={() => setRunAgent(agent)}
-                    className="opacity-0 group-hover:opacity-100 px-3 py-1.5 text-xs bg-[#A3E635]/10 text-[#A3E635] rounded-lg hover:bg-[#A3E635]/20 transition-all"
+                    className="opacity-0 group-hover:opacity-100 px-3 py-1.5 text-xs bg-secondary/10 text-secondary rounded-lg hover:bg-secondary/20 transition-all"
                   >
                     Çalıştır
                   </button>
@@ -117,7 +117,7 @@ export default function AgentsGridClient({ agents }: { agents: Agent[] }) {
       ))}
 
       {filtered.length === 0 && (
-        <div className="text-center py-12 text-[#4C4462] text-sm">
+        <div className="text-center py-12 text-foreground-muted text-sm">
           Bu projede aktif agent bulunamadı.
         </div>
       )}

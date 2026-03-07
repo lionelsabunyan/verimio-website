@@ -78,24 +78,24 @@ export default function SEOClient() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="bg-[#0F0A1E] border border-[#1A1030] rounded-xl p-6"
+          className="bg-background-secondary border border-border rounded-xl p-6"
         >
-          <h2 className="text-white font-medium mb-5">Kurulum Adımları</h2>
+          <h2 className="text-foreground font-medium mb-5">Kurulum Adımları</h2>
           <div className="space-y-4">
             {SETUP_STEPS.map((step, i) => (
               <div key={step.step} className="flex items-start gap-4">
-                <div className="w-7 h-7 rounded-full bg-[#2E1065] border border-[#4C4462] flex items-center justify-center flex-shrink-0 text-xs text-[#78716C] font-medium">
+                <div className="w-7 h-7 rounded-full bg-primary border border-foreground-muted flex items-center justify-center flex-shrink-0 text-xs text-foreground-secondary font-medium">
                   {step.step}
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-white text-sm font-medium">{step.title}</h3>
-                  <p className="text-[#4C4462] text-xs mt-0.5">{step.desc}</p>
+                  <h3 className="text-foreground text-sm font-medium">{step.title}</h3>
+                  <p className="text-foreground-muted text-xs mt-0.5">{step.desc}</p>
                   {step.action && (
                     <a
                       href={step.action}
                       target="_blank"
                       rel="noopener"
-                      className="inline-block mt-1.5 text-xs text-[#A3E635] hover:underline"
+                      className="inline-block mt-1.5 text-xs text-secondary hover:underline"
                     >
                       {step.actionLabel}
                     </a>
@@ -111,14 +111,14 @@ export default function SEOClient() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="bg-[#0F0A1E] border border-[#1A1030] rounded-xl p-6"
+          className="bg-background-secondary border border-border rounded-xl p-6"
         >
-          <h2 className="text-white font-medium mb-5">Hedef Keyword'ler</h2>
+          <h2 className="text-foreground font-medium mb-5">Hedef Keyword'ler</h2>
           <div className="space-y-2">
             {KEYWORD_TARGETS.map((kw) => (
-              <div key={kw.keyword} className="flex items-center gap-3 py-2 border-b border-[#1A1030] last:border-0">
+              <div key={kw.keyword} className="flex items-center gap-3 py-2 border-b border-border last:border-0">
                 <div className="flex-1">
-                  <span className="text-white text-sm">{kw.keyword}</span>
+                  <span className="text-foreground text-sm">{kw.keyword}</span>
                 </div>
                 <span className={`text-xs px-2 py-0.5 rounded-full ${
                   kw.difficulty === 'Düşük' ? 'bg-green-500/20 text-green-400' :
@@ -127,9 +127,9 @@ export default function SEOClient() {
                 }`}>
                   {kw.difficulty}
                 </span>
-                <span className="text-[#4C4462] text-xs w-20 text-right">{kw.volume}</span>
+                <span className="text-foreground-muted text-xs w-20 text-right">{kw.volume}</span>
                 <span className={`text-xs px-2 py-0.5 rounded-full ${
-                  kw.priority === 'Yüksek' ? 'bg-[#A3E635]/20 text-[#A3E635]' : 'bg-[#1A1030] text-[#4C4462]'
+                  kw.priority === 'Yüksek' ? 'bg-secondary/20 text-secondary' : 'bg-surface-elevated text-foreground-muted'
                 }`}>
                   {kw.priority}
                 </span>
@@ -144,9 +144,9 @@ export default function SEOClient() {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
-        className="bg-[#0F0A1E] border border-[#1A1030] rounded-xl p-6"
+        className="bg-background-secondary border border-border rounded-xl p-6"
       >
-        <h2 className="text-white font-medium mb-4">Metrikler (GSC bağlandıktan sonra)</h2>
+        <h2 className="text-foreground font-medium mb-4">Metrikler (GSC bağlandıktan sonra)</h2>
         <div className="grid grid-cols-4 gap-4">
           {[
             { label: 'Toplam Tıklama', value: '—', icon: '🖱️' },
@@ -154,10 +154,10 @@ export default function SEOClient() {
             { label: 'Ort. Pozisyon', value: '—', icon: '📍' },
             { label: 'CTR', value: '—', icon: '%' },
           ].map((m) => (
-            <div key={m.label} className="bg-[#1A1030] rounded-xl p-4 text-center">
+            <div key={m.label} className="bg-surface-elevated rounded-xl p-4 text-center">
               <div className="text-2xl mb-2">{m.icon}</div>
-              <div className="text-2xl font-bold text-[#4C4462] mb-1">{m.value}</div>
-              <div className="text-[#4C4462] text-xs">{m.label}</div>
+              <div className="text-2xl font-bold text-foreground-muted mb-1">{m.value}</div>
+              <div className="text-foreground-muted text-xs">{m.label}</div>
             </div>
           ))}
         </div>

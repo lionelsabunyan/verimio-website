@@ -205,15 +205,15 @@ export default function BrandClient() {
   return (
     <main className="flex-1 p-6">
       {/* Tab bar */}
-      <div className="flex gap-1 mb-6 bg-[#0F0A1E] border border-[#1A1030] rounded-xl p-1">
+      <div className="flex gap-1 mb-6 bg-background-secondary border border-border rounded-xl p-1">
         {TABS.map((tab) => (
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
             className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg text-sm font-medium transition-all ${
               activeTab === tab.id
-                ? 'bg-[#2E1065] text-[#A3E635]'
-                : 'text-[#4C4462] hover:text-white hover:bg-[#1A1030]'
+                ? 'bg-primary text-secondary'
+                : 'text-foreground-muted hover:text-foreground hover:bg-surface-elevated'
             }`}
           >
             <span className="text-base leading-none">{tab.icon}</span>
@@ -229,7 +229,7 @@ export default function BrandClient() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
-            className="fixed bottom-6 right-6 bg-[#A3E635] text-[#2E1065] px-4 py-2 rounded-lg text-sm font-medium z-50"
+            className="fixed bottom-6 right-6 bg-secondary text-primary px-4 py-2 rounded-lg text-sm font-medium z-50"
           >
             {copyFeedback} kopyalandı
           </motion.div>
@@ -248,15 +248,15 @@ export default function BrandClient() {
             {/* ── Tipografik Logo Font Varyasyonları ── */}
             <div className="mb-8">
               <div className="flex items-center justify-between mb-1">
-                <h3 className="text-white font-semibold">Tipografik Logo — Font Varyasyonları</h3>
+                <h3 className="text-foreground font-semibold">Tipografik Logo — Font Varyasyonları</h3>
                 {selectedLogo && (
-                  <div className="flex items-center gap-2 bg-[#A3E635]/10 border border-[#A3E635]/30 px-4 py-2 rounded-lg">
-                    <svg className="w-4 h-4 text-[#A3E635]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                    <span className="text-[#A3E635] text-xs font-medium">Varyasyon {selectedLogo} seçildi</span>
+                  <div className="flex items-center gap-2 bg-secondary/10 border border-secondary/30 px-4 py-2 rounded-lg">
+                    <svg className="w-4 h-4 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                    <span className="text-secondary text-xs font-medium">Varyasyon {selectedLogo} seçildi</span>
                   </div>
                 )}
               </div>
-              <p className="text-[#4C4462] text-xs mb-5">Her sütun farklı bir font karakteri. &quot;verim&quot; ve &quot;io&quot; renk bölümlemesi sabit. Tıkla → seç.</p>
+              <p className="text-foreground-muted text-xs mb-5">Her sütun farklı bir font karakteri. &quot;verim&quot; ve &quot;io&quot; renk bölümlemesi sabit. Tıkla → seç.</p>
 
               {/* 3 sütun — A, B, C font varyasyonu */}
               <div className="grid grid-cols-3 gap-4">
@@ -264,14 +264,14 @@ export default function BrandClient() {
                 {/* ── A — Güçlü & Bold (Inter Black, wide tracking) ── */}
                 <div
                   onClick={() => setSelectedLogo('A')}
-                  className={`cursor-pointer rounded-xl border-2 overflow-hidden transition-all ${selectedLogo === 'A' ? 'border-[#A3E635]' : 'border-[#1A1030] hover:border-[#2E1065]'}`}
+                  className={`cursor-pointer rounded-xl border-2 overflow-hidden transition-all ${selectedLogo === 'A' ? 'border-secondary' : 'border-border hover:border-primary'}`}
                 >
-                  <div className="bg-[#0F0A1E] px-4 py-2.5 border-b border-[#1A1030] flex items-center justify-between">
-                    <span className="text-white text-xs font-semibold">A — Bold Geniş</span>
-                    <span className="text-[#4C4462] text-xs">Güçlü · Baskın</span>
+                  <div className="bg-background-secondary px-4 py-2.5 border-b border-border flex items-center justify-between">
+                    <span className="text-foreground text-xs font-semibold">A — Bold Geniş</span>
+                    <span className="text-foreground-muted text-xs">Güçlü · Baskın</span>
                   </div>
                   {/* Koyu */}
-                  <div className="bg-[#2E1065] px-5 py-6 flex items-center justify-center min-h-[88px]">
+                  <div className="bg-primary px-5 py-6 flex items-center justify-center min-h-[88px]">
                     <div className="flex items-baseline gap-0" style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontWeight: 900, fontSize: '28px', letterSpacing: '0.12em', lineHeight: 1 }}>
                       <span style={{ color: '#FFFFFF' }}>verim</span><span style={{ color: '#A3E635' }}>io</span>
                     </div>
@@ -283,14 +283,14 @@ export default function BrandClient() {
                     </div>
                   </div>
                   {/* Lime zemin */}
-                  <div className="bg-[#A3E635] px-5 py-4 flex items-center justify-center min-h-[72px] border-t border-[#8FCC25]">
+                  <div className="bg-secondary px-5 py-4 flex items-center justify-center min-h-[72px] border-t border-[#8FCC25]">
                     <div className="flex items-baseline gap-0" style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontWeight: 900, fontSize: '24px', letterSpacing: '0.12em' }}>
                       <span style={{ color: '#2E1065' }}>verim</span><span style={{ color: '#1A0A3E' }}>io</span>
                     </div>
                   </div>
                   {/* Küçük ölçek */}
-                  <div className="bg-[#0F0A1E] px-4 py-2.5 flex items-center gap-3 border-t border-[#1A1030]">
-                    <span className="text-[#4C4462] text-xs">Küçük:</span>
+                  <div className="bg-background-secondary px-4 py-2.5 flex items-center gap-3 border-t border-border">
+                    <span className="text-foreground-muted text-xs">Küçük:</span>
                     <div className="flex items-baseline gap-0" style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontWeight: 900, fontSize: '13px', letterSpacing: '0.1em' }}>
                       <span style={{ color: '#FFFFFF' }}>verim</span><span style={{ color: '#A3E635' }}>io</span>
                     </div>
@@ -303,14 +303,14 @@ export default function BrandClient() {
                 {/* ── B — Minimal & Elegant (Light weight, tight tracking) ── */}
                 <div
                   onClick={() => setSelectedLogo('B')}
-                  className={`cursor-pointer rounded-xl border-2 overflow-hidden transition-all ${selectedLogo === 'B' ? 'border-[#A3E635]' : 'border-[#1A1030] hover:border-[#2E1065]'}`}
+                  className={`cursor-pointer rounded-xl border-2 overflow-hidden transition-all ${selectedLogo === 'B' ? 'border-secondary' : 'border-border hover:border-primary'}`}
                 >
-                  <div className="bg-[#0F0A1E] px-4 py-2.5 border-b border-[#1A1030] flex items-center justify-between">
-                    <span className="text-white text-xs font-semibold">B — İnce Şık</span>
-                    <span className="text-[#4C4462] text-xs">Minimal · Zarif</span>
+                  <div className="bg-background-secondary px-4 py-2.5 border-b border-border flex items-center justify-between">
+                    <span className="text-foreground text-xs font-semibold">B — İnce Şık</span>
+                    <span className="text-foreground-muted text-xs">Minimal · Zarif</span>
                   </div>
                   {/* Koyu */}
-                  <div className="bg-[#2E1065] px-5 py-6 flex items-center justify-center min-h-[88px]">
+                  <div className="bg-primary px-5 py-6 flex items-center justify-center min-h-[88px]">
                     <div className="flex items-baseline gap-0" style={{ fontFamily: 'Georgia, "Times New Roman", serif', fontWeight: 300, fontSize: '30px', letterSpacing: '0.18em', lineHeight: 1 }}>
                       <span style={{ color: '#FFFFFF' }}>verim</span><span style={{ color: '#A3E635' }}>io</span>
                     </div>
@@ -322,14 +322,14 @@ export default function BrandClient() {
                     </div>
                   </div>
                   {/* Lime zemin */}
-                  <div className="bg-[#A3E635] px-5 py-4 flex items-center justify-center min-h-[72px] border-t border-[#8FCC25]">
+                  <div className="bg-secondary px-5 py-4 flex items-center justify-center min-h-[72px] border-t border-[#8FCC25]">
                     <div className="flex items-baseline gap-0" style={{ fontFamily: 'Georgia, "Times New Roman", serif', fontWeight: 300, fontSize: '26px', letterSpacing: '0.18em' }}>
                       <span style={{ color: '#2E1065' }}>verim</span><span style={{ color: '#1A0A3E' }}>io</span>
                     </div>
                   </div>
                   {/* Küçük ölçek */}
-                  <div className="bg-[#0F0A1E] px-4 py-2.5 flex items-center gap-3 border-t border-[#1A1030]">
-                    <span className="text-[#4C4462] text-xs">Küçük:</span>
+                  <div className="bg-background-secondary px-4 py-2.5 flex items-center gap-3 border-t border-border">
+                    <span className="text-foreground-muted text-xs">Küçük:</span>
                     <div className="flex items-baseline gap-0" style={{ fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: '13px', letterSpacing: '0.14em' }}>
                       <span style={{ color: '#FFFFFF' }}>verim</span><span style={{ color: '#A3E635' }}>io</span>
                     </div>
@@ -342,14 +342,14 @@ export default function BrandClient() {
                 {/* ── C — Modern Geometric (Medium weight, mixed case, tight) ── */}
                 <div
                   onClick={() => setSelectedLogo('C')}
-                  className={`cursor-pointer rounded-xl border-2 overflow-hidden transition-all ${selectedLogo === 'C' ? 'border-[#A3E635]' : 'border-[#1A1030] hover:border-[#2E1065]'}`}
+                  className={`cursor-pointer rounded-xl border-2 overflow-hidden transition-all ${selectedLogo === 'C' ? 'border-secondary' : 'border-border hover:border-primary'}`}
                 >
-                  <div className="bg-[#0F0A1E] px-4 py-2.5 border-b border-[#1A1030] flex items-center justify-between">
-                    <span className="text-white text-xs font-semibold">C — Modern Sıkışık</span>
-                    <span className="text-[#4C4462] text-xs">Seksi · Dengeli</span>
+                  <div className="bg-background-secondary px-4 py-2.5 border-b border-border flex items-center justify-between">
+                    <span className="text-foreground text-xs font-semibold">C — Modern Sıkışık</span>
+                    <span className="text-foreground-muted text-xs">Seksi · Dengeli</span>
                   </div>
                   {/* Koyu */}
-                  <div className="bg-[#2E1065] px-5 py-6 flex items-center justify-center min-h-[88px]">
+                  <div className="bg-primary px-5 py-6 flex items-center justify-center min-h-[88px]">
                     <div className="flex items-baseline gap-0" style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontWeight: 600, fontSize: '29px', letterSpacing: '-0.02em', lineHeight: 1 }}>
                       <span style={{ color: '#FFFFFF' }}>verim</span><span style={{ color: '#A3E635', fontWeight: 800 }}>io</span>
                     </div>
@@ -361,14 +361,14 @@ export default function BrandClient() {
                     </div>
                   </div>
                   {/* Lime zemin */}
-                  <div className="bg-[#A3E635] px-5 py-4 flex items-center justify-center min-h-[72px] border-t border-[#8FCC25]">
+                  <div className="bg-secondary px-5 py-4 flex items-center justify-center min-h-[72px] border-t border-[#8FCC25]">
                     <div className="flex items-baseline gap-0" style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontWeight: 600, fontSize: '25px', letterSpacing: '-0.02em' }}>
                       <span style={{ color: '#2E1065' }}>verim</span><span style={{ color: '#0A0A0A', fontWeight: 800 }}>io</span>
                     </div>
                   </div>
                   {/* Küçük ölçek */}
-                  <div className="bg-[#0F0A1E] px-4 py-2.5 flex items-center gap-3 border-t border-[#1A1030]">
-                    <span className="text-[#4C4462] text-xs">Küçük:</span>
+                  <div className="bg-background-secondary px-4 py-2.5 flex items-center gap-3 border-t border-border">
+                    <span className="text-foreground-muted text-xs">Küçük:</span>
                     <div className="flex items-baseline gap-0" style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontWeight: 600, fontSize: '13px', letterSpacing: '-0.01em' }}>
                       <span style={{ color: '#FFFFFF' }}>verim</span><span style={{ color: '#A3E635', fontWeight: 800 }}>io</span>
                     </div>
@@ -382,65 +382,65 @@ export default function BrandClient() {
 
               {/* Karakter notu */}
               <div className="mt-3 grid grid-cols-3 gap-3 text-xs">
-                <div className={`rounded-lg p-3 border transition-all ${selectedLogo === 'A' ? 'border-[#A3E635] bg-[#A3E635]/5' : 'border-[#1A1030] bg-[#0F0A1E]'}`}>
-                  <p className="text-[#78716C]">Büyük harfle de çalışır. Güçlü, otoriter his. Plakatlarda, slide başlıklarında etkili.</p>
+                <div className={`rounded-lg p-3 border transition-all ${selectedLogo === 'A' ? 'border-secondary bg-secondary/5' : 'border-border bg-background-secondary'}`}>
+                  <p className="text-foreground-secondary">Büyük harfle de çalışır. Güçlü, otoriter his. Plakatlarda, slide başlıklarında etkili.</p>
                 </div>
-                <div className={`rounded-lg p-3 border transition-all ${selectedLogo === 'B' ? 'border-[#A3E635] bg-[#A3E635]/5' : 'border-[#1A1030] bg-[#0F0A1E]'}`}>
-                  <p className="text-[#78716C]">Serif + ince = lüks danışmanlık hissi. E-postada, kartvizitte çok iyi durur. Dijitalde daha nadir görülür.</p>
+                <div className={`rounded-lg p-3 border transition-all ${selectedLogo === 'B' ? 'border-secondary bg-secondary/5' : 'border-border bg-background-secondary'}`}>
+                  <p className="text-foreground-secondary">Serif + ince = lüks danışmanlık hissi. E-postada, kartvizitte çok iyi durur. Dijitalde daha nadir görülür.</p>
                 </div>
-                <div className={`rounded-lg p-3 border transition-all ${selectedLogo === 'C' ? 'border-[#A3E635] bg-[#A3E635]/5' : 'border-[#1A1030] bg-[#0F0A1E]'}`}>
-                  <p className="text-[#78716C]">Sıkışık tracking modern tech startuplarının tonu. &quot;io&quot; ağırlıklı = suffix vurgusu, domain çağrışımı.</p>
+                <div className={`rounded-lg p-3 border transition-all ${selectedLogo === 'C' ? 'border-secondary bg-secondary/5' : 'border-border bg-background-secondary'}`}>
+                  <p className="text-foreground-secondary">Sıkışık tracking modern tech startuplarının tonu. &quot;io&quot; ağırlıklı = suffix vurgusu, domain çağrışımı.</p>
                 </div>
               </div>
             </div>
 
             {/* Logo seçenekleri — fal.ai */}
-            <h3 className="text-white font-semibold mb-3">fal.ai ile Görsel Varyasyon Üret</h3>
-            <p className="text-[#4C4462] text-xs mb-5">Font seçiminden bağımsız olarak AI ile farklı logo yorumları da üretebilirsin.</p>
+            <h3 className="text-foreground font-semibold mb-3">fal.ai ile Görsel Varyasyon Üret</h3>
+            <p className="text-foreground-muted text-xs mb-5">Font seçiminden bağımsız olarak AI ile farklı logo yorumları da üretebilirsin.</p>
 
             <div className="space-y-4">
               {LOGO_OPTIONS.map((opt) => (
                 <div
                   key={opt.id}
-                  className={`bg-[#0F0A1E] border rounded-xl overflow-hidden transition-all ${
+                  className={`bg-background-secondary border rounded-xl overflow-hidden transition-all ${
                     selectedLogo === opt.id
-                      ? 'border-[#A3E635]'
+                      ? 'border-secondary'
                       : opt.recommended
-                      ? 'border-[#2E1065]'
-                      : 'border-[#1A1030]'
+                      ? 'border-primary'
+                      : 'border-border'
                   }`}
                 >
                   <div className="p-5">
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-1">
-                          <span className="text-white font-bold">Opsiyon {opt.id} — {opt.title}</span>
+                          <span className="text-foreground font-bold">Opsiyon {opt.id} — {opt.title}</span>
                           <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${
                             opt.recommended
-                              ? 'bg-[#A3E635]/20 text-[#A3E635]'
-                              : 'bg-[#1A1030] text-[#4C4462]'
+                              ? 'bg-secondary/20 text-secondary'
+                              : 'bg-surface-elevated text-foreground-muted'
                           }`}>{opt.tag}</span>
                         </div>
-                        <p className="text-[#78716C] text-sm">{opt.desc}</p>
+                        <p className="text-foreground-secondary text-sm">{opt.desc}</p>
                       </div>
                       <div className="flex items-center gap-2 flex-shrink-0">
                         <button
                           onClick={() => copyToClipboard(opt.prompt, `Opsiyon ${opt.id} prompt`)}
-                          className="text-xs px-3 py-1.5 border border-[#1A1030] text-[#4C4462] hover:text-white hover:border-[#2E1065] rounded-lg transition-all"
+                          className="text-xs px-3 py-1.5 border border-border text-foreground-muted hover:text-foreground hover:border-primary rounded-lg transition-all"
                         >
                           Promptu Kopyala
                         </button>
                         <button
                           onClick={() => generateLogo(opt.id, opt.prompt)}
                           disabled={generatingLogo === opt.id}
-                          className="text-xs px-4 py-1.5 bg-[#A3E635]/10 text-[#A3E635] hover:bg-[#A3E635]/20 border border-[#A3E635]/30 rounded-lg transition-all disabled:opacity-50 font-medium"
+                          className="text-xs px-4 py-1.5 bg-secondary/10 text-secondary hover:bg-secondary/20 border border-secondary/30 rounded-lg transition-all disabled:opacity-50 font-medium"
                         >
                           {generatingLogo === opt.id ? (
                             <span className="flex items-center gap-1.5">
                               <motion.span
                                 animate={{ rotate: 360 }}
                                 transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-                                className="inline-block w-3 h-3 border border-[#A3E635] border-t-transparent rounded-full"
+                                className="inline-block w-3 h-3 border border-secondary border-t-transparent rounded-full"
                               />
                               Üretiliyor...
                             </span>
@@ -456,7 +456,7 @@ export default function BrandClient() {
                         animate={{ opacity: 1, height: 'auto' }}
                         className="mt-4"
                       >
-                        <p className="text-[#4C4462] text-xs mb-3">Üretilen varyasyonlar — birini seç:</p>
+                        <p className="text-foreground-muted text-xs mb-3">Üretilen varyasyonlar — birini seç:</p>
                         <div className="grid grid-cols-4 gap-3">
                           {logoResults[opt.id].map((url, i) => (
                             <button
@@ -464,32 +464,32 @@ export default function BrandClient() {
                               onClick={() => setSelectedLogo(opt.id)}
                               className={`relative rounded-xl overflow-hidden aspect-square border-2 transition-all ${
                                 selectedLogo === opt.id
-                                  ? 'border-[#A3E635]'
-                                  : 'border-[#1A1030] hover:border-[#2E1065]'
+                                  ? 'border-secondary'
+                                  : 'border-border hover:border-primary'
                               }`}
                             >
                               {/* eslint-disable-next-line @next/next/no-img-element */}
                               <img src={url} alt={`${opt.title} varyasyon ${i + 1}`} className="w-full h-full object-contain bg-white" />
                               {selectedLogo === opt.id && i === 0 && (
-                                <div className="absolute top-1.5 right-1.5 w-5 h-5 bg-[#A3E635] rounded-full flex items-center justify-center">
-                                  <svg className="w-3 h-3 text-[#2E1065]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <div className="absolute top-1.5 right-1.5 w-5 h-5 bg-secondary rounded-full flex items-center justify-center">
+                                  <svg className="w-3 h-3 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                                   </svg>
                                 </div>
                               )}
                               <div className="absolute bottom-0 left-0 right-0 bg-black/60 py-1 text-center text-xs text-white opacity-0 hover:opacity-100 transition-opacity">
-                                <a href={url} target="_blank" rel="noopener" className="text-[#A3E635]">İndir</a>
+                                <a href={url} target="_blank" rel="noopener" className="text-secondary">İndir</a>
                               </div>
                             </button>
                           ))}
                         </div>
 
                         {selectedLogo === opt.id && (
-                          <div className="mt-3 p-3 bg-[#A3E635]/5 border border-[#A3E635]/30 rounded-lg flex items-center gap-2">
-                            <svg className="w-4 h-4 text-[#A3E635] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <div className="mt-3 p-3 bg-secondary/5 border border-secondary/30 rounded-lg flex items-center gap-2">
+                            <svg className="w-4 h-4 text-secondary flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
-                            <p className="text-[#A3E635] text-xs font-medium">Opsiyon {opt.id} seçildi. Websiteye entegre etmek için geliştirici moduna geç.</p>
+                            <p className="text-secondary text-xs font-medium">Opsiyon {opt.id} seçildi. Websiteye entegre etmek için geliştirici moduna geç.</p>
                           </div>
                         )}
                       </motion.div>
@@ -497,21 +497,21 @@ export default function BrandClient() {
 
                     {/* Üretilmemiş state */}
                     {!logoResults[opt.id] && generatingLogo !== opt.id && (
-                      <div className="mt-4 bg-[#1A1030]/50 rounded-xl h-28 flex items-center justify-center border border-dashed border-[#2E1065]">
-                        <p className="text-[#2E1065] text-xs">Üret butonuna tıkla → 4 varyasyon görüntülenecek</p>
+                      <div className="mt-4 bg-surface-elevated/50 rounded-xl h-28 flex items-center justify-center border border-dashed border-primary">
+                        <p className="text-primary text-xs">Üret butonuna tıkla → 4 varyasyon görüntülenecek</p>
                       </div>
                     )}
 
                     {/* Loading state */}
                     {generatingLogo === opt.id && (
-                      <div className="mt-4 bg-[#1A1030]/50 rounded-xl h-28 flex items-center justify-center">
+                      <div className="mt-4 bg-surface-elevated/50 rounded-xl h-28 flex items-center justify-center">
                         <div className="text-center">
                           <motion.div
                             animate={{ rotate: 360 }}
                             transition={{ duration: 1.5, repeat: Infinity, ease: 'linear' }}
-                            className="w-8 h-8 border-2 border-[#A3E635] border-t-transparent rounded-full mx-auto mb-2"
+                            className="w-8 h-8 border-2 border-secondary border-t-transparent rounded-full mx-auto mb-2"
                           />
-                          <p className="text-[#4C4462] text-xs">fal.ai üretiyor...</p>
+                          <p className="text-foreground-muted text-xs">fal.ai üretiyor...</p>
                         </div>
                       </div>
                     )}
@@ -521,11 +521,11 @@ export default function BrandClient() {
             </div>
 
             {/* Kullanım kuralları özeti */}
-            <div className="mt-6 bg-[#0F0A1E] border border-[#1A1030] rounded-xl p-5">
-              <h4 className="text-white font-medium mb-3 text-sm">Logo Kullanım Kuralları</h4>
+            <div className="mt-6 bg-background-secondary border border-border rounded-xl p-5">
+              <h4 className="text-foreground font-medium mb-3 text-sm">Logo Kullanım Kuralları</h4>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <p className="text-[#A3E635] text-xs font-medium mb-2">✓ Onaylı Zemin Kombinasyonları</p>
+                  <p className="text-secondary text-xs font-medium mb-2">✓ Onaylı Zemin Kombinasyonları</p>
                   <div className="space-y-1.5">
                     {[
                       { bg: '#2E1065', icon: 'Lime + Beyaz', word: 'Beyaz ("mio" Lime)' },
@@ -533,7 +533,7 @@ export default function BrandClient() {
                       { bg: '#A3E635', icon: 'Indigo', word: 'Indigo' },
                       { bg: '#0A0A0A', icon: 'Beyaz + Lime', word: 'Beyaz ("mio" Lime)' },
                     ].map((combo, i) => (
-                      <div key={i} className="flex items-center gap-2 text-xs text-[#78716C]">
+                      <div key={i} className="flex items-center gap-2 text-xs text-foreground-secondary">
                         <div className="w-4 h-4 rounded" style={{ background: combo.bg, border: combo.bg === '#FFFFFF' ? '1px solid #E5E7EB' : 'none' }} />
                         <span>İkon: {combo.icon} / Wordmark: {combo.word}</span>
                       </div>
@@ -542,7 +542,7 @@ export default function BrandClient() {
                 </div>
                 <div>
                   <p className="text-red-400 text-xs font-medium mb-2">✗ Yasaklı Kullanımlar</p>
-                  <ul className="space-y-1 text-[#78716C] text-xs">
+                  <ul className="space-y-1 text-foreground-secondary text-xs">
                     <li>• Logo döndürme (hiçbir açıda)</li>
                     <li>• Logo rengi değiştirme</li>
                     <li>• Uzatma / deformasyon</li>
@@ -561,7 +561,7 @@ export default function BrandClient() {
           <motion.div key="colors" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
             <div className="grid grid-cols-3 gap-4 mb-6">
               {COLORS.map((color) => (
-                <div key={color.hex} className="bg-[#0F0A1E] border border-[#1A1030] rounded-xl overflow-hidden">
+                <div key={color.hex} className="bg-background-secondary border border-border rounded-xl overflow-hidden">
                   {/* Renk önizleme */}
                   <div
                     className="h-24 w-full cursor-pointer relative group"
@@ -574,21 +574,21 @@ export default function BrandClient() {
                   </div>
                   <div className="p-4">
                     <div className="flex items-center justify-between mb-1">
-                      <span className="text-white font-medium text-sm">{color.name}</span>
+                      <span className="text-foreground font-medium text-sm">{color.name}</span>
                       <button
                         onClick={() => copyToClipboard(color.hex, color.name)}
-                        className="font-mono text-[#A3E635] text-xs hover:underline"
+                        className="font-mono text-secondary text-xs hover:underline"
                       >
                         {color.hex}
                       </button>
                     </div>
                     {color.cmyk !== '—' && (
-                      <p className="text-[#4C4462] text-xs mb-2 font-mono">{color.cmyk}</p>
+                      <p className="text-foreground-muted text-xs mb-2 font-mono">{color.cmyk}</p>
                     )}
-                    <p className="text-[#78716C] text-xs mb-3">{color.usage}</p>
+                    <p className="text-foreground-secondary text-xs mb-3">{color.usage}</p>
                     <div className="flex flex-wrap gap-1">
                       {color.roles.map((role) => (
-                        <span key={role} className="text-xs px-2 py-0.5 bg-[#1A1030] text-[#4C4462] rounded-full">{role}</span>
+                        <span key={role} className="text-xs px-2 py-0.5 bg-surface-elevated text-foreground-muted rounded-full">{role}</span>
                       ))}
                     </div>
                   </div>
@@ -597,8 +597,8 @@ export default function BrandClient() {
             </div>
 
             {/* Renk uyumları */}
-            <div className="bg-[#0F0A1E] border border-[#1A1030] rounded-xl p-5 mb-4">
-              <h4 className="text-white font-medium mb-4 text-sm">Zemin × Metin Uyumları</h4>
+            <div className="bg-background-secondary border border-border rounded-xl p-5 mb-4">
+              <h4 className="text-foreground font-medium mb-4 text-sm">Zemin × Metin Uyumları</h4>
               <div className="grid grid-cols-4 gap-3">
                 {[
                   { bg: '#2E1065', text: '#FFFFFF', accent: '#A3E635', label: 'Koyu bölüm' },
@@ -625,22 +625,22 @@ export default function BrandClient() {
             </div>
 
             {/* CMYK tablosu */}
-            <div className="bg-[#0F0A1E] border border-[#1A1030] rounded-xl p-5">
-              <h4 className="text-white font-medium mb-3 text-sm">CMYK Baskı Değerleri</h4>
+            <div className="bg-background-secondary border border-border rounded-xl p-5">
+              <h4 className="text-foreground font-medium mb-3 text-sm">CMYK Baskı Değerleri</h4>
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="text-[#4C4462] text-xs">
+                  <tr className="text-foreground-muted text-xs">
                     <th className="text-left pb-2">Renk</th>
                     <th className="text-left pb-2">HEX</th>
                     <th className="text-left pb-2">CMYK</th>
                     <th className="text-left pb-2">Kullanım</th>
                   </tr>
                 </thead>
-                <tbody className="text-[#78716C]">
+                <tbody className="text-foreground-secondary">
                   {COLORS.filter(c => c.cmyk !== '—').map((c) => (
-                    <tr key={c.hex} className="border-t border-[#1A1030]">
-                      <td className="py-2 text-white">{c.name}</td>
-                      <td className="py-2 font-mono text-[#A3E635] text-xs">{c.hex}</td>
+                    <tr key={c.hex} className="border-t border-border">
+                      <td className="py-2 text-foreground">{c.name}</td>
+                      <td className="py-2 font-mono text-secondary text-xs">{c.hex}</td>
                       <td className="py-2 font-mono text-xs">{c.cmyk}</td>
                       <td className="py-2 text-xs">{c.usage.split(',')[0]}</td>
                     </tr>
@@ -656,33 +656,33 @@ export default function BrandClient() {
           <motion.div key="typography" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
             <div className="grid grid-cols-2 gap-6 mb-6">
               {/* Font ailesi */}
-              <div className="bg-[#0F0A1E] border border-[#1A1030] rounded-xl p-6">
-                <h4 className="text-[#4C4462] text-xs font-medium uppercase tracking-widest mb-4">Font Ailesi</h4>
+              <div className="bg-background-secondary border border-border rounded-xl p-6">
+                <h4 className="text-foreground-muted text-xs font-medium uppercase tracking-widest mb-4">Font Ailesi</h4>
                 <div className="space-y-4">
-                  <div className="border-b border-[#1A1030] pb-4">
-                    <p className="text-[#A3E635] text-xs mb-1">Başlıklar & Gövde</p>
-                    <p className="text-white text-2xl font-bold" style={{ fontFamily: 'var(--font-dm-sans)' }}>DM Sans</p>
-                    <p className="text-[#4C4462] text-xs mt-1">300 · 400 · 500 · 600 · 700 — tek aile, tüm kullanım</p>
+                  <div className="border-b border-border pb-4">
+                    <p className="text-secondary text-xs mb-1">Başlıklar & Gövde</p>
+                    <p className="text-foreground text-2xl font-bold" style={{ fontFamily: 'var(--font-dm-sans)' }}>DM Sans</p>
+                    <p className="text-foreground-muted text-xs mt-1">300 · 400 · 500 · 600 · 700 — tek aile, tüm kullanım</p>
                   </div>
-                  <div className="border-b border-[#1A1030] pb-4">
-                    <p className="text-[#A3E635] text-xs mb-1">Ağırlıklar</p>
+                  <div className="border-b border-border pb-4">
+                    <p className="text-secondary text-xs mb-1">Ağırlıklar</p>
                     <div className="flex gap-3 flex-wrap mt-1">
                       {[['Light', '300'], ['Regular', '400'], ['Medium', '500'], ['SemiBold', '600'], ['Bold', '700']].map(([name, w]) => (
-                        <span key={w} className="text-white text-sm" style={{ fontWeight: Number(w) }}>{name}</span>
+                        <span key={w} className="text-foreground text-sm" style={{ fontWeight: Number(w) }}>{name}</span>
                       ))}
                     </div>
                   </div>
                   <div>
-                    <p className="text-[#A3E635] text-xs mb-1">Teknik / Kod</p>
-                    <p className="text-white text-lg font-mono">DM Mono</p>
-                    <p className="text-[#4C4462] text-xs mt-1">Kod blokları, hex renk değerleri</p>
+                    <p className="text-secondary text-xs mb-1">Teknik / Kod</p>
+                    <p className="text-foreground text-lg font-mono">DM Mono</p>
+                    <p className="text-foreground-muted text-xs mt-1">Kod blokları, hex renk değerleri</p>
                   </div>
                 </div>
               </div>
 
               {/* Boyut hiyerarşisi */}
-              <div className="bg-[#0F0A1E] border border-[#1A1030] rounded-xl p-6">
-                <h4 className="text-[#4C4462] text-xs font-medium uppercase tracking-widest mb-4">Boyut Hiyerarşisi</h4>
+              <div className="bg-background-secondary border border-border rounded-xl p-6">
+                <h4 className="text-foreground-muted text-xs font-medium uppercase tracking-widest mb-4">Boyut Hiyerarşisi</h4>
                 <div className="space-y-3">
                   {[
                     { level: 'H1', size: '48–64px', weight: 'Bold', use: 'Ana sayfa hero başlığı' },
@@ -692,10 +692,10 @@ export default function BrandClient() {
                     { level: 'Small', size: '14px', weight: 'Regular', use: 'Etiket, caption, meta' },
                   ].map((item) => (
                     <div key={item.level} className="flex items-center gap-3">
-                      <span className="w-12 text-[#A3E635] text-xs font-mono font-bold">{item.level}</span>
-                      <span className="w-20 text-[#78716C] text-xs font-mono">{item.size}</span>
-                      <span className="w-20 text-[#4C4462] text-xs">{item.weight}</span>
-                      <span className="text-[#4C4462] text-xs">{item.use}</span>
+                      <span className="w-12 text-secondary text-xs font-mono font-bold">{item.level}</span>
+                      <span className="w-20 text-foreground-secondary text-xs font-mono">{item.size}</span>
+                      <span className="w-20 text-foreground-muted text-xs">{item.weight}</span>
+                      <span className="text-foreground-muted text-xs">{item.use}</span>
                     </div>
                   ))}
                 </div>
@@ -703,33 +703,33 @@ export default function BrandClient() {
             </div>
 
             {/* Canlı önizleme */}
-            <div className="bg-[#0F0A1E] border border-[#1A1030] rounded-xl p-6 mb-4">
-              <h4 className="text-[#4C4462] text-xs font-medium uppercase tracking-widest mb-4">Canlı Tipografi Önizlemesi</h4>
+            <div className="bg-background-secondary border border-border rounded-xl p-6 mb-4">
+              <h4 className="text-foreground-muted text-xs font-medium uppercase tracking-widest mb-4">Canlı Tipografi Önizlemesi</h4>
               <div className="space-y-4">
-                <h1 className="text-white font-bold" style={{ fontSize: '48px', lineHeight: 1.15 }}>
+                <h1 className="text-foreground font-bold" style={{ fontSize: '48px', lineHeight: 1.15 }}>
                   KOBİ&apos;nin AI&apos;a Geçiş Rehberi
                 </h1>
-                <h2 className="text-white font-bold" style={{ fontSize: '32px' }}>
+                <h2 className="text-foreground font-bold" style={{ fontSize: '32px' }}>
                   3 dakikada AI hazırlık seviyeni öğren
                 </h2>
-                <p className="text-[#78716C]" style={{ fontSize: '18px', lineHeight: 1.6 }}>
+                <p className="text-foreground-secondary" style={{ fontSize: '18px', lineHeight: 1.6 }}>
                   Çoğu KOBİ AI&apos;ı doğru sıradan başlatmıyor. Ücretsiz hazırlık testimiz şirketinin
                   nerede durduğunu, hangi araçların işine yarayacağını ve nasıl başlayacağını gösterir.
                 </p>
                 <div className="flex items-center gap-3">
-                  <span className="bg-[#A3E635] text-[#2E1065] px-6 py-3 rounded-xl font-bold text-sm">Ücretsiz Test Başlat</span>
-                  <span className="text-[#A3E635] text-sm font-medium">→ 3 dakika, anlık sonuç</span>
+                  <span className="bg-secondary text-primary px-6 py-3 rounded-xl font-bold text-sm">Ücretsiz Test Başlat</span>
+                  <span className="text-secondary text-sm font-medium">→ 3 dakika, anlık sonuç</span>
                 </div>
               </div>
             </div>
 
             {/* Ses tonu */}
-            <div className="bg-[#0F0A1E] border border-[#1A1030] rounded-xl p-6">
-              <h4 className="text-[#4C4462] text-xs font-medium uppercase tracking-widest mb-4">Ses Tonu & Yazı Dili</h4>
+            <div className="bg-background-secondary border border-border rounded-xl p-6">
+              <h4 className="text-foreground-muted text-xs font-medium uppercase tracking-widest mb-4">Ses Tonu & Yazı Dili</h4>
               <div className="grid grid-cols-2 gap-6">
                 <div>
-                  <p className="text-[#A3E635] text-xs font-medium mb-3">✓ Bunu Söyle</p>
-                  <ul className="space-y-2 text-sm text-[#78716C]">
+                  <p className="text-secondary text-xs font-medium mb-3">✓ Bunu Söyle</p>
+                  <ul className="space-y-2 text-sm text-foreground-secondary">
                     {[
                       '"3 dakikada şirketinin AI hazırlık seviyesini öğren."',
                       '"Çoğu KOBİ AI\'ı doğru sıradan başlatmıyor."',
@@ -737,13 +737,13 @@ export default function BrandClient() {
                       'Kısa cümleler (max 20 kelime)',
                       'Gerçek istatistikler + kaynak',
                     ].map((item, i) => (
-                      <li key={i} className="flex gap-2"><span className="text-[#A3E635] flex-shrink-0">•</span>{item}</li>
+                      <li key={i} className="flex gap-2"><span className="text-secondary flex-shrink-0">•</span>{item}</li>
                     ))}
                   </ul>
                 </div>
                 <div>
                   <p className="text-red-400 text-xs font-medium mb-3">✗ Bunu Söyleme</p>
-                  <ul className="space-y-2 text-sm text-[#78716C]">
+                  <ul className="space-y-2 text-sm text-foreground-secondary">
                     {[
                       '"Sizi zengin yapacağız"',
                       '"AI gelmezse bitersiniz"',
@@ -765,15 +765,15 @@ export default function BrandClient() {
           <motion.div key="social" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
             <div className="space-y-4">
               {SOCIAL_PLATFORMS.map((platform) => (
-                <div key={platform.platform} className="bg-[#0F0A1E] border border-[#1A1030] rounded-xl overflow-hidden">
-                  <div className="flex items-center gap-3 px-5 py-4 border-b border-[#1A1030]">
+                <div key={platform.platform} className="bg-background-secondary border border-border rounded-xl overflow-hidden">
+                  <div className="flex items-center gap-3 px-5 py-4 border-b border-border">
                     <div className="w-2 h-2 rounded-full" style={{ background: platform.color }} />
-                    <h4 className="text-white font-semibold">{platform.platform}</h4>
+                    <h4 className="text-foreground font-semibold">{platform.platform}</h4>
                   </div>
                   <div className="overflow-x-auto">
                     <table className="w-full text-sm">
                       <thead>
-                        <tr className="text-[#4C4462] text-xs border-b border-[#1A1030]">
+                        <tr className="text-foreground-muted text-xs border-b border-border">
                           <th className="text-left px-5 py-3">İçerik Türü</th>
                           <th className="text-left px-5 py-3">Boyut (px)</th>
                           <th className="text-left px-5 py-3">Format</th>
@@ -782,13 +782,13 @@ export default function BrandClient() {
                       </thead>
                       <tbody>
                         {platform.items.map((item, i) => (
-                          <tr key={i} className="border-b border-[#0A0616] last:border-0 hover:bg-[#1A1030]/30 transition-colors">
-                            <td className="px-5 py-3 text-white text-xs font-medium">{item.type}</td>
-                            <td className="px-5 py-3 font-mono text-[#A3E635] text-xs">{item.size}</td>
+                          <tr key={i} className="border-b border-border last:border-0 hover:bg-surface-elevated/30 transition-colors">
+                            <td className="px-5 py-3 text-foreground text-xs font-medium">{item.type}</td>
+                            <td className="px-5 py-3 font-mono text-secondary text-xs">{item.size}</td>
                             <td className="px-5 py-3">
-                              <span className="text-xs px-2 py-0.5 bg-[#1A1030] text-[#78716C] rounded font-mono">{item.format}</span>
+                              <span className="text-xs px-2 py-0.5 bg-surface-elevated text-foreground-secondary rounded font-mono">{item.format}</span>
                             </td>
-                            <td className="px-5 py-3 text-[#4C4462] text-xs">{item.notes}</td>
+                            <td className="px-5 py-3 text-foreground-muted text-xs">{item.notes}</td>
                           </tr>
                         ))}
                       </tbody>
@@ -799,8 +799,8 @@ export default function BrandClient() {
             </div>
 
             {/* Görsel üretim workflow */}
-            <div className="mt-6 bg-[#0F0A1E] border border-[#1A1030] rounded-xl p-5">
-              <h4 className="text-white font-medium mb-4 text-sm">Görsel Üretim Workflow</h4>
+            <div className="mt-6 bg-background-secondary border border-border rounded-xl p-5">
+              <h4 className="text-foreground font-medium mb-4 text-sm">Görsel Üretim Workflow</h4>
               <div className="flex gap-3 items-start flex-wrap">
                 {[
                   { step: '1', label: 'Görsel Üretim', desc: 'Admin → Görsel Üretim → Prompt gir → 4 varyasyon' },
@@ -810,15 +810,15 @@ export default function BrandClient() {
                   { step: '5', label: 'Export & İsimlendirme', desc: 'verimio_[platform]_[tür]_[tarih].jpg' },
                 ].map((step) => (
                   <div key={step.step} className="flex gap-3 items-start min-w-0">
-                    <div className="w-7 h-7 bg-[#A3E635] rounded-full flex items-center justify-center flex-shrink-0">
-                      <span className="text-[#2E1065] font-bold text-xs">{step.step}</span>
+                    <div className="w-7 h-7 bg-secondary rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-primary font-bold text-xs">{step.step}</span>
                     </div>
                     <div>
-                      <p className="text-white text-xs font-medium">{step.label}</p>
-                      <p className="text-[#4C4462] text-xs mt-0.5">{step.desc}</p>
+                      <p className="text-foreground text-xs font-medium">{step.label}</p>
+                      <p className="text-foreground-muted text-xs mt-0.5">{step.desc}</p>
                     </div>
                     {parseInt(step.step) < 5 && (
-                      <span className="text-[#2E1065] text-lg mt-0.5 flex-shrink-0">→</span>
+                      <span className="text-primary text-lg mt-0.5 flex-shrink-0">→</span>
                     )}
                   </div>
                 ))}
@@ -832,38 +832,38 @@ export default function BrandClient() {
           <motion.div key="guidelines" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
             <div className="grid grid-cols-2 gap-4">
               {PLATFORM_PROFILES.map((p) => (
-                <div key={p.platform} className="bg-[#0F0A1E] border border-[#1A1030] rounded-xl p-5">
-                  <h4 className="text-white font-semibold mb-3">{p.platform}</h4>
+                <div key={p.platform} className="bg-background-secondary border border-border rounded-xl p-5">
+                  <h4 className="text-foreground font-semibold mb-3">{p.platform}</h4>
                   <div className="space-y-3">
                     <div>
-                      <p className="text-[#4C4462] text-xs mb-1">Handle</p>
-                      <p className="text-[#A3E635] text-sm font-mono">{p.handle}</p>
+                      <p className="text-foreground-muted text-xs mb-1">Handle</p>
+                      <p className="text-secondary text-sm font-mono">{p.handle}</p>
                     </div>
                     <div>
-                      <p className="text-[#4C4462] text-xs mb-1">Bio</p>
-                      <p className="text-[#78716C] text-xs leading-relaxed bg-[#1A1030] rounded-lg p-2.5">{p.bio}</p>
+                      <p className="text-foreground-muted text-xs mb-1">Bio</p>
+                      <p className="text-foreground-secondary text-xs leading-relaxed bg-surface-elevated rounded-lg p-2.5">{p.bio}</p>
                     </div>
                     <div className="flex gap-4">
                       <div>
-                        <p className="text-[#4C4462] text-xs mb-1">Frekans</p>
-                        <span className="text-xs px-2 py-0.5 bg-[#A3E635]/10 text-[#A3E635] rounded-full">{p.postFreq}</span>
+                        <p className="text-foreground-muted text-xs mb-1">Frekans</p>
+                        <span className="text-xs px-2 py-0.5 bg-secondary/10 text-secondary rounded-full">{p.postFreq}</span>
                       </div>
                       <div>
-                        <p className="text-[#4C4462] text-xs mb-1">En İyi Saat</p>
-                        <span className="text-xs text-[#78716C]">{p.bestTime}</span>
+                        <p className="text-foreground-muted text-xs mb-1">En İyi Saat</p>
+                        <span className="text-xs text-foreground-secondary">{p.bestTime}</span>
                       </div>
                     </div>
                     <div>
-                      <p className="text-[#4C4462] text-xs mb-2">İçerik Karması</p>
+                      <p className="text-foreground-muted text-xs mb-2">İçerik Karması</p>
                       <div className="space-y-1">
                         {p.contentMix.map((item, i) => {
                           const pct = parseInt(item.replace('%', ''))
                           return (
                             <div key={i} className="flex items-center gap-2">
-                              <div className="flex-1 h-1.5 bg-[#1A1030] rounded-full overflow-hidden">
-                                <div className="h-full bg-[#A3E635] rounded-full" style={{ width: `${pct}%` }} />
+                              <div className="flex-1 h-1.5 bg-surface-elevated rounded-full overflow-hidden">
+                                <div className="h-full bg-secondary rounded-full" style={{ width: `${pct}%` }} />
                               </div>
-                              <p className="text-[#4C4462] text-xs w-56 flex-shrink-0">{item}</p>
+                              <p className="text-foreground-muted text-xs w-56 flex-shrink-0">{item}</p>
                             </div>
                           )
                         })}
@@ -875,8 +875,8 @@ export default function BrandClient() {
             </div>
 
             {/* Görsel kalite kontrol listesi */}
-            <div className="mt-6 bg-[#0F0A1E] border border-[#1A1030] rounded-xl p-5">
-              <h4 className="text-white font-medium mb-4 text-sm">Yayın Öncesi Kalite Kontrol</h4>
+            <div className="mt-6 bg-background-secondary border border-border rounded-xl p-5">
+              <h4 className="text-foreground font-medium mb-4 text-sm">Yayın Öncesi Kalite Kontrol</h4>
               <div className="grid grid-cols-2 gap-x-8 gap-y-2">
                 {[
                   'Boyut doğru mu? (platform boyut tablosuna bak)',
@@ -889,8 +889,8 @@ export default function BrandClient() {
                   'Dosya boyutu platform limitinin altında mı?',
                 ].map((item, i) => (
                   <label key={i} className="flex items-center gap-2.5 cursor-pointer group">
-                    <div className="w-4 h-4 rounded border border-[#2E1065] group-hover:border-[#A3E635] flex-shrink-0 transition-colors" />
-                    <span className="text-[#78716C] text-xs group-hover:text-white transition-colors">{item}</span>
+                    <div className="w-4 h-4 rounded border border-primary group-hover:border-secondary flex-shrink-0 transition-colors" />
+                    <span className="text-foreground-secondary text-xs group-hover:text-foreground transition-colors">{item}</span>
                   </label>
                 ))}
               </div>

@@ -18,17 +18,17 @@ export default function Header({ title, subtitle }: HeaderProps) {
   }
 
   return (
-    <header className="h-16 border-b border-[#1A1030] bg-[#0F0A1E]/80 backdrop-blur-sm flex items-center justify-between px-6 sticky top-0 z-10">
+    <header className="h-16 border-b border-border bg-background-secondary/80 backdrop-blur-sm flex items-center justify-between px-6 sticky top-0 z-10">
       <div>
-        <h1 className="text-white font-semibold">{title}</h1>
-        {subtitle && <p className="text-[#4C4462] text-xs">{subtitle}</p>}
+        <h1 className="text-foreground font-semibold">{title}</h1>
+        {subtitle && <p className="text-foreground-muted text-xs">{subtitle}</p>}
       </div>
 
       <div className="flex items-center gap-3">
         {/* Hızlı aksiyonlar */}
         <a
           href="/admin/social/visuals"
-          className="flex items-center gap-1.5 text-xs bg-[#A3E635]/10 text-[#A3E635] hover:bg-[#A3E635]/20 px-3 py-1.5 rounded-lg transition-colors"
+          className="flex items-center gap-1.5 text-xs bg-secondary/10 text-secondary hover:bg-secondary/20 px-3 py-1.5 rounded-lg transition-colors"
         >
           <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
@@ -39,7 +39,7 @@ export default function Header({ title, subtitle }: HeaderProps) {
         {/* Çıkış */}
         <button
           onClick={handleLogout}
-          className="text-[#4C4462] hover:text-white transition-colors p-2 rounded-lg hover:bg-[#1A1030]"
+          className="text-foreground-muted hover:text-foreground transition-colors p-2 rounded-lg hover:bg-surface-elevated"
           title="Çıkış Yap"
         >
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

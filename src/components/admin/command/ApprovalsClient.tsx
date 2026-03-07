@@ -90,7 +90,7 @@ export default function ApprovalsClient({
     <div className="p-6 space-y-6">
       {/* Bekleyen Onaylar */}
       <div>
-        <h3 className="text-white text-sm font-medium mb-3 flex items-center gap-2">
+        <h3 className="text-foreground text-sm font-medium mb-3 flex items-center gap-2">
           Bekleyen Onaylar
           {pending.length > 0 && (
             <span className="bg-orange-400/20 text-orange-400 text-xs px-2 py-0.5 rounded-full">
@@ -100,20 +100,20 @@ export default function ApprovalsClient({
         </h3>
 
         {pending.length === 0 ? (
-          <div className="bg-[#1A1030] border border-[#2E1065]/30 rounded-xl p-8 text-center">
-            <p className="text-[#4C4462] text-sm">Bekleyen onay yok.</p>
+          <div className="bg-surface-elevated border border-primary/30 rounded-xl p-8 text-center">
+            <p className="text-foreground-muted text-sm">Bekleyen onay yok.</p>
           </div>
         ) : (
           <div className="space-y-3">
             {pending.map((approval) => (
               <div
                 key={approval.id}
-                className="bg-[#1A1030] border border-orange-400/20 rounded-xl overflow-hidden"
+                className="bg-surface-elevated border border-orange-400/20 rounded-xl overflow-hidden"
               >
                 {/* Header */}
                 <button
                   onClick={() => setExpandedId(expandedId === approval.id ? null : approval.id)}
-                  className="w-full flex items-center justify-between px-5 py-4 hover:bg-[#2E1065]/10 transition-colors"
+                  className="w-full flex items-center justify-between px-5 py-4 hover:bg-primary/10 transition-colors"
                 >
                   <div className="flex items-center gap-3">
                     <span className="relative flex h-2.5 w-2.5">
@@ -122,12 +122,12 @@ export default function ApprovalsClient({
                     </span>
                     <div className="text-left">
                       <div className="flex items-center gap-2">
-                        <p className="text-white text-sm font-medium">{approval.title}</p>
+                        <p className="text-foreground text-sm font-medium">{approval.title}</p>
                         {approval.pipeline_run_id && (
                           <Link
                             href={`/admin/command/pipelines/runs/${approval.pipeline_run_id}`}
                             onClick={(e) => e.stopPropagation()}
-                            className="inline-flex items-center gap-1 bg-[#8B5CF6]/15 text-[#8B5CF6] px-2 py-0.5 rounded text-xs hover:bg-[#8B5CF6]/25 transition-colors"
+                            className="inline-flex items-center gap-1 bg-primary-light/15 text-primary-light px-2 py-0.5 rounded text-xs hover:bg-primary-light/25 transition-colors"
                           >
                             <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
@@ -137,15 +137,15 @@ export default function ApprovalsClient({
                         )}
                       </div>
                       {approval.description && (
-                        <p className="text-[#78716C] text-xs mt-0.5">{approval.description}</p>
+                        <p className="text-foreground-secondary text-xs mt-0.5">{approval.description}</p>
                       )}
-                      <p className="text-[#4C4462] text-xs">
+                      <p className="text-foreground-muted text-xs">
                         {approval.command_jobs?.skill} — {approval.command_jobs?.project} — {timeAgo(approval.created_at)}
                       </p>
                     </div>
                   </div>
                   <svg
-                    className={`w-4 h-4 text-[#4C4462] transition-transform ${expandedId === approval.id ? 'rotate-180' : ''}`}
+                    className={`w-4 h-4 text-foreground-muted transition-transform ${expandedId === approval.id ? 'rotate-180' : ''}`}
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -156,12 +156,12 @@ export default function ApprovalsClient({
 
                 {/* Expanded content */}
                 {expandedId === approval.id && (
-                  <div className="px-5 pb-5 space-y-4 border-t border-[#2E1065]/20">
+                  <div className="px-5 pb-5 space-y-4 border-t border-primary/20">
                     {/* Data preview */}
                     {approval.data && Object.keys(approval.data).length > 0 && (
                       <div className="mt-4">
-                        <p className="text-[#4C4462] text-xs mb-2">İçerik Önizleme</p>
-                        <pre className="text-[#E8E4D9] text-xs bg-[#0A0616] rounded-lg p-3 max-h-60 overflow-y-auto">
+                        <p className="text-foreground-muted text-xs mb-2">İçerik Önizleme</p>
+                        <pre className="text-foreground text-xs bg-background rounded-lg p-3 max-h-60 overflow-y-auto">
                           {JSON.stringify(approval.data, null, 2)}
                         </pre>
                       </div>
@@ -169,13 +169,13 @@ export default function ApprovalsClient({
 
                     {/* Notes input */}
                     <div>
-                      <label className="text-[#4C4462] text-xs mb-1 block">Not (opsiyonel)</label>
+                      <label className="text-foreground-muted text-xs mb-1 block">Not (opsiyonel)</label>
                       <textarea
                         value={notes}
                         onChange={(e) => setNotes(e.target.value)}
                         placeholder="Onay/red notu..."
                         rows={2}
-                        className="w-full bg-[#0A0616] border border-[#2E1065] text-white rounded-lg px-3 py-2 text-sm placeholder:text-[#4C4462] focus:outline-none focus:border-[#8B5CF6] resize-none"
+                        className="w-full bg-background border border-primary text-foreground rounded-lg px-3 py-2 text-sm placeholder:text-foreground-muted focus:outline-none focus:border-primary-light resize-none"
                       />
                     </div>
 
@@ -184,7 +184,7 @@ export default function ApprovalsClient({
                       <button
                         onClick={() => handleDecision(approval.id, 'approved')}
                         disabled={processing === approval.id}
-                        className="flex-1 px-4 py-2.5 bg-[#A3E635] text-[#2E1065] rounded-lg text-sm font-semibold hover:bg-[#BEF264] transition-colors disabled:opacity-50"
+                        className="flex-1 px-4 py-2.5 bg-secondary text-primary rounded-lg text-sm font-semibold hover:bg-secondary-hover transition-colors disabled:opacity-50"
                       >
                         {processing === approval.id ? 'İşleniyor...' : 'Onayla'}
                       </button>
@@ -206,14 +206,14 @@ export default function ApprovalsClient({
 
       {/* Geçmiş Onaylar */}
       <div>
-        <h3 className="text-white text-sm font-medium mb-3">Geçmiş</h3>
-        <div className="bg-[#1A1030] border border-[#2E1065]/30 rounded-xl overflow-hidden">
+        <h3 className="text-foreground text-sm font-medium mb-3">Geçmiş</h3>
+        <div className="bg-surface-elevated border border-primary/30 rounded-xl overflow-hidden">
           {recent.length === 0 ? (
-            <div className="p-8 text-center text-[#4C4462] text-sm">
+            <div className="p-8 text-center text-foreground-muted text-sm">
               Henüz onay geçmişi yok.
             </div>
           ) : (
-            <div className="divide-y divide-[#2E1065]/20">
+            <div className="divide-y divide-primary/20">
               {recent.map((approval) => (
                 <div
                   key={approval.id}
@@ -222,11 +222,11 @@ export default function ApprovalsClient({
                   <div className="flex items-center gap-3">
                     <div>
                       <div className="flex items-center gap-2">
-                        <p className="text-white text-sm">{approval.title}</p>
+                        <p className="text-foreground text-sm">{approval.title}</p>
                         {approval.pipeline_run_id && (
                           <Link
                             href={`/admin/command/pipelines/runs/${approval.pipeline_run_id}`}
-                            className="inline-flex items-center gap-1 bg-[#8B5CF6]/10 text-[#8B5CF6] px-1.5 py-0.5 rounded text-xs hover:bg-[#8B5CF6]/20 transition-colors"
+                            className="inline-flex items-center gap-1 bg-primary-light/10 text-primary-light px-1.5 py-0.5 rounded text-xs hover:bg-primary-light/20 transition-colors"
                           >
                             <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
@@ -235,14 +235,14 @@ export default function ApprovalsClient({
                           </Link>
                         )}
                       </div>
-                      <p className="text-[#4C4462] text-xs">
+                      <p className="text-foreground-muted text-xs">
                         {approval.command_jobs?.skill} — {approval.decided_via || '—'}
                       </p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
                     <StatusBadge status={approval.status} />
-                    <span className="text-[#4C4462] text-xs">{timeAgo(approval.created_at)}</span>
+                    <span className="text-foreground-muted text-xs">{timeAgo(approval.created_at)}</span>
                   </div>
                 </div>
               ))}

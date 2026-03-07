@@ -4,18 +4,18 @@ const STATUS_MAP: Record<string, { label: string; color: string; bg: string; pul
   queued: { label: 'Kuyrukta', color: 'text-yellow-400', bg: 'bg-yellow-400/10' },
   running: { label: 'Çalışıyor', color: 'text-blue-400', bg: 'bg-blue-400/10', pulse: true },
   waiting_approval: { label: 'Onay Bekliyor', color: 'text-orange-400', bg: 'bg-orange-400/10', pulse: true },
-  completed: { label: 'Tamamlandı', color: 'text-[#A3E635]', bg: 'bg-[#A3E635]/10' },
+  completed: { label: 'Tamamlandı', color: 'text-secondary', bg: 'bg-secondary/10' },
   failed: { label: 'Hata', color: 'text-red-400', bg: 'bg-red-400/10' },
-  cancelled: { label: 'İptal', color: 'text-[#4C4462]', bg: 'bg-[#4C4462]/10' },
+  cancelled: { label: 'İptal', color: 'text-foreground-muted', bg: 'bg-foreground-muted/10' },
   pending: { label: 'Bekliyor', color: 'text-orange-400', bg: 'bg-orange-400/10', pulse: true },
-  approved: { label: 'Onaylandı', color: 'text-[#A3E635]', bg: 'bg-[#A3E635]/10' },
+  approved: { label: 'Onaylandı', color: 'text-secondary', bg: 'bg-secondary/10' },
   rejected: { label: 'Reddedildi', color: 'text-red-400', bg: 'bg-red-400/10' },
-  idle: { label: 'Hazır', color: 'text-[#4C4462]', bg: 'bg-[#4C4462]/10' },
+  idle: { label: 'Hazır', color: 'text-foreground-muted', bg: 'bg-foreground-muted/10' },
   paused: { label: 'Duraklatıldı', color: 'text-yellow-400', bg: 'bg-yellow-400/10' },
 }
 
 export default function StatusBadge({ status }: { status: string }) {
-  const s = STATUS_MAP[status] || { label: status, color: 'text-[#4C4462]', bg: 'bg-[#4C4462]/10' }
+  const s = STATUS_MAP[status] || { label: status, color: 'text-foreground-muted', bg: 'bg-foreground-muted/10' }
 
   return (
     <span className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-xs font-medium ${s.color} ${s.bg}`}>

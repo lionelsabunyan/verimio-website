@@ -164,16 +164,16 @@ export default function Sidebar() {
   const pathname = usePathname()
 
   return (
-    <aside className="w-64 bg-[#0F0A1E] border-r border-[#1A1030] flex flex-col h-screen sticky top-0">
+    <aside className="w-64 bg-surface border-r border-border shadow-[2px_0_8px_rgba(0,0,0,0.04)] flex flex-col h-screen sticky top-0">
       {/* Logo */}
-      <div className="p-6 border-b border-[#1A1030]">
+      <div className="p-6 border-b border-border">
         <Link href="/admin" className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-[#A3E635] rounded-lg flex items-center justify-center flex-shrink-0">
-            <span className="text-[#2E1065] font-bold text-lg">V</span>
+          <div className="w-8 h-8 bg-secondary rounded-lg flex items-center justify-center flex-shrink-0">
+            <span className="text-primary font-bold text-lg">V</span>
           </div>
           <div>
-            <div className="text-white font-bold text-sm tracking-widest">VERIMIO</div>
-            <div className="text-[#4C4462] text-xs">Admin Panel</div>
+            <div className="text-foreground font-bold text-sm tracking-widest">VERIMIO</div>
+            <div className="text-foreground-secondary text-xs">Admin Panel</div>
           </div>
         </Link>
       </div>
@@ -187,7 +187,7 @@ export default function Sidebar() {
           return (
             <div key={item.href}>
               {item.section === 'command' && (
-                <div className="my-3 border-t border-[#1A1030]" />
+                <div className="my-3 border-t border-border" />
               )}
             <Link
               href={item.href}
@@ -195,18 +195,18 @@ export default function Sidebar() {
                 item.indent ? 'ml-4' : ''
               } ${
                 isActive
-                  ? 'bg-[#2E1065] text-[#A3E635] font-medium'
-                  : 'text-[#78716C] hover:text-white hover:bg-[#1A1030]'
+                  ? 'bg-primary/10 text-primary font-medium'
+                  : 'text-foreground-secondary hover:text-foreground hover:bg-background-secondary'
               }`}
             >
-              <span className={isActive ? 'text-[#A3E635]' : 'text-[#4C4462]'}>
+              <span className={isActive ? 'text-primary' : 'text-foreground-muted'}>
                 {item.icon}
               </span>
               {item.label}
               {isActive && (
                 <motion.div
                   layoutId="activeNav"
-                  className="ml-auto w-1 h-4 bg-[#A3E635] rounded-full"
+                  className="ml-auto w-1 h-4 bg-primary rounded-full"
                 />
               )}
             </Link>
@@ -216,11 +216,11 @@ export default function Sidebar() {
       </nav>
 
       {/* Alt — site linki */}
-      <div className="p-4 border-t border-[#1A1030]">
+      <div className="p-4 border-t border-border">
         <a
           href="/"
           target="_blank"
-          className="flex items-center gap-2 text-[#4C4462] hover:text-white text-sm transition-colors px-3 py-2 rounded-lg hover:bg-[#1A1030]"
+          className="flex items-center gap-2 text-foreground-muted hover:text-foreground text-sm transition-colors px-3 py-2 rounded-lg hover:bg-background-secondary"
         >
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />

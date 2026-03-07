@@ -55,7 +55,7 @@ export default function DashboardClient({
       label: 'Toplam Lead',
       value: kpis.totalLeads,
       icon: '👥',
-      color: 'from-[#2E1065] to-[#4C1D95]',
+      color: 'from-primary to-[#4C1D95]',
       accent: '#8B5CF6',
     },
     {
@@ -112,11 +112,11 @@ export default function DashboardClient({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="col-span-2 bg-[#0F0A1E] border border-[#1A1030] rounded-xl p-5"
+          className="col-span-2 bg-background-secondary border border-border rounded-xl p-5"
         >
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-white font-medium">Son 7 Günlük Lead</h2>
-            <span className="text-[#4C4462] text-xs">Son 7 gün</span>
+            <h2 className="text-foreground font-medium">Son 7 Günlük Lead</h2>
+            <span className="text-foreground-muted text-xs">Son 7 gün</span>
           </div>
           <ResponsiveContainer width="100%" height={200}>
             <AreaChart data={chartData}>
@@ -126,12 +126,12 @@ export default function DashboardClient({
                   <stop offset="95%" stopColor="#A3E635" stopOpacity={0} />
                 </linearGradient>
               </defs>
-              <CartesianGrid strokeDasharray="3 3" stroke="#1A1030" />
-              <XAxis dataKey="name" stroke="#4C4462" tick={{ fontSize: 12 }} />
-              <YAxis stroke="#4C4462" tick={{ fontSize: 12 }} allowDecimals={false} />
+              <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" />
+              <XAxis dataKey="name" stroke="var(--color-foreground-muted)" tick={{ fontSize: 12 }} />
+              <YAxis stroke="var(--color-foreground-muted)" tick={{ fontSize: 12 }} allowDecimals={false} />
               <Tooltip
-                contentStyle={{ background: '#1A1030', border: '1px solid #2E1065', borderRadius: 8 }}
-                labelStyle={{ color: '#A3E635' }}
+                contentStyle={{ background: 'var(--color-surface-elevated)', border: '1px solid var(--color-primary)', borderRadius: 8 }}
+                labelStyle={{ color: 'var(--color-secondary)' }}
                 itemStyle={{ color: '#fff' }}
               />
               <Area
@@ -150,9 +150,9 @@ export default function DashboardClient({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          className="bg-[#0F0A1E] border border-[#1A1030] rounded-xl p-5"
+          className="bg-background-secondary border border-border rounded-xl p-5"
         >
-          <h2 className="text-white font-medium mb-4">Hızlı Aksiyonlar</h2>
+          <h2 className="text-foreground font-medium mb-4">Hızlı Aksiyonlar</h2>
           <div className="space-y-2">
             {[
               { label: 'Görsel Üret', href: '/admin/social/visuals', icon: '🎨', desc: 'fal.ai ile' },
@@ -164,14 +164,14 @@ export default function DashboardClient({
               <Link
                 key={action.href}
                 href={action.href}
-                className="flex items-center gap-3 p-3 rounded-lg hover:bg-[#1A1030] transition-colors group"
+                className="flex items-center gap-3 p-3 rounded-lg hover:bg-surface-elevated transition-colors group"
               >
                 <span className="text-xl">{action.icon}</span>
                 <div className="flex-1">
-                  <div className="text-white text-sm group-hover:text-[#A3E635] transition-colors">{action.label}</div>
-                  <div className="text-[#4C4462] text-xs">{action.desc}</div>
+                  <div className="text-foreground text-sm group-hover:text-secondary transition-colors">{action.label}</div>
+                  <div className="text-foreground-muted text-xs">{action.desc}</div>
                 </div>
-                <svg className="w-4 h-4 text-[#4C4462] group-hover:text-[#A3E635] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-4 h-4 text-foreground-muted group-hover:text-secondary transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
                 </svg>
               </Link>
@@ -185,54 +185,54 @@ export default function DashboardClient({
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.6 }}
-        className="bg-[#0F0A1E] border border-[#1A1030] rounded-xl overflow-hidden"
+        className="bg-background-secondary border border-border rounded-xl overflow-hidden"
       >
-        <div className="flex items-center justify-between p-5 border-b border-[#1A1030]">
-          <h2 className="text-white font-medium">Son Leadler</h2>
-          <Link href="/admin/crm" className="text-[#A3E635] text-sm hover:underline">
+        <div className="flex items-center justify-between p-5 border-b border-border">
+          <h2 className="text-foreground font-medium">Son Leadler</h2>
+          <Link href="/admin/crm" className="text-secondary text-sm hover:underline">
             Tümünü Gör →
           </Link>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="border-b border-[#1A1030]">
+              <tr className="border-b border-border">
                 {['Email', 'Sektör', 'Durum', 'Tarih', 'Toplantı İstiyor'].map((h) => (
-                  <th key={h} className="text-left px-5 py-3 text-[#4C4462] text-xs font-medium uppercase tracking-wider">
+                  <th key={h} className="text-left px-5 py-3 text-foreground-muted text-xs font-medium uppercase tracking-wider">
                     {h}
                   </th>
                 ))}
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#1A1030]">
+            <tbody className="divide-y divide-border">
               {recentLeads.length === 0 ? (
                 <tr>
-                  <td colSpan={5} className="text-center py-8 text-[#4C4462] text-sm">
+                  <td colSpan={5} className="text-center py-8 text-foreground-muted text-sm">
                     Henüz lead yok
                   </td>
                 </tr>
               ) : (
                 recentLeads.map((lead) => (
-                  <tr key={lead.id} className="hover:bg-[#1A1030]/50 transition-colors">
+                  <tr key={lead.id} className="hover:bg-surface-elevated/50 transition-colors">
                     <td className="px-5 py-3">
-                      <Link href={`/admin/crm/${lead.id}`} className="text-white hover:text-[#A3E635] text-sm transition-colors">
+                      <Link href={`/admin/crm/${lead.id}`} className="text-foreground hover:text-secondary text-sm transition-colors">
                         {lead.email}
                       </Link>
                     </td>
-                    <td className="px-5 py-3 text-[#78716C] text-sm">{lead.sector || '—'}</td>
+                    <td className="px-5 py-3 text-foreground-secondary text-sm">{lead.sector || '—'}</td>
                     <td className="px-5 py-3">
                       <span className={`inline-flex px-2 py-0.5 rounded-full text-xs font-medium ${STATUS_COLORS[lead.status] || 'bg-gray-500/20 text-gray-400'}`}>
                         {STATUS_LABELS[lead.status] || lead.status}
                       </span>
                     </td>
-                    <td className="px-5 py-3 text-[#78716C] text-sm">
+                    <td className="px-5 py-3 text-foreground-secondary text-sm">
                       {new Date(lead.created_at).toLocaleDateString('tr-TR', { day: '2-digit', month: 'short' })}
                     </td>
                     <td className="px-5 py-3">
                       {lead.wants_call ? (
-                        <span className="text-[#A3E635] text-xs">✓ Evet</span>
+                        <span className="text-secondary text-xs">✓ Evet</span>
                       ) : (
-                        <span className="text-[#4C4462] text-xs">Hayır</span>
+                        <span className="text-foreground-muted text-xs">Hayır</span>
                       )}
                     </td>
                   </tr>

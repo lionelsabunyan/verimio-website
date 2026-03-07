@@ -63,21 +63,21 @@ export default function PipelineRunModal({ pipeline, onClose }: Props) {
       <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
 
       {/* Modal */}
-      <div className="relative bg-[#0F0A1E] border border-[#2E1065]/50 rounded-2xl w-full max-w-lg flex flex-col max-h-[80vh] shadow-2xl">
+      <div className="relative bg-background-secondary border border-primary/50 rounded-2xl w-full max-w-lg flex flex-col max-h-[80vh] shadow-2xl">
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-[#2E1065]/30">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-primary/30">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-[#8B5CF6]/20 rounded-lg flex items-center justify-center">
-              <svg className="w-4 h-4 text-[#8B5CF6]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div className="w-8 h-8 bg-primary-light/20 rounded-lg flex items-center justify-center">
+              <svg className="w-4 h-4 text-primary-light" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
               </svg>
             </div>
             <div>
-              <h2 className="text-white font-semibold text-sm">{pipeline.name}</h2>
-              <p className="text-[#4C4462] text-xs">{pipeline.project} | {pipeline.steps.length} adim</p>
+              <h2 className="text-foreground font-semibold text-sm">{pipeline.name}</h2>
+              <p className="text-foreground-muted text-xs">{pipeline.project} | {pipeline.steps.length} adim</p>
             </div>
           </div>
-          <button onClick={onClose} className="text-[#4C4462] hover:text-white transition-colors p-1">
+          <button onClick={onClose} className="text-foreground-muted hover:text-foreground transition-colors p-1">
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
@@ -88,25 +88,25 @@ export default function PipelineRunModal({ pipeline, onClose }: Props) {
         <div className="flex-1 overflow-y-auto px-6 py-5 space-y-5">
           {/* Adim Onizleme */}
           <div>
-            <p className="text-[#78716C] text-xs mb-3 uppercase tracking-wider">Adimlar</p>
+            <p className="text-foreground-secondary text-xs mb-3 uppercase tracking-wider">Adimlar</p>
             <div className="relative pl-6">
               {/* Dikey cizgi */}
-              <div className="absolute left-[7px] top-2 bottom-2 w-px bg-[#2E1065]" />
+              <div className="absolute left-[7px] top-2 bottom-2 w-px bg-primary" />
 
               {pipeline.steps.map((step, i) => (
                 <div key={i} className="relative flex items-start gap-3 pb-4 last:pb-0">
                   {/* Nokta */}
-                  <div className="absolute left-[-17px] top-1.5 w-3 h-3 rounded-full border-2 border-[#8B5CF6] bg-[#0F0A1E]" />
+                  <div className="absolute left-[-17px] top-1.5 w-3 h-3 rounded-full border-2 border-primary-light bg-background-secondary" />
                   <div className="flex-1">
                     <div className="flex items-center gap-2">
-                      <span className="text-white text-sm">{step.label}</span>
+                      <span className="text-foreground text-sm">{step.label}</span>
                       {step.approval_before && (
                         <span className="bg-orange-400/20 text-orange-400 px-1.5 py-0.5 rounded text-[10px]">
                           onay
                         </span>
                       )}
                     </div>
-                    <span className="text-[#4C4462] text-xs">{step.skill}</span>
+                    <span className="text-foreground-muted text-xs">{step.skill}</span>
                   </div>
                 </div>
               ))}
@@ -115,14 +115,14 @@ export default function PipelineRunModal({ pipeline, onClose }: Props) {
 
           {/* Kullanici Girdisi */}
           <div>
-            <label className="text-[#78716C] text-xs mb-2 block uppercase tracking-wider">
+            <label className="text-foreground-secondary text-xs mb-2 block uppercase tracking-wider">
               Girdi
             </label>
             <textarea
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Pipeline'a gonderilecek girdi... (ornegin: konu, hedef anahtar kelime)"
-              className="w-full bg-[#1A1030] border border-[#2E1065]/50 rounded-lg px-4 py-3 text-white text-sm placeholder-[#4C4462] focus:outline-none focus:border-[#8B5CF6] resize-none"
+              className="w-full bg-surface-elevated border border-primary/50 rounded-lg px-4 py-3 text-foreground text-sm placeholder-foreground-muted focus:outline-none focus:border-primary-light resize-none"
               rows={4}
             />
           </div>
@@ -136,17 +136,17 @@ export default function PipelineRunModal({ pipeline, onClose }: Props) {
         </div>
 
         {/* Footer */}
-        <div className="flex items-center justify-between px-6 py-4 border-t border-[#2E1065]/30">
+        <div className="flex items-center justify-between px-6 py-4 border-t border-primary/30">
           <button
             onClick={onClose}
-            className="px-4 py-2 text-[#78716C] hover:text-white text-sm transition-colors"
+            className="px-4 py-2 text-foreground-secondary hover:text-foreground text-sm transition-colors"
           >
             Iptal
           </button>
           <button
             onClick={handleStart}
             disabled={!input.trim() || submitting}
-            className="px-5 py-2 bg-[#A3E635] text-[#2E1065] rounded-lg text-sm font-semibold hover:bg-[#B8F247] transition-colors disabled:opacity-30 disabled:cursor-not-allowed flex items-center gap-2"
+            className="px-5 py-2 bg-secondary text-primary rounded-lg text-sm font-semibold hover:bg-secondary-hover transition-colors disabled:opacity-30 disabled:cursor-not-allowed flex items-center gap-2"
           >
             {submitting ? (
               <>

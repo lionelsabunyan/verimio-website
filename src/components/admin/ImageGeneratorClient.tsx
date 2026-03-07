@@ -83,23 +83,23 @@ export default function ImageGeneratorClient({ previousAssets }: { previousAsset
         {/* Sol — Ayarlar */}
         <div className="col-span-2 space-y-4">
           {/* Prompt */}
-          <div className="bg-[#0F0A1E] border border-[#1A1030] rounded-xl p-5">
-            <label className="block text-white text-sm font-medium mb-3">Prompt</label>
+          <div className="bg-background-secondary border border-border rounded-xl p-5">
+            <label className="block text-foreground text-sm font-medium mb-3">Prompt</label>
             <textarea
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
               placeholder="Nasıl bir görsel istiyorsun? İngilizce yaz (daha iyi sonuç)..."
               rows={5}
-              className="w-full bg-[#1A1030] border border-[#2E1065] rounded-lg px-4 py-3 text-white text-sm placeholder-[#4C4462] focus:outline-none focus:border-[#8B5CF6] resize-none"
+              className="w-full bg-surface-elevated border border-primary rounded-lg px-4 py-3 text-foreground text-sm placeholder-foreground-muted focus:outline-none focus:border-primary-light resize-none"
             />
             <div className="mt-2">
-              <p className="text-[#4C4462] text-xs mb-2">Hızlı şablonlar:</p>
+              <p className="text-foreground-muted text-xs mb-2">Hızlı şablonlar:</p>
               <div className="flex flex-wrap gap-2">
                 {PROMPT_TEMPLATES.map((t) => (
                   <button
                     key={t.label}
                     onClick={() => setPrompt(t.prompt)}
-                    className="px-2 py-1 bg-[#1A1030] text-[#78716C] hover:text-[#A3E635] text-xs rounded transition-colors"
+                    className="px-2 py-1 bg-surface-elevated text-foreground-secondary hover:text-secondary text-xs rounded transition-colors"
                   >
                     {t.label}
                   </button>
@@ -109,34 +109,34 @@ export default function ImageGeneratorClient({ previousAssets }: { previousAsset
           </div>
 
           {/* Model */}
-          <div className="bg-[#0F0A1E] border border-[#1A1030] rounded-xl p-5">
-            <label className="block text-white text-sm font-medium mb-3">Model</label>
+          <div className="bg-background-secondary border border-border rounded-xl p-5">
+            <label className="block text-foreground text-sm font-medium mb-3">Model</label>
             <div className="space-y-2">
               {MODELS.map((m) => (
                 <button
                   key={m.id}
                   onClick={() => setModel(m.id)}
-                  className={`w-full text-left px-4 py-3 rounded-lg border transition-all ${model === m.id ? 'border-[#A3E635] bg-[#A3E635]/5' : 'border-[#1A1030] hover:border-[#2E1065]'}`}
+                  className={`w-full text-left px-4 py-3 rounded-lg border transition-all ${model === m.id ? 'border-secondary bg-secondary/5' : 'border-border hover:border-primary'}`}
                 >
-                  <div className={`text-sm font-medium ${model === m.id ? 'text-[#A3E635]' : 'text-white'}`}>{m.label}</div>
-                  <div className="text-xs text-[#4C4462] mt-0.5">{m.desc}</div>
+                  <div className={`text-sm font-medium ${model === m.id ? 'text-secondary' : 'text-foreground'}`}>{m.label}</div>
+                  <div className="text-xs text-foreground-muted mt-0.5">{m.desc}</div>
                 </button>
               ))}
             </div>
           </div>
 
           {/* Boyut */}
-          <div className="bg-[#0F0A1E] border border-[#1A1030] rounded-xl p-5">
-            <label className="block text-white text-sm font-medium mb-3">Platform / Boyut</label>
+          <div className="bg-background-secondary border border-border rounded-xl p-5">
+            <label className="block text-foreground text-sm font-medium mb-3">Platform / Boyut</label>
             <div className="grid grid-cols-2 gap-2">
               {SIZE_PRESETS.map((s) => (
                 <button
                   key={s.id}
                   onClick={() => setSize(s.id)}
-                  className={`text-left px-3 py-2 rounded-lg border transition-all ${size === s.id ? 'border-[#A3E635] bg-[#A3E635]/5' : 'border-[#1A1030] hover:border-[#2E1065]'}`}
+                  className={`text-left px-3 py-2 rounded-lg border transition-all ${size === s.id ? 'border-secondary bg-secondary/5' : 'border-border hover:border-primary'}`}
                 >
-                  <div className={`text-xs font-medium ${size === s.id ? 'text-[#A3E635]' : 'text-white'}`}>{s.label}</div>
-                  <div className="text-xs text-[#4C4462]">{s.size}</div>
+                  <div className={`text-xs font-medium ${size === s.id ? 'text-secondary' : 'text-foreground'}`}>{s.label}</div>
+                  <div className="text-xs text-foreground-muted">{s.size}</div>
                 </button>
               ))}
             </div>
@@ -145,14 +145,14 @@ export default function ImageGeneratorClient({ previousAssets }: { previousAsset
           <button
             onClick={generate}
             disabled={loading || !prompt.trim()}
-            className="w-full py-4 bg-[#A3E635] text-[#2E1065] font-bold rounded-xl hover:bg-[#b4f045] transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-lg"
+            className="w-full py-4 bg-secondary text-primary font-bold rounded-xl hover:bg-secondary-hover transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-lg"
           >
             {loading ? (
               <span className="flex items-center justify-center gap-2">
                 <motion.div
                   animate={{ rotate: 360 }}
                   transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-                  className="w-5 h-5 border-2 border-[#2E1065] border-t-transparent rounded-full"
+                  className="w-5 h-5 border-2 border-primary border-t-transparent rounded-full"
                 />
                 Üretiliyor...
               </span>
@@ -176,7 +176,7 @@ export default function ImageGeneratorClient({ previousAssets }: { previousAsset
                 animate={{ opacity: 1, y: 0 }}
                 className="mb-6"
               >
-                <h3 className="text-white font-medium mb-3">Yeni Üretimler</h3>
+                <h3 className="text-foreground font-medium mb-3">Yeni Üretimler</h3>
                 <div className="grid grid-cols-2 gap-3">
                   {results.map((img, i) => (
                     <motion.div
@@ -184,7 +184,7 @@ export default function ImageGeneratorClient({ previousAssets }: { previousAsset
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: i * 0.1 }}
-                      className="relative group rounded-xl overflow-hidden bg-[#1A1030] aspect-square"
+                      className="relative group rounded-xl overflow-hidden bg-surface-elevated aspect-square"
                     >
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img src={img.url} alt={`Varyasyon ${i + 1}`} className="w-full h-full object-contain" />
@@ -194,7 +194,7 @@ export default function ImageGeneratorClient({ previousAssets }: { previousAsset
                           download
                           target="_blank"
                           rel="noopener"
-                          className="px-3 py-2 bg-[#A3E635] text-[#2E1065] rounded-lg text-sm font-medium"
+                          className="px-3 py-2 bg-secondary text-primary rounded-lg text-sm font-medium"
                         >
                           İndir
                         </a>
@@ -209,10 +209,10 @@ export default function ImageGeneratorClient({ previousAssets }: { previousAsset
           {/* Önceki görseller */}
           {previousAssets.length > 0 && (
             <div>
-              <h3 className="text-[#78716C] text-sm font-medium mb-3">Önceki Görseller</h3>
+              <h3 className="text-foreground-secondary text-sm font-medium mb-3">Önceki Görseller</h3>
               <div className="grid grid-cols-3 gap-3">
                 {previousAssets.map((asset) => (
-                  <div key={asset.id} className="relative group rounded-xl overflow-hidden bg-[#1A1030] aspect-square">
+                  <div key={asset.id} className="relative group rounded-xl overflow-hidden bg-surface-elevated aspect-square">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={asset.url} alt="" className="w-full h-full object-cover" />
                     <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
@@ -220,7 +220,7 @@ export default function ImageGeneratorClient({ previousAssets }: { previousAsset
                         href={asset.url}
                         target="_blank"
                         rel="noopener"
-                        className="px-3 py-2 bg-[#A3E635] text-[#2E1065] rounded-lg text-xs font-medium"
+                        className="px-3 py-2 bg-secondary text-primary rounded-lg text-xs font-medium"
                       >
                         Aç
                       </a>
@@ -232,10 +232,10 @@ export default function ImageGeneratorClient({ previousAssets }: { previousAsset
           )}
 
           {results.length === 0 && previousAssets.length === 0 && !loading && (
-            <div className="bg-[#0F0A1E] border border-[#1A1030] border-dashed rounded-xl p-12 text-center">
+            <div className="bg-background-secondary border border-border border-dashed rounded-xl p-12 text-center">
               <div className="text-5xl mb-4">🎨</div>
-              <p className="text-[#4C4462] text-sm">Prompt yaz ve Görsel Üret'e tıkla</p>
-              <p className="text-[#2E1065] text-xs mt-1">4 varyasyon üretilir, en iyi olanı seç</p>
+              <p className="text-foreground-muted text-sm">Prompt yaz ve Görsel Üret'e tıkla</p>
+              <p className="text-primary text-xs mt-1">4 varyasyon üretilir, en iyi olanı seç</p>
             </div>
           )}
         </div>

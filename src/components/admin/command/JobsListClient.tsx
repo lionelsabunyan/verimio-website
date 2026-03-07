@@ -64,15 +64,15 @@ export default function JobsListClient({ initialJobs }: { initialJobs: Job[] }) 
       {/* Filtreler */}
       <div className="flex items-center justify-between">
         <ProjectSwitcher value={project} onChange={setProject} />
-        <div className="flex items-center gap-1 bg-[#1A1030] rounded-lg p-1">
+        <div className="flex items-center gap-1 bg-surface-elevated rounded-lg p-1">
           {STATUS_TABS.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setStatusFilter(tab.id)}
               className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
                 statusFilter === tab.id
-                  ? 'bg-[#2E1065] text-white'
-                  : 'text-[#4C4462] hover:text-white'
+                  ? 'bg-primary text-foreground'
+                  : 'text-foreground-secondary hover:text-foreground'
               }`}
             >
               {tab.label}
@@ -82,48 +82,48 @@ export default function JobsListClient({ initialJobs }: { initialJobs: Job[] }) 
       </div>
 
       {/* Tablo */}
-      <div className="bg-[#1A1030] border border-[#2E1065]/30 rounded-xl overflow-hidden">
+      <div className="bg-surface-elevated border border-primary/30 rounded-xl overflow-hidden">
         <table className="w-full">
           <thead>
-            <tr className="border-b border-[#2E1065]/30">
-              <th className="text-left px-5 py-3 text-[#4C4462] text-xs font-medium">Skill</th>
-              <th className="text-left px-5 py-3 text-[#4C4462] text-xs font-medium">Proje</th>
-              <th className="text-left px-5 py-3 text-[#4C4462] text-xs font-medium">Durum</th>
-              <th className="text-left px-5 py-3 text-[#4C4462] text-xs font-medium">Süre</th>
-              <th className="text-left px-5 py-3 text-[#4C4462] text-xs font-medium">Oluşturulma</th>
+            <tr className="border-b border-primary/30">
+              <th className="text-left px-5 py-3 text-foreground-secondary text-xs font-medium">Skill</th>
+              <th className="text-left px-5 py-3 text-foreground-secondary text-xs font-medium">Proje</th>
+              <th className="text-left px-5 py-3 text-foreground-secondary text-xs font-medium">Durum</th>
+              <th className="text-left px-5 py-3 text-foreground-secondary text-xs font-medium">Süre</th>
+              <th className="text-left px-5 py-3 text-foreground-secondary text-xs font-medium">Oluşturulma</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-[#2E1065]/20">
+          <tbody className="divide-y divide-primary/20">
             {filtered.length === 0 ? (
               <tr>
-                <td colSpan={5} className="px-5 py-8 text-center text-[#4C4462] text-sm">
+                <td colSpan={5} className="px-5 py-8 text-center text-foreground-secondary text-sm">
                   Bu filtrelere uygun iş bulunamadı.
                 </td>
               </tr>
             ) : (
               filtered.map((job) => (
-                <tr key={job.id} className="hover:bg-[#2E1065]/10 transition-colors">
+                <tr key={job.id} className="hover:bg-primary/10 transition-colors">
                   <td className="px-5 py-3">
                     <Link
                       href={`/admin/command/jobs/${job.id}`}
-                      className="text-white text-sm hover:text-[#A3E635] transition-colors"
+                      className="text-foreground text-sm hover:text-secondary transition-colors"
                     >
                       {job.skill}
                     </Link>
                   </td>
                   <td className="px-5 py-3">
                     <div className="flex items-center gap-2">
-                      <span className={`w-2 h-2 rounded-full ${job.project === 'verimio' ? 'bg-[#A3E635]' : 'bg-blue-400'}`} />
-                      <span className="text-[#78716C] text-sm">{job.project}</span>
+                      <span className={`w-2 h-2 rounded-full ${job.project === 'verimio' ? 'bg-secondary' : 'bg-blue-400'}`} />
+                      <span className="text-foreground-secondary text-sm">{job.project}</span>
                     </div>
                   </td>
                   <td className="px-5 py-3">
                     <StatusBadge status={job.status} />
                   </td>
-                  <td className="px-5 py-3 text-[#4C4462] text-sm">
+                  <td className="px-5 py-3 text-foreground-secondary text-sm">
                     {duration(job.started_at, job.completed_at)}
                   </td>
-                  <td className="px-5 py-3 text-[#4C4462] text-xs">
+                  <td className="px-5 py-3 text-foreground-secondary text-xs">
                     {timeAgo(job.created_at)}
                   </td>
                 </tr>

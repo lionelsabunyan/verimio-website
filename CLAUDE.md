@@ -236,3 +236,16 @@ Projeye özel bir AI kreatif direktör skill'i tanımlıdır:
 - Sosyal medya şablon sistemi (4 platform, 2 template bileşen)
 - Güncel tasarım trend rehberi
 - Çalışma protokolü (üret → sun → onay → entegre → commit)
+
+**8 Uzman Mod** (skill dosyasının sonunda tam açıklama):
+
+| Komut | Mod | Ne Zaman |
+|-------|-----|----------|
+| `/kreatif design-system` | Design System Analisti | Token, bileşen spec, tutarlılık |
+| `/kreatif marka` | Marka Kimliği Direktörü | Brand voice, logo, do/don't |
+| `/kreatif ui` | UI/UX Tasarım Uzmanı | Layout, hiyerarşi, akış |
+| `/kreatif pazarlama` | Pazarlama İçerik Direktörü | Copy, kampanya, sosyal medya |
+| `/kreatif figma` | Figma Spec Uzmanı | Auto layout, handoff, varyant |
+| `/kreatif eleştiri` | Tasarım Eleştirmeni | Heuristic değerlendirme, audit |
+| `/kreatif trend` | Trend Araştırmacısı | 2026 trendleri, rakip analizi |
+| `/kreatif erişilebilirlik` | Erişilebilirlik Denetçisi | WCAG AA, kontrast, keyboard nav |

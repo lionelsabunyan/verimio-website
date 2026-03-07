@@ -92,12 +92,12 @@ export default function SettingsClient() {
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-[#0F0A1E] border border-[#1A1030] rounded-xl overflow-hidden"
+        className="bg-background-secondary border border-border rounded-xl overflow-hidden"
       >
-        <div className="px-6 py-4 border-b border-[#1A1030]">
-          <h2 className="text-white font-medium">Entegrasyonlar</h2>
+        <div className="px-6 py-4 border-b border-border">
+          <h2 className="text-foreground font-medium">Entegrasyonlar</h2>
         </div>
-        <div className="divide-y divide-[#1A1030]">
+        <div className="divide-y divide-border">
           {INTEGRATIONS.map((int, i) => (
             <motion.div
               key={int.name}
@@ -109,7 +109,7 @@ export default function SettingsClient() {
               <span className="text-2xl w-8 text-center">{int.icon}</span>
               <div className="flex-1">
                 <div className="flex items-center gap-2">
-                  <span className="text-white text-sm font-medium">{int.name}</span>
+                  <span className="text-foreground text-sm font-medium">{int.name}</span>
                   <span className={`text-xs px-2 py-0.5 rounded-full ${
                     int.status === 'connected'
                       ? 'bg-green-500/20 text-green-400'
@@ -118,13 +118,13 @@ export default function SettingsClient() {
                     {int.status === 'connected' ? '● Bağlı' : '○ Bekliyor'}
                   </span>
                 </div>
-                <p className="text-[#4C4462] text-xs mt-0.5">{int.desc} · <code className="text-[#78716C]">{int.env}</code></p>
+                <p className="text-foreground-muted text-xs mt-0.5">{int.desc} · <code className="text-foreground-secondary">{int.env}</code></p>
               </div>
               <a
                 href={int.docs}
                 target="_blank"
                 rel="noopener"
-                className="text-[#78716C] hover:text-[#A3E635] text-xs transition-colors"
+                className="text-foreground-secondary hover:text-secondary text-xs transition-colors"
               >
                 Dashboard ↗
               </a>
@@ -138,25 +138,25 @@ export default function SettingsClient() {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
-        className="bg-[#0F0A1E] border border-[#1A1030] rounded-xl p-6"
+        className="bg-background-secondary border border-border rounded-xl p-6"
       >
-        <h2 className="text-white font-medium mb-4">Brand Kimlik</h2>
+        <h2 className="text-foreground font-medium mb-4">Brand Kimlik</h2>
         <div className="grid grid-cols-3 gap-4">
           {BRAND.filter(b => b.type === 'color').map((b) => (
-            <div key={b.label} className="flex items-center gap-3 p-3 bg-[#1A1030] rounded-xl">
+            <div key={b.label} className="flex items-center gap-3 p-3 bg-surface-elevated rounded-xl">
               <div className="w-8 h-8 rounded-lg border border-white/10 flex-shrink-0" style={{ backgroundColor: b.value }} />
               <div>
-                <div className="text-white text-sm">{b.label}</div>
-                <div className="text-[#4C4462] text-xs font-mono">{b.value}</div>
+                <div className="text-foreground text-sm">{b.label}</div>
+                <div className="text-foreground-muted text-xs font-mono">{b.value}</div>
               </div>
             </div>
           ))}
         </div>
         <div className="mt-4 grid grid-cols-2 gap-4">
           {BRAND.filter(b => b.type === 'text').map((b) => (
-            <div key={b.label} className="p-3 bg-[#1A1030] rounded-xl">
-              <div className="text-[#4C4462] text-xs mb-1">{b.label}</div>
-              <div className="text-white text-sm">{b.value}</div>
+            <div key={b.label} className="p-3 bg-surface-elevated rounded-xl">
+              <div className="text-foreground-muted text-xs mb-1">{b.label}</div>
+              <div className="text-foreground text-sm">{b.value}</div>
             </div>
           ))}
         </div>
@@ -167,11 +167,11 @@ export default function SettingsClient() {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
-        className="bg-[#1A1030] border border-[#2E1065] rounded-xl p-5"
+        className="bg-surface-elevated border border-primary rounded-xl p-5"
       >
-        <h3 className="text-[#A3E635] text-sm font-medium mb-2">📁 .env.local Dosyası</h3>
-        <p className="text-[#78716C] text-sm leading-relaxed">
-          API anahtarlarını <code className="bg-[#0F0A1E] px-1.5 py-0.5 rounded text-[#A3E635] text-xs">verimio-website/.env.local</code> dosyasında sakla.
+        <h3 className="text-secondary text-sm font-medium mb-2">📁 .env.local Dosyası</h3>
+        <p className="text-foreground-secondary text-sm leading-relaxed">
+          API anahtarlarını <code className="bg-background-secondary px-1.5 py-0.5 rounded text-secondary text-xs">verimio-website/.env.local</code> dosyasında sakla.
           Yeni bir entegrasyon eklerken bu dosyaya ekle ve Next.js'i yeniden başlat.
         </p>
       </motion.div>

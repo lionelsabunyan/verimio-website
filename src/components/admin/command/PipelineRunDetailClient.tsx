@@ -178,11 +178,11 @@ export default function PipelineRunDetailClient({ initialRun, initialJobs, initi
   return (
     <div>
       {/* Header */}
-      <div className="flex items-center justify-between px-6 py-5 border-b border-[#1A1030]">
+      <div className="flex items-center justify-between px-6 py-5 border-b border-border">
         <div className="flex items-center gap-4">
           <button
             onClick={() => router.push('/admin/command/pipelines')}
-            className="text-[#4C4462] hover:text-white transition-colors"
+            className="text-foreground-muted hover:text-foreground transition-colors"
           >
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -190,10 +190,10 @@ export default function PipelineRunDetailClient({ initialRun, initialJobs, initi
           </button>
           <div>
             <div className="flex items-center gap-3">
-              <h1 className="text-white text-xl font-bold">{run.name}</h1>
+              <h1 className="text-foreground text-xl font-bold">{run.name}</h1>
               <StatusBadge status={run.status} />
             </div>
-            <p className="text-[#4C4462] text-sm mt-0.5">
+            <p className="text-foreground-muted text-sm mt-0.5">
               {run.project} | {formatDuration(run.started_at, run.completed_at)}
             </p>
           </div>
@@ -214,18 +214,18 @@ export default function PipelineRunDetailClient({ initialRun, initialJobs, initi
         {/* Progress Bar */}
         <div>
           <div className="flex items-center justify-between mb-2">
-            <span className="text-[#78716C] text-xs">Ilerleme</span>
-            <span className="text-[#78716C] text-xs">
+            <span className="text-foreground-secondary text-xs">Ilerleme</span>
+            <span className="text-foreground-secondary text-xs">
               {run.status === 'completed' ? run.total_steps : run.current_step} / {run.total_steps} adim
             </span>
           </div>
-          <div className="w-full bg-[#2E1065]/30 rounded-full h-2">
+          <div className="w-full bg-primary/30 rounded-full h-2">
             <div
               className={`h-2 rounded-full transition-all duration-500 ${
-                run.status === 'completed' ? 'bg-[#A3E635]' :
+                run.status === 'completed' ? 'bg-secondary' :
                 run.status === 'failed' ? 'bg-red-500' :
-                run.status === 'cancelled' ? 'bg-[#4C4462]' :
-                'bg-[#8B5CF6]'
+                run.status === 'cancelled' ? 'bg-foreground-muted' :
+                'bg-primary-light'
               }`}
               style={{ width: `${progressPercent}%` }}
             />
@@ -242,10 +242,10 @@ export default function PipelineRunDetailClient({ initialRun, initialJobs, initi
         <div className="grid grid-cols-3 gap-6">
           {/* Sol: Adim Timeline'i */}
           <div className="col-span-1">
-            <h3 className="text-white text-sm font-medium mb-4">Adimlar</h3>
+            <h3 className="text-foreground text-sm font-medium mb-4">Adimlar</h3>
             <div className="relative pl-6 space-y-0">
               {/* Dikey cizgi */}
-              <div className="absolute left-[7px] top-2 bottom-2 w-px bg-[#2E1065]" />
+              <div className="absolute left-[7px] top-2 bottom-2 w-px bg-primary" />
 
               {steps.map((step, i) => {
                 const status = getStepStatus(i)
@@ -257,35 +257,35 @@ export default function PipelineRunDetailClient({ initialRun, initialJobs, initi
                   <div key={i} className="relative pb-6 last:pb-0">
                     {/* Durum Noktasi */}
                     <div className={`absolute left-[-17px] top-1 w-3.5 h-3.5 rounded-full border-2 ${
-                      status === 'completed' ? 'bg-[#A3E635] border-[#A3E635]' :
-                      status === 'running' ? 'bg-[#8B5CF6] border-[#8B5CF6] animate-pulse' :
+                      status === 'completed' ? 'bg-secondary border-secondary' :
+                      status === 'running' ? 'bg-primary-light border-primary-light animate-pulse' :
                       status === 'failed' ? 'bg-red-500 border-red-500' :
                       status === 'paused' ? 'bg-orange-400 border-orange-400' :
-                      'bg-[#0F0A1E] border-[#4C4462]'
+                      'bg-background-secondary border-foreground-muted'
                     }`} />
 
                     <div className="ml-2">
                       <div className="flex items-center gap-2">
                         <span className={`text-sm font-medium ${
-                          status === 'completed' ? 'text-[#A3E635]' :
-                          isActive ? 'text-white' :
+                          status === 'completed' ? 'text-secondary' :
+                          isActive ? 'text-foreground' :
                           status === 'failed' ? 'text-red-400' :
-                          'text-[#78716C]'
+                          'text-foreground-secondary'
                         }`}>
                           {step.label}
                         </span>
                       </div>
-                      <span className="text-[#4C4462] text-xs">{step.skill}</span>
+                      <span className="text-foreground-muted text-xs">{step.skill}</span>
 
                       {/* Tamamlandi bilgisi */}
                       {status === 'completed' && job && (
                         <div className="flex items-center gap-2 mt-1">
-                          <span className="text-[#4C4462] text-xs">
+                          <span className="text-foreground-muted text-xs">
                             {formatDuration(job.started_at, job.completed_at)}
                           </span>
                           <Link
                             href={`/admin/command/jobs/${job.id}`}
-                            className="text-[#8B5CF6] text-xs hover:text-[#A3E635] transition-colors"
+                            className="text-primary-light text-xs hover:text-secondary transition-colors"
                           >
                             detay
                           </Link>
@@ -306,7 +306,7 @@ export default function PipelineRunDetailClient({ initialRun, initialJobs, initi
                           {approval && approval.status === 'pending' && (
                             <Link
                               href="/admin/command/approvals"
-                              className="text-[#8B5CF6] text-xs ml-2 hover:text-[#A3E635] transition-colors"
+                              className="text-primary-light text-xs ml-2 hover:text-secondary transition-colors"
                             >
                               onayla
                             </Link>
@@ -322,18 +322,18 @@ export default function PipelineRunDetailClient({ initialRun, initialJobs, initi
 
           {/* Sag: Aktif Job LogViewer */}
           <div className="col-span-2">
-            <h3 className="text-white text-sm font-medium mb-4">
+            <h3 className="text-foreground text-sm font-medium mb-4">
               {activeJobId ? 'Canli Log' : 'Log'}
             </h3>
             {activeJobId ? (
               <LogViewer jobId={activeJobId} />
             ) : (
-              <div className="bg-[#1A1030] border border-[#2E1065]/30 rounded-xl p-6">
+              <div className="bg-surface-elevated border border-primary/30 rounded-xl p-6">
                 {run.status === 'completed' && (
                   <div className="text-center space-y-2">
                     <div className="text-3xl">&#x2705;</div>
-                    <p className="text-[#A3E635] text-sm font-medium">Pipeline basariyla tamamlandi</p>
-                    <p className="text-[#4C4462] text-xs">{formatDuration(run.started_at, run.completed_at)}</p>
+                    <p className="text-secondary text-sm font-medium">Pipeline basariyla tamamlandi</p>
+                    <p className="text-foreground-muted text-xs">{formatDuration(run.started_at, run.completed_at)}</p>
                   </div>
                 )}
                 {run.status === 'paused' && (
@@ -342,7 +342,7 @@ export default function PipelineRunDetailClient({ initialRun, initialJobs, initi
                     <p className="text-orange-400 text-sm font-medium">Pipeline onay bekliyor</p>
                     <Link
                       href="/admin/command/approvals"
-                      className="text-[#8B5CF6] text-sm hover:text-[#A3E635] transition-colors inline-block mt-1"
+                      className="text-primary-light text-sm hover:text-secondary transition-colors inline-block mt-1"
                     >
                       Onaylar sayfasina git &rarr;
                     </Link>
@@ -352,25 +352,25 @@ export default function PipelineRunDetailClient({ initialRun, initialJobs, initi
                   <div className="text-center space-y-2">
                     <div className="text-3xl">&#x274C;</div>
                     <p className="text-red-400 text-sm font-medium">Pipeline basarisiz</p>
-                    {run.error && <p className="text-[#4C4462] text-xs">{run.error}</p>}
+                    {run.error && <p className="text-foreground-muted text-xs">{run.error}</p>}
                   </div>
                 )}
                 {run.status === 'cancelled' && (
                   <div className="text-center space-y-2">
                     <div className="text-3xl">&#x26A0;&#xFE0F;</div>
-                    <p className="text-[#78716C] text-sm font-medium">Pipeline iptal edildi</p>
+                    <p className="text-foreground-secondary text-sm font-medium">Pipeline iptal edildi</p>
                   </div>
                 )}
                 {run.status === 'running' && !activeJobId && (
                   <div className="text-center space-y-2">
                     <div className="text-3xl animate-pulse">&#x23F3;</div>
-                    <p className="text-[#78716C] text-sm">Sonraki adim hazirlaniyor...</p>
+                    <p className="text-foreground-secondary text-sm">Sonraki adim hazirlaniyor...</p>
                   </div>
                 )}
                 {/* Son tamamlanan job'un log'unu goster */}
                 {!activeJobId && jobs.length > 0 && (
-                  <div className="mt-4 pt-4 border-t border-[#2E1065]/20">
-                    <p className="text-[#4C4462] text-xs mb-2">Son calistirilan adim:</p>
+                  <div className="mt-4 pt-4 border-t border-primary/20">
+                    <p className="text-foreground-muted text-xs mb-2">Son calistirilan adim:</p>
                     {(() => {
                       const lastCompletedJob = [...jobs]
                         .filter((j) => j.status === 'completed' || j.status === 'failed')
@@ -389,9 +389,9 @@ export default function PipelineRunDetailClient({ initialRun, initialJobs, initi
 
         {/* Girdi */}
         {run.input && (
-          <div className="bg-[#1A1030] border border-[#2E1065]/30 rounded-xl p-5">
-            <h3 className="text-[#78716C] text-xs mb-2 uppercase tracking-wider">Girdi</h3>
-            <pre className="text-white text-sm whitespace-pre-wrap font-mono">{run.input}</pre>
+          <div className="bg-surface-elevated border border-primary/30 rounded-xl p-5">
+            <h3 className="text-foreground-secondary text-xs mb-2 uppercase tracking-wider">Girdi</h3>
+            <pre className="text-foreground text-sm whitespace-pre-wrap font-mono">{run.input}</pre>
           </div>
         )}
       </div>

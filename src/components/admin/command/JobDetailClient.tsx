@@ -106,17 +106,17 @@ export default function JobDetailClient({
   return (
     <div className="p-6 space-y-6">
       {/* Üst bilgi kartı */}
-      <div className="bg-[#1A1030] border border-[#2E1065]/30 rounded-xl p-6">
+      <div className="bg-surface-elevated border border-primary/30 rounded-xl p-6">
         <div className="flex items-start justify-between mb-4">
           <div className="flex items-center gap-3">
-            <span className={`w-3 h-3 rounded-full ${job.project === 'verimio' ? 'bg-[#A3E635]' : 'bg-blue-400'}`} />
+            <span className={`w-3 h-3 rounded-full ${job.project === 'verimio' ? 'bg-secondary' : 'bg-blue-400'}`} />
             <div>
               <div className="flex items-center gap-2">
-                <h2 className="text-white text-lg font-semibold">{job.skill}</h2>
+                <h2 className="text-foreground text-lg font-semibold">{job.skill}</h2>
                 {job.pipeline_run_id && (
                   <Link
                     href={`/admin/command/pipelines/runs/${job.pipeline_run_id}`}
-                    className="flex items-center gap-1 bg-[#8B5CF6]/20 text-[#8B5CF6] px-2 py-0.5 rounded text-xs hover:bg-[#8B5CF6]/30 transition-colors"
+                    className="flex items-center gap-1 bg-primary-light/20 text-primary-light px-2 py-0.5 rounded text-xs hover:bg-primary-light/30 transition-colors"
                   >
                     <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
@@ -125,7 +125,7 @@ export default function JobDetailClient({
                   </Link>
                 )}
               </div>
-              <p className="text-[#4C4462] text-sm">{job.project} — {job.id.slice(0, 8)}</p>
+              <p className="text-foreground-muted text-sm">{job.project} — {job.id.slice(0, 8)}</p>
             </div>
           </div>
           <div className="flex items-center gap-3">
@@ -144,28 +144,28 @@ export default function JobDetailClient({
 
         <div className="grid grid-cols-4 gap-4">
           <div>
-            <p className="text-[#4C4462] text-xs mb-1">Oluşturulma</p>
-            <p className="text-white text-sm">{formatDate(job.created_at)}</p>
+            <p className="text-foreground-muted text-xs mb-1">Oluşturulma</p>
+            <p className="text-foreground text-sm">{formatDate(job.created_at)}</p>
           </div>
           <div>
-            <p className="text-[#4C4462] text-xs mb-1">Başlangıç</p>
-            <p className="text-white text-sm">{formatDate(job.started_at)}</p>
+            <p className="text-foreground-muted text-xs mb-1">Başlangıç</p>
+            <p className="text-foreground text-sm">{formatDate(job.started_at)}</p>
           </div>
           <div>
-            <p className="text-[#4C4462] text-xs mb-1">Bitiş</p>
-            <p className="text-white text-sm">{formatDate(job.completed_at)}</p>
+            <p className="text-foreground-muted text-xs mb-1">Bitiş</p>
+            <p className="text-foreground text-sm">{formatDate(job.completed_at)}</p>
           </div>
           <div>
-            <p className="text-[#4C4462] text-xs mb-1">Süre</p>
-            <p className="text-white text-sm">{duration(job.started_at, job.completed_at)}</p>
+            <p className="text-foreground-muted text-xs mb-1">Süre</p>
+            <p className="text-foreground text-sm">{duration(job.started_at, job.completed_at)}</p>
           </div>
         </div>
 
         {/* Input */}
         {job.input && Object.keys(job.input).length > 0 && (
-          <div className="mt-4 pt-4 border-t border-[#2E1065]/30">
-            <p className="text-[#4C4462] text-xs mb-2">Input</p>
-            <pre className="text-[#E8E4D9] text-sm bg-[#0A0616] rounded-lg p-3 overflow-x-auto">
+          <div className="mt-4 pt-4 border-t border-primary/30">
+            <p className="text-foreground-muted text-xs mb-2">Input</p>
+            <pre className="text-foreground text-sm bg-background rounded-lg p-3 overflow-x-auto">
               {JSON.stringify(job.input, null, 2)}
             </pre>
           </div>
@@ -173,7 +173,7 @@ export default function JobDetailClient({
 
         {/* Error */}
         {job.error && (
-          <div className="mt-4 pt-4 border-t border-[#2E1065]/30">
+          <div className="mt-4 pt-4 border-t border-primary/30">
             <p className="text-red-400 text-xs mb-2">Hata</p>
             <pre className="text-red-300 text-sm bg-red-400/5 border border-red-400/20 rounded-lg p-3 overflow-x-auto">
               {job.error}
@@ -184,7 +184,7 @@ export default function JobDetailClient({
 
       {/* Log Viewer */}
       <div>
-        <h3 className="text-white text-sm font-medium mb-3">Çıktı</h3>
+        <h3 className="text-foreground text-sm font-medium mb-3">Çıktı</h3>
         <LogViewer jobId={job.id} />
       </div>
     </div>
