@@ -1,26 +1,38 @@
 import { NextResponse } from 'next/server'
-import { createClient } from '@/lib/supabase/server'
+import { createClient } from '@supabase/supabase-js'
 import { callLLM } from '@/lib/llm'
+
+// content_suggestions tablosunda RLS kapalı — anon key ile direkt erisim
+function getSupabase() {
+  return createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  )
+}
 
 // GET — Mevcut önerileri listele
 export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url)
-  const status = searchParams.get('status')
-  const type = searchParams.get('type')
+  try {
+    const { searchParams } = new URL(request.url)
+    const status = searchParams.get('status')
+    const type = searchParams.get('type')
 
-  const supabase = await createClient()
-  let query = supabase
-    .from('content_suggestions')
-    .select('*')
-    .order('created_at', { ascending: false })
+    const supabase = getSupabase()
+    let query = supabase
+      .from('content_suggestions')
+      .select('*')
+      .order('created_at', { ascending: false })
 
-  if (status) query = query.eq('status', status)
-  if (type) query = query.eq('content_type', type)
+    if (status) query = query.eq('status', status)
+    if (type) query = query.eq('content_type', type)
 
-  const { data, error } = await query.limit(100)
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+    const { data, error } = await query.limit(100)
+    if (error) return NextResponse.json({ error: error.message }, { status: 500 })
 
-  return NextResponse.json({ suggestions: data })
+    return NextResponse.json({ suggestions: data })
+  } catch (error) {
+    return NextResponse.json({ error: String(error) }, { status: 500 })
+  }
 }
 
 // POST — Claude ile yeni öneriler üret
@@ -76,7 +88,7 @@ JSON array olarak dön:
     }
 
     // Supabase'e kaydet
-    const supabase = await createClient()
+    const supabase = getSupabase()
     const { data, error } = await supabase
       .from('content_suggestions')
       .insert(suggestions.map(s => ({
@@ -100,21 +112,25 @@ JSON array olarak dön:
 
 // PATCH — Öneri durumu veya notlarını güncelle
 export async function PATCH(request: Request) {
-  const { id, status, notes } = await request.json()
-  if (!id) return NextResponse.json({ error: 'id gerekli' }, { status: 400 })
+  try {
+    const { id, status, notes } = await request.json()
+    if (!id) return NextResponse.json({ error: 'id gerekli' }, { status: 400 })
 
-  const supabase = await createClient()
-  const updates: Record<string, string> = {}
-  if (status) updates.status = status
-  if (notes !== undefined) updates.notes = notes
+    const supabase = getSupabase()
+    const updates: Record<string, string> = {}
+    if (status) updates.status = status
+    if (notes !== undefined) updates.notes = notes
 
-  const { data, error } = await supabase
-    .from('content_suggestions')
-    .update(updates)
-    .eq('id', id)
-    .select()
-    .single()
+    const { data, error } = await supabase
+      .from('content_suggestions')
+      .update(updates)
+      .eq('id', id)
+      .select()
+      .single()
 
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 })
-  return NextResponse.json({ success: true, suggestion: data })
+    if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+    return NextResponse.json({ success: true, suggestion: data })
+  } catch (error) {
+    return NextResponse.json({ error: String(error) }, { status: 500 })
+  }
 }
