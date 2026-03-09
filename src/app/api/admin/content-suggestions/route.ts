@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { createServiceClient } from '@/lib/supabase/service'
+import { createClient } from '@/lib/supabase/server'
 import { callLLM } from '@/lib/llm'
 
 // GET — Mevcut önerileri listele
@@ -8,7 +8,7 @@ export async function GET(request: Request) {
   const status = searchParams.get('status')
   const type = searchParams.get('type')
 
-  const supabase = createServiceClient()
+  const supabase = await createClient()
   let query = supabase
     .from('content_suggestions')
     .select('*')
@@ -76,7 +76,7 @@ JSON array olarak dön:
     }
 
     // Supabase'e kaydet
-    const supabase = createServiceClient()
+    const supabase = await createClient()
     const { data, error } = await supabase
       .from('content_suggestions')
       .insert(suggestions.map(s => ({
@@ -103,7 +103,7 @@ export async function PATCH(request: Request) {
   const { id, status, notes } = await request.json()
   if (!id) return NextResponse.json({ error: 'id gerekli' }, { status: 400 })
 
-  const supabase = createServiceClient()
+  const supabase = await createClient()
   const updates: Record<string, string> = {}
   if (status) updates.status = status
   if (notes !== undefined) updates.notes = notes
