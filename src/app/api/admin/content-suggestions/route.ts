@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { createServiceClient } from '@/lib/supabase/service'
+import { callLLM } from '@/lib/llm'
 
 // GET — Mevcut önerileri listele
 export async function GET(request: Request) {
@@ -53,22 +54,10 @@ JSON array olarak dön:
 ]`
 
   try {
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'x-api-key': process.env.ANTHROPIC_API_KEY!,
-        'anthropic-version': '2023-06-01',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 4096,
-        messages: [{ role: 'user', content: prompt }],
-      }),
+    const text = await callLLM({
+      task: 'content_suggestions',
+      messages: [{ role: 'user', content: prompt }],
     })
-
-    const result = await response.json()
-    const text = result.content?.[0]?.text || ''
 
     let suggestions: Array<{
       title: string

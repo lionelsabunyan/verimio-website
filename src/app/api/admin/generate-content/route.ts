@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
+import { callLLM } from '@/lib/llm'
 
 export async function POST(request: Request) {
   const { type, topic, keywords, tone = 'professional' } = await request.json()
@@ -46,23 +47,11 @@ JSON formatında dön: { "linkedin": "...", "instagram": "...", "twitter": "..."
   }
 
   try {
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'x-api-key': process.env.ANTHROPIC_API_KEY!,
-        'anthropic-version': '2023-06-01',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 4096,
-        system: SYSTEM_PROMPTS[type] || SYSTEM_PROMPTS.blog,
-        messages: [{ role: 'user', content: USER_PROMPTS[type] || USER_PROMPTS.blog }],
-      }),
+    const text = await callLLM({
+      task: 'content_generation',
+      system: SYSTEM_PROMPTS[type] || SYSTEM_PROMPTS.blog,
+      messages: [{ role: 'user', content: USER_PROMPTS[type] || USER_PROMPTS.blog }],
     })
-
-    const result = await response.json()
-    const text = result.content?.[0]?.text || ''
 
     // JSON parse et
     let parsed: Record<string, unknown> = {}
