@@ -29,13 +29,13 @@ function fmtValue(col: string, val: unknown): string {
 function StatusBadge({ val }: { val: unknown }) {
   const str = String(val ?? '').toLowerCase()
   const colors: Record<string, string> = {
-    published: 'bg-green-400/15 text-green-400 border-green-400/30',
-    draft: 'bg-yellow-400/15 text-yellow-400 border-yellow-400/30',
-    review: 'bg-blue-400/15 text-blue-400 border-blue-400/30',
-    pending: 'bg-orange-400/15 text-orange-400 border-orange-400/30',
-    archived: 'bg-red-400/15 text-red-400 border-red-400/30',
+    published: 'bg-green-100 text-green-700 border-green-200',
+    draft: 'bg-yellow-100 text-yellow-700 border-yellow-200',
+    review: 'bg-blue-100 text-blue-700 border-blue-200',
+    pending: 'bg-orange-100 text-orange-700 border-orange-200',
+    archived: 'bg-red-100 text-red-700 border-red-200',
   }
-  const cls = colors[str] ?? 'bg-foreground-muted/10 text-foreground-muted border-foreground-muted/20'
+  const cls = colors[str] ?? 'bg-gray-100 text-gray-600 border-gray-200'
   return (
     <span className={`inline-block px-2 py-0.5 rounded border text-[11px] font-medium ${cls}`}>
       {String(val ?? '—')}
@@ -51,16 +51,16 @@ export default function BrokersClient({ rows, error }: Props) {
           <div className="flex items-start gap-4">
             <div className="text-3xl">🏗️</div>
             <div>
-              <h3 className="text-orange-400 font-medium mb-1">Broker tablosu henüz kurulmadı</h3>
-              <p className="text-orange-400/60 text-sm mb-3">
-                BFG Supabase&apos;de <code className="bg-orange-500/10 px-1 rounded">brokers</code> tablosu bulunamadı.
+              <h3 className="text-orange-700 font-medium mb-1">Broker tablosu henüz kurulmadı</h3>
+              <p className="text-orange-600 text-sm mb-3">
+                BFG Supabase&apos;de <code className="bg-orange-100 px-1 rounded">brokers</code> tablosu bulunamadı.
                 Ya BFG env var&apos;lar eksik ya da tablo henüz oluşturulmamış.
               </p>
               <div className="space-y-2 text-sm">
                 <p className="text-foreground-muted font-medium">Gerekli Vercel env var&apos;lar:</p>
                 <div className="font-mono text-xs space-y-1 bg-background-secondary rounded-lg p-3">
-                  <div><span className="text-foreground-muted">BFG_SUPABASE_URL</span> <span className="text-orange-400">= https://xxxxx.supabase.co</span></div>
-                  <div><span className="text-foreground-muted">BFG_SUPABASE_SERVICE_KEY</span> <span className="text-orange-400">= eyJhb...</span></div>
+                  <div><span className="text-foreground-muted">BFG_SUPABASE_URL</span> <span className="text-orange-600">= https://xxxxx.supabase.co</span></div>
+                  <div><span className="text-foreground-muted">BFG_SUPABASE_SERVICE_KEY</span> <span className="text-orange-600">= eyJhb...</span></div>
                 </div>
               </div>
             </div>
@@ -111,22 +111,22 @@ export default function BrokersClient({ rows, error }: Props) {
       {/* KPI bar */}
       <div className="grid grid-cols-3 gap-4">
         {[
-          { label: 'toplam broker', value: total, color: 'from-[#1E3A5F] to-[#1E4D8C]', accent: '#60A5FA' },
-          { label: 'yayında', value: published, color: 'from-[#1A3A1A] to-[#14532D]', accent: '#A3E635' },
-          { label: 'taslak', value: draft, color: 'from-[#3A2200] to-[#7C4012]', accent: '#FB923C' },
+          { label: 'toplam broker', value: total, valueCls: 'text-blue-600', dot: 'bg-blue-500' },
+          { label: 'yayında', value: published, valueCls: 'text-emerald-600', dot: 'bg-emerald-500' },
+          { label: 'taslak', value: draft, valueCls: 'text-amber-600', dot: 'bg-amber-500' },
         ].map((kpi, i) => (
           <motion.div
             key={kpi.label}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.08 }}
-            className={`bg-gradient-to-br ${kpi.color} rounded-xl p-5 border border-white/5`}
+            className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm"
           >
             <div className="flex items-start justify-between mb-3">
-              <span className="text-foreground-muted text-xs uppercase tracking-wider">{kpi.label}</span>
-              <div className="w-2 h-2 rounded-full" style={{ backgroundColor: kpi.accent }} />
+              <span className="text-gray-500 text-xs uppercase tracking-wider">{kpi.label}</span>
+              <div className={`w-2 h-2 rounded-full ${kpi.dot}`} />
             </div>
-            <div className="text-2xl font-bold text-white">{kpi.value}</div>
+            <div className={`text-2xl font-bold ${kpi.valueCls}`}>{kpi.value}</div>
           </motion.div>
         ))}
       </div>

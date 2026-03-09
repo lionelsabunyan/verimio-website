@@ -22,13 +22,13 @@ interface Lead {
 }
 
 const STATUS_COLORS: Record<string, string> = {
-  new: 'bg-blue-500/20 text-blue-400',
-  processing: 'bg-yellow-500/20 text-yellow-400',
-  report_sent: 'bg-purple-500/20 text-purple-400',
-  call_scheduled: 'bg-orange-500/20 text-orange-400',
-  call_completed: 'bg-teal-500/20 text-teal-400',
-  converted: 'bg-green-500/20 text-green-400',
-  lost: 'bg-red-500/20 text-red-400',
+  new: 'bg-blue-100 text-blue-700',
+  processing: 'bg-yellow-100 text-yellow-700',
+  report_sent: 'bg-purple-100 text-purple-700',
+  call_scheduled: 'bg-orange-100 text-orange-700',
+  call_completed: 'bg-teal-100 text-teal-700',
+  converted: 'bg-green-100 text-green-700',
+  lost: 'bg-red-100 text-red-700',
 }
 
 const STATUS_LABELS: Record<string, string> = {
@@ -55,29 +55,29 @@ export default function DashboardClient({
       label: 'Toplam Lead',
       value: kpis.totalLeads,
       icon: '👥',
-      color: 'from-primary to-[#4C1D95]',
-      accent: '#8B5CF6',
+      valueCls: 'text-blue-600',
+      dot: 'bg-blue-500',
     },
     {
       label: 'Bu Hafta',
       value: kpis.weeklyLeads,
       icon: '📈',
-      color: 'from-[#1E3A5F] to-[#1E4D8C]',
-      accent: '#60A5FA',
+      valueCls: 'text-sky-600',
+      dot: 'bg-sky-500',
     },
     {
       label: 'Dönüşüm Oranı',
       value: `%${kpis.conversionRate}`,
       icon: '🎯',
-      color: 'from-[#1A3A1A] to-[#14532D]',
-      accent: '#A3E635',
+      valueCls: 'text-emerald-600',
+      dot: 'bg-emerald-500',
     },
     {
       label: 'Bekleyen Toplantı',
       value: kpis.pendingMeetings,
       icon: '📅',
-      color: 'from-[#3A1A00] to-[#7C2D12]',
-      accent: '#FB923C',
+      valueCls: 'text-amber-600',
+      dot: 'bg-amber-500',
     },
   ]
 
@@ -91,17 +91,14 @@ export default function DashboardClient({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.1, duration: 0.4 }}
-            className={`bg-gradient-to-br ${card.color} rounded-xl p-5 border border-white/5`}
+            className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm"
           >
             <div className="flex items-start justify-between mb-3">
               <span className="text-2xl">{card.icon}</span>
-              <div
-                className="w-2 h-2 rounded-full"
-                style={{ backgroundColor: card.accent }}
-              />
+              <div className={`w-2 h-2 rounded-full ${card.dot}`} />
             </div>
-            <div className="text-3xl font-bold text-white mb-1">{card.value}</div>
-            <div className="text-sm text-white/50">{card.label}</div>
+            <div className={`text-3xl font-bold ${card.valueCls} mb-1`}>{card.value}</div>
+            <div className="text-sm text-gray-500">{card.label}</div>
           </motion.div>
         ))}
       </div>
@@ -122,22 +119,22 @@ export default function DashboardClient({
             <AreaChart data={chartData}>
               <defs>
                 <linearGradient id="leadGradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#A3E635" stopOpacity={0.3} />
-                  <stop offset="95%" stopColor="#A3E635" stopOpacity={0} />
+                  <stop offset="5%" stopColor="#2563EB" stopOpacity={0.15} />
+                  <stop offset="95%" stopColor="#2563EB" stopOpacity={0} />
                 </linearGradient>
               </defs>
               <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" />
               <XAxis dataKey="name" stroke="var(--color-foreground-muted)" tick={{ fontSize: 12 }} />
               <YAxis stroke="var(--color-foreground-muted)" tick={{ fontSize: 12 }} allowDecimals={false} />
               <Tooltip
-                contentStyle={{ background: 'var(--color-surface-elevated)', border: '1px solid var(--color-primary)', borderRadius: 8 }}
-                labelStyle={{ color: 'var(--color-secondary)' }}
-                itemStyle={{ color: '#fff' }}
+                contentStyle={{ background: '#ffffff', border: '1px solid #E5E7EB', borderRadius: 8, boxShadow: '0 4px 6px -1px rgba(0,0,0,0.07)' }}
+                labelStyle={{ color: '#374151' }}
+                itemStyle={{ color: '#111827' }}
               />
               <Area
                 type="monotone"
                 dataKey="leads"
-                stroke="#A3E635"
+                stroke="#2563EB"
                 strokeWidth={2}
                 fill="url(#leadGradient)"
               />

@@ -9,17 +9,17 @@ interface Props {
 }
 
 function positionColor(pos: number): string {
-  if (pos <= 3) return 'text-green-400'
-  if (pos <= 10) return 'text-yellow-400'
-  if (pos <= 20) return 'text-orange-400'
-  return 'text-red-400'
+  if (pos <= 3) return 'text-green-600'
+  if (pos <= 10) return 'text-yellow-600'
+  if (pos <= 20) return 'text-orange-600'
+  return 'text-red-600'
 }
 
 function positionBadge(pos: number): string {
-  if (pos <= 3) return 'bg-green-400/15 text-green-400 border-green-400/30'
-  if (pos <= 10) return 'bg-yellow-400/15 text-yellow-400 border-yellow-400/30'
-  if (pos <= 20) return 'bg-orange-400/15 text-orange-400 border-orange-400/30'
-  return 'bg-red-400/15 text-red-400 border-red-400/30'
+  if (pos <= 3) return 'bg-green-100 text-green-700 border-green-200'
+  if (pos <= 10) return 'bg-yellow-100 text-yellow-700 border-yellow-200'
+  if (pos <= 20) return 'bg-orange-100 text-orange-700 border-orange-200'
+  return 'bg-red-100 text-red-700 border-red-200'
 }
 
 function fmtDate(val: unknown): string {
@@ -32,7 +32,7 @@ function ChangeIndicator({ change }: { change: number | null }) {
   // Negative change = position improved (lower number = better rank)
   const improved = change < 0
   return (
-    <span className={`inline-flex items-center gap-0.5 text-xs font-medium ${improved ? 'text-green-400' : 'text-red-400'}`}>
+    <span className={`inline-flex items-center gap-0.5 text-xs font-medium ${improved ? 'text-green-600' : 'text-red-600'}`}>
       {improved ? '▲' : '▼'} {Math.abs(change)}
     </span>
   )
@@ -47,10 +47,10 @@ export default function SerpClient({ rows, error }: Props) {
       <main className="flex-1 p-6">
         <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-6 text-center">
           <div className="text-2xl mb-2">⚠️</div>
-          <h3 className="text-red-400 font-medium mb-1">BFG Supabase bağlantısı kurulamadı</h3>
-          <p className="text-red-400/60 text-sm">
-            <code className="bg-red-500/10 px-1 rounded">BFG_SUPABASE_URL</code> ve{' '}
-            <code className="bg-red-500/10 px-1 rounded">BFG_SUPABASE_SERVICE_KEY</code> Vercel env var&apos;larını kontrol et.
+          <h3 className="text-red-600 font-medium mb-1">BFG Supabase bağlantısı kurulamadı</h3>
+          <p className="text-red-500 text-sm">
+            <code className="bg-red-100 px-1 rounded">BFG_SUPABASE_URL</code> ve{' '}
+            <code className="bg-red-100 px-1 rounded">BFG_SUPABASE_SERVICE_KEY</code> Vercel env var&apos;larını kontrol et.
           </p>
         </div>
       </main>
@@ -117,24 +117,24 @@ export default function SerpClient({ rows, error }: Props) {
       {/* KPI bar */}
       <div className="grid grid-cols-4 gap-4">
         {[
-          { label: 'toplam keyword', value: kpis.total, color: 'from-[#1E3A5F] to-[#1E4D8C]', accent: '#60A5FA' },
-          { label: 'top 3', value: kpis.top3, color: 'from-[#1A3A1A] to-[#14532D]', accent: '#A3E635' },
-          { label: 'top 10', value: kpis.top10, color: 'from-[#3A2200] to-[#7C4012]', accent: '#FB923C' },
-          { label: 'ort. pozisyon', value: kpis.avgPos, color: 'from-primary to-[#4C1D95]', accent: '#8B5CF6' },
+          { label: 'toplam keyword', value: kpis.total,   valueCls: 'text-blue-600',    dot: 'bg-blue-500' },
+          { label: 'top 3',          value: kpis.top3,    valueCls: 'text-emerald-600', dot: 'bg-emerald-500' },
+          { label: 'top 10',         value: kpis.top10,   valueCls: 'text-amber-600',   dot: 'bg-amber-500' },
+          { label: 'ort. pozisyon',  value: kpis.avgPos,  valueCls: 'text-purple-600',  dot: 'bg-purple-500' },
         ].map((kpi, i) => (
           <motion.div
             key={kpi.label}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.08 }}
-            className={`bg-gradient-to-br ${kpi.color} rounded-xl p-5 border border-white/5`}
+            className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm"
           >
             <div className="flex items-start justify-between mb-3">
-              <span className="text-foreground-muted text-xs uppercase tracking-wider">{kpi.label}</span>
-              <div className="w-2 h-2 rounded-full" style={{ backgroundColor: kpi.accent }} />
+              <span className="text-gray-500 text-xs uppercase tracking-wider">{kpi.label}</span>
+              <div className={`w-2 h-2 rounded-full ${kpi.dot}`} />
             </div>
-            <div className="text-2xl font-bold text-white">{kpi.value}</div>
-            <div className="text-white/40 text-xs mt-1">{fmtDate(latestDate)}</div>
+            <div className={`text-2xl font-bold ${kpi.valueCls}`}>{kpi.value}</div>
+            <div className="text-gray-400 text-xs mt-1">{fmtDate(latestDate)}</div>
           </motion.div>
         ))}
       </div>

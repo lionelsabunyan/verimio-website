@@ -32,10 +32,10 @@ export default function AffiliateClient({ rows, error }: Props) {
       <main className="flex-1 p-6">
         <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-6 text-center">
           <div className="text-2xl mb-2">⚠️</div>
-          <h3 className="text-red-400 font-medium mb-1">BFG Supabase bağlantısı kurulamadı</h3>
-          <p className="text-red-400/60 text-sm">
-            <code className="bg-red-500/10 px-1 rounded">BFG_SUPABASE_URL</code> ve{' '}
-            <code className="bg-red-500/10 px-1 rounded">BFG_SUPABASE_SERVICE_KEY</code> Vercel env var&apos;larını kontrol et.
+          <h3 className="text-red-600 font-medium mb-1">BFG Supabase bağlantısı kurulamadı</h3>
+          <p className="text-red-500 text-sm">
+            <code className="bg-red-100 px-1 rounded">BFG_SUPABASE_URL</code> ve{' '}
+            <code className="bg-red-100 px-1 rounded">BFG_SUPABASE_SERVICE_KEY</code> Vercel env var&apos;larını kontrol et.
           </p>
         </div>
       </main>
@@ -74,22 +74,27 @@ export default function AffiliateClient({ rows, error }: Props) {
       {kpiCols.length > 0 && (
         <div className={`grid grid-cols-${kpiCols.length} gap-4`}>
           {kpiCols.map((col, i) => {
-            const colors = ['from-[#1A3A1A] to-[#14532D]', 'from-[#1E3A5F] to-[#1E4D8C]', 'from-[#3A2200] to-[#7C4012]', 'from-primary to-[#4C1D95]']
-            const accents = ['#A3E635', '#60A5FA', '#FB923C', '#8B5CF6']
+            const lightStyles = [
+              { valueCls: 'text-emerald-600', dot: 'bg-emerald-500' },
+              { valueCls: 'text-blue-600',    dot: 'bg-blue-500' },
+              { valueCls: 'text-amber-600',   dot: 'bg-amber-500' },
+              { valueCls: 'text-purple-600',  dot: 'bg-purple-500' },
+            ]
+            const ls = lightStyles[i] ?? lightStyles[0]
             return (
               <motion.div
                 key={col}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.08 }}
-                className={`bg-gradient-to-br ${colors[i]} rounded-xl p-5 border border-white/5`}
+                className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm"
               >
                 <div className="flex items-start justify-between mb-3">
-                  <span className="text-foreground-muted text-xs uppercase tracking-wider">{col.replace(/_/g, ' ')}</span>
-                  <div className="w-2 h-2 rounded-full" style={{ backgroundColor: accents[i] }} />
+                  <span className="text-gray-500 text-xs uppercase tracking-wider">{col.replace(/_/g, ' ')}</span>
+                  <div className={`w-2 h-2 rounded-full ${ls.dot}`} />
                 </div>
-                <div className="text-2xl font-bold text-white">{fmtValue(col, totals[col])}</div>
-                <div className="text-white/40 text-xs mt-1">toplam {rows.length} hafta</div>
+                <div className={`text-2xl font-bold ${ls.valueCls}`}>{fmtValue(col, totals[col])}</div>
+                <div className="text-gray-400 text-xs mt-1">toplam {rows.length} hafta</div>
               </motion.div>
             )
           })}
