@@ -37,6 +37,13 @@ export async function GET(request: Request) {
 
 // POST — Claude ile yeni öneriler üret
 export async function POST() {
+  if (!process.env.ANTHROPIC_API_KEY) {
+    return NextResponse.json(
+      { error: 'ANTHROPIC_API_KEY eksik — Vercel ortam değişkenlerini kontrol et' },
+      { status: 500 }
+    )
+  }
+
   const prompt = `Sen Verimio'nun içerik stratejisti olarak görev yapıyorsun. Verimio, Türk KOBİ'lere yapay zeka ve otomasyon danışmanlığı veren bir B2B şirketidir.
 
 Hedef kitle: 10-200 çalışanlı Türk KOBİ'lerin sahip ve yöneticileri

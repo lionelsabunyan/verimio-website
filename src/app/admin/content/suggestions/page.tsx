@@ -5,7 +5,7 @@ import { createServiceClient } from '@/lib/supabase/service'
 
 export default async function ContentSuggestionsPage() {
   const supabase = createServiceClient()
-  const { data: suggestions } = await supabase
+  const { data: suggestions, error } = await supabase
     .from('content_suggestions')
     .select('*')
     .order('created_at', { ascending: false })
@@ -17,7 +17,7 @@ export default async function ContentSuggestionsPage() {
         title="İçerik Önerileri"
         subtitle="Claude'un önerdiği içerik fikirleri — onayla, reddet veya hemen üret"
       />
-      <ContentSuggestionsClient initialSuggestions={suggestions || []} />
+      <ContentSuggestionsClient initialSuggestions={suggestions || []} tableError={!!error} />
     </>
   )
 }

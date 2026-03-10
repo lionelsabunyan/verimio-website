@@ -27,9 +27,17 @@ interface Draft {
   created_at: string
 }
 
-export default function ContentGeneratorClient({ drafts }: { drafts: Draft[] }) {
-  const [contentType, setContentType] = useState('blog')
-  const [topic, setTopic] = useState('')
+export default function ContentGeneratorClient({
+  drafts,
+  initialTopic,
+  initialType,
+}: {
+  drafts: Draft[]
+  initialTopic?: string
+  initialType?: string
+}) {
+  const [contentType, setContentType] = useState(initialType || 'blog')
+  const [topic, setTopic] = useState(initialTopic || '')
   const [keywords, setKeywords] = useState('')
   const [loading, setLoading] = useState(false)
   const [result, setResult] = useState<Record<string, string> | null>(null)

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useMemo } from 'react'
+import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 
 interface Suggestion {
@@ -58,7 +59,14 @@ const STATUS_ACTIONS: Record<string, Array<{ label: string; nextStatus: string; 
   ],
 }
 
-export default function ContentSuggestionsClient({ initialSuggestions }: { initialSuggestions: Suggestion[] }) {
+export default function ContentSuggestionsClient({
+  initialSuggestions,
+  tableError,
+}: {
+  initialSuggestions: Suggestion[]
+  tableError?: boolean
+}) {
+  const router = useRouter()
   const [suggestions, setSuggestions] = useState<Suggestion[]>(initialSuggestions)
   const [activeTab, setActiveTab] = useState('all')
   const [typeFilter, setTypeFilter] = useState('all')
@@ -122,6 +130,20 @@ export default function ContentSuggestionsClient({ initialSuggestions }: { initi
 
   return (
     <main className="flex-1 p-6 space-y-5">
+      {/* Tablo hatası uyarısı */}
+      {tableError && (
+        <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 flex items-start gap-3">
+          <span className="text-amber-500 text-xl mt-0.5">⚠️</span>
+          <div>
+            <p className="text-amber-800 text-sm font-medium">content_suggestions tablosu bulunamadı</p>
+            <p className="text-amber-700 text-xs mt-1">
+              Supabase&apos;de <code className="bg-amber-100 px-1 rounded">content_suggestions</code> tablosunu oluştur.
+              Gerekli alanlar: <code className="bg-amber-100 px-1 rounded">id, title, topic, content_type, keywords, priority, status, ai_reasoning, notes, created_at</code>
+            </p>
+          </div>
+        </div>
+      )}
+
       {/* Üst bar */}
       <div className="flex items-center justify-between">
         <div className="flex gap-3">
@@ -293,6 +315,20 @@ export default function ContentSuggestionsClient({ initialSuggestions }: { initi
                               <p className="text-foreground-secondary text-sm italic bg-surface-elevated rounded-lg p-3 border border-border">
                                 &ldquo;{s.ai_reasoning}&rdquo;
                               </p>
+                            </div>
+                          )}
+
+                          {/* İçerik Üret Butonu */}
+                          {(s.status === 'approved' || s.status === 'in_progress') && (
+                            <div>
+                              <button
+                                onClick={() => router.push(
+                                  `/admin/content?topic=${encodeURIComponent(s.topic)}&type=${encodeURIComponent(s.content_type)}&title=${encodeURIComponent(s.title)}`
+                                )}
+                                className="flex items-center gap-2 px-4 py-2.5 bg-secondary/10 text-secondary border border-secondary/30 text-sm font-medium rounded-lg hover:bg-secondary/20 transition-colors"
+                              >
+                                <span>✨</span> Bu Konu İçin İçerik Üret
+                              </button>
                             </div>
                           )}
 

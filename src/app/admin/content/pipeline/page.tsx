@@ -6,7 +6,7 @@ import { createServiceClient } from '@/lib/supabase/service'
 export default async function ContentPipelinePage() {
   const supabase = createServiceClient()
 
-  const [{ data: suggestions }, { data: drafts }] = await Promise.all([
+  const [{ data: suggestions, error: sError }, { data: drafts, error: dError }] = await Promise.all([
     supabase
       .from('content_suggestions')
       .select('id, title, content_type, priority, status, created_at')
@@ -29,6 +29,7 @@ export default async function ContentPipelinePage() {
       <ContentPipelineClient
         suggestions={suggestions || []}
         drafts={drafts || []}
+        tableError={!!(sError || dError)}
       />
     </>
   )
