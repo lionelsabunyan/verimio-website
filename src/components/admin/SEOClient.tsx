@@ -308,8 +308,8 @@ function GscDashboard({ data }: { data: GscData }) {
               }}
               labelStyle={{ color: 'var(--color-secondary)' }}
               itemStyle={{ color: '#fff' }}
-              formatter={(v: number, name: string) => [
-                fmt(v),
+              formatter={(v: number | undefined, name: string) => [
+                fmt(v ?? 0),
                 name === 'clicks' ? 'Tıklama' : 'İmpression',
               ]}
             />
