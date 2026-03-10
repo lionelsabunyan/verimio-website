@@ -1,14 +1,6 @@
 import { NextResponse } from 'next/server'
-import { createClient } from '@supabase/supabase-js'
+import { createClient } from '@/lib/supabase/server'
 import { callLLM } from '@/lib/llm'
-
-// content_suggestions tablosunda RLS kapalı — anon key ile direkt erisim
-function getSupabase() {
-  return createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-  )
-}
 
 // GET — Mevcut önerileri listele
 export async function GET(request: Request) {
@@ -17,7 +9,7 @@ export async function GET(request: Request) {
     const status = searchParams.get('status')
     const type = searchParams.get('type')
 
-    const supabase = getSupabase()
+    const supabase = await createClient()
     let query = supabase
       .from('content_suggestions')
       .select('*')
@@ -35,15 +27,8 @@ export async function GET(request: Request) {
   }
 }
 
-// POST — Claude ile yeni öneriler üret
+// POST — OpenRouter ile yeni öneriler üret
 export async function POST() {
-  if (!process.env.ANTHROPIC_API_KEY) {
-    return NextResponse.json(
-      { error: 'ANTHROPIC_API_KEY eksik — Vercel ortam değişkenlerini kontrol et' },
-      { status: 500 }
-    )
-  }
-
   const prompt = `Sen Verimio'nun içerik stratejisti olarak görev yapıyorsun. Verimio, Türk KOBİ'lere yapay zeka ve otomasyon danışmanlığı veren bir B2B şirketidir.
 
 Hedef kitle: 10-200 çalışanlı Türk KOBİ'lerin sahip ve yöneticileri
@@ -91,11 +76,11 @@ JSON array olarak dön:
       const jsonMatch = text.match(/\[[\s\S]*\]/)
       if (jsonMatch) suggestions = JSON.parse(jsonMatch[0])
     } catch {
-      return NextResponse.json({ error: 'Claude yanıtı parse edilemedi' }, { status: 500 })
+      return NextResponse.json({ error: 'LLM yanıtı parse edilemedi' }, { status: 500 })
     }
 
     // Supabase'e kaydet
-    const supabase = getSupabase()
+    const supabase = await createClient()
     const { data, error } = await supabase
       .from('content_suggestions')
       .insert(suggestions.map(s => ({
@@ -123,7 +108,7 @@ export async function PATCH(request: Request) {
     const { id, status, notes } = await request.json()
     if (!id) return NextResponse.json({ error: 'id gerekli' }, { status: 400 })
 
-    const supabase = getSupabase()
+    const supabase = await createClient()
     const updates: Record<string, string> = {}
     if (status) updates.status = status
     if (notes !== undefined) updates.notes = notes
