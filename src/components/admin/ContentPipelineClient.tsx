@@ -574,7 +574,7 @@ export default function ContentPipelineClient({
       const res = await fetch('/api/admin/publish-draft', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ draftId: card.id }),
+        body: JSON.stringify({ draft_id: card.id }),
       })
 
       if (!res.ok) {
