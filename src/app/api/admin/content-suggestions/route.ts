@@ -105,13 +105,14 @@ JSON array olarak dön:
 // PATCH — Öneri durumu veya notlarını güncelle
 export async function PATCH(request: Request) {
   try {
-    const { id, status, notes } = await request.json()
+    const { id, status, notes, scheduled_at } = await request.json()
     if (!id) return NextResponse.json({ error: 'id gerekli' }, { status: 400 })
 
     const supabase = await createClient()
-    const updates: Record<string, string> = {}
+    const updates: Record<string, string | null> = {}
     if (status) updates.status = status
     if (notes !== undefined) updates.notes = notes
+    if (scheduled_at !== undefined) updates.scheduled_at = scheduled_at
 
     const { data, error } = await supabase
       .from('content_suggestions')

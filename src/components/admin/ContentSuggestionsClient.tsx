@@ -14,6 +14,7 @@ interface Suggestion {
   status: string
   ai_reasoning: string | null
   notes: string | null
+  scheduled_at: string | null
   created_at: string
 }
 
@@ -73,6 +74,8 @@ export default function ContentSuggestionsClient({
   const [generating, setGenerating] = useState(false)
   const [expandedId, setExpandedId] = useState<string | null>(null)
   const [editingNotes, setEditingNotes] = useState<Record<string, string>>({})
+  const [schedulingId, setSchedulingId] = useState<string | null>(null)
+  const [scheduleDate, setScheduleDate] = useState('')
 
   const filtered = useMemo(() => {
     return suggestions.filter(s => {
@@ -125,6 +128,33 @@ export default function ContentSuggestionsClient({
     if (data.suggestion) {
       setSuggestions(prev => prev.map(s => s.id === id ? data.suggestion : s))
       setEditingNotes(prev => { const n = { ...prev }; delete n[id]; return n })
+    }
+  }
+
+  async function saveSchedule(id: string) {
+    if (!scheduleDate) return
+    const res = await fetch('/api/admin/content-suggestions', {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id, scheduled_at: new Date(scheduleDate).toISOString() }),
+    })
+    const data = await res.json()
+    if (data.suggestion) {
+      setSuggestions(prev => prev.map(s => s.id === id ? data.suggestion : s))
+    }
+    setSchedulingId(null)
+    setScheduleDate('')
+  }
+
+  async function clearSchedule(id: string) {
+    const res = await fetch('/api/admin/content-suggestions', {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id, scheduled_at: null }),
+    })
+    const data = await res.json()
+    if (data.suggestion) {
+      setSuggestions(prev => prev.map(s => s.id === id ? data.suggestion : s))
     }
   }
 
@@ -264,6 +294,11 @@ export default function ContentSuggestionsClient({
                         {s.status === 'published' && <span className="text-xs px-2 py-0.5 rounded border bg-green-500/10 text-green-400 border-green-500/20">Yayında</span>}
                         {s.status === 'in_progress' && <span className="text-xs px-2 py-0.5 rounded border bg-blue-500/10 text-blue-400 border-blue-500/20">Üretimde</span>}
                         {s.status === 'rejected' && <span className="text-xs px-2 py-0.5 rounded border bg-red-500/10 text-red-400 border-red-500/20">Reddedildi</span>}
+                        {s.scheduled_at && (
+                          <span className="text-xs px-2 py-0.5 rounded border bg-indigo-500/10 text-indigo-400 border-indigo-500/20">
+                            📅 {new Date(s.scheduled_at).toLocaleDateString('tr-TR', { day: 'numeric', month: 'short' })}
+                          </span>
+                        )}
                       </div>
                       <h3 className="text-foreground text-sm font-medium leading-snug">{s.title}</h3>
                       <p className="text-foreground-secondary text-xs mt-1 line-clamp-2">{s.topic}</p>
@@ -331,6 +366,67 @@ export default function ContentSuggestionsClient({
                               </button>
                             </div>
                           )}
+
+                          {/* Zamanlama */}
+                          <div>
+                            <p className="text-foreground-muted text-xs mb-2 uppercase tracking-wider">Yayın Zamanlaması</p>
+                            {s.scheduled_at ? (
+                              <div className="flex items-center gap-3">
+                                <div className="flex items-center gap-2 bg-indigo-500/10 border border-indigo-500/20 rounded-lg px-3 py-2 text-sm text-indigo-400">
+                                  <span>📅</span>
+                                  {new Date(s.scheduled_at).toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' })}
+                                  {' '}
+                                  {new Date(s.scheduled_at).toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' })}
+                                </div>
+                                <button
+                                  onClick={(e) => { e.stopPropagation(); clearSchedule(s.id) }}
+                                  className="text-xs text-foreground-muted hover:text-red-400 transition-colors"
+                                >
+                                  ✕ Kaldır
+                                </button>
+                                <button
+                                  onClick={(e) => {
+                                    e.stopPropagation()
+                                    setSchedulingId(s.id)
+                                    setScheduleDate(new Date(s.scheduled_at!).toISOString().slice(0, 16))
+                                  }}
+                                  className="text-xs text-foreground-muted hover:text-foreground transition-colors"
+                                >
+                                  ✏️ Değiştir
+                                </button>
+                              </div>
+                            ) : schedulingId === s.id ? (
+                              <div className="flex items-center gap-2">
+                                <input
+                                  type="datetime-local"
+                                  value={scheduleDate}
+                                  onChange={(e) => setScheduleDate(e.target.value)}
+                                  className="bg-surface-elevated border border-border rounded-lg px-3 py-2 text-sm text-foreground focus:outline-none focus:border-secondary"
+                                  onClick={(e) => e.stopPropagation()}
+                                />
+                                <button
+                                  onClick={(e) => { e.stopPropagation(); saveSchedule(s.id) }}
+                                  disabled={!scheduleDate}
+                                  className="text-xs px-3 py-2 bg-secondary text-primary rounded-lg hover:bg-secondary-hover transition-colors disabled:opacity-50"
+                                >
+                                  Zamanla
+                                </button>
+                                <button
+                                  onClick={(e) => { e.stopPropagation(); setSchedulingId(null); setScheduleDate('') }}
+                                  className="text-xs px-3 py-2 text-foreground-secondary hover:text-foreground transition-colors"
+                                >
+                                  İptal
+                                </button>
+                              </div>
+                            ) : (
+                              <button
+                                onClick={(e) => { e.stopPropagation(); setSchedulingId(s.id) }}
+                                className="flex items-center gap-2 text-xs px-3 py-2 bg-surface-elevated border border-border rounded-lg text-foreground-secondary hover:text-foreground hover:border-primary transition-colors"
+                              >
+                                📅 Yayın Tarihi Planla
+                              </button>
+                            )}
+                          </div>
 
                           {/* Notlar */}
                           <div>

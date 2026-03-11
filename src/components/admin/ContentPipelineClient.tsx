@@ -1,15 +1,18 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useRef } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 
 interface Suggestion {
   id: string
   title: string
+  topic?: string
   content_type: string
+  keywords?: string[]
   priority: string
   status: string
+  scheduled_at: string | null
   created_at: string
 }
 
@@ -18,15 +21,19 @@ interface Draft {
   title: string | null
   type: string
   status: string
+  scheduled_at: string | null
   created_at: string
 }
 
 interface PipelineCard {
   id: string
   title: string
+  topic?: string
   contentType: string
+  keywords?: string[]
   priority?: string
   date: string
+  scheduledAt: string | null
   source: 'suggestion' | 'draft'
   href: string
 }
@@ -88,7 +95,7 @@ const STAGES = [
     id: 'draft',
     label: 'Taslaklar',
     icon: '📄',
-    desc: 'Claude tarafından üretildi',
+    desc: 'AI tarafından üretildi',
     borderColor: 'border-purple-500/40',
     headerBg: 'bg-purple-500/10',
     headerText: 'text-purple-400',
@@ -106,27 +113,152 @@ const STAGES = [
   },
 ]
 
-// Sadece bu stage'ler arasında sürükleme izin veriliyor (draft ve published sabit)
 const DRAGGABLE_STAGES = new Set(['pending', 'approved', 'in_progress'])
 
 function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString('tr-TR', { day: 'numeric', month: 'short' })
 }
 
+function formatSchedule(iso: string) {
+  const d = new Date(iso)
+  return d.toLocaleDateString('tr-TR', { day: 'numeric', month: 'short' }) +
+    ' ' + d.toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' })
+}
+
+// ─── Card Actions per stage ───
+function CardActions({
+  card,
+  stageId,
+  onStatusChange,
+  onGenerate,
+  onPublish,
+  onSchedule,
+  loadingAction,
+}: {
+  card: PipelineCard
+  stageId: string
+  onStatusChange: (id: string, status: string, source: 'suggestion' | 'draft') => void
+  onGenerate: (card: PipelineCard) => void
+  onPublish: (card: PipelineCard) => void
+  onSchedule: (card: PipelineCard) => void
+  loadingAction: string | null
+}) {
+  const isLoading = loadingAction === card.id
+
+  if (stageId === 'pending' && card.source === 'suggestion') {
+    return (
+      <div className="flex gap-1 mt-2">
+        <button
+          disabled={isLoading}
+          onClick={(e) => { e.stopPropagation(); onStatusChange(card.id, 'approved', card.source) }}
+          className="text-[10px] px-2 py-1 bg-green-500/10 text-green-400 border border-green-500/20 rounded hover:bg-green-500/20 transition-colors disabled:opacity-50"
+        >
+          ✓ Onayla
+        </button>
+        <button
+          disabled={isLoading}
+          onClick={(e) => { e.stopPropagation(); onStatusChange(card.id, 'rejected', card.source) }}
+          className="text-[10px] px-2 py-1 bg-red-500/10 text-red-400 border border-red-500/20 rounded hover:bg-red-500/20 transition-colors disabled:opacity-50"
+        >
+          ✕ Reddet
+        </button>
+        <button
+          disabled={isLoading}
+          onClick={(e) => { e.stopPropagation(); onSchedule(card) }}
+          className="text-[10px] px-2 py-1 bg-blue-500/10 text-blue-400 border border-blue-500/20 rounded hover:bg-blue-500/20 transition-colors disabled:opacity-50"
+        >
+          📅
+        </button>
+      </div>
+    )
+  }
+
+  if (stageId === 'approved' && card.source === 'suggestion') {
+    return (
+      <div className="flex gap-1 mt-2">
+        <button
+          disabled={isLoading}
+          onClick={(e) => { e.stopPropagation(); onGenerate(card) }}
+          className="text-[10px] px-2 py-1 bg-secondary/10 text-secondary border border-secondary/20 rounded hover:bg-secondary/20 transition-colors disabled:opacity-50"
+        >
+          {isLoading ? '...' : '⚡ Üret'}
+        </button>
+        <button
+          disabled={isLoading}
+          onClick={(e) => { e.stopPropagation(); onSchedule(card) }}
+          className="text-[10px] px-2 py-1 bg-blue-500/10 text-blue-400 border border-blue-500/20 rounded hover:bg-blue-500/20 transition-colors disabled:opacity-50"
+        >
+          📅
+        </button>
+      </div>
+    )
+  }
+
+  if (stageId === 'in_progress' && card.source === 'suggestion') {
+    return (
+      <div className="flex gap-1 mt-2">
+        <button
+          disabled={isLoading}
+          onClick={(e) => { e.stopPropagation(); onSchedule(card) }}
+          className="text-[10px] px-2 py-1 bg-blue-500/10 text-blue-400 border border-blue-500/20 rounded hover:bg-blue-500/20 transition-colors disabled:opacity-50"
+        >
+          📅 Zamanla
+        </button>
+      </div>
+    )
+  }
+
+  if (stageId === 'draft' && card.source === 'draft') {
+    return (
+      <div className="flex gap-1 mt-2">
+        <button
+          disabled={isLoading}
+          onClick={(e) => { e.stopPropagation(); onPublish(card) }}
+          className="text-[10px] px-2 py-1 bg-secondary/10 text-secondary border border-secondary/20 rounded hover:bg-secondary/20 transition-colors disabled:opacity-50"
+        >
+          {isLoading ? '...' : '🚀 Yayınla'}
+        </button>
+        <Link
+          href="/admin/content"
+          onClick={(e) => e.stopPropagation()}
+          className="text-[10px] px-2 py-1 bg-purple-500/10 text-purple-400 border border-purple-500/20 rounded hover:bg-purple-500/20 transition-colors"
+        >
+          👁 Önizle
+        </Link>
+      </div>
+    )
+  }
+
+  return null
+}
+
+// ─── Card Component ───
 function PipelineCardItem({
   card,
   index,
+  stageId,
   draggable,
   isDragging,
   onDragStart,
   onDragEnd,
+  onStatusChange,
+  onGenerate,
+  onPublish,
+  onSchedule,
+  loadingAction,
 }: {
   card: PipelineCard
   index: number
+  stageId: string
   draggable?: boolean
   isDragging?: boolean
   onDragStart?: () => void
   onDragEnd?: () => void
+  onStatusChange: (id: string, status: string, source: 'suggestion' | 'draft') => void
+  onGenerate: (card: PipelineCard) => void
+  onPublish: (card: PipelineCard) => void
+  onSchedule: (card: PipelineCard) => void
+  loadingAction: string | null
 }) {
   const typeIcon = TYPE_ICONS[card.contentType] || '📄'
   const typeLabel = TYPE_LABELS[card.contentType] || card.contentType
@@ -163,7 +295,22 @@ function PipelineCardItem({
               </>
             )}
           </div>
+          {card.scheduledAt && (
+            <div className="flex items-center gap-1 mt-1">
+              <span className="text-blue-400 text-[10px]">📅 {formatSchedule(card.scheduledAt)}</span>
+            </div>
+          )}
           <p className="text-foreground-muted text-[10px] mt-1">{formatDate(card.date)}</p>
+
+          <CardActions
+            card={card}
+            stageId={stageId}
+            onStatusChange={onStatusChange}
+            onGenerate={onGenerate}
+            onPublish={onPublish}
+            onSchedule={onSchedule}
+            loadingAction={loadingAction}
+          />
         </div>
         {draggable && (
           <span className="text-foreground-muted/30 text-xs mt-0.5 opacity-0 group-hover:opacity-100 transition-opacity">⠿</span>
@@ -173,6 +320,76 @@ function PipelineCardItem({
   )
 }
 
+// ─── Schedule Modal ───
+function ScheduleModal({
+  card,
+  onClose,
+  onSave,
+}: {
+  card: PipelineCard
+  onClose: () => void
+  onSave: (id: string, date: string, source: 'suggestion' | 'draft') => void
+}) {
+  const [dateVal, setDateVal] = useState(() => {
+    if (card.scheduledAt) {
+      const d = new Date(card.scheduledAt)
+      return d.toISOString().slice(0, 16)
+    }
+    const now = new Date()
+    now.setDate(now.getDate() + 1)
+    now.setHours(10, 0, 0, 0)
+    return now.toISOString().slice(0, 16)
+  })
+  const modalRef = useRef<HTMLDivElement>(null)
+
+  return (
+    <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4" onClick={onClose}>
+      <div
+        ref={modalRef}
+        onClick={(e) => e.stopPropagation()}
+        className="bg-background-secondary border border-border rounded-xl p-5 w-full max-w-sm space-y-4"
+      >
+        <h3 className="text-foreground text-sm font-semibold">Yayın Zamanla</h3>
+        <p className="text-foreground-muted text-xs line-clamp-2">{card.title}</p>
+
+        <div>
+          <label className="text-foreground-secondary text-xs block mb-1.5">Tarih ve Saat</label>
+          <input
+            type="datetime-local"
+            value={dateVal}
+            onChange={(e) => setDateVal(e.target.value)}
+            className="w-full bg-surface-elevated border border-border rounded-lg px-3 py-2 text-foreground text-sm focus:outline-none focus:border-secondary"
+          />
+        </div>
+
+        <div className="flex gap-2 justify-end">
+          {card.scheduledAt && (
+            <button
+              onClick={() => onSave(card.id, '', card.source)}
+              className="text-xs px-3 py-1.5 text-red-400 hover:text-red-300 transition-colors"
+            >
+              Zamanlamayı Kaldır
+            </button>
+          )}
+          <button
+            onClick={onClose}
+            className="text-xs px-3 py-1.5 text-foreground-secondary hover:text-foreground transition-colors"
+          >
+            İptal
+          </button>
+          <button
+            onClick={() => onSave(card.id, dateVal, card.source)}
+            className="text-xs px-4 py-1.5 bg-secondary text-primary font-medium rounded-lg hover:bg-secondary-hover transition-colors"
+          >
+            Zamanla
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// ─── Main Component ───
 export default function ContentPipelineClient({
   suggestions,
   drafts,
@@ -183,8 +400,17 @@ export default function ContentPipelineClient({
   tableError?: boolean
 }) {
   const [localSuggestions, setLocalSuggestions] = useState<Suggestion[]>(suggestions)
+  const [localDrafts, setLocalDrafts] = useState<Draft[]>(drafts)
   const [dragInfo, setDragInfo] = useState<{ cardId: string; fromStage: string } | null>(null)
   const [dragOverStage, setDragOverStage] = useState<string | null>(null)
+  const [loadingAction, setLoadingAction] = useState<string | null>(null)
+  const [scheduleCard, setScheduleCard] = useState<PipelineCard | null>(null)
+  const [toast, setToast] = useState<string | null>(null)
+
+  function showToast(msg: string) {
+    setToast(msg)
+    setTimeout(() => setToast(null), 3000)
+  }
 
   const stageMap = useMemo<Record<string, PipelineCard[]>>(() => {
     const map: Record<string, PipelineCard[]> = {
@@ -200,33 +426,38 @@ export default function ContentPipelineClient({
       map[s.status].push({
         id: s.id,
         title: s.title,
+        topic: s.topic,
         contentType: s.content_type,
+        keywords: s.keywords,
         priority: s.priority,
         date: s.created_at,
+        scheduledAt: s.scheduled_at,
         source: 'suggestion',
         href: '/admin/content/suggestions',
       })
     }
 
-    for (const d of drafts) {
+    for (const d of localDrafts) {
       map.draft.push({
         id: d.id,
         title: d.title || 'Başlıksız',
         contentType: d.type,
         date: d.created_at,
+        scheduledAt: d.scheduled_at,
         source: 'draft',
         href: '/admin/content',
       })
     }
 
     return map
-  }, [localSuggestions, drafts])
+  }, [localSuggestions, localDrafts])
 
   const totalItems = useMemo(
     () => Object.values(stageMap).reduce((acc, arr) => acc + arr.length, 0),
     [stageMap]
   )
 
+  // ─── Drag & Drop ───
   function handleDragStart(cardId: string, fromStage: string) {
     setDragInfo({ cardId, fromStage })
   }
@@ -255,7 +486,6 @@ export default function ContentPipelineClient({
     const { cardId, fromStage } = dragInfo
     setDragInfo(null)
 
-    // Optimistic update
     const prev = localSuggestions
     setLocalSuggestions(ls =>
       ls.map(s => s.id === cardId ? { ...s, status: toStage } : s)
@@ -269,15 +499,140 @@ export default function ContentPipelineClient({
       })
       if (!res.ok) throw new Error('PATCH failed')
     } catch {
-      // Rollback
-      console.error(`Pipeline DnD: ${fromStage} → ${toStage} güncelleme başarısız, geri alınıyor`)
+      console.error(`Pipeline DnD: ${fromStage} → ${toStage} başarısız`)
       setLocalSuggestions(prev)
+    }
+  }
+
+  // ─── Status Change ───
+  async function handleStatusChange(id: string, status: string, source: 'suggestion' | 'draft') {
+    if (source !== 'suggestion') return
+    const prev = localSuggestions
+    setLocalSuggestions(ls => ls.map(s => s.id === id ? { ...s, status } : s))
+
+    try {
+      const res = await fetch('/api/admin/content-suggestions', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id, status }),
+      })
+      if (!res.ok) throw new Error()
+      showToast(status === 'approved' ? 'Onaylandı' : status === 'rejected' ? 'Reddedildi' : 'Güncellendi')
+    } catch {
+      setLocalSuggestions(prev)
+      showToast('Hata oluştu')
+    }
+  }
+
+  // ─── Generate Content ───
+  async function handleGenerate(card: PipelineCard) {
+    setLoadingAction(card.id)
+
+    // Move to in_progress first
+    setLocalSuggestions(ls => ls.map(s => s.id === card.id ? { ...s, status: 'in_progress' } : s))
+
+    try {
+      // Update status
+      await fetch('/api/admin/content-suggestions', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: card.id, status: 'in_progress' }),
+      })
+
+      // Generate content
+      const res = await fetch('/api/admin/generate-content', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: card.contentType,
+          topic: card.topic || card.title,
+          keywords: card.keywords?.join(', ') || '',
+          tone: 'professional',
+        }),
+      })
+
+      if (!res.ok) throw new Error('Content generation failed')
+
+      const data = await res.json()
+      if (data.draft) {
+        setLocalDrafts(prev => [data.draft, ...prev])
+        showToast('İçerik üretildi, Taslaklar sütununa eklendi')
+      }
+    } catch {
+      showToast('İçerik üretimi başarısız')
+    }
+
+    setLoadingAction(null)
+  }
+
+  // ─── Publish Draft ───
+  async function handlePublish(card: PipelineCard) {
+    if (card.source !== 'draft') return
+    setLoadingAction(card.id)
+
+    try {
+      const res = await fetch('/api/admin/publish-draft', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ draftId: card.id }),
+      })
+
+      if (!res.ok) {
+        const err = await res.json()
+        throw new Error(err.error || 'Publish failed')
+      }
+
+      // Remove from drafts, it's now published
+      setLocalDrafts(prev => prev.filter(d => d.id !== card.id))
+      showToast('Yazı yayınlandı!')
+    } catch (e) {
+      showToast(`Yayınlama hatası: ${e instanceof Error ? e.message : 'Bilinmeyen hata'}`)
+    }
+
+    setLoadingAction(null)
+  }
+
+  // ─── Schedule ───
+  async function handleScheduleSave(id: string, dateStr: string, source: 'suggestion' | 'draft') {
+    setScheduleCard(null)
+    const scheduledAt = dateStr ? new Date(dateStr).toISOString() : null
+
+    if (source === 'suggestion') {
+      setLocalSuggestions(ls => ls.map(s => s.id === id ? { ...s, scheduled_at: scheduledAt } : s))
+
+      try {
+        const res = await fetch('/api/admin/content-suggestions', {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id, scheduled_at: scheduledAt }),
+        })
+        if (!res.ok) throw new Error()
+        showToast(scheduledAt ? 'Zamanlandı' : 'Zamanlama kaldırıldı')
+      } catch {
+        showToast('Zamanlama hatası')
+      }
     }
   }
 
   return (
     <main className="flex-1 p-6 overflow-x-auto">
-      {/* Tablo hatası uyarısı */}
+      {/* Toast */}
+      {toast && (
+        <div className="fixed top-4 right-4 z-50 bg-background-secondary border border-border rounded-lg px-4 py-2.5 text-foreground text-sm shadow-lg animate-in fade-in slide-in-from-top-2">
+          {toast}
+        </div>
+      )}
+
+      {/* Schedule Modal */}
+      {scheduleCard && (
+        <ScheduleModal
+          card={scheduleCard}
+          onClose={() => setScheduleCard(null)}
+          onSave={handleScheduleSave}
+        />
+      )}
+
+      {/* Tablo hatası */}
       {tableError && (
         <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 flex items-start gap-3 mb-5">
           <span className="text-amber-500 text-xl mt-0.5">⚠️</span>
@@ -320,7 +675,7 @@ export default function ContentPipelineClient({
       {!tableError && totalItems > 0 && (
         <p className="text-foreground-muted text-xs mb-3 flex items-center gap-1.5">
           <span>⠿</span>
-          <span>Bekleyen, Onaylı ve Üretimde kartlarını sürükleyerek durum değiştirebilirsin</span>
+          <span>Kartları sürükle veya butonlarla durumunu değiştir</span>
         </p>
       )}
 
@@ -382,10 +737,16 @@ export default function ContentPipelineClient({
                         key={card.id}
                         card={card}
                         index={i}
+                        stageId={stage.id}
                         draggable={isDraggable}
                         isDragging={isCurrentlyDragging}
                         onDragStart={isDraggable ? () => handleDragStart(card.id, stage.id) : undefined}
                         onDragEnd={isDraggable ? handleDragEnd : undefined}
+                        onStatusChange={handleStatusChange}
+                        onGenerate={handleGenerate}
+                        onPublish={handlePublish}
+                        onSchedule={(c) => setScheduleCard(c)}
+                        loadingAction={loadingAction}
                       />
                     )
                   })

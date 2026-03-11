@@ -9,13 +9,13 @@ export default async function ContentPipelinePage() {
   const [{ data: suggestions, error: sError }, { data: drafts, error: dError }] = await Promise.all([
     supabase
       .from('content_suggestions')
-      .select('id, title, content_type, priority, status, created_at')
+      .select('id, title, topic, content_type, keywords, priority, status, scheduled_at, created_at')
       .not('status', 'eq', 'rejected')
       .order('created_at', { ascending: false })
       .limit(200),
     supabase
       .from('content_drafts')
-      .select('id, title, type, status, created_at')
+      .select('id, title, type, status, scheduled_at, created_at')
       .order('created_at', { ascending: false })
       .limit(100),
   ])
