@@ -187,6 +187,27 @@ export const FAQ_ITEMS = [
 
 export const BLOG_POSTS = [
   {
+    title: "KOBİ'lerde Yapay Zeka Devrimi: Rekabetin Gerisinde Kalmamak İçin 5 Adım",
+    excerpt: "Türk KOBİ'lerin dijital dönüşüm sürecinde yapay zekayı nasıl stratejik bir avantaja dönüştürebileceklerini anlatan kapsamlı bir rehber.",
+    date: "11 Mart 2026",
+    slug: "kobide-yapay-zeka-devrimi",
+    category: "strategy" as const,
+  },
+  {
+    title: "Veri Yığınlarından Akıllı Kararlara: Raporlama Otomasyonu Nedir?",
+    excerpt: "Excel dosyaları arasında kaybolan yöneticiler için verilerin otomatik olarak çekilip anlamlı dashboard'lara dönüştürülmesinin karar alma hızına etkisi.",
+    date: "11 Mart 2026",
+    slug: "raporlama-otomasyonu-nedir",
+    category: "automation" as const,
+  },
+  {
+    title: "Müşteri Hizmetlerinde AI Dönemi: 7/24 Yanıt Veren Akıllı Asistanlar",
+    excerpt: "Geleneksel çağrı merkezleri ve destek ekiplerinin yükünü %70 azaltan AI chatbot ve sesli asistan teknolojilerinin entegrasyon süreçleri ve müşteri memnuniyetine etkisi.",
+    date: "11 Mart 2026",
+    slug: "musteri-hizmetlerinde-ai-donemi",
+    category: "customer" as const,
+  },
+  {
     title: "Verilerinizi Hazırlamadan AI Kullanmayın: Veri Kalitesi Rehberi",
     excerpt: "AI projeleri neden beklenen sonucu veremiyor? Çoğu zaman yanıt verinin kendisinde gizli. Veri kalitesini nasıl değerlendirirsiniz ve hazırlık süreci nasıl işler?",
     date: "6 Mart 2026",
