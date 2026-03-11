@@ -3,6 +3,13 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
+interface PublishState {
+  draftId: string
+  status: 'idle' | 'loading' | 'done' | 'error'
+  slug?: string
+  errorMsg?: string
+}
+
 const CONTENT_TYPES = [
   { id: 'blog', label: 'Blog Yazısı', icon: '📝', desc: 'SEO odaklı, 800-1200 kelime' },
   { id: 'script', label: 'Video Script', icon: '🎬', desc: 'YouTube / Reels için' },
@@ -43,6 +50,26 @@ export default function ContentGeneratorClient({
   const [result, setResult] = useState<Record<string, string> | null>(null)
   const [error, setError] = useState('')
   const [activeTab, setActiveTab] = useState<'generate' | 'drafts'>('generate')
+  const [publishStates, setPublishStates] = useState<Record<string, PublishState>>({})
+
+  async function publishDraft(draftId: string) {
+    setPublishStates(prev => ({ ...prev, [draftId]: { draftId, status: 'loading' } }))
+    try {
+      const res = await fetch('/api/admin/publish-draft', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ draft_id: draftId }),
+      })
+      const data = await res.json()
+      if (data.error) {
+        setPublishStates(prev => ({ ...prev, [draftId]: { draftId, status: 'error', errorMsg: data.error } }))
+      } else {
+        setPublishStates(prev => ({ ...prev, [draftId]: { draftId, status: 'done', slug: data.slug } }))
+      }
+    } catch (e) {
+      setPublishStates(prev => ({ ...prev, [draftId]: { draftId, status: 'error', errorMsg: String(e) } }))
+    }
+  }
 
   async function generate() {
     if (!topic.trim()) return
@@ -223,20 +250,49 @@ export default function ContentGeneratorClient({
         ) : (
           <motion.div key="drafts" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
             <div className="space-y-3">
-              {drafts.map((draft) => (
-                <div key={draft.id} className="bg-background-secondary border border-border rounded-xl p-5 flex items-start gap-4">
-                  <span className="text-2xl">{CONTENT_TYPES.find(t => t.id === draft.type)?.icon || '📄'}</span>
-                  <div className="flex-1">
-                    <h3 className="text-foreground text-sm font-medium">{draft.title || 'Başlıksız'}</h3>
-                    <p className="text-foreground-muted text-xs mt-1">
-                      {draft.type} · {new Date(draft.created_at).toLocaleDateString('tr-TR')} · {draft.status}
-                    </p>
-                    {draft.body && (
-                      <p className="text-foreground-secondary text-sm mt-2 line-clamp-2">{draft.body.slice(0, 150)}...</p>
+              {drafts.map((draft) => {
+                const ps = publishStates[draft.id]
+                const isPublished = draft.status === 'published' || ps?.status === 'done'
+                return (
+                  <div key={draft.id} className="bg-background-secondary border border-border rounded-xl p-5 flex items-start gap-4">
+                    <span className="text-2xl">{CONTENT_TYPES.find(t => t.id === draft.type)?.icon || '📄'}</span>
+                    <div className="flex-1">
+                      <h3 className="text-foreground text-sm font-medium">{draft.title || 'Başlıksız'}</h3>
+                      <p className="text-foreground-muted text-xs mt-1">
+                        {draft.type} · {new Date(draft.created_at).toLocaleDateString('tr-TR')} · {isPublished ? 'yayında' : draft.status}
+                      </p>
+                      {draft.body && (
+                        <p className="text-foreground-secondary text-sm mt-2 line-clamp-2">{draft.body.slice(0, 150)}...</p>
+                      )}
+                      {ps?.status === 'error' && (
+                        <p className="text-red-400 text-xs mt-2">⚠️ {ps.errorMsg}</p>
+                      )}
+                      {ps?.status === 'done' && ps.slug && (
+                        <a
+                          href={`/blog/${ps.slug}`}
+                          target="_blank"
+                          rel="noopener"
+                          className="inline-block text-secondary text-xs mt-2 hover:underline"
+                        >
+                          ✅ Yayınlandı → /blog/{ps.slug} ↗
+                        </a>
+                      )}
+                    </div>
+                    {draft.type === 'blog' && !isPublished && (
+                      <button
+                        onClick={() => publishDraft(draft.id)}
+                        disabled={ps?.status === 'loading'}
+                        className="flex-shrink-0 px-4 py-2 bg-secondary text-primary text-xs font-bold rounded-lg hover:bg-secondary-hover transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
+                        {ps?.status === 'loading' ? 'Yayınlanıyor...' : '🚀 Siteye Yayınla'}
+                      </button>
+                    )}
+                    {isPublished && draft.type === 'blog' && ps?.status !== 'done' && (
+                      <span className="flex-shrink-0 px-3 py-2 text-xs text-green-400 bg-green-500/10 rounded-lg">✅ Yayında</span>
                     )}
                   </div>
-                </div>
-              ))}
+                )
+              })}
             </div>
           </motion.div>
         )}

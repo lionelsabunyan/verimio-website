@@ -48,8 +48,16 @@ const INTEGRATIONS = [
     icon: '📊',
     desc: 'SEO ve trafik takibi',
     status: 'pending',
-    env: 'GOOGLE_SEARCH_CONSOLE_KEY',
+    env: 'GSC_SERVICE_ACCOUNT_JSON',
     docs: 'https://search.google.com/search-console',
+  },
+  {
+    name: 'GitHub',
+    icon: '🐙',
+    desc: 'Blog yayınlama otomasyonu',
+    status: 'pending',
+    env: 'GITHUB_TOKEN',
+    docs: 'https://github.com/settings/tokens',
   },
   {
     name: 'Google Analytics 4',
