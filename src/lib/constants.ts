@@ -187,6 +187,13 @@ export const FAQ_ITEMS = [
 
 export const BLOG_POSTS = [
   {
+    title: "Ekibiniz Yapay Zekadan Korkmalı mı, Yoksa Onu Kucaklamalı mı?",
+    excerpt: "Yapay zeka, iş dünyasında bir dönüşüm rüzgarı estiriyor. Peki ekibiniz bu dönüşüme nasıl bakmalı? Korku mu, kucaklama mı? İşte liderlerin yol haritası.",
+    date: "12 Mart 2026",
+    slug: "ekibiniz-yapay-zekadan-korkmali-mi-yoksa-onu-kucaklamali-mi",
+    category: "strategy" as const,
+  },
+  {
     title: "KOBİ'lerde Yapay Zeka Devrimi: Rekabetin Gerisinde Kalmamak İçin 5 Adım",
     excerpt: "Türk KOBİ'lerin dijital dönüşüm sürecinde yapay zekayı nasıl stratejik bir avantaja dönüştürebileceklerini anlatan kapsamlı bir rehber.",
     date: "11 Mart 2026",
