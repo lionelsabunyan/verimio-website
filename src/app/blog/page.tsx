@@ -3,6 +3,7 @@ import { ArrowUpRight, Calendar } from "lucide-react";
 import { BLOG_POSTS, BRAND } from "@/lib/constants";
 import BlogCoverImage from "@/components/brand/BlogCoverImage";
 import type { Metadata } from "next";
+import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 
 export const metadata: Metadata = {
   title: "Blog - AI & Otomasyon İçerikleri",
@@ -14,6 +15,12 @@ export const metadata: Metadata = {
 export default function BlogPage() {
   return (
     <main className="pt-20">
+      <BreadcrumbSchema
+        items={[
+          { name: "Ana Sayfa", url: "https://www.verimio.com.tr" },
+          { name: "Blog", url: "https://www.verimio.com.tr/blog" },
+        ]}
+      />
       {/* Hero */}
       <section className="section-padding">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

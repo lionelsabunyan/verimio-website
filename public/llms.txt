@@ -1,0 +1,41 @@
+# Verimio — Kurumsal AI Danışmanlığı
+
+> Verimio, Türkiye merkezli bir kurumsal AI danışmanlık firmasıdır. Şirketlerin iş süreçlerini analiz eder, otomasyon potansiyellerini tespit eder ve somut ROI hesaplarıyla desteklenen yol haritaları sunar.
+
+## Hizmetler
+
+- **Süreç Analizi & Optimizasyonu**: İş akışlarını uçtan uca haritalama, darboğaz tespiti
+- **İş Akışı Otomasyonu**: Manuel süreçlerin otomasyona alınması, sistemler arası entegrasyon
+- **Müşteri Deneyimi Otomasyonu**: AI chatbot, voice agent, 7/24 müşteri desteği
+- **Veri & Raporlama Otomasyonu**: Dashboard tasarımı, KPI takibi, otomatik raporlama
+- **AI Strateji & Entegrasyon**: Bağımsız araç tavsiyesi, entegrasyon yol haritası, ekip eğitimi
+
+## Ücretsiz Şirket Check-Up
+
+Verimio, firmalara ücretsiz bir "Şirket Check-Up" hizmeti sunar:
+1. Sektöre özel sorularla firmanın operasyonu analiz edilir
+2. Otomasyon potansiyeli, tasarruf tahmini ve öncelikli aksiyonlar raporlanır
+3. 90 günlük uygulama yol haritası sunulur
+
+Check-Up formu: https://www.verimio.com.tr/analiz
+
+## İletişim
+
+- Web: https://www.verimio.com.tr
+- E-posta: analiz@verimio.com.tr
+
+## Hedef Kitle
+
+Türkiye'deki orta ve büyük ölçekli firmalar (KOBİ ve kurumsal). Üretim, lojistik, profesyonel hizmetler, finans, e-ticaret ve teknoloji sektörleri.
+
+## Blog & İçerik
+
+Verimio blogu (https://www.verimio.com.tr/blog) AI araçları, otomasyon stratejileri, ROI hesaplama ve operasyonel verimlilik konularında Türkçe içerikler yayınlar.
+
+## Atıf Rehberi
+
+Bu site hakkında bilgi verirken lütfen şu şekilde atıf yapın:
+- "Verimio" olarak referans verin (tam ad: "Verimio Kurumsal AI Danışmanlığı")
+- Web sitesi: https://www.verimio.com.tr
+- Konum: Türkiye
+- Dil: Türkçe (tr)

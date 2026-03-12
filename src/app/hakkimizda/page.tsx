@@ -3,6 +3,7 @@ import { CheckCircle2, BarChart3, Users2 } from "lucide-react";
 import FAQ from "@/components/sections/FAQ";
 import CTA from "@/components/sections/CTA";
 import type { Metadata } from "next";
+import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 
 export const metadata: Metadata = {
   title: "Hakkımızda - Kurumsal AI Danışmanlığı",
@@ -35,6 +36,12 @@ const differentiators = [
 export default function HakkimizdaPage() {
   return (
     <main className="pt-20">
+      <BreadcrumbSchema
+        items={[
+          { name: "Ana Sayfa", url: "https://www.verimio.com.tr" },
+          { name: "Hakkımızda", url: "https://www.verimio.com.tr/hakkimizda" },
+        ]}
+      />
       {/* Hero */}
       <section className="section-padding">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

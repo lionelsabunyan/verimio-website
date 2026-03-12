@@ -9,6 +9,16 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "v3b.fal.media" },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'verimio.com.tr' }],
+        destination: 'https://www.verimio.com.tr/:path*',
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

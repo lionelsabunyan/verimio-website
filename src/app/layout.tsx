@@ -69,6 +69,12 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://www.verimio.com.tr",
+    types: {
+      "application/rss+xml": "https://www.verimio.com.tr/feed.xml",
+    },
+    languages: {
+      "tr-TR": "https://www.verimio.com.tr",
+    },
   },
 };
 

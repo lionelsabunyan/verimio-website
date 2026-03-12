@@ -11,6 +11,7 @@ import { BRAND, BLOG_POSTS } from "@/lib/constants";
 import BlogCardImage, { type BlogCategory } from "@/components/brand/BlogCardImage";
 import BlogCoverImage from "@/components/brand/BlogCoverImage";
 import ArticleSchema from "@/components/seo/ArticleSchema";
+import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 
 const CONTENT_DIR = path.join(process.cwd(), "src/content/blog");
 
@@ -172,6 +173,13 @@ export default async function BlogPostPage({
         date={frontmatter.date}
         author={frontmatter.author}
         webpExists={webpExists}
+      />
+      <BreadcrumbSchema
+        items={[
+          { name: "Ana Sayfa", url: "https://www.verimio.com.tr" },
+          { name: "Blog", url: "https://www.verimio.com.tr/blog" },
+          { name: frontmatter.title, url: `https://www.verimio.com.tr/blog/${slug}` },
+        ]}
       />
       {/* Header */}
       <section className="section-padding pb-0">

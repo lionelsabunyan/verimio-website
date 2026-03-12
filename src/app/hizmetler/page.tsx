@@ -8,6 +8,7 @@ import AIStrategyIcon from "@/components/brand/icons/services/AIStrategyIcon";
 import CTA from "@/components/sections/CTA";
 import Button from "@/components/ui/Button";
 import type { Metadata } from "next";
+import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 
 export const metadata: Metadata = {
   title: "Hizmetler - Kurumsal AI Danışmanlığı",
@@ -127,6 +128,12 @@ const problemCards = [
 export default function HizmetlerPage() {
   return (
     <main className="pt-20">
+      <BreadcrumbSchema
+        items={[
+          { name: "Ana Sayfa", url: "https://www.verimio.com.tr" },
+          { name: "Hizmetler", url: "https://www.verimio.com.tr/hizmetler" },
+        ]}
+      />
       {/* Hero */}
       <section className="section-padding">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

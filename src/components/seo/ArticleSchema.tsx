@@ -42,6 +42,10 @@ export default function ArticleSchema({
     },
     url: `https://www.verimio.com.tr/blog/${slug}`,
     inLanguage: "tr-TR",
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["article h1", "article h2", "article p:first-of-type"],
+    },
     ...(webpExists
       ? {
           image: {
