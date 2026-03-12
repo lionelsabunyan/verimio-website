@@ -187,6 +187,13 @@ export const FAQ_ITEMS = [
 
 export const BLOG_POSTS = [
   {
+    title: "Verimio Bülten: Bu Ay İşletmenizde Uygulayabileceğiniz 3 Pratik Otomasyon",
+    excerpt: "Bültenden haberdar olun: İşletmeniz için uygulanabilir, düşük maliyetli 3 pratik otomasyon fikri, sektör haberleri ve ayın öne çıkan yapay zeka gelişmeleri.",
+    date: "12 Mart 2026",
+    slug: "verimio-bulten-bu-ay-isletmenizde-uygulayabileceginiz-3-prat",
+    category: "strategy" as const,
+  },
+  {
     title: "Ekibiniz Yapay Zekadan Korkmalı mı, Yoksa Onu Kucaklamalı mı?",
     excerpt: "Yapay zeka, iş dünyasında bir dönüşüm rüzgarı estiriyor. Peki ekibiniz bu dönüşüme nasıl bakmalı? Korku mu, kucaklama mı? İşte liderlerin yol haritası.",
     date: "12 Mart 2026",
