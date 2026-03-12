@@ -187,6 +187,13 @@ export const FAQ_ITEMS = [
 
 export const BLOG_POSTS = [
   {
+    title: "Excel'den Yapay Zekaya: Raporlama Otomasyonu ile Hata Payını Sıfırlayın",
+    excerpt: "Manuel veri girişinin işletmelere maliyeti ve yapay zeka destekli raporlama otomasyonu ile süreçlerin nasıl hızlandığı bu yazıda inceleniyor.",
+    date: "12 Mart 2026",
+    slug: "excelden-yapay-zekaya-raporlama-otomasyonu-ile-hata-payini-s",
+    category: "automation" as const,
+  },
+  {
     title: "AI Dönüşümü Bir 'IT' Projesi Değil, Bir Yönetim Vizyonudur",
     excerpt: "Yapay zeka adaptasyonu, salt bir teknoloji projesi olmaktan öte, şirket kültürünü ve yönetim anlayışını dönüştüren stratejik bir vizyon gerektirir.",
     date: "12 Mart 2026",
