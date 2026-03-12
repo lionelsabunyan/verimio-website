@@ -38,7 +38,7 @@ export async function POST(request: Request) {
   const { data: job, error: jobError } = await supabase
     .from('command_jobs')
     .insert({
-      project: 'verimio-website',
+      project: 'verimio',
       skill: 'suggestion-publisher',
       input: {
         title: suggestion.title,
