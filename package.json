@@ -16,7 +16,6 @@
     "framer-motion": "^12.34.1",
     "googleapis": "^171.4.0",
     "gray-matter": "^4.0.3",
-    "lightningcss-darwin-arm64": "^1.32.0",
     "lucide-react": "^0.574.0",
     "next": "16.1.6",
     "next-mdx-remote": "^6.0.0",
