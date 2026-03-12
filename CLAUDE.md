@@ -1,18 +1,17 @@
-# Verimio Admin Dashboard — CLAUDE.md
+# Verimio — CLAUDE.md
 
-Bu dosya Claude Code'un her session'da projeyi sıfırdan öğrenmesi gerekmeden devam etmesi için yazılmıştır.
+Türk KOBİ'lerine AI danışmanlığı yapan şirket. Bu repo hem ana siteyi hem admin dashboard'u içerir.
+*Son güncelleme: 12 Mart 2026*
 
 ---
 
 ## Proje Özeti
 
-Verimio — Türk KOBİ'lerine AI danışmanlığı yapan şirket (Sedat tarafından işletiliyor).
-Ana site: `verimio.com.tr` → Next.js, Vercel'de deploy.
-Bu repo: `verimio-website` — hem ana site hem admin dashboard.
-
-**Admin panel:** `/admin/*` — şifre korumalı, sadece Sedat kullanıyor.
-**Canlı URL:** `https://verimio-website-201mydlhm-lionels-projects-b9ad704e.vercel.app`
-**Admin giriş:** `lionelsabunyan@gmail.com` / `@Redline81!.`
+- **Site:** `verimio.com.tr` (Türkçe, tr-TR)
+- **Repo:** `verimio-website` — Next.js App Router
+- **Deploy:** Vercel, GitHub push → otomatik deploy
+- **Admin panel:** `/admin/*` — şifre korumalı, tek kullanıcı
+- **Credential'lar:** `.env.local` dosyasında — ASLA CLAUDE.md'ye veya commit'e ekleme
 
 ---
 
@@ -21,187 +20,16 @@ Bu repo: `verimio-website` — hem ana site hem admin dashboard.
 | Katman | Teknoloji |
 |--------|-----------|
 | Framework | Next.js 16.1.6, App Router, React 19 |
-| Styling | Tailwind CSS v4 (`@theme inline` globals.css'de, tailwind.config.js YOK) |
-| DB & Auth | Supabase (`njxgikhrhxvfveywvsuh`) — eu-central-1 |
-| AI Görsel/Video | fal.ai (direct fetch, SDK kullanılmıyor) |
+| Styling | Tailwind CSS v4 (`@theme inline`, tailwind.config.js YOK) |
+| DB & Auth | Supabase (eu-central-1) |
+| Blog | MDX (next-mdx-remote + gray-matter) |
+| AI Görsel | fal.ai (direct fetch, SDK kullanılmıyor) |
 | AI İçerik | Anthropic Claude API |
+| SEO | JSON-LD schemas, sitemap.ts, robots.ts, OG images |
+| Analytics | Google Analytics (googleapis) |
 | Animasyon | Framer Motion |
 | Grafikler | Recharts |
-| Deploy | Vercel (GitHub push → auto deploy) |
 | Email | Resend |
-| Otomasyon | n8n (`https://d54ei7xd.rpcld.com`) |
-
----
-
-## Supabase Bilgileri
-
-- **Project ID:** `njxgikhrhxvfveywvsuh`
-- **URL:** `https://njxgikhrhxvfveywvsuh.supabase.co`
-- **Region:** eu-central-1
-- **Anon Key:** `.env.local` dosyasında `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-
-### Tablolar
-
-```
-leads           → Tally.so formdan gelen lead'ler (ana tablo, 257+ satır)
-social_posts    → Sosyal medya post taslakları (draft/scheduled/published)
-media_assets    → fal.ai ile üretilen görsel/videolar (Supabase Storage URL)
-content_drafts  → Claude ile üretilen blog/script taslakları
-meetings        → Calendly toplantıları (lead_id FK)
-```
-
----
-
-## Dosya Yapısı
-
-```
-src/
-├── app/
-│   ├── layout.tsx                    → Root layout (NavbarWrapper ile admin'de navbar/footer gizlenir)
-│   ├── admin/
-│   │   ├── layout.tsx                → Admin shell: sidebar + children
-│   │   ├── login/page.tsx            → Email + şifre girişi (magic link YOK)
-│   │   ├── page.tsx                  → Dashboard (KPI + grafik + son leadler)
-│   │   ├── crm/page.tsx              → Lead listesi
-│   │   ├── crm/[id]/page.tsx         → Lead detay
-│   │   ├── meetings/page.tsx         → Calendly toplantıları
-│   │   ├── social/page.tsx           → Sosyal medya takvimi
-│   │   ├── social/visuals/page.tsx   → fal.ai görsel üretim
-│   │   ├── content/page.tsx          → Claude içerik üretimi
-│   │   ├── seo/page.tsx              → SEO & Analytics (placeholder, entegrasyon yok)
-│   │   ├── video/page.tsx            → Hailuo video üretimi
-│   │   ├── reports/page.tsx          → PDF rapor takibi
-│   │   └── settings/page.tsx         → API key görünümü
-│   └── api/admin/
-│       ├── leads/route.ts            → GET (filtreli) + PATCH (status güncelle)
-│       ├── generate-image/route.ts   → POST → fal.ai + Supabase media_assets
-│       ├── generate-video/route.ts   → POST (queue başlat) + GET (durum sorgula)
-│       ├── generate-content/route.ts → POST → Claude API + content_drafts
-│       └── social/route.ts           → GET/POST/PATCH/DELETE
-├── components/
-│   ├── layout/
-│   │   ├── NavbarWrapper.tsx         → 'use client', /admin'de Navbar+Footer'ı gizler
-│   │   ├── Navbar.tsx                → Ana site navbar
-│   │   └── Footer.tsx                → Ana site footer
-│   └── admin/
-│       ├── Sidebar.tsx               → Admin sol menü (10 öğe, active state)
-│       ├── Header.tsx                → Sayfa başlık + logout + hızlı görsel linki
-│       ├── DashboardClient.tsx       → KPI kartları + Recharts AreaChart
-│       ├── CRMClient.tsx             → Lead tablosu + arama + filtre + status dropdown
-│       ├── SocialCalendarClient.tsx  → Post listesi + platform filtre + yeni post modal
-│       ├── ImageGeneratorClient.tsx  → fal.ai prompt UI + önceki görseller
-│       ├── ContentGeneratorClient.tsx→ Claude tip/konu/keyword formu + taslaklar
-│       ├── VideoGeneratorClient.tsx  → Hailuo prompt + async status takibi
-│       ├── SEOClient.tsx             → Placeholder (Google Search Console entegre değil)
-│       ├── MeetingsClient.tsx        → Yaklaşan/geçmiş toplantı listesi
-│       └── SettingsClient.tsx        → Entegrasyon durumları + brand renkler
-└── lib/
-    ├── supabase/client.ts            → Browser Supabase client (@supabase/ssr)
-    ├── supabase/server.ts            → Server Supabase client (@supabase/ssr)
-    └── fal.ts                        → FAL_MODELS + IMAGE_SIZES constants
-middleware.ts                         → /admin/* → auth check → /admin/login
-```
-
----
-
-## fal.ai Entegrasyon Notu
-
-**SDK kullanılmıyor** — TypeScript uyumsuzluğu nedeniyle direct fetch yapılıyor:
-```typescript
-// API route'larda şu pattern kullanılıyor:
-const res = await fetch(`https://fal.run/${model}`, {
-  method: 'POST',
-  headers: {
-    'Authorization': `Key ${process.env.FAL_KEY}`,
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({ prompt, ... })
-})
-```
-
-Video için async queue:
-```typescript
-// Başlatma: POST https://queue.fal.run/{model}
-// Durum: GET https://queue.fal.run/{model}/requests/{request_id}
-```
-
-### Modeller
-```typescript
-RECRAFT_V4: 'fal-ai/recraft/v3/text-to-image'
-RECRAFT_V4_SVG: 'fal-ai/recraft/v4/pro/text-to-vector'
-FLUX_SCHNELL: 'fal-ai/flux/schnell'
-FLUX_DEV: 'fal-ai/flux/dev'
-HAILUO: 'fal-ai/minimax/video-01'
-VIDU: 'fal-ai/vidu/vidu-q1'
-```
-
----
-
-## Kurumsal Kimlik (Özet)
-
-**Tam kılavuz:** `docs/BRAND.md`
-
-**Logo:** `verim` (beyaz #FFFFFF) + `io` (lime #A3E635) — lowercase, font-weight 700, letter-spacing -0.02em  
-**V Monogram:** beyaz V + lime nokta, #2E1065 arka plan  
-**Font:** DM Sans (300–700) + DM Mono — Geist kullanma  
-**Ana renkler:** Deep Indigo `#2E1065` · Vivid Lime `#A3E635` · Dark Indigo `#1E0A46` · Soft Purple `#8B5CF6`  
-**CTA buton:** her zaman lime bg (`#A3E635`) + indigo text (`#2E1065`) + bold  
-**Tutarlılık:** yeni component yaparken `docs/BRAND.md` §6.4 kontrol listesine bak  
-**Brand preview:** `https://verimio-website.vercel.app/brand-preview?token=verimio2025`
-
----
-
-## Renk Paleti (Admin Dark Theme)
-
-```
-Arka plan:      #0A0616
-Kart bg:        #0F0A1E
-Border:         #1A1030
-Border koyu:    #2E1065
-Yazı birincil:  #FFFFFF
-Yazı ikincil:   #78716C
-Yazı soluk:     #4C4462
-Vurgu (lime):   #A3E635
-Mor (brand):    #8B5CF6
-```
-
----
-
-## Auth Notu (Önemli!)
-
-Supabase'de kullanıcı SQL ile oluşturuldu. Bu yöntemde hem `auth.users` hem `auth.identities` tablosuna kayıt gerekiyor, aksi halde login çalışmıyor. Şu an kullanıcı doğru kurulu ve login çalışıyor.
-
----
-
-## .env.local (Canlı değerleri Vercel'de de var)
-
-```
-NEXT_PUBLIC_SUPABASE_URL=https://njxgikhrhxvfveywvsuh.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJ...
-FAL_KEY=c7fe41df-d18e-4e72-9b24-91bc4c4b7ca0:5e679617621a349ed8bb0562065fc9aa
-ANTHROPIC_API_KEY=sk-ant-...
-RESEND_API_KEY=re_...
-N8N_API_URL=https://d54ei7xd.rpcld.com
-N8N_API_KEY=...
-```
-
----
-
-## Yapılacaklar (Sıradaki Adımlar)
-
-Sedat ile konuşulan "3. adım" henüz açıklanmadı.
-
-### Bekleyen Entegrasyonlar
-- [ ] Google Search Console API bağlantısı (`/admin/seo` şu an placeholder)
-- [ ] Calendly webhook → `meetings` tablosuna auto-sync
-- [ ] LinkedIn API otomatik paylaşım
-- [ ] Twitter/X API otomatik paylaşım
-- [ ] `verimio.com.tr` custom domain → Vercel'e bağlanacak
-
-### Bilinen Eksikler
-- SEO sayfası gerçek veri göstermiyor
-- Mobile responsive tam değil (admin panel masaüstü odaklı)
-- Video üretimi Supabase Storage'a kaydedilmiyor (sadece URL tutuluyor)
 
 ---
 
@@ -211,41 +39,237 @@ Sedat ile konuşulan "3. adım" henüz açıklanmadı.
 cd verimio-website
 npm run dev        # localhost:3000
 npm run build      # production build test
-git push           # → Vercel otomatik deploy
+git push origin main  # → Vercel otomatik deploy
 ```
 
 ---
 
-*Son güncelleme: 19 Şubat 2026*
+## Dosya Yapısı
+
+```
+src/
+├── app/
+│   ├── layout.tsx                     → Root layout + metadata + OrganizationSchema
+│   ├── page.tsx                       → Ana sayfa
+│   ├── robots.ts                      → Crawl kuralları
+│   ├── sitemap.ts                     → Dinamik sitemap (statik + blog)
+│   ├── opengraph-image.tsx            → Root OG image (1200x630)
+│   ├── blog/
+│   │   ├── page.tsx                   → Blog listing
+│   │   └── [slug]/
+│   │       ├── page.tsx               → MDX render + schema
+│   │       └── opengraph-image.tsx    → Dinamik per-post OG
+│   ├── analiz/page.tsx                → Check-up formu
+│   ├── feed.xml/route.ts              → RSS 2.0
+│   ├── admin/
+│   │   ├── layout.tsx                 → Admin shell (sidebar + header)
+│   │   ├── login/page.tsx             → Auth
+│   │   ├── page.tsx                   → Dashboard (KPI + grafikler)
+│   │   ├── crm/                       → Lead yönetimi
+│   │   ├── social/                    → Sosyal medya takvimi + agency
+│   │   ├── content/                   → İçerik üretimi + pipeline + suggestions
+│   │   ├── command/                   → Command Center (jobs, agents, pipelines, approvals)
+│   │   ├── meetings/                  → Calendly toplantıları
+│   │   ├── seo/                       → SEO dashboard
+│   │   ├── brand/                     → Marka yönetimi
+│   │   ├── video/                     → Video üretimi
+│   │   ├── reports/                   → PDF rapor takibi
+│   │   ├── settings/                  → Entegrasyon ayarları
+│   │   └── bfg/                       → BFG alt-proje paneli
+│   └── api/admin/
+│       ├── leads/route.ts             → GET + PATCH
+│       ├── generate-image/route.ts    → fal.ai
+│       ├── generate-video/route.ts    → Hailuo async queue
+│       ├── generate-content/route.ts  → Claude API
+│       ├── social/route.ts            → CRUD
+│       ├── agency/                    → Sosyal medya agency API'leri
+│       ├── command/                   → Command Center API'leri
+│       ├── content-suggestions/       → AI içerik önerileri
+│       ├── publish-draft/             → Draft yayınlama
+│       └── publish-suggestion/        → Öneri yayınlama
+├── components/
+│   ├── layout/     → Navbar, Footer, NavbarWrapper
+│   ├── sections/   → Ana sayfa bölümleri (Hero, Services, FAQ, vb.)
+│   ├── seo/        → OrganizationSchema, BreadcrumbSchema, ArticleSchema, FAQSchema
+│   ├── brand/      → BlogCoverImage, sosyal medya templates
+│   ├── form/       → Tally form bileşenleri
+│   ├── ui/         → Genel UI bileşenleri
+│   ├── providers/  → Context providers
+│   └── admin/      → Tüm admin panel bileşenleri + command/ alt klasörü
+├── lib/
+│   ├── constants.ts    → TÜM içerik/copy merkezi (blog listesi dahil)
+│   ├── supabase/       → client.ts + server.ts (@supabase/ssr)
+│   └── fal.ts          → FAL_MODELS + IMAGE_SIZES
+├── content/blog/       → MDX dosyaları (15 yazı)
+└── middleware.ts        → /admin/* auth kontrolü
+```
 
 ---
 
-## Kreatif Direktör Skill
+## SEO Altyapısı (Özet)
 
-Projeye özel bir AI kreatif direktör skill'i tanımlıdır:
+**Detaylı rehber:** `docs/SEO-GEO.md`
 
-**Dosya:** `.claude/skills/verimio-creative.md`
+Mevcut SEO altyapısı:
 
-`/verimio-creative` komutuyla veya "kreatif direktör olarak..." diye başlayan görevlerde bu skill devreye girer.
+| Dosya | İşlev |
+|-------|-------|
+| `robots.ts` | /admin, /api, /brand-preview engelleme |
+| `sitemap.ts` | 9 statik sayfa + dinamik blog URL'leri |
+| `feed.xml/route.ts` | RSS 2.0 feed |
+| `opengraph-image.tsx` | Root + per-post OG (1200x630) |
+| `components/seo/*` | 4 JSON-LD schema (Organization, Breadcrumb, Article, FAQ) |
+| `layout.tsx` | Canonical, hreflang tr-TR, twitter card |
+| `next.config.ts` | non-www→www 301, güvenlik header'ları, cache |
 
-**Kapsamı:**
-- Görsel kimlik rehberi (tam renk paleti, tipografi, marka kuralları)
-- fal.ai model seçim kılavuzu (FLUX Pro, Ultra, Ideogram, video modelleri)
-- `creative-prompts.ts` entegrasyonu (brief deposu, approved_url yönetimi)
-- Site sayfa görsel durumu (hangi sayfada ne var, ne eksik)
-- Sosyal medya şablon sistemi (4 platform, 2 template bileşen)
-- Güncel tasarım trend rehberi
-- Çalışma protokolü (üret → sun → onay → entegre → commit)
+### Yeni Sayfa Checklist
 
-**8 Uzman Mod** (skill dosyasının sonunda tam açıklama):
+1. `metadata` export'u ekle (title, description, canonical)
+2. Uygun schema bileşeni kullan (Article, FAQ, vb.)
+3. Tek `h1`, doğru `h2/h3` hiyerarşisi
+4. `inLanguage: "tr-TR"` her schema'da
+5. Blog ise: MDX + webp kapak (1200x630) + `constants.ts` BLOG_POSTS'a ekle
+6. `sitemap.ts` otomatik çeker — manual ekleme gerekmez
 
-| Komut | Mod | Ne Zaman |
-|-------|-----|----------|
-| `/kreatif design-system` | Design System Analisti | Token, bileşen spec, tutarlılık |
-| `/kreatif marka` | Marka Kimliği Direktörü | Brand voice, logo, do/don't |
-| `/kreatif ui` | UI/UX Tasarım Uzmanı | Layout, hiyerarşi, akış |
-| `/kreatif pazarlama` | Pazarlama İçerik Direktörü | Copy, kampanya, sosyal medya |
-| `/kreatif figma` | Figma Spec Uzmanı | Auto layout, handoff, varyant |
-| `/kreatif eleştiri` | Tasarım Eleştirmeni | Heuristic değerlendirme, audit |
-| `/kreatif trend` | Trend Araştırmacısı | 2026 trendleri, rakip analizi |
-| `/kreatif erişilebilirlik` | Erişilebilirlik Denetçisi | WCAG AA, kontrast, keyboard nav |
+---
+
+## Blog Sistemi
+
+**15 yazı yayında** — MDX tabanlı (`src/content/blog/*.mdx`)
+
+Render: `next-mdx-remote` + `gray-matter` frontmatter parsing
+Kapak görseli: `BlogCoverImage` bileşeni (webp varsa Image, yoksa SVG fallback)
+Görseller: `public/images/blog/{slug}.webp` (fal.ai Recraft V3)
+
+### Blog Slug Listesi
+
+| # | Slug | Kategori | Tarih |
+|---|------|----------|-------|
+| 1 | `excelden-yapay-zekaya-raporlama-otomasyonu-ile-hata-payini-s` | automation | 12 Mar |
+| 2 | `ai-donusumu-bir-it-projesi-degil-bir-yonetim-vizyonudur` | strategy | 12 Mar |
+| 3 | `verimio-bulten-bu-ay-isletmenizde-uygulayabileceginiz-3-prat` | strategy | 12 Mar |
+| 4 | `ekibiniz-yapay-zekadan-korkmali-mi-yoksa-onu-kucaklamali-mi` | strategy | 12 Mar |
+| 5 | `kobide-yapay-zeka-devrimi` | strategy | 11 Mar |
+| 6 | `raporlama-otomasyonu-nedir` | automation | 11 Mar |
+| 7 | `musteri-hizmetlerinde-ai-donemi` | customer | 11 Mar |
+| 8 | `ai-icin-veri-kalitesi` | data | 6 Mar |
+| 9 | `chatbot-voice-agent-secimi` | customer | 5 Mar |
+| 10 | `ai-roi-hesaplama` | roi | 4 Mar |
+| 11 | `make-vs-n8n-karsilastirma` | ai-tools | 3 Mar |
+| 12 | `ai-danismanlik-neden-farklidir` | strategy | 2 Mar |
+| 13 | `n8n-ile-basit-otomasyon` | tutorial | 1 Mar |
+| 14 | `otomasyon-yanlislari` | automation | 25 Şub |
+| 15 | `sirket-check-up-nedir` | strategy | 20 Şub |
+
+Kategoriler: `strategy`, `automation`, `customer`, `data`, `roi`, `ai-tools`, `tutorial`
+
+---
+
+## Command Center & Skill Army
+
+### Mimari
+
+```
+Web Panel (/admin/command)
+  → POST /api/admin/command/jobs → Supabase command_jobs (status: queued)
+  → Lokal Daemon (Mac, Node.js) polls her 5s
+  → spawn: claude binary [skill+input] --cwd [proje]
+  → stdout → command_job_logs (Supabase Realtime)
+  → Panel LogViewer terminal görünümü (canlı streaming)
+```
+
+**Daemon:** `/Users/sedo/Desktop/Personel Space/Verimio/command-daemon/`
+- `index.js` ~360 satır — poll + execute + log
+- Çalıştır: `nohup node index.js > daemon.log 2>&1 &`
+
+**Panel sayfaları:** dashboard, jobs, jobs/[id], agents, pipelines, approvals
+
+**API routes:** `api/admin/command/` altında — jobs, agents, approvals, pipelines, runs
+
+### 8 Skill (`~/.claude/skills/verimio/`)
+
+| Skill | Komut | İşlev |
+|-------|-------|-------|
+| SEO Researcher | `/seo-researcher [konu]` | Anahtar kelime analizi |
+| Blog Outliner | `/blog-outliner [konu]` | Outline oluşturma |
+| Blog Writer | `/blog-writer [outline]` | MDX yazma |
+| Visual Director | `/visual-director [makale]` | Kapak görseli üretimi |
+| Social Copywriter | `/social-copywriter [makale]` | Sosyal medya copy |
+| Blog Publisher | `/blog-publisher [makale]` | MDX + görsel + constants + push + Notion + GSC |
+| Content Planner | `/content-planner [ay/tema]` | Aylık 4 yazı planı |
+| Monthly Launcher | `/monthly-launcher [AY YILI]` | Notion → tam pipeline |
+
+### İçerik Pipeline
+
+```
+content-planner → 4 yazı planı → Notion
+  ↓ onay
+monthly-launcher → seo-researcher → blog-outliner → blog-writer → blog-publisher
+  blog-publisher: MDX + fal.ai webp + constants.ts + git push + Notion ✓ + GSC index
+```
+
+---
+
+## Kurumsal Kimlik
+
+**Tam kılavuz:** `docs/BRAND.md`
+
+| Öğe | Değer |
+|-----|-------|
+| Logo | `verim` (beyaz) + `io` (lime #A3E635) — lowercase, bold |
+| Font | DM Sans (300–700) + DM Mono |
+| Ana renkler | Deep Indigo `#2E1065` · Lime `#A3E635` · Dark `#1E0A46` · Purple `#8B5CF6` |
+| Admin dark | bg `#0A0616` · kart `#0F0A1E` · border `#1A1030` |
+| CTA butonu | Lime bg + indigo text + bold |
+
+---
+
+## Supabase
+
+- **Project ID:** `njxgikhrhxvfveywvsuh`
+- **Region:** eu-central-1
+- **Key'ler:** `.env.local` dosyasında
+
+### Tablolar
+
+```
+leads            → Tally.so formdan gelen lead'ler
+social_posts     → Sosyal medya post taslakları
+media_assets     → fal.ai görselleri (Supabase Storage URL)
+content_drafts   → Claude ile üretilen taslaklar
+meetings         → Calendly toplantıları
+command_jobs     → Command Center iş kuyruğu
+command_job_logs → Streaming çıktı
+pipelines        → Pipeline tanımları
+approvals        → Onay kontrol noktaları
+agent_profiles   → Skill/agent kayıtları (21 kayıt)
+```
+
+---
+
+## Ortam Değişkenleri
+
+Tüm key'ler `.env.local` dosyasında ve Vercel Environment Variables'da tanımlı.
+Gerekli değişkenler: `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `FAL_KEY`, `ANTHROPIC_API_KEY`, `RESEND_API_KEY`.
+
+> **UYARI:** API key'leri, şifreleri veya token'ları ASLA bu dosyaya veya Git commit'e ekleme.
+
+---
+
+## Bekleyen İşler
+
+- [ ] Google Search Console API → `/admin/seo` gerçek veri
+- [ ] Calendly webhook → `meetings` otomatik sync
+- [ ] LinkedIn / Twitter API otomatik paylaşım
+- [ ] `verimio.com.tr` custom domain → Vercel
+- [ ] Mobile responsive iyileştirme (admin panel masaüstü odaklı)
+
+---
+
+## CLAUDE.md Sürdürülebilirlik Kuralları
+
+- **Güncelle:** Yeni modül, tech stack değişikliği, mimari değişiklik
+- **Güncelleme:** Yeni blog yazısı, küçük fix'ler, API key rotasyonu
+- **İlke:** "Değişmeyeni yaz, değişeni referansla"
+- **Detay dosyaları:** `docs/BRAND.md` (marka), `docs/SEO-GEO.md` (SEO/GEO)
+- **Review:** Ayda 1 kez `/revise-claude-md` ile kontrol et
