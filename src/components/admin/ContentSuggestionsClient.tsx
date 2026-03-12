@@ -3,6 +3,7 @@
 import { useState, useMemo } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
+import PublishProgressModal from './PublishProgressModal'
 
 interface Suggestion {
   id: string
@@ -76,6 +77,8 @@ export default function ContentSuggestionsClient({
   const [editingNotes, setEditingNotes] = useState<Record<string, string>>({})
   const [schedulingId, setSchedulingId] = useState<string | null>(null)
   const [scheduleDate, setScheduleDate] = useState('')
+  const [publishingJobId, setPublishingJobId] = useState<string | null>(null)
+  const [publishingTitle, setPublishingTitle] = useState('')
 
   const filtered = useMemo(() => {
     return suggestions.filter(s => {
@@ -155,6 +158,39 @@ export default function ContentSuggestionsClient({
     const data = await res.json()
     if (data.suggestion) {
       setSuggestions(prev => prev.map(s => s.id === id ? data.suggestion : s))
+    }
+  }
+
+  async function handlePublish(suggestion: Suggestion) {
+    try {
+      const res = await fetch('/api/admin/publish-suggestion', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ suggestionId: suggestion.id }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'Yayınlama başlatılamadı')
+      setPublishingJobId(data.jobId)
+      setPublishingTitle(suggestion.title)
+      // Update local state to 'publishing'
+      setSuggestions(prev => prev.map(s => s.id === suggestion.id ? { ...s, status: 'publishing' } : s))
+    } catch (e: unknown) {
+      const msg = e instanceof Error ? e.message : 'Bilinmeyen hata'
+      alert(`Hata: ${msg}`)
+    }
+  }
+
+  function handlePublishComplete(success: boolean) {
+    if (success && publishingJobId) {
+      // Find the suggestion that was being published and mark as published
+      setSuggestions(prev => prev.map(s =>
+        s.status === 'publishing' ? { ...s, status: 'published' } : s
+      ))
+    } else {
+      // Revert to in_progress on failure
+      setSuggestions(prev => prev.map(s =>
+        s.status === 'publishing' ? { ...s, status: 'in_progress' } : s
+      ))
     }
   }
 
@@ -308,7 +344,14 @@ export default function ContentSuggestionsClient({
                       {actions.map(action => (
                         <button
                           key={action.nextStatus}
-                          onClick={(e) => { e.stopPropagation(); updateStatus(s.id, action.nextStatus) }}
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            if (action.nextStatus === 'published' && s.status === 'in_progress') {
+                              handlePublish(s)
+                            } else {
+                              updateStatus(s.id, action.nextStatus)
+                            }
+                          }}
                           className={`text-xs px-3 py-1.5 rounded-lg border transition-all ${action.style}`}
                         >
                           {action.label}
@@ -472,6 +515,15 @@ export default function ContentSuggestionsClient({
           </div>
         )}
       </AnimatePresence>
+
+      {/* Yayınlama İlerleme Modal */}
+      <PublishProgressModal
+        isOpen={!!publishingJobId}
+        onClose={() => { setPublishingJobId(null); setPublishingTitle('') }}
+        jobId={publishingJobId}
+        suggestionTitle={publishingTitle}
+        onComplete={handlePublishComplete}
+      />
     </main>
   )
 }
