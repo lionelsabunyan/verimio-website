@@ -187,6 +187,13 @@ export const FAQ_ITEMS = [
 
 export const BLOG_POSTS = [
   {
+    title: "AI Dönüşümü Bir 'IT' Projesi Değil, Bir Yönetim Vizyonudur",
+    excerpt: "Yapay zeka adaptasyonu, salt bir teknoloji projesi olmaktan öte, şirket kültürünü ve yönetim anlayışını dönüştüren stratejik bir vizyon gerektirir.",
+    date: "12 Mart 2026",
+    slug: "ai-donusumu-bir-it-projesi-degil-bir-yonetim-vizyonudur",
+    category: "strategy" as const,
+  },
+  {
     title: "Verimio Bülten: Bu Ay İşletmenizde Uygulayabileceğiniz 3 Pratik Otomasyon",
     excerpt: "Bültenden haberdar olun: İşletmeniz için uygulanabilir, düşük maliyetli 3 pratik otomasyon fikri, sektör haberleri ve ayın öne çıkan yapay zeka gelişmeleri.",
     date: "12 Mart 2026",
