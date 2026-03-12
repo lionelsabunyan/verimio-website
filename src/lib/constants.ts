@@ -4,7 +4,7 @@ export const BRAND = {
   name: "Verimio",
   tagline: "Süreçlerinizi netleştirin, maliyetlerinizi düşürün.",
   email: "analiz@verimio.com.tr",
-  website: "verimio.com.tr",
+  website: "www.verimio.com.tr",
   tallyFormUrl: "/analiz",
   calendlyUrl: "#", // Cal.com URL — kurulum sonra güncellenecek
 } as const;

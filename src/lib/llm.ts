@@ -61,7 +61,7 @@ export async function callLLM(options: CallLLMOptions): Promise<string> {
       headers: {
         'Authorization': `Bearer ${apiKey}`,
         'Content-Type': 'application/json',
-        'HTTP-Referer': 'https://verimio.com.tr',
+        'HTTP-Referer': 'https://www.verimio.com.tr',
         'X-Title': 'Verimio Content Engine',
       },
       body: JSON.stringify({
