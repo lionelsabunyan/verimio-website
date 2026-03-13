@@ -187,6 +187,13 @@ export const FAQ_ITEMS = [
 
 export const BLOG_POSTS = [
   {
+    title: "Şirketinizin Gizli Verileri Güvende mi? Kurumsal ChatGPT Kullanımı",
+    excerpt: "Çalışanların bireysel ChatGPT kullanımının riskleri ve şirketlere özel, güvenli, kapalı devre yapay zeka sistemlerinin neden bir zorunluluk olduğu.",
+    date: "13 Mart 2026",
+    slug: "sirketinizin-gizli-verileri-guvende-mi-kurumsal-chatgpt-kull",
+    category: "ai-tools" as const,
+  },
+  {
     title: "Rakipleriniz AI Kullanırken Siz Eski Usul Devam mı Edeceksiniz?",
     excerpt: "Yapay zekanın işletmelere sunduğu rekabet avantajlarını keşfedin. Pazar payınızı artırmak ve verimliliğinizi yükseltmek için AI adaptasyonunun neden kritik olduğunu öğrenin.",
     date: "13 Mart 2026",
