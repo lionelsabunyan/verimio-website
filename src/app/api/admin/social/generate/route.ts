@@ -15,10 +15,10 @@ const uuidv4 = () => randomUUID()
 const FAL_KEY = process.env.FAL_KEY
 
 export interface CarouselSlide {
-  type: 'hook' | 'point' | 'cta'
+  type: 'hook' | 'problem' | 'point' | 'proof' | 'recap' | 'cta'
   headline: string
   body: string
-  bg_url?: string | null  // slide-specific background photo
+  bg_url?: string | null
 }
 
 interface PlatformContent {
@@ -119,41 +119,68 @@ Dil: Türkçe.`
 
     const carouselExtra = isCarousel ? `
 
-Ayrıca Instagram için 5 slide'lık carousel içeriği hazırla:
-- Slide 1 (hook): Dikkat çekici soru veya çarpıcı ifade (headline max 10 kelime, body max 15 kelime)
-- Slide 2-4 (point): Her biri bir ana fikir (headline max 8 kelime, body max 20 kelime)
-- Slide 5 (cta): Aksiyon çağrısı (headline örn. "Ücretsiz Check-Up Alın", body kısa destek metni)
+───── CAROUSEL İÇERİĞİ ─────
 
-carousel_slides JSON alanı şu formatta olsun:
+Aşağıdaki 5 formattan konuya EN UYGUN olanı seç:
+
+FORMAT A — LİSTELEME  : Hook → Problem → 4 Point (numaralı) → Proof → Özet → CTA  (toplam 8)
+FORMAT B — ÖNCE/SONRA : Hook → Problem → 2 Point (önce/sonra/adımlar) → Proof → Özet → CTA  (toplam 7-8)
+FORMAT C — ÇERÇEVE    : Hook → Problem → 4 Point (framework bileşenleri) → Recap → CTA  (toplam 8)
+FORMAT D — MİT-GERÇEK : Hook → 4 Problem (mit + çürütme) → Proof → Recap → CTA  (toplam 8)
+FORMAT E — REHBER     : Hook → Problem → 4 Point (adım adım) → Proof → CTA  (toplam 7-8)
+
+SLIDE TİPLERİ VE KURALLARI:
+• hook     — Slide 1. İstatistik/karşı-sezgisel/acı nokta sorusu. Merak bırak, cevap verme.
+             headline: 6-8 kelime | body: 10-20 kelime, "→ devam için kaydır" ipucu içersin
+• problem  — Hedefin yaşadığı gerçek sorunu tanımla. Acı noktayı somutlaştır.
+             headline: 6-8 kelime | body: 15-25 kelime
+• point    — Tek bir fikir/adım/bileşen. Numaralı: "01.", "02." vb.
+             headline: "01. [6-7 kelime]" | body: 20-30 kelime, somut ve eyleme yönelik
+• proof    — headline: Etkileyici bir İSTATİSTİK veya RAKAM (örn: "%40 daha az maliyet", "3 haftada ROI")
+             body: Bağlamı açıkla, nereden geldiğini kısaca belirt (15-20 kelime)
+• recap    — "3 şeyi hatırla:" başlığı. body: 3 madde, her satır ayrı satırda (\\n ile ayır)
+             Örn: "Otomasyon strateji meselesidir\\nKüçük başla, hızlı ölç\\nİnsan faktörü her zaman önce gelir"
+• cta      — headline: "Ücretsiz AI Analizi Al" veya "Check-Up İçin DM At"
+             body: 1 kısa destekleyici cümle
+
+MEŞRU HOOK TİPLERİ (birini seç):
+① İstatistik: "Türk şirketlerin %X'i... Sadece %Y'si... Fark nerede?"
+② Karşı-sezgi: "AI danışmanı tutmak, yazılım satın almaktan daha ucuzdur."
+③ Acı nokta: "Ekibiniz haftada kaç saatini tekrar eden işlere harcıyor?"
+④ Sonuç önce: "Müşterimiz 3 ayda 40 saatlik haftalık yükü sıfırladı. Nasıl →"
+
+carousel_slides JSON alanı (MUTLAKA 7-8 slide):
 [
   {"type":"hook","headline":"...","body":"..."},
-  {"type":"point","headline":"01. Başlık","body":"Açıklama"},
-  {"type":"point","headline":"02. Başlık","body":"Açıklama"},
-  {"type":"point","headline":"03. Başlık","body":"Açıklama"},
-  {"type":"cta","headline":"Ücretsiz Check-Up Alın","body":"verimio.com.tr"}
+  {"type":"problem","headline":"...","body":"..."},
+  {"type":"point","headline":"01. ...","body":"..."},
+  {"type":"point","headline":"02. ...","body":"..."},
+  {"type":"point","headline":"03. ...","body":"..."},
+  {"type":"point","headline":"04. ...","body":"..."},
+  {"type":"proof","headline":"[rakam/istatistik]","body":"..."},
+  {"type":"cta","headline":"Ücretsiz AI Analizi Al","body":"..."}
 ]` : ''
 
     const userPrompt = `Konu: ${contentTopic}
 
 Bu konu için 3 farklı platform paylaşımı yaz:
 
-1. LinkedIn (1000-1500 karakter):
-- Açıcı bir soru veya çarpıcı istatistikle başla
-- 3-4 somut nokta veya liste
-- Kapanışta CTA: "DM'den ulaşın" veya "Linkte detaylar"
-- 3 hashtag (küçük harf, Türkçe ve İngilizce karışık)
+1. LinkedIn (900-1300 karakter):
+- İlk cümle: istatistik veya karşı-sezgisel iddia (kaydırma durdursun)
+- 3-4 somut madde veya numaralı liste
+- Kapanışta CTA: "Ücretsiz analiz için DM atın" veya "Ayrıntılar profilimde"
+- 3 hashtag (küçük harf, Türkçe + İngilizce)
 
-2. Instagram (100-150 karakter + hashtag):
-- Tek güçlü cümle veya kısa hook
-- Emoji kullan (maksimum 2-3)
-- 5-7 hashtag
+2. Instagram (120-160 karakter + hashtag):
+- Tek güçlü cümle — net ve ezberlenebilir
+- Emoji: 2-3 adet
+- 6-8 hashtag
 
 3. Twitter/X (maksimum 270 karakter):
-- Tek keskin fikir veya provoke edici soru
-- Thread'e çekilebilecek format
+- Keskin bir fikir veya provoke edici soru
 - 2-3 hashtag
 
-Görseller için de kısa bir İngilizce prompt yaz (1 cümle, görsel içerik tarif eder, marka renkleri: deep indigo + lime #A3E635).
+Görseller için kısa bir İngilizce fotoğraf tarifi yaz (subject + ortam, marka rengi belirtme).
 ${carouselExtra}
 
 Sadece JSON dön:
@@ -168,7 +195,7 @@ Sadece JSON dön:
       task: 'content_generation',
       system: systemPrompt,
       messages: [{ role: 'user', content: userPrompt }],
-      maxTokens: isCarousel ? 4000 : 3000,
+      maxTokens: isCarousel ? 5000 : 3000,
     })
 
     // JSON parse

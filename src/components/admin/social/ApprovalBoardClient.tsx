@@ -4,7 +4,7 @@ import { useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 interface CarouselSlide {
-  type: 'hook' | 'point' | 'cta'
+  type: 'hook' | 'problem' | 'point' | 'proof' | 'recap' | 'cta'
   headline: string
   body: string
   bg_url?: string | null
@@ -54,9 +54,9 @@ function CarouselPreview({
           🎠 {platformLabel[platform] ?? platform} Carousel — {slides.length} slide
         </p>
 
-        {/* Slide preview card */}
+        {/* Slide preview card — LinkedIn uses 4:5 portrait */}
         <div
-          className="relative rounded-lg overflow-hidden p-4 aspect-square flex flex-col"
+          className={`relative rounded-lg overflow-hidden p-4 flex flex-col ${platform === 'linkedin' ? 'aspect-[4/5]' : 'aspect-square'}`}
           style={{ background: 'linear-gradient(135deg, #1E0A46 0%, #2E1065 100%)' }}
         >
           {/* Background photo — prefer slide-specific, fallback to post bg */}
@@ -97,26 +97,59 @@ function CarouselPreview({
 
             {/* Slide content */}
             <div className="flex-1 flex flex-col justify-center">
-              {slide.type === 'hook' && (
-                <div className="w-8 h-0.5 rounded mb-3" style={{ background: '#A3E635' }} />
+              {/* Accent line */}
+              {(slide.type === 'hook') && (
+                <div className="w-8 h-0.5 rounded mb-2" style={{ background: '#A3E635' }} />
               )}
+              {/* Problem tag */}
+              {slide.type === 'problem' && (
+                <span className="text-[8px] font-semibold tracking-widest mb-2" style={{ color: 'rgba(255,255,255,0.4)' }}>SORUN</span>
+              )}
+              {/* Ghost number */}
               {slide.type === 'point' && (
-                <p className="text-[28px] font-black leading-none mb-1"
-                  style={{ color: 'rgba(163,230,53,0.12)' }}>
+                <p className="text-[28px] font-black leading-none mb-1" style={{ color: 'rgba(163,230,53,0.12)' }}>
                   {String(activeIdx).padStart(2, '0')}
                 </p>
               )}
-              <p className={`font-bold leading-tight mb-2 ${slide.type === 'cta' ? 'text-[11px]' : 'text-xs'}`}
-                style={{ color: slide.type === 'cta' ? '#A3E635' : '#fff' }}>
-                {slide.headline}
-              </p>
-              {slide.body && (
-                <p className="text-[9px] leading-relaxed" style={{ color: 'rgba(255,255,255,0.6)' }}>
+              {/* Proof: big lime stat */}
+              {slide.type === 'proof' && (
+                <p className="text-[22px] font-black leading-none mb-1" style={{ color: '#A3E635' }}>
+                  {slide.headline}
+                </p>
+              )}
+              {/* Recap: ÖZET label */}
+              {slide.type === 'recap' && (
+                <span className="text-[8px] font-bold tracking-widest mb-2" style={{ color: '#A3E635' }}>📌 ÖZET</span>
+              )}
+              {/* Headline (not shown for proof — already displayed above) */}
+              {slide.type !== 'proof' && (
+                <p className={`font-bold leading-tight mb-2 ${slide.type === 'cta' || slide.type === 'recap' ? 'text-[10px]' : 'text-xs'}`}
+                  style={{ color: (slide.type === 'cta' || slide.type === 'recap') ? '#A3E635' : '#fff' }}>
+                  {slide.headline}
+                </p>
+              )}
+              {/* Body */}
+              {slide.body && slide.type !== 'recap' && (
+                <p className="text-[8px] leading-relaxed" style={{ color: 'rgba(255,255,255,0.6)' }}>
                   {slide.body}
                 </p>
               )}
+              {/* Recap bullets */}
+              {slide.type === 'recap' && slide.body && (
+                <div className="flex flex-col gap-1">
+                  {slide.body.split('\n').filter(Boolean).map((line, i) => (
+                    <div key={i} className="flex items-start gap-1">
+                      <div className="w-1 h-1 rounded-full mt-1 flex-shrink-0" style={{ background: '#A3E635' }} />
+                      <span className="text-[8px] leading-relaxed" style={{ color: 'rgba(255,255,255,0.7)' }}>
+                        {line.replace(/^[\d\-\.\•\*]+\s*/, '')}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              )}
+              {/* CTA button */}
               {slide.type === 'cta' && (
-                <div className="mt-2 inline-flex items-center gap-1 rounded px-2 py-1 text-[9px] font-bold"
+                <div className="mt-2 inline-flex items-center gap-1 rounded px-2 py-1 text-[8px] font-bold"
                   style={{ background: '#A3E635', color: '#1E0A46' }}>
                   verimio.com.tr →
                 </div>
