@@ -18,6 +18,7 @@ export interface CarouselSlide {
   type: 'hook' | 'point' | 'cta'
   headline: string
   body: string
+  bg_url?: string | null  // slide-specific background photo
 }
 
 interface PlatformContent {
@@ -204,7 +205,19 @@ Sadece JSON dön:
     const supabase = createServiceClient()
     const pairId = uuidv4()
 
-    const carouselSlides = isCarousel ? (parsed.carousel_slides ?? null) : null
+    // Carousel: her slide için ayrı fotoğraf üret (square, paralel)
+    let carouselSlides: CarouselSlide[] | null = null
+    if (isCarousel && parsed.carousel_slides) {
+      const slidePhotos = await Promise.all(
+        parsed.carousel_slides.map(s =>
+          generateVisual(`${s.headline} — ${s.body}`, 'instagram')
+        )
+      )
+      carouselSlides = parsed.carousel_slides.map((s, i) => ({
+        ...s,
+        bg_url: slidePhotos[i] ?? null,
+      }))
+    }
 
     const platforms: PlatformContent[] = [
       { platform: 'linkedin',  content: parsed.linkedin.content,  hashtags: parsed.linkedin.hashtags,  scheduled_at: getScheduledAt('linkedin', 0) },

@@ -106,11 +106,11 @@ function buildSlide({ headline, body, type, index, total, bgUrl, width, height }
           src={bgUrl}
           alt=""
           style={{
-            position:   'absolute',
+            position:  'absolute',
             top: 0, left: 0,
-            width:      '100%',
-            height:     '100%',
-            objectFit:  'cover',
+            width,
+            height,
+            objectFit: 'cover',
           }}
         />
       )}
@@ -119,7 +119,8 @@ function buildSlide({ headline, body, type, index, total, bgUrl, width, height }
       {bgUrl && (
         <div style={{
           position: 'absolute',
-          top: 0, left: 0, right: 0, bottom: 0,
+          top: 0, left: 0,
+          width, height,
           background: isCover
             ? 'linear-gradient(180deg, rgba(10,4,22,0.50) 0%, rgba(10,4,22,0.75) 55%, rgba(10,4,22,0.92) 100%)'
             : 'rgba(10, 4, 22, 0.65)',
@@ -130,7 +131,8 @@ function buildSlide({ headline, body, type, index, total, bgUrl, width, height }
       {bgUrl && (
         <div style={{
           position: 'absolute',
-          top: 0, left: 0, right: 0, bottom: 0,
+          top: 0, left: 0,
+          width, height,
           background: 'linear-gradient(135deg, rgba(30,10,70,0.30) 0%, rgba(46,16,101,0.20) 100%)',
         }} />
       )}
@@ -139,12 +141,12 @@ function buildSlide({ headline, body, type, index, total, bgUrl, width, height }
       {!bgUrl && (
         <>
           <div style={{
-            position: 'absolute', top: -120, right: -120,
+            position: 'absolute', top: -120, left: width - 360,
             width: 480, height: 480, borderRadius: '50%',
             background: 'radial-gradient(circle, rgba(163,230,53,0.07) 0%, transparent 70%)',
           }} />
           <div style={{
-            position: 'absolute', bottom: -100, left: -80,
+            position: 'absolute', top: height - 280, left: -80,
             width: 380, height: 380, borderRadius: '50%',
             background: 'radial-gradient(circle, rgba(139,92,246,0.08) 0%, transparent 70%)',
           }} />

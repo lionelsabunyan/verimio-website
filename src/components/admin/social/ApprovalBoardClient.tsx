@@ -7,6 +7,7 @@ interface CarouselSlide {
   type: 'hook' | 'point' | 'cta'
   headline: string
   body: string
+  bg_url?: string | null
 }
 
 interface SocialPost {
@@ -58,21 +59,21 @@ function CarouselPreview({
           className="relative rounded-lg overflow-hidden p-4 aspect-square flex flex-col"
           style={{ background: 'linear-gradient(135deg, #1E0A46 0%, #2E1065 100%)' }}
         >
-          {/* Background photo */}
-          {bgUrl && (
+          {/* Background photo — prefer slide-specific, fallback to post bg */}
+          {(slide.bg_url || bgUrl) && (
             // eslint-disable-next-line @next/next/no-img-element
             <img
-              src={bgUrl}
+              src={slide.bg_url ?? bgUrl ?? ''}
               alt=""
               className="absolute inset-0 w-full h-full object-cover"
             />
           )}
           {/* Dark overlay */}
-          {bgUrl && (
+          {(slide.bg_url || bgUrl) && (
             <div className="absolute inset-0" style={{ background: 'rgba(10,4,22,0.65)' }} />
           )}
           {/* Brand tint */}
-          {bgUrl && (
+          {(slide.bg_url || bgUrl) && (
             <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, rgba(30,10,70,0.3) 0%, rgba(46,16,101,0.2) 100%)' }} />
           )}
 
@@ -141,6 +142,7 @@ function CarouselPreview({
 
           <div className="flex items-center gap-1.5">
             {slides.map((s, i) => {
+              const slideBg = s.bg_url ?? bgUrl ?? null
               const params = new URLSearchParams({
                 headline: s.headline,
                 body:     s.body,
@@ -148,7 +150,7 @@ function CarouselPreview({
                 index:    String(i + 1),
                 total:    String(slides.length),
                 platform,
-                ...(bgUrl ? { bg_url: bgUrl } : {}),
+                ...(slideBg ? { bg_url: slideBg } : {}),
               })
               return (
                 <a
