@@ -51,10 +51,10 @@ const VERIMIO_NAV: NavItem[] = [
   { label: 'CRM — Leads',      href: '/admin/crm',                icon: ICONS.users },
   { label: 'Toplantılar',      href: '/admin/meetings',           icon: ICONS.calendar },
   { label: 'Sosyal Medya',     href: '/admin/social',             icon: ICONS.chat },
-  { label: 'Görsel Üretim',    href: '/admin/social/visuals',     icon: ICONS.image,    indent: true },
-  { label: 'Ajans',            href: '/admin/social/agency',      icon: ICONS.robot,    indent: true },
+
+
   { label: 'Onay Kuyruğu',    href: '/admin/social/approve',     icon: ICONS.check,    indent: true },
-  { label: 'Strateji',         href: '/admin/social/strategy',    icon: ICONS.settings, indent: true },
+  { label: 'Ayarlar',         href: '/admin/social/settings',    icon: ICONS.settings, indent: true },
   { label: 'İçerik Üretimi',   href: '/admin/content',            icon: ICONS.edit },
   { label: 'İçerik Önerileri', href: '/admin/content/suggestions',icon: ICONS.bulb,    indent: true },
   { label: 'İçerik Pipeline',  href: '/admin/content/pipeline',   icon: ICONS.kanban,  indent: true },
