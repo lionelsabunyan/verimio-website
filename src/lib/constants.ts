@@ -187,6 +187,13 @@ export const FAQ_ITEMS = [
 
 export const BLOG_POSTS = [
   {
+    title: "Rakipleriniz AI Kullanırken Siz Eski Usul Devam mı Edeceksiniz?",
+    excerpt: "Yapay zekanın işletmelere sunduğu rekabet avantajlarını keşfedin. Pazar payınızı artırmak ve verimliliğinizi yükseltmek için AI adaptasyonunun neden kritik olduğunu öğrenin.",
+    date: "13 Mart 2026",
+    slug: "rakipleriniz-ai-kullanirken-siz-eski-usul-devam-mi-edeceksin",
+    category: "ai-tools" as const,
+  },
+  {
     title: "Excel'den Yapay Zekaya: Raporlama Otomasyonu ile Hata Payını Sıfırlayın",
     excerpt: "Manuel veri girişinin işletmelere maliyeti ve yapay zeka destekli raporlama otomasyonu ile süreçlerin nasıl hızlandığı bu yazıda inceleniyor.",
     date: "12 Mart 2026",
