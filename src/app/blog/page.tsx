@@ -10,6 +10,17 @@ export const metadata: Metadata = {
   description:
     "Şirketler için AI araçları, otomasyon stratejileri ve operasyonel verimlilik içerikleri. Verimio blog.",
   alternates: { canonical: "https://www.verimio.com.tr/blog" },
+  openGraph: {
+    title: "Blog - AI & Otomasyon İçerikleri | Verimio",
+    description: "Şirketler için AI araçları, otomasyon stratejileri ve operasyonel verimlilik içerikleri.",
+    type: "website",
+    url: "https://www.verimio.com.tr/blog",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog - AI & Otomasyon İçerikleri | Verimio",
+    description: "Şirketler için AI araçları, otomasyon stratejileri ve operasyonel verimlilik içerikleri.",
+  },
 };
 
 export default function BlogPage() {

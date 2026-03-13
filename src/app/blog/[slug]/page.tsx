@@ -55,6 +55,25 @@ export async function generateStaticParams() {
   return getPostSlugs().map((slug) => ({ slug }));
 }
 
+const TURKISH_MONTHS: Record<string, number> = {
+  "Ocak": 0, "Şubat": 1, "Mart": 2, "Nisan": 3,
+  "Mayıs": 4, "Haziran": 5, "Temmuz": 6, "Ağustos": 7,
+  "Eylül": 8, "Ekim": 9, "Kasım": 10, "Aralık": 11,
+};
+
+function toISODate(dateStr: string): string {
+  const parts = dateStr.split(" ");
+  if (parts.length === 3) {
+    const day = parseInt(parts[0], 10);
+    const month = TURKISH_MONTHS[parts[1]];
+    const year = parseInt(parts[2], 10);
+    if (!isNaN(day) && month !== undefined && !isNaN(year)) {
+      return new Date(year, month, day).toISOString().slice(0, 10);
+    }
+  }
+  return new Date().toISOString().slice(0, 10);
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -69,6 +88,7 @@ export async function generateMetadata({
   const webpExists = fs.existsSync(
     path.join(process.cwd(), "public/images/blog", `${slug}.webp`)
   );
+  const isoDate = toISODate(frontmatter.date);
 
   return {
     title: frontmatter.title,
@@ -77,8 +97,14 @@ export async function generateMetadata({
       title: frontmatter.title,
       description: frontmatter.excerpt,
       type: "article",
-      publishedTime: frontmatter.date,
+      publishedTime: isoDate,
       ...(webpExists ? { images: [{ url: `/images/blog/${slug}.webp`, width: 1200, height: 630 }] } : {}),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: frontmatter.title,
+      description: frontmatter.excerpt,
+      ...(webpExists ? { images: [`/images/blog/${slug}.webp`] } : {}),
     },
     alternates: { canonical: `https://www.verimio.com.tr/blog/${slug}` },
   };
@@ -154,6 +180,7 @@ export default async function BlogPostPage({
 
   const { frontmatter, content } = post;
   const catLabel = categoryLabels[frontmatter.category] ?? frontmatter.category;
+  const isoDate = toISODate(frontmatter.date);
 
   // Related posts: same category, different slug (from constants)
   const related = BLOG_POSTS.filter(
@@ -170,7 +197,7 @@ export default async function BlogPostPage({
         slug={slug}
         title={frontmatter.title}
         excerpt={frontmatter.excerpt}
-        date={frontmatter.date}
+        date={isoDate}
         author={frontmatter.author}
         webpExists={webpExists}
       />
@@ -208,10 +235,10 @@ export default async function BlogPostPage({
 
           {/* Meta row */}
           <div className="flex flex-wrap items-center gap-4 text-sm text-foreground-secondary mb-10 pb-10 border-b border-border">
-            <span className="flex items-center gap-1.5">
-              <Calendar className="w-4 h-4" />
+            <time dateTime={isoDate} className="flex items-center gap-1.5">
+              <Calendar className="w-4 h-4" aria-hidden="true" />
               {frontmatter.date}
-            </span>
+            </time>
             {frontmatter.readingTime && (
               <span className="flex items-center gap-1.5">
                 <Clock className="w-4 h-4" />
