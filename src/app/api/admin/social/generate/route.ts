@@ -57,7 +57,8 @@ const IMAGE_SIZE: Record<string, string> = {
 async function generateVisual(prompt: string, platform: 'linkedin' | 'instagram' | 'twitter'): Promise<string | null> {
   if (!FAL_KEY) return null
   try {
-    const brandPrompt = `Abstract geometric digital illustration, no text no words no letters no typography, dark deep indigo background #1E0A46 to #2E1065 gradient, purple geometric elements #8B5CF6 at low opacity, vivid lime accent #A3E635 on 2-3 focal points, professional minimal. Context: ${prompt}`
+    // Realistic photo as slide background — brand overlay applied in render-slide renderer
+    const bgPrompt = `Professional business photography, ${prompt}, modern corporate office environment, no text no signs no logos, clean composition, soft natural lighting, shallow depth of field, high quality`
     const res = await fetch('https://fal.run/fal-ai/recraft-v3', {
       method: 'POST',
       headers: {
@@ -65,9 +66,9 @@ async function generateVisual(prompt: string, platform: 'linkedin' | 'instagram'
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        prompt: brandPrompt,
+        prompt: bgPrompt,
         image_size: IMAGE_SIZE[platform] ?? 'square_hd',
-        style: 'digital_illustration',
+        style: 'realistic_image',
         num_images: 1,
       }),
     })
@@ -225,8 +226,8 @@ Sadece JSON dön:
           visual_prompt: parsed.visual_prompt,
           scheduled_at:  p.scheduled_at,
           status:        'pending_approval',
-          post_type:     p.platform === 'instagram' && isCarousel ? 'carousel' : 'single',
-          carousel_data: p.platform === 'instagram' && carouselSlides ? carouselSlides : null,
+          post_type:     isCarousel ? 'carousel' : 'single',
+          carousel_data: isCarousel && carouselSlides ? carouselSlides : null,
         }))
       )
       .select('id, platform, status, scheduled_at, post_type')
