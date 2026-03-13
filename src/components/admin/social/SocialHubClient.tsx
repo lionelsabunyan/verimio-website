@@ -45,6 +45,7 @@ export default function SocialHubClient({ posts, stats }: SocialHubClientProps) 
   const [generating, setGenerating] = useState<string | null>(null) // blog_slug veya 'manual'
   const [manualTopic, setManualTopic] = useState('')
   const [showManualInput, setShowManualInput] = useState(false)
+  const [postType, setPostType] = useState<'single' | 'carousel'>('single')
   const [toast, setToast] = useState<{ msg: string; type: 'success' | 'error' } | null>(null)
 
   function showToast(msg: string, type: 'success' | 'error' = 'success') {
@@ -58,11 +59,12 @@ export default function SocialHubClient({ posts, stats }: SocialHubClientProps) 
       const res = await fetch('/api/admin/social/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ blog_slug: slug }),
+        body: JSON.stringify({ blog_slug: slug, post_type: postType }),
       })
       const json = await res.json()
       if (!res.ok) throw new Error(json.error || 'Üretim başarısız')
-      showToast(`3 platform içeriği oluşturuldu → Onay kuyruğuna eklendi ✓`)
+      const label = postType === 'carousel' ? '3 içerik + Instagram carousel oluşturuldu ✓' : '3 platform içeriği oluşturuldu → Onay kuyruğuna eklendi ✓'
+      showToast(label)
       setTimeout(() => window.location.reload(), 1500)
     } catch (err) {
       showToast(String(err), 'error')
@@ -78,11 +80,12 @@ export default function SocialHubClient({ posts, stats }: SocialHubClientProps) 
       const res = await fetch('/api/admin/social/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ topic: manualTopic }),
+        body: JSON.stringify({ topic: manualTopic, post_type: postType }),
       })
       const json = await res.json()
       if (!res.ok) throw new Error(json.error || 'Üretim başarısız')
-      showToast(`3 platform içeriği oluşturuldu → Onay kuyruğuna eklendi ✓`)
+      const label = postType === 'carousel' ? '3 içerik + Instagram carousel oluşturuldu ✓' : '3 platform içeriği oluşturuldu → Onay kuyruğuna eklendi ✓'
+      showToast(label)
       setManualTopic('')
       setShowManualInput(false)
       setTimeout(() => window.location.reload(), 1500)
@@ -152,12 +155,29 @@ export default function SocialHubClient({ posts, stats }: SocialHubClientProps) 
             <h2 className="text-foreground font-semibold text-sm">İçerik Üret</h2>
             <p className="text-foreground-muted text-xs mt-0.5">LinkedIn + Instagram + Twitter için aynı anda 3 içerik</p>
           </div>
-          <button
-            onClick={() => setShowManualInput(v => !v)}
-            className="px-3 py-1.5 rounded-lg text-xs bg-secondary text-primary font-medium hover:bg-secondary-hover transition-colors"
-          >
-            + Manuel Konu
-          </button>
+          <div className="flex items-center gap-2">
+            {/* Post type toggle */}
+            <div className="flex items-center gap-0.5 bg-background border border-border rounded-lg p-0.5">
+              <button
+                onClick={() => setPostType('single')}
+                className={`px-2.5 py-1 rounded text-[11px] font-medium transition-colors ${postType === 'single' ? 'bg-secondary text-primary' : 'text-foreground-muted hover:text-foreground'}`}
+              >
+                🖼 Tek Görsel
+              </button>
+              <button
+                onClick={() => setPostType('carousel')}
+                className={`px-2.5 py-1 rounded text-[11px] font-medium transition-colors ${postType === 'carousel' ? 'bg-secondary text-primary' : 'text-foreground-muted hover:text-foreground'}`}
+              >
+                🎠 Kaydırmalı
+              </button>
+            </div>
+            <button
+              onClick={() => setShowManualInput(v => !v)}
+              className="px-3 py-1.5 rounded-lg text-xs bg-secondary text-primary font-medium hover:bg-secondary-hover transition-colors"
+            >
+              + Manuel Konu
+            </button>
+          </div>
         </div>
 
         <AnimatePresence>

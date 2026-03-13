@@ -2,6 +2,7 @@
  * POST /api/admin/social/generate
  * Verilen konu veya blog slug'ından LinkedIn + Instagram + Twitter içerikleri üretir.
  * Tüm 3 platform aynı pair_id ile social_posts'a kaydedilir (status: pending_approval).
+ * post_type: 'single' (default) | 'carousel' — carousel modda Instagram için 5 slide üretilir.
  */
 
 import { NextResponse } from 'next/server'
@@ -12,6 +13,12 @@ import { randomUUID } from 'crypto'
 const uuidv4 = () => randomUUID()
 
 const FAL_KEY = process.env.FAL_KEY
+
+export interface CarouselSlide {
+  type: 'hook' | 'point' | 'cta'
+  headline: string
+  body: string
+}
 
 interface PlatformContent {
   platform: 'linkedin' | 'instagram' | 'twitter'
@@ -24,24 +31,30 @@ interface PlatformContent {
 function getScheduledAt(platform: 'linkedin' | 'instagram' | 'twitter', offset: number): string {
   const now = new Date()
   const target = new Date(now)
-  target.setDate(now.getDate() + offset + 1) // ertesi günden başla
+  target.setDate(now.getDate() + offset + 1)
 
-  // Hafta sonu ise Pazartesi'ye kaydır
   const day = target.getDay()
   if (day === 0) target.setDate(target.getDate() + 1)
   if (day === 6) target.setDate(target.getDate() + 2)
 
   // Platform bazlı optimal saat (UTC, TR = UTC+3)
   const hours: Record<string, number> = {
-    linkedin: 7,   // 10:00 TR
+    linkedin:  7,  // 10:00 TR
     instagram: 11, // 14:00 TR
-    twitter: 8,    // 11:00 TR
+    twitter:   8,  // 11:00 TR
   }
   target.setHours(hours[platform] || 8, 0, 0, 0)
   return target.toISOString()
 }
 
-async function generateVisual(prompt: string): Promise<string | null> {
+// Platform bazlı doğru fal.ai görsel boyutları
+const IMAGE_SIZE: Record<string, string> = {
+  linkedin:  'landscape_16_9', // 1200×628
+  instagram: 'square_hd',      // 1080×1080
+  twitter:   'landscape_4_3',  // 1200×900
+}
+
+async function generateVisual(prompt: string, platform: 'linkedin' | 'instagram' | 'twitter'): Promise<string | null> {
   if (!FAL_KEY) return null
   try {
     const brandPrompt = `Abstract geometric digital illustration, no text no words no letters no typography, dark deep indigo background #1E0A46 to #2E1065 gradient, purple geometric elements #8B5CF6 at low opacity, vivid lime accent #A3E635 on 2-3 focal points, professional minimal. Context: ${prompt}`
@@ -53,7 +66,7 @@ async function generateVisual(prompt: string): Promise<string | null> {
       },
       body: JSON.stringify({
         prompt: brandPrompt,
-        image_size: 'landscape_16_9',
+        image_size: IMAGE_SIZE[platform] ?? 'square_hd',
         style: 'digital_illustration',
         num_images: 1,
       }),
@@ -69,7 +82,11 @@ async function generateVisual(prompt: string): Promise<string | null> {
 export async function POST(request: Request) {
   try {
     const body = await request.json()
-    const { topic, blog_slug } = body as { topic?: string; blog_slug?: string }
+    const { topic, blog_slug, post_type = 'single' } = body as {
+      topic?: string
+      blog_slug?: string
+      post_type?: 'single' | 'carousel'
+    }
 
     // Konu kaynağını belirle
     let contentTopic = topic || ''
@@ -89,12 +106,30 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'topic veya blog_slug gerekli' }, { status: 400 })
     }
 
-    // LLM ile 3 platform içeriği üret
+    const isCarousel = post_type === 'carousel'
+
+    // ── LLM ile içerik üret ───────────────────────────────────────────────────
     const systemPrompt = `Sen Verimio'nun sosyal medya uzmanısın. Verimio, yapay zeka ve otomasyon dönüşümüne ihtiyaç duyan Türk şirketlerine B2B danışmanlık veriyor.
 
 Hedef kitle: Şirket sahipleri, genel müdürler, operasyon direktörleri.
 Marka tonu: Profesyonel ama erişilebilir. Teknik jargondan kaçın. Somut fayda vurgula.
 Dil: Türkçe.`
+
+    const carouselExtra = isCarousel ? `
+
+Ayrıca Instagram için 5 slide'lık carousel içeriği hazırla:
+- Slide 1 (hook): Dikkat çekici soru veya çarpıcı ifade (headline max 10 kelime, body max 15 kelime)
+- Slide 2-4 (point): Her biri bir ana fikir (headline max 8 kelime, body max 20 kelime)
+- Slide 5 (cta): Aksiyon çağrısı (headline örn. "Ücretsiz Check-Up Alın", body kısa destek metni)
+
+carousel_slides JSON alanı şu formatta olsun:
+[
+  {"type":"hook","headline":"...","body":"..."},
+  {"type":"point","headline":"01. Başlık","body":"Açıklama"},
+  {"type":"point","headline":"02. Başlık","body":"Açıklama"},
+  {"type":"point","headline":"03. Başlık","body":"Açıklama"},
+  {"type":"cta","headline":"Ücretsiz Check-Up Alın","body":"verimio.com.tr"}
+]` : ''
 
     const userPrompt = `Konu: ${contentTopic}
 
@@ -117,28 +152,30 @@ Bu konu için 3 farklı platform paylaşımı yaz:
 - 2-3 hashtag
 
 Görseller için de kısa bir İngilizce prompt yaz (1 cümle, görsel içerik tarif eder, marka renkleri: deep indigo + lime #A3E635).
+${carouselExtra}
 
 Sadece JSON dön:
 {
   "linkedin": { "content": "...", "hashtags": ["...", "...", "..."] },
   "instagram": { "content": "...", "hashtags": ["...", "...", "...", "...", "..."] },
   "twitter": { "content": "...", "hashtags": ["...", "...", "..."] },
-  "visual_prompt": "..."
+  "visual_prompt": "..."${isCarousel ? ',\n  "carousel_slides": [...]' : ''}
 }`
 
     const raw = await callLLM({
       task: 'content_generation',
       system: systemPrompt,
       messages: [{ role: 'user', content: userPrompt }],
-      maxTokens: 3000,
+      maxTokens: isCarousel ? 4000 : 3000,
     })
 
     // JSON parse
     let parsed: {
-      linkedin: { content: string; hashtags: string[] }
+      linkedin:  { content: string; hashtags: string[] }
       instagram: { content: string; hashtags: string[] }
-      twitter: { content: string; hashtags: string[] }
+      twitter:   { content: string; hashtags: string[] }
       visual_prompt: string
+      carousel_slides?: CarouselSlide[]
     }
 
     try {
@@ -149,12 +186,24 @@ Sadece JSON dön:
       return NextResponse.json({ error: 'LLM yanıtı parse edilemedi', raw: raw.slice(0, 400) }, { status: 500 })
     }
 
-    // Görsel üret (paralel, hata durumunda null döner)
-    const visualUrl = await generateVisual(parsed.visual_prompt || contentTopic)
+    // ── Görseller (paralel, platform-doğru boyutlarda) ───────────────────────
+    const [liVisual, igVisual, twVisual] = await Promise.all([
+      generateVisual(parsed.visual_prompt || contentTopic, 'linkedin'),
+      generateVisual(parsed.visual_prompt || contentTopic, 'instagram'),
+      generateVisual(parsed.visual_prompt || contentTopic, 'twitter'),
+    ])
 
-    // Supabase'e kaydet
+    const visualByPlatform: Record<string, string | null> = {
+      linkedin:  liVisual,
+      instagram: igVisual,
+      twitter:   twVisual,
+    }
+
+    // ── Supabase'e kaydet ─────────────────────────────────────────────────────
     const supabase = createServiceClient()
     const pairId = uuidv4()
+
+    const carouselSlides = isCarousel ? (parsed.carousel_slides ?? null) : null
 
     const platforms: PlatformContent[] = [
       { platform: 'linkedin',  content: parsed.linkedin.content,  hashtags: parsed.linkedin.hashtags,  scheduled_at: getScheduledAt('linkedin', 0) },
@@ -166,27 +215,29 @@ Sadece JSON dön:
       .from('social_posts')
       .insert(
         platforms.map(p => ({
-          platform: p.platform,
-          content: p.content,
-          hashtags: p.hashtags,
-          pair_id: pairId,
-          source_type: sourceType,
-          blog_slug: sourceBlogSlug,
-          visual_url: visualUrl,
+          platform:      p.platform,
+          content:       p.content,
+          hashtags:      p.hashtags,
+          pair_id:       pairId,
+          source_type:   sourceType,
+          blog_slug:     sourceBlogSlug,
+          visual_url:    visualByPlatform[p.platform],
           visual_prompt: parsed.visual_prompt,
-          scheduled_at: p.scheduled_at,
-          status: 'pending_approval',
+          scheduled_at:  p.scheduled_at,
+          status:        'pending_approval',
+          post_type:     p.platform === 'instagram' && isCarousel ? 'carousel' : 'single',
+          carousel_data: p.platform === 'instagram' && carouselSlides ? carouselSlides : null,
         }))
       )
-      .select('id, platform, status, scheduled_at')
+      .select('id, platform, status, scheduled_at, post_type')
 
     if (error) return NextResponse.json({ error: error.message }, { status: 500 })
 
     return NextResponse.json({
       success: true,
       pair_id: pairId,
-      posts: data,
-      visual_url: visualUrl,
+      posts:   data,
+      carousel: isCarousel,
     })
   } catch (err) {
     return NextResponse.json({ error: String(err) }, { status: 500 })

@@ -9,7 +9,7 @@ export default async function ApprovePage() {
   // Onay bekleyen postlar
   const { data: pendingData } = await supabase
     .from('social_posts')
-    .select('id, platform, content, hashtags, pair_id, visual_url, visual_prompt, blog_slug, source_type, scheduled_at, status, created_at')
+    .select('id, platform, content, hashtags, pair_id, visual_url, visual_prompt, blog_slug, source_type, scheduled_at, status, created_at, post_type, carousel_data')
     .eq('status', 'pending_approval')
     .order('created_at', { ascending: false })
     .limit(60)

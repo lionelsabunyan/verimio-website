@@ -3,6 +3,12 @@
 import { useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
+interface CarouselSlide {
+  type: 'hook' | 'point' | 'cta'
+  headline: string
+  body: string
+}
+
 interface SocialPost {
   id: string
   platform: 'linkedin' | 'instagram' | 'twitter'
@@ -16,6 +22,122 @@ interface SocialPost {
   scheduled_at: string | null
   status: string
   created_at: string
+  post_type?: 'single' | 'carousel' | null
+  carousel_data?: CarouselSlide[] | null
+}
+
+// ── Carousel Preview ───────────────────────────────────────────────────────────
+function CarouselPreview({ slides }: { slides: CarouselSlide[] }) {
+  const [activeIdx, setActiveIdx] = useState(0)
+  const slide = slides[activeIdx]
+  if (!slide) return null
+
+  const bgColor: Record<string, string> = {
+    hook:  'bg-indigo-950',
+    point: 'bg-indigo-950',
+    cta:   'bg-indigo-950',
+  }
+
+  return (
+    <div className="border-t border-border">
+      <div className="px-4 pt-3 pb-1">
+        <p className="text-[10px] text-foreground-muted uppercase tracking-wider mb-2">
+          🎠 Instagram Carousel — {slides.length} slide
+        </p>
+
+        {/* Slide preview card */}
+        <div className={`relative rounded-lg overflow-hidden ${bgColor[slide.type]} p-4 aspect-square flex flex-col`}
+          style={{ background: 'linear-gradient(135deg, #1E0A46 0%, #2E1065 100%)' }}
+        >
+          {/* Progress dots */}
+          <div className="flex gap-1 mb-3">
+            {slides.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setActiveIdx(i)}
+                className="rounded-full transition-all"
+                style={{
+                  width:      i === activeIdx ? 20 : 6,
+                  height:     6,
+                  background: i === activeIdx ? '#A3E635' : 'rgba(255,255,255,0.25)',
+                }}
+              />
+            ))}
+          </div>
+
+          {/* Slide content */}
+          <div className="flex-1 flex flex-col justify-center">
+            {slide.type === 'hook' && (
+              <div className="w-8 h-0.5 rounded mb-3" style={{ background: '#A3E635' }} />
+            )}
+            {slide.type === 'point' && (
+              <p className="text-[28px] font-black leading-none mb-1"
+                style={{ color: 'rgba(163,230,53,0.12)' }}>
+                {String(activeIdx).padStart(2, '0')}
+              </p>
+            )}
+            <p className={`font-bold leading-tight mb-2 ${slide.type === 'cta' ? 'text-[11px]' : 'text-xs'}`}
+              style={{ color: slide.type === 'cta' ? '#A3E635' : '#fff' }}>
+              {slide.headline}
+            </p>
+            {slide.body && (
+              <p className="text-[9px] leading-relaxed" style={{ color: 'rgba(255,255,255,0.6)' }}>
+                {slide.body}
+              </p>
+            )}
+            {slide.type === 'cta' && (
+              <div className="mt-2 inline-flex items-center gap-1 rounded px-2 py-1 text-[9px] font-bold"
+                style={{ background: '#A3E635', color: '#1E0A46' }}>
+                verimio.com.tr →
+              </div>
+            )}
+          </div>
+
+          {/* Slide indicator */}
+          <p className="text-[9px] mt-2" style={{ color: 'rgba(255,255,255,0.25)' }}>
+            {activeIdx + 1} / {slides.length}
+          </p>
+        </div>
+
+        {/* Navigation */}
+        <div className="flex items-center justify-between mt-2 mb-1">
+          <button
+            onClick={() => setActiveIdx(i => Math.max(0, i - 1))}
+            disabled={activeIdx === 0}
+            className="text-[10px] text-foreground-muted hover:text-foreground disabled:opacity-30 transition-colors"
+          >
+            ← Önceki
+          </button>
+
+          {/* Download links */}
+          <div className="flex items-center gap-1.5">
+            {slides.map((s, i) => (
+              <a
+                key={i}
+                href={`/api/admin/social/render-slide?headline=${encodeURIComponent(s.headline)}&body=${encodeURIComponent(s.body)}&type=${s.type}&index=${i + 1}&total=${slides.length}`}
+                target="_blank"
+                rel="noreferrer"
+                title={`Slide ${i + 1} indir`}
+                className="w-5 h-5 rounded flex items-center justify-center text-[9px] transition-colors hover:opacity-80"
+                style={{ background: i === activeIdx ? '#A3E635' : 'rgba(163,230,53,0.2)', color: '#1E0A46' }}
+              >
+                {i + 1}
+              </a>
+            ))}
+            <span className="text-[9px] text-foreground-muted ml-0.5">PNG ↗</span>
+          </div>
+
+          <button
+            onClick={() => setActiveIdx(i => Math.min(slides.length - 1, i + 1))}
+            disabled={activeIdx === slides.length - 1}
+            className="text-[10px] text-foreground-muted hover:text-foreground disabled:opacity-30 transition-colors"
+          >
+            Sonraki →
+          </button>
+        </div>
+      </div>
+    </div>
+  )
 }
 
 interface WeekPost {
@@ -108,6 +230,11 @@ function PlatformCard({
           alt="Post görseli"
           className="w-full h-32 object-cover"
         />
+      )}
+
+      {/* Carousel preview (Instagram only) */}
+      {post.post_type === 'carousel' && post.carousel_data && post.carousel_data.length > 0 && (
+        <CarouselPreview slides={post.carousel_data} />
       )}
 
       {/* Content */}
