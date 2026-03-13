@@ -36,9 +36,9 @@ export async function POST() {
   monday.setHours(0, 0, 0, 0)
   const weekStart = monday.toISOString().slice(0, 10)
 
-  const prompt = `Sen Verimio'nun sosyal medya ajansısın. Verimio, Türk KOBİ'lere yapay zeka ve otomasyon danışmanlığı veren B2B bir şirkettir.
+  const prompt = `Sen Verimio'nun sosyal medya ajansısın. Verimio, yapay zeka ve otomasyon dönüşümüne ihtiyaç duyan şirketlere danışmanlık veren B2B bir şirkettir.
 
-Hedef kitle: ${target_audience || 'KOBİ sahipleri ve yöneticiler'}
+Hedef kitle: ${target_audience || 'şirket yöneticileri ve karar vericiler'}
 Marka tonu: ${toneLabel}
 Aktif platformlar: ${platformList}
 ${competitorText}
@@ -61,10 +61,10 @@ Sadece JSON array dön, başka açıklama ekleme:
     "platform": "linkedin",
     "content_type": "post",
     "content_text": "...",
-    "hashtags": ["ai", "otomasyon", "kobi"],
+    "hashtags": ["ai", "otomasyon", "dijitaldönüşüm"],
     "visual_prompt": "Professional business team using AI technology in modern office",
     "scheduled_at": "2026-03-09T09:00:00+03:00",
-    "ai_reasoning": "KOBİ'lerin AI'a ilgisi yüksek, pratik rehber içerikler en çok etkileşim alıyor."
+    "ai_reasoning": "Şirketlerin AI'a ilgisi yüksek, pratik rehber içerikler en çok etkileşim alıyor."
   }
 ]`
 

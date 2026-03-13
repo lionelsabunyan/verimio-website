@@ -54,11 +54,11 @@ const SETUP_STEPS = [
 
 const KEYWORD_TARGETS = [
   { keyword: 'AI danışmanlık Türkiye',   difficulty: 'Orta',  volume: '~500/ay',  priority: 'Yüksek' },
-  { keyword: 'KOBİ otomasyon',           difficulty: 'Düşük', volume: '~200/ay',  priority: 'Yüksek' },
+  { keyword: 'şirket otomasyon',          difficulty: 'Düşük', volume: '~200/ay',  priority: 'Yüksek' },
   { keyword: 'iş süreç otomasyonu',      difficulty: 'Orta',  volume: '~1K/ay',   priority: 'Orta' },
   { keyword: 'ChatGPT iş kullanımı',     difficulty: 'Yüksek',volume: '~5K/ay',  priority: 'Orta' },
   { keyword: 'yapay zeka danışmanlık',   difficulty: 'Orta',  volume: '~800/ay',  priority: 'Yüksek' },
-  { keyword: 'dijital dönüşüm KOBİ',    difficulty: 'Düşük', volume: '~300/ay',  priority: 'Yüksek' },
+  { keyword: 'dijital dönüşüm şirket',   difficulty: 'Düşük', volume: '~300/ay',  priority: 'Yüksek' },
 ]
 
 function SetupGuide() {

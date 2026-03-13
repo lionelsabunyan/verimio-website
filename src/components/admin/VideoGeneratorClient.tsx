@@ -9,7 +9,7 @@ const VIDEO_MODELS = [
 ]
 
 const SCRIPT_TOPICS = [
-  'KOBİ\'ler neden AI\'ya geçmeli? (60 sn)',
+  'Şirketler neden AI\'ya geçmeli? (60 sn)',
   'Haftada 10 saat nasıl kazanılır? (60 sn)',
   'Müşteri hizmetini AI ile otomatize etme (90 sn)',
   'Excel automasyonu ile nasıl zaman kazanırsın? (60 sn)',
@@ -197,7 +197,7 @@ export default function VideoGeneratorClient({ previousVideos }: { previousVideo
                   type="text"
                   value={scriptTopic}
                   onChange={(e) => setScriptTopic(e.target.value)}
-                  placeholder="Örn: KOBİ'ler için ChatGPT rehberi (60 sn)"
+                  placeholder="Örn: Şirketler için ChatGPT rehberi (60 sn)"
                   className="w-full bg-surface-elevated border border-primary rounded-lg px-4 py-3 text-foreground text-sm placeholder-foreground-muted focus:outline-none focus:border-primary-light"
                 />
                 <div className="mt-3 flex flex-wrap gap-2">

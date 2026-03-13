@@ -1,6 +1,6 @@
 # Verimio — CLAUDE.md
 
-Türk KOBİ'lerine AI danışmanlığı yapan şirket. Bu repo hem ana siteyi hem admin dashboard'u içerir.
+Yapay zeka ve otomasyon dönüşümüne ihtiyaç duyan şirketlere danışmanlık yapan B2B ajans. Bu repo hem ana siteyi hem admin dashboard'u içerir.
 *Son güncelleme: 12 Mart 2026*
 
 ---

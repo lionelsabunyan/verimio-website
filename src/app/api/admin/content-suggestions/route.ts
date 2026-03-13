@@ -29,9 +29,9 @@ export async function GET(request: Request) {
 
 // POST — OpenRouter ile yeni öneriler üret
 export async function POST() {
-  const prompt = `Sen Verimio'nun içerik stratejisti olarak görev yapıyorsun. Verimio, Türk KOBİ'lere yapay zeka ve otomasyon danışmanlığı veren bir B2B şirketidir.
+  const prompt = `Sen Verimio'nun içerik stratejisti olarak görev yapıyorsun. Verimio, yapay zeka ve otomasyon dönüşümüne ihtiyaç duyan şirketlere danışmanlık veren bir B2B şirketidir.
 
-Hedef kitle: 10-200 çalışanlı Türk KOBİ'lerin sahip ve yöneticileri
+Hedef kitle: Operasyonlarını geliştirmek isteyen Türk şirketlerinin yöneticileri ve karar vericileri
 Verimio'nun hizmetleri: AI dönüşüm danışmanlığı, süreç otomasyonu, ChatGPT entegrasyonu, müşteri hizmetleri AI'ı, raporlama otomasyonu
 
 Şu anda güncel ve ilgi çekici olabilecek 8 adet içerik önerisi oluştur.

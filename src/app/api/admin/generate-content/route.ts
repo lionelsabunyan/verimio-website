@@ -6,14 +6,14 @@ export async function POST(request: Request) {
   const { type, topic, keywords, tone = 'professional' } = await request.json()
 
   const SYSTEM_PROMPTS: Record<string, string> = {
-    blog: `Sen Verimio için çalışan bir SEO odaklı içerik editörüsün. Türk KOBİ'lere AI dönüşümü hakkında bilgilendirici, pratik ve SEO uyumlu blog yazıları yazıyorsun. Ton: profesyonel ama erişilebilir. Türkçe yaz.`,
+    blog: `Sen Verimio için çalışan bir SEO odaklı içerik editörüsün. AI dönüşümüne ihtiyaç duyan şirketlere yönelik bilgilendirici, pratik ve SEO uyumlu blog yazıları yazıyorsun. Ton: profesyonel ama erişilebilir. Türkçe yaz.`,
     script: `Sen Verimio için YouTube ve sosyal medya video scriptleri yazan bir içerik üreticisisin. Kısa, dikkat çekici, eğitici videolar için script oluşturuyorsun. Türkçe yaz.`,
     caption: `Sen Verimio'nun sosyal medya yöneticisisin. LinkedIn, Instagram ve Twitter için ilgi çekici, hashtag'li, CTA'lı Türkçe paylaşım metinleri yazıyorsun.`,
   }
 
   const USER_PROMPTS: Record<string, string> = {
     blog: `Konu: "${topic}"
-Hedef kelimeler: ${keywords || 'AI otomasyon, KOBİ, verimlilik'}
+Hedef kelimeler: ${keywords || 'AI otomasyon, dijital dönüşüm, verimlilik'}
 Ton: ${tone}
 
 Şu formatı takip et:

@@ -17,7 +17,7 @@ const CONTENT_TYPES = [
 ]
 
 const TOPIC_SUGGESTIONS = [
-  'KOBİ\'ler için ChatGPT kullanım rehberi',
+  'Şirketler için ChatGPT kullanım rehberi',
   'Müşteri hizmetlerini AI ile otomatize etme',
   'Excel otomasyonu ile saatleri kurtarma',
   'AI araçlarıyla içerik üretimi nasıl yapılır',
@@ -142,7 +142,7 @@ export default function ContentGeneratorClient({
                   type="text"
                   value={topic}
                   onChange={(e) => setTopic(e.target.value)}
-                  placeholder="Örn: KOBİ'ler için ChatGPT kullanımı"
+                  placeholder="Örn: Şirketler için ChatGPT kullanımı"
                   className="w-full bg-surface-elevated border border-primary rounded-lg px-4 py-3 text-foreground text-sm placeholder-foreground-muted focus:outline-none focus:border-primary-light"
                 />
                 <div className="mt-3">
@@ -164,7 +164,7 @@ export default function ContentGeneratorClient({
                   type="text"
                   value={keywords}
                   onChange={(e) => setKeywords(e.target.value)}
-                  placeholder="AI otomasyon, KOBİ, verimlilik"
+                  placeholder="AI otomasyon, dijital dönüşüm, verimlilik"
                   className="w-full bg-surface-elevated border border-primary rounded-lg px-4 py-3 text-foreground text-sm placeholder-foreground-muted focus:outline-none focus:border-primary-light"
                 />
               </div>

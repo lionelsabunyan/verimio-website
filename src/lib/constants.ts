@@ -215,8 +215,8 @@ export const BLOG_POSTS = [
     category: "strategy" as const,
   },
   {
-    title: "KOBİ'lerde Yapay Zeka Devrimi: Rekabetin Gerisinde Kalmamak İçin 5 Adım",
-    excerpt: "Türk KOBİ'lerin dijital dönüşüm sürecinde yapay zekayı nasıl stratejik bir avantaja dönüştürebileceklerini anlatan kapsamlı bir rehber.",
+    title: "Şirketlerde Yapay Zeka Devrimi: Rekabetin Gerisinde Kalmamak İçin 5 Adım",
+    excerpt: "Türk şirketlerinin dijital dönüşüm sürecinde yapay zekayı nasıl stratejik bir avantaja dönüştürebileceklerini anlatan kapsamlı bir rehber.",
     date: "11 Mart 2026",
     slug: "kobide-yapay-zeka-devrimi",
     category: "strategy" as const,

@@ -136,7 +136,7 @@ const PLATFORM_PROFILES = [
   {
     platform: 'LinkedIn',
     handle: 'Verimio',
-    bio: 'AI Dönüşüm Danışmanlığı | Ücretsiz AI Hazırlık Testi | KOBİ\'ler için yapay zeka stratejisi',
+    bio: 'AI Dönüşüm Danışmanlığı | Ücretsiz AI Hazırlık Testi | Şirketler için yapay zeka stratejisi',
     postFreq: '3–4×/hafta',
     contentMix: ['%40 Eğitim / AI trendi', '%30 Vaka analizi', '%20 Araç rehberi', '%10 Verimio içeriği'],
     bestTime: 'Salı–Perşembe, 08:00–10:00',
@@ -144,7 +144,7 @@ const PLATFORM_PROFILES = [
   {
     platform: 'Instagram',
     handle: '@verimio',
-    bio: '3 dk\'da AI hazırlık testi 🚀 | KOBİ\'ler için yapay zeka | Link bio\'da',
+    bio: '3 dk\'da AI hazırlık testi 🚀 | Şirketler için yapay zeka | Link bio\'da',
     postFreq: '5×/hafta',
     contentMix: ['%50 Infografik / Stat', '%30 Tips carousel', '%20 Story / poll'],
     bestTime: 'Salı–Cuma, 11:00–13:00',
@@ -160,7 +160,7 @@ const PLATFORM_PROFILES = [
   {
     platform: 'YouTube',
     handle: 'Verimio',
-    bio: 'KOBİ\'ler için yapay zeka dönüşümü. Pratik rehberler, vaka analizleri.',
+    bio: 'Şirketler için yapay zeka dönüşümü. Pratik rehberler, vaka analizleri.',
     postFreq: '2×/ay',
     contentMix: ['%50 How-to / rehber', '%30 Vaka analizi', '%20 AI araç incelemesi'],
     bestTime: 'Cuma veya Cumartesi yükleme',
@@ -707,13 +707,13 @@ export default function BrandClient() {
               <h4 className="text-foreground-muted text-xs font-medium uppercase tracking-widest mb-4">Canlı Tipografi Önizlemesi</h4>
               <div className="space-y-4">
                 <h1 className="text-foreground font-bold" style={{ fontSize: '48px', lineHeight: 1.15 }}>
-                  KOBİ&apos;nin AI&apos;a Geçiş Rehberi
+                  Şirketinizin AI&apos;a Geçiş Rehberi
                 </h1>
                 <h2 className="text-foreground font-bold" style={{ fontSize: '32px' }}>
                   3 dakikada AI hazırlık seviyeni öğren
                 </h2>
                 <p className="text-foreground-secondary" style={{ fontSize: '18px', lineHeight: 1.6 }}>
-                  Çoğu KOBİ AI&apos;ı doğru sıradan başlatmıyor. Ücretsiz hazırlık testimiz şirketinin
+                  Çoğu şirket AI&apos;ı doğru sıradan başlatmıyor. Ücretsiz hazırlık testimiz şirketinin
                   nerede durduğunu, hangi araçların işine yarayacağını ve nasıl başlayacağını gösterir.
                 </p>
                 <div className="flex items-center gap-3">
@@ -732,7 +732,7 @@ export default function BrandClient() {
                   <ul className="space-y-2 text-sm text-foreground-secondary">
                     {[
                       '"3 dakikada şirketinin AI hazırlık seviyesini öğren."',
-                      '"Çoğu KOBİ AI\'ı doğru sıradan başlatmıyor."',
+                      '"Çoğu şirket AI\'ı doğru sıradan başlatmıyor."',
                       '"sen" hitabı — modern B2B Türkçesi',
                       'Kısa cümleler (max 20 kelime)',
                       'Gerçek istatistikler + kaynak',

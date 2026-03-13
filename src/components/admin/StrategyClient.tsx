@@ -214,7 +214,7 @@ export default function StrategyClient({ initialSettings }: { initialSettings: A
           <textarea
             value={audience}
             onChange={e => setAudience(e.target.value)}
-            placeholder="Örn: Türkiye'deki 10-100 kişilik KOBİ sahipleri ve yöneticileri, dijital dönüşüm sürecindeki şirketler..."
+            placeholder="Örn: Dijital dönüşüm sürecindeki Türk şirketlerinin yöneticileri ve karar vericileri..."
             rows={3}
             className="w-full text-sm text-gray-800 bg-white border border-gray-300 rounded-xl p-4 resize-none
               focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent placeholder-gray-400"

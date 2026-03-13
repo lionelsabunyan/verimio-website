@@ -45,7 +45,7 @@ export async function POST(request: Request) {
         topic: suggestion.topic,
         category: detectCategory(suggestion),
         keywords: suggestion.keywords || [],
-        targetAudience: 'Türk KOBİ\'leri',
+        targetAudience: 'Türk şirketleri',
         suggestionId: suggestion.id,
       },
       priority: 3,
