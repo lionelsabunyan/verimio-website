@@ -51,6 +51,8 @@ function getPost(slug: string): { frontmatter: PostFrontmatter; content: string 
   return { frontmatter: data as PostFrontmatter, content };
 }
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   return getPostSlugs().map((slug) => ({ slug }));
 }
