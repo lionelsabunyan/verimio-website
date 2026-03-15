@@ -258,10 +258,9 @@ Gerekli değişkenler: `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KE
 
 ## Bekleyen İşler
 
-- [ ] Google Search Console API → `/admin/seo` gerçek veri
+- [x] Google Search Console API → `/admin/seo` gerçek veri (GSC service account bağlı)
 - [ ] Calendly webhook → `meetings` otomatik sync
 - [ ] LinkedIn / Twitter API otomatik paylaşım
-- [ ] `verimio.com.tr` custom domain → Vercel
 - [ ] Mobile responsive iyileştirme (admin panel masaüstü odaklı)
 
 ---
