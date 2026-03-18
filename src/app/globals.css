@@ -254,6 +254,37 @@ html {
   animation: aurora 20s ease-in-out infinite;
 }
 
+/* ─── Hero Dot Grid ───────────────────────────────── */
+.hero-dot-grid {
+  background-image: radial-gradient(circle, var(--primary-light) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 30%, transparent 80%);
+  opacity: 0.05;
+}
+
+.dark .hero-dot-grid {
+  opacity: 0.08;
+}
+
+/* ─── Gradient Orb Animations ─────────────────────── */
+@keyframes orb-float-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -20px) scale(1.05); }
+  66% { transform: translate(-20px, 15px) scale(0.95); }
+}
+
+@keyframes orb-float-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-25px, 20px) scale(0.95); }
+  66% { transform: translate(15px, -25px) scale(1.05); }
+}
+
+@keyframes orb-float-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(20px, 20px) scale(1.03); }
+}
+
 /* ─── Animated Gradient Divider ───────────────────── */
 @keyframes gradient-slide {
   0% { background-position: -200% 0; }

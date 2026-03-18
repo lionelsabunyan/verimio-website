@@ -7,6 +7,7 @@ import DataReportingIcon from "@/components/brand/icons/services/DataReportingIc
 import AIStrategyIcon from "@/components/brand/icons/services/AIStrategyIcon";
 import CTA from "@/components/sections/CTA";
 import Button from "@/components/ui/Button";
+import HeroVisual from "@/components/brand/HeroVisual";
 import type { Metadata } from "next";
 import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 
@@ -137,26 +138,33 @@ export default function HizmetlerPage() {
       {/* Hero */}
       <section className="section-padding">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="flex items-center gap-2 mb-4">
-              <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
-              <span className="w-1.5 h-1.5 rounded-full bg-secondary/60" />
-              <span className="text-xs font-semibold text-foreground-secondary tracking-widest uppercase ml-1">Hizmetlerimiz</span>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
+                <span className="w-1.5 h-1.5 rounded-full bg-secondary/60" />
+                <span className="text-xs font-semibold text-foreground-secondary tracking-widest uppercase ml-1">Hizmetlerimiz</span>
+              </div>
+
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                Operasyonunuzu{" "}
+                <span className="gradient-text">ölçülebilir şekilde iyileştiriyoruz.</span>
+              </h1>
+
+              <p className="text-lg text-foreground-secondary leading-relaxed mb-8 max-w-2xl">
+                Her hizmet alanımız, önce doğru analiz — sonra somut ROI hesabı — ardından uygulama
+                sıralamasıyla çalışır. Şirketinize özgün, rakam temelli çözümler sunuyoruz.
+              </p>
+
+              <Button href={BRAND.tallyFormUrl} size="md">
+                Hangi Çözüm Bana Uygun?
+              </Button>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-              Operasyonunuzu{" "}
-              <span className="gradient-text">ölçülebilir şekilde iyileştiriyoruz.</span>
-            </h1>
-
-            <p className="text-lg text-foreground-secondary leading-relaxed mb-8 max-w-2xl">
-              Her hizmet alanımız, önce doğru analiz — sonra somut ROI hesabı — ardından uygulama
-              sıralamasıyla çalışır. Şirketinize özgün, rakam temelli çözümler sunuyoruz.
-            </p>
-
-            <Button href={BRAND.tallyFormUrl} size="md">
-              Hangi Çözüm Bana Uygun?
-            </Button>
+            {/* Animated visual */}
+            <div className="hidden lg:block">
+              <HeroVisual variant="services" />
+            </div>
           </div>
         </div>
       </section>

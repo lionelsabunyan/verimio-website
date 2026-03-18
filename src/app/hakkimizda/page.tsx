@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { CheckCircle2, BarChart3, Users2 } from "lucide-react";
+import HeroVisual from "@/components/brand/HeroVisual";
 import FAQ from "@/components/sections/FAQ";
 import CTA from "@/components/sections/CTA";
 import type { Metadata } from "next";
@@ -66,17 +66,8 @@ export default function HakkimizdaPage() {
               </p>
             </div>
 
-            {/* Sağ: Hero Görseli — fal.ai Flux Pro */}
-            <div className="rounded-2xl overflow-hidden border border-border shadow-sm">
-              <Image
-                src="https://v3b.fal.media/files/b/0a8f1fda/Djz8MV-LlJcjwVcBsgBun_ceed83ff0b3641f489bbaff6e5bd2205.jpg"
-                alt="Kurumsal AI danışmanlığı — stratejik netlik"
-                width={1024}
-                height={768}
-                className="w-full h-auto"
-                priority
-              />
-            </div>
+            {/* Sağ: Animated visual */}
+            <HeroVisual variant="about" />
           </div>
         </div>
       </section>

@@ -1,11 +1,11 @@
 "use client";
 
 import { useRef } from "react";
-import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { HERO_CONTENT, BRAND } from "@/lib/constants";
 import Button from "@/components/ui/Button";
 import { RadialGlow, FloatingShapes } from "@/components/brand/Decoratives";
+import HeroVisual from "@/components/brand/HeroVisual";
 import TimeIcon from "@/components/brand/icons/ui/TimeIcon";
 import ROIIcon from "@/components/brand/icons/ui/ROIIcon";
 import RoadmapIcon from "@/components/brand/icons/ui/RoadmapIcon";
@@ -95,17 +95,8 @@ export default function Hero() {
             className="space-y-5"
             style={{ y: imageY }}
           >
-            {/* Hero görseli — fal.ai Flux Pro */}
-            <div className="rounded-2xl border border-border overflow-hidden shadow-sm">
-              <Image
-                src="https://v3b.fal.media/files/b/0a8f1fd9/qIo6-MpoTddKyskLzq1hM_8daae89f905d471aa400c2ed476fd310.jpg"
-                alt="AI destekli iş süreci otomasyonu"
-                width={1024}
-                height={768}
-                className="w-full h-auto"
-                priority
-              />
-            </div>
+            {/* Hero visual — animated gradient orbs + dot grid */}
+            <HeroVisual variant="home" />
 
             {/* Outcome kartları — küçültülmüş, yatay */}
             <div className="grid grid-cols-3 gap-3">
