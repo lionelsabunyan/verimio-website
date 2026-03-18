@@ -23,22 +23,30 @@ En büyük sorun: ${data.biggest_pain}
 Beklenti: ${data.expectation}
 Zaman çizelgesi: ${data.timeline}
 
+KURALLAR:
+1. Öneriler birbirinden farklı operasyonel alanlarda olmalı. Her öneri farklı bir alan: iç süreç otomasyonu, müşteri iletişimi, raporlama/analitik, veri yönetimi, satış/pazarlama, insan kaynakları, maliyet kontrolü gibi. Aynı konuyu farklı açılardan tekrarlama.
+2. Yol haritası: Gerçekçi ol. Eğer tüm adımlar 2-4 haftada tamamlanabiliyorsa sadece phase1 kullan. 1-2 ayda bitecekse phase1+phase2 yeterli. Zorla 3 faz ÜRETME. phase3 null olabilir.
+3. timeline_label: "2-4 hafta", "1-2 ay", "2-3 ay", "3+ ay" gibi gerçekçi bir süre tahmin et.
+
 Şu JSON formatını döndür:
 {
   "score": <1-10 arası sayı>,
   "score_label": "<Başlangıç seviyesi / Gelişmekte / Hazır / İleri seviye>",
   "top_opportunity": "<tek cümle, en somut otomasyon fırsatı>",
   "estimated_saving": "<tahmini zaman veya maliyet tasarrufu, Türk şirketleri için gerçekçi rakamlar>",
+  "timeline_label": "<gerçekçi toplam süre tahmini: '2-4 hafta' / '1-2 ay' / '2-3 ay' / '3+ ay'>",
   "summary": "<2-3 cümle özet, şirkete özel>",
   "recommendations": [
-    {"title": "<başlık>", "description": "<2-3 cümle açıklama, nasıl uygulanır>"},
+    {"title": "<başlık>", "description": "<2-3 cümle açıklama, nasıl uygulanır, hangi araç önerilir>"},
+    {"title": "<başlık>", "description": "<2-3 cümle>"},
+    {"title": "<başlık>", "description": "<2-3 cümle>"},
     {"title": "<başlık>", "description": "<2-3 cümle>"},
     {"title": "<başlık>", "description": "<2-3 cümle>"}
   ],
   "roadmap": {
-    "month1": "<1. ayda yapılacaklar, somut adımlar>",
-    "month2": "<2. ayda yapılacaklar>",
-    "month3": "<3. ayda yapılacaklar ve beklenen sonuç>"
+    "phase1": "<ilk adım — her zaman dolu, somut ve hemen başlanabilir>",
+    "phase2": "<ikinci adım — sadece gerekiyorsa, yoksa null>",
+    "phase3": "<üçüncü adım — sadece gerekiyorsa, yoksa null>"
   }
 }`
 }
@@ -88,16 +96,19 @@ export async function POST(req: NextRequest) {
         score_label: 'Gelişmekte',
         top_opportunity: 'Manuel süreçlerin otomasyonu ile zaman tasarrufu',
         estimated_saving: 'Aylık 10-20 saat iş gücü tasarrufu',
+        timeline_label: '1-2 ay',
         summary: `${company_name || 'Şirketiniz'} için AI dönüşüm analizini tamamladık. Ekibiniz mevcut süreçleri iyileştirmek için hazır bir konumda.`,
         recommendations: [
-          { title: 'Rutin Raporlamayı Otomatize Edin', description: 'Haftalık ve aylık raporları AI ile otomatik üretin. Excel tabanlı manuel süreçler yerine gerçek zamanlı dashboard kurun.' },
+          { title: 'Rutin Raporlamayı Otomatize Edin', description: 'Haftalık ve aylık raporları AI ile otomatik üretin. Excel tabanlı manuel süreçler yerine gerçek zamanlı dashboard kurun. Bu adım genellikle 1-2 hafta içinde hayata geçirilebilir.' },
           { title: 'Müşteri İletişimini Hızlandırın', description: 'Sık sorulan sorular için AI destekli yanıt şablonları oluşturun. Ekibinizin zamanını değer yaratan işlere yönlendirin.' },
           { title: 'Veri Toplamayı Merkezileştirin', description: 'Farklı kaynaklardan gelen verileri tek bir platforma taşıyın. Karar vermek için gereken süreyi kısaltın.' },
+          { title: 'İç Onay Süreçlerini Dijitalleştirin', description: 'E-posta zinciriyle yürütülen onay akışlarını basit bir iş akışı aracına taşıyın. Gecikmeleri ve kayıpları önleyin.' },
+          { title: 'Çalışan Eğitimini Yapılandırın', description: 'AI araçlarının ekip tarafından benimsenmesi için kısa video rehberleri ve şablonlar hazırlayın. Direnci azaltmak dönüşüm süresini yarıya indirir.' },
         ],
         roadmap: {
-          month1: 'Mevcut iş akışlarını haritalayın, en çok zaman harcanan süreçleri tespit edin',
-          month2: 'Pilot otomasyon projesi başlatın, ilk aracı entegre edin ve sonuçları ölçün',
-          month3: 'Başarılı pilotu ölçeklendirin, ekip eğitimini tamamlayın, ROI raporlayın',
+          phase1: 'Mevcut iş akışlarını haritalayın, en çok zaman harcanan süreçleri tespit edin ve öncelik sırası belirleyin',
+          phase2: 'Pilot otomasyon projesi başlatın, ilk aracı entegre edin ve sonuçları ölçün',
+          phase3: null,
         },
       }
     }

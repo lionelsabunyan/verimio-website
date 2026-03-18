@@ -166,9 +166,10 @@ export interface CheckupAnalysis {
   score_label: string
   top_opportunity: string
   estimated_saving: string
+  timeline_label?: string
   summary: string
   recommendations: { title: string; description: string }[]
-  roadmap: { month1: string; month2: string; month3: string }
+  roadmap: { phase1: string; phase2?: string | null; phase3?: string | null }
 }
 
 export function checkupReportEmailHtml({
@@ -203,15 +204,16 @@ export function checkupReportEmailHtml({
     )
     .join('')
 
-  const roadmapItems = [
-    { label: 'Ay 1', text: analysis.roadmap.month1, color: '#F59E0B' },
-    { label: 'Ay 2', text: analysis.roadmap.month2, color: '#60A5FA' },
-    { label: 'Ay 3', text: analysis.roadmap.month3, color: '#4ade80' },
+  const roadmapPhases = [
+    { label: 'Adım 1', text: analysis.roadmap.phase1, color: '#F59E0B' },
+    { label: 'Adım 2', text: analysis.roadmap.phase2, color: '#60A5FA' },
+    { label: 'Adım 3', text: analysis.roadmap.phase3, color: '#4ade80' },
   ]
+    .filter((m) => m.text)
     .map(
       (m) => `<tr><td style="padding:4px 0;">
       <table cellpadding="0" cellspacing="0" width="100%"><tr>
-        <td style="width:44px;vertical-align:top;">
+        <td style="width:52px;vertical-align:top;">
           <span style="display:inline-block;background:${m.color}22;border:1px solid ${m.color}44;color:${m.color};font-size:11px;font-weight:700;padding:3px 8px;border-radius:20px;">${m.label}</span>
         </td>
         <td style="padding-left:12px;">
@@ -256,7 +258,7 @@ export function checkupReportEmailHtml({
               </tr></table>
               <p style="color:#94A3B8;font-size:13px;margin:14px 0 0 0;line-height:1.6;">
                 <strong style="color:#F59E0B;">En büyük fırsat:</strong> ${analysis.top_opportunity}<br>
-                <strong style="color:#F59E0B;">Tahmini kazanım:</strong> ${analysis.estimated_saving}
+                <strong style="color:#F59E0B;">Tahmini kazanım:</strong> ${analysis.estimated_saving}${analysis.timeline_label ? `<br><strong style="color:#F59E0B;">Uygulama süresi:</strong> ${analysis.timeline_label}` : ''}
               </p>
             </td></tr>
           </table>
@@ -268,8 +270,8 @@ export function checkupReportEmailHtml({
         </td></tr>
 
         <tr><td style="background-color:#0F172A;padding:0 40px 28px;border-left:1px solid #1E293B;border-right:1px solid #1E293B;">
-          <p style="color:#F1F5F9;font-size:15px;font-weight:600;margin:0 0 16px 0;">90 Günlük Yol Haritası</p>
-          <table width="100%" cellpadding="0" cellspacing="0">${roadmapItems}</table>
+          <p style="color:#F1F5F9;font-size:15px;font-weight:600;margin:0 0 16px 0;">Uygulama Yol Haritası${analysis.timeline_label ? ` — ${analysis.timeline_label}` : ''}</p>
+          <table width="100%" cellpadding="0" cellspacing="0">${roadmapPhases}</table>
         </td></tr>
 
         <tr><td style="background-color:#0F172A;border-radius:0 0 16px 16px;padding:0 40px 36px;border:1px solid #1E293B;border-top:none;">
