@@ -127,10 +127,12 @@ export default function MultiStepForm() {
 
     try {
       const payload = buildPayload(formData);
-      // FAZ 6'da Supabase + n8n entegrasyonu yapılacak
-      console.log("Payload:", payload);
-
-      await new Promise((resolve) => setTimeout(resolve, 3000));
+      const res = await fetch("/api/checkup/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error("submit failed");
       router.push("/tesekkurler?tip=rapor");
     } catch {
       setSubmitError("Bir hata oluştu. Lütfen tekrar deneyin.");

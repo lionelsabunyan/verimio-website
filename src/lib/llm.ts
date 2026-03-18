@@ -3,7 +3,7 @@
  * Gorev bazli model secimi ile maliyet optimizasyonu
  */
 
-export type TaskType = 'content_generation' | 'content_suggestions' | 'seo_content'
+export type TaskType = 'content_generation' | 'content_suggestions' | 'seo_content' | 'lead_analysis'
 
 interface ModelConfig {
   id: string
@@ -23,6 +23,10 @@ const MODEL_MAP: Record<TaskType, ModelConfig> = {
   seo_content: {
     id: 'deepseek/deepseek-v3.2',          // Ingilizce SEO — $0.25/$0.40 per 1M token
     maxTokens: 4000,
+  },
+  lead_analysis: {
+    id: 'google/gemini-3-flash-preview',   // Lead analiz raporu — Turkce
+    maxTokens: 2000,
   },
 }
 
