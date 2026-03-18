@@ -187,6 +187,13 @@ export const FAQ_ITEMS = [
 
 export const BLOG_POSTS = [
   {
+    title: "İnsan Kaynaklarında AI Devrimi: İşe Alımdan Çalışan Bağlılığına",
+    excerpt: "İnsan Kaynakları süreçlerinde yapay zekanın dönüştürücü gücünü keşfedin. İşe alımdan çalışan bağlılığına kadar AI'ın nasıl verimlilik ve stratejik değer kattığını öğrenin.",
+    date: "18 Mart 2026",
+    slug: "insan-kaynaklarinda-ai-devrimi-ise-alimdan-calisan-bagliligi",
+    category: "strategy" as const,
+  },
+  {
     title: "Şirketinizin Gizli Verileri Güvende mi? Kurumsal ChatGPT Kullanımı",
     excerpt: "Çalışanların bireysel ChatGPT kullanımının riskleri ve şirketlere özel, güvenli, kapalı devre yapay zeka sistemlerinin neden bir zorunluluk olduğu.",
     date: "13 Mart 2026",
