@@ -1,65 +1,114 @@
 "use client";
 
-import { MeshGradient } from "@mesh-gradient/react";
+/**
+ * Varyant 4: Split Layout + Clip-Path Reveal + MeshGradient sağ panel
+ * Kaynak: hero-flower.txt — Verimio'ya uyarlandı, sağ taraf MeshGradient ile
+ */
 
-const BEAM_PATHS = [
-  "M0 200 Q200 100 400 180 Q600 260 800 150 Q1000 40 1200 200",
-  "M0 350 Q150 250 350 300 Q550 350 750 250 Q950 150 1200 280",
-  "M0 100 Q300 200 500 80 Q700 -40 900 120 Q1100 280 1200 100",
-  "M0 450 Q200 380 400 420 Q600 460 800 350 Q1000 240 1200 380",
-];
+import { MeshGradient } from "@paper-design/shaders-react";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { HERO_CONTENT, BRAND } from "@/lib/constants";
+import Button from "@/components/ui/Button";
+import TimeIcon from "@/components/brand/icons/ui/TimeIcon";
+import ROIIcon from "@/components/brand/icons/ui/ROIIcon";
+import RoadmapIcon from "@/components/brand/icons/ui/RoadmapIcon";
 
-function Beam({ path, delay, duration, color }: { path: string; delay: number; duration: number; color: string }) {
+const cardIcons = [TimeIcon, ROIIcon, RoadmapIcon];
+
+export default function HeroSplit() {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.2 } },
+  };
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { y: 0, opacity: 1, transition: { duration: 0.5, ease: "easeOut" as const } },
+  };
+
   return (
-    <g>
-      <path d={path} fill="none" stroke={color} strokeWidth="0.5" opacity="0.08" />
-      <circle r="2.5" fill={color}>
-        <animateMotion dur={`${duration}s`} begin={`${delay}s`} repeatCount="indefinite" path={path} />
-      </circle>
-      <circle r="8" fill={color} opacity="0.15">
-        <animateMotion dur={`${duration}s`} begin={`${delay}s`} repeatCount="indefinite" path={path} />
-      </circle>
-    </g>
-  );
-}
+    <motion.section
+      className="relative flex w-full min-h-screen flex-col overflow-hidden bg-[#0A0514] text-white md:flex-row"
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+    >
+      {/* Left: Content */}
+      <div className="flex w-full flex-col justify-center p-8 md:w-1/2 md:p-12 lg:w-3/5 lg:p-16">
+        <motion.div variants={itemVariants} className="mb-8">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5">
+            <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
+            <span className="text-xs font-medium text-white/70">{HERO_CONTENT.badge}</span>
+          </div>
+        </motion.div>
 
-export default function HeroCombo() {
-  return (
-    <div className="absolute inset-0">
-      {/* Layer 1: Mesh gradient background */}
-      <div className="absolute inset-0 opacity-80">
-        <MeshGradient
-          className="absolute inset-0 w-full h-full"
-          options={{
-            colors: ["#0A0514", "#1E0A46", "#8B5CF6", "#A3E635"],
-            animationSpeed: 0.2,
-          }}
-        />
+        <motion.h1
+          className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] mb-6"
+          variants={itemVariants}
+        >
+          {HERO_CONTENT.headline}
+          <br />
+          <span className="text-secondary">{HERO_CONTENT.headlineHighlight}</span>
+        </motion.h1>
+
+        <motion.div className="w-20 h-1 bg-secondary rounded-full mb-6" variants={itemVariants} />
+
+        <motion.p
+          className="text-lg text-white/50 max-w-md leading-relaxed mb-8"
+          variants={itemVariants}
+        >
+          {HERO_CONTENT.subheadline}
+        </motion.p>
+
+        <motion.div className="flex items-center gap-4 flex-wrap mb-12" variants={itemVariants}>
+          <Button href={BRAND.tallyFormUrl} size="lg">{HERO_CONTENT.ctaPrimary}</Button>
+          <Button href="#nasil-calisir" variant="outline" size="lg" icon={false} className="border-white/20 text-white hover:border-secondary hover:text-secondary hover:bg-transparent">
+            {HERO_CONTENT.ctaSecondary}
+          </Button>
+        </motion.div>
+
+        {/* Outcome cards */}
+        <motion.div className="grid grid-cols-3 gap-3" variants={containerVariants}>
+          {HERO_CONTENT.cards.map((card, i) => {
+            const Icon = cardIcons[i];
+            return (
+              <motion.div
+                key={i}
+                variants={itemVariants}
+                className="rounded-xl p-4 border border-white/10 bg-white/5 backdrop-blur-sm hover:border-secondary/30 transition-all glow-card"
+              >
+                <div className="w-8 h-8 rounded-lg flex items-center justify-center mb-3 bg-white/10 text-secondary">
+                  <Icon className="w-4 h-4" size={16} />
+                </div>
+                <h3 className="text-xs font-semibold text-white/80 leading-snug">{card.title}</h3>
+              </motion.div>
+            );
+          })}
+        </motion.div>
       </div>
 
-      {/* Layer 2: Dark overlay for contrast */}
-      <div className="absolute inset-0 bg-[#0A0514]/40" />
-
-      {/* Layer 3: Light beams */}
-      <svg
-        className="absolute inset-0 w-full h-full"
-        viewBox="0 0 1200 600"
-        preserveAspectRatio="xMidYMid slice"
+      {/* Right: MeshGradient with clip-path reveal */}
+      <motion.div
+        className="w-full min-h-[400px] md:w-1/2 md:min-h-full lg:w-2/5 relative overflow-hidden"
+        initial={{ clipPath: "polygon(100% 0, 100% 0, 100% 100%, 100% 100%)" }}
+        animate={{ clipPath: "polygon(15% 0, 100% 0, 100% 100%, 0% 100%)" }}
+        transition={{ duration: 1.2, ease: "circOut" }}
       >
-        <Beam path={BEAM_PATHS[0]} delay={0} duration={9} color="#8B5CF6" />
-        <Beam path={BEAM_PATHS[1]} delay={2} duration={11} color="#A3E635" />
-        <Beam path={BEAM_PATHS[2]} delay={1} duration={8} color="#8B5CF6" />
-        <Beam path={BEAM_PATHS[3]} delay={3} duration={10} color="#A3E635" />
-      </svg>
-
-      {/* Layer 4: Center glow */}
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full pointer-events-none"
-        style={{
-          background: "radial-gradient(circle, rgba(139,92,246,0.06) 0%, transparent 70%)",
-          filter: "blur(40px)",
-        }}
-      />
-    </div>
+        {mounted && (
+          <MeshGradient
+            className="absolute inset-0 w-full h-full"
+            colors={["#1E0A46", "#8B5CF6", "#A3E635", "#2E1065"]}
+            speed={0.3}
+            distortion={0.7}
+            swirl={0.5}
+          />
+        )}
+        {/* Diagonal overlay accent */}
+        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-[#0A0514]/20 to-[#0A0514]/60" />
+      </motion.div>
+    </motion.section>
   );
 }

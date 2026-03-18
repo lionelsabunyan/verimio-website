@@ -1,69 +1,146 @@
 "use client";
 
-import { useEffect, useId, useRef } from "react";
+/**
+ * Varyant 1: Paper Shaders MeshGradient + Wireframe + PulsingBorder
+ * Kaynak: hero.txt — Verimio renklerine uyarlandı
+ */
+
+import { useEffect, useRef, useState } from "react";
+import { MeshGradient, PulsingBorder } from "@paper-design/shaders-react";
 import { motion } from "framer-motion";
+import { HERO_CONTENT, BRAND } from "@/lib/constants";
+import Button from "@/components/ui/Button";
 
-const BEAM_PATHS = [
-  "M0 200 Q200 100 400 180 Q600 260 800 150 Q1000 40 1200 200",
-  "M0 350 Q150 250 350 300 Q550 350 750 250 Q950 150 1200 280",
-  "M0 100 Q300 200 500 80 Q700 -40 900 120 Q1100 280 1200 100",
-  "M0 450 Q200 380 400 420 Q600 460 800 350 Q1000 240 1200 380",
-  "M0 50 Q250 150 500 50 Q750 -50 1000 100 Q1150 200 1200 50",
-  "M0 500 Q300 420 600 480 Q900 540 1200 420",
-];
+export default function HeroShader() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isActive, setIsActive] = useState(false);
 
-function Beam({ path, delay, duration, color }: { path: string; delay: number; duration: number; color: string }) {
-  const id = useId();
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const enter = () => setIsActive(true);
+    const leave = () => setIsActive(false);
+    el.addEventListener("mouseenter", enter);
+    el.addEventListener("mouseleave", leave);
+    return () => { el.removeEventListener("mouseenter", enter); el.removeEventListener("mouseleave", leave); };
+  }, []);
+
   return (
-    <g>
-      {/* Faint trail */}
-      <path d={path} fill="none" stroke={color} strokeWidth="0.5" opacity="0.1" />
-      {/* Animated beam */}
-      <motion.circle r="3" fill={color} filter={`url(#${id})`}>
-        <animateMotion dur={`${duration}s`} begin={`${delay}s`} repeatCount="indefinite" path={path} />
-      </motion.circle>
-      {/* Glow filter */}
-      <defs>
-        <filter id={id} x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur in="SourceGraphic" stdDeviation="6" />
-        </filter>
-      </defs>
-    </g>
-  );
-}
-
-export default function HeroBeams() {
-  return (
-    <div className="absolute inset-0">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0A0514] via-[#1E0A46] to-[#0A0514]" />
-
-      {/* Radial glow center */}
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full"
-        style={{
-          background: "radial-gradient(circle, rgba(139,92,246,0.08) 0%, transparent 70%)",
-          filter: "blur(60px)",
-        }}
-      />
-
-      {/* SVG Beams */}
-      <svg
-        className="absolute inset-0 w-full h-full"
-        viewBox="0 0 1200 600"
-        preserveAspectRatio="xMidYMid slice"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <Beam path={BEAM_PATHS[0]} delay={0} duration={8} color="#8B5CF6" />
-        <Beam path={BEAM_PATHS[1]} delay={1.5} duration={10} color="#A3E635" />
-        <Beam path={BEAM_PATHS[2]} delay={0.8} duration={7} color="#8B5CF6" />
-        <Beam path={BEAM_PATHS[3]} delay={2} duration={12} color="#A3E635" />
-        <Beam path={BEAM_PATHS[4]} delay={3} duration={9} color="#8B5CF6" />
-        <Beam path={BEAM_PATHS[5]} delay={1} duration={11} color="#A3E635" />
+    <div ref={containerRef} className="min-h-screen relative overflow-hidden">
+      {/* SVG Filters */}
+      <svg className="absolute inset-0 w-0 h-0">
+        <defs>
+          <filter id="glass-v" x="-50%" y="-50%" width="200%" height="200%">
+            <feTurbulence baseFrequency="0.005" numOctaves="1" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="0.3" />
+          </filter>
+          <filter id="text-glow-v" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="2" result="coloredBlur" />
+            <feMerge>
+              <feMergeNode in="coloredBlur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
       </svg>
 
-      {/* Dot grid overlay */}
-      <div className="absolute inset-0 hero-dot-grid opacity-[0.04]" />
+      {/* Layer 1: MeshGradient — Verimio renkleri */}
+      <MeshGradient
+        className="absolute inset-0 w-full h-full"
+        colors={["#0A0514", "#1E0A46", "#8B5CF6", "#2E1065", "#A3E635"]}
+        speed={0.25}
+        distortion={0.6}
+        swirl={0.4}
+      />
+
+      {/* Layer 2: Subtle second gradient for depth */}
+      <MeshGradient
+        className="absolute inset-0 w-full h-full opacity-30"
+        colors={["#0A0514", "#8B5CF6", "#A3E635", "#2E1065"]}
+        speed={0.15}
+        distortion={0.3}
+        swirl={0.7}
+        grainOverlay={0.15}
+      />
+
+      {/* Content */}
+      <div className="absolute inset-0 z-20 flex items-end">
+        <main className="max-w-2xl p-8 md:p-16 pb-16">
+          <motion.div
+            className="inline-flex items-center px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm mb-6 border border-white/10"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse mr-2" />
+            <span className="text-white/80 text-sm font-medium">{HERO_CONTENT.badge}</span>
+          </motion.div>
+
+          <motion.h1
+            className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-[1.05]"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <motion.span
+              className="block text-3xl md:text-4xl lg:text-5xl font-light mb-2"
+              style={{
+                background: "linear-gradient(135deg, #ffffff 0%, #8B5CF6 40%, #A3E635 70%, #ffffff 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                backgroundSize: "200% 200%",
+                filter: "url(#text-glow-v)",
+              }}
+              animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
+              transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+            >
+              {HERO_CONTENT.headline}
+            </motion.span>
+            <span className="block font-black text-white drop-shadow-2xl">{HERO_CONTENT.headlineHighlight}</span>
+          </motion.h1>
+
+          <motion.p
+            className="text-lg text-white/60 mb-8 leading-relaxed max-w-xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+          >
+            {HERO_CONTENT.subheadline}
+          </motion.p>
+
+          <motion.div
+            className="flex items-center gap-4 flex-wrap"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1.0 }}
+          >
+            <Button href={BRAND.tallyFormUrl} size="lg">{HERO_CONTENT.ctaPrimary}</Button>
+            <Button href="#nasil-calisir" variant="outline" size="lg" icon={false} className="border-white/20 text-white hover:border-secondary hover:text-secondary hover:bg-transparent">
+              {HERO_CONTENT.ctaSecondary}
+            </Button>
+          </motion.div>
+        </main>
+      </div>
+
+      {/* PulsingBorder accent — bottom right */}
+      <div className="absolute bottom-8 right-8 z-30 w-16 h-16">
+        <PulsingBorder
+          colors={["#8B5CF6", "#A3E635", "#2E1065", "#8B5CF6"]}
+          colorBack="#00000000"
+          speed={1.5}
+          roundness={1}
+          thickness={0.1}
+          softness={0.2}
+          intensity={5}
+          spots={5}
+          spotSize={0.1}
+          pulse={0.1}
+          smoke={0.5}
+          smokeSize={4}
+          style={{ width: "60px", height: "60px", borderRadius: "50%" }}
+        />
+      </div>
     </div>
   );
 }

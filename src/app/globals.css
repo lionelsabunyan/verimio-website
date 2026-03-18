@@ -267,6 +267,12 @@ html {
   opacity: 0.08;
 }
 
+/* ─── Verimio Aurora Animation ────────────────────── */
+@keyframes verimio-aurora {
+  from { background-position: 50% 50%, 50% 50%; }
+  to { background-position: 350% 50%, 350% 50%; }
+}
+
 /* ─── Gradient Orb Animations ─────────────────────── */
 @keyframes orb-float-1 {
   0%, 100% { transform: translate(0, 0) scale(1); }
