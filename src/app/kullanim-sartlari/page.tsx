@@ -134,7 +134,7 @@ export default function KullanimSartlariPage() {
             <div>
               <h1 className="text-4xl sm:text-5xl font-bold leading-tight mb-4">
                 Kullanım{" "}
-                <span className="gradient-text">Şartları</span>
+                <span className="text-primary-light">Şartları</span>
               </h1>
               <p className="text-lg text-foreground-secondary leading-relaxed max-w-2xl">
                 Verimio hizmetlerini kullanırken geçerli olan koşulları,

@@ -18,7 +18,7 @@ export default function Benefits() {
 
             <h2 className="text-3xl sm:text-4xl font-bold mb-5">
               Raporunuzda Neler{" "}
-              <span className="gradient-text">Bulacaksınız?</span>
+              <span className="text-primary-light">Bulacaksınız?</span>
             </h2>
             <p className="text-lg text-foreground-secondary mb-8 leading-relaxed">
               Check-up raporunuz genel öneriler değil, firmanıza özel somut

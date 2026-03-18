@@ -58,7 +58,7 @@ export default function NotFound() {
 
         <h1 className="text-2xl sm:text-3xl font-bold mb-4">
           Bu sayfa yok. Ama doğru{" "}
-          <span className="gradient-text">analiz olsa bulurduk.</span>
+          <span className="text-primary-light">analiz olsa bulurduk.</span>
         </h1>
 
         <p className="text-foreground-secondary leading-relaxed mb-8">

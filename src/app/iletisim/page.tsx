@@ -85,7 +85,7 @@ export default function IletisimPage() {
 
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
                 Sorulardan{" "}
-                <span className="gradient-text">doğru yere ulaşın.</span>
+                <span className="text-primary-light">doğru yere ulaşın.</span>
               </h1>
 
               <p className="text-lg text-foreground-secondary leading-relaxed mb-10 max-w-lg">
@@ -192,7 +192,7 @@ export default function IletisimPage() {
       <section className="section-padding bg-background-secondary">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-center">
-            Sık Sorulan <span className="gradient-text">Sorular</span>
+            Sık Sorulan <span className="text-primary-light">Sorular</span>
           </h2>
 
           <div className="space-y-6">

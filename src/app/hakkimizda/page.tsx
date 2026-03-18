@@ -49,14 +49,13 @@ export default function HakkimizdaPage() {
             {/* Sol: İçerik */}
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                <span className="w-1.5 h-1.5 rounded-full bg-primary opacity-60" />
-                <span className="text-xs font-semibold text-foreground-secondary tracking-widest uppercase ml-1">Hakkımızda</span>
+                <span className="w-6 h-0.5 rounded-full bg-primary-light" />
+              <span className="text-xs font-medium text-foreground-muted tracking-widest uppercase">Hakkımızda</span>
               </div>
 
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
                 Şirketinizin içindeymiş gibi{" "}
-                <span className="gradient-text">düşünen danışmanınız.</span>
+                <span className="text-primary-light">düşünen danışmanınız.</span>
               </h1>
 
               <p className="text-lg text-foreground-secondary leading-relaxed mb-8 max-w-2xl">
@@ -83,7 +82,7 @@ export default function HakkimizdaPage() {
 
           <h2 className="text-3xl sm:text-4xl font-bold mb-12">
             Gördüğümüz sorun,{" "}
-            <span className="gradient-text">geliştirdiğimiz cevap.</span>
+            <span className="text-primary-light">geliştirdiğimiz cevap.</span>
           </h2>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
@@ -122,14 +121,13 @@ export default function HakkimizdaPage() {
       <section className="section-padding">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-            <span className="w-1.5 h-1.5 rounded-full bg-primary opacity-60" />
-            <span className="text-xs font-semibold text-foreground-secondary tracking-widest uppercase ml-1">Çalışma Biçimimiz</span>
+            <span className="w-6 h-0.5 rounded-full bg-primary-light" />
+              <span className="text-xs font-medium text-foreground-muted tracking-widest uppercase">Çalışma Biçimimiz</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl font-bold mb-12">
             Bizi farklı kılan{" "}
-            <span className="gradient-text">üç temel ilke.</span>
+            <span className="text-primary-light">üç temel ilke.</span>
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

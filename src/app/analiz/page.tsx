@@ -23,7 +23,7 @@ export default function AnalizPage() {
           </div>
           <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-3">
             Şirket{" "}
-            <span className="gradient-text">Check-Up&apos;ı</span>
+            <span className="text-primary-light">Check-Up&apos;ı</span>
           </h1>
           <p className="text-foreground-secondary text-sm sm:text-base max-w-md mx-auto leading-relaxed">
             Şirketinizi tanıyoruz, eksiklerinizi analiz ediyoruz. Size özel otomasyon

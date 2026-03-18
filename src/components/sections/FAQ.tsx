@@ -20,7 +20,7 @@ export default function FAQ() {
               <SectionLabel className="mb-4">SSS</SectionLabel>
               <h2 className="text-3xl sm:text-4xl font-bold mb-4">
                 Merak{" "}
-                <span className="gradient-text">Ettikleriniz</span>
+                <span className="text-primary-light">Ettikleriniz</span>
               </h2>
               <p className="text-foreground-secondary leading-relaxed">
                 Aklınızdaki soruların cevabını burada bulamazsanız bize yazın.

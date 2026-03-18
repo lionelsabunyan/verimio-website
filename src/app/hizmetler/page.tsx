@@ -148,7 +148,7 @@ export default function HizmetlerPage() {
 
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
                 Operasyonunuzu{" "}
-                <span className="gradient-text">ölçülebilir şekilde iyileştiriyoruz.</span>
+                <span className="text-primary-light">ölçülebilir şekilde iyileştiriyoruz.</span>
               </h1>
 
               <p className="text-lg text-foreground-secondary leading-relaxed mb-8 max-w-2xl">
@@ -178,7 +178,7 @@ export default function HizmetlerPage() {
             <span className="text-xs font-semibold text-foreground-secondary tracking-widest uppercase ml-1">Hizmet Alanları</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold mb-12">
-            5 alanda <span className="gradient-text">danışmanlık.</span>
+            5 alanda <span className="text-primary-light">danışmanlık.</span>
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -215,13 +215,12 @@ export default function HizmetlerPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <div className="flex items-center justify-center gap-2 mb-4">
-              <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-              <span className="w-1.5 h-1.5 rounded-full bg-primary opacity-60" />
-              <span className="text-xs font-semibold text-foreground-secondary tracking-widest uppercase ml-1">Nasıl Çalışıyoruz?</span>
+              <span className="w-6 h-0.5 rounded-full bg-primary-light" />
+              <span className="text-xs font-medium text-foreground-muted tracking-widest uppercase">Nasıl Çalışıyoruz?</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
               Tanı&apos;dan uygulamaya{" "}
-              <span className="gradient-text">4 adım.</span>
+              <span className="text-primary-light">4 adım.</span>
             </h2>
             <p className="text-foreground-secondary leading-relaxed">
               Her proje aynı disiplinle başlar: önce anlamak, sonra planlamak, sonra yapmak.
@@ -246,13 +245,12 @@ export default function HizmetlerPage() {
       <section className="section-padding bg-background-secondary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-            <span className="w-1.5 h-1.5 rounded-full bg-primary opacity-60" />
-            <span className="text-xs font-semibold text-foreground-secondary tracking-widest uppercase ml-1">Nereden Başlayalım?</span>
+            <span className="w-6 h-0.5 rounded-full bg-primary-light" />
+              <span className="text-xs font-medium text-foreground-muted tracking-widest uppercase">Nereden Başlayalım?</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
             Hangi sorunu{" "}
-            <span className="gradient-text">çözmek istiyorsunuz?</span>
+            <span className="text-primary-light">çözmek istiyorsunuz?</span>
           </h2>
           <p className="text-foreground-secondary leading-relaxed mb-12 max-w-2xl">
             Doğru hizmet alanını belirlemek için önce sorunu netleştirmek gerekir.

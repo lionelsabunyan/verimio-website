@@ -76,7 +76,7 @@ export default function SSSPage() {
 
           <h1 className="text-4xl sm:text-5xl font-bold leading-tight mb-6">
             Sık Sorulan{" "}
-            <span className="gradient-text">Sorular</span>
+            <span className="text-primary-light">Sorular</span>
           </h1>
 
           <p className="text-lg text-foreground-secondary leading-relaxed max-w-2xl">

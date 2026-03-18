@@ -142,7 +142,7 @@ export default function GizlilikPage() {
             <div>
               <h1 className="text-4xl sm:text-5xl font-bold leading-tight mb-4">
                 Gizlilik{" "}
-                <span className="gradient-text">Politikası</span>
+                <span className="text-primary-light">Politikası</span>
               </h1>
               <p className="text-lg text-foreground-secondary leading-relaxed max-w-2xl">
                 Verileriniz bizim için emanettir. Bu politika, hangi verileri

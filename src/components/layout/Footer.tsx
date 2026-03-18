@@ -25,13 +25,13 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-    <footer className="relative bg-primary text-white overflow-hidden">
-      {/* Subtle lime radial glow — top right */}
+    <footer className="relative bg-[#020617] text-white overflow-hidden">
+      {/* Subtle amber radial glow — top right */}
       <div
         className="absolute top-0 right-0 w-[500px] h-[300px] pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse at top right, rgba(163,230,53,0.08) 0%, transparent 70%)",
+            "radial-gradient(ellipse at top right, rgba(245,158,11,0.05) 0%, transparent 70%)",
         }}
         aria-hidden="true"
       />

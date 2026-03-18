@@ -48,14 +48,13 @@ export default function BlogPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <div className="flex items-center gap-2 mb-6">
-              <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-              <span className="w-1.5 h-1.5 rounded-full bg-primary opacity-60" />
-              <span className="text-xs font-semibold text-foreground-secondary tracking-widest uppercase ml-1">Blog</span>
+              <span className="w-6 h-0.5 rounded-full bg-primary-light" />
+              <span className="text-xs font-medium text-foreground-muted tracking-widest uppercase">Blog</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
               AI & Otomasyon{" "}
-              <span className="gradient-text">İpuçları</span>
+              <span className="text-primary-light">İpuçları</span>
             </h1>
 
             <p className="text-lg text-foreground-secondary leading-relaxed max-w-2xl">
@@ -120,7 +119,7 @@ export default function BlogPage() {
       <section className="section-padding">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">
-            Firmanız için <span className="gradient-text">doğru adımı atın</span>
+            Firmanız için <span className="text-primary-light">doğru adımı atın</span>
           </h2>
           <p className="text-foreground-secondary leading-relaxed mb-8">
             Otomasyon potansiyelinizi, tasarruf fırsatlarınızı ve 90 günlük yol haritanızı

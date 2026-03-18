@@ -344,7 +344,7 @@ export default async function BlogPostPage({
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">
             Firmanız için{" "}
-            <span className="gradient-text">doğru adımı atın</span>
+            <span className="text-primary-light">doğru adımı atın</span>
           </h2>
           <p className="text-foreground-secondary leading-relaxed mb-8">
             Otomasyon potansiyelinizi, tasarruf fırsatlarınızı ve 90 günlük
