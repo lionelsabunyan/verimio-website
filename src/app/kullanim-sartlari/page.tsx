@@ -117,7 +117,7 @@ export default function KullanimSartlariPage() {
   return (
     <div className="pt-20">
       {/* Hero */}
-      <section className="section-padding">
+      <section className="section-padding pb-0">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 mb-6">
             <span className="w-1.5 h-1.5 rounded-full bg-secondary" />

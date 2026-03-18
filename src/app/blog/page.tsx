@@ -44,7 +44,7 @@ export default function BlogPage() {
         ]}
       />
       {/* Hero */}
-      <section className="section-padding">
+      <section className="section-padding pb-0">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <div className="flex items-center gap-2 mb-6">
