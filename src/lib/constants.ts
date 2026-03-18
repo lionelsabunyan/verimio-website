@@ -187,6 +187,13 @@ export const FAQ_ITEMS = [
 
 export const BLOG_POSTS = [
   {
+    title: "2026 Yapay Zeka Trendleri: Türk KOBİ'leri Nasıl Hazırlanmalı?",
+    excerpt: "Yapay zeka trendlerini takip ederek iş süreçlerinizi geliştirmek ve rekabet avantajı elde etmek isteyen Türk KOBİ'leri için pratik stratejiler.",
+    date: "18 Mart 2026",
+    slug: "2026-yapay-zeka-trendleri-turk-kobileri-nasil-hazirlanmali",
+    category: "tutorial" as const,
+  },
+  {
     title: "İnsan Kaynaklarında AI Devrimi: İşe Alımdan Çalışan Bağlılığına",
     excerpt: "Yapay zeka İK süreçlerini nasıl dönüştürüyor? CV taramadan mülakat analizine, çalışan memnuniyeti tahmininden onboarding otomasyonuna AI'ın gücünü keşfedin.",
     date: "18 Mart 2026",
