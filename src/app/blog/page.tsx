@@ -1,6 +1,17 @@
 import Link from "next/link";
 import { ArrowUpRight, Calendar } from "lucide-react";
 import { BLOG_POSTS, BRAND } from "@/lib/constants";
+
+const categoryLabels: Record<string, string> = {
+  strategy: "Strateji",
+  automation: "Otomasyon",
+  customer: "Müşteri",
+  data: "Veri",
+  roi: "ROI",
+  "ai-tools": "AI Araçları",
+  tutorial: "Rehber",
+  security: "Güvenlik",
+};
 import BlogCoverImage from "@/components/brand/BlogCoverImage";
 import type { Metadata } from "next";
 import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
@@ -62,17 +73,24 @@ export default function BlogPage() {
             {BLOG_POSTS.map((post, index) => (
               <article
                 key={index}
-                className="group bg-surface rounded-2xl border border-border overflow-hidden hover:border-border-accent transition-all duration-300"
+                className="group bg-surface rounded-2xl border border-border overflow-hidden hover:border-border-accent transition-all duration-300 glow-card"
               >
-                {/* Cover image — webp varsa göster, yoksa SVG pattern */}
-                <div className="p-4 pb-0">
-                  <BlogCoverImage slug={post.slug} title={post.title} category={post.category} index={index} />
+                {/* Cover image */}
+                <div className="p-4 pb-0 overflow-hidden rounded-t-xl">
+                  <div className="transition-transform duration-500 group-hover:scale-105">
+                    <BlogCoverImage slug={post.slug} title={post.title} category={post.category} index={index} />
+                  </div>
                 </div>
 
                 <div className="p-6">
-                  <div className="flex items-center gap-2 text-sm text-foreground-secondary mb-3">
-                    <Calendar className="w-4 h-4" />
-                    {post.date}
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-primary/8 dark:bg-primary-light/10 text-xs font-medium text-primary-light">
+                      {categoryLabels[post.category] ?? post.category}
+                    </span>
+                    <span className="flex items-center gap-1.5 text-xs text-foreground-secondary">
+                      <Calendar className="w-3 h-3" />
+                      {post.date}
+                    </span>
                   </div>
 
                   <h2 className="text-lg font-bold mb-3 group-hover:text-primary dark:group-hover:text-primary-light transition-colors leading-snug">
@@ -89,7 +107,7 @@ export default function BlogPage() {
                     aria-label={`Devamını Oku: ${post.title}`}
                   >
                     Devamını Oku
-                    <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
+                    <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
                   </Link>
                 </div>
               </article>

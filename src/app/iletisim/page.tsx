@@ -102,7 +102,7 @@ export default function IletisimPage() {
                       key={index}
                       className={`p-6 rounded-2xl border transition-all duration-300 bg-surface ${
                         method.active
-                          ? "border-border hover:border-border-accent group"
+                          ? "border-border hover:border-border-accent group glow-card"
                           : "border-border opacity-60"
                       }`}
                     >
@@ -199,7 +199,7 @@ export default function IletisimPage() {
             {faqQuick.map((item, index) => (
               <div
                 key={index}
-                className="p-6 rounded-2xl border border-border bg-surface"
+                className="p-6 rounded-2xl border border-border bg-surface hover:border-border-accent transition-all duration-300 glow-card"
               >
                 <h3 className="font-semibold mb-2">{item.q}</h3>
                 <p className="text-sm text-foreground-secondary leading-relaxed">{item.a}</p>

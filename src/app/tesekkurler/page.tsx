@@ -12,7 +12,8 @@ function TesekkurlerContent() {
   const isGorusme = tip === "gorusme";
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/4 via-background to-secondary/3 pt-20 flex items-center justify-center px-4">
+    <div className="min-h-screen bg-gradient-to-br from-primary/4 via-background to-secondary/3 pt-20 flex items-center justify-center px-4 relative overflow-hidden">
+      <div className="absolute inset-0 aurora-bg pointer-events-none" />
       <div className="max-w-md w-full text-center space-y-8">
         {/* Animated check */}
         <motion.div

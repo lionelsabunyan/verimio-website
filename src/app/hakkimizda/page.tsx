@@ -145,7 +145,7 @@ export default function HakkimizdaPage() {
             {differentiators.map((item, index) => (
               <div
                 key={index}
-                className="p-8 rounded-2xl border border-border hover:border-border-accent transition-all duration-300 bg-surface group"
+                className="p-8 rounded-2xl border border-border hover:border-border-accent transition-all duration-300 bg-surface group glow-card"
               >
                 <div className="w-12 h-12 rounded-xl bg-primary-light/10 flex items-center justify-center mb-6 group-hover:bg-primary-light/20 transition-colors">
                   <item.icon className="w-6 h-6 text-primary-light" />

@@ -177,7 +177,7 @@ export default function HizmetlerPage() {
             {services.map((service, index) => (
               <div
                 key={index}
-                className="p-8 rounded-2xl border border-border hover:border-border-accent transition-all duration-300 bg-surface group"
+                className="p-8 rounded-2xl border border-border hover:border-border-accent transition-all duration-300 bg-surface group glow-card"
               >
                 <div className="w-12 h-12 rounded-xl bg-primary/8 dark:bg-primary-light/10 text-primary-light flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
                   <service.icon className="w-6 h-6" size={24} />
@@ -255,7 +255,7 @@ export default function HizmetlerPage() {
             {problemCards.map((card, index) => (
               <div
                 key={index}
-                className="p-8 rounded-2xl border border-border bg-surface hover:border-border-accent transition-all duration-300 group"
+                className="p-8 rounded-2xl border border-border bg-surface hover:border-border-accent transition-all duration-300 group glow-card"
               >
                 <div className="w-12 h-12 rounded-xl bg-primary-light/10 flex items-center justify-center mb-6 group-hover:bg-primary-light/20 transition-colors">
                   <card.icon className="w-6 h-6 text-primary-light" />

@@ -181,11 +181,16 @@ export default function KullanimSartlariPage() {
                 id={section.id}
                 className="scroll-mt-28"
               >
-                <h2 className="text-xl font-bold mb-4 pb-3 border-b border-border">
-                  {section.title}
-                </h2>
-                <div className="text-foreground-secondary leading-relaxed whitespace-pre-line text-sm sm:text-base">
-                  {section.content}
+                <div className="flex items-start gap-4">
+                  <span className="w-1 h-8 rounded-full bg-primary-light/40 shrink-0 mt-0.5" />
+                  <div className="flex-1">
+                    <h2 className="text-xl font-bold mb-4 pb-3 border-b border-border">
+                      {section.title}
+                    </h2>
+                    <div className="text-foreground-secondary leading-relaxed whitespace-pre-line text-sm sm:text-base">
+                      {section.content}
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}

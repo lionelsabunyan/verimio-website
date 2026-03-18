@@ -96,16 +96,19 @@ export default function SSSPage() {
             {allFaqs.map((item, index) => (
               <details
                 key={index}
-                className="group rounded-2xl border border-border bg-surface overflow-hidden"
+                className="group rounded-2xl border border-border bg-surface overflow-hidden transition-all duration-300 open:border-border-accent open:shadow-md open:shadow-primary/5 glow-card"
               >
                 <summary className="flex items-center justify-between gap-4 px-8 py-6 cursor-pointer list-none select-none hover:bg-foreground/[0.02] transition-colors">
-                  <h3 className="font-semibold text-foreground leading-snug pr-4">
-                    {item.question}
-                  </h3>
-                  <ChevronDown className="w-5 h-5 text-foreground-secondary shrink-0 transition-transform duration-300 group-open:rotate-180" />
+                  <div className="flex items-start gap-4">
+                    <span className="w-1 h-6 rounded-full bg-primary-light/0 group-open:bg-primary-light transition-colors duration-300 shrink-0 mt-0.5" />
+                    <h3 className="font-semibold text-foreground leading-snug pr-4 group-open:text-primary dark:group-open:text-primary-light transition-colors duration-300">
+                      {item.question}
+                    </h3>
+                  </div>
+                  <ChevronDown className="w-5 h-5 text-foreground-secondary shrink-0 transition-transform duration-300 group-open:rotate-180 group-open:text-primary-light" />
                 </summary>
-                <div className="px-8 pb-6">
-                  <p className="text-foreground-secondary leading-relaxed text-sm sm:text-base">
+                <div className="px-8 pb-6 pl-13">
+                  <p className="text-foreground-secondary leading-relaxed text-sm sm:text-base ml-5">
                     {item.answer}
                   </p>
                 </div>
