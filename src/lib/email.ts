@@ -170,6 +170,13 @@ export interface CheckupAnalysis {
   summary: string
   recommendations: { title: string; description: string }[]
   roadmap: { phase1: string; phase2?: string | null; phase3?: string | null }
+  consultant_guide?: {
+    sector_context: string
+    research_topics: string[]
+    suggested_tools: string[]
+    call_prep: string
+    quick_wins: string[]
+  }
 }
 
 export function checkupReportEmailHtml({
