@@ -2,7 +2,8 @@ import { Resend } from 'resend'
 
 export const resend = new Resend(process.env.RESEND_API_KEY)
 
-export const FROM_ADDRESS = 'Verimio <info@verimio.com.tr>'
+export const FROM_ADDRESS = 'Verimio Analiz <analiz@verimio.com.tr>'
+export const REPLY_TO = 'info@verimio.com.tr'
 
 export function reportEmailHtml({
   recipientEmail,
