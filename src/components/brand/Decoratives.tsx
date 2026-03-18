@@ -18,8 +18,8 @@ export function RadialGlow({
 }: RadialGlowProps) {
   const gradientColor =
     color === "lime"
-      ? `rgba(163, 230, 53, ${opacity})`
-      : `rgba(139, 92, 246, ${opacity})`;
+      ? `rgba(255, 217, 61, ${opacity})`
+      : `rgba(255, 107, 107, ${opacity})`;
 
   return (
     <div
@@ -54,8 +54,8 @@ export function GradientLine({
         width: isHorizontal ? "100%" : "1px",
         height: isHorizontal ? "1px" : "100%",
         background: isHorizontal
-          ? "linear-gradient(90deg, transparent, #8B5CF6, #A3E635, transparent)"
-          : "linear-gradient(180deg, transparent, #8B5CF6, #A3E635, transparent)",
+          ? "linear-gradient(90deg, transparent, #FF6B6B, #FFD93D, transparent)"
+          : "linear-gradient(180deg, transparent, #FF6B6B, #FFD93D, transparent)",
       }}
       aria-hidden="true"
     />

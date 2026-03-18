@@ -10,7 +10,7 @@ export default function OGImage() {
         style={{
           width: 1200,
           height: 630,
-          background: '#2E1065',
+          background: '#1A1A2E',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'flex-start',
@@ -60,43 +60,43 @@ export default function OGImage() {
             width: 56,
             height: 56,
             borderRadius: 14,
-            border: '2px solid #8B5CF6',
+            border: '2px solid #FF6B6B',
             background: 'rgba(139,92,246,0.08)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-            <div style={{ width: 20, height: 20, borderRadius: 5, background: '#8B5CF6', opacity: 0.6 }} />
+            <div style={{ width: 20, height: 20, borderRadius: 5, background: '#FF6B6B', opacity: 0.6 }} />
           </div>
           {/* Connector */}
-          <div style={{ width: 2, height: 32, background: 'linear-gradient(to bottom, #8B5CF6, #A3E635)', opacity: 0.5 }} />
+          <div style={{ width: 2, height: 32, background: 'linear-gradient(to bottom, #FF6B6B, #FFD93D)', opacity: 0.5 }} />
           {/* Node 2 */}
           <div style={{
             width: 56,
             height: 56,
             borderRadius: 14,
-            border: '2px solid #8B5CF6',
+            border: '2px solid #FF6B6B',
             background: 'rgba(139,92,246,0.08)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-            <div style={{ width: 20, height: 20, borderRadius: '50%', border: '2px solid #8B5CF6', opacity: 0.6 }} />
+            <div style={{ width: 20, height: 20, borderRadius: '50%', border: '2px solid #FF6B6B', opacity: 0.6 }} />
           </div>
           {/* Connector */}
-          <div style={{ width: 2, height: 32, background: 'linear-gradient(to bottom, #8B5CF6, #A3E635)', opacity: 0.5 }} />
+          <div style={{ width: 2, height: 32, background: 'linear-gradient(to bottom, #FF6B6B, #FFD93D)', opacity: 0.5 }} />
           {/* Node 3 — lime accent */}
           <div style={{
             width: 56,
             height: 56,
             borderRadius: 14,
-            border: '2px solid #A3E635',
+            border: '2px solid #FFD93D',
             background: 'rgba(163,230,53,0.10)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-            <div style={{ width: 20, height: 4, background: '#A3E635', borderRadius: 2, opacity: 0.8 }} />
+            <div style={{ width: 20, height: 4, background: '#FFD93D', borderRadius: 2, opacity: 0.8 }} />
           </div>
         </div>
 
@@ -106,19 +106,19 @@ export default function OGImage() {
             width: 52,
             height: 52,
             borderRadius: 14,
-            background: '#A3E635',
+            background: '#FFD93D',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
           }}>
             <svg width="32" height="32" viewBox="0 0 64 64" fill="none">
-              <path d="M8 12 L32 52 L56 12" stroke="#2E1065" strokeWidth="9" strokeLinecap="round" strokeLinejoin="round"/>
-              <circle cx="32" cy="10" r="6" fill="#1E0A46"/>
+              <path d="M8 12 L32 52 L56 12" stroke="#1A1A2E" strokeWidth="9" strokeLinecap="round" strokeLinejoin="round"/>
+              <circle cx="32" cy="10" r="6" fill="#121218"/>
             </svg>
           </div>
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <span style={{ color: '#FFFFFF', fontSize: 32, fontWeight: 700, letterSpacing: '-0.02em' }}>verim</span>
-            <span style={{ color: '#A3E635', fontSize: 32, fontWeight: 700, letterSpacing: '-0.02em' }}>io</span>
+            <span style={{ color: '#FFD93D', fontSize: 32, fontWeight: 700, letterSpacing: '-0.02em' }}>io</span>
           </div>
         </div>
 
@@ -146,8 +146,8 @@ export default function OGImage() {
         {/* Alt CTA */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
           <div style={{
-            background: '#A3E635',
-            color: '#2E1065',
+            background: '#FFD93D',
+            color: '#1A1A2E',
             padding: '14px 32px',
             borderRadius: 12,
             fontSize: 20,

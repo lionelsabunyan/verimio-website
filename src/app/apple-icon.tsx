@@ -11,7 +11,7 @@ export default function AppleIcon() {
           width: 180,
           height: 180,
           borderRadius: 40,
-          background: '#2E1065',
+          background: '#1A1A2E',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -25,7 +25,7 @@ export default function AppleIcon() {
             strokeLinecap="round"
             strokeLinejoin="round"
           />
-          <circle cx="32" cy="10" r="6" fill="#A3E635" />
+          <circle cx="32" cy="10" r="6" fill="#FFD93D" />
         </svg>
       </div>
     ),

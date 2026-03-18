@@ -65,7 +65,7 @@ function Monogram({
         strokeLinecap="round"
         strokeLinejoin="round"
       />
-      <circle cx="32" cy="16" r="4.5" fill="#A3E635" />
+      <circle cx="32" cy="16" r="4.5" fill="#FFD93D" />
     </svg>
   );
 }

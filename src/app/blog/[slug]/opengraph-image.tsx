@@ -6,14 +6,14 @@ export const contentType = 'image/png'
 
 // Category to pattern index mapping (mirrors BlogCardImage)
 const categoryColors: Record<string, { accent: string; label: string }> = {
-  'ai-tools':    { accent: '#8B5CF6', label: 'AI Araçları' },
-  'automation':  { accent: '#A3E635', label: 'Otomasyon' },
-  'data':        { accent: '#8B5CF6', label: 'Veri & Raporlama' },
-  'strategy':    { accent: '#A3E635', label: 'Strateji' },
-  'security':    { accent: '#8B5CF6', label: 'Veri Güvenliği' },
-  'customer':    { accent: '#A3E635', label: 'Müşteri Deneyimi' },
-  'roi':         { accent: '#A3E635', label: 'ROI & Verimlilik' },
-  'tutorial':    { accent: '#8B5CF6', label: 'Rehber' },
+  'ai-tools':    { accent: '#FF6B6B', label: 'AI Araçları' },
+  'automation':  { accent: '#FFD93D', label: 'Otomasyon' },
+  'data':        { accent: '#FF6B6B', label: 'Veri & Raporlama' },
+  'strategy':    { accent: '#FFD93D', label: 'Strateji' },
+  'security':    { accent: '#FF6B6B', label: 'Veri Güvenliği' },
+  'customer':    { accent: '#FFD93D', label: 'Müşteri Deneyimi' },
+  'roi':         { accent: '#FFD93D', label: 'ROI & Verimlilik' },
+  'tutorial':    { accent: '#FF6B6B', label: 'Rehber' },
 }
 
 export default function BlogOGImage({ params }: { params: { slug: string } }) {
@@ -23,7 +23,7 @@ export default function BlogOGImage({ params }: { params: { slug: string } }) {
   const date = post?.date ?? ''
   const category = (post as { category?: string })?.category
   const catInfo = category ? categoryColors[category] : null
-  const accentColor = catInfo?.accent ?? '#A3E635'
+  const accentColor = catInfo?.accent ?? '#FFD93D'
   const catLabel = catInfo?.label ?? 'Blog'
 
   return new ImageResponse(
@@ -32,7 +32,7 @@ export default function BlogOGImage({ params }: { params: { slug: string } }) {
         style={{
           width: 1200,
           height: 630,
-          background: '#2E1065',
+          background: '#1A1A2E',
           display: 'flex',
           alignItems: 'stretch',
           fontFamily: 'system-ui',
@@ -65,19 +65,19 @@ export default function BlogOGImage({ params }: { params: { slug: string } }) {
               width: 44,
               height: 44,
               borderRadius: 12,
-              background: '#A3E635',
+              background: '#FFD93D',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
             }}>
               <svg width="26" height="26" viewBox="0 0 64 64" fill="none">
-                <path d="M8 12 L32 52 L56 12" stroke="#2E1065" strokeWidth="9" strokeLinecap="round" strokeLinejoin="round"/>
-                <circle cx="32" cy="10" r="6" fill="#1E0A46"/>
+                <path d="M8 12 L32 52 L56 12" stroke="#1A1A2E" strokeWidth="9" strokeLinecap="round" strokeLinejoin="round"/>
+                <circle cx="32" cy="10" r="6" fill="#121218"/>
               </svg>
             </div>
             <div style={{ display: 'flex', alignItems: 'center' }}>
               <span style={{ color: '#FFFFFF', fontSize: 26, fontWeight: 700, letterSpacing: '-0.02em' }}>verim</span>
-              <span style={{ color: '#A3E635', fontSize: 26, fontWeight: 700, letterSpacing: '-0.02em' }}>io</span>
+              <span style={{ color: '#FFD93D', fontSize: 26, fontWeight: 700, letterSpacing: '-0.02em' }}>io</span>
             </div>
           </div>
 
@@ -99,7 +99,7 @@ export default function BlogOGImage({ params }: { params: { slug: string } }) {
             {catLabel && (
               <div style={{
                 background: accentColor,
-                color: '#2E1065',
+                color: '#1A1A2E',
                 padding: '8px 20px',
                 borderRadius: 8,
                 fontSize: 16,
@@ -131,8 +131,8 @@ export default function BlogOGImage({ params }: { params: { slug: string } }) {
           <div style={{ position: 'relative', display: 'flex' }}>
             <svg width="240" height="240" viewBox="0 0 240 240" fill="none">
               {/* Concentric circles */}
-              <circle cx="120" cy="120" r="90" stroke="#8B5CF6" strokeWidth="1" strokeOpacity="0.25" />
-              <circle cx="120" cy="120" r="65" stroke="#8B5CF6" strokeWidth="1" strokeOpacity="0.20" />
+              <circle cx="120" cy="120" r="90" stroke="#FF6B6B" strokeWidth="1" strokeOpacity="0.25" />
+              <circle cx="120" cy="120" r="65" stroke="#FF6B6B" strokeWidth="1" strokeOpacity="0.20" />
               <circle cx="120" cy="120" r="40" stroke={accentColor} strokeWidth="1.5" strokeOpacity="0.40" />
               <circle cx="120" cy="120" r="18" fill={accentColor} fillOpacity="0.12" stroke={accentColor} strokeWidth="1.5" strokeOpacity="0.55" />
               {/* V monogram center */}
@@ -146,7 +146,7 @@ export default function BlogOGImage({ params }: { params: { slug: string } }) {
                 const cy = 120 + 90 * Math.sin(rad)
                 return (
                   <circle key={i} cx={cx} cy={cy} r={i % 2 === 0 ? 4 : 3}
-                    fill={i % 2 === 0 ? accentColor : '#8B5CF6'} fillOpacity="0.45" />
+                    fill={i % 2 === 0 ? accentColor : '#FF6B6B'} fillOpacity="0.45" />
                 )
               })}
             </svg>

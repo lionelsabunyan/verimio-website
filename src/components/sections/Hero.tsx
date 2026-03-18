@@ -17,16 +17,16 @@ export default function Hero() {
   const auroraOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0.15]);
 
   return (
-    <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0A0514]">
+    <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0C0C10]">
 
-      {/* ── Aurora Background ── */}
+      {/* ── Aurora Background — warm coral/gold tones ── */}
       <motion.div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ opacity: auroraOpacity }}>
         <div
           className="absolute -inset-[10px] opacity-40 will-change-transform"
           style={{
             backgroundImage: [
-              "repeating-linear-gradient(100deg, #0A0514 0%, #0A0514 5%, transparent 8%, transparent 14%, #0A0514 18%)",
-              "repeating-linear-gradient(100deg, #8B5CF6 8%, #6D28D9 14%, #A3E635 20%, #2E1065 28%, #8B5CF6 34%)",
+              "repeating-linear-gradient(100deg, #0C0C10 0%, #0C0C10 5%, transparent 8%, transparent 14%, #0C0C10 18%)",
+              "repeating-linear-gradient(100deg, #FF6B6B 8%, #E05555 14%, #FFD93D 20%, #1A1A2E 28%, #FF6B6B 34%)",
             ].join(","),
             backgroundSize: "300% 200%",
             backgroundPosition: "50% 50%",
@@ -37,11 +37,11 @@ export default function Hero() {
           }}
         />
         <div
-          className="absolute -inset-[10px] opacity-30 will-change-transform mix-blend-soft-light"
+          className="absolute -inset-[10px] opacity-25 will-change-transform mix-blend-soft-light"
           style={{
             backgroundImage: [
-              "repeating-linear-gradient(100deg, #0A0514 0%, #0A0514 5%, transparent 8%, transparent 14%, #0A0514 18%)",
-              "repeating-linear-gradient(100deg, #A3E635 8%, #8B5CF6 16%, #2E1065 24%, #A3E635 32%)",
+              "repeating-linear-gradient(100deg, #0C0C10 0%, #0C0C10 5%, transparent 8%, transparent 14%, #0C0C10 18%)",
+              "repeating-linear-gradient(100deg, #FFD93D 8%, #FF6B6B 16%, #1A1A2E 24%, #FFD93D 32%)",
             ].join(","),
             backgroundSize: "250% 150%",
             backgroundAttachment: "fixed",
@@ -51,9 +51,9 @@ export default function Hero() {
         />
       </motion.div>
 
-      {/* Radial glow accents */}
-      <div className="absolute top-1/4 right-0 w-[600px] h-[400px] pointer-events-none" style={{ background: "radial-gradient(ellipse, rgba(139,92,246,0.06) 0%, transparent 60%)", filter: "blur(60px)" }} />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[300px] pointer-events-none" style={{ background: "radial-gradient(ellipse, rgba(163,230,53,0.04) 0%, transparent 60%)", filter: "blur(60px)" }} />
+      {/* Warm radial accents */}
+      <div className="absolute top-1/4 right-0 w-[600px] h-[400px] pointer-events-none" style={{ background: "radial-gradient(ellipse, rgba(255,107,107,0.05) 0%, transparent 60%)", filter: "blur(60px)" }} />
+      <div className="absolute bottom-0 left-1/4 w-[400px] h-[300px] pointer-events-none" style={{ background: "radial-gradient(ellipse, rgba(255,217,61,0.03) 0%, transparent 60%)", filter: "blur(60px)" }} />
 
       <FloatingShapes count={4} />
 
@@ -68,7 +68,7 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm mb-8"
         >
-          <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
+          <span className="w-1.5 h-1.5 rounded-full bg-[#FF6B6B] animate-pulse" />
           <span className="text-sm font-medium text-white/60 tracking-wide">
             {HERO_CONTENT.badge}
           </span>
@@ -82,7 +82,7 @@ export default function Hero() {
         >
           {HERO_CONTENT.headline}
           <br />
-          <span className="bg-gradient-to-r from-[#8B5CF6] via-[#A78BFA] to-[#A3E635] bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-[#FF6B6B] via-[#FF8E8E] to-[#FFD93D] bg-clip-text text-transparent">
             {HERO_CONTENT.headlineHighlight}
           </span>
         </motion.h1>
@@ -110,14 +110,14 @@ export default function Hero() {
             variant="outline"
             size="lg"
             icon={false}
-            className="border-white/15 text-white hover:border-secondary hover:text-secondary hover:bg-transparent"
+            className="border-white/15 text-white hover:border-[#FF6B6B] hover:text-[#FF6B6B] hover:bg-transparent"
           >
             {HERO_CONTENT.ctaSecondary}
           </Button>
         </motion.div>
       </motion.div>
 
-      {/* Bottom edge — thin animated divider */}
+      {/* Bottom edge */}
       <div className="absolute bottom-0 left-0 right-0">
         <div className="max-w-4xl mx-auto px-8"><div className="animated-divider" /></div>
       </div>

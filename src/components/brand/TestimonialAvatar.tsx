@@ -7,9 +7,9 @@ interface TestimonialAvatarProps {
 
 // Brand color combinations for avatar backgrounds
 const COLOR_COMBOS = [
-  { bg: "rgba(139,92,246,0.15)", stroke: "#8B5CF6", text: "#8B5CF6" },
-  { bg: "rgba(163,230,53,0.12)", stroke: "#A3E635", text: "#4D7C0F" },
-  { bg: "rgba(46,16,101,0.12)", stroke: "#2E1065", text: "#2E1065" },
+  { bg: "rgba(139,92,246,0.15)", stroke: "#FF6B6B", text: "#FF6B6B" },
+  { bg: "rgba(163,230,53,0.12)", stroke: "#FFD93D", text: "#4D7C0F" },
+  { bg: "rgba(46,16,101,0.12)", stroke: "#1A1A2E", text: "#1A1A2E" },
 ] as const;
 
 /**
@@ -73,7 +73,7 @@ export default function TestimonialAvatar({
       </text>
 
       {/* Lime accent dot */}
-      <circle cx="34" cy="10" r="3" fill="#A3E635" fillOpacity="0.55" />
+      <circle cx="34" cy="10" r="3" fill="#FFD93D" fillOpacity="0.55" />
     </svg>
   );
 }

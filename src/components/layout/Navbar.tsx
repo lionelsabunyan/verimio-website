@@ -41,8 +41,8 @@ export default function Navbar() {
       <div
         className={`flex items-center justify-between w-full max-w-5xl transition-all duration-500 rounded-full px-5 py-2.5 ${
           scrolled
-            ? "bg-[#1E0A46]/95 backdrop-blur-xl border border-white/10 shadow-lg shadow-black/30"
-            : "bg-[#1E0A46]/80 backdrop-blur-sm border border-white/5"
+            ? "bg-[#121218]/95 backdrop-blur-xl border border-white/10 shadow-lg shadow-black/30"
+            : "bg-[#121218]/80 backdrop-blur-sm border border-white/5"
         }`}
       >
         {/* Logo */}
@@ -66,7 +66,7 @@ export default function Navbar() {
           {/* Desktop CTA */}
           <Link
             href={BRAND.tallyFormUrl}
-            className="hidden md:inline-flex items-center px-4 py-1.5 bg-secondary text-[#1E0A46] font-semibold text-[13px] rounded-full hover:bg-secondary-hover transition-colors duration-200"
+            className="hidden md:inline-flex items-center px-4 py-1.5 bg-secondary text-[#121218] font-semibold text-[13px] rounded-full hover:bg-secondary-hover transition-colors duration-200"
           >
             Check-Up Başlatın
           </Link>
@@ -102,7 +102,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.95 }}
             transition={{ duration: 0.2, ease: [0.21, 0.47, 0.32, 0.98] }}
-            className="md:hidden absolute top-full mt-2 left-4 right-4 bg-[#0A0514]/95 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden shadow-xl shadow-black/30"
+            className="md:hidden absolute top-full mt-2 left-4 right-4 bg-[#121218]/95 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden shadow-xl shadow-black/30"
           >
             <div className="px-4 py-4 space-y-0.5">
               {NAV_LINKS.map((link, i) => (
@@ -130,7 +130,7 @@ export default function Navbar() {
                 <Link
                   href={BRAND.tallyFormUrl}
                   onClick={() => setIsOpen(false)}
-                  className="block w-full text-center px-4 py-2.5 bg-secondary text-[#1E0A46] font-semibold text-sm rounded-full hover:bg-secondary-hover transition-colors"
+                  className="block w-full text-center px-4 py-2.5 bg-secondary text-[#121218] font-semibold text-sm rounded-full hover:bg-secondary-hover transition-colors"
                 >
                   Check-Up Başlatın
                 </Link>
