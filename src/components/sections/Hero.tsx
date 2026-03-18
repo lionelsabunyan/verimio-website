@@ -117,8 +117,10 @@ export default function Hero() {
         </motion.div>
       </motion.div>
 
-      {/* Bottom fade into next section */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none" />
+      {/* Bottom edge — thin animated divider */}
+      <div className="absolute bottom-0 left-0 right-0">
+        <div className="max-w-4xl mx-auto px-8"><div className="animated-divider" /></div>
+      </div>
     </section>
   );
 }
