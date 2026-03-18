@@ -135,33 +135,40 @@ Mevcut SEO altyapısı:
 
 ## Blog Sistemi
 
-**15 yazı yayında** — MDX tabanlı (`src/content/blog/*.mdx`)
+**18 yazı yayında** — MDX tabanlı (`src/content/blog/*.mdx`)
 
 Render: `next-mdx-remote` + `gray-matter` frontmatter parsing
 Kapak görseli: `BlogCoverImage` bileşeni (webp varsa Image, yoksa SVG fallback)
-Görseller: `public/images/blog/{slug}.webp` (fal.ai Recraft V3)
+Görseller: `public/images/blog/{slug}.webp` (Recraft V3 `realistic_image`)
+
+**Kapak görseli stili:** Kategori bazlı farklılaştırılmış (detay: `Verimio/CLAUDE.md` → Görsel Kimlik)
+- strategy → boardroom/executive | automation → fabrika/endüstriyel | ai-tools → ekran/dashboard
+- customer → insan/headset | data → monitör/chart | roi → altın/büyüme | tutorial → workspace
 
 ### Blog Slug Listesi
 
 | # | Slug | Kategori | Tarih |
 |---|------|----------|-------|
-| 1 | `excelden-yapay-zekaya-raporlama-otomasyonu-ile-hata-payini-s` | automation | 12 Mar |
-| 2 | `ai-donusumu-bir-it-projesi-degil-bir-yonetim-vizyonudur` | strategy | 12 Mar |
-| 3 | `verimio-bulten-bu-ay-isletmenizde-uygulayabileceginiz-3-prat` | strategy | 12 Mar |
-| 4 | `ekibiniz-yapay-zekadan-korkmali-mi-yoksa-onu-kucaklamali-mi` | strategy | 12 Mar |
-| 5 | `kobide-yapay-zeka-devrimi` | strategy | 11 Mar |
-| 6 | `raporlama-otomasyonu-nedir` | automation | 11 Mar |
-| 7 | `musteri-hizmetlerinde-ai-donemi` | customer | 11 Mar |
-| 8 | `ai-icin-veri-kalitesi` | data | 6 Mar |
-| 9 | `chatbot-voice-agent-secimi` | customer | 5 Mar |
-| 10 | `ai-roi-hesaplama` | roi | 4 Mar |
-| 11 | `make-vs-n8n-karsilastirma` | ai-tools | 3 Mar |
-| 12 | `ai-danismanlik-neden-farklidir` | strategy | 2 Mar |
-| 13 | `n8n-ile-basit-otomasyon` | tutorial | 1 Mar |
-| 14 | `otomasyon-yanlislari` | automation | 25 Şub |
-| 15 | `sirket-check-up-nedir` | strategy | 20 Şub |
+| 1 | `insan-kaynaklarinda-ai-devrimi-ise-alimdan-calisan-bagliligi` | strategy | 18 Mar |
+| 2 | `sirketinizin-gizli-verileri-guvende-mi-kurumsal-chatgpt-kull` | ai-tools | 13 Mar |
+| 3 | `rakipleriniz-ai-kullanirken-siz-eski-usul-devam-mi-edeceksin` | ai-tools | 13 Mar |
+| 4 | `excelden-yapay-zekaya-raporlama-otomasyonu-ile-hata-payini-s` | automation | 12 Mar |
+| 5 | `ai-donusumu-bir-it-projesi-degil-bir-yonetim-vizyonudur` | strategy | 12 Mar |
+| 6 | `verimio-bulten-bu-ay-isletmenizde-uygulayabileceginiz-3-prat` | strategy | 12 Mar |
+| 7 | `ekibiniz-yapay-zekadan-korkmali-mi-yoksa-onu-kucaklamali-mi` | strategy | 12 Mar |
+| 8 | `kobide-yapay-zeka-devrimi` | strategy | 11 Mar |
+| 9 | `raporlama-otomasyonu-nedir` | automation | 11 Mar |
+| 10 | `musteri-hizmetlerinde-ai-donemi` | customer | 11 Mar |
+| 11 | `ai-icin-veri-kalitesi` | data | 6 Mar |
+| 12 | `chatbot-voice-agent-secimi` | customer | 5 Mar |
+| 13 | `ai-roi-hesaplama` | roi | 4 Mar |
+| 14 | `make-vs-n8n-karsilastirma` | ai-tools | 3 Mar |
+| 15 | `ai-danismanlik-neden-farklidir` | strategy | 2 Mar |
+| 16 | `n8n-ile-basit-otomasyon` | tutorial | 1 Mar |
+| 17 | `otomasyon-yanlislari` | automation | 25 Şub |
+| 18 | `sirket-check-up-nedir` | strategy | 20 Şub |
 
-Kategoriler: `strategy`, `automation`, `customer`, `data`, `roi`, `ai-tools`, `tutorial`
+Kategoriler: `strategy` (7), `automation` (4), `ai-tools` (4), `customer` (2), `data` (1), `roi` (1), `tutorial` (1)
 
 ---
 
