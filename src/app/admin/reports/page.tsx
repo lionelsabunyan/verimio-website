@@ -2,6 +2,7 @@ export const dynamic = 'force-dynamic'
 import { createClient } from '@/lib/supabase/server'
 import Header from '@/components/admin/Header'
 import Link from 'next/link'
+import ReportsEmailButton from '@/components/admin/ReportsEmailButton'
 
 export default async function ReportsPage() {
   const supabase = await createClient()
@@ -40,7 +41,7 @@ export default async function ReportsPage() {
           <table className="w-full">
             <thead>
               <tr className="border-b border-[#0F172A]">
-                {['Email', 'Sektör', 'Durum', 'Tarih', 'Rapor'].map((h) => (
+                {['Email', 'Sektör', 'Durum', 'Tarih', 'Rapor', ''].map((h) => (
                   <th key={h} className="text-left px-5 py-3 text-[#4C4462] text-xs font-medium uppercase tracking-wider">{h}</th>
                 ))}
               </tr>
@@ -66,6 +67,9 @@ export default async function ReportsPage() {
                     ) : (
                       <span className="text-red-400 text-xs">Bekliyor</span>
                     )}
+                  </td>
+                  <td className="px-5 py-3">
+                    <ReportsEmailButton email={lead.email} pdfUrl={lead.pdf_url} />
                   </td>
                 </tr>
               ))}
