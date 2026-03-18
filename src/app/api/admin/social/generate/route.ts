@@ -55,11 +55,16 @@ const IMAGE_SIZE: Record<string, string> = {
   twitter:   'landscape_4_3',  // 1200×900
 }
 
+// Stil 2: Soyut teknoloji — tüm sosyal medya slide'ları için sabit stil
+// Koyu arka plan + mor/lime parıltılar → %62 overlay altında premium atmosfer
+function buildBgPrompt(topicHint: string): string {
+  return `Abstract dark atmospheric photograph of technology environment, ${topicHint}. Flowing data streams, fiber optic lines, and neural network patterns in deep indigo and purple tones. Subtle glowing accents in purple and lime green on circuit board textures dissolving into light particles. Shot with 50mm lens, f/2.0, cinematic color grading. Cool blue-purple tones, shallow depth of field, clean composition with negative space on upper third for text overlay. No text no words no typography no labels no writing anywhere. Futuristic, premium, mysterious atmosphere.`
+}
+
 async function generateVisual(prompt: string, platform: 'linkedin' | 'instagram' | 'twitter'): Promise<string | null> {
   if (!FAL_KEY) return null
   try {
-    // Realistic photo as slide background — brand overlay applied in render-slide renderer
-    const bgPrompt = `Professional business photography, ${prompt}, modern corporate office environment, no text no signs no logos, clean composition, soft natural lighting, shallow depth of field, high quality`
+    const bgPrompt = buildBgPrompt(prompt)
     const res = await fetch('https://fal.run/fal-ai/recraft-v3', {
       method: 'POST',
       headers: {
