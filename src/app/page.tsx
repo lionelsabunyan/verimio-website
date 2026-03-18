@@ -11,9 +11,11 @@ export default function Home() {
     <main>
       <Hero />
       <About />
+      <div className="max-w-4xl mx-auto px-8"><div className="animated-divider" /></div>
       <HowItWorks />
       <Expertise />
       <Blog />
+      <div className="max-w-4xl mx-auto px-8"><div className="animated-divider" /></div>
       <Testimonials />
       <CTA />
     </main>

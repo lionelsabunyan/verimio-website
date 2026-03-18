@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { HERO_CONTENT, BRAND } from "@/lib/constants";
 import Button from "@/components/ui/Button";
-import { RadialGlow } from "@/components/brand/Decoratives";
+import { RadialGlow, FloatingShapes } from "@/components/brand/Decoratives";
 import TimeIcon from "@/components/brand/icons/ui/TimeIcon";
 import ROIIcon from "@/components/brand/icons/ui/ROIIcon";
 import RoadmapIcon from "@/components/brand/icons/ui/RoadmapIcon";
@@ -15,9 +15,11 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
       {/* Background decoratives */}
+      <div className="absolute inset-0 aurora-bg pointer-events-none" />
       <div className="absolute inset-0 bg-gradient-to-br from-primary/3 via-transparent to-secondary/3 pointer-events-none" />
       <RadialGlow color="lime" size={500} opacity={0.06} className="top-20 -right-40" />
       <RadialGlow color="purple" size={400} opacity={0.05} className="-bottom-20 -left-40" />
+      <FloatingShapes count={5} />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -97,9 +99,12 @@ export default function Hero() {
               {HERO_CONTENT.cards.map((card, index) => {
                 const Icon = cardIcons[index];
                 return (
-                  <div
+                  <motion.div
                     key={index}
-                    className="rounded-xl p-4 border bg-surface border-border hover:border-border-accent transition-colors duration-200"
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 0.6 + index * 0.1, ease: [0.21, 0.47, 0.32, 0.98] }}
+                    className="rounded-xl p-4 border bg-surface border-border hover:border-border-accent transition-all duration-200 glow-card"
                   >
                     <div className="w-8 h-8 rounded-lg flex items-center justify-center mb-3 bg-primary/8 dark:bg-primary-light/10 text-primary dark:text-primary-light">
                       <Icon className="w-4 h-4" size={16} />
@@ -107,7 +112,7 @@ export default function Hero() {
                     <h3 className="text-xs font-semibold text-foreground leading-snug">
                       {card.title}
                     </h3>
-                  </div>
+                  </motion.div>
                 );
               })}
             </div>

@@ -44,7 +44,7 @@ export default function About() {
           <StaggerContainer className="grid grid-cols-1 gap-4 lg:pt-2" staggerDelay={0.12}>
             {stats.map((stat, i) => (
               <StaggerItem key={i}>
-                <div className="flex items-center gap-6 p-6 rounded-2xl border border-border bg-surface hover:border-border-accent transition-colors duration-300 group">
+                <div className="flex items-center gap-6 p-6 rounded-2xl border border-border bg-surface hover:border-border-accent transition-all duration-300 group glow-card">
                   <span className="text-3xl font-bold text-primary dark:text-primary-light group-hover:text-secondary transition-colors duration-300 shrink-0 tabular-nums">
                     {stat.value}
                   </span>

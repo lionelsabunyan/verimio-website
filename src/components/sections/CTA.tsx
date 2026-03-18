@@ -4,7 +4,7 @@ import { CTA_CONTENT, BRAND } from "@/lib/constants";
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 import Button from "@/components/ui/Button";
-import { RadialGlow } from "@/components/brand/Decoratives";
+import { RadialGlow, FloatingShapes } from "@/components/brand/Decoratives";
 
 function FadeUp({ children, delay = 0 }: { children: ReactNode; delay?: number }) {
   return (
@@ -27,9 +27,10 @@ export default function CTA() {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-20 bg-gradient-to-b from-secondary/40 to-transparent" />
       <div className="absolute -top-px left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-secondary/30 to-transparent" />
 
-      {/* Decorative glows */}
+      {/* Decorative glows + floating shapes */}
       <RadialGlow color="lime" size={300} opacity={0.08} className="top-10 right-10" />
       <RadialGlow color="purple" size={250} opacity={0.06} className="bottom-10 left-10" />
+      <FloatingShapes count={4} />
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 text-center">
         <FadeUp>

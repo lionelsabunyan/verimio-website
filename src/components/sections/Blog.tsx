@@ -3,8 +3,34 @@ import { ArrowUpRight } from "lucide-react";
 import { BLOG_POSTS } from "@/lib/constants";
 import BlogCoverImage from "@/components/brand/BlogCoverImage";
 import SectionLabel from "@/components/ui/SectionLabel";
+import BlogGrid from "@/components/sections/BlogGrid";
 
 export default function Blog() {
+  const cards = BLOG_POSTS.map((post, index) => (
+    <Link key={index} href={`/blog/${post.slug}`} className="group block h-full">
+      <article className="p-6 rounded-2xl border border-border hover:border-border-accent transition-all duration-300 h-full flex flex-col bg-surface-elevated glow-card">
+        <div className="overflow-hidden rounded-xl mb-6">
+          <div className="transition-transform duration-500 group-hover:scale-105">
+            <BlogCoverImage slug={post.slug} title={post.title} category={post.category} index={index} />
+          </div>
+        </div>
+
+        <div className="text-sm text-foreground-secondary mb-3">{post.date}</div>
+        <h3 className="text-lg font-semibold mb-3 group-hover:text-primary dark:group-hover:text-primary-light transition-colors">
+          {post.title}
+        </h3>
+        <p className="text-foreground-secondary text-sm leading-relaxed flex-grow">
+          {post.excerpt}
+        </p>
+
+        <div className="flex items-center gap-2 mt-4 text-sm font-medium text-primary-light group-hover:text-primary dark:group-hover:text-secondary transition-colors">
+          Devamını Oku
+          <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        </div>
+      </article>
+    </Link>
+  ));
+
   return (
     <section className="section-padding bg-surface">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -23,33 +49,7 @@ export default function Blog() {
           </Link>
         </div>
 
-        {/* Blog Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {BLOG_POSTS.map((post, index) => (
-            <Link
-              key={index}
-              href={`/blog/${post.slug}`}
-              className="group"
-            >
-              <article className="p-6 rounded-2xl border border-border hover:border-border-accent transition-all duration-300 h-full flex flex-col bg-surface-elevated">
-                <BlogCoverImage slug={post.slug} title={post.title} category={post.category} index={index} className="mb-6" />
-
-                <div className="text-sm text-foreground-secondary mb-3">{post.date}</div>
-                <h3 className="text-lg font-semibold mb-3 group-hover:text-primary dark:group-hover:text-primary-light transition-colors">
-                  {post.title}
-                </h3>
-                <p className="text-foreground-secondary text-sm leading-relaxed flex-grow">
-                  {post.excerpt}
-                </p>
-
-                <div className="flex items-center gap-2 mt-4 text-sm font-medium text-primary-light group-hover:text-primary dark:group-hover:text-secondary transition-colors">
-                  Devamını Oku
-                  <ArrowUpRight className="w-4 h-4" />
-                </div>
-              </article>
-            </Link>
-          ))}
-        </div>
+        <BlogGrid>{cards}</BlogGrid>
 
         {/* Mobile CTA */}
         <div className="md:hidden mt-8 text-center">
