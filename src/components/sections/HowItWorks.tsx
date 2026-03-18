@@ -30,14 +30,14 @@ export default function HowItWorks() {
           className="grid grid-cols-1 md:grid-cols-3 gap-6 relative"
           staggerDelay={0.15}
         >
-          {/* Connector line (desktop only) */}
-          <div className="hidden md:block absolute top-10 left-[calc(16.66%+1rem)] right-[calc(16.66%+1rem)] h-px bg-gradient-to-r from-border via-border-accent to-border z-0" />
+          {/* Connector line (desktop only) — animated */}
+          <div className="hidden md:block absolute top-10 left-[calc(16.66%+1rem)] right-[calc(16.66%+1rem)] z-0 animated-divider" />
 
           {HOW_IT_WORKS.map((step, index) => {
             const Icon = stepIcons[index];
             return (
               <StaggerItem key={index}>
-                <div className="relative z-10 flex flex-col h-full p-7 rounded-2xl border border-border bg-surface hover:border-border-accent hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 group" style={{boxShadow: "0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04)"}}>
+                <div className="relative z-10 flex flex-col h-full p-7 rounded-2xl border border-border bg-surface hover:border-border-accent hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 group glow-card" style={{boxShadow: "0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04)"}}>
                   {/* Icon circle */}
                   <div className="w-12 h-12 rounded-2xl bg-primary/8 flex items-center justify-center mb-5 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
                     <Icon className="w-5 h-5 text-primary-light group-hover:text-white transition-colors duration-300" size={20} />

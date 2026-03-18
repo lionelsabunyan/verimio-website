@@ -1,7 +1,8 @@
 "use client";
 
+import { useRef } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { HERO_CONTENT, BRAND } from "@/lib/constants";
 import Button from "@/components/ui/Button";
 import { RadialGlow, FloatingShapes } from "@/components/brand/Decoratives";
@@ -12,10 +13,21 @@ import RoadmapIcon from "@/components/brand/icons/ui/RoadmapIcon";
 const cardIcons = [TimeIcon, ROIIcon, RoadmapIcon];
 
 export default function Hero() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+
+  // Parallax: image moves slower, text moves faster
+  const imageY = useTransform(scrollYProgress, [0, 1], [0, 80]);
+  const textY = useTransform(scrollYProgress, [0, 1], [0, -40]);
+  const bgOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0.3]);
+
   return (
-    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+    <section ref={sectionRef} className="relative min-h-screen flex items-center pt-20 overflow-hidden">
       {/* Background decoratives */}
-      <div className="absolute inset-0 aurora-bg pointer-events-none" />
+      <motion.div className="absolute inset-0 aurora-bg pointer-events-none" style={{ opacity: bgOpacity }} />
       <div className="absolute inset-0 bg-gradient-to-br from-primary/3 via-transparent to-secondary/3 pointer-events-none" />
       <RadialGlow color="lime" size={500} opacity={0.06} className="top-20 -right-40" />
       <RadialGlow color="purple" size={400} opacity={0.05} className="-bottom-20 -left-40" />
@@ -24,8 +36,8 @@ export default function Hero() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
-          {/* Left */}
-          <div className="space-y-8">
+          {/* Left — text parallax */}
+          <motion.div className="space-y-8" style={{ y: textY }}>
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -73,14 +85,15 @@ export default function Hero() {
                 {HERO_CONTENT.ctaSecondary}
               </Button>
             </motion.div>
-          </div>
+          </motion.div>
 
-          {/* Right — Illustration + Outcome Cards */}
+          {/* Right — Illustration + Outcome Cards (parallax slower) */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.3, ease: [0.21, 0.47, 0.32, 0.98] }}
             className="space-y-5"
+            style={{ y: imageY }}
           >
             {/* Hero görseli — fal.ai Flux Pro */}
             <div className="rounded-2xl border border-border overflow-hidden shadow-sm">
