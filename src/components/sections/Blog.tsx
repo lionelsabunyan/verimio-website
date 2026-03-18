@@ -6,7 +6,7 @@ import SectionLabel from "@/components/ui/SectionLabel";
 import BlogGrid from "@/components/sections/BlogGrid";
 
 export default function Blog() {
-  const cards = BLOG_POSTS.map((post, index) => (
+  const cards = BLOG_POSTS.slice(0, 3).map((post, index) => (
     <Link key={index} href={`/blog/${post.slug}`} className="group block h-full">
       <article className="relative rounded-2xl overflow-hidden h-full bg-surface-elevated border border-border hover:border-border-accent transition-all duration-300 glow-card">
         {/* Image with overlay */}
@@ -39,7 +39,7 @@ export default function Blog() {
   ));
 
   return (
-    <section className="section-padding">
+    <section className="section-padding bg-background-secondary">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex items-center justify-between mb-10">

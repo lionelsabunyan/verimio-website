@@ -63,15 +63,16 @@ export default function Hero() {
         style={{ y: contentY }}
       >
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm mb-8"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="flex items-center justify-center gap-3 mb-10"
         >
-          <span className="w-1.5 h-1.5 rounded-full bg-[#F59E0B] animate-pulse" />
-          <span className="text-sm font-medium text-white/60 tracking-wide">
+          <span className="w-8 h-px bg-[#F59E0B]/40" />
+          <span className="text-xs font-medium text-white/40 tracking-[0.2em] uppercase">
             {HERO_CONTENT.badge}
           </span>
+          <span className="w-8 h-px bg-[#F59E0B]/40" />
         </motion.div>
 
         <motion.h1

@@ -50,7 +50,7 @@ export default function Navbar() {
 
         {/* Desktop nav links — centered */}
         <div className="hidden md:flex items-center gap-0.5">
-          {NAV_LINKS.filter(l => l.href !== "/").map((link) => (
+          {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}

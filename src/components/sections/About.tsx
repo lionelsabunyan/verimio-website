@@ -17,7 +17,7 @@ export default function About() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Stat strip — horizontal, bold, minimal */}
         <FadeIn>
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-8 sm:gap-12 mb-16 pb-12 border-b border-border">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center sm:justify-between gap-8 mb-16 pb-12 border-b border-border">
             {stats.map((stat, i) => (
               <div key={i} className="flex items-baseline gap-3">
                 <span className="text-4xl sm:text-5xl font-bold text-primary-light tabular-nums">
