@@ -6,7 +6,7 @@ import SectionLabel from "@/components/ui/SectionLabel";
 import BlogGrid from "@/components/sections/BlogGrid";
 
 export default function Blog() {
-  const cards = BLOG_POSTS.slice(0, 3).map((post, index) => (
+  const cards = BLOG_POSTS.slice(0, 6).map((post, index) => (
     <Link key={index} href={`/blog/${post.slug}`} className="group block h-full">
       <article className="relative rounded-2xl overflow-hidden h-full bg-surface-elevated border border-border hover:border-border-accent transition-all duration-300 glow-card">
         {/* Image — let BlogCoverImage handle its own aspect ratio */}
