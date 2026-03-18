@@ -188,7 +188,7 @@ export const FAQ_ITEMS = [
 export const BLOG_POSTS = [
   {
     title: "İnsan Kaynaklarında AI Devrimi: İşe Alımdan Çalışan Bağlılığına",
-    excerpt: "İnsan Kaynakları süreçlerinde yapay zekanın dönüştürücü gücünü keşfedin. İşe alımdan çalışan bağlılığına kadar AI'ın nasıl verimlilik ve stratejik değer kattığını öğrenin.",
+    excerpt: "Yapay zeka İK süreçlerini nasıl dönüştürüyor? CV taramadan mülakat analizine, çalışan memnuniyeti tahmininden onboarding otomasyonuna AI'ın gücünü keşfedin.",
     date: "18 Mart 2026",
     slug: "insan-kaynaklarinda-ai-devrimi-ise-alimdan-calisan-bagliligi",
     category: "strategy" as const,
