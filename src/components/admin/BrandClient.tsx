@@ -20,16 +20,16 @@ const LOGO_OPTIONS = [
     id: 'A',
     title: 'V-Flow Geometrik',
     desc: 'İki diyagonal çizginin oluşturduğu V formu. Verimlilik = akış, ileri hareket.',
-    prompt: 'Minimalist logo design for "Verimio" brand, geometric V-shaped icon made of two intersecting diagonal lines forming an upward arrow shape, left diagonal line in deep indigo #2E1065, right diagonal line in vivid lime #A3E635, square format icon, clean wordmark text "Verimio" to the right of icon, "Veri" portion in deep indigo, "mio" portion in vivid lime, modern tech consulting aesthetic, white background, vector style, high contrast, no gradients, Inter Bold sans-serif typography, professional B2B brand identity, minimal, no decorative elements',
-    promptAlt: 'Minimalist logo mark for AI consulting brand, square icon design, two parallel diagonal lines creating angular V shape, upper-left to lower-right orientation, left stripe deep indigo #2E1065, right stripe vivid lime green #A3E635, white negative space between stripes, clean geometric, SVG quality, professional, no text in icon',
+    prompt: 'Minimalist logo design for "Verimio" brand, geometric V-shaped icon made of two intersecting diagonal lines forming an upward arrow shape, left diagonal line in deep indigo #0F172A, right diagonal line in vivid lime #F59E0B, square format icon, clean wordmark text "Verimio" to the right of icon, "Veri" portion in deep indigo, "mio" portion in vivid lime, modern tech consulting aesthetic, white background, vector style, high contrast, no gradients, Inter Bold sans-serif typography, professional B2B brand identity, minimal, no decorative elements',
+    promptAlt: 'Minimalist logo mark for AI consulting brand, square icon design, two parallel diagonal lines creating angular V shape, upper-left to lower-right orientation, left stripe deep indigo #0F172A, right stripe vivid lime green #F59E0B, white negative space between stripes, clean geometric, SVG quality, professional, no text in icon',
     tag: 'Akış & Hareket',
   },
   {
     id: 'B',
     title: 'Hexagon Circuit',
     desc: 'Hexagon: doğanın en verimli geometrisi. İçindeki akış çizgisi "analiz → sonuç → aksiyon" metaforu.',
-    prompt: 'Minimalist tech logo, hexagonal icon outline in deep indigo #2E1065, 2px stroke only no fill, thin diagonal line inside hexagon in vivid lime #A3E635 representing data flow from bottom-left to top-right, small filled circle node at start point bottom-left, small arrowhead at end point top-right, "VERIMIO" wordmark in all caps to the right, Inter Bold font style, letter-spacing wide 0.15em, clean white background, SVG vector quality, AI consulting brand, no shadows, no outer glow, professional minimal B2B aesthetic',
-    promptAlt: 'Minimalist hexagon logo icon, thin outline hexagon shape, deep indigo color #2E1065, single diagonal line inside from lower-left vertex to upper-right vertex, line color vivid lime #A3E635, small dot at line start, small arrow at line end, white background, vector icon, 1:1 square ratio, SVG quality, technology brand, clean geometric',
+    prompt: 'Minimalist tech logo, hexagonal icon outline in deep indigo #0F172A, 2px stroke only no fill, thin diagonal line inside hexagon in vivid lime #F59E0B representing data flow from bottom-left to top-right, small filled circle node at start point bottom-left, small arrowhead at end point top-right, "VERIMIO" wordmark in all caps to the right, Inter Bold font style, letter-spacing wide 0.15em, clean white background, SVG vector quality, AI consulting brand, no shadows, no outer glow, professional minimal B2B aesthetic',
+    promptAlt: 'Minimalist hexagon logo icon, thin outline hexagon shape, deep indigo color #0F172A, single diagonal line inside from lower-left vertex to upper-right vertex, line color vivid lime #F59E0B, small dot at line start, small arrow at line end, white background, vector icon, 1:1 square ratio, SVG quality, technology brand, clean geometric',
     tag: 'Önerilen ★',
     recommended: true,
   },
@@ -37,7 +37,7 @@ const LOGO_OPTIONS = [
     id: 'C',
     title: 'Tipografik Modified',
     desc: '"V" harfi özelleştirilmiş, "IO" Lime renk. En esnek format: her boyutta okunabilir.',
-    prompt: 'Custom typographic wordmark logo for brand "VERIMIO", all capital letters, bold sans-serif typeface similar to Inter Bold or Helvetica, letter "V" is slightly larger than other letters and has a small vivid lime #A3E635 square pixel accent at its bottom vertex point, letters "IO" at the end rendered in vivid lime #A3E635, remaining letters "VERIM" in deep indigo #2E1065, white background, no icon separate from text, clean minimal design, vector quality, tech consulting brand identity, no decorative elements',
+    prompt: 'Custom typographic wordmark logo for brand "VERIMIO", all capital letters, bold sans-serif typeface similar to Inter Bold or Helvetica, letter "V" is slightly larger than other letters and has a small vivid lime #F59E0B square pixel accent at its bottom vertex point, letters "IO" at the end rendered in vivid lime #F59E0B, remaining letters "VERIM" in deep indigo #0F172A, white background, no icon separate from text, clean minimal design, vector quality, tech consulting brand identity, no decorative elements',
     promptAlt: 'Bold wordmark logo "VERIMIO", capital letters, V larger with lime accent dot, IO letters lime colored, rest deep indigo, minimal sans-serif',
     tag: 'Saf Tipografi',
   },
@@ -47,21 +47,21 @@ const LOGO_OPTIONS = [
 const COLORS = [
   {
     name: 'Deep Indigo',
-    hex: '#2E1065',
+    hex: '#0F172A',
     cmyk: 'C:78 M:100 Y:0 K:60',
     usage: 'Ana arka plan, primary buton, başlıklar',
     roles: ['Ana zemin', 'Primary buton', 'Navbar', 'Logo'],
   },
   {
     name: 'Vivid Lime',
-    hex: '#A3E635',
+    hex: '#F59E0B',
     cmyk: 'C:30 M:0 Y:80 K:0',
     usage: 'Vurgu, CTA buton, highlight, aksan',
     roles: ['CTA buton', 'Vurgu metni', '"mio" wordmark', 'Aksan çizgi'],
   },
   {
     name: 'Gradient Purple',
-    hex: '#8B5CF6',
+    hex: '#F59E0B',
     cmyk: '—',
     usage: 'Web gradient başlangıcı (Indigo → Lime geçiş)',
     roles: ['Web gradients', 'Hover efekti', 'Badge'],
@@ -273,29 +273,29 @@ export default function BrandClient() {
                   {/* Koyu */}
                   <div className="bg-primary px-5 py-6 flex items-center justify-center min-h-[88px]">
                     <div className="flex items-baseline gap-0" style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontWeight: 900, fontSize: '28px', letterSpacing: '0.12em', lineHeight: 1 }}>
-                      <span style={{ color: '#FFFFFF' }}>verim</span><span style={{ color: '#A3E635' }}>io</span>
+                      <span style={{ color: '#FFFFFF' }}>verim</span><span style={{ color: '#F59E0B' }}>io</span>
                     </div>
                   </div>
                   {/* Açık */}
                   <div className="bg-white px-5 py-4 flex items-center justify-center min-h-[72px] border-t border-[#F0F0F0]">
                     <div className="flex items-baseline gap-0" style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontWeight: 900, fontSize: '24px', letterSpacing: '0.12em' }}>
-                      <span style={{ color: '#2E1065' }}>verim</span><span style={{ color: '#A3E635' }}>io</span>
+                      <span style={{ color: '#0F172A' }}>verim</span><span style={{ color: '#F59E0B' }}>io</span>
                     </div>
                   </div>
                   {/* Lime zemin */}
                   <div className="bg-secondary px-5 py-4 flex items-center justify-center min-h-[72px] border-t border-[#8FCC25]">
                     <div className="flex items-baseline gap-0" style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontWeight: 900, fontSize: '24px', letterSpacing: '0.12em' }}>
-                      <span style={{ color: '#2E1065' }}>verim</span><span style={{ color: '#1A0A3E' }}>io</span>
+                      <span style={{ color: '#0F172A' }}>verim</span><span style={{ color: '#1A0A3E' }}>io</span>
                     </div>
                   </div>
                   {/* Küçük ölçek */}
                   <div className="bg-background-secondary px-4 py-2.5 flex items-center gap-3 border-t border-border">
                     <span className="text-foreground-muted text-xs">Küçük:</span>
                     <div className="flex items-baseline gap-0" style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontWeight: 900, fontSize: '13px', letterSpacing: '0.1em' }}>
-                      <span style={{ color: '#FFFFFF' }}>verim</span><span style={{ color: '#A3E635' }}>io</span>
+                      <span style={{ color: '#FFFFFF' }}>verim</span><span style={{ color: '#F59E0B' }}>io</span>
                     </div>
                     <div className="flex items-baseline gap-0 ml-2" style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontWeight: 900, fontSize: '10px', letterSpacing: '0.08em' }}>
-                      <span style={{ color: '#FFFFFF' }}>verim</span><span style={{ color: '#A3E635' }}>io</span>
+                      <span style={{ color: '#FFFFFF' }}>verim</span><span style={{ color: '#F59E0B' }}>io</span>
                     </div>
                   </div>
                 </div>
@@ -312,29 +312,29 @@ export default function BrandClient() {
                   {/* Koyu */}
                   <div className="bg-primary px-5 py-6 flex items-center justify-center min-h-[88px]">
                     <div className="flex items-baseline gap-0" style={{ fontFamily: 'Georgia, "Times New Roman", serif', fontWeight: 300, fontSize: '30px', letterSpacing: '0.18em', lineHeight: 1 }}>
-                      <span style={{ color: '#FFFFFF' }}>verim</span><span style={{ color: '#A3E635' }}>io</span>
+                      <span style={{ color: '#FFFFFF' }}>verim</span><span style={{ color: '#F59E0B' }}>io</span>
                     </div>
                   </div>
                   {/* Açık */}
                   <div className="bg-white px-5 py-4 flex items-center justify-center min-h-[72px] border-t border-[#F0F0F0]">
                     <div className="flex items-baseline gap-0" style={{ fontFamily: 'Georgia, "Times New Roman", serif', fontWeight: 300, fontSize: '26px', letterSpacing: '0.18em' }}>
-                      <span style={{ color: '#2E1065' }}>verim</span><span style={{ color: '#A3E635' }}>io</span>
+                      <span style={{ color: '#0F172A' }}>verim</span><span style={{ color: '#F59E0B' }}>io</span>
                     </div>
                   </div>
                   {/* Lime zemin */}
                   <div className="bg-secondary px-5 py-4 flex items-center justify-center min-h-[72px] border-t border-[#8FCC25]">
                     <div className="flex items-baseline gap-0" style={{ fontFamily: 'Georgia, "Times New Roman", serif', fontWeight: 300, fontSize: '26px', letterSpacing: '0.18em' }}>
-                      <span style={{ color: '#2E1065' }}>verim</span><span style={{ color: '#1A0A3E' }}>io</span>
+                      <span style={{ color: '#0F172A' }}>verim</span><span style={{ color: '#1A0A3E' }}>io</span>
                     </div>
                   </div>
                   {/* Küçük ölçek */}
                   <div className="bg-background-secondary px-4 py-2.5 flex items-center gap-3 border-t border-border">
                     <span className="text-foreground-muted text-xs">Küçük:</span>
                     <div className="flex items-baseline gap-0" style={{ fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: '13px', letterSpacing: '0.14em' }}>
-                      <span style={{ color: '#FFFFFF' }}>verim</span><span style={{ color: '#A3E635' }}>io</span>
+                      <span style={{ color: '#FFFFFF' }}>verim</span><span style={{ color: '#F59E0B' }}>io</span>
                     </div>
                     <div className="flex items-baseline gap-0 ml-2" style={{ fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: '10px', letterSpacing: '0.1em' }}>
-                      <span style={{ color: '#FFFFFF' }}>verim</span><span style={{ color: '#A3E635' }}>io</span>
+                      <span style={{ color: '#FFFFFF' }}>verim</span><span style={{ color: '#F59E0B' }}>io</span>
                     </div>
                   </div>
                 </div>
@@ -351,29 +351,29 @@ export default function BrandClient() {
                   {/* Koyu */}
                   <div className="bg-primary px-5 py-6 flex items-center justify-center min-h-[88px]">
                     <div className="flex items-baseline gap-0" style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontWeight: 600, fontSize: '29px', letterSpacing: '-0.02em', lineHeight: 1 }}>
-                      <span style={{ color: '#FFFFFF' }}>verim</span><span style={{ color: '#A3E635', fontWeight: 800 }}>io</span>
+                      <span style={{ color: '#FFFFFF' }}>verim</span><span style={{ color: '#F59E0B', fontWeight: 800 }}>io</span>
                     </div>
                   </div>
                   {/* Açık */}
                   <div className="bg-white px-5 py-4 flex items-center justify-center min-h-[72px] border-t border-[#F0F0F0]">
                     <div className="flex items-baseline gap-0" style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontWeight: 600, fontSize: '25px', letterSpacing: '-0.02em' }}>
-                      <span style={{ color: '#2E1065' }}>verim</span><span style={{ color: '#A3E635', fontWeight: 800 }}>io</span>
+                      <span style={{ color: '#0F172A' }}>verim</span><span style={{ color: '#F59E0B', fontWeight: 800 }}>io</span>
                     </div>
                   </div>
                   {/* Lime zemin */}
                   <div className="bg-secondary px-5 py-4 flex items-center justify-center min-h-[72px] border-t border-[#8FCC25]">
                     <div className="flex items-baseline gap-0" style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontWeight: 600, fontSize: '25px', letterSpacing: '-0.02em' }}>
-                      <span style={{ color: '#2E1065' }}>verim</span><span style={{ color: '#0A0A0A', fontWeight: 800 }}>io</span>
+                      <span style={{ color: '#0F172A' }}>verim</span><span style={{ color: '#0A0A0A', fontWeight: 800 }}>io</span>
                     </div>
                   </div>
                   {/* Küçük ölçek */}
                   <div className="bg-background-secondary px-4 py-2.5 flex items-center gap-3 border-t border-border">
                     <span className="text-foreground-muted text-xs">Küçük:</span>
                     <div className="flex items-baseline gap-0" style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontWeight: 600, fontSize: '13px', letterSpacing: '-0.01em' }}>
-                      <span style={{ color: '#FFFFFF' }}>verim</span><span style={{ color: '#A3E635', fontWeight: 800 }}>io</span>
+                      <span style={{ color: '#FFFFFF' }}>verim</span><span style={{ color: '#F59E0B', fontWeight: 800 }}>io</span>
                     </div>
                     <div className="flex items-baseline gap-0 ml-2" style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontWeight: 600, fontSize: '10px', letterSpacing: '-0.01em' }}>
-                      <span style={{ color: '#FFFFFF' }}>verim</span><span style={{ color: '#A3E635', fontWeight: 800 }}>io</span>
+                      <span style={{ color: '#FFFFFF' }}>verim</span><span style={{ color: '#F59E0B', fontWeight: 800 }}>io</span>
                     </div>
                   </div>
                 </div>
@@ -528,9 +528,9 @@ export default function BrandClient() {
                   <p className="text-secondary text-xs font-medium mb-2">✓ Onaylı Zemin Kombinasyonları</p>
                   <div className="space-y-1.5">
                     {[
-                      { bg: '#2E1065', icon: 'Lime + Beyaz', word: 'Beyaz ("mio" Lime)' },
+                      { bg: '#0F172A', icon: 'Lime + Beyaz', word: 'Beyaz ("mio" Lime)' },
                       { bg: '#FFFFFF', icon: 'Indigo + Lime', word: 'Indigo ("mio" Lime)' },
-                      { bg: '#A3E635', icon: 'Indigo', word: 'Indigo' },
+                      { bg: '#F59E0B', icon: 'Indigo', word: 'Indigo' },
                       { bg: '#0A0A0A', icon: 'Beyaz + Lime', word: 'Beyaz ("mio" Lime)' },
                     ].map((combo, i) => (
                       <div key={i} className="flex items-center gap-2 text-xs text-foreground-secondary">
@@ -601,10 +601,10 @@ export default function BrandClient() {
               <h4 className="text-foreground font-medium mb-4 text-sm">Zemin × Metin Uyumları</h4>
               <div className="grid grid-cols-4 gap-3">
                 {[
-                  { bg: '#2E1065', text: '#FFFFFF', accent: '#A3E635', label: 'Koyu bölüm' },
-                  { bg: '#FFFFFF', text: '#0A0A0A', accent: '#2E1065', label: 'Açık bölüm' },
-                  { bg: '#A3E635', text: '#2E1065', accent: '#0A0A0A', label: 'Vurgu bölüm' },
-                  { bg: '#0A0A0A', text: '#FFFFFF', accent: '#A3E635', label: 'Tam koyu' },
+                  { bg: '#0F172A', text: '#FFFFFF', accent: '#F59E0B', label: 'Koyu bölüm' },
+                  { bg: '#FFFFFF', text: '#0A0A0A', accent: '#0F172A', label: 'Açık bölüm' },
+                  { bg: '#F59E0B', text: '#0F172A', accent: '#0A0A0A', label: 'Vurgu bölüm' },
+                  { bg: '#0A0A0A', text: '#FFFFFF', accent: '#F59E0B', label: 'Tam koyu' },
                 ].map((combo) => (
                   <div
                     key={combo.label}
@@ -615,7 +615,7 @@ export default function BrandClient() {
                     <p style={{ color: combo.text }} className="text-xs opacity-70 mb-2">Gövde metin</p>
                     <div
                       className="text-xs font-bold px-2 py-1 rounded-lg inline-block"
-                      style={{ background: combo.accent, color: combo.bg === '#A3E635' ? '#FFFFFF' : combo.bg }}
+                      style={{ background: combo.accent, color: combo.bg === '#F59E0B' ? '#FFFFFF' : combo.bg }}
                     >
                       CTA Buton
                     </div>
@@ -880,7 +880,7 @@ export default function BrandClient() {
               <div className="grid grid-cols-2 gap-x-8 gap-y-2">
                 {[
                   'Boyut doğru mu? (platform boyut tablosuna bak)',
-                  'Marka renkleri: #2E1065 + #A3E635',
+                  'Marka renkleri: #0F172A + #F59E0B',
                   'Türkçe metin imla kontrolü yapıldı mı?',
                   'Mobilde okunabilir mi? (küçük metin sorunu?)',
                   'Verimio logo veya adı var mı?',

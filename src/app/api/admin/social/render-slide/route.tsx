@@ -107,7 +107,7 @@ function buildSlide({ headline, body, type, index, total, bgUrl, width, height }
           width:        i + 1 === index ? (compact ? 20 : 24) : (compact ? 6 : 7),
           height:       compact ? 5 : 7,
           borderRadius: 4,
-          background:   i + 1 === index ? '#A3E635' : 'rgba(255,255,255,0.18)',
+          background:   i + 1 === index ? '#F59E0B' : 'rgba(255,255,255,0.18)',
         }} />
       ))
     : null
@@ -120,7 +120,7 @@ function buildSlide({ headline, body, type, index, total, bgUrl, width, height }
       fontFamily:    'system-ui, sans-serif',
       position:      'relative',
       overflow:      'hidden',
-      background:    bgUrl ? undefined : 'linear-gradient(135deg, #1E0A46 0%, #2E1065 100%)',
+      background:    bgUrl ? undefined : 'linear-gradient(135deg, #020617 0%, #0F172A 100%)',
     }}>
 
       {/* ── Background photo ── */}
@@ -139,7 +139,7 @@ function buildSlide({ headline, body, type, index, total, bgUrl, width, height }
       {bgUrl && (
         <div style={{
           position: 'absolute', top: 0, left: 0, width, height,
-          background: 'linear-gradient(135deg, rgba(30,10,70,0.28) 0%, rgba(46,16,101,0.18) 100%)',
+          background: 'linear-gradient(135deg, rgba(30,10,70,0.28) 0%, rgba(15,23,42,0.18) 100%)',
         }} />
       )}
 
@@ -149,7 +149,7 @@ function buildSlide({ headline, body, type, index, total, bgUrl, width, height }
           <div style={{
             position: 'absolute', top: -100, left: width - 320,
             width: 440, height: 440, borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(163,230,53,0.06) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(245,158,11,0.06) 0%, transparent 70%)',
           }} />
           <div style={{
             position: 'absolute', top: height - 260, left: -60,
@@ -161,17 +161,17 @@ function buildSlide({ headline, body, type, index, total, bgUrl, width, height }
 
       {/* Cover: lime top bar */}
       {isCover && (
-        <div style={{ position: 'absolute', top: 0, left: 0, width, height: 4, background: '#A3E635' }} />
+        <div style={{ position: 'absolute', top: 0, left: 0, width, height: 4, background: '#F59E0B' }} />
       )}
 
       {/* Recap: lime left border */}
       {isRecap && (
-        <div style={{ position: 'absolute', top: 0, left: 0, width: 5, height, background: '#A3E635' }} />
+        <div style={{ position: 'absolute', top: 0, left: 0, width: 5, height, background: '#F59E0B' }} />
       )}
 
       {/* Problem: bottom accent bar */}
       {isProblem && (
-        <div style={{ position: 'absolute', bottom: 0, left: 0, width, height: 3, background: 'rgba(163,230,53,0.3)' }} />
+        <div style={{ position: 'absolute', bottom: 0, left: 0, width, height: 3, background: 'rgba(245,158,11,0.3)' }} />
       )}
 
       {/* ── Content layer ── */}
@@ -189,7 +189,7 @@ function buildSlide({ headline, body, type, index, total, bgUrl, width, height }
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 3 }}>
               <span style={{ color: '#FFFFFF', fontSize: logoSz, fontWeight: 700, letterSpacing: '-0.02em' }}>verim</span>
-              <span style={{ color: '#A3E635', fontSize: logoSz, fontWeight: 700, letterSpacing: '-0.02em' }}>io</span>
+              <span style={{ color: '#F59E0B', fontSize: logoSz, fontWeight: 700, letterSpacing: '-0.02em' }}>io</span>
             </div>
           </div>
         )}
@@ -198,7 +198,7 @@ function buildSlide({ headline, body, type, index, total, bgUrl, width, height }
         {isCover && (
           <div style={{ display: 'flex', alignItems: 'center', gap: 3 }}>
             <span style={{ color: '#FFFFFF', fontSize: logoSz, fontWeight: 700, letterSpacing: '-0.02em' }}>verim</span>
-            <span style={{ color: '#A3E635', fontSize: logoSz, fontWeight: 700, letterSpacing: '-0.02em' }}>io</span>
+            <span style={{ color: '#F59E0B', fontSize: logoSz, fontWeight: 700, letterSpacing: '-0.02em' }}>io</span>
           </div>
         )}
 
@@ -219,7 +219,7 @@ function buildSlide({ headline, body, type, index, total, bgUrl, width, height }
           {isPoint && (
             <div style={{
               fontSize: numSz, fontWeight: 900, lineHeight: 1,
-              color: 'rgba(163,230,53,0.07)',
+              color: 'rgba(245,158,11,0.07)',
               marginBottom: -16, letterSpacing: '-0.04em',
             }}>
               {pointNum}
@@ -230,7 +230,7 @@ function buildSlide({ headline, body, type, index, total, bgUrl, width, height }
           {isProof && (
             <div style={{
               fontSize: compact ? 90 : 120, fontWeight: 900, lineHeight: 1,
-              color: '#A3E635',
+              color: '#F59E0B',
               marginBottom: compact ? 12 : 16, letterSpacing: '-0.04em',
             }}>
               {headline}
@@ -240,7 +240,7 @@ function buildSlide({ headline, body, type, index, total, bgUrl, width, height }
           {/* Hook/Cover: lime accent line */}
           {(isHook || isCover) && (
             <div style={{
-              width: 48, height: 4, background: '#A3E635', borderRadius: 2,
+              width: 48, height: 4, background: '#F59E0B', borderRadius: 2,
               marginBottom: compact ? 18 : 26,
             }} />
           )}
@@ -265,7 +265,7 @@ function buildSlide({ headline, body, type, index, total, bgUrl, width, height }
           {/* Recap: "ÖZET" label */}
           {isRecap && (
             <div style={{ marginBottom: compact ? 16 : 22 }}>
-              <span style={{ color: '#A3E635', fontSize: compact ? 14 : 18, fontWeight: 700, letterSpacing: '0.12em' }}>
+              <span style={{ color: '#F59E0B', fontSize: compact ? 14 : 18, fontWeight: 700, letterSpacing: '0.12em' }}>
                 📌  ÖZET
               </span>
             </div>
@@ -274,7 +274,7 @@ function buildSlide({ headline, body, type, index, total, bgUrl, width, height }
           {/* Headline (not for proof — it's the stat above) */}
           {!isProof && (
             <div style={{
-              color:         (isCta || isRecap) ? '#A3E635' : '#FFFFFF',
+              color:         (isCta || isRecap) ? '#F59E0B' : '#FFFFFF',
               fontSize:      hlSz,
               fontWeight:    isRecap ? 700 : 800,
               lineHeight:    isRecap ? 1.4 : 1.15,
@@ -303,7 +303,7 @@ function buildSlide({ headline, body, type, index, total, bgUrl, width, height }
                 <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
                   <div style={{
                     width: 6, height: 6, borderRadius: '50%',
-                    background: '#A3E635', flexShrink: 0, marginTop: 7,
+                    background: '#F59E0B', flexShrink: 0, marginTop: 7,
                   }} />
                   <span style={{ color: 'rgba(255,255,255,0.80)', fontSize: compact ? 18 : 24, lineHeight: 1.5, fontWeight: 400 }}>
                     {line.replace(/^[\d\-\.\•\*]+\s*/, '')}
@@ -317,14 +317,14 @@ function buildSlide({ headline, body, type, index, total, bgUrl, width, height }
           {isCta && (
             <div style={{ marginTop: compact ? 24 : 36, display: 'flex', flexDirection: 'column', gap: 12 }}>
               <div style={{
-                background: '#A3E635', padding: compact ? '12px 28px' : '16px 36px',
+                background: '#F59E0B', padding: compact ? '12px 28px' : '16px 36px',
                 borderRadius: 14, display: 'flex', alignItems: 'center', gap: 10,
                 alignSelf: 'flex-start',
               }}>
-                <span style={{ color: '#1E0A46', fontWeight: 700, fontSize: compact ? 20 : 26 }}>
+                <span style={{ color: '#020617', fontWeight: 700, fontSize: compact ? 20 : 26 }}>
                   Ücretsiz analiz al
                 </span>
-                <span style={{ color: '#1E0A46', fontSize: compact ? 20 : 26, fontWeight: 700 }}>→</span>
+                <span style={{ color: '#020617', fontSize: compact ? 20 : 26, fontWeight: 700 }}>→</span>
               </div>
               <span style={{ color: 'rgba(255,255,255,0.35)', fontSize: compact ? 15 : 19 }}>
                 verimio.com.tr · DM ile ulaşın
@@ -340,7 +340,7 @@ function buildSlide({ headline, body, type, index, total, bgUrl, width, height }
               color: 'rgba(255,255,255,0.30)', fontSize: compact ? 16 : 21,
             }}>
               <span>Devamı için kaydır</span>
-              <span style={{ color: 'rgba(163,230,53,0.5)' }}>→</span>
+              <span style={{ color: 'rgba(245,158,11,0.5)' }}>→</span>
             </div>
           )}
 
@@ -349,7 +349,7 @@ function buildSlide({ headline, body, type, index, total, bgUrl, width, height }
             <div style={{
               display: 'flex', alignItems: 'center', gap: 8,
               marginTop: compact ? 18 : 28,
-              color: 'rgba(163,230,53,0.5)', fontSize: compact ? 14 : 18,
+              color: 'rgba(245,158,11,0.5)', fontSize: compact ? 14 : 18,
             }}>
               <span>🔖</span>
               <span>Bu carousel'i kaydet</span>
@@ -367,7 +367,7 @@ function buildSlide({ headline, body, type, index, total, bgUrl, width, height }
               verimio.com.tr
             </span>
             {index < total && (
-              <div style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'rgba(163,230,53,0.35)', fontSize: compact ? 15 : 19 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'rgba(245,158,11,0.35)', fontSize: compact ? 15 : 19 }}>
                 <span>{index}/{total}</span>
                 <span>→</span>
               </div>
@@ -381,7 +381,7 @@ function buildSlide({ headline, body, type, index, total, bgUrl, width, height }
             display: 'flex', alignItems: 'center', gap: 10,
             marginTop: compact ? 16 : 24,
           }}>
-            <div style={{ width: 28, height: 3, background: '#A3E635', borderRadius: 2 }} />
+            <div style={{ width: 28, height: 3, background: '#F59E0B', borderRadius: 2 }} />
             <span style={{ color: 'rgba(255,255,255,0.40)', fontSize: compact ? 17 : 21, letterSpacing: '0.02em' }}>
               verimio.com.tr
             </span>

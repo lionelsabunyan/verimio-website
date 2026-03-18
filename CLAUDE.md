@@ -210,17 +210,20 @@ monthly-launcher → seo-researcher → blog-outliner → blog-writer → blog-p
 
 ---
 
-## Kurumsal Kimlik
+## Kurumsal Kimlik (Midnight + Amber — Mart 2026)
 
 **Tam kılavuz:** `docs/BRAND.md`
 
 | Öğe | Değer |
 |-----|-------|
-| Logo | `verim` (beyaz) + `io` (lime #A3E635) — lowercase, bold |
+| Logo | `verim` (beyaz) + `io` (amber #F59E0B) — lowercase, bold |
 | Font | DM Sans (300–700) + DM Mono |
-| Ana renkler | Deep Indigo `#2E1065` · Lime `#A3E635` · Dark `#1E0A46` · Purple `#8B5CF6` |
-| Admin dark | bg `#0A0616` · kart `#0F0A1E` · border `#1A1030` |
-| CTA butonu | Lime bg + indigo text + bold |
+| Dark BG | Midnight `#020617` · Slate-900 `#0F172A` · Slate-800 `#1E293B` |
+| Accent | Amber `#F59E0B` · Light Amber `#FBBF24` |
+| Support | Soft Blue `#60A5FA` |
+| Text | Slate-100 `#F1F5F9` · Slate-400 `#94A3B8` |
+| CTA butonu | Amber bg + midnight text + bold |
+| Admin panel | Ayrı renk şeması (değişmedi) |
 
 ---
 

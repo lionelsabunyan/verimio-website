@@ -21,11 +21,11 @@ const SIZE_PRESETS = [
 const PROMPT_TEMPLATES = [
   {
     label: 'Logo (Hexagon)',
-    prompt: 'Minimalist tech logo, hexagonal icon outline in deep indigo #2E1065, thin diagonal line inside hexagon in vivid lime #A3E635 representing data flow, small circle at start, small arrow at end, "VERIMIO" wordmark in caps, Inter Bold font style, white background, SVG vector quality, no shadows, no gradients',
+    prompt: 'Minimalist tech logo, hexagonal icon outline in deep indigo #0F172A, thin diagonal line inside hexagon in vivid lime #F59E0B representing data flow, small circle at start, small arrow at end, "VERIMIO" wordmark in caps, Inter Bold font style, white background, SVG vector quality, no shadows, no gradients',
   },
   {
     label: 'LinkedIn İnfografik',
-    prompt: 'Professional LinkedIn infographic, deep indigo #2E1065 background, vivid lime #A3E635 accent elements, data visualization with charts, Turkish AI consulting theme, clean modern layout, white typography, geometric shapes, no text except numbers',
+    prompt: 'Professional LinkedIn infographic, deep indigo #0F172A background, vivid lime #F59E0B accent elements, data visualization with charts, Turkish AI consulting theme, clean modern layout, white typography, geometric shapes, no text except numbers',
   },
   {
     label: 'Instagram Post',

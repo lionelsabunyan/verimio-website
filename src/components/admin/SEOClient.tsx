@@ -204,7 +204,7 @@ function GscDashboard({ data }: { data: GscData }) {
       value: fmt(data.summary.clicks),
       icon: '🖱️',
       color: 'from-[#1A3A1A] to-[#14532D]',
-      accent: '#A3E635',
+      accent: '#F59E0B',
     },
     {
       label: 'İmpression',
@@ -225,7 +225,7 @@ function GscDashboard({ data }: { data: GscData }) {
       value: fmtCtr(data.summary.ctr),
       icon: '%',
       color: 'from-primary to-[#4C1D95]',
-      accent: '#8B5CF6',
+      accent: '#F59E0B',
     },
   ]
 
@@ -272,8 +272,8 @@ function GscDashboard({ data }: { data: GscData }) {
           <AreaChart data={trendChartData}>
             <defs>
               <linearGradient id="clickGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%"  stopColor="#A3E635" stopOpacity={0.35} />
-                <stop offset="95%" stopColor="#A3E635" stopOpacity={0} />
+                <stop offset="5%"  stopColor="#F59E0B" stopOpacity={0.35} />
+                <stop offset="95%" stopColor="#F59E0B" stopOpacity={0} />
               </linearGradient>
               <linearGradient id="impGrad" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="5%"  stopColor="#60A5FA" stopOpacity={0.2} />
@@ -317,7 +317,7 @@ function GscDashboard({ data }: { data: GscData }) {
               yAxisId="left"
               type="monotone"
               dataKey="clicks"
-              stroke="#A3E635"
+              stroke="#F59E0B"
               strokeWidth={2}
               fill="url(#clickGrad)"
             />
@@ -334,7 +334,7 @@ function GscDashboard({ data }: { data: GscData }) {
         </ResponsiveContainer>
         <div className="flex items-center gap-6 mt-3 text-xs text-foreground-muted">
           <span className="flex items-center gap-1.5">
-            <span className="w-3 h-0.5 bg-[#A3E635] inline-block rounded" />
+            <span className="w-3 h-0.5 bg-[#F59E0B] inline-block rounded" />
             Tıklama (sol eksen)
           </span>
           <span className="flex items-center gap-1.5">

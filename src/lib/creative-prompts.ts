@@ -6,8 +6,8 @@
  *
  * Görsel Dil Kararı (Şubat 2026):
  *   - Stil: Hybrid-3 (HBR editorial + Stripe minimal)
- *   - Zemin: Krem/beyaz VEYA koyu indigo→mor (dark sections)
- *   - Aksanlar: Lime (#A3E635) orta düzey — belirgin ama dominant değil
+ *   - Zemin: Krem/beyaz VEYA koyu slate→mor (dark sections)
+ *   - Aksanlar: Amber (#F59E0B) orta düzey — belirgin ama dominant değil
  *   - Model: FLUX 1.1 Pro (fal-ai/flux-pro/v1.1) — standart
  *   - Model (dark): FLUX 1.1 Pro — aynı
  */
@@ -17,9 +17,9 @@ export const BRAND_STYLE = {
   /** Açık zemin — hakkımızda, blog, genel sayfalar */
   light: [
     "cream white warm background",
-    "centered soft deep indigo radial gradient glow",
-    "subtle geometric dot grid pattern in soft purple fading outward from center",
-    "three small vivid lime green (#A3E635) circle accents asymmetrically placed",
+    "centered soft midnight slate radial gradient glow",
+    "subtle geometric dot grid pattern in warm amber fading outward from center",
+    "three small vivid amber (#F59E0B) circle accents asymmetrically placed",
     "breathable generous white space",
     "premium consulting brand aesthetic",
     "no text, no people, no faces",
@@ -27,10 +27,10 @@ export const BRAND_STYLE = {
 
   /** Koyu zemin — dark section arka planları, hero overlay */
   dark: [
-    "deep rich indigo to soft violet gradient background",
+    "deep rich slate to deep midnight gradient background",
     "centered glowing halo light effect",
-    "subtle geometric dot grid in lighter purple fading outward",
-    "three small vivid lime green (#A3E635) accent marks",
+    "subtle geometric dot grid in soft amber fading outward",
+    "three small vivid amber (#F59E0B) accent marks",
     "luxury SaaS brand aesthetic, Stripe-meets-Linear design language",
     "no text, no people, no faces",
   ].join(", "),
@@ -43,7 +43,7 @@ export const SITE_PROMPTS = {
       `Premium AI consulting hero image, editorial photography style, ${BRAND_STYLE.light}`,
       "abstract data flow visualization — thin curved lines connecting geometric nodes across the canvas",
       "suggests intelligent process automation and operational clarity",
-      "deep indigo node clusters with vivid lime green (#A3E635) active pulse points",
+      "midnight slate node clusters with vivid amber (#F59E0B) active pulse points",
       "landscape 4:3, generous breathing room, Stripe-meets-HBR aesthetic",
     ].join(", "),
     model: "fal-ai/flux-pro/v1.1" as const,
@@ -57,7 +57,7 @@ export const SITE_PROMPTS = {
       `Premium corporate consulting about-us hero image, editorial photography style, ${BRAND_STYLE.light}`,
       "minimalist abstract professional scene — layered geometric planes suggesting organizational hierarchy",
       "clean architectural depth, strategic clarity and operational excellence theme",
-      "deep indigo structural elements, single vivid lime green (#A3E635) focal accent",
+      "midnight slate structural elements, single vivid amber (#F59E0B) focal accent",
       "landscape 4:3, no faces, no text, high-end consulting firm aesthetic",
     ].join(", "),
     model: "fal-ai/flux-pro/v1.1" as const,
@@ -71,8 +71,8 @@ export const SITE_PROMPTS = {
       `Minimal editorial process flow background, ${BRAND_STYLE.light}`,
       "three connected horizontal zones flowing left to right",
       "first zone magnifying glass shape (analysis), second zone interconnected gears (automation), third zone upward arrow (results)",
-      "connected by thin deep indigo curved arrows",
-      "vivid lime green highlight on third results zone only",
+      "connected by thin midnight slate curved arrows",
+      "vivid amber highlight on third results zone only",
       "16:9 landscape",
     ].join(", "),
     model: "fal-ai/flux-pro/v1.1" as const,
@@ -84,7 +84,7 @@ export const SITE_PROMPTS = {
     prompt: [
       `Premium services section background, ${BRAND_STYLE.light}`,
       "abstract connected node diagram, five service nodes radiating from center",
-      "central node glowing in vivid lime green, outer nodes in soft indigo",
+      "central node glowing in vivid amber, outer nodes in soft slate",
       "thin bezier connection lines in purple",
       "square format",
     ].join(", "),
@@ -96,8 +96,8 @@ export const SITE_PROMPTS = {
   analiz_hero: {
     prompt: [
       `Premium diagnostic check-up page hero background, ${BRAND_STYLE.light}`,
-      "abstract medical/analytical metaphor — circular scan rings in indigo, data points appearing",
-      "one vivid lime green checkmark accent at completion point",
+      "abstract medical/analytical metaphor — circular scan rings in slate, data points appearing",
+      "one vivid amber checkmark accent at completion point",
       "4:3 landscape",
     ].join(", "),
     model: "fal-ai/flux-pro/v1.1" as const,
@@ -125,7 +125,7 @@ export const BLOG_PROMPTS: Record<
     prompt: [
       `Tech editorial blog cover background, ${BRAND_STYLE.light}`,
       "abstract AI brain circuit node in center, soft glowing connections",
-      "one vivid lime green node as the active AI core",
+      "one vivid amber node as the active AI core",
       "16:9 landscape",
     ].join(", "),
     approved_url: null,
@@ -134,7 +134,7 @@ export const BLOG_PROMPTS: Record<
     prompt: [
       `Editorial blog cover background, ${BRAND_STYLE.light}`,
       "abstract workflow arrows flowing left to right, process blocks connected",
-      "final output block in vivid lime green signaling completion",
+      "final output block in vivid amber signaling completion",
       "16:9 landscape",
     ].join(", "),
     approved_url: null,
@@ -142,8 +142,8 @@ export const BLOG_PROMPTS: Record<
   data: {
     prompt: [
       `Premium data visualization blog cover, ${BRAND_STYLE.light}`,
-      "abstract bar chart and line chart combination, bars in indigo shades",
-      "peak data point glowing in vivid lime green",
+      "abstract bar chart and line chart combination, bars in slate shades",
+      "peak data point glowing in vivid amber",
       "16:9 landscape",
     ].join(", "),
     approved_url: null,
@@ -152,7 +152,7 @@ export const BLOG_PROMPTS: Record<
     prompt: [
       `Strategic consulting editorial cover, ${BRAND_STYLE.light}`,
       "abstract chess-piece-like geometric shapes arranged in strategic formation",
-      "central key piece highlighted in vivid lime green",
+      "central key piece highlighted in vivid amber",
       "16:9 landscape",
     ].join(", "),
     approved_url: null,
@@ -160,8 +160,8 @@ export const BLOG_PROMPTS: Record<
   security: {
     prompt: [
       `Cybersecurity editorial blog cover, ${BRAND_STYLE.light}`,
-      "abstract shield geometric form in deep indigo, concentric protection rings",
-      "shield center lock point glowing vivid lime green",
+      "abstract shield geometric form in midnight slate, concentric protection rings",
+      "shield center lock point glowing vivid amber",
       "16:9 landscape",
     ].join(", "),
     approved_url: null,
@@ -170,7 +170,7 @@ export const BLOG_PROMPTS: Record<
     prompt: [
       `Customer experience editorial blog cover, ${BRAND_STYLE.light}`,
       "abstract network of connected dots representing customer touchpoints",
-      "central hub node in vivid lime green, satellite nodes in indigo",
+      "central hub node in vivid amber, satellite nodes in slate",
       "16:9 landscape",
     ].join(", "),
     approved_url: null,
@@ -179,7 +179,7 @@ export const BLOG_PROMPTS: Record<
     prompt: [
       `ROI and growth editorial blog cover, ${BRAND_STYLE.light}`,
       "abstract upward trending curve on cream background",
-      "data points in indigo, peak achievement point glowing vivid lime green",
+      "data points in slate, peak achievement point glowing vivid amber",
       "16:9 landscape",
     ].join(", "),
     approved_url: null,
@@ -188,7 +188,7 @@ export const BLOG_PROMPTS: Record<
     prompt: [
       `Step-by-step guide editorial blog cover, ${BRAND_STYLE.light}`,
       "abstract numbered step progression 1-2-3-4 as geometric circles connected by lines",
-      "final completed step circle filled vivid lime green",
+      "final completed step circle filled vivid amber",
       "16:9 landscape",
     ].join(", "),
     approved_url: null,
@@ -213,7 +213,7 @@ export const SOCIAL_PROMPTS: Record<
     prompt: [
       `Professional LinkedIn post background, ${BRAND_STYLE.light}`,
       "wide 1.91:1 horizontal composition, dominant empty space for text overlay",
-      "indigo geometric accent anchored left edge",
+      "slate geometric accent anchored left edge",
     ].join(", "),
     size: SOCIAL_SIZE.linkedin,
     approved_url: null,
@@ -231,7 +231,7 @@ export const SOCIAL_PROMPTS: Record<
     prompt: [
       `Twitter/X post background, ${BRAND_STYLE.light}`,
       "wide horizontal composition, dynamic asymmetric layout",
-      "indigo shapes left-weighted, lime accent right side",
+      "slate shapes left-weighted, lime accent right side",
     ].join(", "),
     size: SOCIAL_SIZE.twitter,
     approved_url: null,
@@ -241,7 +241,7 @@ export const SOCIAL_PROMPTS: Record<
       `Instagram Story vertical background, ${BRAND_STYLE.dark}`,
       "9:16 vertical portrait composition",
       "strong top and bottom zones for text, open center",
-      "lime green glowing node center",
+      "amber glowing node center",
     ].join(", "),
     size: SOCIAL_SIZE.story,
     approved_url: null,

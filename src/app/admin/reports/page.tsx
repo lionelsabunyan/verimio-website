@@ -25,7 +25,7 @@ export default async function ReportsPage() {
             { label: 'Rapor Gönderildi', value: withReport.length, color: 'text-green-400' },
             { label: 'Rapor Bekliyor', value: withoutReport.length, color: 'text-yellow-400' },
           ].map((stat) => (
-            <div key={stat.label} className="bg-[#0F0A1E] border border-[#1A1030] rounded-xl p-5">
+            <div key={stat.label} className="bg-[#0F172A] border border-[#0F172A] rounded-xl p-5">
               <div className={`text-3xl font-bold mb-1 ${stat.color}`}>{stat.value}</div>
               <div className="text-[#4C4462] text-sm">{stat.label}</div>
             </div>
@@ -33,23 +33,23 @@ export default async function ReportsPage() {
         </div>
 
         {/* Raporu olanlar */}
-        <div className="bg-[#0F0A1E] border border-[#1A1030] rounded-xl overflow-hidden">
-          <div className="px-5 py-4 border-b border-[#1A1030]">
+        <div className="bg-[#0F172A] border border-[#0F172A] rounded-xl overflow-hidden">
+          <div className="px-5 py-4 border-b border-[#0F172A]">
             <h2 className="text-white font-medium">Raporlar</h2>
           </div>
           <table className="w-full">
             <thead>
-              <tr className="border-b border-[#1A1030]">
+              <tr className="border-b border-[#0F172A]">
                 {['Email', 'Sektör', 'Durum', 'Tarih', 'Rapor'].map((h) => (
                   <th key={h} className="text-left px-5 py-3 text-[#4C4462] text-xs font-medium uppercase tracking-wider">{h}</th>
                 ))}
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#1A1030]">
+            <tbody className="divide-y divide-[#0F172A]">
               {leads?.map((lead) => (
-                <tr key={lead.id} className="hover:bg-[#1A1030]/50 transition-colors">
+                <tr key={lead.id} className="hover:bg-[#0F172A]/50 transition-colors">
                   <td className="px-5 py-3">
-                    <Link href={`/admin/crm/${lead.id}`} className="text-white hover:text-[#A3E635] text-sm transition-colors">
+                    <Link href={`/admin/crm/${lead.id}`} className="text-white hover:text-[#F59E0B] text-sm transition-colors">
                       {lead.email}
                     </Link>
                   </td>
@@ -60,7 +60,7 @@ export default async function ReportsPage() {
                   </td>
                   <td className="px-5 py-3">
                     {lead.pdf_url ? (
-                      <a href={lead.pdf_url} target="_blank" rel="noopener" className="text-[#A3E635] text-xs hover:underline">
+                      <a href={lead.pdf_url} target="_blank" rel="noopener" className="text-[#F59E0B] text-xs hover:underline">
                         PDF ↗
                       </a>
                     ) : (

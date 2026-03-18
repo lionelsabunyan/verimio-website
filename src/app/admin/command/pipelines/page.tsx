@@ -30,7 +30,7 @@ export default async function PipelinesPage() {
 
   return (
     <div>
-      <div className="flex items-center justify-between px-6 py-5 border-b border-[#1A1030]">
+      <div className="flex items-center justify-between px-6 py-5 border-b border-[#0F172A]">
         <div>
           <h1 className="text-white text-xl font-bold">Pipeline&apos;lar</h1>
           <p className="text-[#4C4462] text-sm mt-1">Skill zincirlerini tek tuşla çalıştır</p>

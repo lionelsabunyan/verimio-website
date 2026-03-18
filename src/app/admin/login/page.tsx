@@ -28,7 +28,7 @@ export default function AdminLoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0F0A1E] flex items-center justify-center p-4">
+    <div className="min-h-screen bg-[#0F172A] flex items-center justify-center p-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -38,15 +38,15 @@ export default function AdminLoginPage() {
         {/* Logo */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-2 mb-4">
-            <div className="w-8 h-8 bg-[#A3E635] rounded-lg flex items-center justify-center">
-              <span className="text-[#2E1065] font-bold text-lg">V</span>
+            <div className="w-8 h-8 bg-[#F59E0B] rounded-lg flex items-center justify-center">
+              <span className="text-[#0F172A] font-bold text-lg">V</span>
             </div>
             <span className="text-white text-2xl font-bold tracking-widest">VERIMIO</span>
           </div>
           <p className="text-[#78716C] text-sm">Admin Paneli</p>
         </div>
 
-        <div className="bg-[#1A1030] border border-[#2E1065] rounded-2xl p-8">
+        <div className="bg-[#0F172A] border border-[#0F172A] rounded-2xl p-8">
           <h1 className="text-white text-xl font-semibold mb-6">Giriş Yap</h1>
 
           <form onSubmit={handleLogin} className="space-y-4">
@@ -59,7 +59,7 @@ export default function AdminLoginPage() {
                 placeholder="Email adresiniz"
                 required
                 autoComplete="email"
-                className="w-full bg-[#0F0A1E] border border-[#2E1065] rounded-lg px-4 py-3 text-white placeholder-[#4C4462] focus:outline-none focus:border-[#8B5CF6] transition-colors"
+                className="w-full bg-[#0F172A] border border-[#0F172A] rounded-lg px-4 py-3 text-white placeholder-[#4C4462] focus:outline-none focus:border-[#F59E0B] transition-colors"
               />
             </div>
 
@@ -72,7 +72,7 @@ export default function AdminLoginPage() {
                 placeholder="••••••••"
                 required
                 autoComplete="current-password"
-                className="w-full bg-[#0F0A1E] border border-[#2E1065] rounded-lg px-4 py-3 text-white placeholder-[#4C4462] focus:outline-none focus:border-[#8B5CF6] transition-colors"
+                className="w-full bg-[#0F172A] border border-[#0F172A] rounded-lg px-4 py-3 text-white placeholder-[#4C4462] focus:outline-none focus:border-[#F59E0B] transition-colors"
               />
             </div>
 
@@ -83,7 +83,7 @@ export default function AdminLoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-[#A3E635] text-[#2E1065] font-semibold py-3 rounded-lg hover:bg-[#b4f045] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-[#F59E0B] text-[#0F172A] font-semibold py-3 rounded-lg hover:bg-[#b4f045] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? 'Giriş yapılıyor...' : 'Giriş Yap'}
             </button>

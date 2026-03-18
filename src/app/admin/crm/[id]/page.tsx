@@ -41,13 +41,13 @@ export default async function LeadDetailPage({ params }: { params: Promise<{ id:
           <Link href="/admin/crm" className="text-[#4C4462] hover:text-white transition-colors">
             ← CRM
           </Link>
-          <span className="text-[#1A1030]">/</span>
+          <span className="text-[#0F172A]">/</span>
           <span className="text-[#78716C]">{lead.email}</span>
         </div>
 
         <div className="grid grid-cols-2 gap-6">
           {/* Temel Bilgiler */}
-          <div className="bg-[#0F0A1E] border border-[#1A1030] rounded-xl p-6">
+          <div className="bg-[#0F172A] border border-[#0F172A] rounded-xl p-6">
             <h2 className="text-white font-medium mb-4">Temel Bilgiler</h2>
             <div className="space-y-3">
               {fields.map(({ label, value }) => (
@@ -62,13 +62,13 @@ export default async function LeadDetailPage({ params }: { params: Promise<{ id:
           {/* Eylemler */}
           <div className="space-y-4">
             {lead.pdf_url && (
-              <div className="bg-[#0F0A1E] border border-[#1A1030] rounded-xl p-6">
+              <div className="bg-[#0F172A] border border-[#0F172A] rounded-xl p-6">
                 <h2 className="text-white font-medium mb-3">Rapor</h2>
                 <a
                   href={lead.pdf_url}
                   target="_blank"
                   rel="noopener"
-                  className="flex items-center gap-2 bg-[#2E1065] hover:bg-[#3D1580] text-white px-4 py-3 rounded-lg transition-colors text-sm"
+                  className="flex items-center gap-2 bg-[#0F172A] hover:bg-[#1E293B] text-white px-4 py-3 rounded-lg transition-colors text-sm"
                 >
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -79,21 +79,21 @@ export default async function LeadDetailPage({ params }: { params: Promise<{ id:
             )}
 
             {lead.biggest_pain && (
-              <div className="bg-[#0F0A1E] border border-[#1A1030] rounded-xl p-6">
+              <div className="bg-[#0F172A] border border-[#0F172A] rounded-xl p-6">
                 <h2 className="text-white font-medium mb-3">En Büyük Problem</h2>
                 <p className="text-[#78716C] text-sm leading-relaxed">{lead.biggest_pain}</p>
               </div>
             )}
 
             {lead.notes && (
-              <div className="bg-[#0F0A1E] border border-[#1A1030] rounded-xl p-6">
+              <div className="bg-[#0F172A] border border-[#0F172A] rounded-xl p-6">
                 <h2 className="text-white font-medium mb-3">Notlar</h2>
                 <p className="text-[#78716C] text-sm leading-relaxed">{lead.notes}</p>
               </div>
             )}
 
             {lead.analysis_json && (
-              <div className="bg-[#0F0A1E] border border-[#1A1030] rounded-xl p-6">
+              <div className="bg-[#0F172A] border border-[#0F172A] rounded-xl p-6">
                 <h2 className="text-white font-medium mb-3">Claude Analizi</h2>
                 <pre className="text-[#78716C] text-xs overflow-auto max-h-48 leading-relaxed">
                   {JSON.stringify(lead.analysis_json, null, 2)}

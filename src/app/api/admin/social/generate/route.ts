@@ -56,9 +56,9 @@ const IMAGE_SIZE: Record<string, string> = {
 }
 
 // Stil 2: Soyut teknoloji — tüm sosyal medya slide'ları için sabit stil
-// Koyu arka plan + mor/lime parıltılar → %62 overlay altında premium atmosfer
+// Koyu arka plan + amber/mavi parıltılar → %62 overlay altında premium atmosfer
 function buildBgPrompt(topicHint: string): string {
-  return `Abstract dark atmospheric photograph of technology environment, ${topicHint}. Flowing data streams, fiber optic lines, and neural network patterns in deep indigo and purple tones. Subtle glowing accents in purple and lime green on circuit board textures dissolving into light particles. Shot with 50mm lens, f/2.0, cinematic color grading. Cool blue-purple tones, shallow depth of field, clean composition with negative space on upper third for text overlay. No text no words no typography no labels no writing anywhere. Futuristic, premium, mysterious atmosphere.`
+  return `Abstract dark atmospheric photograph of technology environment, ${topicHint}. Flowing data streams, fiber optic lines, and neural network patterns in deep midnight blue and dark slate tones. Subtle glowing accents in warm amber and soft blue on circuit board textures dissolving into light particles. Shot with 50mm lens, f/2.0, cinematic color grading. Cool blue-midnight tones with warm amber highlights, shallow depth of field, clean composition with negative space on upper third for text overlay. No text no words no typography no labels no writing anywhere. Futuristic, premium, mysterious atmosphere.`
 }
 
 async function generateVisual(prompt: string, platform: 'linkedin' | 'instagram' | 'twitter'): Promise<string | null> {

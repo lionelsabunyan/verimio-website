@@ -86,9 +86,9 @@ const INTEGRATIONS = [
 ]
 
 const BRAND = [
-  { label: 'Deep Indigo', value: '#2E1065', type: 'color' },
-  { label: 'Vivid Lime', value: '#A3E635', type: 'color' },
-  { label: 'Gradient Purple', value: '#8B5CF6', type: 'color' },
+  { label: 'Deep Indigo', value: '#0F172A', type: 'color' },
+  { label: 'Vivid Lime', value: '#F59E0B', type: 'color' },
+  { label: 'Gradient Purple', value: '#F59E0B', type: 'color' },
   { label: 'Site URL', value: 'verimio.com.tr', type: 'text' },
   { label: 'Admin Email', value: 'sedat@verimio.com.tr', type: 'text' },
 ]
