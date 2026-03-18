@@ -9,16 +9,16 @@ export default function Blog() {
   const cards = BLOG_POSTS.slice(0, 3).map((post, index) => (
     <Link key={index} href={`/blog/${post.slug}`} className="group block h-full">
       <article className="relative rounded-2xl overflow-hidden h-full bg-surface-elevated border border-border hover:border-border-accent transition-all duration-300 glow-card">
-        {/* Image with overlay */}
-        <div className="relative overflow-hidden aspect-[16/10]">
+        {/* Image — let BlogCoverImage handle its own aspect ratio */}
+        <div className="relative overflow-hidden">
           <div className="transition-transform duration-700 group-hover:scale-105">
-            <BlogCoverImage slug={post.slug} title={post.title} category={post.category} index={index} />
+            <BlogCoverImage slug={post.slug} title={post.title} category={post.category} index={index} aspectRatio="video" />
           </div>
-          {/* Bottom gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+          {/* Gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
           {/* Date badge */}
-          <div className="absolute top-4 left-4">
-            <span className="px-2.5 py-1 rounded-full bg-white/10 backdrop-blur-sm text-[11px] font-medium text-white/80">
+          <div className="absolute top-3 left-3">
+            <span className="px-2.5 py-1 rounded-full bg-black/30 backdrop-blur-sm text-[11px] font-medium text-white/90">
               {post.date}
             </span>
           </div>

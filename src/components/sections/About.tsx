@@ -17,13 +17,13 @@ export default function About() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Stat strip — horizontal, bold, minimal */}
         <FadeIn>
-          <div className="flex flex-col sm:flex-row items-start sm:items-center sm:justify-between gap-8 mb-16 pb-12 border-b border-border">
+          <div className="grid grid-cols-3 gap-6 mb-16 pb-12 border-b border-border text-center">
             {stats.map((stat, i) => (
-              <div key={i} className="flex items-baseline gap-3">
-                <span className="text-4xl sm:text-5xl font-bold text-primary-light tabular-nums">
+              <div key={i}>
+                <span className="block text-3xl sm:text-4xl lg:text-5xl font-bold text-primary-light tabular-nums mb-1">
                   {stat.value}
                 </span>
-                <span className="text-sm text-foreground-secondary leading-snug max-w-[120px]">
+                <span className="text-sm text-foreground-secondary">
                   {stat.label}
                 </span>
               </div>
