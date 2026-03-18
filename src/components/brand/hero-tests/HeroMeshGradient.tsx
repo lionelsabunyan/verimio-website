@@ -18,15 +18,15 @@ export default function HeroAurora() {
           className="pointer-events-none absolute -inset-[10px] opacity-50 will-change-transform"
           style={{
             backgroundImage: [
-              "repeating-linear-gradient(100deg, #0A0514 0%, #0A0514 7%, transparent 10%, transparent 12%, #0A0514 16%)",
-              "repeating-linear-gradient(100deg, #8B5CF6 10%, #A3E635 15%, #8B5CF6 20%, #2E1065 25%, #A3E635 30%)",
+              "repeating-linear-gradient(100deg, #0A0514 0%, #0A0514 5%, transparent 8%, transparent 14%, #0A0514 18%)",
+              "repeating-linear-gradient(100deg, #8B5CF6 8%, #6D28D9 14%, #A3E635 20%, #2E1065 28%, #8B5CF6 34%)",
             ].join(","),
             backgroundSize: "300% 200%",
             backgroundPosition: "50% 50%",
-            filter: "blur(10px)",
-            animation: "verimio-aurora 60s linear infinite",
-            maskImage: "radial-gradient(ellipse at 100% 0%, black 10%, transparent 70%)",
-            WebkitMaskImage: "radial-gradient(ellipse at 100% 0%, black 10%, transparent 70%)",
+            filter: "blur(30px)",
+            animation: "verimio-aurora 80s linear infinite",
+            maskImage: "radial-gradient(ellipse 80% 70% at 70% 30%, black 20%, transparent 70%)",
+            WebkitMaskImage: "radial-gradient(ellipse 80% 70% at 70% 30%, black 20%, transparent 70%)",
           }}
         />
         {/* After pseudo — mix-blend for depth */}
@@ -34,12 +34,13 @@ export default function HeroAurora() {
           className="pointer-events-none absolute -inset-[10px] opacity-50 will-change-transform mix-blend-difference"
           style={{
             backgroundImage: [
-              "repeating-linear-gradient(100deg, #0A0514 0%, #0A0514 7%, transparent 10%, transparent 12%, #0A0514 16%)",
-              "repeating-linear-gradient(100deg, #8B5CF6 10%, #A3E635 15%, #8B5CF6 20%, #2E1065 25%, #A3E635 30%)",
+              "repeating-linear-gradient(100deg, #0A0514 0%, #0A0514 5%, transparent 8%, transparent 14%, #0A0514 18%)",
+              "repeating-linear-gradient(100deg, #A3E635 8%, #8B5CF6 16%, #2E1065 24%, #A3E635 32%)",
             ].join(","),
-            backgroundSize: "200% 100%",
+            backgroundSize: "250% 150%",
             backgroundAttachment: "fixed",
-            animation: "verimio-aurora 60s linear infinite",
+            filter: "blur(40px)",
+            animation: "verimio-aurora 80s linear infinite",
           }}
         />
       </div>
