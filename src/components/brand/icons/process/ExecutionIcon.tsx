@@ -27,9 +27,9 @@ export default function ExecutionIcon({ className = "", size = 24 }: IconProps) 
       <path d="M 14 12 L 12.5 13.5" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.40" />
 
       {/* Right circle: new state — lime */}
-      <circle cx="18" cy="12" r="4.5" stroke="#FFD93D" strokeWidth="1.5" fill="#FFD93D" fillOpacity="0.10" />
+      <circle cx="18" cy="12" r="4.5" stroke="#F59E0B" strokeWidth="1.5" fill="#F59E0B" fillOpacity="0.10" />
       {/* Checkmark */}
-      <path d="M 15.8 12.2 L 17.2 13.8 L 20.2 10.5" stroke="#FFD93D" strokeWidth="1.5" />
+      <path d="M 15.8 12.2 L 17.2 13.8 L 20.2 10.5" stroke="#F59E0B" strokeWidth="1.5" />
     </svg>
   );
 }

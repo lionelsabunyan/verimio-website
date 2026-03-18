@@ -23,7 +23,7 @@ export default function NotFound() {
             aria-hidden="true"
           >
             {/* "4" left */}
-            <g stroke="#FF6B6B" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.55">
+            <g stroke="#F59E0B" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.55">
               <line x1="22" y1="20" x2="22" y2="90" />
               <line x1="22" y1="60" x2="60" y2="20" />
               <line x1="60" y1="20" x2="60" y2="90" />
@@ -31,16 +31,16 @@ export default function NotFound() {
             </g>
 
             {/* "0" center — with V monogram inside */}
-            <ellipse cx="150" cy="55" rx="36" ry="45" stroke="#FF6B6B" strokeWidth="6" strokeOpacity="0.55" />
+            <ellipse cx="150" cy="55" rx="36" ry="45" stroke="#F59E0B" strokeWidth="6" strokeOpacity="0.55" />
             {/* V monogram inside the 0 */}
             <g opacity="0.75">
               <path d="M 134 35 L 150 68 L 166 35"
-                stroke="#FF6B6B" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
-              <circle cx="150" cy="31" r="4" fill="#FFD93D" />
+                stroke="#F59E0B" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+              <circle cx="150" cy="31" r="4" fill="#F59E0B" />
             </g>
 
             {/* "4" right */}
-            <g stroke="#FF6B6B" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.55">
+            <g stroke="#F59E0B" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.55">
               <line x1="218" y1="20" x2="218" y2="90" />
               <line x1="218" y1="60" x2="256" y2="20" />
               <line x1="256" y1="20" x2="256" y2="90" />

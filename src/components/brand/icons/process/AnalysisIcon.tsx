@@ -16,8 +16,8 @@ export default function AnalysisIcon({ className = "", size = 24 }: IconProps) {
       aria-hidden="true"
     >
       {/* Row 1: completed — lime dot */}
-      <circle cx="5" cy="8" r="2.5" fill="#FFD93D" fillOpacity="0.80" stroke="#FFD93D" strokeWidth="1" />
-      <line x1="9" y1="8" x2="20" y2="8" stroke="#FFD93D" strokeWidth="1.2" strokeOpacity="0.60" />
+      <circle cx="5" cy="8" r="2.5" fill="#F59E0B" fillOpacity="0.80" stroke="#F59E0B" strokeWidth="1" />
+      <line x1="9" y1="8" x2="20" y2="8" stroke="#F59E0B" strokeWidth="1.2" strokeOpacity="0.60" />
 
       {/* Row 2: in-progress — half filled */}
       <circle cx="5" cy="13" r="2.5" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.5" />
@@ -29,7 +29,7 @@ export default function AnalysisIcon({ className = "", size = 24 }: IconProps) {
       <line x1="9" y1="18" x2="19" y2="18" stroke="currentColor" strokeWidth="1.2" strokeOpacity="0.25" />
 
       {/* Top accent underline */}
-      <line x1="3" y1="4.5" x2="21" y2="4.5" stroke="#FFD93D" strokeWidth="1.5" strokeOpacity="0.35" />
+      <line x1="3" y1="4.5" x2="21" y2="4.5" stroke="#F59E0B" strokeWidth="1.5" strokeOpacity="0.35" />
     </svg>
   );
 }

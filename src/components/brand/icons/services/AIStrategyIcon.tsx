@@ -18,7 +18,7 @@ export default function AIStrategyIcon({ className = "", size = 32 }: IconProps)
       {/* Central circuit/brain node */}
       <rect x="11" y="11" width="10" height="10" rx="3" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.5" />
       {/* Center lime dot */}
-      <circle cx="16" cy="16" r="2.5" fill="#FFD93D" fillOpacity="0.70" />
+      <circle cx="16" cy="16" r="2.5" fill="#F59E0B" fillOpacity="0.70" />
 
       {/* North arm */}
       <line x1="16" y1="11" x2="16" y2="5" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.4" />
@@ -30,7 +30,7 @@ export default function AIStrategyIcon({ className = "", size = 32 }: IconProps)
 
       {/* East arm */}
       <line x1="21" y1="16" x2="27" y2="16" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.4" />
-      <circle cx="28.5" cy="16" r="1.5" stroke="#FFD93D" strokeWidth="1.2" strokeOpacity="0.60" />
+      <circle cx="28.5" cy="16" r="1.5" stroke="#F59E0B" strokeWidth="1.2" strokeOpacity="0.60" />
 
       {/* West arm — short */}
       <line x1="11" y1="16" x2="5" y2="16" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.35" />

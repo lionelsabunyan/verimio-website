@@ -16,10 +16,10 @@ export default function RoadmapIcon({ className = "", size = 24 }: IconProps) {
       <circle cx="14" cy="12" r="3" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.5" fill="none" />
       <circle cx="14" cy="12" r="1.2" fill="currentColor" fillOpacity="0.35" />
       {/* Milestone 3 — lime = destination */}
-      <circle cx="20" cy="12" r="3" stroke="#FFD93D" strokeWidth="1.5" fill="#FFD93D" fillOpacity="0.12" />
-      <circle cx="20" cy="12" r="1.2" fill="#FFD93D" fillOpacity="0.70" />
+      <circle cx="20" cy="12" r="3" stroke="#F59E0B" strokeWidth="1.5" fill="#F59E0B" fillOpacity="0.12" />
+      <circle cx="20" cy="12" r="1.2" fill="#F59E0B" fillOpacity="0.70" />
       {/* 90-day label hint */}
-      <line x1="20" y1="8" x2="20" y2="5.5" stroke="#FFD93D" strokeWidth="1" strokeOpacity="0.40" />
+      <line x1="20" y1="8" x2="20" y2="5.5" stroke="#F59E0B" strokeWidth="1" strokeOpacity="0.40" />
     </svg>
   );
 }

@@ -26,10 +26,10 @@ export default function ProcessAnalysisIcon({ className = "", size = 32 }: IconP
       <path d="M 16 13 L 19 16 L 16 19" stroke="currentColor" strokeWidth="1.5" fill="none" />
 
       {/* Right: ordered block (result state) — lime accent */}
-      <rect x="20" y="8" width="10" height="16" rx="2" stroke="#FFD93D" strokeWidth="1.5" />
-      <line x1="23" y1="13" x2="27" y2="13" stroke="#FFD93D" strokeWidth="1" strokeOpacity="0.7" />
-      <line x1="23" y1="17" x2="27" y2="17" stroke="#FFD93D" strokeWidth="1" strokeOpacity="0.7" />
-      <line x1="23" y1="21" x2="27" y2="21" stroke="#FFD93D" strokeWidth="1" strokeOpacity="0.7" />
+      <rect x="20" y="8" width="10" height="16" rx="2" stroke="#F59E0B" strokeWidth="1.5" />
+      <line x1="23" y1="13" x2="27" y2="13" stroke="#F59E0B" strokeWidth="1" strokeOpacity="0.7" />
+      <line x1="23" y1="17" x2="27" y2="17" stroke="#F59E0B" strokeWidth="1" strokeOpacity="0.7" />
+      <line x1="23" y1="21" x2="27" y2="21" stroke="#F59E0B" strokeWidth="1" strokeOpacity="0.7" />
     </svg>
   );
 }

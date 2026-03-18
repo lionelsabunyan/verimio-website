@@ -25,7 +25,7 @@ export default function DataReportingIcon({ className = "", size = 32 }: IconPro
       {/* Bar 3 — tall */}
       <rect x="20" y="11" width="4" height="15" rx="1" stroke="currentColor" strokeWidth="1.2" strokeOpacity="0.45" />
       {/* Bar 4 — tallest, lime = final output */}
-      <rect x="25" y="6" width="3" height="20" rx="1" stroke="#FFD93D" strokeWidth="1.5" fill="#FFD93D" fillOpacity="0.12" />
+      <rect x="25" y="6" width="3" height="20" rx="1" stroke="#F59E0B" strokeWidth="1.5" fill="#F59E0B" fillOpacity="0.12" />
 
       {/* Data source indicator (top-left) */}
       <circle cx="6" cy="8" r="2" stroke="currentColor" strokeWidth="1.2" strokeOpacity="0.35" />
@@ -33,7 +33,7 @@ export default function DataReportingIcon({ className = "", size = 32 }: IconPro
       <line x1="8" y1="10" x2="13" y2="14" stroke="currentColor" strokeWidth="0.8" strokeOpacity="0.20" strokeDasharray="1.5 2" />
 
       {/* Trend arrow */}
-      <path d="M 8 22 L 25 8" stroke="#FFD93D" strokeWidth="1" strokeOpacity="0.25" strokeDasharray="2 2" />
+      <path d="M 8 22 L 25 8" stroke="#F59E0B" strokeWidth="1" strokeOpacity="0.25" strokeDasharray="2 2" />
     </svg>
   );
 }

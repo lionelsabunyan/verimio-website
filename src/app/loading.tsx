@@ -27,14 +27,14 @@ export default function Loading() {
           <path
             className="v-path"
             d="M8 12 L32 52 L56 12"
-            stroke="#FF6B6B"
+            stroke="#F59E0B"
             strokeWidth="5"
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeDasharray="120"
             strokeDashoffset="120"
           />
-          <circle className="v-dot" cx="32" cy="9" r="5" fill="#FFD93D" />
+          <circle className="v-dot" cx="32" cy="9" r="5" fill="#F59E0B" />
         </svg>
 
         {/* Wordmark */}

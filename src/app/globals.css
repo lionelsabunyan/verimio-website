@@ -2,56 +2,56 @@
 
 /* ─── Light Mode (Default) ────────────────────────── */
 :root {
-  --background: #FAF9F7;
-  --background-secondary: #F3F1ED;
-  --foreground: #1A1A2E;
-  --foreground-secondary: #6B6B80;
-  --foreground-muted: #9494A0;
+  --background: #F8FAFC;
+  --background-secondary: #F1F5F9;
+  --foreground: #0F172A;
+  --foreground-secondary: #64748B;
+  --foreground-muted: #94A3B8;
 
   --surface: #FFFFFF;
   --surface-elevated: #FFFFFF;
 
-  --primary: #1A1A2E;
-  --primary-light: #FF6B6B;
-  --secondary: #FFD93D;
-  --secondary-hover: #FFE566;
-  --dark: #121218;
-  --muted: #6B6B80;
-  --cream: #F0EBE3;
+  --primary: #0F172A;
+  --primary-light: #F59E0B;
+  --secondary: #F59E0B;
+  --secondary-hover: #FBBF24;
+  --dark: #020617;
+  --muted: #64748B;
+  --cream: #F1F5F9;
 
-  --border: rgba(26, 26, 46, 0.10);
-  --border-hover: rgba(26, 26, 46, 0.18);
-  --border-accent: rgba(255, 107, 107, 0.25);
+  --border: rgba(15, 23, 42, 0.10);
+  --border-hover: rgba(15, 23, 42, 0.18);
+  --border-accent: rgba(245, 158, 11, 0.25);
 
   /* Semantic */
   --success: #22C55E;
   --warning: #F59E0B;
   --error: #EF4444;
-  --info: #3B82F6;
+  --info: #60A5FA;
 }
 
 /* ─── Dark Mode ───────────────────────────────────── */
 .dark {
-  --background: #0C0C10;
-  --background-secondary: #121216;
-  --foreground: #F0EBE3;
-  --foreground-secondary: #A0A0AD;
-  --foreground-muted: #6B6B7B;
+  --background: #020617;
+  --background-secondary: #0F172A;
+  --foreground: #F1F5F9;
+  --foreground-secondary: #94A3B8;
+  --foreground-muted: #64748B;
 
-  --surface: #16161D;
-  --surface-elevated: #1E1E28;
+  --surface: #0F172A;
+  --surface-elevated: #1E293B;
 
-  --primary: #1A1A2E;
-  --primary-light: #FF6B6B;
-  --secondary: #FFD93D;
-  --secondary-hover: #FFE566;
-  --dark: #0C0C10;
-  --muted: #6B6B80;
-  --cream: #F0EBE3;
+  --primary: #0F172A;
+  --primary-light: #F59E0B;
+  --secondary: #F59E0B;
+  --secondary-hover: #FBBF24;
+  --dark: #020617;
+  --muted: #64748B;
+  --cream: #F1F5F9;
 
-  --border: rgba(240, 235, 227, 0.08);
-  --border-hover: rgba(240, 235, 227, 0.14);
-  --border-accent: rgba(255, 107, 107, 0.20);
+  --border: rgba(241, 245, 249, 0.08);
+  --border-hover: rgba(241, 245, 249, 0.14);
+  --border-accent: rgba(245, 158, 11, 0.20);
 }
 
 @theme inline {
@@ -199,7 +199,7 @@ html {
 
 /* ─── Gradient Text ────────────────────────────────── */
 .gradient-text {
-  background: linear-gradient(135deg, #FF6B6B 0%, #FFD93D 100%);
+  background: linear-gradient(135deg, #F59E0B 0%, #60A5FA 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -218,7 +218,7 @@ html {
   transform: translateX(-50%);
   width: 80px;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #FF6B6B, transparent);
+  background: linear-gradient(90deg, transparent, #F59E0B, transparent);
   border-radius: 999px;
 }
 
@@ -247,9 +247,9 @@ html {
 
 .aurora-bg {
   background:
-    radial-gradient(ellipse 80% 60% at 20% 40%, rgba(255, 107, 107, 0.08) 0%, transparent 70%),
-    radial-gradient(ellipse 60% 80% at 80% 60%, rgba(255, 217, 61, 0.05) 0%, transparent 70%),
-    radial-gradient(ellipse 70% 50% at 50% 30%, rgba(26, 26, 46, 0.10) 0%, transparent 70%);
+    radial-gradient(ellipse 80% 60% at 20% 40%, rgba(245, 158, 11, 0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 80% at 80% 60%, rgba(96, 165, 250, 0.04) 0%, transparent 70%),
+    radial-gradient(ellipse 70% 50% at 50% 30%, rgba(15, 23, 42, 0.10) 0%, transparent 70%);
   background-size: 200% 200%, 200% 200%, 200% 200%;
   animation: aurora 20s ease-in-out infinite;
 }
@@ -299,18 +299,18 @@ html {
 
 .animated-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent 0%, transparent 30%, #FF6B6B 50%, #FFD93D 55%, transparent 70%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, transparent 30%, #F59E0B 50%, #60A5FA 55%, transparent 70%, transparent 100%);
   background-size: 200% 100%;
   animation: gradient-slide 4s ease-in-out infinite;
 }
 
 /* ─── Glow Effects ────────────────────────────────── */
 .glow-card:hover {
-  box-shadow: 0 0 40px rgba(255, 107, 107, 0.10), 0 0 80px rgba(255, 107, 107, 0.04);
+  box-shadow: 0 0 40px rgba(245, 158, 11, 0.08), 0 0 80px rgba(245, 158, 11, 0.03);
 }
 
 .dark .glow-card:hover {
-  box-shadow: 0 0 40px rgba(255, 107, 107, 0.14), 0 0 80px rgba(255, 107, 107, 0.06);
+  box-shadow: 0 0 40px rgba(245, 158, 11, 0.12), 0 0 80px rgba(245, 158, 11, 0.05);
 }
 
 /* ─── Reduced Motion (WCAG 2.3.3) ─────────────────── */

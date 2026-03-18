@@ -22,16 +22,16 @@ export default function CustomerExperienceIcon({ className = "", size = 32 }: Ic
       <path d="M 4.5 19 Q 7 17 9.5 19" stroke="currentColor" strokeWidth="1" strokeOpacity="0.4" />
 
       {/* Wave connection lines (communication) */}
-      <path d="M 12 13 Q 15 11 18 13" stroke="#FFD93D" strokeWidth="1.2" strokeOpacity="0.55" fill="none" />
-      <path d="M 12 16 Q 15 15 18 16" stroke="#FFD93D" strokeWidth="1.2" strokeOpacity="0.45" fill="none" />
-      <path d="M 12 19 Q 15 21 18 19" stroke="#FFD93D" strokeWidth="1.2" strokeOpacity="0.35" fill="none" />
+      <path d="M 12 13 Q 15 11 18 13" stroke="#F59E0B" strokeWidth="1.2" strokeOpacity="0.55" fill="none" />
+      <path d="M 12 16 Q 15 15 18 16" stroke="#F59E0B" strokeWidth="1.2" strokeOpacity="0.45" fill="none" />
+      <path d="M 12 19 Q 15 21 18 19" stroke="#F59E0B" strokeWidth="1.2" strokeOpacity="0.35" fill="none" />
 
       {/* Interface screen (right) */}
       <rect x="19" y="9" width="11" height="14" rx="2" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.5" />
       {/* Screen messages list */}
-      <line x1="21.5" y1="13" x2="27.5" y2="13" stroke="#FFD93D" strokeWidth="1" strokeOpacity="0.60" />
+      <line x1="21.5" y1="13" x2="27.5" y2="13" stroke="#F59E0B" strokeWidth="1" strokeOpacity="0.60" />
       <line x1="21.5" y1="16" x2="26" y2="16" stroke="currentColor" strokeWidth="1" strokeOpacity="0.35" />
-      <line x1="21.5" y1="19" x2="27.5" y2="19" stroke="#FFD93D" strokeWidth="1" strokeOpacity="0.50" />
+      <line x1="21.5" y1="19" x2="27.5" y2="19" stroke="#F59E0B" strokeWidth="1" strokeOpacity="0.50" />
     </svg>
   );
 }
