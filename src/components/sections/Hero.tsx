@@ -5,11 +5,6 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { HERO_CONTENT, BRAND } from "@/lib/constants";
 import Button from "@/components/ui/Button";
 import { FloatingShapes } from "@/components/brand/Decoratives";
-import TimeIcon from "@/components/brand/icons/ui/TimeIcon";
-import ROIIcon from "@/components/brand/icons/ui/ROIIcon";
-import RoadmapIcon from "@/components/brand/icons/ui/RoadmapIcon";
-
-const cardIcons = [TimeIcon, ROIIcon, RoadmapIcon];
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -18,16 +13,14 @@ export default function Hero() {
     offset: ["start start", "end start"],
   });
 
-  const textY = useTransform(scrollYProgress, [0, 1], [0, -40]);
-  const cardsY = useTransform(scrollYProgress, [0, 1], [0, 60]);
-  const auroraOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0.2]);
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, -60]);
+  const auroraOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0.15]);
 
   return (
-    <section ref={sectionRef} className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-[#0A0514]">
+    <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0A0514]">
 
-      {/* ── Aurora Background (full-bleed) ── */}
+      {/* ── Aurora Background ── */}
       <motion.div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ opacity: auroraOpacity }}>
-        {/* Primary aurora layer — yumuşak blur, yavaş geçiş */}
         <div
           className="absolute -inset-[10px] opacity-40 will-change-transform"
           style={{
@@ -43,7 +36,6 @@ export default function Hero() {
             WebkitMaskImage: "radial-gradient(ellipse 80% 70% at 70% 30%, black 20%, transparent 70%)",
           }}
         />
-        {/* Secondary layer — mix-blend for depth, extra soft */}
         <div
           className="absolute -inset-[10px] opacity-30 will-change-transform mix-blend-soft-light"
           style={{
@@ -59,99 +51,74 @@ export default function Hero() {
         />
       </motion.div>
 
-      {/* Subtle radial glow accents */}
+      {/* Radial glow accents */}
       <div className="absolute top-1/4 right-0 w-[600px] h-[400px] pointer-events-none" style={{ background: "radial-gradient(ellipse, rgba(139,92,246,0.06) 0%, transparent 60%)", filter: "blur(60px)" }} />
       <div className="absolute bottom-0 left-0 w-[400px] h-[300px] pointer-events-none" style={{ background: "radial-gradient(ellipse, rgba(163,230,53,0.04) 0%, transparent 60%)", filter: "blur(60px)" }} />
 
       <FloatingShapes count={4} />
 
-      {/* ── Content ── */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      {/* ── Centered Content ── */}
+      <motion.div
+        className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+        style={{ y: contentY }}
+      >
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm mb-8"
+        >
+          <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
+          <span className="text-sm font-medium text-white/60 tracking-wide">
+            {HERO_CONTENT.badge}
+          </span>
+        </motion.div>
 
-          {/* Left — text */}
-          <motion.div className="space-y-8" style={{ y: textY }}>
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.1 }}
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm"
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
-              <span className="text-xs font-medium text-white/70 tracking-wide">
-                {HERO_CONTENT.badge}
-              </span>
-            </motion.div>
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.35, ease: [0.21, 0.47, 0.32, 0.98] }}
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.08] tracking-tight text-white mb-6"
+        >
+          {HERO_CONTENT.headline}
+          <br />
+          <span className="bg-gradient-to-r from-[#8B5CF6] via-[#A78BFA] to-[#A3E635] bg-clip-text text-transparent">
+            {HERO_CONTENT.headlineHighlight}
+          </span>
+        </motion.h1>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2, ease: [0.21, 0.47, 0.32, 0.98] }}
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight text-white"
-            >
-              {HERO_CONTENT.headline}
-              <br />
-              <span className="bg-gradient-to-r from-[#8B5CF6] to-[#A3E635] bg-clip-text text-transparent">
-                {HERO_CONTENT.headlineHighlight}
-              </span>
-            </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="text-lg sm:text-xl text-white/40 max-w-2xl mx-auto leading-relaxed mb-10"
+        >
+          {HERO_CONTENT.subheadline}
+        </motion.p>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.35 }}
-              className="text-lg text-white/50 max-w-lg leading-relaxed"
-            >
-              {HERO_CONTENT.subheadline}
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.45 }}
-              className="flex flex-wrap items-center gap-3"
-            >
-              <Button href={BRAND.tallyFormUrl} size="lg">
-                {HERO_CONTENT.ctaPrimary}
-              </Button>
-              <Button href="#nasil-calisir" variant="outline" size="lg" icon={false} className="border-white/20 text-white hover:border-secondary hover:text-secondary hover:bg-transparent">
-                {HERO_CONTENT.ctaSecondary}
-              </Button>
-            </motion.div>
-          </motion.div>
-
-          {/* Right — Outcome Cards */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.3, ease: [0.21, 0.47, 0.32, 0.98] }}
-            className="space-y-5"
-            style={{ y: cardsY }}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.65 }}
+          className="flex items-center justify-center gap-4 flex-wrap"
+        >
+          <Button href={BRAND.tallyFormUrl} size="lg">
+            {HERO_CONTENT.ctaPrimary}
+          </Button>
+          <Button
+            href="#nasil-calisir"
+            variant="outline"
+            size="lg"
+            icon={false}
+            className="border-white/15 text-white hover:border-secondary hover:text-secondary hover:bg-transparent"
           >
-            <div className="grid grid-cols-3 gap-3">
-              {HERO_CONTENT.cards.map((card, index) => {
-                const Icon = cardIcons[index];
-                return (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: 0.6 + index * 0.1, ease: [0.21, 0.47, 0.32, 0.98] }}
-                    className="rounded-xl p-4 border border-white/10 bg-white/5 backdrop-blur-sm hover:border-secondary/30 transition-all duration-200 glow-card"
-                  >
-                    <div className="w-8 h-8 rounded-lg flex items-center justify-center mb-3 bg-white/10 text-secondary">
-                      <Icon className="w-4 h-4" size={16} />
-                    </div>
-                    <h3 className="text-xs font-semibold text-white/80 leading-snug">
-                      {card.title}
-                    </h3>
-                  </motion.div>
-                );
-              })}
-            </div>
-          </motion.div>
-        </div>
-      </div>
+            {HERO_CONTENT.ctaSecondary}
+          </Button>
+        </motion.div>
+      </motion.div>
+
+      {/* Bottom fade into next section */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none" />
     </section>
   );
 }
