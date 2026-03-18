@@ -41,7 +41,7 @@ export default function Navbar() {
       <div
         className={`flex items-center justify-between w-full max-w-5xl transition-all duration-500 rounded-full px-5 py-2.5 ${
           scrolled
-            ? "bg-[#0A0514]/80 backdrop-blur-xl border border-white/8 shadow-lg shadow-black/20"
+            ? "bg-[#1E0A46]/95 backdrop-blur-xl border border-white/10 shadow-lg shadow-black/30"
             : "bg-white/5 backdrop-blur-sm border border-white/5"
         }`}
       >
