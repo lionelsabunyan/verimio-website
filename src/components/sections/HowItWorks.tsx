@@ -1,6 +1,7 @@
 "use client";
 
-import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/motion";
+import { motion } from "framer-motion";
+import { FadeIn } from "@/components/ui/motion";
 import SectionLabel from "@/components/ui/SectionLabel";
 import { HOW_IT_WORKS } from "@/lib/constants";
 import DiscoveryIcon from "@/components/brand/icons/process/DiscoveryIcon";
@@ -11,54 +12,68 @@ const stepIcons = [DiscoveryIcon, AnalysisIcon, ExecutionIcon];
 
 export default function HowItWorks() {
   return (
-    <section id="nasil-calisir" className="section-padding">
+    <section id="nasil-calisir" className="section-padding bg-background-secondary">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <FadeIn>
-          <SectionLabel className="mb-4">Nasıl Çalışır?</SectionLabel>
-        </FadeIn>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
 
-        <FadeIn delay={0.1}>
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            <span className="gradient-text">Danışmanlık Sürecimiz</span>
-          </h2>
-          <p className="text-lg text-foreground-secondary max-w-2xl mb-16">
-            Firmanıza özgü bir süreçle, doğru adımları birlikte atıyoruz.
-          </p>
-        </FadeIn>
+          {/* Left — sticky header */}
+          <div className="lg:col-span-4 lg:sticky lg:top-28 lg:self-start">
+            <FadeIn>
+              <SectionLabel className="mb-4">Nasıl Çalışır?</SectionLabel>
+              <h2 className="text-3xl sm:text-4xl font-bold mb-4 leading-tight">
+                Danışmanlık <span className="text-primary-light">Sürecimiz</span>
+              </h2>
+              <p className="text-foreground-secondary leading-relaxed">
+                Firmanıza özgü bir süreçle, doğru adımları birlikte atıyoruz.
+              </p>
+            </FadeIn>
+          </div>
 
-        <StaggerContainer
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 relative"
-          staggerDelay={0.15}
-        >
-          {/* Connector line (desktop only) — animated */}
-          <div className="hidden md:block absolute top-10 left-[calc(16.66%+1rem)] right-[calc(16.66%+1rem)] z-0 animated-divider" />
+          {/* Right — vertical timeline */}
+          <div className="lg:col-span-8">
+            <div className="space-y-0">
+              {HOW_IT_WORKS.map((step, index) => {
+                const Icon = stepIcons[index];
+                const isLast = index === HOW_IT_WORKS.length - 1;
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.5, delay: index * 0.1, ease: [0.21, 0.47, 0.32, 0.98] }}
+                    className="flex gap-6 group"
+                  >
+                    {/* Timeline column */}
+                    <div className="flex flex-col items-center shrink-0">
+                      <div className="w-12 h-12 rounded-xl bg-primary-light/10 flex items-center justify-center group-hover:bg-primary-light/20 transition-colors duration-300">
+                        <Icon className="w-5 h-5 text-primary-light" size={20} />
+                      </div>
+                      {!isLast && (
+                        <div className="w-px flex-1 min-h-[40px] bg-border my-2" />
+                      )}
+                    </div>
 
-          {HOW_IT_WORKS.map((step, index) => {
-            const Icon = stepIcons[index];
-            return (
-              <StaggerItem key={index}>
-                <div className="relative z-10 flex flex-col h-full p-7 rounded-2xl border border-border bg-surface hover:border-border-accent hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 group glow-card" style={{boxShadow: "0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04)"}}>
-                  {/* Icon circle */}
-                  <div className="w-12 h-12 rounded-2xl bg-primary/8 flex items-center justify-center mb-5 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                    <Icon className="w-5 h-5 text-primary-light group-hover:text-white transition-colors duration-300" size={20} />
-                  </div>
-
-                  {/* Step number */}
-                  <div className="text-5xl font-bold text-foreground/8 dark:text-foreground/10 absolute top-5 right-6 select-none group-hover:text-primary/10 transition-colors duration-300">
-                    {step.step}
-                  </div>
-
-                  <h3 className="text-lg font-bold mb-3 group-hover:text-primary dark:group-hover:text-primary-light transition-colors duration-300">
-                    {step.title}
-                  </h3>
-                  <p className="text-sm text-foreground-secondary leading-relaxed flex-1">
-                    {step.description}
-                  </p>
-                </div>
-              </StaggerItem>
-            );
-          })}
-        </StaggerContainer>
+                    {/* Content */}
+                    <div className={`pb-10 ${isLast ? "" : ""}`}>
+                      <div className="flex items-baseline gap-3 mb-2">
+                        <span className="text-xs font-mono text-primary-light/60 tabular-nums">
+                          {step.step}
+                        </span>
+                        <h3 className="text-xl font-bold group-hover:text-primary-light transition-colors duration-300">
+                          {step.title}
+                        </h3>
+                      </div>
+                      <p className="text-sm text-foreground-secondary leading-relaxed max-w-md">
+                        {step.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

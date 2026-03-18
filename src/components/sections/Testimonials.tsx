@@ -36,17 +36,15 @@ export default function Testimonials() {
           {/* Sol — Başlık + navigasyon */}
           <FadeIn>
             <div>
-              <div className="flex items-center gap-2 mb-4">
-                <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
-                <span className="w-1.5 h-1.5 rounded-full bg-secondary/60" />
-                <span className="text-xs font-semibold text-foreground-secondary tracking-widest uppercase ml-1">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="w-6 h-0.5 rounded-full bg-primary-light" />
+                <span className="text-xs font-medium text-foreground-muted tracking-widest uppercase">
                   Müşterilerimiz
                 </span>
               </div>
 
               <h2 className="text-3xl sm:text-4xl font-bold mb-6 leading-tight">
-                Sonuçlar{" "}
-                <span className="gradient-text">konuşuyor.</span>
+                Sonuçlar <span className="text-primary-light">konuşuyor.</span>
               </h2>
 
               <p className="text-foreground-secondary leading-relaxed mb-8 max-w-md">

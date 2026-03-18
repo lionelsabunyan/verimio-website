@@ -1,7 +1,7 @@
 "use client";
 
 import { ABOUT_CONTENT } from "@/lib/constants";
-import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/motion";
+import { FadeIn } from "@/components/ui/motion";
 import Button from "@/components/ui/Button";
 import SectionLabel from "@/components/ui/SectionLabel";
 
@@ -15,21 +15,35 @@ export default function About() {
   return (
     <section className="section-padding">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Stat strip — horizontal, bold, minimal */}
         <FadeIn>
-          <SectionLabel className="mb-8">{ABOUT_CONTENT.label}</SectionLabel>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-8 sm:gap-12 mb-16 pb-12 border-b border-border">
+            {stats.map((stat, i) => (
+              <div key={i} className="flex items-baseline gap-3">
+                <span className="text-4xl sm:text-5xl font-bold text-primary-light tabular-nums">
+                  {stat.value}
+                </span>
+                <span className="text-sm text-foreground-secondary leading-snug max-w-[120px]">
+                  {stat.label}
+                </span>
+              </div>
+            ))}
+          </div>
         </FadeIn>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-          {/* Sol: Ana metin + butonlar */}
-          <div>
+        {/* Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+          <div className="lg:col-span-7">
+            <FadeIn>
+              <SectionLabel className="mb-6">{ABOUT_CONTENT.label}</SectionLabel>
+            </FadeIn>
             <FadeIn delay={0.1}>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-snug text-foreground/85">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-snug text-foreground/85 mb-8">
                 {ABOUT_CONTENT.text}
               </h2>
             </FadeIn>
-
             <FadeIn delay={0.2}>
-              <div className="flex flex-wrap items-center gap-4 mt-10">
+              <div className="flex flex-wrap items-center gap-4">
                 <Button href="/hakkimizda" variant="primary" size="md">
                   {ABOUT_CONTENT.ctaPrimary}
                 </Button>
@@ -40,21 +54,19 @@ export default function About() {
             </FadeIn>
           </div>
 
-          {/* Sağ: Mini stat blokları */}
-          <StaggerContainer className="grid grid-cols-1 gap-4 lg:pt-2" staggerDelay={0.12}>
-            {stats.map((stat, i) => (
-              <StaggerItem key={i}>
-                <div className="flex items-center gap-6 p-6 rounded-2xl border border-border bg-surface hover:border-border-accent transition-all duration-300 group glow-card">
-                  <span className="text-3xl font-bold text-primary dark:text-primary-light group-hover:text-secondary transition-colors duration-300 shrink-0 tabular-nums">
-                    {stat.value}
-                  </span>
-                  <span className="text-sm text-foreground-secondary leading-snug">
-                    {stat.label}
-                  </span>
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
+          {/* Right — accent quote */}
+          <div className="lg:col-span-5 flex items-center">
+            <FadeIn delay={0.15} direction="right">
+              <blockquote className="border-l-2 border-primary-light/30 pl-6">
+                <p className="text-lg text-foreground-secondary italic leading-relaxed">
+                  &ldquo;Doğru analiz olmadan yapılan her otomasyon yatırımı, çözümden çok yeni sorunlar üretir.&rdquo;
+                </p>
+                <footer className="mt-4 text-sm font-medium text-foreground-muted">
+                  — Verimio Yaklaşımı
+                </footer>
+              </blockquote>
+            </FadeIn>
+          </div>
         </div>
       </div>
     </section>
