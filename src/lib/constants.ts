@@ -187,6 +187,13 @@ export const FAQ_ITEMS = [
 
 export const BLOG_POSTS = [
   {
+    title: "Perakendede Yapay Zeka: Stok Yönetiminden Müşteri Deneyimine 5 Uygulama",
+    excerpt: "Perakende ve e-ticaret işletmeleri için yapay zeka uygulamaları: stok yönetimi, kişiselleştirme, dinamik fiyatlama, chatbot ve talep analizi. İşletmenizin verimliliğini ve müşteri memnuniyetini artırın.",
+    date: "20 Mart 2026",
+    slug: "perakendede-yapay-zeka-stok-yonetiminden-musteri-deneyimine-",
+    category: "customer" as const,
+  },
+  {
     title: "2026 Yapay Zeka Trendleri: Türk KOBİ'leri Nasıl Hazırlanmalı?",
     excerpt: "Yapay zeka trendlerini takip ederek iş süreçlerinizi geliştirmek ve rekabet avantajı elde etmek isteyen Türk KOBİ'leri için pratik stratejiler.",
     date: "18 Mart 2026",
