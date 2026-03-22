@@ -161,7 +161,7 @@ ${draft.body || ''}
     let coverBase64: string | null = null
     const falKey = process.env.FAL_KEY
     if (falKey) {
-      const imagePrompt = `Abstract geometric digital illustration, no text no words no letters no typography no labels no writing anywhere, dark deep indigo background #1E0A46 to #2E1065 gradient, purple geometric elements #8B5CF6 at low opacity 0.15-0.25, vivid lime accent #A3E635 only on 2-3 focal points, professional minimal, topic: ${title.slice(0, 60)}`
+      const imagePrompt = `Cinematic professional photograph, no text no words no letters no typography no labels no writing anywhere, dark midnight background #020617 to #0F172A gradient, warm amber accent lighting #F59E0B on key focal points, subtle soft blue #60A5FA atmospheric glow, dramatic depth of field, corporate premium atmosphere, topic: ${title.slice(0, 60)}`
 
       const falRes = await fetch('https://fal.run/fal-ai/recraft/v3/text-to-image', {
         method: 'POST',
@@ -173,7 +173,7 @@ ${draft.body || ''}
           prompt: imagePrompt,
           image_size: { width: 1200, height: 628 },
           num_images: 1,
-          style: 'digital_illustration',
+          style: 'realistic_image',
         }),
       })
 
@@ -248,9 +248,10 @@ ${draft.body || ''}
       .update({ status: 'published' })
       .eq('id', draft_id)
 
-    // 9. GSC URL submit (optional)
+    // 9. GSC URL submit
     const publishedUrl = `https://www.verimio.com.tr/blog/${slug}`
     const gscJson = process.env.GSC_SERVICE_ACCOUNT_JSON
+    let gscIndexed = false
     if (gscJson) {
       try {
         const { google } = await import('googleapis')
@@ -266,8 +267,10 @@ ${draft.body || ''}
           method: 'POST',
           data: { url: publishedUrl, type: 'URL_UPDATED' },
         })
-      } catch {
-        // GSC opsiyonel — hata olsa da yayınlama başarılı sayılır
+        gscIndexed = true
+        console.log(`[GSC] Index isteği gönderildi: ${publishedUrl}`)
+      } catch (gscErr) {
+        console.error(`[GSC] Index isteği BAŞARISIZ: ${publishedUrl}`, gscErr)
       }
     }
 
@@ -276,6 +279,7 @@ ${draft.body || ''}
       slug,
       url: publishedUrl,
       hasCover: !!coverBase64,
+      gscIndexed,
     })
   } catch (err) {
     console.error('publish-draft error:', err)

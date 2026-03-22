@@ -126,6 +126,14 @@ export default function SSSPage() {
               <h2 className="text-xl font-bold mb-2">Cevabını bulamadınız mı?</h2>
               <p className="text-foreground-secondary text-sm leading-relaxed">
                 Her soruyu bu sayfaya sığdıramıyoruz. Merak ettiklerinizi doğrudan bizimle paylaşın.
+                <br />
+                <Link href="/gizlilik" className="text-primary-light hover:text-primary dark:hover:text-secondary underline underline-offset-2 transition-colors text-xs mt-1 inline-block">
+                  Gizlilik Politikası
+                </Link>
+                {" · "}
+                <Link href="/kullanim-sartlari" className="text-primary-light hover:text-primary dark:hover:text-secondary underline underline-offset-2 transition-colors text-xs">
+                  Kullanım Şartları
+                </Link>
               </p>
             </div>
             <div className="flex flex-wrap gap-3 shrink-0">

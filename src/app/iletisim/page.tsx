@@ -164,7 +164,10 @@ export default function IletisimPage() {
                 </Link>
 
                 <p className="text-center text-xs text-white/60 mt-4">
-                  Gizliliğiniz güvende — ödeme bilgisi istenmez
+                  Gizliliğiniz güvende — ödeme bilgisi istenmez.{" "}
+                  <Link href="/gizlilik" className="underline underline-offset-2 hover:text-white/80 transition-colors">
+                    Gizlilik Politikası
+                  </Link>
                 </p>
               </div>
             </div>
@@ -209,10 +212,13 @@ export default function IletisimPage() {
 
           <p className="text-center text-sm text-foreground-secondary mt-8">
             Daha fazla soru için{" "}
-            <Link href="/hakkimizda#sss" className="text-primary-light hover:text-primary dark:hover:text-secondary underline underline-offset-2 transition-colors">
+            <Link href="/sss" className="text-primary-light hover:text-primary dark:hover:text-secondary underline underline-offset-2 transition-colors">
               tüm SSS bölümüne
             </Link>{" "}
-            göz atın.
+            göz atın. |{" "}
+            <Link href="/kullanim-sartlari" className="text-primary-light hover:text-primary dark:hover:text-secondary underline underline-offset-2 transition-colors">
+              Kullanım Şartları
+            </Link>
           </p>
         </div>
       </section>
