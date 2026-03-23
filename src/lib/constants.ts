@@ -187,6 +187,13 @@ export const FAQ_ITEMS = [
 
 export const BLOG_POSTS = [
   {
+    title: "Üretim Sektöründe AI: Kalite Kontrolden Bakım Planlamasına",
+    excerpt: "Üretim sektöründe yapay zeka uygulamalarıyla verimliliği ve kaliteyi artırın. Prediktif bakım, görsel kalite kontrol ve enerji optimizasyonu ile maliyetlerinizi düşürün.",
+    date: "23 Mart 2026",
+    slug: "uretim-sektorunde-ai-kalite-kontrolden-bakim-planlamasina",
+    category: "strategy" as const,
+  },
+  {
     title: "Perakendede Yapay Zeka: Stok Yönetiminden Müşteri Deneyimine 5 Uygulama",
     excerpt: "Perakende ve e-ticaret işletmeleri için yapay zeka uygulamaları: stok yönetimi, kişiselleştirme, dinamik fiyatlama, chatbot ve talep analizi. İşletmenizin verimliliğini ve müşteri memnuniyetini artırın.",
     date: "20 Mart 2026",
