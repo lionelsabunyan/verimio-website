@@ -187,6 +187,13 @@ export const FAQ_ITEMS = [
 
 export const BLOG_POSTS = [
   {
+    title: "Özelleştirilmiş AI Modelleri: KOBİ'lere Özel Çözümler",
+    excerpt: "KOBİ'ler için özelleştirilmiş AI modelleri, verilerinizi güvenle kullanarak rekabet avantajı sağlamanın ve pazar payınızı artırmanın anahtarıdır.",
+    date: "24 Mart 2026",
+    slug: "ozellestirilmis-ai-modelleri-kobilere-ozel-cozumler",
+    category: "strategy" as const,
+  },
+  {
     title: "Üretim Sektöründe AI: Kalite Kontrolden Bakım Planlamasına",
     excerpt: "Üretim sektöründe yapay zeka uygulamalarıyla verimliliği ve kaliteyi artırın. Prediktif bakım, görsel kalite kontrol ve enerji optimizasyonu ile maliyetlerinizi düşürün.",
     date: "23 Mart 2026",
