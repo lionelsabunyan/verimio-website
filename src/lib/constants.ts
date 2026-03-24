@@ -187,6 +187,13 @@ export const FAQ_ITEMS = [
 
 export const BLOG_POSTS = [
   {
+    title: "KOBİ'lerde Agent AI: Görevleri Otomatik Yapan Zeka Asistanları",
+    excerpt: "KOBİ'ler için Agent AI ile iş süreçlerinizi otomatikleştirin. Rutin görevlerden kurtulun, verimliliği %30 artırın. Düşük maliyetli entegrasyon örnekleriyle pratik çözümler.",
+    date: "24 Mart 2026",
+    slug: "kobilerde-agent-ai-gorevleri-otomatik-yapan-zeka-asistanlari",
+    category: "ai-tools" as const,
+  },
+  {
     title: "Özelleştirilmiş AI Modelleri: KOBİ'lere Özel Çözümler",
     excerpt: "KOBİ'ler için özelleştirilmiş AI modelleri, verilerinizi güvenle kullanarak rekabet avantajı sağlamanın ve pazar payınızı artırmanın anahtarıdır.",
     date: "24 Mart 2026",
