@@ -187,6 +187,13 @@ export const FAQ_ITEMS = [
 
 export const BLOG_POSTS = [
   {
+    title: "İş Dünyası İçin Prompt Mühendisliği: ChatGPT'den Gerçek Değer Çıkarmak",
+    excerpt: "ChatGPT gibi yapay zeka araçlarından işiniz için maksimum değeri çıkarmak istiyorsanız doğru prompt mühendisliği tekniklerini öğrenmelisiniz.",
+    date: "25 Mart 2026",
+    slug: "is-dunyasi-icin-prompt-muhendisligi-chatgptden-gercek-deger-",
+    category: "strategy" as const,
+  },
+  {
     title: "KOBİ'lerde Agent AI: Görevleri Otomatik Yapan Zeka Asistanları",
     excerpt: "KOBİ'ler için Agent AI ile iş süreçlerinizi otomatikleştirin. Rutin görevlerden kurtulun, verimliliği %30 artırın. Düşük maliyetli entegrasyon örnekleriyle pratik çözümler.",
     date: "24 Mart 2026",
