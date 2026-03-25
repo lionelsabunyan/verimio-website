@@ -6,6 +6,17 @@ export const metadata: Metadata = {
   title: "Şirket Check-Up'ı - Ücretsiz AI Hazırlık Analizi",
   description:
     "Şirketinizin operasyonel verimliliğini ve AI hazırlığını analiz ediyoruz. Formu doldurun, size özel raporunuz e-postanıza iletilsin.",
+  openGraph: {
+    title: "Şirket Check-Up'ı - Ücretsiz AI Hazırlık Analizi",
+    description: "Şirketinizin operasyonel verimliliğini ve AI hazırlığını analiz ediyoruz. Formu doldurun, size özel raporunuz e-postanıza iletilsin.",
+    type: "website",
+    url: "https://www.verimio.com.tr/analiz",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Şirket Check-Up'ı - Ücretsiz AI Hazırlık Analizi",
+    description: "Şirketinizin operasyonel verimliliğini ve AI hazırlığını analiz ediyoruz.",
+  },
   alternates: { canonical: "https://www.verimio.com.tr/analiz" },
 };
 

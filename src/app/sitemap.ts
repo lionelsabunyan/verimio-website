@@ -1,7 +1,10 @@
 import type { MetadataRoute } from "next";
-import { BLOG_POSTS } from "@/lib/constants";
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
 
 const BASE_URL = "https://www.verimio.com.tr";
+const BLOG_DIR = path.join(process.cwd(), "src/content/blog");
 
 const TURKISH_MONTHS: Record<string, number> = {
   "Ocak": 0, "Şubat": 1, "Mart": 2, "Nisan": 3,
@@ -22,23 +25,48 @@ function parseTurkishDate(dateStr: string): Date {
   return new Date();
 }
 
+/** Read all MDX files and extract slug + date from frontmatter */
+function getBlogEntries(): { slug: string; lastModified: Date }[] {
+  if (!fs.existsSync(BLOG_DIR)) return [];
+
+  return fs
+    .readdirSync(BLOG_DIR)
+    .filter((f) => f.endsWith(".mdx"))
+    .map((filename) => {
+      const slug = filename.replace(/\.mdx$/, "");
+      const raw = fs.readFileSync(path.join(BLOG_DIR, filename), "utf-8");
+      const { data } = matter(raw);
+
+      // Use frontmatter date, fall back to file mtime
+      const frontmatterDate = data.date ? parseTurkishDate(data.date) : null;
+      const fileStat = fs.statSync(path.join(BLOG_DIR, filename));
+      const lastModified = frontmatterDate ?? fileStat.mtime;
+
+      return { slug, lastModified };
+    })
+    .sort((a, b) => b.lastModified.getTime() - a.lastModified.getTime());
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
+  const blogEntries = getBlogEntries();
+  const latestBlogDate = blogEntries[0]?.lastModified ?? new Date();
+
   const staticPages: MetadataRoute.Sitemap = [
     {
       url: BASE_URL,
-      lastModified: new Date("2026-03-12"),
+      lastModified: latestBlogDate,
       changeFrequency: "weekly",
       priority: 1.0,
     },
     {
       url: `${BASE_URL}/hizmetler`,
-      lastModified: new Date("2026-02-19"),
+      lastModified: new Date("2026-03-24"),
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${BASE_URL}/hakkimizda`,
-      lastModified: new Date("2026-02-19"),
+      lastModified: new Date("2026-03-24"),
       changeFrequency: "monthly",
       priority: 0.8,
     },
@@ -50,19 +78,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/blog`,
-      lastModified: new Date("2026-03-12"),
+      lastModified: latestBlogDate,
       changeFrequency: "weekly",
       priority: 0.8,
     },
     {
       url: `${BASE_URL}/sss`,
-      lastModified: new Date("2026-02-19"),
+      lastModified: new Date("2026-03-24"),
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
       url: `${BASE_URL}/iletisim`,
-      lastModified: new Date("2026-02-19"),
+      lastModified: new Date("2026-03-24"),
       changeFrequency: "monthly",
       priority: 0.6,
     },
@@ -80,9 +108,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  const blogPages: MetadataRoute.Sitemap = BLOG_POSTS.map((post) => ({
-    url: `${BASE_URL}/blog/${post.slug}`,
-    lastModified: parseTurkishDate(post.date),
+  const blogPages: MetadataRoute.Sitemap = blogEntries.map((entry) => ({
+    url: `${BASE_URL}/blog/${entry.slug}`,
+    lastModified: entry.lastModified,
     changeFrequency: "monthly" as const,
     priority: 0.7,
   }));

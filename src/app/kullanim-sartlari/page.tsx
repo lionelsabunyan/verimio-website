@@ -7,6 +7,12 @@ export const metadata: Metadata = {
   title: "Kullanım Şartları",
   description:
     "Verimio hizmetlerini kullanım koşulları, tarafların hak ve yükümlülükleri ile fikri mülkiyet hakkında bilgi edinin.",
+  openGraph: {
+    title: "Kullanım Şartları",
+    description: "Verimio hizmetlerini kullanım koşulları, tarafların hak ve yükümlülükleri ile fikri mülkiyet hakkında bilgi edinin.",
+    type: "website",
+    url: "https://www.verimio.com.tr/kullanim-sartlari",
+  },
   alternates: { canonical: "https://www.verimio.com.tr/kullanim-sartlari" },
 };
 

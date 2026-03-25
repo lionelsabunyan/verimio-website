@@ -7,6 +7,12 @@ export const metadata: Metadata = {
   title: "Gizlilik Politikası",
   description:
     "Verimio olarak kişisel verilerinizi nasıl topladığımızı, işlediğimizi ve koruduğumuzu açıklıyoruz. KVKK kapsamındaki haklarınızı öğrenin.",
+  openGraph: {
+    title: "Gizlilik Politikası",
+    description: "Kişisel verilerinizi nasıl topladığımızı, işlediğimizi ve koruduğumuzu açıklıyoruz.",
+    type: "website",
+    url: "https://www.verimio.com.tr/gizlilik",
+  },
   alternates: { canonical: "https://www.verimio.com.tr/gizlilik" },
 };
 

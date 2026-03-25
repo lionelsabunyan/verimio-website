@@ -100,6 +100,11 @@ export async function generateMetadata({
       description: frontmatter.excerpt,
       type: "article",
       publishedTime: isoDate,
+      modifiedTime: isoDate,
+      authors: ["Verimio"],
+      section: categoryLabels[frontmatter.category] ?? frontmatter.category,
+      locale: "tr_TR",
+      url: `https://www.verimio.com.tr/blog/${slug}`,
       ...(webpExists ? { images: [{ url: `/images/blog/${slug}.webp`, width: 1200, height: 630 }] } : {}),
     },
     twitter: {

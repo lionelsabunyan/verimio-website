@@ -9,6 +9,17 @@ export const metadata: Metadata = {
   title: "Hakkımızda - Kurumsal AI Danışmanlığı",
   description:
     "Verimio, şirketlerin iş süreçlerini analiz eden, darboğazları tespit eden ve kurumsal AI dönüşümünde rehberlik eden bir danışmanlık firmasıdır.",
+  openGraph: {
+    title: "Hakkımızda - Kurumsal AI Danışmanlığı",
+    description: "Şirketlerin iş süreçlerini analiz eden, darboğazları tespit eden ve kurumsal AI dönüşümünde rehberlik eden danışmanlık firması.",
+    type: "website",
+    url: "https://www.verimio.com.tr/hakkimizda",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Hakkımızda - Kurumsal AI Danışmanlığı",
+    description: "Şirketlerin iş süreçlerini analiz eden, darboğazları tespit eden ve kurumsal AI dönüşümünde rehberlik eden danışmanlık firması.",
+  },
   alternates: { canonical: "https://www.verimio.com.tr/hakkimizda" },
 };
 

@@ -10,11 +10,23 @@ import Button from "@/components/ui/Button";
 import HeroVisual from "@/components/brand/HeroVisual";
 import type { Metadata } from "next";
 import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
+import ServiceSchema from "@/components/seo/ServiceSchema";
 
 export const metadata: Metadata = {
   title: "Hizmetler - Kurumsal AI Danışmanlığı",
   description:
     "Süreç analizi, iş akışı otomasyonu, müşteri deneyimi, veri otomasyonu ve AI strateji danışmanlığı. Şirketinize özel, ölçülebilir sonuçlar.",
+  openGraph: {
+    title: "Hizmetler - Kurumsal AI Danışmanlığı",
+    description: "Süreç analizi, iş akışı otomasyonu, müşteri deneyimi, veri otomasyonu ve AI strateji danışmanlığı.",
+    type: "website",
+    url: "https://www.verimio.com.tr/hizmetler",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Hizmetler - Kurumsal AI Danışmanlığı",
+    description: "Süreç analizi, iş akışı otomasyonu, müşteri deneyimi, veri otomasyonu ve AI strateji danışmanlığı.",
+  },
   alternates: { canonical: "https://www.verimio.com.tr/hizmetler" },
 };
 
@@ -134,6 +146,12 @@ export default function HizmetlerPage() {
           { name: "Ana Sayfa", url: "https://www.verimio.com.tr" },
           { name: "Hizmetler", url: "https://www.verimio.com.tr/hizmetler" },
         ]}
+      />
+      <ServiceSchema
+        services={services.map((s) => ({
+          name: s.title,
+          description: s.description,
+        }))}
       />
       {/* Hero */}
       <section className="section-padding pb-0">

@@ -8,14 +8,14 @@ import OrganizationSchema from "@/components/seo/OrganizationSchema";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
 const dmMono = DM_Mono({
   variable: "--font-dm-mono",
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   weight: ["300", "400", "500"],
   display: "swap",
 });

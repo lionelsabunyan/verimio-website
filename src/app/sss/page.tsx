@@ -9,6 +9,17 @@ export const metadata: Metadata = {
   title: "Sık Sorulan Sorular",
   description:
     "Verimio şirket check-up'ı, danışmanlık süreci, fiyatlandırma ve gizlilik hakkında merak ettiğiniz her şeyi yanıtlıyoruz.",
+  openGraph: {
+    title: "Sık Sorulan Sorular",
+    description: "Verimio şirket check-up'ı, danışmanlık süreci, fiyatlandırma ve gizlilik hakkında merak ettiğiniz her şeyi yanıtlıyoruz.",
+    type: "website",
+    url: "https://www.verimio.com.tr/sss",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sık Sorulan Sorular",
+    description: "Danışmanlık süreci, fiyatlandırma ve gizlilik hakkında sık sorulan sorular.",
+  },
   alternates: { canonical: "https://www.verimio.com.tr/sss" },
 };
 

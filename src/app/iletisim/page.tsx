@@ -8,6 +8,17 @@ export const metadata: Metadata = {
   title: "İletişim - Bize Ulaşın",
   description:
     "Verimio ile iletişime geçin. Check-up'a hazırsanız formu doldurun; sorularınız varsa bize yazın.",
+  openGraph: {
+    title: "İletişim - Bize Ulaşın",
+    description: "Verimio ile iletişime geçin. Check-up'a hazırsanız formu doldurun; sorularınız varsa bize yazın.",
+    type: "website",
+    url: "https://www.verimio.com.tr/iletisim",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "İletişim - Bize Ulaşın",
+    description: "Verimio ile iletişime geçin. Sorularınız için bize yazın.",
+  },
   alternates: { canonical: "https://www.verimio.com.tr/iletisim" },
 };
 

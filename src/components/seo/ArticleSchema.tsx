@@ -23,9 +23,13 @@ export default function ArticleSchema({
     datePublished: date,
     dateModified: date,
     author: {
-      "@type": "Person",
-      name: author ?? "Verimio",
+      "@type": "Organization",
+      name: "Verimio",
       url: "https://www.verimio.com.tr",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://www.verimio.com.tr/icon.png",
+      },
     },
     publisher: {
       "@type": "Organization",

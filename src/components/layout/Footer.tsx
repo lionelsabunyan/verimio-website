@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Linkedin, Twitter, Instagram } from "lucide-react";
+import { Linkedin } from "lucide-react";
 import { BRAND } from "@/lib/constants";
 import { Wordmark } from "@/components/brand/Logo";
 
@@ -17,9 +17,7 @@ const footerLinks = {
     { label: "İletişim", href: "/iletisim" },
   ],
   social: [
-    { label: "LinkedIn", href: "#", icon: Linkedin },
-    { label: "Twitter", href: "#", icon: Twitter },
-    { label: "Instagram", href: "#", icon: Instagram },
+    { label: "LinkedIn", href: "https://www.linkedin.com/company/verimio", icon: Linkedin },
   ],
 };
 
