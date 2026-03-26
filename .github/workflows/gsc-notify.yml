@@ -38,10 +38,10 @@ jobs:
 
           for file in $NEW_POSTS; do
             SLUG=$(basename "$file" .mdx)
-            echo "Requesting GSC index for: /blog/$SLUG"
+            echo "Requesting GSC index + sitemap resubmit for: /blog/$SLUG"
             curl -s -X POST "$SITE_URL/api/admin/seo/notify-gsc" \
               -H "Authorization: Bearer $ADMIN_API_TOKEN" \
               -H "Content-Type: application/json" \
-              -d "{\"slug\": \"$SLUG\"}"
+              -d "{\"slug\": \"$SLUG\", \"resubmitSitemap\": true}"
             echo ""
           done
