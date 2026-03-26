@@ -163,7 +163,7 @@ function buildSlide({ headline, body, type, index, total, bgUrl, width, height }
 
       {/* Decorative glows (no-photo mode) */}
       {!bgUrl && (
-        <div style={{ position: 'absolute', top: 0, left: 0, width, height }}>
+        <div style={{ display: 'flex', position: 'absolute', top: 0, left: 0, width, height }}>
           <div style={{
             position: 'absolute', top: -100, left: width - 320,
             width: 440, height: 440, borderRadius: 220,
