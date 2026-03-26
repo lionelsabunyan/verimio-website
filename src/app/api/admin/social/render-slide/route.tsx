@@ -20,6 +20,13 @@ import { NextRequest } from 'next/server'
 
 export const runtime = 'edge'
 
+// DM Sans font — Türkçe karakter desteği (ş, ğ, ı, ö, ü, ç)
+async function loadFont() {
+  const res = await fetch('https://www.verimio.com.tr/fonts/DMSans-Bold.ttf')
+  return res.arrayBuffer()
+}
+const dmSansData = loadFont()
+
 type SlideType = 'hook' | 'problem' | 'point' | 'proof' | 'recap' | 'cta' | 'cover'
 type Platform  = 'instagram' | 'linkedin' | 'twitter'
 
@@ -46,9 +53,15 @@ export async function GET(request: NextRequest) {
   const key     = isCover ? 'cover' : 'carousel'
   const [width, height] = (DIMS[platform] ?? DIMS.instagram)[key]
 
+  const fontData = await dmSansData
+
   return new ImageResponse(
     buildSlide({ headline, body, type, index, total, bgUrl, width, height }),
-    { width, height }
+    {
+      width,
+      height,
+      fonts: [{ name: 'DM Sans', data: fontData, weight: 700, style: 'normal' as const }],
+    }
   )
 }
 
@@ -117,7 +130,7 @@ function buildSlide({ headline, body, type, index, total, bgUrl, width, height }
       width, height,
       display:       'flex',
       flexDirection: 'column',
-      fontFamily:    'system-ui, sans-serif',
+      fontFamily:    '"DM Sans", sans-serif',
       position:      'relative',
       overflow:      'hidden',
       background:    bgUrl ? undefined : 'linear-gradient(135deg, #020617 0%, #0F172A 100%)',
@@ -253,7 +266,8 @@ function buildSlide({ headline, body, type, index, total, bgUrl, width, height }
             }}>
               <div style={{
                 background: 'rgba(255,255,255,0.08)',
-                padding: '5px 12px', borderRadius: 6,
+                paddingTop: 5, paddingBottom: 5, paddingLeft: 12, paddingRight: 12, borderRadius: 6,
+                display: 'flex',
               }}>
                 <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: compact ? 14 : 18, fontWeight: 600, letterSpacing: '0.08em' }}>
                   SORUN
