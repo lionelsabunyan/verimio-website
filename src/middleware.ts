@@ -33,8 +33,8 @@ export async function middleware(request: NextRequest) {
 
   const { pathname } = request.nextUrl
 
-  // /admin rotalarını koru
-  if (pathname.startsWith('/admin') && !pathname.startsWith('/admin/login')) {
+  // /admin rotalarını koru (render-slide hariç — public PNG endpoint)
+  if (pathname.startsWith('/admin') && !pathname.startsWith('/admin/login') && !pathname.startsWith('/api/admin/social/render-slide')) {
     if (!user) {
       const url = request.nextUrl.clone()
       url.pathname = '/admin/login'
