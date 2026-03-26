@@ -158,18 +158,18 @@ function buildSlide({ headline, body, type, index, total, bgUrl, width, height }
 
       {/* Decorative glows (no-photo mode) */}
       {!bgUrl && (
-        <>
+        <div style={{ position: 'absolute', top: 0, left: 0, width, height }}>
           <div style={{
             position: 'absolute', top: -100, left: width - 320,
-            width: 440, height: 440, borderRadius: '50%',
+            width: 440, height: 440, borderRadius: 220,
             background: 'radial-gradient(circle, rgba(245,158,11,0.06) 0%, transparent 70%)',
           }} />
           <div style={{
             position: 'absolute', top: height - 260, left: -60,
-            width: 360, height: 360, borderRadius: '50%',
+            width: 360, height: 360, borderRadius: 180,
             background: 'radial-gradient(circle, rgba(139,92,246,0.07) 0%, transparent 70%)',
           }} />
-        </>
+        </div>
       )}
 
       {/* Cover: lime top bar */}
@@ -217,7 +217,7 @@ function buildSlide({ headline, body, type, index, total, bgUrl, width, height }
 
         {/* Cover/Recap: spacer to push content down */}
         {(isCover || isRecap) && (
-          <div style={{ flex: 1 }} />
+          <div style={{ display: 'flex', flexGrow: 1 }} />
         )}
 
         {/* ── Main content ── */}
@@ -280,7 +280,7 @@ function buildSlide({ headline, body, type, index, total, bgUrl, width, height }
           {isRecap && (
             <div style={{ marginBottom: compact ? 16 : 22 }}>
               <span style={{ color: '#F59E0B', fontSize: compact ? 14 : 18, fontWeight: 700, letterSpacing: '0.12em' }}>
-                📌  ÖZET
+                OZET
               </span>
             </div>
           )}
@@ -365,8 +365,7 @@ function buildSlide({ headline, body, type, index, total, bgUrl, width, height }
               marginTop: compact ? 18 : 28,
               color: 'rgba(245,158,11,0.5)', fontSize: compact ? 14 : 18,
             }}>
-              <span>🔖</span>
-              <span>Bu carousel'i kaydet</span>
+              <span>Bu carousel&apos;i kaydet</span>
             </div>
           )}
         </div>
