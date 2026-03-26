@@ -54,22 +54,6 @@ export async function POST(req: NextRequest) {
     results.indexing = { success: false, error: 'GSC_SERVICE_ACCOUNT_JSON eksik' }
   }
 
-  // 2. Sitemap ping — Google
-  const sitemapUrl = `${BASE_URL}/sitemap.xml`
-  try {
-    const pingUrl = `https://www.google.com/ping?sitemap=${encodeURIComponent(sitemapUrl)}`
-    const pingRes = await fetch(pingUrl)
-    results.sitemapPing = {
-      success: pingRes.ok,
-      status: pingRes.status,
-      url: sitemapUrl,
-    }
-    console.log(`[Sitemap] Ping gönderildi: ${pingRes.status}`)
-  } catch (err) {
-    results.sitemapPing = { success: false, error: String(err) }
-    console.error('[Sitemap] Ping BAŞARISIZ', err)
-  }
-
   return NextResponse.json({
     message: 'GSC notification completed',
     results,

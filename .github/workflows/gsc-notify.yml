@@ -20,15 +20,7 @@ jobs:
       - name: Wait for Vercel deploy
         run: sleep 120
 
-      - name: Ping Google Sitemap
-        run: |
-          echo "Pinging Google with sitemap..."
-          curl -s "https://www.google.com/ping?sitemap=https%3A%2F%2Fwww.verimio.com.tr%2Fsitemap.xml"
-          echo ""
-          echo "Sitemap ping sent."
-
       - name: Detect new blog posts and notify GSC
-        if: env.ADMIN_API_TOKEN != ''
         env:
           SITE_URL: https://www.verimio.com.tr
           ADMIN_API_TOKEN: ${{ secrets.ADMIN_API_TOKEN }}
