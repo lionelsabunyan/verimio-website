@@ -21,11 +21,16 @@ import { NextRequest } from 'next/server'
 export const runtime = 'edge'
 
 // DM Sans font — Türkçe karakter desteği (ş, ğ, ı, ö, ü, ç)
-async function loadFont() {
-  const res = await fetch('https://www.verimio.com.tr/fonts/DMSans-Bold.ttf')
-  return res.arrayBuffer()
+let _fontCache: ArrayBuffer | null = null
+async function loadFont(): Promise<ArrayBuffer | null> {
+  if (_fontCache) return _fontCache
+  try {
+    const res = await fetch('https://cdn.jsdelivr.net/fontsource/fonts/dm-sans@latest/latin-ext-700-normal.ttf')
+    if (!res.ok) return null
+    _fontCache = await res.arrayBuffer()
+    return _fontCache
+  } catch { return null }
 }
-const dmSansData = loadFont()
 
 type SlideType = 'hook' | 'problem' | 'point' | 'proof' | 'recap' | 'cta' | 'cover'
 type Platform  = 'instagram' | 'linkedin' | 'twitter'
@@ -53,15 +58,16 @@ export async function GET(request: NextRequest) {
   const key     = isCover ? 'cover' : 'carousel'
   const [width, height] = (DIMS[platform] ?? DIMS.instagram)[key]
 
-  const fontData = await dmSansData
+  const fontData = await loadFont()
+
+  const opts: { width: number; height: number; fonts?: { name: string; data: ArrayBuffer; weight: 700; style: 'normal' }[] } = { width, height }
+  if (fontData) {
+    opts.fonts = [{ name: 'DM Sans', data: fontData, weight: 700, style: 'normal' }]
+  }
 
   return new ImageResponse(
     buildSlide({ headline, body, type, index, total, bgUrl, width, height }),
-    {
-      width,
-      height,
-      fonts: [{ name: 'DM Sans', data: fontData, weight: 700, style: 'normal' as const }],
-    }
+    opts
   )
 }
 
