@@ -37,6 +37,9 @@ export const metadata: Metadata = {
     "verimlilik artırma",
     "süreç analizi",
     "Türkiye AI",
+    "AI koçluğu",
+    "yapay zeka koçu",
+    "kurumsal AI eğitimi",
   ],
   robots: {
     index: true,

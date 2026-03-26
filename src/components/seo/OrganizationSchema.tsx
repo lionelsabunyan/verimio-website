@@ -14,9 +14,17 @@ export default function OrganizationSchema() {
     serviceType: [
       "Süreç Analizi",
       "AI Danışmanlığı",
+      "AI Koçluğu",
+      "Kurumsal AI Eğitimi",
       "İş Akışı Otomasyonu",
       "Veri Raporlama",
       "Müşteri Deneyimi Otomasyonu",
+    ],
+    knowsAbout: [
+      "Artificial Intelligence",
+      "AI Coaching",
+      "Kurumsal AI Eğitimi",
+      "İş Süreci Otomasyonu",
     ],
     offers: {
       "@type": "Offer",

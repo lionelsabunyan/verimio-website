@@ -187,6 +187,34 @@ export const FAQ_ITEMS = [
 
 export const BLOG_POSTS = [
   {
+    title: "AI Koçluğu Nedir? Şirketler İçin Kapsamlı Rehber",
+    excerpt: "AI koçluğu, şirketinizin yapay zeka dönüşümüne sürekli eşlik eden kişiselleştirilmiş bir hizmettir. Danışmanlıktan farkı, nasıl çalıştığı ve neden ihtiyacınız olduğu.",
+    date: "26 Mart 2026",
+    slug: "ai-koclugu-nedir",
+    category: "strategy" as const,
+  },
+  {
+    title: "AI Danışmanlık vs AI Koçluğu: Şirketiniz İçin Hangisi Doğru?",
+    excerpt: "AI danışmanlığı ve AI koçluğu arasındaki temel farklar, her birinin güçlü yanları ve şirketiniz için doğru seçimi nasıl yapacağınız.",
+    date: "26 Mart 2026",
+    slug: "ai-danismanlik-vs-ai-koclugu",
+    category: "strategy" as const,
+  },
+  {
+    title: "Kurumsal AI Eğitimi: 2026'da Nereden Başlamalı?",
+    excerpt: "Şirketiniz için doğru AI eğitim programını nasıl seçersiniz? Departman bazlı eğitim planı, araç önerileri ve başarılı kurumsal AI eğitiminin 5 kuralı.",
+    date: "26 Mart 2026",
+    slug: "kurumsal-ai-egitimi-rehberi",
+    category: "tutorial" as const,
+  },
+  {
+    title: "AI Koçunuz Olarak Neden Bir İnsana İhtiyacınız Var?",
+    excerpt: "Yapay zeka araçları her yerde ama şirket dönüşümünde bir insanın rolü hâlâ kritik. AI koçunuzun neden bir insan olması gerektiği.",
+    date: "26 Mart 2026",
+    slug: "ai-kocunuz-neden-insan-olmali",
+    category: "strategy" as const,
+  },
+  {
     title: "İş Dünyası İçin Prompt Mühendisliği: ChatGPT'den Gerçek Değer Çıkarmak",
     excerpt: "ChatGPT gibi yapay zeka araçlarından işiniz için maksimum değeri çıkarmak istiyorsanız doğru prompt mühendisliği tekniklerini öğrenmelisiniz.",
     date: "25 Mart 2026",

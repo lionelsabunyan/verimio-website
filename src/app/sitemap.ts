@@ -65,6 +65,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${BASE_URL}/ai-koclugu`,
+      lastModified: new Date("2026-03-26"),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
       url: `${BASE_URL}/hakkimizda`,
       lastModified: new Date("2026-03-24"),
       changeFrequency: "monthly",
