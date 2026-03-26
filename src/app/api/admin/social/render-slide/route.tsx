@@ -21,11 +21,10 @@ import { NextRequest } from 'next/server'
 export const runtime = 'edge'
 
 // DM Sans font — Türkçe karakter desteği (ş, ğ, ı, ö, ü, ç)
-async function loadFont() {
-  const res = await fetch('https://www.verimio.com.tr/fonts/DMSans-Bold.ttf')
-  return res.arrayBuffer()
-}
-const dmSansData = loadFont()
+// Google Fonts CDN'den Latin Extended subset (Türkçe karakterler dahil)
+const dmSansData = fetch(
+  'https://fonts.gstatic.com/s/dmsans/v15/rP2tp2ywxg089UriI5-g4vlH9VoD8CmcqZG40F9JadbnoEwAop-hSA.ttf'
+).then(res => res.arrayBuffer())
 
 type SlideType = 'hook' | 'problem' | 'point' | 'proof' | 'recap' | 'cta' | 'cover'
 type Platform  = 'instagram' | 'linkedin' | 'twitter'
