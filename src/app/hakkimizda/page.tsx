@@ -28,7 +28,7 @@ const differentiators = [
     icon: CheckCircle2,
     title: "Sadece Rapor Değil",
     description:
-      "Analiz teslim edip çekilmiyoruz. Uygulama sürecinde de yanınızda oluyoruz — her adımı birlikte planlıyor, geribildirim alarak ilerliyoruz.",
+      "Analiz teslim edip çekilmiyoruz. Danışmanlık ve koçluk bizde aynı sürecin parçası — stratejiyi çizer, birlikte uygular, sonuçları ölçeriz.",
   },
   {
     icon: Users2,

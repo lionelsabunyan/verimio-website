@@ -194,8 +194,8 @@ export const BLOG_POSTS = [
     category: "strategy" as const,
   },
   {
-    title: "AI Danışmanlık vs AI Koçluğu: Şirketiniz İçin Hangisi Doğru?",
-    excerpt: "AI danışmanlığı ve AI koçluğu arasındaki temel farklar, her birinin güçlü yanları ve şirketiniz için doğru seçimi nasıl yapacağınız.",
+    title: "AI Danışmanlık ve AI Koçluğu: Neden İkisi Birden Gerekiyor?",
+    excerpt: "Geleneksel danışmanlık ve koçluk arasındaki fark, Verimio'nun ikisini nasıl birleştirdiği ve şirketiniz için neden her ikisine de ihtiyacınız olduğu.",
     date: "26 Mart 2026",
     slug: "ai-danismanlik-vs-ai-koclugu",
     category: "strategy" as const,

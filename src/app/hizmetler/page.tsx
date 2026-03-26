@@ -1,4 +1,4 @@
-import { CheckCircle2, Clock, HeadphonesIcon, TrendingUp } from "lucide-react";
+import { CheckCircle2, Clock, GraduationCap, HeadphonesIcon, TrendingUp } from "lucide-react";
 import { BRAND } from "@/lib/constants";
 import ProcessAnalysisIcon from "@/components/brand/icons/services/ProcessAnalysisIcon";
 import WorkflowAutomationIcon from "@/components/brand/icons/services/WorkflowAutomationIcon";
@@ -15,7 +15,7 @@ import ServiceSchema from "@/components/seo/ServiceSchema";
 export const metadata: Metadata = {
   title: "Hizmetler - Kurumsal AI Danışmanlığı",
   description:
-    "Süreç analizi, iş akışı otomasyonu, müşteri deneyimi, veri otomasyonu ve AI strateji danışmanlığı. Şirketinize özel, ölçülebilir sonuçlar.",
+    "Süreç analizi, iş akışı otomasyonu, müşteri deneyimi, veri otomasyonu, AI strateji danışmanlığı ve AI dönüşüm koçluğu. Şirketinize özel, ölçülebilir sonuçlar.",
   openGraph: {
     title: "Hizmetler - Kurumsal AI Danışmanlığı",
     description: "Süreç analizi, iş akışı otomasyonu, müşteri deneyimi, veri otomasyonu ve AI strateji danışmanlığı.",
@@ -90,6 +90,19 @@ const services = [
       "Entegrasyon stratejisi ve yol haritası",
       "Ekip eğitimi ve adaptasyon desteği",
     ],
+  },
+  {
+    icon: GraduationCap,
+    title: "AI Dönüşüm Koçluğu",
+    description:
+      "Strateji de uygulama da tek elden. Analiz eder, yol haritası çizer — sonra birlikte uygular, ekibinizi eğitir ve sonuçları ölçeriz. 3-12 ay boyunca yanınızdayız.",
+    features: [
+      "Sürekli eşlik: stratejiden uygulamaya tek ortak",
+      "İş başında, departman bazlı AI eğitimi",
+      "Değişim yönetimi ve ekip adaptasyonu",
+      "KPI takibi ve sürekli iyileştirme döngüsü",
+    ],
+    href: "/ai-koclugu",
   },
 ];
 
@@ -196,7 +209,7 @@ export default function HizmetlerPage() {
             <span className="text-xs font-semibold text-foreground-secondary tracking-widest uppercase ml-1">Hizmet Alanları</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold mb-12">
-            5 alanda <span className="text-primary-light">danışmanlık.</span>
+            6 alanda <span className="text-primary-light">danışmanlık ve koçluk.</span>
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

@@ -8,6 +8,7 @@ const footerLinks = {
     { label: "Ana Sayfa", href: "/" },
     { label: "Hakkımızda", href: "/hakkimizda" },
     { label: "Hizmetler", href: "/hizmetler" },
+    { label: "AI Koçluğu", href: "/ai-koclugu" },
     { label: "Blog", href: "/blog" },
   ],
   support: [
@@ -42,7 +43,7 @@ export default function Footer() {
               <Wordmark size="md" className="text-white" />
             </Link>
             <p className="mt-4 text-sm text-white/70 leading-relaxed">
-              Şirketler için kurumsal AI danışmanlığı.
+              Şirketler için AI danışmanlığı ve dönüşüm koçluğu.
             </p>
             <a
               href={`mailto:${BRAND.email}`}

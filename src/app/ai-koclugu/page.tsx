@@ -27,24 +27,24 @@ import ServiceSchema from "@/components/seo/ServiceSchema";
 /*  Metadata                                                           */
 /* ------------------------------------------------------------------ */
 export const metadata: Metadata = {
-  title: "AI Koçluğu — Şirketinize Özel Yapay Zeka Dönüşüm Koçluğu | Verimio",
+  title: "AI Koçluğu — Strateji ve Uygulama Tek Elden | Verimio",
   description:
-    "AI koçluğu ile şirketinizin yapay zeka dönüşümüne birebir eşlik ediyoruz. Danışmanlıktan öte, sürekli ve kişiselleştirilmiş bir yol arkadaşlığı. Ücretsiz check-up ile başlayın.",
+    "AI koçluğu ile şirketinizin yapay zeka dönüşümüne birebir eşlik ediyoruz. Strateji, uygulama ve sürekli destek — hepsi tek elden. Ücretsiz check-up ile başlayın.",
   keywords:
     "AI koçluğu, yapay zeka koçluğu, AI koçu, yapay zeka koçu, kurumsal AI eğitimi, ChatGPT eğitimi şirketler için, yapay zeka eğitimi kurumsal, AI danışmanlık, AI dönüşüm koçluğu",
   openGraph: {
-    title: "AI Koçluğu — Şirketinize Özel Yapay Zeka Dönüşüm Koçluğu",
+    title: "AI Koçluğu — Strateji ve Uygulama Tek Elden",
     description:
-      "Danışmanlıktan öte, şirketinizin yapay zeka yolculuğunda sürekli yanınızda olan bir koç. Stratejiden uygulamaya, eğitimden ölçümlemeye kadar.",
+      "Şirketinizin yapay zeka dönüşümünde strateji de uygulama da tek elden. Danışmanlık ve koçluk aynı sürecin parçası.",
     type: "website",
     url: "https://www.verimio.com.tr/ai-koclugu",
     locale: "tr_TR",
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Koçluğu — Şirketinize Özel Yapay Zeka Koçluğu",
+    title: "AI Koçluğu — Strateji ve Uygulama Tek Elden",
     description:
-      "Danışmanlıktan öte, sürekli ve kişiselleştirilmiş bir yapay zeka dönüşüm koçluğu.",
+      "Şirketinizin yapay zeka dönüşümünde strateji de uygulama da tek elden.",
   },
   alternates: { canonical: "https://www.verimio.com.tr/ai-koclugu" },
 };
@@ -129,33 +129,28 @@ const departments = [
 const comparisons = [
   {
     aspect: "Süre",
-    consulting: "Proje bazlı, genellikle 1-3 ay",
-    training: "1-5 günlük program",
-    coaching: "Sürekli, 3-12 ay eşlik",
+    traditional: "Proje bazlı, genellikle 1-3 ay",
+    verimio: "Sürekli eşlik, 3-12 ay — stratejiden uygulamaya",
   },
   {
     aspect: "Yaklaşım",
-    consulting: "Analiz → rapor → teslim",
-    training: "Sınıf ortamı, genel müfredat",
-    coaching: "Birebir, ihtiyaç odaklı, uygulamalı",
+    traditional: "Analiz → rapor → teslim et → çekil",
+    verimio: "Analiz → strateji → birlikte uygula → ölç → iyileştir",
   },
   {
     aspect: "Uygulama",
-    consulting: "Genellikle müşteriye bırakılır",
-    training: "Katılımcıya bağlıdır",
-    coaching: "Birlikte yapılır, süreç boyunca destek",
+    traditional: "Genellikle müşteriye bırakılır",
+    verimio: "Birlikte yapılır, her adımda destek",
   },
   {
-    aspect: "Kişiselleştirme",
-    consulting: "Firma bazlı ama şablon ağırlıklı",
-    training: "Genel, herkes aynı içeriği alır",
-    coaching: "Tamamen firmaya ve ekibe özel",
+    aspect: "Eğitim",
+    traditional: "Ayrı satın alınır veya hiç verilmez",
+    verimio: "İş başında, gerçek verilerinizle, sürecin parçası",
   },
   {
     aspect: "Sonuç Takibi",
-    consulting: "Proje bitince ilişki biter",
-    training: "Takip genellikle yapılmaz",
-    coaching: "Sürekli ölçümleme ve iyileştirme",
+    traditional: "Proje bitince ilişki biter",
+    verimio: "Sürekli KPI ölçümü ve iyileştirme döngüsü",
   },
 ];
 
@@ -246,15 +241,15 @@ export default function AIKocluguPage() {
               </div>
 
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-                Yapay zeka dönüşümünde{" "}
-                <span className="text-primary-light">yanınızdaki koç.</span>
+                Strateji de uygulama da{" "}
+                <span className="text-primary-light">tek elden.</span>
               </h1>
 
               <p className="text-lg text-foreground-secondary leading-relaxed mb-8 max-w-2xl">
-                AI koçluğu, şirketinizin yapay zeka yolculuğunda sürekli ve
-                kişiselleştirilmiş bir yol arkadaşlığıdır. Rapor teslim edip
-                çekilmiyoruz — stratejiden uygulamaya, eğitimden ölçümlemeye
-                kadar her adımda birlikte yürüyoruz.
+                Verimio&apos;da danışmanlık ve koçluk aynı sürecin parçasıdır.
+                Analiz eder, yol haritası çizer — sonra birlikte uygular,
+                ekibinizi eğitir ve sonuçları ölçeriz. Sizi yalnız bırakmadan,
+                baştan sona yanınızdayız.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3">
@@ -292,24 +287,24 @@ export default function AIKocluguPage() {
               <strong className="text-foreground">AI koçluğu</strong>,
               şirketinizin yapay zeka dönüşümüne{" "}
               <em>sürekli, kişiselleştirilmiş ve sonuç odaklı</em> eşlik eden
-              bir hizmettir. Geleneksel danışmanlıktan farklı olarak, koçluk bir
-              proje değil bir ortaklıktır.
+              bir hizmettir. Strateji oluşturmakla kalmaz, uygulamayı da
+              birlikte yapar.
             </p>
             <p>
-              Bir AI koçu, şirketinizin iş süreçlerini derinlemesine anlar,
-              ekibinizi tanır ve yapay zeka araçlarını{" "}
-              <strong className="text-foreground">sizin gerçekliğinize</strong>{" "}
-              göre uyarlar. Hazır reçeteler yerine, birlikte deneme, öğrenme ve
-              iyileştirme sürecini yönetir.
+              Verimio&apos;da danışmanlık ve koçluk ayrı hizmetler değildir —
+              aynı sürecin farklı aşamalarıdır. Önce{" "}
+              <strong className="text-foreground">danışman</strong> olarak
+              süreçlerinizi analiz eder, yol haritası çizeriz. Sonra{" "}
+              <strong className="text-foreground">koç</strong> olarak birlikte
+              uygular, ekibinizi eğitir ve sonuçları ölçeriz.
             </p>
             <p>
               Türkiye&apos;de birçok şirket yapay zekayı &quot;denemek&quot;
-              istiyor ama nereden başlayacağını bilmiyor. Bir eğitim alıyorsunuz
-              ama uygulama aşamasında yalnız kalıyorsunuz. Bir danışman
-              tutuyorsunuz ama rapor tesliminden sonra süreç duraksıyor. AI
-              koçluğu tam bu boşluğu dolduruyor:{" "}
+              istiyor ama nereden başlayacağını bilmiyor. Geleneksel modellerde
+              ya sadece analiz yapılır ya sadece eğitim verilir. Verimio&apos;nun
+              farkı:{" "}
               <strong className="text-foreground">
-                bilgiyi eyleme dönüştüren sürekli bir destek.
+                strateji, uygulama, eğitim ve sürekli destek — hepsi tek elden.
               </strong>
             </p>
           </div>
@@ -323,12 +318,13 @@ export default function AIKocluguPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              Danışmanlık, Eğitim ve Koçluk:{" "}
-              <span className="text-primary-light">Fark Nedir?</span>
+              Geleneksel Yaklaşım vs{" "}
+              <span className="text-primary-light">Verimio Modeli</span>
             </h2>
             <p className="text-foreground-secondary max-w-2xl mx-auto">
-              Üçü de değerlidir ama farklı ihtiyaçlara cevap verir. AI koçluğu,
-              danışmanlık ve eğitimin en iyi yanlarını birleştirir.
+              Piyasadaki çoğu firma ya danışmanlık ya eğitim yapıyor. Biz
+              strateji, uygulama, eğitim ve sürekli desteği tek süreçte
+              birleştiriyoruz.
             </p>
           </div>
 
@@ -340,13 +336,10 @@ export default function AIKocluguPage() {
                     Kriter
                   </th>
                   <th className="text-left py-4 px-4 text-sm font-semibold text-foreground-muted uppercase tracking-wider">
-                    Danışmanlık
-                  </th>
-                  <th className="text-left py-4 px-4 text-sm font-semibold text-foreground-muted uppercase tracking-wider">
-                    Eğitim
+                    Geleneksel Yaklaşım
                   </th>
                   <th className="text-left py-4 px-4 text-sm font-semibold text-primary-light uppercase tracking-wider">
-                    AI Koçluğu
+                    Verimio Modeli
                   </th>
                 </tr>
               </thead>
@@ -360,13 +353,10 @@ export default function AIKocluguPage() {
                       {row.aspect}
                     </td>
                     <td className="py-4 px-4 text-foreground-secondary text-sm">
-                      {row.consulting}
-                    </td>
-                    <td className="py-4 px-4 text-foreground-secondary text-sm">
-                      {row.training}
+                      {row.traditional}
                     </td>
                     <td className="py-4 px-4 text-primary-light font-medium text-sm">
-                      {row.coaching}
+                      {row.verimio}
                     </td>
                   </tr>
                 ))}
