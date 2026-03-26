@@ -1,0 +1,55 @@
+name: GSC Sitemap Notify
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/content/blog/**'
+      - 'src/app/**/page.tsx'
+      - 'src/app/sitemap.ts'
+
+jobs:
+  notify-gsc:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Wait for Vercel deploy
+        run: sleep 120
+
+      - name: Ping Google Sitemap
+        run: |
+          echo "Pinging Google with sitemap..."
+          curl -s "https://www.google.com/ping?sitemap=https%3A%2F%2Fwww.verimio.com.tr%2Fsitemap.xml"
+          echo ""
+          echo "Sitemap ping sent."
+
+      - name: Detect new blog posts and notify GSC
+        if: env.ADMIN_API_TOKEN != ''
+        env:
+          SITE_URL: https://www.verimio.com.tr
+          ADMIN_API_TOKEN: ${{ secrets.ADMIN_API_TOKEN }}
+        run: |
+          # Find new MDX files added in this push
+          NEW_POSTS=$(git diff --name-only --diff-filter=A HEAD~1 HEAD -- 'src/content/blog/*.mdx' || true)
+
+          if [ -z "$NEW_POSTS" ]; then
+            echo "No new blog posts detected. Sitemap ping only."
+            exit 0
+          fi
+
+          echo "New blog posts detected:"
+          echo "$NEW_POSTS"
+
+          for file in $NEW_POSTS; do
+            SLUG=$(basename "$file" .mdx)
+            echo "Requesting GSC index for: /blog/$SLUG"
+            curl -s -X POST "$SITE_URL/api/admin/seo/notify-gsc" \
+              -H "Authorization: Bearer $ADMIN_API_TOKEN" \
+              -H "Content-Type: application/json" \
+              -d "{\"slug\": \"$SLUG\"}"
+            echo ""
+          done
