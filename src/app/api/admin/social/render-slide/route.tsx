@@ -95,7 +95,7 @@ function buildSlide({ headline, body, type, index, total, bgUrl, width, height }
 
   const bodySz   = compact ? 20 : 26
   const numSz    = compact ? 90 : 140
-  const pointNum = isPoint ? String(index - 1).padStart(2, '0') : null
+  const pointNum = isPoint ? (headline.match(/^(\d+)/)?.[1]?.padStart(2, '0') ?? String(index).padStart(2, '0')) : null
 
   // Bullet lines for recap
   const recapLines = isRecap ? body.split('\n').filter(Boolean) : []
