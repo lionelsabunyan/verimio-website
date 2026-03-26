@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { resend, FROM_ADDRESS, REPLY_TO, reportEmailHtml, generalEmailHtml } from '@/lib/email'
+import { getResend, FROM_ADDRESS, REPLY_TO, reportEmailHtml, generalEmailHtml } from '@/lib/email'
 
 export async function POST(req: NextRequest) {
   try {
@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
       emailSubject = subject
     }
 
-    const { data, error } = await resend.emails.send({
+    const { data, error } = await getResend().emails.send({
       from: FROM_ADDRESS,
       replyTo: REPLY_TO,
       to: [to],

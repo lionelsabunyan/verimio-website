@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { callLLM } from '@/lib/llm'
-import { resend, FROM_ADDRESS, REPLY_TO, checkupReportEmailHtml, type CheckupAnalysis } from '@/lib/email'
+import { getResend, FROM_ADDRESS, REPLY_TO, checkupReportEmailHtml, type CheckupAnalysis } from '@/lib/email'
 
 const CALENDLY_URL = process.env.NEXT_PUBLIC_CALENDLY_URL || ''
 const NOTION_TOKEN = process.env.NOTION_TOKEN || ''
@@ -296,7 +296,7 @@ export async function POST(req: NextRequest) {
     createNotionPage(body, analysis).catch(() => {})
 
     // 4. Müşteriye rapor emaili gönder
-    const { error: emailError } = await resend.emails.send({
+    const { error: emailError } = await getResend().emails.send({
       from: FROM_ADDRESS,
       replyTo: REPLY_TO,
       to: [email],
@@ -314,7 +314,7 @@ export async function POST(req: NextRequest) {
     }
 
     // 5. Bana bildirim gönder
-    await resend.emails.send({
+    await getResend().emails.send({
       from: FROM_ADDRESS,
       to: ['info@verimio.com.tr'],
       subject: `Yeni Lead: ${company_name || email} — ${sector}`,

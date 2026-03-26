@@ -1,6 +1,10 @@
 import { Resend } from 'resend'
 
-export const resend = new Resend(process.env.RESEND_API_KEY)
+let _resend: Resend | null = null
+export function getResend() {
+  if (!_resend) _resend = new Resend(process.env.RESEND_API_KEY)
+  return _resend
+}
 
 export const FROM_ADDRESS = 'Verimio Analiz <analiz@verimio.com.tr>'
 export const REPLY_TO = 'info@verimio.com.tr'

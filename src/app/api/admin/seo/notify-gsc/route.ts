@@ -74,8 +74,7 @@ export async function POST(req: NextRequest) {
     const wmAuth = getGscAuth(['https://www.googleapis.com/auth/webmasters'])
     if (wmAuth) {
       try {
-        const wmClient = await wmAuth.getClient()
-        const webmasters = google.webmasters({ version: 'v3', auth: wmClient })
+        const webmasters = google.webmasters({ version: 'v3', auth: wmAuth })
 
         // Delete + resubmit forces a fresh read
         try {
