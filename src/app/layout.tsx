@@ -23,11 +23,11 @@ const dmMono = DM_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.verimio.com.tr"),
   title: {
-    default: "Verimio | Kurumsal AI Danışmanlığı",
+    default: "Verimio | AI Danışmanlık & Koçluk",
     template: "%s | Verimio",
   },
   description:
-    "Şirketinizin operasyonel verimliliğini ve AI hazırlığını analiz ediyoruz. Size özel yol haritasıyla hem zamandan hem maliyetten tasarruf edin.",
+    "Şirketinizin AI hazırlığını analiz eder, yol haritası çizer, birlikte uygularız. Danışmanlık ve koçluk tek elden — strateji, eğitim, sürekli destek.",
   keywords: [
     "AI danışmanlık",
     "yapay zeka danışmanlığı",

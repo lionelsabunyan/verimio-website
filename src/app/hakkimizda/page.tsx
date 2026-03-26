@@ -66,7 +66,7 @@ export default function HakkimizdaPage() {
 
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
                 Şirketinizin içindeymiş gibi{" "}
-                <span className="text-primary-light">düşünen danışmanınız.</span>
+                <span className="text-primary-light">düşünen danışman ve koçunuz.</span>
               </h1>
 
               <p className="text-lg text-foreground-secondary leading-relaxed mb-8 max-w-2xl">

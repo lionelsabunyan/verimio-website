@@ -16,7 +16,7 @@ export default function HowItWorks() {
             <FadeIn>
               <SectionLabel className="mb-4">Nasıl Çalışır?</SectionLabel>
               <h2 className="text-3xl sm:text-4xl font-bold mb-4 leading-tight">
-                Danışmanlık <span className="text-primary-light">Sürecimiz</span>
+                Nasıl <span className="text-primary-light">Çalışıyoruz?</span>
               </h2>
               <p className="text-foreground-secondary leading-relaxed">
                 Firmanıza özgü bir süreçle, doğru adımları birlikte atıyoruz.

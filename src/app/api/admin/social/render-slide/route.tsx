@@ -21,16 +21,11 @@ import { NextRequest } from 'next/server'
 export const runtime = 'edge'
 
 // DM Sans font — Türkçe karakter desteği (ş, ğ, ı, ö, ü, ç)
-let fontCache: ArrayBuffer | null = null
-async function loadDMSans(): Promise<ArrayBuffer | null> {
-  if (fontCache) return fontCache
-  try {
-    const res = await fetch('https://cdn.jsdelivr.net/fontsource/fonts/dm-sans@latest/latin-ext-700-normal.ttf')
-    if (!res.ok) return null
-    fontCache = await res.arrayBuffer()
-    return fontCache
-  } catch { return null }
+async function loadFont() {
+  const res = await fetch('https://www.verimio.com.tr/fonts/DMSans-Bold.ttf')
+  return res.arrayBuffer()
 }
+const dmSansData = loadFont()
 
 type SlideType = 'hook' | 'problem' | 'point' | 'proof' | 'recap' | 'cta' | 'cover'
 type Platform  = 'instagram' | 'linkedin' | 'twitter'
@@ -58,14 +53,14 @@ export async function GET(request: NextRequest) {
   const key     = isCover ? 'cover' : 'carousel'
   const [width, height] = (DIMS[platform] ?? DIMS.instagram)[key]
 
-  const fontData = await loadDMSans()
+  const fontData = await dmSansData
 
   return new ImageResponse(
     buildSlide({ headline, body, type, index, total, bgUrl, width, height }),
     {
       width,
       height,
-      ...(fontData ? { fonts: [{ name: 'DM Sans', data: fontData, weight: 700 as const, style: 'normal' as const }] } : {}),
+      fonts: [{ name: 'DM Sans', data: fontData, weight: 700, style: 'normal' as const }],
     }
   )
 }
@@ -163,18 +158,18 @@ function buildSlide({ headline, body, type, index, total, bgUrl, width, height }
 
       {/* Decorative glows (no-photo mode) */}
       {!bgUrl && (
-        <div style={{ display: 'flex', position: 'absolute', top: 0, left: 0, width, height }}>
+        <>
           <div style={{
             position: 'absolute', top: -100, left: width - 320,
-            width: 440, height: 440, borderRadius: 220,
+            width: 440, height: 440, borderRadius: '50%',
             background: 'radial-gradient(circle, rgba(245,158,11,0.06) 0%, transparent 70%)',
           }} />
           <div style={{
             position: 'absolute', top: height - 260, left: -60,
-            width: 360, height: 360, borderRadius: 180,
+            width: 360, height: 360, borderRadius: '50%',
             background: 'radial-gradient(circle, rgba(139,92,246,0.07) 0%, transparent 70%)',
           }} />
-        </div>
+        </>
       )}
 
       {/* Cover: lime top bar */}
@@ -222,7 +217,7 @@ function buildSlide({ headline, body, type, index, total, bgUrl, width, height }
 
         {/* Cover/Recap: spacer to push content down */}
         {(isCover || isRecap) && (
-          <div style={{ display: 'flex', flexGrow: 1 }} />
+          <div style={{ flex: 1 }} />
         )}
 
         {/* ── Main content ── */}
@@ -285,7 +280,7 @@ function buildSlide({ headline, body, type, index, total, bgUrl, width, height }
           {isRecap && (
             <div style={{ marginBottom: compact ? 16 : 22 }}>
               <span style={{ color: '#F59E0B', fontSize: compact ? 14 : 18, fontWeight: 700, letterSpacing: '0.12em' }}>
-                OZET
+                📌  ÖZET
               </span>
             </div>
           )}
@@ -370,7 +365,8 @@ function buildSlide({ headline, body, type, index, total, bgUrl, width, height }
               marginTop: compact ? 18 : 28,
               color: 'rgba(245,158,11,0.5)', fontSize: compact ? 14 : 18,
             }}>
-              <span>Bu carousel&apos;i kaydet</span>
+              <span>🔖</span>
+              <span>Bu carousel'i kaydet</span>
             </div>
           )}
         </div>

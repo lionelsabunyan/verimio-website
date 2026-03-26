@@ -18,11 +18,11 @@ export const NAV_LINKS = [
 ] as const;
 
 export const HERO_CONTENT = {
-  badge: "Kurumsal AI Danışmanlığı",
+  badge: "AI Danışmanlık & Koçluk",
   headline: "Süreçlerinizi netleştirin,",
   headlineHighlight: "maliyetlerinizi düşürün.",
   subheadline:
-    "Firmanızın operasyonel verimliliğini ve AI hazırlığını analiz ediyoruz. Size özel yol haritasıyla hem zamandan hem maliyetten tasarruf edin.",
+    "Firmanızın operasyonel verimliliğini ve AI hazırlığını analiz eder, size özel yol haritası çizer — sonra birlikte uygularız. Strateji, eğitim ve sürekli destek tek elden.",
   ctaPrimary: "Ücretsiz Check-Up Başlatın",
   ctaSecondary: "Nasıl Çalışır?",
   cards: [
@@ -45,7 +45,7 @@ export const HERO_CONTENT = {
 
 export const ABOUT_CONTENT = {
   label: "Biz Kimiz?",
-  text: "İş süreçlerinizi analiz eder, verimliliği engelleyen darboğazları tespit eder ve size özel çözümlerle hem zamanınızı hem bütçenizi koruruz. AI dönüşümünde tek muhatabınız — danışmanınız — oluyoruz.",
+  text: "İş süreçlerinizi analiz eder, verimliliği engelleyen darboğazları tespit eder ve size özel çözümlerle hem zamanınızı hem bütçenizi koruruz. AI dönüşümünde tek muhatabınız — danışman ve koçunuz — oluyoruz. Stratejiyi çizer, birlikte uygularız.",
   ctaPrimary: "Hakkımızda",
   ctaSecondary: "Hizmetlerimize Bakın",
 } as const;
@@ -144,14 +144,14 @@ export const FAQ_ITEMS = [
       "Otomasyon potansiyeliniz (saat/hafta), tahmini maliyet tasarrufu (₺/ay), öncelikli aksiyon alanları, her alan için somut çözüm önerileri ve 90 günlük uygulama yol haritası. Genel değerlendirme değil — firmanıza ve operasyonunuza özel bulgular.",
   },
   {
-    question: "Danışmanlık hizmeti zorunlu mu?",
+    question: "Danışmanlık ve koçluk ayrı mı satın alınıyor?",
     answer:
-      "Hayır. Raporu aldıktan sonra nasıl ilerleyeceğinize siz karar veriyorsunuz. Raporu kendi ekibinizle hayata geçirebilir, ya da isterseniz uygulama sürecinde de yanınızda olmamızı talep edebilirsiniz.",
+      "Hayır. Verimio'da danışmanlık ve koçluk aynı sürecin parçasıdır. Check-up ile başlar, strateji çizeriz, sonra birlikte uygularız. Ekibinizi eğitir, sonuçları ölçeriz. Ayrı ayrı satın almanıza gerek yok.",
   },
   {
-    question: "Danışmanlık süreci ne kadar sürer?",
+    question: "Süreç ne kadar sürer?",
     answer:
-      "Bu, firmanızın ihtiyacına göre değişir. Check-up raporu formunuzu doldurmanızın hemen ardından hazırlanıp e-postanıza iletilir. Uygulama danışmanlığı ise projenin kapsamına göre birkaç haftadan birkaç aya kadar uzanabilir. Her süreç netleştirildikten sonra size özel bir zaman çizelgesi hazırlanır.",
+      "Bu, firmanızın ihtiyacına göre değişir. Check-up raporu formunuzu doldurmanızın hemen ardından hazırlanıp e-postanıza iletilir. Uygulama koçluğu ise projenin kapsamına göre birkaç haftadan birkaç aya kadar uzanabilir. Her süreç netleştirildikten sonra size özel bir zaman çizelgesi hazırlanır.",
   },
   {
     question: "Fiyatlandırma nasıl?",
