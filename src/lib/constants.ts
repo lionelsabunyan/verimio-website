@@ -187,6 +187,13 @@ export const FAQ_ITEMS = [
 
 export const BLOG_POSTS = [
   {
+    title: "2026 AI Trendleri: KOBİ'ler İçin Yatırım ve Yönetişim Stratejileri",
+    excerpt: "2026 Yapay Zeka trendlerini keşfedin: KOBİ'ler için ölçülebilir ROI, yatırım önceliklendirme ve devlet destekleriyle büyüme stratejilerini Verimio ile belirleyin.",
+    date: "30 Mart 2026",
+    slug: "2026-ai-trendleri-kobiler-icin-yatirim-ve-yonetisim-strateji",
+    category: "strategy" as const,
+  },
+  {
     title: "AI Koçluğu Nedir? Şirketler İçin Kapsamlı Rehber",
     excerpt: "AI koçluğu, şirketinizin yapay zeka dönüşümüne sürekli eşlik eden kişiselleştirilmiş bir hizmettir. Danışmanlıktan farkı, nasıl çalıştığı ve neden ihtiyacınız olduğu.",
     date: "26 Mart 2026",
