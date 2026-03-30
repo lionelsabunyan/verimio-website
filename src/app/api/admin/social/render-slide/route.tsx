@@ -18,11 +18,13 @@
 import { ImageResponse } from 'next/og'
 import { NextRequest } from 'next/server'
 
-export const runtime = 'edge'
+export const runtime = 'nodejs'
 
 // DM Sans font — Türkçe karakter desteği (ş, ğ, ı, ö, ü, ç)
+// nodejs runtime allows self-fetch; edge runtime blocks it (0 byte response)
 async function loadFont() {
   const res = await fetch('https://www.verimio.com.tr/fonts/DMSans-Bold.ttf')
+  if (!res.ok) throw new Error(`Font fetch failed: ${res.status}`)
   return res.arrayBuffer()
 }
 const dmSansData = loadFont()
