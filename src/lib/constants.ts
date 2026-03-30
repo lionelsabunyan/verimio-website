@@ -187,6 +187,13 @@ export const FAQ_ITEMS = [
 
 export const BLOG_POSTS = [
   {
+    title: "KOBİ'ler İçin TÜBİTAK ve KOSGEB AI Destekleri 2026",
+    excerpt: "2026 itibarıyla TÜBİTAK ve KOSGEB yapay zeka (AI) desteklerini artırarak KOBİ'lerin rekabet gücünü yükseltiyor. Bu rehber, başvuru süreçlerini ve başarı hikayelerini sunar.",
+    date: "30 Mart 2026",
+    slug: "kobiler-icin-tubitak-ve-kosgeb-ai-destekleri-2026",
+    category: "strategy" as const,
+  },
+  {
     title: "2026 AI Trendleri: TRAI Raporu KOBİ'lere Rehber",
     excerpt: "TRAI 2026 raporu, AI'nin deneme aşamasından ölçülebilir yatırım getirisine geçtiğini gösteriyor. KOBİ'ler için yönetişim ve yatırım stratejileri kritik.",
     date: "30 Mart 2026",
