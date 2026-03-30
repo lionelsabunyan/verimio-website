@@ -187,6 +187,13 @@ export const FAQ_ITEMS = [
 
 export const BLOG_POSTS = [
   {
+    title: "2026'da Türk Şirketleri İçin En İyi 7 AI Aracı (Ücretsiz ve Ücretli)",
+    excerpt: "Türk KOBİ'leri için 2026'da iş süreçlerini optimize edecek, verimliliği artıracak en iyi yapay zeka araçlarını ve kullanım senaryolarını keşfedin.",
+    date: "30 Mart 2026",
+    slug: "2026da-turk-sirketleri-icin-en-iyi-7-ai-araci-ucretsiz-ve-uc",
+    category: "ai-tools" as const,
+  },
+  {
     title: "2026 AI Trendleri: KOBİ'ler İçin Yatırım ve Yönetişim Stratejileri",
     excerpt: "2026 Yapay Zeka trendlerini keşfedin: KOBİ'ler için ölçülebilir ROI, yatırım önceliklendirme ve devlet destekleriyle büyüme stratejilerini Verimio ile belirleyin.",
     date: "30 Mart 2026",
