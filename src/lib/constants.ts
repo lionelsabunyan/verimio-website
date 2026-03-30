@@ -187,6 +187,13 @@ export const FAQ_ITEMS = [
 
 export const BLOG_POSTS = [
   {
+    title: "2026 AI Trendleri: TRAI Raporu KOBİ'lere Rehber",
+    excerpt: "TRAI 2026 raporu, AI'nin deneme aşamasından ölçülebilir yatırım getirisine geçtiğini gösteriyor. KOBİ'ler için yönetişim ve yatırım stratejileri kritik.",
+    date: "30 Mart 2026",
+    slug: "2026-ai-trendleri-trai-raporu-kobilere-rehber",
+    category: "tutorial" as const,
+  },
+  {
     title: "2026'da Türk Şirketleri İçin En İyi 7 AI Aracı (Ücretsiz ve Ücretli)",
     excerpt: "Türk KOBİ'leri için 2026'da iş süreçlerini optimize edecek, verimliliği artıracak en iyi yapay zeka araçlarını ve kullanım senaryolarını keşfedin.",
     date: "30 Mart 2026",
