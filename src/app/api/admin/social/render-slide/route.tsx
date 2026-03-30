@@ -22,12 +22,17 @@ export const runtime = 'edge'
 
 // DM Sans font — Türkçe karakter desteği (ş, ğ, ı, ö, ü, ç)
 // Fetch from GitHub raw — edge runtime cannot self-fetch from own domain
-const dmSansData = fetch(
-  'https://raw.githubusercontent.com/lionelsabunyan/verimio-website/main/public/fonts/DMSans-Bold.ttf'
-).then(res => {
-  if (!res.ok) throw new Error(`Font fetch failed: ${res.status}`)
-  return res.arrayBuffer()
-})
+async function loadFont(): Promise<ArrayBuffer | null> {
+  try {
+    const res = await fetch(
+      'https://raw.githubusercontent.com/lionelsabunyan/verimio-website/main/public/fonts/DMSans-Bold.ttf'
+    )
+    if (!res.ok) return null
+    return res.arrayBuffer()
+  } catch {
+    return null
+  }
+}
 
 type SlideType = 'hook' | 'problem' | 'point' | 'proof' | 'recap' | 'cta' | 'cover'
 type Platform  = 'instagram' | 'linkedin' | 'twitter'
@@ -56,15 +61,15 @@ export async function GET(request: NextRequest) {
     const key     = isCover ? 'cover' : 'carousel'
     const [width, height] = (DIMS[platform] ?? DIMS.instagram)[key]
 
-    const fontData = await dmSansData
+    const fontData = await loadFont()
+
+    const fonts = fontData
+      ? [{ name: 'DM Sans', data: fontData, weight: 700 as const, style: 'normal' as const }]
+      : undefined
 
     return new ImageResponse(
       buildSlide({ headline, body, type, index, total, bgUrl, width, height }),
-      {
-        width,
-        height,
-        fonts: [{ name: 'DM Sans', data: fontData, weight: 700, style: 'normal' as const }],
-      }
+      { width, height, fonts }
     )
   } catch (e) {
     const msg = e instanceof Error ? e.message : String(e)
