@@ -18,16 +18,16 @@
 import { ImageResponse } from 'next/og'
 import { NextRequest } from 'next/server'
 
-export const runtime = 'nodejs'
+export const runtime = 'edge'
 
 // DM Sans font — Türkçe karakter desteği (ş, ğ, ı, ö, ü, ç)
-// nodejs runtime allows self-fetch; edge runtime blocks it (0 byte response)
-async function loadFont() {
-  const res = await fetch('https://www.verimio.com.tr/fonts/DMSans-Bold.ttf')
+// Fetch from GitHub raw — edge runtime cannot self-fetch from own domain
+const dmSansData = fetch(
+  'https://raw.githubusercontent.com/lionelsabunyan/verimio-website/main/public/fonts/DMSans-Bold.ttf'
+).then(res => {
   if (!res.ok) throw new Error(`Font fetch failed: ${res.status}`)
   return res.arrayBuffer()
-}
-const dmSansData = loadFont()
+})
 
 type SlideType = 'hook' | 'problem' | 'point' | 'proof' | 'recap' | 'cta' | 'cover'
 type Platform  = 'instagram' | 'linkedin' | 'twitter'
