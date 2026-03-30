@@ -41,30 +41,38 @@ const DIMS: Record<Platform, { carousel: [number, number]; cover: [number, numbe
 }
 
 export async function GET(request: NextRequest) {
-  const p = request.nextUrl.searchParams
+  try {
+    const p = request.nextUrl.searchParams
 
-  const headline = p.get('headline') ?? ''
-  const body     = p.get('body')     ?? ''
-  const type     = (p.get('type')     ?? 'point') as SlideType
-  const index    = parseInt(p.get('index') ?? '1', 10)
-  const total    = parseInt(p.get('total') ?? '8', 10)
-  const bgUrl    = p.get('bg_url')  ?? null
-  const platform = (p.get('platform') ?? 'instagram') as Platform
+    const headline = p.get('headline') ?? ''
+    const body     = p.get('body')     ?? ''
+    const type     = (p.get('type')     ?? 'point') as SlideType
+    const index    = parseInt(p.get('index') ?? '1', 10)
+    const total    = parseInt(p.get('total') ?? '8', 10)
+    const bgUrl    = p.get('bg_url')  ?? null
+    const platform = (p.get('platform') ?? 'instagram') as Platform
 
-  const isCover = type === 'cover'
-  const key     = isCover ? 'cover' : 'carousel'
-  const [width, height] = (DIMS[platform] ?? DIMS.instagram)[key]
+    const isCover = type === 'cover'
+    const key     = isCover ? 'cover' : 'carousel'
+    const [width, height] = (DIMS[platform] ?? DIMS.instagram)[key]
 
-  const fontData = await dmSansData
+    const fontData = await dmSansData
 
-  return new ImageResponse(
-    buildSlide({ headline, body, type, index, total, bgUrl, width, height }),
-    {
-      width,
-      height,
-      fonts: [{ name: 'DM Sans', data: fontData, weight: 700, style: 'normal' as const }],
-    }
-  )
+    return new ImageResponse(
+      buildSlide({ headline, body, type, index, total, bgUrl, width, height }),
+      {
+        width,
+        height,
+        fonts: [{ name: 'DM Sans', data: fontData, weight: 700, style: 'normal' as const }],
+      }
+    )
+  } catch (e) {
+    const msg = e instanceof Error ? e.message : String(e)
+    return new Response(JSON.stringify({ error: msg }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
+    })
+  }
 }
 
 interface SlideProps {
