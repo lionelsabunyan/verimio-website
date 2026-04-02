@@ -1,7 +1,18 @@
-// fal.ai model sabitleri ve boyut presetleri
-// Client'ı server-side API route'larında direkt fetch ile kullanıyoruz
+// AI görsel üretim model sabitleri ve boyut presetleri
+// Birincil: Google AI Studio (Nano Banana Pro) — monokrom line-art illüstrasyon
+// Fallback: fal.ai (Nano Banana Pro veya Recraft)
 
+// Google AI Studio — birincil görsel üretim
+export const GOOGLE_AI = {
+  NANO_BANANA_PRO: 'nano-banana-pro-preview',
+  GEMINI_FLASH_IMAGE: 'gemini-3.1-flash-image-preview',
+  ENDPOINT: 'https://generativelanguage.googleapis.com/v1beta/models',
+} as const
+
+// fal.ai — fallback görsel üretim
 export const FAL_MODELS = {
+  NANO_BANANA_PRO: 'fal-ai/nano-banana-pro',
+  NANO_BANANA_2: 'fal-ai/nano-banana-2',
   RECRAFT_V4: 'fal-ai/recraft/v3/text-to-image',
   RECRAFT_V4_SVG: 'fal-ai/recraft/v4/pro/text-to-vector',
   FLUX_SCHNELL: 'fal-ai/flux/schnell',

@@ -157,34 +157,31 @@ author: "Verimio Ekibi"
 ${draft.body || ''}
 `
 
-    // 4. Generate cover image via fal.ai Recraft V3
+    // 4. Generate cover image via Nano Banana Pro (Google AI Studio)
     let coverBase64: string | null = null
-    const falKey = process.env.FAL_KEY
-    if (falKey) {
-      const imagePrompt = `Cinematic professional photograph, no text no words no letters no typography no labels no writing anywhere, dark midnight background #020617 to #0F172A gradient, warm amber accent lighting #F59E0B on key focal points, subtle soft blue #60A5FA atmospheric glow, dramatic depth of field, corporate premium atmosphere, topic: ${title.slice(0, 60)}`
+    const googleAiKey = process.env.GOOGLE_AI_KEY
+    if (googleAiKey) {
+      const imagePrompt = `Monochrome line art illustration on a very dark navy background (#020617). Professional corporate scene related to: ${title.slice(0, 80)}. White line art outlines and fills, single amber/gold (#F59E0B) accent color on key highlights. Professional minimalist illustration style. No text, no words, no typography anywhere. Horizontal landscape composition 1200x630.`
 
-      const falRes = await fetch('https://fal.run/fal-ai/recraft/v3/text-to-image', {
-        method: 'POST',
-        headers: {
-          Authorization: `Key ${falKey}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          prompt: imagePrompt,
-          image_size: { width: 1200, height: 628 },
-          num_images: 1,
-          style: 'realistic_image',
-        }),
-      })
+      const aiRes = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/nano-banana-pro-preview:generateContent?key=${googleAiKey}`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: imagePrompt }] }],
+            generationConfig: { responseModalities: ['IMAGE'] },
+          }),
+        }
+      )
 
-      if (falRes.ok) {
-        const falData = await falRes.json()
-        const imageUrl = falData.images?.[0]?.url
-        if (imageUrl) {
-          const imgRes = await fetch(imageUrl)
-          if (imgRes.ok) {
-            const arrayBuf = await imgRes.arrayBuffer()
-            coverBase64 = Buffer.from(arrayBuf).toString('base64')
+      if (aiRes.ok) {
+        const aiData = await aiRes.json()
+        const parts = aiData.candidates?.[0]?.content?.parts || []
+        for (const part of parts) {
+          if (part.inlineData) {
+            coverBase64 = part.inlineData.data
+            break
           }
         }
       }

@@ -48,24 +48,50 @@ function getScheduledAt(platform: 'linkedin' | 'instagram' | 'twitter', offset: 
   return target.toISOString()
 }
 
-// Platform bazlı doğru fal.ai görsel boyutları
-const IMAGE_SIZE: Record<string, string> = {
-  linkedin:  'landscape_16_9', // 1200×628
-  instagram: 'square_hd',      // 1080×1080
-  twitter:   'landscape_4_3',  // 1200×900
-}
+// Monokrom line-art illüstrasyon — Nano Banana Pro (Google AI Studio)
+// Koyu midnight arka plan + beyaz çizgi + amber accent
+const GOOGLE_AI_KEY = process.env.GOOGLE_AI_KEY
 
-// Stil 2: Soyut teknoloji — tüm sosyal medya slide'ları için sabit stil
-// Koyu arka plan + amber/mavi parıltılar → %62 overlay altında premium atmosfer
 function buildBgPrompt(topicHint: string): string {
-  return `Abstract dark atmospheric photograph of technology environment, ${topicHint}. Flowing data streams, fiber optic lines, and neural network patterns in deep midnight blue and dark slate tones. Subtle glowing accents in warm amber and soft blue on circuit board textures dissolving into light particles. Shot with 50mm lens, f/2.0, cinematic color grading. Cool blue-midnight tones with warm amber highlights, shallow depth of field, clean composition with negative space on upper third for text overlay. No text no words no typography no labels no writing anywhere. Futuristic, premium, mysterious atmosphere.`
+  return `Monochrome line art illustration on a very dark navy background (#020617). ${topicHint}. White line art outlines and fills, single amber/gold (#F59E0B) accent color on key highlights and connection points. Professional corporate minimalist illustration style. No text, no words, no typography anywhere. Clean composition.`
 }
 
-async function generateVisual(prompt: string, platform: 'linkedin' | 'instagram' | 'twitter'): Promise<string | null> {
+async function generateVisual(prompt: string, _platform: 'linkedin' | 'instagram' | 'twitter'): Promise<string | null> {
+  // Prefer Google AI Studio (Nano Banana Pro), fallback to fal.ai
+  if (GOOGLE_AI_KEY) {
+    try {
+      const bgPrompt = buildBgPrompt(prompt)
+      const res = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/nano-banana-pro-preview:generateContent?key=${GOOGLE_AI_KEY}`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: bgPrompt }] }],
+            generationConfig: { responseModalities: ['IMAGE'] },
+          }),
+        }
+      )
+      if (!res.ok) return null
+      const data = await res.json()
+      const parts = data.candidates?.[0]?.content?.parts || []
+      for (const part of parts) {
+        if (part.inlineData) {
+          // Return as data URL for inline use
+          return `data:${part.inlineData.mimeType};base64,${part.inlineData.data}`
+        }
+      }
+      return null
+    } catch {
+      return null
+    }
+  }
+
+  // Fallback: fal.ai
   if (!FAL_KEY) return null
   try {
     const bgPrompt = buildBgPrompt(prompt)
-    const res = await fetch('https://fal.run/fal-ai/recraft-v3', {
+    const res = await fetch('https://fal.run/fal-ai/nano-banana-pro', {
       method: 'POST',
       headers: {
         'Authorization': `Key ${FAL_KEY}`,
@@ -73,8 +99,7 @@ async function generateVisual(prompt: string, platform: 'linkedin' | 'instagram'
       },
       body: JSON.stringify({
         prompt: bgPrompt,
-        image_size: IMAGE_SIZE[platform] ?? 'square_hd',
-        style: 'realistic_image',
+        image_size: { width: 1080, height: 1080 },
         num_images: 1,
       }),
     })
