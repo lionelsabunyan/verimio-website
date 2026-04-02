@@ -25,6 +25,16 @@ interface BlogCoverImageProps {
 }
 
 const IMAGES_DIR = path.join(process.cwd(), "public/images/blog");
+const SUPPORTED_EXTS = [".png", ".jpg", ".jpeg", ".webp"] as const;
+
+function findCoverImage(slug: string): string | null {
+  for (const ext of SUPPORTED_EXTS) {
+    if (fs.existsSync(path.join(IMAGES_DIR, `${slug}${ext}`))) {
+      return `/images/blog/${slug}${ext}`;
+    }
+  }
+  return null;
+}
 
 export default function BlogCoverImage({
   slug,
@@ -34,15 +44,14 @@ export default function BlogCoverImage({
   className = "",
   aspectRatio = "cover",
 }: BlogCoverImageProps) {
-  const webpPath = path.join(IMAGES_DIR, `${slug}.webp`);
-  const hasWebp = fs.existsSync(webpPath);
+  const imageSrc = findCoverImage(slug);
   const aspectClass = aspectRatio === "video" ? "aspect-video" : "aspect-[1200/630]";
 
-  if (hasWebp) {
+  if (imageSrc) {
     return (
       <div className={`relative w-full ${aspectClass} rounded-xl overflow-hidden ${className}`}>
         <Image
-          src={`/images/blog/${slug}.webp`}
+          src={imageSrc}
           alt={title}
           fill
           className="object-cover"

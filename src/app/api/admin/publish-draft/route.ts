@@ -159,6 +159,7 @@ ${draft.body || ''}
 
     // 4. Generate cover image via Nano Banana Pro (Google AI Studio)
     let coverBase64: string | null = null
+    let coverMimeType: string | null = null
     const googleAiKey = process.env.GOOGLE_AI_KEY
     if (googleAiKey) {
       const imagePrompt = `Monochrome line art illustration on a very dark navy background (#020617). Professional corporate scene related to: ${title.slice(0, 80)}. White line art outlines and fills, single amber/gold (#F59E0B) accent color on key highlights. Professional minimalist illustration style. No text, no words, no typography anywhere. Horizontal landscape composition 1200x630.`
@@ -181,6 +182,7 @@ ${draft.body || ''}
         for (const part of parts) {
           if (part.inlineData) {
             coverBase64 = part.inlineData.data
+            coverMimeType = part.inlineData.mimeType
             break
           }
         }
@@ -200,7 +202,9 @@ ${draft.body || ''}
 
     // 6. Upload cover image to GitHub (if generated)
     if (coverBase64) {
-      const imgPath = `public/images/blog/${slug}.webp`
+      // Nano Banana Pro genellikle JPEG döndürür
+      const imgExt = coverMimeType?.includes('png') ? 'png' : 'jpg'
+      const imgPath = `public/images/blog/${slug}.${imgExt}`
       const existingImg = await githubGet(imgPath, githubToken)
       await githubPutBinary(
         imgPath,
