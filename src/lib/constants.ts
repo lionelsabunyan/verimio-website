@@ -187,6 +187,13 @@ export const FAQ_ITEMS = [
 
 export const BLOG_POSTS = [
   {
+    title: "2026 Yapay Zeka Trendleri: KOBİ'ler İçin 5 Anahtar Strateji",
+    excerpt: "2026 yapay zeka trendlerini KOBİ perspektifinden inceliyor, yönetişim, ölçeklenebilirlik odaklı stratejiler sunuyor, risk yönetimi ve kurumsal yetkinlik kazanma yollarını anlatıyoruz.",
+    date: "8 Nisan 2026",
+    slug: "2026-yapay-zeka-trendleri-kobiler-icin-5-anahtar-strateji",
+    category: "strategy" as const,
+  },
+  {
     title: "KOBİ'ler İçin TÜBİTAK ve KOSGEB AI Destekleri 2026",
     excerpt: "2026 itibarıyla TÜBİTAK ve KOSGEB yapay zeka (AI) desteklerini artırarak KOBİ'lerin rekabet gücünü yükseltiyor. Bu rehber, başvuru süreçlerini ve başarı hikayelerini sunar.",
     date: "30 Mart 2026",
