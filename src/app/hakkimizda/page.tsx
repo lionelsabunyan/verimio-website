@@ -1,6 +1,3 @@
-import { CheckCircle2, BarChart3, Users2 } from "lucide-react";
-import HeroVisual from "@/components/brand/HeroVisual";
-import FAQ from "@/components/sections/FAQ";
 import CTA from "@/components/sections/CTA";
 import type { Metadata } from "next";
 import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
@@ -25,20 +22,17 @@ export const metadata: Metadata = {
 
 const differentiators = [
   {
-    icon: CheckCircle2,
-    title: "Sadece Rapor Değil",
+    title: "Sadece rapor değil",
     description:
       "Analiz teslim edip çekilmiyoruz. Danışmanlık ve koçluk bizde aynı sürecin parçası — stratejiyi çizer, birlikte uygular, sonuçları ölçeriz.",
   },
   {
-    icon: Users2,
-    title: "Şablona Değil, Size Özel",
+    title: "Şablona değil, size özel",
     description:
       "Her firmanın operasyonu farklıdır. Hazır reçete yerine, iş süreçlerinizi bizzat inceleyerek size özgü bir strateji ve yol haritası oluşturuyoruz.",
   },
   {
-    icon: BarChart3,
-    title: "Ölçülebilir Sonuç",
+    title: "Ölçülebilir sonuç",
     description:
       "Soyut öneriler değil, somut rakamlar. Tasarruf potansiyelini, ROI'yi ve aksiyon önceliklerini sayısal olarak ortaya koyuyoruz.",
   },
@@ -46,124 +40,94 @@ const differentiators = [
 
 export default function HakkimizdaPage() {
   return (
-    <main className="pt-20">
+    <main className="pt-24">
       <BreadcrumbSchema
         items={[
           { name: "Ana Sayfa", url: "https://www.verimio.com.tr" },
           { name: "Hakkımızda", url: "https://www.verimio.com.tr/hakkimizda" },
         ]}
       />
+
       {/* Hero */}
-      <section className="section-padding pb-0">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            {/* Sol: İçerik */}
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <span className="w-6 h-0.5 rounded-full bg-primary-light" />
-              <span className="text-xs font-medium text-foreground-muted tracking-widest uppercase">Hakkımızda</span>
-              </div>
-
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-                Şirketinizin içindeymiş gibi{" "}
-                <span className="text-primary-light">düşünen danışman ve koçunuz.</span>
-              </h1>
-
-              <p className="text-lg text-foreground-secondary leading-relaxed mb-8 max-w-2xl">
-                AI ve otomasyon dönüşümünü yüzeysel değil, derinlemesine yönetiyoruz.
-                İş süreçlerinizi analiz eder, darboğazları tespit eder ve size özel
-                çözümlerle hem zamanınızı hem bütçenizi koruruz.
-              </p>
-            </div>
-
-            {/* Sağ: Animated visual */}
-            <HeroVisual variant="about" />
-          </div>
+      <section className="pb-24 md:pb-32">
+        <div className="max-w-5xl mx-auto px-6 lg:px-8">
+          <p className="text-xs font-medium text-foreground-muted tracking-[0.15em] uppercase mb-4">
+            Hakkımızda
+          </p>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 max-w-3xl">
+            Şirketinizin içindeymiş gibi düşünen danışman ve koçunuz.
+          </h1>
+          <p className="text-lg text-foreground-secondary leading-relaxed max-w-2xl">
+            AI ve otomasyon dönüşümünü yüzeysel değil, derinlemesine yönetiyoruz.
+            İş süreçlerinizi analiz eder, darboğazları tespit eder ve size özel
+            çözümlerle hem zamanınızı hem bütçenizi koruruz.
+          </p>
         </div>
       </section>
 
       {/* Problem → Yaklaşım */}
-      <section className="section-padding bg-background-secondary">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
-            <span className="w-1.5 h-1.5 rounded-full bg-secondary/60" />
-            <span className="text-xs font-semibold text-foreground-secondary tracking-widest uppercase ml-1">Neden Verimio?</span>
-          </div>
-
-          <h2 className="text-3xl sm:text-4xl font-bold mb-12">
-            Gördüğümüz sorun,{" "}
-            <span className="text-primary-light">geliştirdiğimiz cevap.</span>
-          </h2>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
-            {/* Sol: Problem */}
-            <div className="p-8 rounded-2xl border border-border bg-surface">
-              <div className="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center mb-6">
-                <span className="text-red-500 text-lg font-bold">!</span>
-              </div>
-              <h3 className="text-xl font-bold mb-4">Neden çoğu AI geçişi başarısız olur?</h3>
+      <section className="py-24 md:py-32 border-t border-border">
+        <div className="max-w-5xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            <div>
+              <p className="text-xs font-medium text-foreground-muted tracking-[0.15em] uppercase mb-4">
+                Sorun
+              </p>
+              <h2 className="text-2xl font-bold mb-4">Neden çoğu AI geçişi başarısız olur?</h2>
               <p className="text-foreground-secondary leading-relaxed mb-4">
                 Şirketler AI, otomasyon ya da agent teknolojilerini duymak istiyor — ama ne istediklerini tam olarak bilmiyor. Bu belirsizlik içinde gerçekleştirilen geçişler çoğunlukla yanlış araç seçimiyle, eksik analizle ve somut bir getiri olmadan sonuçlanıyor.
               </p>
               <p className="text-foreground-secondary leading-relaxed">
-                Sonuç: hem zaman kaybı hem bütçe israfı. Ve bir süre sonra "AI bizim için değilmiş" yanılgısı.
+                Sonuç: hem zaman kaybı hem bütçe israfı.
               </p>
             </div>
-
-            {/* Sağ: Yaklaşım */}
-            <div className="p-8 rounded-2xl border border-border-accent bg-surface">
-              <div className="w-10 h-10 rounded-xl bg-primary-light/10 flex items-center justify-center mb-6">
-                <span className="text-primary-light text-lg font-bold">✓</span>
-              </div>
-              <h3 className="text-xl font-bold mb-4">Bizim yaklaşımımız</h3>
+            <div>
+              <p className="text-xs font-medium text-foreground-muted tracking-[0.15em] uppercase mb-4">
+                Yaklaşım
+              </p>
+              <h2 className="text-2xl font-bold mb-4">Bizim yaklaşımımız</h2>
               <p className="text-foreground-secondary leading-relaxed mb-4">
                 Biz bir satış kanalı değil, danışmanlık firmasıyız. Firmanızın operasyonunu gerçekten anlamak için doğru soruları soruyor, süreçlerinizi inceliyor ve somut bulgular üzerine bir strateji kuruyoruz.
               </p>
               <p className="text-foreground-secondary leading-relaxed">
-                Her önerimiz ölçülebilir bir ROI hesabına dayanıyor. Şirketinizin içindeymiş gibi düşünerek, dışarıdan bir perspektifle çalışıyoruz.
+                Her önerimiz ölçülebilir bir ROI hesabına dayanıyor.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Nasıl Farklıyız — 3 kart */}
-      <section className="section-padding">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="w-6 h-0.5 rounded-full bg-primary-light" />
-              <span className="text-xs font-medium text-foreground-muted tracking-widest uppercase">Çalışma Biçimimiz</span>
-          </div>
-
-          <h2 className="text-3xl sm:text-4xl font-bold mb-12">
-            Bizi farklı kılan{" "}
-            <span className="text-primary-light">üç temel ilke.</span>
+      {/* Farklar — liste formatı */}
+      <section className="py-24 md:py-32 border-t border-border">
+        <div className="max-w-5xl mx-auto px-6 lg:px-8">
+          <p className="text-xs font-medium text-foreground-muted tracking-[0.15em] uppercase mb-4">
+            Fark
+          </p>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-16 max-w-2xl">
+            Bizi farklı kılan üç temel ilke
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="space-y-0">
             {differentiators.map((item, index) => (
-              <div
-                key={index}
-                className="p-8 rounded-2xl border border-border hover:border-border-accent transition-all duration-300 bg-surface group glow-card"
-              >
-                <div className="w-12 h-12 rounded-xl bg-primary-light/10 flex items-center justify-center mb-6 group-hover:bg-primary-light/20 transition-colors">
-                  <item.icon className="w-6 h-6 text-primary-light" />
+              <div key={index} className="border-t border-border py-8 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8">
+                <div className="md:col-span-1">
+                  <span className="text-sm text-foreground-muted tabular-nums">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
                 </div>
-                <h3 className="text-xl font-bold mb-3 group-hover:text-primary dark:group-hover:text-primary-light transition-colors">
-                  {item.title}
-                </h3>
-                <p className="text-foreground-secondary leading-relaxed">{item.description}</p>
+                <div className="md:col-span-4">
+                  <h3 className="text-xl font-bold">{item.title}</h3>
+                </div>
+                <div className="md:col-span-7">
+                  <p className="text-foreground-secondary leading-relaxed">{item.description}</p>
+                </div>
               </div>
             ))}
+            <div className="border-t border-border" />
           </div>
         </div>
       </section>
 
-      {/* FAQ */}
-      <FAQ />
-
-      {/* CTA */}
       <CTA />
     </main>
   );

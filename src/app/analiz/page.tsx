@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import MultiStepForm from "@/components/form/MultiStepForm";
-import Benefits from "@/components/sections/Benefits";
+import { BENEFITS } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Şirket Check-Up'ı - Ücretsiz AI Hazırlık Analizi",
@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     "Şirketinizin operasyonel verimliliğini ve AI hazırlığını analiz ediyoruz. Formu doldurun, size özel raporunuz e-postanıza iletilsin.",
   openGraph: {
     title: "Şirket Check-Up'ı - Ücretsiz AI Hazırlık Analizi",
-    description: "Şirketinizin operasyonel verimliliğini ve AI hazırlığını analiz ediyoruz. Formu doldurun, size özel raporunuz e-postanıza iletilsin.",
+    description: "Şirketinizin operasyonel verimliliğini ve AI hazırlığını analiz ediyoruz.",
     type: "website",
     url: "https://www.verimio.com.tr/analiz",
   },
@@ -22,21 +22,17 @@ export const metadata: Metadata = {
 
 export default function AnalizPage() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-secondary/4 dark:from-primary/20 dark:via-background dark:to-secondary/8 pt-20">
-      <div className="max-w-2xl mx-auto px-4 py-10 pb-20">
+    <main className="pt-24">
+      <div className="max-w-2xl mx-auto px-6 py-10 pb-20">
         {/* Header */}
-        <div className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border-accent bg-secondary/8 mb-5">
-            <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
-            <span className="text-xs font-medium text-foreground-secondary tracking-wide">
-              Ücretsiz
-            </span>
-          </div>
-          <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-3">
-            Şirket{" "}
-            <span className="text-primary-light">Check-Up&apos;ı</span>
+        <div className="mb-10">
+          <p className="text-xs font-medium text-foreground-muted tracking-[0.15em] uppercase mb-4">
+            Ücretsiz
+          </p>
+          <h1 className="text-3xl sm:text-4xl font-bold mb-3">
+            Şirket Check-Up&apos;ı
           </h1>
-          <p className="text-foreground-secondary text-sm sm:text-base max-w-md mx-auto leading-relaxed">
+          <p className="text-foreground-secondary leading-relaxed">
             Şirketinizi tanıyoruz, eksiklerinizi analiz ediyoruz. Size özel otomasyon
             fırsatlarını, tasarruf potansiyelini ve 90 günlük yol haritasını içeren
             raporunuzu alın.
@@ -47,8 +43,22 @@ export default function AnalizPage() {
         <MultiStepForm />
       </div>
 
-      {/* Benefits — what's in the report */}
-      <Benefits />
+      {/* Benefits */}
+      <section className="py-24 border-t border-border">
+        <div className="max-w-5xl mx-auto px-6 lg:px-8">
+          <p className="text-xs font-medium text-foreground-muted tracking-[0.15em] uppercase mb-4">
+            Raporunuzda neler var
+          </p>
+          <ul className="space-y-3 mt-6">
+            {BENEFITS.map((item, index) => (
+              <li key={index} className="flex items-start gap-3 text-foreground-secondary">
+                <span className="w-1 h-1 rounded-full bg-foreground-muted mt-2.5 shrink-0" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
     </main>
   );
 }

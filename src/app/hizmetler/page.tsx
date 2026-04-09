@@ -1,13 +1,6 @@
-import { CheckCircle2, Clock, GraduationCap, HeadphonesIcon, TrendingUp } from "lucide-react";
 import { BRAND } from "@/lib/constants";
-import ProcessAnalysisIcon from "@/components/brand/icons/services/ProcessAnalysisIcon";
-import WorkflowAutomationIcon from "@/components/brand/icons/services/WorkflowAutomationIcon";
-import CustomerExperienceIcon from "@/components/brand/icons/services/CustomerExperienceIcon";
-import DataReportingIcon from "@/components/brand/icons/services/DataReportingIcon";
-import AIStrategyIcon from "@/components/brand/icons/services/AIStrategyIcon";
 import CTA from "@/components/sections/CTA";
 import Button from "@/components/ui/Button";
-import HeroVisual from "@/components/brand/HeroVisual";
 import type { Metadata } from "next";
 import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 import ServiceSchema from "@/components/seo/ServiceSchema";
@@ -32,7 +25,6 @@ export const metadata: Metadata = {
 
 const services = [
   {
-    icon: ProcessAnalysisIcon,
     title: "Süreç Analizi & Optimizasyonu",
     description:
       "İş süreçlerinizi uçtan uca haritalıyoruz. Zaman ve kaynak kaybına yol açan adımları tespit edip, operasyonunuzu sade ve ölçeklenebilir hale getiriyoruz.",
@@ -44,7 +36,6 @@ const services = [
     ],
   },
   {
-    icon: WorkflowAutomationIcon,
     title: "İş Akışı Otomasyonu",
     description:
       "Tekrarlayan, manuel görevleri otomatize ediyoruz. Ekibiniz rutin işler yerine stratejik çalışmaya vakit ayırsın.",
@@ -56,7 +47,6 @@ const services = [
     ],
   },
   {
-    icon: CustomerExperienceIcon,
     title: "Müşteri Deneyimi Otomasyonu",
     description:
       "7/24 müşteri desteği sağlayan akıllı çözümler. Sık sorulan soruları otomatik yanıtlayın, ekibinizin yükünü azaltın, memnuniyeti artırın.",
@@ -68,7 +58,6 @@ const services = [
     ],
   },
   {
-    icon: DataReportingIcon,
     title: "Veri & Raporlama Otomasyonu",
     description:
       "Dağınık verilerinizi anlamlı bilgilere dönüştürün. Gerçek zamanlı dashboard'lar ve otomatik raporlarla karar alma sürecinizi hızlandırın.",
@@ -80,7 +69,6 @@ const services = [
     ],
   },
   {
-    icon: AIStrategyIcon,
     title: "AI Strateji & Entegrasyon",
     description:
       "Doğru araçla, doğru süreçte, doğru zamanda AI kullanın. Bağımsız danışmanlar olarak firmanıza en uygun teknolojiyi seçip entegrasyon sürecini yönetiyoruz.",
@@ -92,7 +80,6 @@ const services = [
     ],
   },
   {
-    icon: GraduationCap,
     title: "AI Dönüşüm Koçluğu",
     description:
       "Strateji de uygulama da tek elden. Analiz eder, yol haritası çizer — sonra birlikte uygular, ekibinizi eğitir ve sonuçları ölçeriz. 3-12 ay boyunca yanınızdayız.",
@@ -102,58 +89,19 @@ const services = [
       "Değişim yönetimi ve ekip adaptasyonu",
       "KPI takibi ve sürekli iyileştirme döngüsü",
     ],
-    href: "/ai-koclugu",
   },
 ];
 
 const steps = [
-  {
-    step: "01",
-    title: "Her şey check-up'la başlar",
-    description:
-      "Sektörünüze ve yapınıza özel sorularla firmanızı tanıyoruz. Süreçlerinizi, ihtiyaçlarınızı ve önceliklerinizi dinliyoruz.",
-  },
-  {
-    step: "02",
-    title: "Size özel analiz raporu",
-    description:
-      "Formu doldurmanızın hemen ardından otomasyon potansiyelinizi, tasarruf tahminlerinizi ve öncelikli aksiyon alanlarınızı somut rakamlarla ortaya koyan raporunuzu e-postanıza iletiyoruz.",
-  },
-  {
-    step: "03",
-    title: "Strateji görüşmesi",
-    description:
-      "Raporu birlikte değerlendiriyoruz. Yol haritasını netleştiriyor, hangi adımları birlikte atağımızı kararlaştırıyoruz.",
-  },
-  {
-    step: "04",
-    title: "Uygulama ve takip",
-    description:
-      "Çözümleri hayata geçiriyoruz. Sonuçları ölçüyor, gerektiğinde yeniden planlıyor ve her adımda yanınızda duruyoruz.",
-  },
-];
-
-const problemCards = [
-  {
-    icon: Clock,
-    problem: "Ekibiniz tekrarlayan işlere çok fazla vakit mi harcıyor?",
-    solution: "Süreç Analizi ve İş Akışı Otomasyonu ile bu yükü kaldırıyoruz.",
-  },
-  {
-    icon: HeadphonesIcon,
-    problem: "Müşteri destek talepleriniz yönetilemez hale mi geliyor?",
-    solution: "Müşteri Deneyimi Otomasyonu ile 7/24 destek kapasitesi oluşturuyoruz.",
-  },
-  {
-    icon: TrendingUp,
-    problem: "Verileriniz var ama doğru kararı almakta zorlanıyor musunuz?",
-    solution: "Veri & Raporlama Otomasyonu ile anlık, doğru ve görsel raporlar sunuyoruz.",
-  },
+  { step: "01", title: "Check-up ile başlar", description: "Sektörünüze ve yapınıza özel sorularla firmanızı tanıyoruz." },
+  { step: "02", title: "Size özel analiz raporu", description: "Otomasyon potansiyelinizi ve tasarruf tahminlerinizi somut rakamlarla ortaya koyuyoruz." },
+  { step: "03", title: "Strateji görüşmesi", description: "Raporu birlikte değerlendiriyoruz. Yol haritasını netleştiriyoruz." },
+  { step: "04", title: "Uygulama ve takip", description: "Çözümleri hayata geçiriyoruz. Sonuçları ölçüyor, her adımda yanınızda duruyoruz." },
 ];
 
 export default function HizmetlerPage() {
   return (
-    <main className="pt-20">
+    <main className="pt-24">
       <BreadcrumbSchema
         items={[
           { name: "Ana Sayfa", url: "https://www.verimio.com.tr" },
@@ -166,152 +114,82 @@ export default function HizmetlerPage() {
           description: s.description,
         }))}
       />
+
       {/* Hero */}
-      <section className="section-padding pb-0">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
-                <span className="w-1.5 h-1.5 rounded-full bg-secondary/60" />
-                <span className="text-xs font-semibold text-foreground-secondary tracking-widest uppercase ml-1">Hizmetlerimiz</span>
-              </div>
-
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-                Operasyonunuzu{" "}
-                <span className="text-primary-light">ölçülebilir şekilde iyileştiriyoruz.</span>
-              </h1>
-
-              <p className="text-lg text-foreground-secondary leading-relaxed mb-8 max-w-2xl">
-                Her hizmet alanımız, önce doğru analiz — sonra somut ROI hesabı — ardından uygulama
-                sıralamasıyla çalışır. Şirketinize özgün, rakam temelli çözümler sunuyoruz.
-              </p>
-
-              <Button href={BRAND.tallyFormUrl} size="md">
-                Hangi Çözüm Bana Uygun?
-              </Button>
-            </div>
-
-            {/* Animated visual */}
-            <div className="hidden lg:block">
-              <HeroVisual variant="services" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Grid */}
-      <section className="section-padding bg-background-secondary">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
-            <span className="w-1.5 h-1.5 rounded-full bg-secondary/60" />
-            <span className="text-xs font-semibold text-foreground-secondary tracking-widest uppercase ml-1">Hizmet Alanları</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-bold mb-12">
-            6 alanda <span className="text-primary-light">danışmanlık ve koçluk.</span>
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <div
-                key={index}
-                className="p-8 rounded-2xl border border-border hover:border-border-accent transition-all duration-300 bg-surface group glow-card"
-              >
-                <div className="w-12 h-12 rounded-xl bg-primary/8 dark:bg-primary-light/10 text-primary-light flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                  <service.icon className="w-6 h-6" size={24} />
-                </div>
-
-                <h3 className="text-xl font-bold mb-3 group-hover:text-primary dark:group-hover:text-primary-light transition-colors">
-                  {service.title}
-                </h3>
-                <p className="text-foreground-secondary leading-relaxed mb-6">{service.description}</p>
-
-                <ul className="space-y-2">
-                  {service.features.map((feature, i) => (
-                    <li key={i} className="flex items-start gap-2 text-sm text-foreground-secondary">
-                      <CheckCircle2 className="w-4 h-4 text-secondary mt-0.5 shrink-0" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Engagement Model — 4 adım */}
-      <section className="section-padding">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <div className="flex items-center justify-center gap-2 mb-4">
-              <span className="w-6 h-0.5 rounded-full bg-primary-light" />
-              <span className="text-xs font-medium text-foreground-muted tracking-widest uppercase">Nasıl Çalışıyoruz?</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              Tanı&apos;dan uygulamaya{" "}
-              <span className="text-primary-light">4 adım.</span>
-            </h2>
-            <p className="text-foreground-secondary leading-relaxed">
-              Her proje aynı disiplinle başlar: önce anlamak, sonra planlamak, sonra yapmak.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {steps.map((item, index) => (
-              <div key={index} className="text-center group">
-                <div className="w-16 h-16 rounded-2xl bg-primary text-secondary font-bold text-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                  {item.step}
-                </div>
-                <h3 className="font-bold text-lg mb-2">{item.title}</h3>
-                <p className="text-sm text-foreground-secondary leading-relaxed">{item.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Hangi Hizmet Size Uygun? */}
-      <section className="section-padding bg-background-secondary">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="w-6 h-0.5 rounded-full bg-primary-light" />
-              <span className="text-xs font-medium text-foreground-muted tracking-widest uppercase">Nereden Başlayalım?</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            Hangi sorunu{" "}
-            <span className="text-primary-light">çözmek istiyorsunuz?</span>
-          </h2>
-          <p className="text-foreground-secondary leading-relaxed mb-12 max-w-2xl">
-            Doğru hizmet alanını belirlemek için önce sorunu netleştirmek gerekir.
-            Ücretsiz check-up ile birlikte buluyoruz.
+      <section className="pb-24 md:pb-32">
+        <div className="max-w-5xl mx-auto px-6 lg:px-8">
+          <p className="text-xs font-medium text-foreground-muted tracking-[0.15em] uppercase mb-4">
+            Hizmetler
           </p>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 max-w-3xl">
+            Operasyonunuzu ölçülebilir şekilde iyileştiriyoruz.
+          </h1>
+          <p className="text-lg text-foreground-secondary leading-relaxed mb-8 max-w-2xl">
+            Her hizmet alanımız, önce doğru analiz — sonra somut ROI hesabı — ardından uygulama sıralamasıyla çalışır.
+          </p>
+          <Button href={BRAND.tallyFormUrl} size="md">
+            Hangi çözüm bana uygun?
+          </Button>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
-            {problemCards.map((card, index) => (
-              <div
-                key={index}
-                className="p-8 rounded-2xl border border-border bg-surface hover:border-border-accent transition-all duration-300 group glow-card"
-              >
-                <div className="w-12 h-12 rounded-xl bg-primary-light/10 flex items-center justify-center mb-6 group-hover:bg-primary-light/20 transition-colors">
-                  <card.icon className="w-6 h-6 text-primary-light" />
+      {/* Services — liste formatı */}
+      <section className="py-24 md:py-32 border-t border-border">
+        <div className="max-w-5xl mx-auto px-6 lg:px-8">
+          <div className="space-y-16">
+            {services.map((service, index) => (
+              <div key={index} className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12">
+                <div className="md:col-span-1">
+                  <span className="text-sm text-foreground-muted tabular-nums">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
                 </div>
-                <p className="font-semibold text-lg mb-3 leading-snug">{card.problem}</p>
-                <p className="text-sm text-foreground-secondary leading-relaxed">{card.solution}</p>
+                <div className="md:col-span-5">
+                  <h2 className="text-2xl font-bold mb-3">{service.title}</h2>
+                  <p className="text-foreground-secondary leading-relaxed">{service.description}</p>
+                </div>
+                <div className="md:col-span-6">
+                  <ul className="space-y-2">
+                    {service.features.map((feature, i) => (
+                      <li key={i} className="flex items-start gap-3 text-sm text-foreground-secondary">
+                        <span className="w-1 h-1 rounded-full bg-foreground-muted mt-2 shrink-0" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             ))}
-          </div>
-
-          <div className="text-center">
-            <Button href={BRAND.tallyFormUrl} size="lg">
-              Ücretsiz Check-Up Başlatın
-            </Button>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
+      {/* Süreç — 4 adım */}
+      <section className="py-24 md:py-32 border-t border-border">
+        <div className="max-w-5xl mx-auto px-6 lg:px-8">
+          <p className="text-xs font-medium text-foreground-muted tracking-[0.15em] uppercase mb-4">
+            Süreç
+          </p>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-16 max-w-2xl">
+            Tanıdan uygulamaya dört adım
+          </h2>
+
+          <div className="space-y-12">
+            {steps.map((item, index) => (
+              <div key={index} className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8">
+                <div className="md:col-span-1">
+                  <span className="text-4xl font-bold text-border">{item.step}</span>
+                </div>
+                <div className="md:col-span-5">
+                  <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                  <p className="text-foreground-secondary leading-relaxed">{item.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <CTA />
     </main>
   );
