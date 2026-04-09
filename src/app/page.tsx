@@ -1,20 +1,18 @@
 import Hero from "@/components/sections/Hero";
+import Proof from "@/components/sections/Proof";
+import Services from "@/components/sections/Services";
+import Process from "@/components/sections/Process";
 import About from "@/components/sections/About";
-import HowItWorks from "@/components/sections/HowItWorks";
-import Expertise from "@/components/sections/Expertise";
-import Blog from "@/components/sections/Blog";
-import Testimonials from "@/components/sections/Testimonials";
 import CTA from "@/components/sections/CTA";
 
 export default function Home() {
   return (
     <main>
       <Hero />
+      <Proof />
+      <Services />
+      <Process />
       <About />
-      <HowItWorks />
-      <Expertise />
-      <Blog />
-      <Testimonials />
       <CTA />
     </main>
   );

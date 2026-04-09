@@ -2,10 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
 import { NAV_LINKS, BRAND } from "@/lib/constants";
-import Logo from "@/components/brand/Logo";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,115 +27,86 @@ export default function Navbar() {
   }, [isOpen]);
 
   return (
-    <motion.nav
+    <nav
       aria-label="Ana navigasyon"
-      initial={{ y: -20, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, delay: 0.1, ease: [0.21, 0.47, 0.32, 0.98] }}
-      className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 px-4"
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
+        scrolled ? "bg-background/95 backdrop-blur-sm border-b border-border" : "bg-transparent"
+      }`}
     >
-      {/* Floating pill navbar */}
-      <div
-        className={`flex items-center justify-between w-full max-w-5xl transition-all duration-500 rounded-full px-5 py-2.5 ${
-          scrolled
-            ? "bg-[#0F172A]/95 backdrop-blur-xl border border-white/10 shadow-lg shadow-black/30"
-            : "bg-[#0F172A]/80 backdrop-blur-sm border border-white/5"
-        }`}
-      >
-        {/* Logo */}
-        <Logo variant="wordmark" size="sm" className="text-white" />
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-16">
+        {/* Logo — text only */}
+        <Link href="/" className="text-lg font-bold tracking-tight text-foreground">
+          verimio
+        </Link>
 
-        {/* Desktop nav links — centered */}
-        <div className="hidden md:flex items-center gap-0.5">
+        {/* Desktop nav */}
+        <div className="hidden md:flex items-center gap-1">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="relative px-3 py-1.5 text-[13px] font-medium text-white/50 hover:text-white transition-colors duration-200 rounded-full hover:bg-white/5"
+              className="px-3 py-1.5 text-[13px] text-foreground-secondary hover:text-foreground transition-colors"
             >
               {link.label}
             </Link>
           ))}
         </div>
 
-        {/* Right side */}
-        <div className="flex items-center gap-2">
-          {/* Desktop CTA */}
-          <Link
-            href={BRAND.tallyFormUrl}
-            className="hidden md:inline-flex items-center px-4 py-1.5 bg-secondary text-[#0F172A] font-semibold text-[13px] rounded-full hover:bg-secondary-hover transition-colors duration-200"
-          >
-            Check-Up Başlatın
-          </Link>
+        {/* Desktop CTA */}
+        <Link
+          href={BRAND.tallyFormUrl}
+          className="hidden md:inline-flex items-center px-5 py-2 bg-foreground text-background text-[13px] font-medium hover:opacity-90 transition-opacity"
+        >
+          Check-Up Başlatın
+        </Link>
 
-          {/* Mobile menu button */}
-          <motion.button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-full text-white/60 hover:text-white hover:bg-white/5 transition-colors"
-            whileTap={{ scale: 0.92 }}
-            aria-label={isOpen ? "Menüyü kapat" : "Menüyü aç"}
-            aria-expanded={isOpen}
-          >
-            <AnimatePresence mode="wait" initial={false}>
-              {isOpen ? (
-                <motion.div key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.15 }}>
-                  <X className="w-5 h-5" />
-                </motion.div>
-              ) : (
-                <motion.div key="open" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.15 }}>
-                  <Menu className="w-5 h-5" />
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </motion.button>
-        </div>
+        {/* Mobile menu button */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="md:hidden p-2 text-foreground"
+          aria-label={isOpen ? "Menüyü kapat" : "Menüyü aç"}
+          aria-expanded={isOpen}
+        >
+          {isOpen ? (
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <line x1="4" y1="4" x2="16" y2="16" />
+              <line x1="16" y1="4" x2="4" y2="16" />
+            </svg>
+          ) : (
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <line x1="3" y1="6" x2="17" y2="6" />
+              <line x1="3" y1="14" x2="17" y2="14" />
+            </svg>
+          )}
+        </button>
       </div>
 
-      {/* Mobile Menu — drops below pill */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -10, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -10, scale: 0.95 }}
-            transition={{ duration: 0.2, ease: [0.21, 0.47, 0.32, 0.98] }}
-            className="md:hidden absolute top-full mt-2 left-4 right-4 bg-[#0F172A]/95 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden shadow-xl shadow-black/30"
-          >
-            <div className="px-4 py-4 space-y-0.5">
-              {NAV_LINKS.map((link, i) => (
-                <motion.div
-                  key={link.href}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.04, duration: 0.2 }}
-                >
-                  <Link
-                    href={link.href}
-                    onClick={() => setIsOpen(false)}
-                    className="block px-3 py-2.5 text-sm font-medium text-white/60 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </motion.div>
-              ))}
-              <motion.div
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: NAV_LINKS.length * 0.04, duration: 0.2 }}
-                className="pt-2"
+      {/* Mobile menu */}
+      {isOpen && (
+        <div className="md:hidden border-t border-border bg-background">
+          <div className="px-6 py-6 space-y-1">
+            {NAV_LINKS.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+                className="block py-2.5 text-sm text-foreground-secondary hover:text-foreground transition-colors"
               >
-                <Link
-                  href={BRAND.tallyFormUrl}
-                  onClick={() => setIsOpen(false)}
-                  className="block w-full text-center px-4 py-2.5 bg-secondary text-[#0F172A] font-semibold text-sm rounded-full hover:bg-secondary-hover transition-colors"
-                >
-                  Check-Up Başlatın
-                </Link>
-              </motion.div>
+                {link.label}
+              </Link>
+            ))}
+            <div className="pt-4">
+              <Link
+                href={BRAND.tallyFormUrl}
+                onClick={() => setIsOpen(false)}
+                className="block w-full text-center px-5 py-2.5 bg-foreground text-background text-sm font-medium"
+              >
+                Check-Up Başlatın
+              </Link>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.nav>
+          </div>
+        </div>
+      )}
+    </nav>
   );
 }

@@ -1,10 +1,8 @@
 import Link from "next/link";
-import { Linkedin } from "lucide-react";
 import { BRAND } from "@/lib/constants";
-import { Wordmark } from "@/components/brand/Logo";
 
 const footerLinks = {
-  links: [
+  pages: [
     { label: "Ana Sayfa", href: "/" },
     { label: "Hakkımızda", href: "/hakkimizda" },
     { label: "Hizmetler", href: "/hizmetler" },
@@ -17,53 +15,40 @@ const footerLinks = {
     { label: "Kullanım Şartları", href: "/kullanim-sartlari" },
     { label: "İletişim", href: "/iletisim" },
   ],
-  social: [
-    { label: "LinkedIn", href: "https://www.linkedin.com/company/verimio", icon: Linkedin },
-  ],
 };
 
 export default function Footer() {
   return (
-    <footer className="relative bg-[#020617] text-white overflow-hidden">
-      {/* Subtle amber radial glow — top right */}
-      <div
-        className="absolute top-0 right-0 w-[500px] h-[300px] pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse at top right, rgba(245,158,11,0.05) 0%, transparent 70%)",
-        }}
-        aria-hidden="true"
-      />
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <footer className="border-t border-border">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           {/* Brand */}
           <div className="md:col-span-1">
-            <Link href="/" className="inline-block">
-              <Wordmark size="md" className="text-white" />
+            <Link href="/" className="text-lg font-bold tracking-tight text-foreground">
+              verimio
             </Link>
-            <p className="mt-4 text-sm text-white/70 leading-relaxed">
+            <p className="mt-4 text-sm text-foreground-secondary leading-relaxed">
               Şirketler için AI danışmanlığı ve dönüşüm koçluğu.
             </p>
             <a
               href={`mailto:${BRAND.email}`}
-              className="inline-flex items-center gap-2 mt-4 px-4 py-2 border border-white/15 rounded-full text-sm text-white/70 hover:border-secondary hover:text-secondary transition-colors"
+              className="inline-block mt-4 text-sm text-foreground underline underline-offset-4 decoration-border hover:decoration-foreground transition-colors"
             >
               {BRAND.email}
             </a>
           </div>
 
-          {/* Links */}
+          {/* Pages */}
           <div>
-            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
+            <h3 className="text-xs font-medium text-foreground-muted uppercase tracking-wider mb-4">
               Sayfalar
             </h3>
             <ul className="space-y-3">
-              {footerLinks.links.map((link) => (
+              {footerLinks.pages.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-white/70 hover:text-secondary transition-colors"
+                    className="text-sm text-foreground-secondary hover:text-foreground transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -74,7 +59,7 @@ export default function Footer() {
 
           {/* Support */}
           <div>
-            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
+            <h3 className="text-xs font-medium text-foreground-muted uppercase tracking-wider mb-4">
               Destek
             </h3>
             <ul className="space-y-3">
@@ -82,7 +67,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-white/70 hover:text-secondary transition-colors"
+                    className="text-sm text-foreground-secondary hover:text-foreground transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -93,35 +78,24 @@ export default function Footer() {
 
           {/* Social */}
           <div>
-            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
+            <h3 className="text-xs font-medium text-foreground-muted uppercase tracking-wider mb-4">
               Sosyal Medya
             </h3>
-            <ul role="list" className="flex items-center gap-3">
-              {footerLinks.social.map((item) => {
-                const IconComp = item.icon;
-                return (
-                  <li key={item.label}>
-                    <a
-                      href={item.href}
-                      className="w-9 h-9 flex items-center justify-center rounded-lg bg-white/5 hover:bg-white/10 text-white/70 hover:text-secondary transition-colors"
-                      aria-label={item.label}
-                    >
-                      <IconComp className="w-4 h-4" aria-hidden="true" />
-                    </a>
-                  </li>
-                );
-              })}
-            </ul>
+            <a
+              href="https://www.linkedin.com/company/verimio"
+              className="text-sm text-foreground-secondary hover:text-foreground transition-colors underline underline-offset-4 decoration-border hover:decoration-foreground"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn
+            </a>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-white/60">
-            © {new Date().getFullYear()} Verimio. Tüm hakları saklıdır.
-          </p>
-          <p className="text-sm text-white/60">
-            AI ile güçlendirilmiş iş süreçleri danışmanlığı
+        {/* Bottom */}
+        <div className="mt-16 pt-8 border-t border-border">
+          <p className="text-sm text-foreground-muted">
+            &copy; {new Date().getFullYear()} Verimio. Tüm hakları saklıdır.
           </p>
         </div>
       </div>
