@@ -217,6 +217,7 @@ async function createNotionPage(
         'Ekip': { select: { name: notionTeam } },
         'Skor': { number: analysis.score },
         'Email': { email },
+        'Telefon': { phone_number: (data.phone as string) || null },
         'Tarih': { date: { start: new Date().toISOString().split('T')[0] } },
       },
       children,
