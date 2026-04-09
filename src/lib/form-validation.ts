@@ -10,6 +10,16 @@ export function validateStep(step: number, data: FormData): ValidationErrors {
   if (step === 1) {
     if (!data.sector) errors.sector = "Lütfen sektörünüzü seçin";
     if (!data.companyName.trim()) errors.companyName = "Şirket adı zorunludur";
+    if (!data.phone.trim()) {
+      errors.phone = "Telefon numarası zorunludur";
+    } else if (data.phone.replace(/\D/g, "").length < 10) {
+      errors.phone = "Geçerli bir telefon numarası girin";
+    }
+    if (!data.email.trim()) {
+      errors.email = "E-posta adresi zorunludur";
+    } else if (!EMAIL_REGEX.test(data.email)) {
+      errors.email = "Geçerli bir e-posta adresi girin";
+    }
     if (!data.teamSize) errors.teamSize = "Lütfen ekip büyüklüğünüzü seçin";
   }
 
@@ -33,13 +43,7 @@ export function validateStep(step: number, data: FormData): ValidationErrors {
     if (!data.timeline) errors.timeline = "Lütfen bir seçenek işaretleyin";
   }
 
-  if (step === 4) {
-    if (!data.email.trim()) {
-      errors.email = "E-posta adresi zorunludur";
-    } else if (!EMAIL_REGEX.test(data.email)) {
-      errors.email = "Geçerli bir e-posta adresi girin";
-    }
-  }
+  // Step 4: sadece özet — email ve telefon Step 1'de alınıyor
 
   return errors;
 }

@@ -71,6 +71,28 @@ export default function Step1Sector({
         required
       />
 
+      {/* Phone */}
+      <FormInput
+        label="Telefon numarası"
+        type="tel"
+        value={formData.phone}
+        onChange={(v) => updateField("phone", v)}
+        error={errors.phone}
+        placeholder="+90 5xx xxx xx xx"
+        required
+      />
+
+      {/* Email */}
+      <FormInput
+        label="E-posta adresi"
+        type="email"
+        value={formData.email}
+        onChange={(v) => updateField("email", v)}
+        error={errors.email}
+        placeholder="ornek@firma.com"
+        required
+      />
+
       {/* Company website */}
       <FormInput
         label="Şirket websitesi"

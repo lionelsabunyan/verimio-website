@@ -1,7 +1,6 @@
 "use client";
 
 import FormStep from "../FormStep";
-import FormInput from "../ui/FormInput";
 import type { FormData } from "@/lib/form-data";
 
 interface Props {
@@ -10,30 +9,23 @@ interface Props {
   updateField: (key: keyof FormData, value: string | string[]) => void;
 }
 
-export default function Step4Contact({ formData, errors, updateField }: Props) {
+export default function Step4Contact({ formData }: Props) {
   return (
     <FormStep
-      title="Nereye gönderelim?"
-      description="Raporunuzu veya görüşme davetinizi bu adrese göndereceğiz."
+      title="Raporunuz hazır!"
+      description={`${formData.companyName || 'Şirketiniz'} için analiz sonuçlarınızı ${formData.email} adresine göndereceğiz.`}
     >
-      <FormInput
-        label="E-posta adresi"
-        type="email"
-        value={formData.email}
-        onChange={(v) => updateField("email", v)}
-        error={errors.email}
-        placeholder="ornek@firma.com"
-        required
-      />
-
-      <FormInput
-        label="Telefon numarası"
-        type="tel"
-        value={formData.phone}
-        onChange={(v) => updateField("phone", v)}
-        placeholder="+90 5xx xxx xx xx"
-        optional
-      />
+      <div className="rounded-xl bg-foreground/4 border border-border p-4 space-y-2">
+        <p className="text-sm text-foreground-secondary">
+          <span className="font-medium text-foreground">Şirket:</span> {formData.companyName}
+        </p>
+        <p className="text-sm text-foreground-secondary">
+          <span className="font-medium text-foreground">E-posta:</span> {formData.email}
+        </p>
+        <p className="text-sm text-foreground-secondary">
+          <span className="font-medium text-foreground">Telefon:</span> {formData.phone}
+        </p>
+      </div>
     </FormStep>
   );
 }
