@@ -77,18 +77,18 @@ function TesekkurlerContent() {
         >
           {isGorusme ? (
             <>
-              <div className="flex items-center gap-3 p-4 rounded-xl bg-surface border border-border text-left">
+              <div className="flex items-center gap-3 p-4 rounded-xl bg-background border border-border text-left">
                 <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <Calendar className="w-4 h-4 text-primary dark:text-primary-light" />
+                  <Calendar className="w-4 h-4 text-foreground dark:text-foreground" />
                 </div>
                 <div>
                   <p className="text-sm font-medium text-foreground">20 dakikalık ücretsiz görüşme</p>
                   <p className="text-xs text-foreground-secondary">Zoom üzerinden, size uygun saatte</p>
                 </div>
               </div>
-              <div className="flex items-center gap-3 p-4 rounded-xl bg-surface border border-border text-left">
+              <div className="flex items-center gap-3 p-4 rounded-xl bg-background border border-border text-left">
                 <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <Mail className="w-4 h-4 text-primary dark:text-primary-light" />
+                  <Mail className="w-4 h-4 text-foreground dark:text-foreground" />
                 </div>
                 <div>
                   <p className="text-sm font-medium text-foreground">Davet e-postanıza gelecek</p>
@@ -98,18 +98,18 @@ function TesekkurlerContent() {
             </>
           ) : (
             <>
-              <div className="flex items-center gap-3 p-4 rounded-xl bg-surface border border-border text-left">
-                <div className="w-9 h-9 rounded-xl bg-secondary/15 flex items-center justify-center flex-shrink-0">
-                  <Clock className="w-4 h-4 text-primary dark:text-primary-light" />
+              <div className="flex items-center gap-3 p-4 rounded-xl bg-background border border-border text-left">
+                <div className="w-9 h-9 rounded-xl bg-foreground/15 flex items-center justify-center flex-shrink-0">
+                  <Clock className="w-4 h-4 text-foreground dark:text-foreground" />
                 </div>
                 <div>
                   <p className="text-sm font-medium text-foreground">Raporunuz hazırlanıyor</p>
                   <p className="text-xs text-foreground-secondary">Check-up raporunuz en kısa sürede e-postanıza iletilecek</p>
                 </div>
               </div>
-              <div className="flex items-center gap-3 p-4 rounded-xl bg-surface border border-border text-left">
-                <div className="w-9 h-9 rounded-xl bg-secondary/15 flex items-center justify-center flex-shrink-0">
-                  <Mail className="w-4 h-4 text-primary dark:text-primary-light" />
+              <div className="flex items-center gap-3 p-4 rounded-xl bg-background border border-border text-left">
+                <div className="w-9 h-9 rounded-xl bg-foreground/15 flex items-center justify-center flex-shrink-0">
+                  <Mail className="w-4 h-4 text-foreground dark:text-foreground" />
                 </div>
                 <div>
                   <p className="text-sm font-medium text-foreground">Spam klasörünüzü kontrol edin</p>

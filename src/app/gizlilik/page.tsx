@@ -131,24 +131,24 @@ export default function GizlilikPage() {
   return (
     <div className="pt-20">
       {/* Hero */}
-      <section className="section-padding pb-0">
+      <section className="py-24 md:py-32 pb-0">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
-            <span className="w-1.5 h-1.5 rounded-full bg-secondary/60" />
+            <span className="w-1.5 h-1.5 rounded-full bg-foreground" />
+            <span className="w-1.5 h-1.5 rounded-full bg-foreground/60" />
             <span className="text-xs font-semibold text-foreground-secondary tracking-widest uppercase ml-1">
               Yasal
             </span>
           </div>
 
           <div className="flex items-start gap-4 mb-6">
-            <div className="w-12 h-12 rounded-xl bg-primary-light/10 flex items-center justify-center shrink-0 mt-1">
-              <Shield className="w-6 h-6 text-primary-light" />
+            <div className="w-12 h-12 rounded-xl bg-foreground/5 flex items-center justify-center shrink-0 mt-1">
+              <Shield className="w-6 h-6 text-foreground" />
             </div>
             <div>
               <h1 className="text-4xl sm:text-5xl font-bold leading-tight mb-4">
                 Gizlilik{" "}
-                <span className="text-primary-light">Politikası</span>
+                <span className="text-foreground">Politikası</span>
               </h1>
               <p className="text-lg text-foreground-secondary leading-relaxed max-w-2xl">
                 Verileriniz bizim için emanettir. Bu politika, hangi verileri
@@ -158,7 +158,7 @@ export default function GizlilikPage() {
             </div>
           </div>
 
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 border border-secondary/20 text-sm text-foreground-secondary">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-foreground/10 border border-secondary/20 text-sm text-foreground-secondary">
             Son güncelleme: Şubat 2026
           </div>
         </div>
@@ -167,7 +167,7 @@ export default function GizlilikPage() {
       {/* İçindekiler */}
       <section className="pb-4">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="p-6 rounded-2xl border border-border bg-surface">
+          <div className="p-6 rounded-2xl border border-border bg-background">
             <h2 className="text-sm font-semibold text-foreground-secondary uppercase tracking-wide mb-4">
               İçindekiler
             </h2>
@@ -176,7 +176,7 @@ export default function GizlilikPage() {
                 <a
                   key={section.id}
                   href={`#${section.id}`}
-                  className="text-sm text-primary-light hover:text-primary dark:hover:text-secondary transition-colors hover:underline underline-offset-2"
+                  className="text-sm text-foreground hover:text-foreground dark:hover:text-background transition-colors hover:underline underline-offset-2"
                 >
                   {section.title}
                 </a>
@@ -187,7 +187,7 @@ export default function GizlilikPage() {
       </section>
 
       {/* İçerik */}
-      <section className="section-padding">
+      <section className="py-24 md:py-32">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-12">
             {sections.map((section) => (
@@ -214,9 +214,9 @@ export default function GizlilikPage() {
       </section>
 
       {/* İletişim CTA */}
-      <section className="section-padding bg-background-secondary">
+      <section className="py-24 md:py-32 bg-background">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 p-8 rounded-2xl border border-border bg-surface">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 p-8 rounded-2xl border border-border bg-background">
             <div>
               <h2 className="text-xl font-bold mb-2">Sorularınız mı var?</h2>
               <p className="text-foreground-secondary text-sm leading-relaxed">
@@ -234,7 +234,7 @@ export default function GizlilikPage() {
               </Link>
               <Link
                 href="/iletisim"
-                className="inline-flex items-center gap-2 px-5 py-2.5 bg-secondary text-primary font-semibold rounded-full hover:bg-secondary-hover transition-all duration-200 text-sm"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-foreground text-foreground font-semibold rounded-full hover:bg-foreground-hover transition-all duration-200 text-sm"
               >
                 İletişime Geçin
                 <ArrowUpRight className="w-4 h-4" />

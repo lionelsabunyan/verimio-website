@@ -15,7 +15,6 @@ import {
   Repeat,
   ChevronDown,
 } from "lucide-react";
-import HeroVisual from "@/components/brand/HeroVisual";
 import CTA from "@/components/sections/CTA";
 import Button from "@/components/ui/Button";
 import type { Metadata } from "next";
@@ -202,7 +201,7 @@ const faqItems = [
 /* ------------------------------------------------------------------ */
 export default function AIKocluguPage() {
   return (
-    <main className="pt-20">
+    <main className="pt-24">
       {/* Schema */}
       <BreadcrumbSchema
         items={[
@@ -229,46 +228,29 @@ export default function AIKocluguPage() {
       {/* ============================================================ */}
       {/*  HERO                                                         */}
       {/* ============================================================ */}
-      <section className="section-padding pb-0">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
-                <span className="w-1.5 h-1.5 rounded-full bg-secondary/60" />
-                <span className="text-xs font-semibold text-foreground-secondary tracking-widest uppercase ml-1">
-                  AI Koçluğu
-                </span>
-              </div>
-
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-                Strateji de uygulama da{" "}
-                <span className="text-primary-light">tek elden.</span>
-              </h1>
-
-              <p className="text-lg text-foreground-secondary leading-relaxed mb-8 max-w-2xl">
-                Verimio&apos;da danışmanlık ve koçluk aynı sürecin parçasıdır.
-                Analiz eder, yol haritası çizer — sonra birlikte uygular,
-                ekibinizi eğitir ve sonuçları ölçeriz. Sizi yalnız bırakmadan,
-                baştan sona yanınızdayız.
-              </p>
-
-              <Button href="/analiz" size="md">
-                Ücretsiz Check-Up Başlat
-              </Button>
-            </div>
-
-            <div className="hidden lg:block">
-              <HeroVisual variant="services" />
-            </div>
-          </div>
+      <section className="pb-24 md:pb-32">
+        <div className="max-w-5xl mx-auto px-6 lg:px-8">
+          <p className="text-xs font-medium text-foreground-muted tracking-[0.15em] uppercase mb-4">
+            AI Koçluğu
+          </p>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 max-w-3xl">
+            Strateji de uygulama da tek elden.
+          </h1>
+          <p className="text-lg text-foreground-secondary leading-relaxed mb-8 max-w-2xl">
+            Verimio&apos;da danışmanlık ve koçluk aynı sürecin parçasıdır.
+            Analiz eder, yol haritası çizer — sonra birlikte uygular,
+            ekibinizi eğitir ve sonuçları ölçeriz.
+          </p>
+          <Button href="/analiz" size="md">
+            Ücretsiz Check-Up Başlat
+          </Button>
         </div>
       </section>
 
       {/* ============================================================ */}
       {/*  AI KOÇLUĞU NEDİR?                                           */}
       {/* ============================================================ */}
-      <section className="section-padding">
+      <section className="py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 mb-4">
             <span className="w-6 h-0.5 rounded-full bg-primary-light" />
@@ -311,19 +293,19 @@ export default function AIKocluguPage() {
       {/* ============================================================ */}
       {/*  KARŞILAŞTIRMA: Geleneksel vs Verimio                       */}
       {/* ============================================================ */}
-      <section className="section-padding bg-background-secondary">
+      <section className="py-24 md:py-32 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-2 mb-4">
-              <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
-              <span className="w-1.5 h-1.5 rounded-full bg-secondary/60" />
+              <span className="w-1.5 h-1.5 rounded-full bg-foreground" />
+              <span className="w-1.5 h-1.5 rounded-full bg-foreground/60" />
               <span className="text-xs font-semibold text-foreground-secondary tracking-widest uppercase ml-1">
                 Karşılaştırma
               </span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
               Geleneksel Yaklaşım vs{" "}
-              <span className="text-primary-light">Verimio Modeli</span>
+              <span className="text-foreground">Verimio Modeli</span>
             </h2>
             <p className="text-foreground-secondary max-w-2xl mx-auto">
               Piyasadaki çoğu firma ya danışmanlık ya eğitim yapıyor. Biz
@@ -342,7 +324,7 @@ export default function AIKocluguPage() {
                   <th className="text-left py-4 px-6 text-sm font-semibold text-foreground-muted uppercase tracking-wider">
                     Geleneksel Yaklaşım
                   </th>
-                  <th className="text-left py-4 px-6 text-sm font-semibold text-primary-light uppercase tracking-wider">
+                  <th className="text-left py-4 px-6 text-sm font-semibold text-foreground uppercase tracking-wider">
                     Verimio Modeli
                   </th>
                 </tr>
@@ -359,7 +341,7 @@ export default function AIKocluguPage() {
                     <td className="py-4 px-6 text-foreground-secondary text-sm">
                       {row.traditional}
                     </td>
-                    <td className="py-4 px-6 text-primary-light font-medium text-sm">
+                    <td className="py-4 px-6 text-foreground font-medium text-sm">
                       {row.verimio}
                     </td>
                   </tr>
@@ -373,19 +355,19 @@ export default function AIKocluguPage() {
       {/* ============================================================ */}
       {/*  NASIL ÇALIŞIR? 4 Faz                                        */}
       {/* ============================================================ */}
-      <section id="nasil-calisir" className="section-padding">
+      <section id="nasil-calisir" className="py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="flex items-center justify-center gap-2 mb-4">
-              <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
-              <span className="w-1.5 h-1.5 rounded-full bg-secondary/60" />
+              <span className="w-1.5 h-1.5 rounded-full bg-foreground" />
+              <span className="w-1.5 h-1.5 rounded-full bg-foreground/60" />
               <span className="text-xs font-semibold text-foreground-secondary tracking-widest uppercase ml-1">
                 Süreç
               </span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
               AI Koçluğu{" "}
-              <span className="text-primary-light">Nasıl Çalışır?</span>
+              <span className="text-foreground">Nasıl Çalışır?</span>
             </h2>
             <p className="text-foreground-secondary max-w-2xl mx-auto">
               Dönüşüm bir sprint değil, bir maratondur. 4 aşamalı sürecimiz
@@ -397,24 +379,24 @@ export default function AIKocluguPage() {
             {processSteps.map((step) => (
               <div
                 key={step.phase}
-                className="relative p-8 rounded-2xl bg-surface border border-border hover:border-border-accent transition-all duration-300 group glow-card"
+                className="relative p-8 rounded-2xl bg-surface border border-border hover:border-foreground transition-all duration-300 group "
               >
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-12 h-12 rounded-xl bg-primary-light/10 flex items-center justify-center group-hover:bg-primary-light/20 transition-colors">
-                    <step.icon className="w-6 h-6 text-primary-light" />
+                  <div className="w-12 h-12 rounded-xl bg-foreground/5 flex items-center justify-center group-hover:bg-foreground/10 transition-colors">
+                    <step.icon className="w-6 h-6 text-foreground" />
                   </div>
-                  <span className="text-xs font-bold text-primary-light uppercase tracking-wider">
+                  <span className="text-xs font-bold text-foreground uppercase tracking-wider">
                     {step.phase}
                   </span>
                 </div>
-                <h3 className="text-xl font-bold mb-3 group-hover:text-primary dark:group-hover:text-primary-light transition-colors">
+                <h3 className="text-xl font-bold mb-3 group-hover:text-primary group-hover:text-foreground transition-colors">
                   {step.title}
                 </h3>
                 <p className="text-foreground-secondary leading-relaxed mb-4">
                   {step.description}
                 </p>
                 <div className="flex items-center gap-2 text-xs text-foreground-muted">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary-light/60" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-foreground-muted" />
                   Süre: {step.duration}
                 </div>
               </div>
@@ -426,7 +408,7 @@ export default function AIKocluguPage() {
       {/* ============================================================ */}
       {/*  NEDEN AI KOÇLUĞU?                                           */}
       {/* ============================================================ */}
-      <section className="section-padding bg-background-secondary">
+      <section className="py-24 md:py-32 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 mb-4">
             <span className="w-6 h-0.5 rounded-full bg-primary-light" />
@@ -435,7 +417,7 @@ export default function AIKocluguPage() {
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            Neden <span className="text-primary-light">AI Koçluğu?</span>
+            Neden <span className="text-foreground">AI Koçluğu?</span>
           </h2>
           <p className="text-foreground-secondary leading-relaxed mb-10 max-w-3xl">
             Yapay zeka dönüşümü sadece bir yazılım satın almak değildir. Bir{" "}
@@ -470,12 +452,12 @@ export default function AIKocluguPage() {
             ].map((item) => (
               <div
                 key={item.title}
-                className="p-8 rounded-2xl bg-surface border border-border hover:border-border-accent transition-all duration-300 group glow-card"
+                className="p-8 rounded-2xl bg-surface border border-border hover:border-foreground transition-all duration-300 group "
               >
-                <div className="w-12 h-12 rounded-xl bg-primary-light/10 flex items-center justify-center mb-6 group-hover:bg-primary-light/20 transition-colors">
-                  <item.icon className="w-6 h-6 text-primary-light" />
+                <div className="w-12 h-12 rounded-xl bg-foreground/5 flex items-center justify-center mb-6 group-hover:bg-foreground/10 transition-colors">
+                  <item.icon className="w-6 h-6 text-foreground" />
                 </div>
-                <h3 className="text-xl font-bold mb-3 group-hover:text-primary dark:group-hover:text-primary-light transition-colors">
+                <h3 className="text-xl font-bold mb-3 group-hover:text-primary group-hover:text-foreground transition-colors">
                   {item.title}
                 </h3>
                 <p className="text-foreground-secondary leading-relaxed">
@@ -490,19 +472,19 @@ export default function AIKocluguPage() {
       {/* ============================================================ */}
       {/*  DEPARTMANLAR                                                 */}
       {/* ============================================================ */}
-      <section className="section-padding">
+      <section className="py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-2 mb-4">
-              <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
-              <span className="w-1.5 h-1.5 rounded-full bg-secondary/60" />
+              <span className="w-1.5 h-1.5 rounded-full bg-foreground" />
+              <span className="w-1.5 h-1.5 rounded-full bg-foreground/60" />
               <span className="text-xs font-semibold text-foreground-secondary tracking-widest uppercase ml-1">
                 Departmanlar
               </span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
               Hangi Departmanlar İçin{" "}
-              <span className="text-primary-light">AI Koçluğu?</span>
+              <span className="text-foreground">AI Koçluğu?</span>
             </h2>
             <p className="text-foreground-secondary max-w-2xl mx-auto">
               Her departmanın yapay zeka ile verimlilik kazanabileceği alanlar
@@ -515,12 +497,12 @@ export default function AIKocluguPage() {
             {departments.map((dept) => (
               <div
                 key={dept.title}
-                className="p-8 rounded-2xl bg-surface border border-border hover:border-border-accent transition-all duration-300 group glow-card"
+                className="p-8 rounded-2xl bg-surface border border-border hover:border-foreground transition-all duration-300 group "
               >
-                <div className="w-12 h-12 rounded-xl bg-primary-light/10 flex items-center justify-center mb-6 group-hover:bg-primary-light/20 transition-colors">
-                  <dept.icon className="w-6 h-6 text-primary-light" />
+                <div className="w-12 h-12 rounded-xl bg-foreground/5 flex items-center justify-center mb-6 group-hover:bg-foreground/10 transition-colors">
+                  <dept.icon className="w-6 h-6 text-foreground" />
                 </div>
-                <h3 className="text-xl font-bold mb-3 group-hover:text-primary dark:group-hover:text-primary-light transition-colors">
+                <h3 className="text-xl font-bold mb-3 group-hover:text-primary group-hover:text-foreground transition-colors">
                   {dept.title}
                 </h3>
                 <p className="text-foreground-secondary leading-relaxed">
@@ -535,7 +517,7 @@ export default function AIKocluguPage() {
       {/* ============================================================ */}
       {/*  KİMLER İÇİN?                                                */}
       {/* ============================================================ */}
-      <section className="section-padding bg-background-secondary">
+      <section className="py-24 md:py-32 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 mb-4">
             <span className="w-6 h-0.5 rounded-full bg-primary-light" />
@@ -545,7 +527,7 @@ export default function AIKocluguPage() {
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold mb-8">
             AI Koçluğu{" "}
-            <span className="text-primary-light">Kime Göre?</span>
+            <span className="text-foreground">Kime Göre?</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
@@ -560,7 +542,7 @@ export default function AIKocluguPage() {
                 key={item}
                 className="flex items-start gap-4 p-5 rounded-xl bg-surface border border-border"
               >
-                <CheckCircle2 className="w-5 h-5 text-primary-light shrink-0 mt-0.5" />
+                <CheckCircle2 className="w-5 h-5 text-foreground shrink-0 mt-0.5" />
                 <p className="text-foreground-secondary leading-relaxed">
                   {item}
                 </p>
@@ -573,19 +555,19 @@ export default function AIKocluguPage() {
       {/* ============================================================ */}
       {/*  SSS — Native details/summary accordion                     */}
       {/* ============================================================ */}
-      <section className="section-padding">
+      <section className="py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-2 mb-4">
-              <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
-              <span className="w-1.5 h-1.5 rounded-full bg-secondary/60" />
+              <span className="w-1.5 h-1.5 rounded-full bg-foreground" />
+              <span className="w-1.5 h-1.5 rounded-full bg-foreground/60" />
               <span className="text-xs font-semibold text-foreground-secondary tracking-widest uppercase ml-1">
                 SSS
               </span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
               Sık Sorulan{" "}
-              <span className="text-primary-light">Sorular</span>
+              <span className="text-foreground">Sorular</span>
             </h2>
           </div>
 
@@ -595,7 +577,7 @@ export default function AIKocluguPage() {
                 key={item.question}
                 className="group rounded-2xl border border-border bg-surface overflow-hidden"
               >
-                <summary className="flex items-center justify-between cursor-pointer p-6 text-foreground font-semibold hover:bg-surface-elevated/50 transition-colors list-none [&::-webkit-details-marker]:hidden">
+                <summary className="flex items-center justify-between cursor-pointer p-6 text-foreground font-semibold hover:bg-foreground/[0.02] transition-colors list-none [&::-webkit-details-marker]:hidden">
                   {item.question}
                   <ChevronDown className="w-5 h-5 text-foreground-muted shrink-0 ml-4 transition-transform duration-200 group-open:rotate-180" />
                 </summary>
@@ -611,7 +593,7 @@ export default function AIKocluguPage() {
       {/* ============================================================ */}
       {/*  İLGİLİ İÇERİKLER                                           */}
       {/* ============================================================ */}
-      <section className="section-padding bg-background-secondary">
+      <section className="py-24 md:py-32 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold mb-8">İlgili İçerikler</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -636,12 +618,12 @@ export default function AIKocluguPage() {
               <a
                 key={link.href}
                 href={link.href}
-                className="flex items-center gap-4 p-6 rounded-2xl bg-surface border border-border hover:border-border-accent transition-all duration-300 group glow-card"
+                className="flex items-center gap-4 p-6 rounded-2xl bg-surface border border-border hover:border-foreground transition-all duration-300 group "
               >
-                <div className="w-10 h-10 rounded-xl bg-primary-light/10 flex items-center justify-center shrink-0 group-hover:bg-primary-light/20 transition-colors">
-                  <GraduationCap className="w-5 h-5 text-primary-light" />
+                <div className="w-10 h-10 rounded-xl bg-foreground/5 flex items-center justify-center shrink-0 group-hover:bg-foreground/10 transition-colors">
+                  <GraduationCap className="w-5 h-5 text-foreground" />
                 </div>
-                <span className="font-medium group-hover:text-primary dark:group-hover:text-primary-light transition-colors">
+                <span className="font-medium group-hover:text-primary group-hover:text-foreground transition-colors">
                   {link.title}
                 </span>
               </a>
