@@ -33,7 +33,7 @@ export default function Textarea({
         className={`rounded-xl border transition-all duration-200 ${
           error
             ? "border-red-400 ring-2 ring-red-400/10"
-            : "border-border dark:border-white/10 focus-within:border-foreground focus-within:ring-2 focus-within:ring-foreground/15"
+            : "border-border focus-within:border-foreground focus-within:ring-2 focus-within:ring-foreground/15"
         }`}
       >
         <textarea

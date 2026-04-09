@@ -40,7 +40,7 @@ export default function StepIndicator({
                   done
                     ? "bg-foreground"
                     : active
-                    ? "bg-foreground ring-2 ring-primary/25 ring-offset-1 ring-offset-background"
+                    ? "bg-foreground ring-2 ring-foreground/15 ring-offset-1 ring-offset-background"
                     : "bg-foreground-muted"
                 }`}
                 animate={{ scale: active ? 1.2 : 1 }}
@@ -53,9 +53,9 @@ export default function StepIndicator({
               <span
                 className={`hidden md:block text-xs transition-colors duration-200 ${
                   active
-                    ? "text-foreground dark:text-foreground font-semibold"
+                    ? "text-foreground font-semibold"
                     : done
-                    ? "text-secondary font-medium"
+                    ? "text-foreground-secondary font-medium"
                     : "text-foreground-muted"
                 }`}
               >

@@ -267,7 +267,7 @@ export default function MultiStepForm() {
             whileTap={{ scale: 0.96 }}
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring" as const, stiffness: 400, damping: 25 }}
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold rounded-full bg-foreground text-white hover:bg-primary/90 shadow-sm"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium bg-foreground text-background hover:opacity-90"
           >
             Devam Et
           </motion.button>
@@ -300,9 +300,9 @@ export default function MultiStepForm() {
               whileTap={{ scale: isSubmitting ? 1 : 0.97 }}
               whileHover={{ scale: isSubmitting ? 1 : 1.01 }}
               transition={{ type: "spring" as const, stiffness: 400, damping: 25 }}
-              className="flex flex-col items-center gap-2 px-5 py-4 rounded-2xl border-2 border-secondary bg-foreground/8 hover:bg-foreground/15 transition-colors duration-150 text-center disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex flex-col items-center gap-2 px-5 py-4 border-2 border-border bg-background hover:border-foreground transition-colors duration-150 text-center disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <Mail className="w-5 h-5 text-background" />
+              <Mail className="w-5 h-5 text-foreground" />
               <div>
                 <p className="text-sm font-semibold text-foreground">
                   Detaylı Raporumu Gönder
@@ -321,14 +321,14 @@ export default function MultiStepForm() {
               whileTap={{ scale: isSubmitting ? 1 : 0.97 }}
               whileHover={{ scale: isSubmitting ? 1 : 1.01 }}
               transition={{ type: "spring" as const, stiffness: 400, damping: 25 }}
-              className="flex flex-col items-center gap-2 px-5 py-4 rounded-2xl border-2 border-primary bg-foreground hover:bg-primary/90 transition-colors duration-150 text-center shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex flex-col items-center gap-2 px-5 py-4 border-2 border-foreground bg-foreground hover:opacity-90 transition-opacity duration-150 text-center disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <Calendar className="w-5 h-5 text-white" />
+              <Calendar className="w-5 h-5 text-background" />
               <div>
-                <p className="text-sm font-semibold text-white">
+                <p className="text-sm font-semibold text-background">
                   Ücretsiz Görüşme Planla
                 </p>
-                <p className="text-xs text-white/70 mt-0.5">
+                <p className="text-xs text-background/70 mt-0.5">
                   20 dakika · Zoom · Hemen rezerve et
                 </p>
               </div>

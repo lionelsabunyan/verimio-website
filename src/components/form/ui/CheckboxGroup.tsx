@@ -51,7 +51,7 @@ export default function CheckboxGroup({
               className={`flex items-center gap-3 px-4 py-3 rounded-xl border text-sm text-left transition-colors duration-150 ${
                 checked
                   ? "bg-foreground/10 border-foreground/50 text-foreground font-medium"
-                  : "border-border dark:border-white/10 text-foreground-secondary hover:border-border-accent dark:hover:border-white/20 hover:bg-foreground/5"
+                  : "border-border text-foreground-secondary hover:border-foreground/30 hover:bg-foreground/[0.02]"
               }`}
             >
               <span
@@ -59,7 +59,7 @@ export default function CheckboxGroup({
                   checked ? "bg-foreground border-foreground border" : "border-2 border-foreground-muted"
                 }`}
               >
-                {checked && <Check className="w-2.5 h-2.5 text-primary" strokeWidth={3} />}
+                {checked && <Check className="w-2.5 h-2.5 text-background" strokeWidth={3} />}
               </span>
               {option}
             </motion.button>
