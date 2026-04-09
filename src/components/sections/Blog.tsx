@@ -8,7 +8,7 @@ import BlogGrid from "@/components/sections/BlogGrid";
 export default function Blog() {
   const cards = BLOG_POSTS.slice(0, 6).map((post, index) => (
     <Link key={index} href={`/blog/${post.slug}`} className="group block h-full">
-      <article className="relative rounded-2xl overflow-hidden h-full bg-surface-elevated border border-border hover:border-border-accent transition-all duration-300 glow-card">
+      <article className="relative rounded-2xl overflow-hidden h-full bg-background border border-border hover:border-foreground transition-all duration-300 ">
         {/* Image — let BlogCoverImage handle its own aspect ratio */}
         <div className="relative overflow-hidden">
           <div className="transition-transform duration-700 group-hover:scale-105">
@@ -18,7 +18,7 @@ export default function Blog() {
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
           {/* Date badge */}
           <div className="absolute top-3 left-3">
-            <span className="px-2.5 py-1 rounded-full bg-black/30 backdrop-blur-sm text-[11px] font-medium text-white/90">
+            <span className="px-2.5 py-1 rounded-full bg-black/30 backdrop-blur-sm text-[11px] font-medium text-background/90">
               {post.date}
             </span>
           </div>
@@ -26,10 +26,10 @@ export default function Blog() {
 
         {/* Content */}
         <div className="p-5">
-          <h3 className="text-base font-semibold mb-2 leading-snug group-hover:text-primary-light transition-colors line-clamp-2">
+          <h3 className="text-base font-semibold mb-2 leading-snug group-hover:text-foreground transition-colors line-clamp-2">
             {post.title}
           </h3>
-          <div className="flex items-center gap-1.5 text-xs font-medium text-primary-light">
+          <div className="flex items-center gap-1.5 text-xs font-medium text-foreground">
             Oku
             <ArrowUpRight className="w-3 h-3 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </div>
@@ -39,7 +39,7 @@ export default function Blog() {
   ));
 
   return (
-    <section className="section-padding bg-background-secondary">
+    <section className="py-24 md:py-32 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex items-center justify-between mb-10">
@@ -49,7 +49,7 @@ export default function Blog() {
           </div>
           <Link
             href="/blog"
-            className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 border border-border text-foreground font-medium text-sm rounded-full hover:border-border-accent hover:text-primary-light transition-all"
+            className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 border border-border text-foreground font-medium text-sm rounded-full hover:border-foreground hover:text-foreground transition-all"
           >
             Tüm Yazılar
             <ArrowUpRight className="w-4 h-4" />

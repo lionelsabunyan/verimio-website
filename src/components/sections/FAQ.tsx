@@ -11,7 +11,7 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="section-padding">
+    <section id="faq" className="py-24 md:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-20">
           {/* Left */}
@@ -20,7 +20,7 @@ export default function FAQ() {
               <SectionLabel className="mb-4">SSS</SectionLabel>
               <h2 className="text-3xl sm:text-4xl font-bold mb-4">
                 Merak{" "}
-                <span className="text-primary-light">Ettikleriniz</span>
+                <span className="text-foreground">Ettikleriniz</span>
               </h2>
               <p className="text-foreground-secondary leading-relaxed">
                 Aklınızdaki soruların cevabını burada bulamazsanız bize yazın.
@@ -41,12 +41,12 @@ export default function FAQ() {
                   id={`faq-button-${index}`}
                 >
                   <span className={`text-base font-medium pr-6 transition-colors duration-200 ${
-                    openIndex === index ? "text-primary dark:text-primary-light" : "text-foreground group-hover:text-primary/80 dark:group-hover:text-primary-light/80"
+                    openIndex === index ? "text-foreground " : "text-foreground group-hover:text-foreground/80 /80"
                   }`}>
                     {item.question}
                   </span>
                   <div className={`flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center transition-colors duration-200 ${
-                    openIndex === index ? "bg-primary text-white" : "bg-foreground/6 text-foreground-secondary group-hover:bg-foreground/10"
+                    openIndex === index ? "bg-primary text-background" : "bg-foreground/6 text-foreground-secondary group-hover:bg-foreground/10"
                   }`} aria-hidden="true">
                     {openIndex === index
                       ? <Minus className="w-3.5 h-3.5" />

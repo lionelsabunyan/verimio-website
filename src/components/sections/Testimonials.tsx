@@ -11,7 +11,7 @@ function StarRating() {
   return (
     <div className="flex items-center gap-0.5" aria-label="5 üzerinden 5 yıldız">
       {Array.from({ length: 5 }).map((_, i) => (
-        <svg key={i} viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 text-secondary">
+        <svg key={i} viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 text-background">
           <path d="M8 1l1.85 3.75 4.15.6-3 2.92.71 4.14L8 10.25l-3.71 1.96.71-4.14L2 5.35l4.15-.6z" />
         </svg>
       ))}
@@ -29,7 +29,7 @@ export default function Testimonials() {
   };
 
   return (
-    <section className="section-padding bg-background-secondary">
+    <section className="py-24 md:py-32 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
@@ -37,14 +37,14 @@ export default function Testimonials() {
           <FadeIn>
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <span className="w-6 h-0.5 rounded-full bg-primary-light" />
+                <span className="w-6 h-0.5 rounded-full bg-foreground" />
                 <span className="text-xs font-medium text-foreground-muted tracking-widest uppercase">
                   Müşterilerimiz
                 </span>
               </div>
 
               <h2 className="text-3xl sm:text-4xl font-bold mb-6 leading-tight">
-                Sonuçlar <span className="text-primary-light">konuşuyor.</span>
+                Sonuçlar <span className="text-foreground">konuşuyor.</span>
               </h2>
 
               <p className="text-foreground-secondary leading-relaxed mb-8 max-w-md">
@@ -56,7 +56,7 @@ export default function Testimonials() {
                 <motion.button
                   onClick={() => navigate(-1)}
                   whileTap={{ scale: 0.92 }}
-                  className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:border-border-accent hover:bg-primary/5 transition-colors"
+                  className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:border-foreground hover:bg-primary/5 transition-colors"
                   aria-label="Önceki"
                 >
                   <ChevronLeft className="w-4 h-4" />
@@ -69,7 +69,7 @@ export default function Testimonials() {
                       onClick={() => { setDirection(i > current ? 1 : -1); setCurrent(i); }}
                       className={`rounded-full transition-all duration-200 ${
                         i === current
-                          ? "w-5 h-1.5 bg-secondary"
+                          ? "w-5 h-1.5 bg-foreground"
                           : "w-1.5 h-1.5 bg-foreground/20 hover:bg-foreground/40"
                       }`}
                       aria-label={`${i + 1}. yorum: ${t.name}`}
@@ -81,7 +81,7 @@ export default function Testimonials() {
                 <motion.button
                   onClick={() => navigate(1)}
                   whileTap={{ scale: 0.92 }}
-                  className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:border-border-accent hover:bg-primary/5 transition-colors"
+                  className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:border-foreground hover:bg-primary/5 transition-colors"
                   aria-label="Sonraki"
                 >
                   <ChevronRight className="w-4 h-4" />
@@ -106,7 +106,7 @@ export default function Testimonials() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: direction * -40 }}
                 transition={{ duration: 0.35, ease: [0.21, 0.47, 0.32, 0.98] }}
-                className="rounded-2xl border border-border bg-surface p-8 shadow-sm"
+                className="rounded-2xl border border-border bg-background p-8 shadow-sm"
               >
                 {/* Rating */}
                 <StarRating />

@@ -164,10 +164,10 @@ export default function MultiStepForm() {
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-          className="w-12 h-12 rounded-full border-4 border-secondary/20 border-t-secondary"
+          className="w-12 h-12 rounded-full border-4 border-foreground/20 border-t-foreground"
         />
         <div>
-          <h3 className="text-lg font-semibold text-primary dark:text-primary-light">
+          <h3 className="text-lg font-semibold text-foreground">
             Analiziniz hazırlanıyor...
           </h3>
           <p className="text-sm text-foreground-secondary mt-1">
@@ -267,7 +267,7 @@ export default function MultiStepForm() {
             whileTap={{ scale: 0.96 }}
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring" as const, stiffness: 400, damping: 25 }}
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold rounded-full bg-primary text-white hover:bg-primary/90 shadow-sm"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold rounded-full bg-foreground text-white hover:bg-primary/90 shadow-sm"
           >
             Devam Et
           </motion.button>
@@ -300,9 +300,9 @@ export default function MultiStepForm() {
               whileTap={{ scale: isSubmitting ? 1 : 0.97 }}
               whileHover={{ scale: isSubmitting ? 1 : 1.01 }}
               transition={{ type: "spring" as const, stiffness: 400, damping: 25 }}
-              className="flex flex-col items-center gap-2 px-5 py-4 rounded-2xl border-2 border-secondary bg-secondary/8 hover:bg-secondary/15 transition-colors duration-150 text-center disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex flex-col items-center gap-2 px-5 py-4 rounded-2xl border-2 border-secondary bg-foreground/8 hover:bg-foreground/15 transition-colors duration-150 text-center disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <Mail className="w-5 h-5 text-secondary" />
+              <Mail className="w-5 h-5 text-background" />
               <div>
                 <p className="text-sm font-semibold text-foreground">
                   Detaylı Raporumu Gönder
@@ -321,7 +321,7 @@ export default function MultiStepForm() {
               whileTap={{ scale: isSubmitting ? 1 : 0.97 }}
               whileHover={{ scale: isSubmitting ? 1 : 1.01 }}
               transition={{ type: "spring" as const, stiffness: 400, damping: 25 }}
-              className="flex flex-col items-center gap-2 px-5 py-4 rounded-2xl border-2 border-primary bg-primary hover:bg-primary/90 transition-colors duration-150 text-center shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex flex-col items-center gap-2 px-5 py-4 rounded-2xl border-2 border-primary bg-foreground hover:bg-primary/90 transition-colors duration-150 text-center shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <Calendar className="w-5 h-5 text-white" />
               <div>

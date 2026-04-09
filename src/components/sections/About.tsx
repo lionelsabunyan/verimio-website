@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function About() {
   return (
-    <section className="py-24 md:py-32">
+    <section className="pt-16 pb-24 md:pt-20 md:pb-32">
       <div className="max-w-5xl mx-auto px-6 lg:px-8">
         <div className="max-w-3xl">
           <p className="text-xs font-medium text-foreground-muted tracking-[0.15em] uppercase mb-4">

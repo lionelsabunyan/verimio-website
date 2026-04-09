@@ -8,7 +8,7 @@ import SectionLabel from "@/components/ui/SectionLabel";
 
 export default function Benefits() {
   return (
-    <section className="section-padding bg-background-secondary">
+    <section className="py-24 md:py-32 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
@@ -18,7 +18,7 @@ export default function Benefits() {
 
             <h2 className="text-3xl sm:text-4xl font-bold mb-5">
               Raporunuzda Neler{" "}
-              <span className="text-primary-light">Bulacaksınız?</span>
+              <span className="text-foreground">Bulacaksınız?</span>
             </h2>
             <p className="text-lg text-foreground-secondary mb-8 leading-relaxed">
               Check-up raporunuz genel öneriler değil, firmanıza özel somut
@@ -34,8 +34,8 @@ export default function Benefits() {
           <StaggerContainer className="space-y-3" staggerDelay={0.07}>
             {BENEFITS.map((benefit, index) => (
               <StaggerItem key={index}>
-                <div className="flex items-center gap-4 p-4 rounded-xl bg-surface border border-border hover:border-border-accent hover:shadow-sm transition-all duration-200 group">
-                  <CheckCircle2 className="w-5 h-5 text-secondary flex-shrink-0 group-hover:text-primary dark:group-hover:text-primary-light transition-colors duration-200" />
+                <div className="flex items-center gap-4 p-4 rounded-xl bg-background border border-border hover:border-foreground hover:shadow-sm transition-all duration-200 group">
+                  <CheckCircle2 className="w-5 h-5 text-background flex-shrink-0 group-hover:text-foreground  transition-colors duration-200" />
                   <span className="text-sm font-medium text-foreground/80 group-hover:text-foreground transition-colors duration-200">
                     {benefit}
                   </span>

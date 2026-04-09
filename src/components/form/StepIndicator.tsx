@@ -20,7 +20,7 @@ export default function StepIndicator({
       {/* Progress bar */}
       <div className="relative h-1 bg-border rounded-full overflow-hidden">
         <motion.div
-          className="absolute inset-y-0 left-0 bg-secondary rounded-full"
+          className="absolute inset-y-0 left-0 bg-foreground rounded-full"
           initial={{ width: 0 }}
           animate={{ width: `${progress}%` }}
           transition={{ duration: 0.5, ease: [0.21, 0.47, 0.32, 0.98] }}
@@ -38,9 +38,9 @@ export default function StepIndicator({
               <motion.div
                 className={`w-2.5 h-2.5 rounded-full transition-colors duration-300 ${
                   done
-                    ? "bg-secondary"
+                    ? "bg-foreground"
                     : active
-                    ? "bg-primary ring-2 ring-primary/25 ring-offset-1 ring-offset-background"
+                    ? "bg-foreground ring-2 ring-primary/25 ring-offset-1 ring-offset-background"
                     : "bg-foreground-muted"
                 }`}
                 animate={{ scale: active ? 1.2 : 1 }}
@@ -53,7 +53,7 @@ export default function StepIndicator({
               <span
                 className={`hidden md:block text-xs transition-colors duration-200 ${
                   active
-                    ? "text-primary dark:text-primary-light font-semibold"
+                    ? "text-foreground dark:text-foreground font-semibold"
                     : done
                     ? "text-secondary font-medium"
                     : "text-foreground-muted"
@@ -69,7 +69,7 @@ export default function StepIndicator({
       {/* Mobile label */}
       <p className="md:hidden text-xs text-foreground-muted text-center">
         Adım{" "}
-        <span className="font-semibold text-primary dark:text-primary-light">{currentStep}</span> /{" "}
+        <span className="font-semibold text-foreground dark:text-foreground">{currentStep}</span> /{" "}
         {totalSteps} —{" "}
         <span className="text-foreground">{STEP_LABELS[currentStep - 1]}</span>
       </p>

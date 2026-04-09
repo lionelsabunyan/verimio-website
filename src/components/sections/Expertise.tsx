@@ -9,7 +9,7 @@ import SectionLabel from "@/components/ui/SectionLabel";
 
 export default function Expertise() {
   return (
-    <section className="relative bg-dark text-white section-padding overflow-hidden">
+    <section className="relative bg-foreground text-background py-24 md:py-32 overflow-hidden">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
@@ -19,7 +19,7 @@ export default function Expertise() {
                 Uzmanlık Alanlarımız
               </SectionLabel>
 
-              <h2 className="text-3xl sm:text-4xl font-bold text-white leading-tight">
+              <h2 className="text-3xl sm:text-4xl font-bold text-background leading-tight">
                 Şirketinizi bir üst
                 <br />
                 seviyeye taşıyoruz
@@ -30,13 +30,13 @@ export default function Expertise() {
           <FadeIn delay={0.15} direction="right">
             <div className="flex items-end h-full">
               <div>
-                <p className="text-white/60 mb-6 max-w-md">
+                <p className="text-background/60 mb-6 max-w-md">
                   İş süreçlerinizi bugünün teknolojisiyle yeniden tasarlıyor,
                   ölçülebilir sonuçlar üretiyoruz.
                 </p>
                 <Link
                   href="/hizmetler"
-                  className="inline-flex items-center gap-2 px-6 py-3 border border-white/20 text-white font-medium text-sm rounded-full hover:border-secondary hover:text-secondary transition-all duration-200"
+                  className="inline-flex items-center gap-2 px-6 py-3 border border-background/20 text-background font-medium text-sm rounded-full hover:border-secondary hover:text-background transition-all duration-200"
                 >
                   Tüm Hizmetleri Gör
                   <ArrowUpRight className="w-4 h-4" />
@@ -52,30 +52,30 @@ export default function Expertise() {
             <StaggerItem key={index}>
               <Link
                 href="/hizmetler"
-                className="border-t border-white/10 py-8 group flex flex-col md:flex-row md:items-start gap-4 md:gap-0"
+                className="border-t border-background/10 py-8 group flex flex-col md:flex-row md:items-start gap-4 md:gap-0"
               >
                 {/* Left: Number + Title */}
                 <div className="flex items-baseline gap-4 md:w-1/2">
-                  <span className="text-sm font-mono text-white/30 tabular-nums shrink-0">
+                  <span className="text-sm font-mono text-background/30 tabular-nums shrink-0">
                     {String(index + 1).padStart(2, "0")}
                   </span>
-                  <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white/40 group-hover:text-secondary transition-colors duration-500">
+                  <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-background/40 group-hover:text-background transition-colors duration-500">
                     {item.title}
                   </h3>
                 </div>
 
                 {/* Right: Description + Arrow */}
                 <div className="flex items-start gap-4 md:w-1/2 md:pl-8">
-                  <p className="text-base text-white/50 leading-relaxed group-hover:text-white/70 transition-colors duration-500">
+                  <p className="text-base text-background/50 leading-relaxed group-hover:text-background/70 transition-colors duration-500">
                     {item.description}
                   </p>
-                  <ArrowUpRight className="w-5 h-5 text-white/20 group-hover:text-secondary transition-colors duration-500 shrink-0 mt-1" />
+                  <ArrowUpRight className="w-5 h-5 text-background/20 group-hover:text-background transition-colors duration-500 shrink-0 mt-1" />
                 </div>
               </Link>
             </StaggerItem>
           ))}
           {/* Last border */}
-          <div className="border-t border-white/10" />
+          <div className="border-t border-background/10" />
         </StaggerContainer>
       </div>
     </section>

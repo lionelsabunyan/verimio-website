@@ -50,17 +50,17 @@ export default function RadioGroup({
               transition={{ type: "spring", stiffness: 400, damping: 25 }}
               className={`flex items-center gap-3 px-4 py-3 rounded-xl border text-sm text-left transition-colors duration-150 ${
                 selected
-                  ? "bg-primary/8 border-primary/40 dark:border-primary-light/40 text-primary dark:text-primary-light font-medium"
+                  ? "bg-primary/8 border-primary/40 dark:border-foreground/40 text-foreground dark:text-foreground font-medium"
                   : "border-border dark:border-white/10 text-foreground-secondary hover:border-border-accent dark:hover:border-white/20 hover:bg-foreground/3"
               }`}
             >
               <span
                 className={`flex-shrink-0 w-4 h-4 rounded-full border-2 flex items-center justify-center transition-colors duration-150 ${
-                  selected ? "border-primary dark:border-primary-light" : "border-foreground-muted"
+                  selected ? "border-primary dark:border-foreground" : "border-foreground-muted"
                 }`}
               >
                 {selected && (
-                  <span className="w-2 h-2 rounded-full bg-primary dark:bg-primary-light block" />
+                  <span className="w-2 h-2 rounded-full bg-foreground dark:bg-foreground block" />
                 )}
               </span>
               {option}

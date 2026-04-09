@@ -7,7 +7,7 @@ import { HOW_IT_WORKS } from "@/lib/constants";
 
 export default function HowItWorks() {
   return (
-    <section id="nasil-calisir" className="section-padding bg-background-secondary">
+    <section id="nasil-calisir" className="py-24 md:py-32 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
 
@@ -16,7 +16,7 @@ export default function HowItWorks() {
             <FadeIn>
               <SectionLabel className="mb-4">Nasıl Çalışır?</SectionLabel>
               <h2 className="text-3xl sm:text-4xl font-bold mb-4 leading-tight">
-                Nasıl <span className="text-primary-light">Çalışıyoruz?</span>
+                Nasıl <span className="text-foreground">Çalışıyoruz?</span>
               </h2>
               <p className="text-foreground-secondary leading-relaxed">
                 Firmanıza özgü bir süreçle, doğru adımları birlikte atıyoruz.
@@ -40,8 +40,8 @@ export default function HowItWorks() {
                   >
                     {/* Timeline column — number instead of icon */}
                     <div className="flex flex-col items-center shrink-0">
-                      <div className="w-12 h-12 rounded-xl bg-primary-light/10 flex items-center justify-center group-hover:bg-primary-light/20 transition-colors duration-300">
-                        <span className="text-lg font-bold text-primary-light">{index + 1}</span>
+                      <div className="w-12 h-12 rounded-xl bg-foreground/5 flex items-center justify-center group-hover:bg-foreground/10 transition-colors duration-300">
+                        <span className="text-lg font-bold text-foreground">{index + 1}</span>
                       </div>
                       {!isLast && (
                         <div className="w-px flex-1 min-h-[40px] bg-border my-2" />
@@ -50,7 +50,7 @@ export default function HowItWorks() {
 
                     {/* Content */}
                     <div className="pb-10">
-                      <h3 className="text-xl font-bold mb-2 group-hover:text-primary-light transition-colors duration-300">
+                      <h3 className="text-xl font-bold mb-2 group-hover:text-foreground transition-colors duration-300">
                         {step.title}
                       </h3>
                       <p className="text-sm text-foreground-secondary leading-relaxed max-w-md">

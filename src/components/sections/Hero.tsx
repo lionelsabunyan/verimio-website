@@ -3,8 +3,8 @@ import Button from "@/components/ui/Button";
 
 export default function Hero() {
   return (
-    <section className="min-h-screen flex items-center bg-background">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
+    <section className="flex items-end min-h-[85vh] bg-background">
+      <div className="max-w-5xl mx-auto px-6 lg:px-8 pt-32 pb-16">
         <p className="text-sm font-medium text-foreground-muted tracking-[0.15em] uppercase mb-8">
           {HERO_CONTENT.badge}
         </p>

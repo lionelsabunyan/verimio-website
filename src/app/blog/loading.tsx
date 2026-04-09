@@ -2,7 +2,7 @@ export default function BlogLoading() {
   return (
     <div className="pt-20">
       {/* Hero skeleton */}
-      <section className="section-padding">
+      <section className="py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <div className="h-4 w-16 bg-foreground/8 rounded-full mb-6 animate-pulse" />
@@ -14,7 +14,7 @@ export default function BlogLoading() {
       </section>
 
       {/* Blog grid skeleton */}
-      <section className="section-padding bg-background-secondary">
+      <section className="py-24 md:py-32 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {Array.from({ length: 6 }, (_, i) => (

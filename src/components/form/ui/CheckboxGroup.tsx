@@ -50,13 +50,13 @@ export default function CheckboxGroup({
               transition={{ type: "spring", stiffness: 400, damping: 25 }}
               className={`flex items-center gap-3 px-4 py-3 rounded-xl border text-sm text-left transition-colors duration-150 ${
                 checked
-                  ? "bg-secondary/10 border-secondary/50 text-foreground font-medium"
-                  : "border-border dark:border-white/10 text-foreground-secondary hover:border-border-accent dark:hover:border-white/20 hover:bg-secondary/5"
+                  ? "bg-foreground/10 border-foreground/50 text-foreground font-medium"
+                  : "border-border dark:border-white/10 text-foreground-secondary hover:border-border-accent dark:hover:border-white/20 hover:bg-foreground/5"
               }`}
             >
               <span
                 className={`flex-shrink-0 w-4 h-4 rounded flex items-center justify-center transition-colors duration-150 ${
-                  checked ? "bg-secondary border-secondary border" : "border-2 border-foreground-muted"
+                  checked ? "bg-foreground border-foreground border" : "border-2 border-foreground-muted"
                 }`}
               >
                 {checked && <Check className="w-2.5 h-2.5 text-primary" strokeWidth={3} />}

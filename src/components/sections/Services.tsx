@@ -3,7 +3,7 @@ import { EXPERTISE_ITEMS } from "@/lib/constants";
 
 export default function Services() {
   return (
-    <section className="py-24 md:py-32">
+    <section className="py-24 md:py-32 border-t border-border">
       <div className="max-w-5xl mx-auto px-6 lg:px-8">
         <p className="text-xs font-medium text-foreground-muted tracking-[0.15em] uppercase mb-4">
           Hizmetler

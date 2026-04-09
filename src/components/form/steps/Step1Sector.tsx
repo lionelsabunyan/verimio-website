@@ -41,13 +41,13 @@ export default function Step1Sector({
                 transition={{ type: "spring" as const, stiffness: 400, damping: 25 }}
                 className={`flex flex-col items-center text-center gap-2 p-4 rounded-xl border transition-all duration-150 ${
                   selected
-                    ? "border-primary bg-primary/10 text-primary dark:border-primary-light dark:bg-primary-light/10 dark:text-primary-light"
+                    ? "border-primary bg-primary/10 text-foreground dark:border-foreground dark:bg-foreground/10 dark:text-foreground"
                     : "border-border dark:border-white/10 text-foreground-secondary hover:border-border-accent dark:hover:border-white/20 hover:text-foreground hover:bg-foreground/5"
                 }`}
               >
                 <span className="text-2xl leading-none">{s.emoji}</span>
                 <div>
-                  <p className={`text-sm font-semibold leading-tight ${selected ? "text-primary dark:text-primary-light" : "text-foreground"}`}>
+                  <p className={`text-sm font-semibold leading-tight ${selected ? "text-foreground dark:text-foreground" : "text-foreground"}`}>
                     {s.label}
                   </p>
                   <p className="text-xs text-foreground-muted mt-0.5 leading-tight">{s.sub}</p>
@@ -119,7 +119,7 @@ export default function Step1Sector({
                 transition={{ type: "spring" as const, stiffness: 400, damping: 25 }}
                 className={`py-2.5 px-3 rounded-lg border text-xs font-medium text-center transition-colors duration-150 ${
                   selected
-                    ? "bg-primary text-white border-primary dark:bg-primary-light dark:border-primary-light"
+                    ? "bg-foreground text-white border-primary dark:bg-foreground dark:border-foreground"
                     : "border-border dark:border-white/10 text-foreground-secondary hover:border-border-accent dark:hover:border-white/20 hover:text-foreground"
                 }`}
               >

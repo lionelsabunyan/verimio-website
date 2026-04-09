@@ -253,7 +253,7 @@ export default function AIKocluguPage() {
       <section className="py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 mb-4">
-            <span className="w-6 h-0.5 rounded-full bg-primary-light" />
+            <span className="w-6 h-0.5 rounded-full bg-foreground" />
             <span className="text-xs font-medium text-foreground-muted tracking-widest uppercase">
               Kavram
             </span>
@@ -411,7 +411,7 @@ export default function AIKocluguPage() {
       <section className="py-24 md:py-32 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 mb-4">
-            <span className="w-6 h-0.5 rounded-full bg-primary-light" />
+            <span className="w-6 h-0.5 rounded-full bg-foreground" />
             <span className="text-xs font-medium text-foreground-muted tracking-widest uppercase">
               Avantajlar
             </span>
@@ -520,7 +520,7 @@ export default function AIKocluguPage() {
       <section className="py-24 md:py-32 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 mb-4">
-            <span className="w-6 h-0.5 rounded-full bg-primary-light" />
+            <span className="w-6 h-0.5 rounded-full bg-foreground" />
             <span className="text-xs font-medium text-foreground-muted tracking-widest uppercase">
               Hedef Kitle
             </span>

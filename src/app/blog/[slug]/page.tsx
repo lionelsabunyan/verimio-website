@@ -154,19 +154,19 @@ const mdxComponents = {
   ),
   blockquote: (props: { children?: React.ReactNode; [key: string]: unknown }) => (
     <blockquote
-      className="border-l-4 border-primary pl-5 my-6 text-foreground-secondary italic"
+      className="border-l-4 border-foreground pl-5 my-6 text-foreground-secondary italic"
       {...props}
     />
   ),
   code: (props: { children?: React.ReactNode; [key: string]: unknown }) => (
     <code
-      className="bg-surface border border-border rounded px-1.5 py-0.5 text-sm font-mono text-primary-light"
+      className="bg-background border border-border rounded px-1.5 py-0.5 text-sm font-mono text-foreground"
       {...props}
     />
   ),
   pre: (props: { children?: React.ReactNode; [key: string]: unknown }) => (
     <pre
-      className="bg-surface border border-border rounded-xl p-5 my-6 overflow-x-auto text-sm font-mono"
+      className="bg-background border border-border rounded-xl p-5 my-6 overflow-x-auto text-sm font-mono"
       {...props}
     />
   ),
@@ -216,12 +216,12 @@ export default async function BlogPostPage({
         ]}
       />
       {/* Header */}
-      <section className="section-padding pb-0">
+      <section className="py-24 md:py-32 pb-0">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Breadcrumb */}
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-sm text-foreground-secondary hover:text-primary-light transition-colors mb-8"
+            className="inline-flex items-center gap-2 text-sm text-foreground-secondary hover:text-foreground transition-colors mb-8"
           >
             <ArrowLeft className="w-4 h-4" />
             Blog
@@ -229,7 +229,7 @@ export default async function BlogPostPage({
 
           {/* Category badge */}
           <div className="flex items-center gap-3 mb-5">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-xs font-semibold text-primary-light">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-foreground/5 border border-foreground/20 text-xs font-semibold text-foreground">
               <Tag className="w-3 h-3" />
               {catLabel}
             </span>
@@ -282,9 +282,9 @@ export default async function BlogPostPage({
             <aside className="lg:col-span-4">
               <div className="sticky top-28 space-y-6">
                 {/* CTA Card */}
-                <div className="bg-surface border border-border rounded-2xl p-6">
+                <div className="bg-background border border-border rounded-2xl p-6">
                   <div className="flex items-center gap-2 mb-4">
-                    <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
+                    <span className="w-1 h-1 rounded-full bg-foreground-muted" />
                     <span className="text-xs font-semibold text-foreground-secondary tracking-widest uppercase">
                       Ücretsiz
                     </span>
@@ -298,7 +298,7 @@ export default async function BlogPostPage({
                   </p>
                   <Link
                     href={BRAND.tallyFormUrl}
-                    className="inline-flex items-center gap-2 w-full justify-center px-5 py-3 bg-secondary text-primary font-semibold rounded-full hover:bg-secondary-hover transition-all duration-200 text-sm"
+                    className="inline-flex items-center gap-2 w-full justify-center px-5 py-3 bg-foreground text-background font-semibold hover:opacity-90 transition-all duration-200 text-sm"
                   >
                     Ücretsiz Check-Up
                     <ArrowUpRight className="w-4 h-4" />
@@ -307,7 +307,7 @@ export default async function BlogPostPage({
 
                 {/* Related posts */}
                 {related.length > 0 && (
-                  <div className="bg-surface border border-border rounded-2xl p-6">
+                  <div className="bg-background border border-border rounded-2xl p-6">
                     <p className="text-xs font-semibold text-foreground-secondary tracking-widest uppercase mb-4">
                       İlgili Yazılar
                     </p>
@@ -326,7 +326,7 @@ export default async function BlogPostPage({
                             />
                           </div>
                           <div>
-                            <p className="text-sm font-medium leading-snug group-hover:text-primary-light transition-colors">
+                            <p className="text-sm font-medium leading-snug group-hover:text-foreground transition-colors">
                               {rel.title}
                             </p>
                             <p className="text-xs text-foreground-secondary mt-0.5">
@@ -345,11 +345,11 @@ export default async function BlogPostPage({
       </section>
 
       {/* Bottom CTA */}
-      <section className="section-padding bg-background-secondary">
+      <section className="py-24 md:py-32 bg-background">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">
             Firmanız için{" "}
-            <span className="text-primary-light">doğru adımı atın</span>
+            <span className="text-foreground">doğru adımı atın</span>
           </h2>
           <p className="text-foreground-secondary leading-relaxed mb-8">
             Otomasyon potansiyelinizi, tasarruf fırsatlarınızı ve 90 günlük
@@ -357,7 +357,7 @@ export default async function BlogPostPage({
           </p>
           <Link
             href={BRAND.tallyFormUrl}
-            className="inline-flex items-center gap-2 px-7 py-3.5 bg-secondary text-primary font-semibold rounded-full hover:bg-secondary-hover transition-all duration-200 hover:shadow-lg hover:shadow-secondary/25 text-sm"
+            className="inline-flex items-center gap-2 px-7 py-3.5 bg-foreground text-background font-semibold hover:opacity-90 transition-all duration-200  text-sm"
           >
             Ücretsiz Check-Up Başlatın
             <ArrowUpRight className="w-4 h-4" />

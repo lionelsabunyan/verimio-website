@@ -32,8 +32,7 @@ function Wordmark({
     <span
       className={`font-bold tracking-[-0.02em] select-none ${sizeMap[size].wordmark} ${className}`}
     >
-      <span className="text-current">verim</span>
-      <span className="text-secondary">io</span>
+      verimio
     </span>
   );
 }
@@ -65,7 +64,7 @@ function Monogram({
         strokeLinecap="round"
         strokeLinejoin="round"
       />
-      <circle cx="32" cy="16" r="4.5" fill="#F59E0B" />
+      <circle cx="32" cy="16" r="4.5" fill="white" />
     </svg>
   );
 }
