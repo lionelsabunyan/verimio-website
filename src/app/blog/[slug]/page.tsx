@@ -1,15 +1,13 @@
 import type React from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, ArrowUpRight, Calendar, Clock, Tag } from "lucide-react";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import matter from "gray-matter";
 import fs from "fs";
 import path from "path";
 import type { Metadata } from "next";
 import { BRAND, BLOG_POSTS } from "@/lib/constants";
-import BlogCardImage, { type BlogCategory } from "@/components/brand/BlogCardImage";
-import BlogCoverImage from "@/components/brand/BlogCoverImage";
+import { type BlogCategory } from "@/components/brand/BlogCardImage";
 import ArticleSchema from "@/components/seo/ArticleSchema";
 import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 
@@ -26,13 +24,13 @@ interface PostFrontmatter {
 
 const categoryLabels: Record<string, string> = {
   "ai-tools": "AI Araçları",
-  "automation": "Otomasyon",
-  "data": "Veri & Raporlama",
-  "strategy": "Strateji",
-  "security": "Veri Güvenliği",
-  "customer": "Müşteri Deneyimi",
-  "roi": "ROI & Verimlilik",
-  "tutorial": "Rehber",
+  automation: "Otomasyon",
+  data: "Veri & Raporlama",
+  strategy: "Strateji",
+  security: "Veri Güvenliği",
+  customer: "Müşteri Deneyimi",
+  roi: "ROI & Verimlilik",
+  tutorial: "Rehber",
 };
 
 function getPostSlugs(): string[] {
@@ -43,7 +41,9 @@ function getPostSlugs(): string[] {
     .map((f) => f.replace(/\.mdx$/, ""));
 }
 
-function getPost(slug: string): { frontmatter: PostFrontmatter; content: string } | null {
+function getPost(
+  slug: string
+): { frontmatter: PostFrontmatter; content: string } | null {
   const filePath = path.join(CONTENT_DIR, `${slug}.mdx`);
   if (!fs.existsSync(filePath)) return null;
   const raw = fs.readFileSync(filePath, "utf-8");
@@ -58,9 +58,9 @@ export async function generateStaticParams() {
 }
 
 const TURKISH_MONTHS: Record<string, number> = {
-  "Ocak": 0, "Şubat": 1, "Mart": 2, "Nisan": 3,
-  "Mayıs": 4, "Haziran": 5, "Temmuz": 6, "Ağustos": 7,
-  "Eylül": 8, "Ekim": 9, "Kasım": 10, "Aralık": 11,
+  Ocak: 0, Şubat: 1, Mart: 2, Nisan: 3,
+  Mayıs: 4, Haziran: 5, Temmuz: 6, Ağustos: 7,
+  Eylül: 8, Ekim: 9, Kasım: 10, Aralık: 11,
 };
 
 function toISODate(dateStr: string): string {
@@ -83,9 +83,8 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const post = getPost(slug);
-  if (!post) {
-    return { title: "Yazı Bulunamadı" };
-  }
+  if (!post) return { title: "Yazı Bulunamadı" };
+
   const { frontmatter } = post;
   const webpExists = fs.existsSync(
     path.join(process.cwd(), "public/images/blog", `${slug}.webp`)
@@ -105,7 +104,9 @@ export async function generateMetadata({
       section: categoryLabels[frontmatter.category] ?? frontmatter.category,
       locale: "tr_TR",
       url: `https://www.verimio.com.tr/blog/${slug}`,
-      ...(webpExists ? { images: [{ url: `/images/blog/${slug}.webp`, width: 1200, height: 630 }] } : {}),
+      ...(webpExists
+        ? { images: [{ url: `/images/blog/${slug}.webp`, width: 1200, height: 630 }] }
+        : {}),
     },
     twitter: {
       card: "summary_large_image",
@@ -117,61 +118,43 @@ export async function generateMetadata({
   };
 }
 
-// MDX custom components — matches site design system
 const mdxComponents = {
   h2: (props: { children?: React.ReactNode; [key: string]: unknown }) => (
-    <h2
-      className="text-2xl font-bold mt-10 mb-4 text-foreground leading-snug"
-      {...props}
-    />
+    <h2 className="text-2xl font-bold mt-12 mb-4 text-foreground leading-snug" {...props} />
   ),
   h3: (props: { children?: React.ReactNode; [key: string]: unknown }) => (
-    <h3
-      className="text-xl font-semibold mt-8 mb-3 text-foreground"
-      {...props}
-    />
+    <h3 className="text-xl font-bold mt-8 mb-3 text-foreground" {...props} />
   ),
   p: (props: { children?: React.ReactNode; [key: string]: unknown }) => (
-    <p
-      className="text-foreground-secondary leading-relaxed mb-5 text-base"
-      {...props}
-    />
+    <p className="text-foreground-secondary leading-[1.8] mb-5" {...props} />
   ),
   ul: (props: { children?: React.ReactNode; [key: string]: unknown }) => (
-    <ul className="list-disc list-outside pl-6 mb-5 space-y-2 text-foreground-secondary" {...props} />
+    <ul className="list-disc list-outside pl-6 mb-5 space-y-2 text-foreground-secondary leading-[1.8]" {...props} />
   ),
   ol: (props: { children?: React.ReactNode; [key: string]: unknown }) => (
-    <ol className="list-decimal list-outside pl-6 mb-5 space-y-2 text-foreground-secondary" {...props} />
+    <ol className="list-decimal list-outside pl-6 mb-5 space-y-2 text-foreground-secondary leading-[1.8]" {...props} />
   ),
   li: (props: { children?: React.ReactNode; [key: string]: unknown }) => (
-    <li className="leading-relaxed" {...props} />
+    <li className="leading-[1.8]" {...props} />
   ),
   strong: (props: { children?: React.ReactNode; [key: string]: unknown }) => (
     <strong className="font-semibold text-foreground" {...props} />
   ),
   em: (props: { children?: React.ReactNode; [key: string]: unknown }) => (
-    <em className="italic text-foreground-secondary" {...props} />
+    <em className="italic" {...props} />
   ),
   blockquote: (props: { children?: React.ReactNode; [key: string]: unknown }) => (
-    <blockquote
-      className="border-l-4 border-foreground pl-5 my-6 text-foreground-secondary italic"
-      {...props}
-    />
+    <blockquote className="border-l-2 border-foreground pl-6 my-8 text-foreground italic" {...props} />
   ),
   code: (props: { children?: React.ReactNode; [key: string]: unknown }) => (
-    <code
-      className="bg-background border border-border rounded px-1.5 py-0.5 text-sm font-mono text-foreground"
-      {...props}
-    />
+    <code className="bg-foreground/5 border border-border px-1.5 py-0.5 text-sm text-foreground" {...props} />
   ),
   pre: (props: { children?: React.ReactNode; [key: string]: unknown }) => (
-    <pre
-      className="bg-background border border-border rounded-xl p-5 my-6 overflow-x-auto text-sm font-mono"
-      {...props}
-    />
+    <pre className="bg-foreground/[0.03] border border-border p-5 my-6 overflow-x-auto text-sm" {...props} />
   ),
-  hr: () => (
-    <hr className="border-border my-10" />
+  hr: () => <hr className="border-border my-12" />,
+  a: (props: { children?: React.ReactNode; href?: string; [key: string]: unknown }) => (
+    <a className="text-foreground underline underline-offset-4 decoration-border hover:decoration-foreground transition-colors" {...props} />
   ),
 };
 
@@ -182,24 +165,22 @@ export default async function BlogPostPage({
 }) {
   const { slug } = await params;
   const post = getPost(slug);
-
   if (!post) notFound();
 
   const { frontmatter, content } = post;
   const catLabel = categoryLabels[frontmatter.category] ?? frontmatter.category;
   const isoDate = toISODate(frontmatter.date);
 
-  // Related posts: same category, different slug (from constants)
   const related = BLOG_POSTS.filter(
     (p) => p.category === frontmatter.category && p.slug !== slug
-  ).slice(0, 2);
+  ).slice(0, 3);
 
   const webpExists = fs.existsSync(
     path.join(process.cwd(), "public/images/blog", `${slug}.webp`)
   );
 
   return (
-    <main className="pt-20">
+    <main className="pt-24">
       <ArticleSchema
         slug={slug}
         title={frontmatter.title}
@@ -215,155 +196,87 @@ export default async function BlogPostPage({
           { name: frontmatter.title, url: `https://www.verimio.com.tr/blog/${slug}` },
         ]}
       />
-      {/* Header */}
-      <section className="py-24 md:py-32 pb-0">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Breadcrumb */}
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-2 text-sm text-foreground-secondary hover:text-foreground transition-colors mb-8"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Blog
-          </Link>
 
-          {/* Category badge */}
-          <div className="flex items-center gap-3 mb-5">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-foreground/5 border border-foreground/20 text-xs font-semibold text-foreground">
-              <Tag className="w-3 h-3" />
-              {catLabel}
-            </span>
-          </div>
+      {/* Article header */}
+      <div className="max-w-3xl mx-auto px-6 lg:px-8">
+        <Link
+          href="/blog"
+          className="text-sm text-foreground-muted hover:text-foreground transition-colors"
+        >
+          ← Blog
+        </Link>
 
-          {/* Title */}
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6 max-w-3xl">
-            {frontmatter.title}
-          </h1>
-
-          {/* Meta row */}
-          <div className="flex flex-wrap items-center gap-4 text-sm text-foreground-secondary mb-10 pb-10 border-b border-border">
-            <time dateTime={isoDate} className="flex items-center gap-1.5">
-              <Calendar className="w-4 h-4" aria-hidden="true" />
-              {frontmatter.date}
-            </time>
-            {frontmatter.readingTime && (
-              <span className="flex items-center gap-1.5">
-                <Clock className="w-4 h-4" />
-                {frontmatter.readingTime} okuma
-              </span>
-            )}
-            {frontmatter.author && (
-              <span className="text-foreground-secondary">
-                {frontmatter.author}
-              </span>
-            )}
-          </div>
-
-          {/* Cover image */}
-          <BlogCoverImage
-            slug={slug}
-            title={frontmatter.title}
-            category={frontmatter.category}
-            className="mb-0"
-          />
+        <div className="mt-8 mb-4 flex items-center gap-3 text-sm text-foreground-muted">
+          <span>{catLabel}</span>
+          <span>·</span>
+          <time dateTime={isoDate}>{frontmatter.date}</time>
+          {frontmatter.readingTime && (
+            <>
+              <span>·</span>
+              <span>{frontmatter.readingTime} okuma</span>
+            </>
+          )}
         </div>
-      </section>
 
-      {/* Content */}
-      <section className="py-8 md:py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-            {/* Article */}
-            <article className="lg:col-span-8">
-              <MDXRemote source={content} components={mdxComponents} />
-            </article>
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6">
+          {frontmatter.title}
+        </h1>
 
-            {/* Sidebar */}
-            <aside className="lg:col-span-4">
-              <div className="sticky top-28 space-y-6">
-                {/* CTA Card */}
-                <div className="bg-background border border-border rounded-2xl p-6">
-                  <div className="flex items-center gap-2 mb-4">
-                    <span className="w-1 h-1 rounded-full bg-foreground-muted" />
-                    <span className="text-xs font-semibold text-foreground-secondary tracking-widest uppercase">
-                      Ücretsiz
-                    </span>
-                  </div>
-                  <h3 className="text-base font-bold mb-2">
-                    Şirketinizin Otomasyon Hazırlığını Öğrenin
-                  </h3>
-                  <p className="text-sm text-foreground-secondary leading-relaxed mb-5">
-                    90 günlük yol haritanız ve otomasyon potansiyeliniz için
-                    Check-Up sürecini başlatın.
-                  </p>
-                  <Link
-                    href={BRAND.tallyFormUrl}
-                    className="inline-flex items-center gap-2 w-full justify-center px-5 py-3 bg-foreground text-background font-semibold hover:opacity-90 transition-all duration-200 text-sm"
-                  >
-                    Ücretsiz Check-Up
-                    <ArrowUpRight className="w-4 h-4" />
-                  </Link>
-                </div>
+        <p className="text-lg text-foreground-secondary leading-relaxed mb-12">
+          {frontmatter.excerpt}
+        </p>
 
-                {/* Related posts */}
-                {related.length > 0 && (
-                  <div className="bg-background border border-border rounded-2xl p-6">
-                    <p className="text-xs font-semibold text-foreground-secondary tracking-widest uppercase mb-4">
-                      İlgili Yazılar
-                    </p>
-                    <div className="space-y-4">
-                      {related.map((rel, i) => (
-                        <Link
-                          key={i}
-                          href={`/blog/${rel.slug}`}
-                          className="group flex gap-3 items-start"
-                        >
-                          <div className="w-12 h-12 rounded-lg overflow-hidden shrink-0">
-                            <BlogCardImage
-                              index={i}
-                              title={rel.title}
-                              category={rel.category}
-                            />
-                          </div>
-                          <div>
-                            <p className="text-sm font-medium leading-snug group-hover:text-foreground transition-colors">
-                              {rel.title}
-                            </p>
-                            <p className="text-xs text-foreground-secondary mt-0.5">
-                              {rel.date}
-                            </p>
-                          </div>
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-            </aside>
+        <hr className="border-border mb-12" />
+      </div>
+
+      {/* Article body — single column, narrow */}
+      <article className="max-w-3xl mx-auto px-6 lg:px-8">
+        <MDXRemote source={content} components={mdxComponents} />
+      </article>
+
+      {/* Related posts */}
+      {related.length > 0 && (
+        <div className="max-w-3xl mx-auto px-6 lg:px-8 mt-16 pt-12 border-t border-border">
+          <p className="text-xs font-medium text-foreground-muted tracking-[0.15em] uppercase mb-6">
+            Benzer yazılar
+          </p>
+          <div className="space-y-0">
+            {related.map((rel, i) => (
+              <Link
+                key={i}
+                href={`/blog/${rel.slug}`}
+                className="group flex items-baseline justify-between py-4 border-b border-border"
+              >
+                <span className="text-foreground font-medium group-hover:text-foreground-secondary transition-colors pr-4">
+                  {rel.title}
+                </span>
+                <span className="text-sm text-foreground-muted shrink-0">
+                  {rel.date}
+                </span>
+              </Link>
+            ))}
           </div>
         </div>
-      </section>
+      )}
 
       {/* Bottom CTA */}
-      <section className="py-24 md:py-32 bg-background">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-4">
-            Firmanız için{" "}
-            <span className="text-foreground">doğru adımı atın</span>
+      <div className="max-w-3xl mx-auto px-6 lg:px-8 py-24">
+        <div className="bg-foreground p-8 md:p-12">
+          <h2 className="text-2xl font-bold text-background mb-3">
+            Firmanız için doğru adımı atın
           </h2>
-          <p className="text-foreground-secondary leading-relaxed mb-8">
-            Otomasyon potansiyelinizi, tasarruf fırsatlarınızı ve 90 günlük
-            yol haritanızı ücretsiz check-up ile keşfedin.
+          <p className="text-background/70 leading-relaxed mb-6 max-w-lg">
+            Otomasyon potansiyelinizi ve 90 günlük yol haritanızı
+            ücretsiz check-up ile keşfedin.
           </p>
           <Link
             href={BRAND.tallyFormUrl}
-            className="inline-flex items-center gap-2 px-7 py-3.5 bg-foreground text-background font-semibold hover:opacity-90 transition-all duration-200  text-sm"
+            className="inline-flex items-center px-6 py-3 bg-background text-foreground font-medium text-sm hover:opacity-90 transition-opacity"
           >
             Ücretsiz Check-Up Başlatın
-            <ArrowUpRight className="w-4 h-4" />
           </Link>
         </div>
-      </section>
+      </div>
     </main>
   );
 }
