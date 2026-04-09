@@ -201,7 +201,7 @@ async function createNotionPage(
     ] : [textBlock('Danışman rehberi üretilemedi.')]),
   ]
 
-  await fetch('https://api.notion.com/v1/pages', {
+  const notionRes = await fetch('https://api.notion.com/v1/pages', {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${NOTION_TOKEN}`,
@@ -221,7 +221,12 @@ async function createNotionPage(
       },
       children,
     }),
-  }).catch((err) => console.error('[Notion] Sayfa oluşturma hatası:', err))
+  }).catch((err) => { console.error('[Notion] Fetch hatası:', err); return null })
+
+  if (notionRes && !notionRes.ok) {
+    const errBody = await notionRes.text().catch(() => '')
+    console.error('[Notion] API hatası:', notionRes.status, errBody)
+  }
 }
 
 export async function POST(req: NextRequest) {
@@ -293,7 +298,7 @@ export async function POST(req: NextRequest) {
     }
 
     // 3. Notion'da müşteri sayfası oluştur (paralel, hata kritik değil)
-    createNotionPage(body, analysis).catch(() => {})
+    createNotionPage(body, analysis).catch((err) => console.error('[Notion] createNotionPage hatası:', err))
 
     // 4. Müşteriye rapor emaili gönder
     const { error: emailError } = await getResend().emails.send({
