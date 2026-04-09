@@ -5,15 +5,11 @@ import { ArrowUpRight } from "lucide-react";
 import { EXPERTISE_ITEMS } from "@/lib/constants";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/motion";
 import SectionLabel from "@/components/ui/SectionLabel";
-import { RadialGlow } from "@/components/brand/Decoratives";
+
 
 export default function Expertise() {
   return (
     <section className="relative bg-dark text-white section-padding overflow-hidden">
-      {/* Decorative glow */}
-      <RadialGlow color="lime" size={350} opacity={0.08} className="top-10 -right-20" />
-      <RadialGlow color="purple" size={300} opacity={0.06} className="bottom-10 -left-20" />
-
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">

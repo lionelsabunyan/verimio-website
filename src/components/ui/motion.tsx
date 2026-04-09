@@ -1,7 +1,10 @@
-"use client";
-
-import { motion } from "framer-motion";
 import type { ReactNode } from "react";
+
+/*
+ * Stripped-down motion wrappers — no animation, just passthrough divs.
+ * Framer Motion removed from public-facing pages per redesign brief.
+ * These exist so existing imports don't break.
+ */
 
 interface FadeInProps {
   children: ReactNode;
@@ -11,35 +14,8 @@ interface FadeInProps {
   once?: boolean;
 }
 
-export function FadeIn({
-  children,
-  delay = 0,
-  direction = "up",
-  className = "",
-  once = true,
-}: FadeInProps) {
-  const directionOffset = {
-    up: { y: 30 },
-    down: { y: -30 },
-    left: { x: 30 },
-    right: { x: -30 },
-  };
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, ...directionOffset[direction] }}
-      whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once, margin: "-50px" }}
-      transition={{
-        duration: 0.6,
-        delay,
-        ease: [0.21, 0.47, 0.32, 0.98],
-      }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
+export function FadeIn({ children, className = "" }: FadeInProps) {
+  return <div className={className}>{children}</div>;
 }
 
 interface StaggerContainerProps {
@@ -48,28 +24,8 @@ interface StaggerContainerProps {
   staggerDelay?: number;
 }
 
-export function StaggerContainer({
-  children,
-  className = "",
-  staggerDelay = 0.1,
-}: StaggerContainerProps) {
-  return (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-50px" }}
-      variants={{
-        visible: {
-          transition: {
-            staggerChildren: staggerDelay,
-          },
-        },
-      }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
+export function StaggerContainer({ children, className = "" }: StaggerContainerProps) {
+  return <div className={className}>{children}</div>;
 }
 
 export function StaggerItem({
@@ -79,48 +35,16 @@ export function StaggerItem({
   children: ReactNode;
   className?: string;
 }) {
-  return (
-    <motion.div
-      variants={{
-        hidden: { opacity: 0, y: 20 },
-        visible: {
-          opacity: 1,
-          y: 0,
-          transition: {
-            duration: 0.5,
-            ease: [0.21, 0.47, 0.32, 0.98],
-          },
-        },
-      }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
+  return <div className={className}>{children}</div>;
 }
 
 export function ScaleIn({
   children,
-  delay = 0,
   className = "",
 }: {
   children: ReactNode;
   delay?: number;
   className?: string;
 }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{
-        duration: 0.5,
-        delay,
-        ease: [0.21, 0.47, 0.32, 0.98],
-      }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
+  return <div className={className}>{children}</div>;
 }

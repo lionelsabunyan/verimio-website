@@ -2,16 +2,11 @@
 
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { FloatingShapes, RadialGlow } from "@/components/brand/Decoratives";
+
 
 export default function NotFound() {
   return (
     <main className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Background decoratives */}
-      <RadialGlow color="lime" size={400} opacity={0.07} className="top-1/4 -right-20" />
-      <RadialGlow color="purple" size={350} opacity={0.06} className="bottom-1/4 -left-20" />
-      <FloatingShapes count={6} />
-
       <div className="relative z-10 text-center px-4 sm:px-6 max-w-lg mx-auto">
         {/* 404 SVG */}
         <div className="flex justify-center mb-8">

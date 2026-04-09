@@ -1,22 +1,40 @@
 import type { Metadata } from "next";
-import { DM_Sans, DM_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import NavbarWrapper from "@/components/layout/NavbarWrapper";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import OrganizationSchema from "@/components/seo/OrganizationSchema";
 
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
-  subsets: ["latin", "latin-ext"],
-  weight: ["300", "400", "500", "600", "700"],
-  display: "swap",
-});
-
-const dmMono = DM_Mono({
-  variable: "--font-dm-mono",
-  subsets: ["latin", "latin-ext"],
-  weight: ["300", "400", "500"],
+const ppNeueMontreal = localFont({
+  src: [
+    {
+      path: "../../public/fonts/ppneuemontreal-book.woff2",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/ppneuemontreal-book.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/ppneuemontreal-medium.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/ppneuemontreal-bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/ppneuemontreal-italic.woff2",
+      weight: "400",
+      style: "italic",
+    },
+  ],
+  variable: "--font-pp-neue-montreal",
   display: "swap",
 });
 
@@ -87,28 +105,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="tr" className="scroll-smooth" suppressHydrationWarning>
-      <head>
-        {/* FOUC prevention — apply theme before React hydration */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var theme = localStorage.getItem('verimio-theme') || 'system';
-                  var resolved = theme;
-                  if (theme === 'system') {
-                    resolved = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-                  }
-                  document.documentElement.classList.add(resolved);
-                } catch(e) {}
-              })();
-            `,
-          }}
-        />
-      </head>
+    <html lang="tr" className="scroll-smooth">
       <body
-        className={`${dmSans.variable} ${dmMono.variable} antialiased bg-background text-foreground`}
+        className={`${ppNeueMontreal.variable} antialiased bg-background text-foreground`}
       >
         <ThemeProvider>
           <NavbarWrapper>{children}</NavbarWrapper>
