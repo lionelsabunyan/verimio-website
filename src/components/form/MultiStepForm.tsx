@@ -155,14 +155,8 @@ export default function MultiStepForm() {
       return;
     }
 
-    // Cal.com URL kurulumdan sonra dolu olacak
-    if (BRAND.calendlyUrl && BRAND.calendlyUrl !== "#") {
-      window.open(BRAND.calendlyUrl, "_blank");
-      router.push("/tesekkurler?tip=gorusme");
-    } else {
-      // Cal.com henüz kurulmamış → rapor akışına düş
-      await handleSubmitReport();
-    }
+    window.open(BRAND.calendlyUrl, "_blank");
+    router.push("/tesekkurler?tip=gorusme");
   };
 
   // Loading screen
