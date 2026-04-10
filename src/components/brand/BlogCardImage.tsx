@@ -45,16 +45,16 @@ export default function BlogCardImage({
 
   // Background gradient configs per pattern
   const gradients: Record<number, [string, string]> = {
-    0: ["#0F172A", "#0F172A"],
-    1: ["#0F172A", "#0F0A1E"],
-    2: ["#0F0A1E", "#0F172A"],
-    3: ["#1E1B4B", "#0F172A"],
-    4: ["#0F0A1E", "#0F172A"],
-    5: ["#0F172A", "#0F0A1E"],
-    6: ["#0F172A", "#0F172A"],
-    7: ["#1E1B4B", "#0F172A"],
+    0: ["#FFFFFF", "#FFFFFF"],
+    1: ["#FFFFFF", "#FFFFFF"],
+    2: ["#FFFFFF", "#FFFFFF"],
+    3: ["#F5F5F5", "#FFFFFF"],
+    4: ["#FFFFFF", "#FFFFFF"],
+    5: ["#FFFFFF", "#FFFFFF"],
+    6: ["#FFFFFF", "#FFFFFF"],
+    7: ["#F5F5F5", "#FFFFFF"],
   };
-  const [gradFrom, gradTo] = gradients[pattern] ?? ["#0F172A", "#0F172A"];
+  const [gradFrom, gradTo] = gradients[pattern] ?? ["#FFFFFF", "#FFFFFF"];
 
   return (
     <div
@@ -74,7 +74,7 @@ export default function BlogCardImage({
             <stop offset="100%" stopColor={gradTo} />
           </linearGradient>
           <radialGradient id={`glow-${uid}`} cx="75%" cy="25%" r="60%">
-            <stop offset="0%" stopColor="#F59E0B" stopOpacity="0.15" />
+            <stop offset="0%" stopColor="#0A0A0A" stopOpacity="0.15" />
             <stop offset="100%" stopColor="transparent" stopOpacity="0" />
           </radialGradient>
         </defs>
@@ -85,13 +85,13 @@ export default function BlogCardImage({
         {/* ── PATTERN 0: Circle clusters (ai-tools) ── */}
         {pattern === 0 && (
           <g opacity="0.3">
-            <circle cx="300" cy="60" r="45" stroke="#F59E0B" strokeWidth="1" fill="none" />
-            <circle cx="300" cy="60" r="30" stroke="#F59E0B" strokeWidth="1" fill="none" />
-            <circle cx="300" cy="60" r="15" stroke="#F59E0B" strokeWidth="1.5" fill="none" />
-            <circle cx="120" cy="180" r="25" stroke="#F59E0B" strokeWidth="0.5" fill="none" />
-            <circle cx="120" cy="180" r="12" stroke="#F59E0B" strokeWidth="1" fill="none" />
-            <circle cx="350" cy="200" r="8" fill="#F59E0B" fillOpacity="0.2" />
-            <circle cx="80" cy="50" r="5" fill="#F59E0B" fillOpacity="0.3" />
+            <circle cx="300" cy="60" r="45" stroke="#0A0A0A" strokeWidth="1" fill="none" />
+            <circle cx="300" cy="60" r="30" stroke="#0A0A0A" strokeWidth="1" fill="none" />
+            <circle cx="300" cy="60" r="15" stroke="#0A0A0A" strokeWidth="1.5" fill="none" />
+            <circle cx="120" cy="180" r="25" stroke="#0A0A0A" strokeWidth="0.5" fill="none" />
+            <circle cx="120" cy="180" r="12" stroke="#0A0A0A" strokeWidth="1" fill="none" />
+            <circle cx="350" cy="200" r="8" fill="#0A0A0A" fillOpacity="0.2" />
+            <circle cx="80" cy="50" r="5" fill="#0A0A0A" fillOpacity="0.3" />
           </g>
         )}
 
@@ -105,12 +105,12 @@ export default function BlogCardImage({
                 y1="0"
                 x2={i * 50}
                 y2="250"
-                stroke={i % 3 === 0 ? "#F59E0B" : "#F59E0B"}
+                stroke={i % 3 === 0 ? "#0A0A0A" : "#0A0A0A"}
                 strokeWidth={i % 3 === 0 ? "1.5" : "0.5"}
               />
             ))}
-            <circle cx="320" cy="70" r="20" fill="#F59E0B" fillOpacity="0.1" />
-            <circle cx="100" cy="190" r="30" fill="#F59E0B" fillOpacity="0.1" />
+            <circle cx="320" cy="70" r="20" fill="#0A0A0A" fillOpacity="0.1" />
+            <circle cx="100" cy="190" r="30" fill="#0A0A0A" fillOpacity="0.1" />
           </g>
         )}
 
@@ -121,13 +121,13 @@ export default function BlogCardImage({
               <path
                 key={i}
                 d={`M 350 250 A ${60 + i * 35} ${60 + i * 35} 0 0 0 ${350 - (60 + i * 35)} 250`}
-                stroke={i % 2 === 0 ? "#F59E0B" : "#F59E0B"}
+                stroke={i % 2 === 0 ? "#0A0A0A" : "#0A0A0A"}
                 strokeWidth={i === 0 ? "1.5" : "0.7"}
                 fill="none"
               />
             ))}
-            <circle cx="60" cy="40" r="10" fill="#F59E0B" fillOpacity="0.15" />
-            <circle cx="200" cy="80" r="4" fill="#F59E0B" fillOpacity="0.3" />
+            <circle cx="60" cy="40" r="10" fill="#0A0A0A" fillOpacity="0.15" />
+            <circle cx="200" cy="80" r="4" fill="#0A0A0A" fillOpacity="0.3" />
           </g>
         )}
 
@@ -141,7 +141,7 @@ export default function BlogCardImage({
                   cx={35 + col * 32}
                   cy={30 + row * 30}
                   r={(row + col) % 5 === 0 ? 3 : 1.5}
-                  fill={(row + col) % 5 === 0 ? "#F59E0B" : "#F59E0B"}
+                  fill={(row + col) % 5 === 0 ? "#0A0A0A" : "#0A0A0A"}
                   fillOpacity={(row + col) % 5 === 0 ? 0.5 : 0.2}
                 />
               ))
@@ -154,18 +154,18 @@ export default function BlogCardImage({
           <g opacity="0.28">
             {/* Main shield */}
             <path d="M 280 30 L 340 50 L 340 120 Q 310 150 280 160 Q 250 150 250 120 L 250 50 Z"
-              stroke="#F59E0B" strokeWidth="1.5" fill="#F59E0B" fillOpacity="0.05" />
+              stroke="#0A0A0A" strokeWidth="1.5" fill="#0A0A0A" fillOpacity="0.05" />
             {/* Inner shield */}
             <path d="M 280 50 L 322 64 L 322 115 Q 301 136 280 144 Q 259 136 259 115 L 259 64 Z"
-              stroke="#F59E0B" strokeWidth="1" fill="none" />
+              stroke="#0A0A0A" strokeWidth="1" fill="none" />
             {/* Lock body */}
-            <rect x="270" y="95" width="20" height="16" rx="3" stroke="#F59E0B" strokeWidth="1.2" fill="none" />
-            <path d="M 274 95 Q 274 85 280 85 Q 286 85 286 95" stroke="#F59E0B" strokeWidth="1.2" fill="none" />
+            <rect x="270" y="95" width="20" height="16" rx="3" stroke="#0A0A0A" strokeWidth="1.2" fill="none" />
+            <path d="M 274 95 Q 274 85 280 85 Q 286 85 286 95" stroke="#0A0A0A" strokeWidth="1.2" fill="none" />
             {/* Secondary shapes */}
-            <circle cx="80" cy="60" r="35" stroke="#F59E0B" strokeWidth="0.8" fill="none" />
-            <circle cx="80" cy="60" r="20" stroke="#F59E0B" strokeWidth="0.5" fill="none" />
+            <circle cx="80" cy="60" r="35" stroke="#0A0A0A" strokeWidth="0.8" fill="none" />
+            <circle cx="80" cy="60" r="20" stroke="#0A0A0A" strokeWidth="0.5" fill="none" />
             <rect x="140" y="160" width="60" height="60" rx="6"
-              stroke="#F59E0B" strokeWidth="0.8" fill="none" transform="rotate(15 170 190)" />
+              stroke="#0A0A0A" strokeWidth="0.8" fill="none" transform="rotate(15 170 190)" />
           </g>
         )}
 
@@ -173,21 +173,21 @@ export default function BlogCardImage({
         {pattern === 5 && (
           <g opacity="0.30">
             {/* Central hub */}
-            <circle cx="200" cy="125" r="20" stroke="#F59E0B" strokeWidth="1.5" fill="#F59E0B" fillOpacity="0.06" />
+            <circle cx="200" cy="125" r="20" stroke="#0A0A0A" strokeWidth="1.5" fill="#0A0A0A" fillOpacity="0.06" />
             {/* Satellite nodes */}
             {[
               [80, 60], [320, 60], [360, 180], [40, 180], [200, 30], [200, 220],
             ].map(([cx, cy], i) => (
               <g key={i}>
                 <circle cx={cx} cy={cy} r={10 - (i % 3) * 2}
-                  stroke="#F59E0B" strokeWidth="1" fill="none" />
+                  stroke="#0A0A0A" strokeWidth="1" fill="none" />
                 <line x1={cx} y1={cy} x2={200} y2={125}
-                  stroke="#F59E0B" strokeWidth="0.7" strokeOpacity="0.5" strokeDasharray="3 4" />
+                  stroke="#0A0A0A" strokeWidth="0.7" strokeOpacity="0.5" strokeDasharray="3 4" />
               </g>
             ))}
             {/* Secondary connections */}
-            <line x1="80" y1="60" x2="320" y2="60" stroke="#F59E0B" strokeWidth="0.5" strokeOpacity="0.3" />
-            <line x1="80" y1="60" x2="40" y2="180" stroke="#F59E0B" strokeWidth="0.5" strokeOpacity="0.25" />
+            <line x1="80" y1="60" x2="320" y2="60" stroke="#0A0A0A" strokeWidth="0.5" strokeOpacity="0.3" />
+            <line x1="80" y1="60" x2="40" y2="180" stroke="#0A0A0A" strokeWidth="0.5" strokeOpacity="0.25" />
           </g>
         )}
 
@@ -195,23 +195,23 @@ export default function BlogCardImage({
         {pattern === 6 && (
           <g opacity="0.30">
             {/* Axis lines */}
-            <line x1="50" y1="30" x2="50" y2="210" stroke="#F59E0B" strokeWidth="1.5" />
-            <line x1="50" y1="210" x2="380" y2="210" stroke="#F59E0B" strokeWidth="1.5" />
+            <line x1="50" y1="30" x2="50" y2="210" stroke="#0A0A0A" strokeWidth="1.5" />
+            <line x1="50" y1="210" x2="380" y2="210" stroke="#0A0A0A" strokeWidth="1.5" />
             {/* Grid lines */}
             {[60, 110, 160].map((y, i) => (
               <line key={i} x1="50" y1={y} x2="380" y2={y}
-                stroke="#F59E0B" strokeWidth="0.5" strokeOpacity="0.3" strokeDasharray="4 6" />
+                stroke="#0A0A0A" strokeWidth="0.5" strokeOpacity="0.3" strokeDasharray="4 6" />
             ))}
             {/* Rising bezier curve */}
             <path d="M 50 200 Q 150 195 200 160 Q 260 110 380 40"
-              stroke="#F59E0B" strokeWidth="2" fill="none" />
+              stroke="#0A0A0A" strokeWidth="2" fill="none" />
             {/* Area fill under curve */}
             <path d="M 50 200 Q 150 195 200 160 Q 260 110 380 40 L 380 210 L 50 210 Z"
-              fill="#F59E0B" fillOpacity="0.05" />
+              fill="#0A0A0A" fillOpacity="0.05" />
             {/* Data points */}
             {[[100, 195], [160, 175], [220, 148], [290, 95], [350, 55]].map(([cx, cy], i) => (
               <circle key={i} cx={cx} cy={cy} r={i === 4 ? 4 : 3}
-                fill={i === 4 ? "#F59E0B" : "#F59E0B"} fillOpacity={i === 4 ? 0.8 : 0.4} />
+                fill={i === 4 ? "#0A0A0A" : "#0A0A0A"} fillOpacity={i === 4 ? 0.8 : 0.4} />
             ))}
           </g>
         )}
@@ -220,24 +220,24 @@ export default function BlogCardImage({
         {pattern === 7 && (
           <g opacity="0.28">
             {/* Step 1 */}
-            <circle cx="90" cy="80" r="28" stroke="#F59E0B" strokeWidth="1.5" fill="#F59E0B" fillOpacity="0.05" />
+            <circle cx="90" cy="80" r="28" stroke="#0A0A0A" strokeWidth="1.5" fill="#0A0A0A" fillOpacity="0.05" />
             <text x="90" y="88" textAnchor="middle" fontSize="24" fontFamily="monospace"
-              fill="#F59E0B" fillOpacity="0.5">1</text>
+              fill="#0A0A0A" fillOpacity="0.5">1</text>
             {/* Step 2 */}
-            <circle cx="200" cy="125" r="28" stroke="#F59E0B" strokeWidth="1.5" fill="#F59E0B" fillOpacity="0.05" />
+            <circle cx="200" cy="125" r="28" stroke="#0A0A0A" strokeWidth="1.5" fill="#0A0A0A" fillOpacity="0.05" />
             <text x="200" y="133" textAnchor="middle" fontSize="24" fontFamily="monospace"
-              fill="#F59E0B" fillOpacity="0.5">2</text>
+              fill="#0A0A0A" fillOpacity="0.5">2</text>
             {/* Step 3 — lime = final */}
-            <circle cx="310" cy="80" r="28" stroke="#F59E0B" strokeWidth="1.5" fill="#F59E0B" fillOpacity="0.06" />
+            <circle cx="310" cy="80" r="28" stroke="#0A0A0A" strokeWidth="1.5" fill="#0A0A0A" fillOpacity="0.06" />
             <text x="310" y="88" textAnchor="middle" fontSize="24" fontFamily="monospace"
-              fill="#F59E0B" fillOpacity="0.6">3</text>
+              fill="#0A0A0A" fillOpacity="0.6">3</text>
             {/* Connectors */}
-            <line x1="118" y1="80" x2="172" y2="110" stroke="#F59E0B" strokeWidth="1" strokeOpacity="0.3" strokeDasharray="4 4" />
-            <line x1="228" y1="110" x2="282" y2="80" stroke="#F59E0B" strokeWidth="1" strokeOpacity="0.3" strokeDasharray="4 4" />
+            <line x1="118" y1="80" x2="172" y2="110" stroke="#0A0A0A" strokeWidth="1" strokeOpacity="0.3" strokeDasharray="4 4" />
+            <line x1="228" y1="110" x2="282" y2="80" stroke="#0A0A0A" strokeWidth="1" strokeOpacity="0.3" strokeDasharray="4 4" />
             {/* Decorative sub-elements */}
-            <rect x="60" y="160" width="60" height="50" rx="4" stroke="#F59E0B" strokeWidth="0.8" strokeOpacity="0.25" fill="none" />
-            <rect x="170" y="185" width="60" height="35" rx="4" stroke="#F59E0B" strokeWidth="0.8" strokeOpacity="0.25" fill="none" />
-            <rect x="280" y="160" width="60" height="55" rx="4" stroke="#F59E0B" strokeWidth="0.8" strokeOpacity="0.35" fill="none" />
+            <rect x="60" y="160" width="60" height="50" rx="4" stroke="#0A0A0A" strokeWidth="0.8" strokeOpacity="0.25" fill="none" />
+            <rect x="170" y="185" width="60" height="35" rx="4" stroke="#0A0A0A" strokeWidth="0.8" strokeOpacity="0.25" fill="none" />
+            <rect x="280" y="160" width="60" height="55" rx="4" stroke="#0A0A0A" strokeWidth="0.8" strokeOpacity="0.35" fill="none" />
           </g>
         )}
 
@@ -245,12 +245,12 @@ export default function BlogCardImage({
         <g opacity="0.08" transform="translate(170, 95)">
           <path
             d="M16 18L32 48L48 18"
-            stroke="white"
+            stroke="#0A0A0A"
             strokeWidth="4"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
-          <circle cx="32" cy="14" r="3.5" fill="#F59E0B" />
+          <circle cx="32" cy="14" r="3.5" fill="#0A0A0A" />
         </g>
       </svg>
     </div>

@@ -162,7 +162,7 @@ ${draft.body || ''}
     let coverMimeType: string | null = null
     const googleAiKey = process.env.GOOGLE_AI_KEY
     if (googleAiKey) {
-      const imagePrompt = `Monochrome line art illustration on a very dark navy background (#020617). Professional corporate scene related to: ${title.slice(0, 80)}. White line art outlines and fills, single amber/gold (#F59E0B) accent color on key highlights. Professional minimalist illustration style. No text, no words, no typography anywhere. Horizontal landscape composition 1200x630.`
+      const imagePrompt = `Ultra-minimal single-weight black line drawing on pure white background. Editorial magazine illustration style. Subject related to: ${title.slice(0, 80)}. Extremely sparse, lots of white space, hair-thin lines only. No shading, no fill, no color, no gradients. No text, no words, no typography anywhere. Landscape 1200x630.`
 
       const aiRes = await fetch(
         `https://generativelanguage.googleapis.com/v1beta/models/nano-banana-pro-preview:generateContent?key=${googleAiKey}`,

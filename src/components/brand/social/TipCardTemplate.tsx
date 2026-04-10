@@ -63,13 +63,13 @@ export default function TipCardTemplate({
       >
         <defs>
           <radialGradient id="tc-glow" cx="50%" cy="50%" r="60%">
-            <stop offset="0%" stopColor="#F59E0B" stopOpacity="0.10" />
+            <stop offset="0%" stopColor="#0A0A0A" stopOpacity="0.10" />
             <stop offset="100%" stopColor="transparent" stopOpacity="0" />
           </radialGradient>
         </defs>
 
         {/* Background */}
-        <rect width={dims.width} height={dims.height} fill="#0F172A" />
+        <rect width={dims.width} height={dims.height} fill="#FFFFFF" />
         <rect width={dims.width} height={dims.height} fill="url(#tc-glow)" />
 
         {/* Lime dot cluster (bottom-left) */}
@@ -79,7 +79,7 @@ export default function TipCardTemplate({
             cx={60 + (i % 3) * 22}
             cy={dims.height - 60 - Math.floor(i / 3) * 22}
             r={i === 0 ? 8 : 5}
-            fill="#F59E0B"
+            fill="#0A0A0A"
             fillOpacity={i === 0 ? 0.5 : 0.25}
           />
         ))}
@@ -93,7 +93,7 @@ export default function TipCardTemplate({
             fontSize={isStory ? 280 : 240}
             fontFamily="system-ui"
             fontWeight="700"
-            fill="#F59E0B"
+            fill="#0A0A0A"
             fillOpacity="0.12"
             style={{ letterSpacing: "-0.05em" }}
           >
@@ -108,7 +108,7 @@ export default function TipCardTemplate({
           fontSize="22"
           fontFamily="system-ui"
           fontWeight="500"
-          fill="#F59E0B"
+          fill="#0A0A0A"
           fillOpacity="0.70"
           style={{ letterSpacing: "0.08em", textTransform: "uppercase" }}
         >
@@ -122,7 +122,7 @@ export default function TipCardTemplate({
           fontSize={factFontSize}
           fontFamily="system-ui"
           fontWeight="700"
-          fill="white"
+          fill="#0A0A0A"
           style={{ letterSpacing: "-0.02em" }}
         >
           {renderFact()}
@@ -134,7 +134,7 @@ export default function TipCardTemplate({
           y1={factY + 16}
           x2={pad + 100}
           y2={factY + 16}
-          stroke="#F59E0B"
+          stroke="#0A0A0A"
           strokeWidth="3"
           strokeLinecap="round"
         />
@@ -142,9 +142,9 @@ export default function TipCardTemplate({
         {/* Logo + source (bottom) */}
         <g transform={`translate(${pad}, ${dims.height - pad - 20})`}>
           {/* V mini monogram */}
-          <rect width="36" height="36" rx="9" fill="#F59E0B" fillOpacity="0.90" />
+          <rect width="36" height="36" rx="9" fill="#0A0A0A" fillOpacity="0.90" />
           <path d="M 7 8 L 18 28 L 29 8"
-            stroke="#0F172A" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
+            stroke="#FFFFFF" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
           {/* Source */}
           <text x="46" y="24"
             fontSize="20" fontFamily="system-ui" fontWeight="600" fill="rgba(255,255,255,0.45)">

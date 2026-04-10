@@ -70,27 +70,27 @@ export default function ArticlePostTemplate({
       >
         <defs>
           <radialGradient id="ap-glow1" cx="80%" cy="20%" r="50%">
-            <stop offset="0%" stopColor="#F59E0B" stopOpacity="0.12" />
+            <stop offset="0%" stopColor="#0A0A0A" stopOpacity="0.12" />
             <stop offset="100%" stopColor="transparent" stopOpacity="0" />
           </radialGradient>
           <radialGradient id="ap-glow2" cx="10%" cy="90%" r="40%">
-            <stop offset="0%" stopColor="#F59E0B" stopOpacity="0.08" />
+            <stop offset="0%" stopColor="#0A0A0A" stopOpacity="0.08" />
             <stop offset="100%" stopColor="transparent" stopOpacity="0" />
           </radialGradient>
         </defs>
 
         {/* Background */}
-        <rect width={viewWidth} height={viewHeight} fill="#0F172A" />
+        <rect width={viewWidth} height={viewHeight} fill="#FFFFFF" />
         <rect width={viewWidth} height={viewHeight} fill="url(#ap-glow1)" />
         <rect width={viewWidth} height={viewHeight} fill="url(#ap-glow2)" />
 
         {/* Decorative geometric shapes */}
         <circle cx={viewWidth - 80} cy={80} r={120}
-          stroke="#F59E0B" strokeWidth="1" strokeOpacity="0.15" fill="none" />
+          stroke="#0A0A0A" strokeWidth="1" strokeOpacity="0.15" fill="none" />
         <circle cx={viewWidth - 80} cy={80} r={80}
-          stroke="#F59E0B" strokeWidth="0.8" strokeOpacity="0.10" fill="none" />
+          stroke="#0A0A0A" strokeWidth="0.8" strokeOpacity="0.10" fill="none" />
         <circle cx={80} cy={viewHeight - 80} r={90}
-          stroke="#F59E0B" strokeWidth="0.8" strokeOpacity="0.10" fill="none" />
+          stroke="#0A0A0A" strokeWidth="0.8" strokeOpacity="0.10" fill="none" />
 
         {/* Padding config */}
         {(() => {
@@ -109,15 +109,15 @@ export default function ArticlePostTemplate({
               {/* Logo */}
               <g transform={`translate(${pad}, ${logoY})`}>
                 {/* V monogram box */}
-                <rect width="52" height="52" rx="14" fill="#F59E0B" />
+                <rect width="52" height="52" rx="14" fill="#0A0A0A" />
                 <path d="M 10 12 L 26 42 L 42 12"
-                  stroke="#0F172A" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" />
+                  stroke="#FFFFFF" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" />
                 <circle cx="26" cy="10" r="5" fill="#020617" />
                 {/* Wordmark */}
                 <text x="68" y="35"
                   fontSize="32" fontFamily="system-ui" fontWeight="700" letterSpacing="-0.02em">
-                  <tspan fill="white">verim</tspan>
-                  <tspan fill="#F59E0B">io</tspan>
+                  <tspan fill="#0A0A0A">verim</tspan>
+                  <tspan fill="#0A0A0A">io</tspan>
                 </text>
               </g>
 
@@ -128,7 +128,7 @@ export default function ArticlePostTemplate({
                 fontSize={titleFontSize}
                 fontFamily="system-ui"
                 fontWeight="700"
-                fill="white"
+                fill="#0A0A0A"
                 style={{ letterSpacing: "-0.025em" }}
               >
                 {displayTitle.split(" ").length > 5 ? (
@@ -143,9 +143,9 @@ export default function ArticlePostTemplate({
               {/* Category badge */}
               <g transform={`translate(${pad}, ${metaY - 24})`}>
                 <rect width={catLabel.length * 14 + 32} height={44} rx={10}
-                  fill="#F59E0B" />
+                  fill="#0A0A0A" />
                 <text x="16" y="29"
-                  fontSize="20" fontFamily="system-ui" fontWeight="700" fill="#0F172A">
+                  fontSize="20" fontFamily="system-ui" fontWeight="700" fill="#FFFFFF">
                   {catLabel}
                 </text>
               </g>

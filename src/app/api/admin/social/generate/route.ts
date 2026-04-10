@@ -48,12 +48,12 @@ function getScheduledAt(platform: 'linkedin' | 'instagram' | 'twitter', offset: 
   return target.toISOString()
 }
 
-// Monokrom line-art illüstrasyon — Nano Banana Pro (Google AI Studio)
-// Koyu midnight arka plan + beyaz çizgi + amber accent
+// Minimal beyaz line-art illüstrasyon — Nano Banana Pro (Google AI Studio)
+// Beyaz arka plan + siyah ince çizgi, editorial stil
 const GOOGLE_AI_KEY = process.env.GOOGLE_AI_KEY
 
 function buildBgPrompt(topicHint: string): string {
-  return `Monochrome line art illustration on a very dark navy background (#020617). ${topicHint}. White line art outlines and fills, single amber/gold (#F59E0B) accent color on key highlights and connection points. Professional corporate minimalist illustration style. No text, no words, no typography anywhere. Clean composition.`
+  return `Ultra-minimal single-weight black line drawing on pure white background. Editorial magazine illustration style. ${topicHint}. Extremely sparse, lots of white space, hair-thin lines only. No shading, no fill, no color, no gradients. No text, no words, no typography anywhere. Clean composition.`
 }
 
 async function generateVisual(prompt: string, _platform: 'linkedin' | 'instagram' | 'twitter'): Promise<string | null> {

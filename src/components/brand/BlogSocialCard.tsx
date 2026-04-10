@@ -36,14 +36,14 @@ const ASPECT_RATIOS: Record<SocialAspect, number> = {
 }
 
 const CATEGORY_COLORS: Record<string, string> = {
-  'AI Araçları': '#F59E0B',
-  'Otomasyon': '#0F172A',
+  'AI Araçları': '#0A0A0A',
+  'Otomasyon': '#FFFFFF',
   'Veri & Raporlama': '#1E40AF',
   'Strateji': '#0F766E',
-  'ROI & Verimlilik': '#F59E0B',
+  'ROI & Verimlilik': '#0A0A0A',
   'Müşteri Deneyimi': '#BE185D',
   'Rehber': '#92400E',
-  'Veri Güvenliği': '#0F172A',
+  'Veri Güvenliği': '#FFFFFF',
 }
 
 export default function BlogSocialCard({
@@ -56,7 +56,7 @@ export default function BlogSocialCard({
 }: BlogSocialCardProps) {
   const ratio = ASPECT_RATIOS[aspect]
   const height = Math.round(width / ratio)
-  const catColor = CATEGORY_COLORS[category] ?? '#0F172A'
+  const catColor = CATEGORY_COLORS[category] ?? '#FFFFFF'
 
   // Tipografi boyutları aspect'e göre ölçekle
   const scale = width / 600
@@ -93,7 +93,7 @@ export default function BlogSocialCard({
           position: 'absolute',
           inset: 0,
           background: aspect === 'story'
-            ? 'linear-gradient(to bottom, transparent 0%, rgba(10,5,20,0.15) 40%, rgba(10,5,20,0.85) 100%)'
+            ? 'linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.1) 40%, rgba(255,255,255,0.92) 100%)'
             : 'linear-gradient(to bottom, transparent 0%, rgba(10,5,20,0.08) 35%, rgba(10,5,20,0.82) 100%)',
         }}
       />
@@ -113,14 +113,14 @@ export default function BlogSocialCard({
             display: 'inline-flex',
             alignItems: 'center',
             gap: 6,
-            background: '#F59E0B',
+            background: '#0A0A0A',
             borderRadius: 6,
             padding: `${Math.round(4 * scale)}px ${Math.round(12 * scale)}px`,
             marginBottom: Math.round(12 * scale),
           }}
         >
           <div style={{ width: Math.round(6 * scale), height: Math.round(6 * scale), borderRadius: '50%', background: catColor }} />
-          <span style={{ fontSize: catSize, fontWeight: 700, color: '#0F172A', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+          <span style={{ fontSize: catSize, fontWeight: 700, color: '#FFFFFF', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
             {category}
           </span>
         </div>
@@ -158,12 +158,12 @@ export default function BlogSocialCard({
           left: 0,
           right: 0,
           height: stripH,
-          background: '#0F172A',
+          background: '#FFFFFF',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
           padding: `0 ${pad}px`,
-          borderTop: '2px solid #F59E0B',
+          borderTop: '2px solid #0A0A0A',
         }}
       >
         {/* Logo */}
@@ -174,7 +174,7 @@ export default function BlogSocialCard({
               width: logoSize + 6,
               height: logoSize + 6,
               borderRadius: Math.round(6 * scale),
-              background: '#F59E0B',
+              background: '#0A0A0A',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -182,12 +182,12 @@ export default function BlogSocialCard({
             }}
           >
             <svg width={logoSize - 2} height={logoSize - 2} viewBox="0 0 24 24" fill="none">
-              <path d="M3 5 L12 19 L21 5" stroke="#0F172A" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M3 5 L12 19 L21 5" stroke="#FFFFFF" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round"/>
               <circle cx="12" cy="4" r="2" fill="#020617"/>
             </svg>
           </div>
           <span style={{ fontSize: Math.round(16 * scale), fontWeight: 700, letterSpacing: '-0.02em', color: '#FFFFFF' }}>
-            verim<span style={{ color: '#F59E0B' }}>io</span>
+            verim<span style={{ color: '#0A0A0A' }}>io</span>
           </span>
         </div>
 
