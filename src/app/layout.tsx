@@ -31,6 +31,8 @@ const ppNeueMontreal = localFont({
   ],
   variable: "--font-pp-neue-montreal",
   display: "swap",
+  adjustFontFallback: "Arial",
+  preload: true,
 });
 
 export const metadata: Metadata = {
