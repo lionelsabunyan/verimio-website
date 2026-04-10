@@ -1,7 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check } from "lucide-react";
+const Check = ({ className, strokeWidth }: { className?: string; strokeWidth?: number }) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth || 2} className={className}><polyline points="20,6 9,17 4,12"/></svg>
+);
 
 interface CheckboxGroupProps {
   label?: string;

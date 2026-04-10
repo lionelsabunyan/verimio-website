@@ -1,5 +1,10 @@
 import Link from "next/link";
-import { ArrowUpRight, Shield } from "lucide-react";
+const Shield = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={className}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+);
+const ArrowUpRight = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={className}><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7,7 17,7 17,17"/></svg>
+);
 import { BRAND } from "@/lib/constants";
 import type { Metadata } from "next";
 
