@@ -320,8 +320,8 @@ export const BLOG_POSTS = [
     category: "strategy" as const,
   },
   {
-    title: "Şirketinizin Gizli Verileri Güvende mi? Kurumsal ChatGPT Kullanımı",
-    excerpt: "Çalışanların bireysel ChatGPT kullanımının riskleri ve şirketlere özel, güvenli, kapalı devre yapay zeka sistemlerinin neden bir zorunluluk olduğu.",
+    title: "Kurumsal ChatGPT Güvenliği: Şirket Verilerinizi Korumanın 5 Yolu",
+    excerpt: "Çalışanlar ChatGPT'ye şirket verisi giriyor mu? Kurumsal yapay zeka kullanımının güvenlik riskleri, KVKK uyumu ve kapalı devre AI çözümleri rehberi.",
     date: "13 Mart 2026",
     slug: "sirketinizin-gizli-verileri-guvende-mi-kurumsal-chatgpt-kull",
     category: "ai-tools" as const,
@@ -341,8 +341,8 @@ export const BLOG_POSTS = [
     category: "automation" as const,
   },
   {
-    title: "AI Dönüşümü Bir IT Projesi Değil, Bir Yönetim Vizyonudur — İşte Nedeni",
-    excerpt: "AI projelerinin %60'ı yönetim desteği eksikliğinden başarısız oluyor. Şirketinizde AI dönüşümünü doğru yönetmenin 4 adımı ve Türkiye'den gerçek örnekler.",
+    title: "İşletmelerde AI Uyumu Nasıl Sağlanır? Yönetim Vizyonu ile AI Dönüşümü",
+    excerpt: "AI projelerinin %60'ı yönetim desteği eksikliğinden başarısız. İşletmenizde AI uyumunu sağlamanın 4 adımı, kurumsal dönüşüm stratejisi ve Türkiye örnekleri.",
     date: "12 Mart 2026",
     slug: "ai-donusumu-bir-it-projesi-degil-bir-yonetim-vizyonudur",
     category: "strategy" as const,
