@@ -27,20 +27,19 @@ export default function Loading() {
           <path
             className="v-path"
             d="M8 12 L32 52 L56 12"
-            stroke="#F59E0B"
+            stroke="#0A0A0A"
             strokeWidth="5"
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeDasharray="120"
             strokeDashoffset="120"
           />
-          <circle className="v-dot" cx="32" cy="9" r="5" fill="#F59E0B" />
+          <circle className="v-dot" cx="32" cy="9" r="5" fill="#0A0A0A" />
         </svg>
 
         {/* Wordmark */}
         <div className="flex items-center gap-0" style={{ letterSpacing: '-0.02em' }}>
-          <span className="text-lg font-bold text-foreground">verim</span>
-          <span className="text-lg font-bold text-secondary">io</span>
+          <span className="text-lg font-bold text-foreground">verimio</span>
         </div>
       </div>
     </div>

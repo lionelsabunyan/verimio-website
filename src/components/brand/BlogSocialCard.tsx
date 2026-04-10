@@ -36,13 +36,13 @@ const ASPECT_RATIOS: Record<SocialAspect, number> = {
 }
 
 const CATEGORY_COLORS: Record<string, string> = {
-  'AI Araçları': '#0A0A0A',
+  'AI Araçları': '#FFFFFF',
   'Otomasyon': '#FFFFFF',
-  'Veri & Raporlama': '#1E40AF',
-  'Strateji': '#0F766E',
-  'ROI & Verimlilik': '#0A0A0A',
-  'Müşteri Deneyimi': '#BE185D',
-  'Rehber': '#92400E',
+  'Veri & Raporlama': '#FFFFFF',
+  'Strateji': '#FFFFFF',
+  'ROI & Verimlilik': '#FFFFFF',
+  'Müşteri Deneyimi': '#FFFFFF',
+  'Rehber': '#FFFFFF',
   'Veri Güvenliği': '#FFFFFF',
 }
 
@@ -75,7 +75,7 @@ export default function BlogSocialCard({
         position: 'relative',
         overflow: 'hidden',
         borderRadius: 12,
-        fontFamily: 'var(--font-dm-sans, system-ui)',
+        fontFamily: 'var(--font-pp-neue-montreal, system-ui)',
         userSelect: 'none',
       }}
     >
@@ -183,16 +183,16 @@ export default function BlogSocialCard({
           >
             <svg width={logoSize - 2} height={logoSize - 2} viewBox="0 0 24 24" fill="none">
               <path d="M3 5 L12 19 L21 5" stroke="#FFFFFF" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round"/>
-              <circle cx="12" cy="4" r="2" fill="#020617"/>
+              <circle cx="12" cy="4" r="2" fill="#FFFFFF"/>
             </svg>
           </div>
-          <span style={{ fontSize: Math.round(16 * scale), fontWeight: 700, letterSpacing: '-0.02em', color: '#FFFFFF' }}>
-            verim<span style={{ color: '#0A0A0A' }}>io</span>
+          <span style={{ fontSize: Math.round(16 * scale), fontWeight: 700, letterSpacing: '-0.02em', color: '#0A0A0A' }}>
+            verimio
           </span>
         </div>
 
         {/* Sağ — web adresi */}
-        <span style={{ fontSize: Math.round(11 * scale), color: 'rgba(255,255,255,0.4)', fontWeight: 500 }}>
+        <span style={{ fontSize: Math.round(11 * scale), color: '#A3A3A3', fontWeight: 500 }}>
           verimio.com.tr
         </span>
       </div>

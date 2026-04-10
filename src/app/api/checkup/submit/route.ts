@@ -350,16 +350,16 @@ export async function POST(req: NextRequest) {
       from: FROM_ADDRESS,
       to: ['info@verimio.com.tr'],
       subject: `Yeni Lead: ${company_name || email} — ${sector}`,
-      html: `<div style="font-family:monospace;background:#0F172A;color:#F1F5F9;padding:20px;border-radius:8px;">
-        <h2 style="color:#F59E0B;">Yeni Check-Up Başvurusu</h2>
+      html: `<div style="font-family:system-ui,sans-serif;background:#FFFFFF;color:#0A0A0A;padding:20px;border-radius:8px;border:1px solid #E5E5E5;">
+        <h2 style="color:#0A0A0A;">Yeni Check-Up Başvurusu</h2>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Şirket:</strong> ${company_name || '—'}</p>
         <p><strong>Sektör:</strong> ${sector}</p>
         <p><strong>Ekip:</strong> ${team_size}</p>
         <p><strong>Skor:</strong> ${analysis.score}/10 — ${analysis.score_label}</p>
         <p><strong>En büyük fırsat:</strong> ${analysis.top_opportunity}</p>
-        <hr style="border-color:#1E293B;">
-        <p style="color:#94A3B8;font-size:12px;">Lead ID: ${lead?.id || 'kayıt hatası'}</p>
+        <hr style="border-color:#E5E5E5;">
+        <p style="color:#A3A3A3;font-size:12px;">Lead ID: ${lead?.id || 'kayıt hatası'}</p>
       </div>`,
     }).catch(() => {})
 

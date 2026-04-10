@@ -39,7 +39,7 @@ function TesekkurlerContent() {
                 cy="50"
                 r="44"
                 fill="none"
-                stroke="#F59E0B"
+                stroke="#0A0A0A"
                 strokeWidth="5"
                 strokeLinecap="round"
                 initial={{ pathLength: 0 }}
@@ -49,7 +49,7 @@ function TesekkurlerContent() {
               <motion.path
                 d="M28 52 L43 67 L72 36"
                 fill="none"
-                stroke="#F59E0B"
+                stroke="#0A0A0A"
                 strokeWidth="5"
                 strokeLinecap="round"
                 strokeLinejoin="round"

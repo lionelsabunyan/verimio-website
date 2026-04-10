@@ -4,16 +4,15 @@ import { BLOG_POSTS } from '@/lib/constants'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
-// Category to pattern index mapping (mirrors BlogCardImage)
-const categoryColors: Record<string, { accent: string; label: string }> = {
-  'ai-tools':    { accent: '#F59E0B', label: 'AI Araçları' },
-  'automation':  { accent: '#F59E0B', label: 'Otomasyon' },
-  'data':        { accent: '#F59E0B', label: 'Veri & Raporlama' },
-  'strategy':    { accent: '#F59E0B', label: 'Strateji' },
-  'security':    { accent: '#F59E0B', label: 'Veri Güvenliği' },
-  'customer':    { accent: '#F59E0B', label: 'Müşteri Deneyimi' },
-  'roi':         { accent: '#F59E0B', label: 'ROI & Verimlilik' },
-  'tutorial':    { accent: '#F59E0B', label: 'Rehber' },
+const categoryLabels: Record<string, string> = {
+  'ai-tools':    'AI Araçları',
+  'automation':  'Otomasyon',
+  'data':        'Veri & Raporlama',
+  'strategy':    'Strateji',
+  'security':    'Veri Güvenliği',
+  'customer':    'Müşteri Deneyimi',
+  'roi':         'ROI & Verimlilik',
+  'tutorial':    'Rehber',
 }
 
 export default function BlogOGImage({ params }: { params: { slug: string } }) {
@@ -22,9 +21,7 @@ export default function BlogOGImage({ params }: { params: { slug: string } }) {
   const title = post?.title ?? 'Verimio Blog'
   const date = post?.date ?? ''
   const category = (post as { category?: string })?.category
-  const catInfo = category ? categoryColors[category] : null
-  const accentColor = catInfo?.accent ?? '#F59E0B'
-  const catLabel = catInfo?.label ?? 'Blog'
+  const catLabel = category ? categoryLabels[category] ?? 'Blog' : 'Blog'
 
   return new ImageResponse(
     (
@@ -32,7 +29,7 @@ export default function BlogOGImage({ params }: { params: { slug: string } }) {
         style={{
           width: 1200,
           height: 630,
-          background: '#0F172A',
+          background: '#FFFFFF',
           display: 'flex',
           alignItems: 'stretch',
           fontFamily: 'system-ui',
@@ -40,7 +37,7 @@ export default function BlogOGImage({ params }: { params: { slug: string } }) {
           position: 'relative',
         }}
       >
-        {/* Background glow */}
+        {/* Subtle background glow */}
         <div style={{
           position: 'absolute',
           top: -100,
@@ -48,7 +45,7 @@ export default function BlogOGImage({ params }: { params: { slug: string } }) {
           width: 500,
           height: 500,
           borderRadius: '50%',
-          background: `radial-gradient(circle, ${accentColor}18 0%, transparent 70%)`,
+          background: 'radial-gradient(circle, rgba(0,0,0,0.03) 0%, transparent 70%)',
         }} />
 
         {/* Left: Content (2/3) */}
@@ -65,26 +62,23 @@ export default function BlogOGImage({ params }: { params: { slug: string } }) {
               width: 44,
               height: 44,
               borderRadius: 12,
-              background: '#F59E0B',
+              background: '#0A0A0A',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
             }}>
               <svg width="26" height="26" viewBox="0 0 64 64" fill="none">
-                <path d="M8 12 L32 52 L56 12" stroke="#0F172A" strokeWidth="9" strokeLinecap="round" strokeLinejoin="round"/>
-                <circle cx="32" cy="10" r="6" fill="#0F172A"/>
+                <path d="M8 12 L32 52 L56 12" stroke="#FFFFFF" strokeWidth="9" strokeLinecap="round" strokeLinejoin="round"/>
+                <circle cx="32" cy="10" r="6" fill="#FFFFFF"/>
               </svg>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              <span style={{ color: '#FFFFFF', fontSize: 26, fontWeight: 700, letterSpacing: '-0.02em' }}>verim</span>
-              <span style={{ color: '#F59E0B', fontSize: 26, fontWeight: 700, letterSpacing: '-0.02em' }}>io</span>
-            </div>
+            <span style={{ color: '#0A0A0A', fontSize: 26, fontWeight: 700, letterSpacing: '-0.02em' }}>verimio</span>
           </div>
 
           {/* Title */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
             <div style={{
-              color: '#FFFFFF',
+              color: '#0A0A0A',
               fontSize: 52,
               fontWeight: 700,
               lineHeight: 1.15,
@@ -98,8 +92,8 @@ export default function BlogOGImage({ params }: { params: { slug: string } }) {
           <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
             {catLabel && (
               <div style={{
-                background: accentColor,
-                color: '#0F172A',
+                background: '#0A0A0A',
+                color: '#FFFFFF',
                 padding: '8px 20px',
                 borderRadius: 8,
                 fontSize: 16,
@@ -110,17 +104,17 @@ export default function BlogOGImage({ params }: { params: { slug: string } }) {
               </div>
             )}
             {date && (
-              <span style={{ color: 'rgba(255,255,255,0.40)', fontSize: 16 }}>{date}</span>
+              <span style={{ color: '#A3A3A3', fontSize: 16 }}>{date}</span>
             )}
-            <span style={{ color: '#4C4462', fontSize: 16, marginLeft: 'auto' }}>verimio.com.tr/blog</span>
+            <span style={{ color: '#A3A3A3', fontSize: 16, marginLeft: 'auto' }}>verimio.com.tr/blog</span>
           </div>
         </div>
 
         {/* Right: Pattern (1/3) */}
         <div style={{
           width: 360,
-          background: 'rgba(30,10,70,0.6)',
-          borderLeft: '1px solid rgba(139,92,246,0.20)',
+          background: '#F5F5F5',
+          borderLeft: '1px solid #E5E5E5',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -131,14 +125,14 @@ export default function BlogOGImage({ params }: { params: { slug: string } }) {
           <div style={{ position: 'relative', display: 'flex' }}>
             <svg width="240" height="240" viewBox="0 0 240 240" fill="none">
               {/* Concentric circles */}
-              <circle cx="120" cy="120" r="90" stroke="#F59E0B" strokeWidth="1" strokeOpacity="0.25" />
-              <circle cx="120" cy="120" r="65" stroke="#F59E0B" strokeWidth="1" strokeOpacity="0.20" />
-              <circle cx="120" cy="120" r="40" stroke={accentColor} strokeWidth="1.5" strokeOpacity="0.40" />
-              <circle cx="120" cy="120" r="18" fill={accentColor} fillOpacity="0.12" stroke={accentColor} strokeWidth="1.5" strokeOpacity="0.55" />
+              <circle cx="120" cy="120" r="90" stroke="#0A0A0A" strokeWidth="1" strokeOpacity="0.12" />
+              <circle cx="120" cy="120" r="65" stroke="#0A0A0A" strokeWidth="1" strokeOpacity="0.10" />
+              <circle cx="120" cy="120" r="40" stroke="#0A0A0A" strokeWidth="1.5" strokeOpacity="0.18" />
+              <circle cx="120" cy="120" r="18" fill="#0A0A0A" fillOpacity="0.06" stroke="#0A0A0A" strokeWidth="1.5" strokeOpacity="0.22" />
               {/* V monogram center */}
               <path d="M 110 110 L 120 132 L 130 110"
-                stroke={accentColor} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.80" />
-              <circle cx="120" cy="107" r="3" fill={accentColor} fillOpacity="0.90" />
+                stroke="#0A0A0A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.50" />
+              <circle cx="120" cy="107" r="3" fill="#0A0A0A" fillOpacity="0.55" />
               {/* Satellite dots */}
               {[0, 60, 120, 180, 240, 300].map((deg, i) => {
                 const rad = (deg * Math.PI) / 180
@@ -146,7 +140,7 @@ export default function BlogOGImage({ params }: { params: { slug: string } }) {
                 const cy = 120 + 90 * Math.sin(rad)
                 return (
                   <circle key={i} cx={cx} cy={cy} r={i % 2 === 0 ? 4 : 3}
-                    fill={i % 2 === 0 ? accentColor : '#F59E0B'} fillOpacity="0.45" />
+                    fill="#0A0A0A" fillOpacity="0.20" />
                 )
               })}
             </svg>

@@ -1,5 +1,5 @@
 # Verimio — Kurumsal Kimlik Kılavuzu
-**Versiyon:** 2.0 — Mart 2026
+**Versiyon:** 3.0 — Nisan 2026
 **Durum:** Onaylandı ✅
 
 ---
@@ -11,13 +11,13 @@
 **Pozisyonlama:** Danışman gibi konuşan, satıcı gibi davranmayan AI rehberi.
 
 **Ses Tonu:**
-- "sen" hitabı — modern B2B Türkçesi
+- "siz" hitabı — ciddi ama bürokratik olmayan B2B Türkçesi
 - Kısa cümleler (max 20 kelime)
 - Teknik ama anlaşılır
 - Güven veren, abartısız
 
 **✓ Bunu söyle:**
-- "3 dakikada şirketinin AI hazırlık seviyesini öğren."
+- "3 dakikada şirketinizin AI hazırlık seviyesini öğrenin."
 - "Çoğu KOBİ AI'ı doğru sıradan başlatmıyor."
 
 **✗ Bunu söyleme:**
@@ -30,266 +30,192 @@
 
 ### 2.1 Wordmark
 
-**Yapı:** `verim` + `io` — geometric sans-serif, round terminals, lowercase
-**Onaylanan format:** `verim` (beyaz) + `io` (amber #F59E0B) — midnight arka plan
+**Yapı:** `verimio` — tek renk, geometric sans-serif, lowercase
+**Font:** PP Neue Montreal Bold 700, letter-spacing: -0.02em
 
 ```
 verimio
-└─────┘└┘
- Beyaz  Amber
+└──────┘
+ Tek renk
 ```
-
-**Font karakteri:** Bold 700, letter-spacing: -0.02em
 
 ### 2.2 Kullanım Varyasyonları
 
-| Varyasyon | verim rengi | io rengi | Arka plan | Kullanım |
-|---|---|---|---|---|
-| Dark Full ✅ Ana | #FFFFFF | #F59E0B | #020617 | Web, sunum, varsayılan |
-| Light Full | #0F172A | #D97706 | #F5F5F4 | Açık zemin, baskı |
-| Dark Mono | #FFFFFF | #FFFFFF | #020617 | Tek renk baskı |
-| Light Mono | #1C1917 | #1C1917 | #F5F5F4 | Tek renk açık |
-| Dark Amber Heavy | #F59E0B | #FFFFFF | #0F172A | Özel vurgu |
-| Black Full | #FFFFFF | #F59E0B | #000000 | Siyah zemin |
+| Varyasyon | Renk | Arka plan | Kullanım |
+|---|---|---|---|
+| Dark ✅ Ana | #0A0A0A | #FFFFFF | Web, sunum, varsayılan |
+| Light | #FFFFFF | #0A0A0A | Koyu arka plan |
+| Light Mono | #0A0A0A | #F5F5F5 | Açık gri zemin |
 
 ### 2.3 V Monogram
 
 **Kullanım:** Favicon, profil fotoğrafı, app icon, küçük boyutlar
-**Yapı:** V çizgisi (beyaz) + amber nokta (tepede)
+**Yapı:** V çizgisi + nokta (tepede), tek renk
 
 ```svg
-<path d="M8 12 L32 52 L56 12" stroke="white" strokeWidth="8"/>
-<circle cx="32" cy="10" r="6" fill="#F59E0B"/>
+<path d="M8 12 L32 52 L56 12" stroke="#FFFFFF" strokeWidth="8"/>
+<circle cx="32" cy="10" r="6" fill="#FFFFFF"/>
 ```
 
-| Varyasyon | V rengi | Nokta rengi | Arka plan |
-|---|---|---|---|
-| Dark ✅ Ana | #FFFFFF | #F59E0B | #020617 |
-| Light | #0F172A | #D97706 | #F5F5F4 |
-| Amber BG | #0F172A | #020617 | #F59E0B |
-| Black | #FFFFFF | #F59E0B | #000000 |
-
-### 2.4 Boyut Kuralları
-
-| Boyut | Format | Kullanım |
+| Varyasyon | V + Nokta rengi | Arka plan |
 |---|---|---|
-| 16–24px | V monogram | Favicon |
-| 32px | V monogram | Tab ikonu, küçük UI |
-| 48–72px | Wordmark | Navbar, header |
-| 96px+ | Wordmark | Hero, sunum |
+| Dark ✅ Ana | #FFFFFF | #0A0A0A |
+| Light | #0A0A0A | #FFFFFF |
 
-### 2.5 Yasak Kullanımlar
-- ❌ Logo üzerine metin veya grafik ekleme
-- ❌ Oranları değiştirme
-- ❌ Onaylanmamış renk kombinasyonu
-- ❌ Düşük kontrastlı arka plan (amber bg üzerine beyaz logo)
-- ❌ Büyük harf (VERIMIO değil, verimio)
+### 2.4 Yasak Kullanımlar
+- Logo üzerine metin veya grafik ekleme
+- Oranları değiştirme
+- Onaylanmamış renk kombinasyonu
+- Büyük harf (VERIMIO değil, verimio)
+- İki renkli wordmark (eski verim + io ayrımı KALDIRILDI)
 
 ---
 
-## 3. Renk Sistemi (Midnight + Amber — Mart 2026)
+## 3. Renk Sistemi — Saf Monokrom Editorial (Nisan 2026)
 
-### 3.1 Ana Renkler
+### 3.1 Ana Palet (Sadece Bu 5 Değer)
 
-| İsim | Token | Hex | Kullanım |
+| İsim | Hex | CSS Var | Kullanım |
 |---|---|---|---|
-| Midnight | `--primary` | `#020617` | En koyu arka plan, hero |
-| Slate-900 | `--surface` | `#0F172A` | Surface, navbar, kartlar |
-| Amber | `--secondary` | `#F59E0B` | CTA buton, logo "io", vurgu |
-| Soft Blue | `--support` | `#60A5FA` | Support rengi, aurora, gradient |
+| Zemin | `#FFFFFF` | `--background` | Saf beyaz arka plan |
+| Birincil metin | `#0A0A0A` | `--foreground` | Neredeyse siyah, biraz yumuşatılmış |
+| İkincil metin | `#5C5C5C` | `--foreground-secondary` | Orta gri, body metin |
+| Üçüncül / disabled | `#A3A3A3` | — | Açık gri, muted |
+| Hairline border | `#E5E5E5` | `--border` | Çizgi, ayraç, divider |
 
-### 3.2 Nötr Renkler
-
-| İsim | Token | Hex | Kullanım |
-|---|---|---|---|
-| White | — | `#FFFFFF` | Logo "verim", başlıklar (dark bg) |
-| Slate-100 | `--text` | `#F1F5F9` | Ana metin (dark bg) |
-| Cream | `--cream` | `#F5F5F4` | Light mode arka plan |
-| Slate-400 | `--muted` | `#94A3B8` | Muted metin, alt yazı |
-| Charcoal | `--foreground` | `#1C1917` | Light mode metin |
-
-### 3.3 Semantik Renkler
+### 3.2 Semantik Renkler (Sadece fonksiyonel kullanım)
 
 | İsim | Hex | Kullanım |
 |---|---|---|
-| Success | `#22C55E` | Başarı mesajı, onay |
-| Warning | `#F59E0B` | Uyarı, dikkat |
-| Error | `#EF4444` | Hata, iptal |
-| Info | `#3B82F6` | Bilgi mesajı, link |
+| Success | `#16A34A` | Başarı mesajı, onay |
+| Error | `#DC2626` | Hata, iptal |
 
-### 3.4 Genişletilmiş Palet
+### 3.3 Renk Kuralları
+- Hiçbir vurgu rengi yok
+- CTA butonları: siyah zemin (#0A0A0A) + beyaz metin (#FFFFFF)
+- Linkler: altçizgili siyah (#0A0A0A)
+- Hover state'leri: opacity veya altçizgi animasyonu
+- Gradient, glow, neon → YASAK
 
-| İsim | Hex | Kullanım |
-|---|---|---|
-| Light Amber | `#FBBF24` | Hover state, soft vurgu |
-| Dark Amber | `#D97706` | Light mode amber text |
-| Slate-800 | `#1E293B` | Elevated surface, section bg |
-| Soft Blue Light | `#93C5FD` | Border, divider |
-
-### 3.5 Admin Dark Theme Renkleri
-
-```
-Sayfa arka planı:  #020617
-Kart arka planı:   #0F172A
-Border (ince):     #1E293B
-Border (koyu):     #334155
-Yazı birincil:     #F1F5F9
-Yazı ikincil:      #94A3B8
-Yazı soluk:        #64748B
-Vurgu amber:       #F59E0B
-Soft blue:         #60A5FA
-```
-
-### 3.6 Gradient Kombinasyonları
-
-```css
-/* Ana gradient */
-background: linear-gradient(135deg, #020617 0%, #F59E0B 100%);
-
-/* Midnight → Amber */
-background: linear-gradient(135deg, #0F172A 0%, #F59E0B 100%);
-
-/* Dark → Midnight */
-background: linear-gradient(135deg, #000000 0%, #020617 100%);
-
-/* Radial aksan */
-background: radial-gradient(circle, rgba(245,158,11,0.15) 0%, transparent 70%);
-```
-
-### 3.7 Renk Kullanım Kuralları
-- ✅ Amber (#F59E0B) yalnızca vurgu için — her yerde kullanma
-- ✅ Dark bg üzerinde beyaz metin, light bg üzerinde #1C1917
-- ❌ Amber zemin üzerine beyaz metin (kontrast yetersiz)
-- ❌ İki parlak rengi yan yana (amber + blue)
-- ❌ Markanın dışında renk ekleme (yeşil, mor vb.)
+### 3.4 ESKİ Paletler (KULLANILMIYOR)
+- ~~Midnight #020617 + Amber #F59E0B + Soft Blue #60A5FA~~ → Mart 2026, kaldırıldı
+- ~~Indigo #2E1065 + Purple #8B5CF6 + Lime #A3E635~~ → Şubat 2026, kaldırıldı
 
 ---
 
-## 4. Tipografi
+## 4. Tipografi — PP Neue Montreal (Tek Font Ailesi)
 
-### 4.1 Font Ailesi
+**Kaynak:** Pangram Pangram (self-hosted woff2)
+**Hiçbir yardımcı font, hiçbir Google Fonts, hiçbir monospace yok.**
 
-**Birincil:** DM Sans (Google Fonts)
-**Teknik:** DM Mono (Google Fonts)
-
-```typescript
-// layout.tsx
-import { DM_Sans, DM_Mono } from 'next/font/google'
-const dmSans = DM_Sans({ weight: ['300','400','500','600','700'] })
-const dmMono = DM_Mono({ weight: ['300','400','500'] })
-```
-
-### 4.2 Ağırlıklar ve Kullanım
+### 4.1 Ağırlık Paleti (Sadece Bunlar)
 
 | Ağırlık | İsim | Kullanım |
 |---|---|---|
-| 300 | Light | İnce alt başlık, zarif body |
-| 400 | Regular | Gövde metni, paragraf |
-| 500 | Medium | Etiket, badge, navigasyon |
-| 600 | SemiBold | Alt başlık, kart başlığı |
-| 700 | Bold | H1, H2, CTA, logo |
+| 300 | Book | Uzun metinler |
+| 400 | Regular | Gövde metni |
+| 500 | Medium | Nadiren, vurgu için |
+| 700 | Bold | Sadece display başlıklarda |
 
-### 4.3 Boyut Hiyerarşisi
+### 4.2 Boyut Hiyerarşisi
 
-| Seviye | Boyut | Ağırlık | Letter Spacing | Kullanım |
-|---|---|---|---|---|
-| H1 | 48–64px | 700 | -0.03em | Hero başlık |
-| H2 | 36–48px | 700 | -0.025em | Bölüm başlığı |
-| H3 | 24–32px | 600 | -0.02em | Alt bölüm |
-| Body LG | 18px | 400 | 0 | Öne çıkan paragraf |
-| Body | 16px | 400 | 0 | Standart metin |
-| Small | 14px | 400–500 | 0 | Etiket, caption |
-| XSmall | 12px | 500–600 | +0.05em | Badge, tag |
-| Mono | 14px | 400 | 0 | Kod, hex değer |
+| Seviye | Boyut | Ağırlık | Letter Spacing | Line Height | Kullanım |
+|---|---|---|---|---|---|
+| H1/Display | clamp 56–120px | Bold | -0.02em | 1.0 | Hero başlık |
+| H2 | 32–48px | Medium/Bold | -0.02em | 1.1 | Bölüm başlığı |
+| H3 | 20–24px | Medium | -0.01em | 1.2 | Alt bölüm |
+| Body | 17–18px | Regular | 0 | 1.5 | Standart metin |
+| Small | 13–14px | Regular | +0.01em | 1.5 | Etiket, caption |
+
+### 4.3 Font Dosyaları
+
+```
+public/fonts/
+├── ppneuemontreal-book.woff2     (400)
+├── ppneuemontreal-medium.woff2   (500)
+├── ppneuemontreal-bold.woff2     (700)
+└── ppneuemontreal-italic.woff2   (400, italic)
+```
+
+### 4.4 ESKİ Fontlar (KULLANILMIYOR)
+- ~~DM Sans + DM Mono~~ → Mart 2026, kaldırıldı
 
 ---
 
-## 5. Sosyal Medya Varlıkları
+## 5. Layout Felsefesi
 
-### 5.1 Profil Fotoğrafı (400×400)
-
-Tüm platformlarda V monogram kullanılır.
-
-| Platform | Arka plan | V rengi | Nokta rengi |
-|---|---|---|---|
-| LinkedIn | #0F172A | #FFFFFF | #F59E0B |
-| Twitter/X | #000000 | #FFFFFF | #F59E0B |
-| Instagram | #020617 | #FFFFFF | #F59E0B |
-| WhatsApp | #F59E0B | #0F172A | #020617 |
-
-### 5.2 Banner Boyutları
-
-| Platform | Boyut | Notlar |
-|---|---|---|
-| LinkedIn Banner | 1584×396px | Logo sol, CTA sağ |
-| Twitter/X Header | 1500×500px | Centered wordmark |
-| Instagram Post | 1080×1080px | 3 varyasyon |
-| OG / Link Preview | 1200×630px | Otomatik (opengraph-image.tsx) |
-
-### 5.3 Banner Tasarım Kuralları
-- Arka plan: #0F172A (LinkedIn), #000000 (Twitter), #020617 (Instagram)
-- Radial gradient aksan: amber, sağ üst köşe
-- Logo sol üst — wordmark formatında
-- CTA: amber (#F59E0B) arka plan, midnight metin, bold
-- URL sağ alt — soluk (#64748B)
+- Asimetrik, sol hizalı, cömert boşluklu
+- **Hiçbir şey ortalanmış değil** — başlıklar, CTA'lar, tüm content sol hizalı
+- Grid: 12 kolon ama tipik bölüm 6–8 kolon kullanır, sağda nefes bırakır
+- Bölümler arası dikey boşluk: 120–200px
+- Element içi padding nadiren 24px altına düşer
 
 ---
 
-## 6. Dijital Uygulama Kuralları
+## 6. Sosyal Medya Varlıkları
 
-### 6.1 Web (verimio.com.tr)
+### 6.1 Profil Fotoğrafı (400×400)
+
+Tüm platformlarda V monogram: beyaz V + beyaz nokta, siyah arka plan (#0A0A0A)
+
+### 6.2 Banner / OG Image
+
+- Arka plan: #FFFFFF (saf beyaz)
+- Metin: #0A0A0A (siyah)
+- CTA: siyah bg + beyaz metin
+- Logo: siyah wordmark, sol hizalı
+- URL: #A3A3A3 (muted gri)
+
+### 6.3 Blog Kapak Görselleri — Beyaz Minimal Line-Art
+- **Model:** Nano Banana Pro (`nano-banana-pro-preview`) — Google AI Studio
+- **Stil:** Saf beyaz arka plan + siyah ince çizgi illüstrasyon
+- **Boyut:** 1200x630 landscape, webp, hedef <50KB
+- Detay: `Verimio/CLAUDE.md` → Görsel Üretim bölümü
+
+---
+
+## 7. Dijital Uygulama Kuralları
+
+### 7.1 Web (verimio.com.tr)
 
 ```
-Navbar:       Midnight bg (#020617), beyaz wordmark
-CTA buton:    Amber bg (#F59E0B), midnight text (#020617), bold, rounded-xl
-Hover:        Light Amber (#FBBF24)
-Link:         Soft Blue (#60A5FA), underline hover
-Section bg:   #FFFFFF veya #F5F5F4 (light) — #020617 (dark)
+Navbar:       Beyaz bg, siyah wordmark
+CTA buton:    Siyah bg (#0A0A0A), beyaz text (#FFFFFF), bold, rounded
+Hover:        Opacity geçişi
+Link:         Siyah (#0A0A0A), altçizgili
+Section bg:   #FFFFFF
+Border:       #E5E5E5
 ```
 
-### 6.2 Admin Panel
+### 7.2 Email Şablonları
 
 ```
-Arka plan:    #020617
-Sidebar:      #0F172A, active amber
-Kart:         #0F172A, border #1E293B
-Başlık:       Beyaz bold
-Body:         #94A3B8
-Vurgu:        #F59E0B (amber)
+Arka plan:    #FFFFFF
+Kart:         #FFFFFF, border #E5E5E5
+Başlık:       #0A0A0A bold
+Body:         #5C5C5C
+CTA buton:    #0A0A0A bg + #FFFFFF metin
+Link:         #0A0A0A altçizgili
+Footer:       #A3A3A3
 ```
 
-### 6.3 Buton Hiyerarşisi
+### 7.3 Buton Hiyerarşisi
 
 | Tür | Bg | Text | Kullanım |
 |---|---|---|---|
-| Primary | #F59E0B | #020617 | Ana CTA |
-| Secondary | transparent | #F59E0B | İkincil eylem, border amber |
-| Ghost | transparent | #94A3B8 | Düşük öncelik |
-| Danger | #EF4444 | #FFFFFF | Silme, iptal |
+| Primary | #0A0A0A | #FFFFFF | Ana CTA |
+| Secondary | transparent | #0A0A0A | İkincil eylem, border siyah |
+| Ghost | transparent | #5C5C5C | Düşük öncelik |
+| Danger | #DC2626 | #FFFFFF | Silme, iptal |
 
-### 6.4 Tutarlılık Kontrol Listesi
+### 7.4 Tutarlılık Kontrol Listesi
 
-Yeni bir sayfa veya component yaparken şunu kontrol et:
-
-- [ ] Font: DM Sans mı kullanılıyor?
-- [ ] Başlık: font-weight 700, letter-spacing -0.02em mi?
-- [ ] Renkler: sadece palet içindeki renkler mi?
-- [ ] CTA: amber bg + midnight text mi?
-- [ ] Logo: lowercase, doğru renk kombinasyonu mu?
-- [ ] Dark bg: #020617 veya #0F172A mi?
-- [ ] Border: #1E293B veya #334155 mi?
-
----
-
-## 7. Brand Preview
-
-Tüm marka varlıklarını canlı görmek için:
-
-```
-https://verimio-website.vercel.app/brand-preview?token=verimio2025
-```
-
-Sekmeler: Logo · Sosyal Medya
+- [ ] Font: PP Neue Montreal mi?
+- [ ] Renkler: sadece 5 palet değerinden mi?
+- [ ] CTA: siyah bg + beyaz metin mi?
+- [ ] Logo: lowercase, tek renk siyah mı?
+- [ ] Gradient/glow/vurgu rengi yok mu?
+- [ ] Sol hizalı mı? (ortalanmış değil)
 
 ---
 
@@ -300,14 +226,15 @@ src/app/
 ├── icon.tsx              → Favicon (32px)
 ├── apple-icon.tsx        → Apple touch icon (180px)
 ├── opengraph-image.tsx   → OG görsel (1200×630)
-├── globals.css           → CSS değişkenleri, font tanımları
-├── layout.tsx            → DM Sans + DM Mono yükleme
+├── globals.css           → CSS değişkenleri, monokrom palet
+├── layout.tsx            → PP Neue Montreal yükleme
 └── brand-preview/        → Canlı marka önizleme sayfası
 
-docs/
-└── BRAND.md              → Bu dosya
+public/fonts/             → PP Neue Montreal woff2 dosyaları
+docs/BRAND.md             → Bu dosya
 ```
 
 ---
 
-*Son güncelleme: Mart 2026 — Midnight + Amber rebrand*
+*Son güncelleme: Nisan 2026 — Saf Monokrom Editorial rebrand (v3.0)*
+*Önceki: Midnight + Amber (Mart 2026, v2.0) → kaldırıldı*

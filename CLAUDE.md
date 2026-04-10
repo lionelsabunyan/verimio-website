@@ -49,7 +49,7 @@ git push origin main  # → Vercel otomatik deploy
 ```
 src/
 ├── app/
-│   ├── layout.tsx                     → Root layout + metadata + OrganizationSchema
+│   ├── layout.tsx                     → Root layout + metadata + OrganizationSchema + PP Neue Montreal
 │   ├── page.tsx                       → Ana sayfa
 │   ├── robots.ts                      → Crawl kuralları
 │   ├── sitemap.ts                     → Dinamik sitemap (statik + blog)
@@ -119,7 +119,7 @@ Mevcut SEO altyapısı:
 | `feed.xml/route.ts` | RSS 2.0 feed |
 | `opengraph-image.tsx` | Root + per-post OG (1200x630) |
 | `components/seo/*` | 4 JSON-LD schema (Organization, Breadcrumb, Article, FAQ) |
-| `layout.tsx` | Canonical, hreflang tr-TR, twitter card |
+| `layout.tsx` | Canonical, twitter card |
 | `next.config.ts` | non-www→www 301, güvenlik header'ları, cache |
 
 ### Yeni Sayfa Checklist
@@ -217,20 +217,24 @@ monthly-launcher → seo-researcher → blog-outliner → blog-writer → blog-p
 
 ---
 
-## Kurumsal Kimlik (Midnight + Amber — Mart 2026)
+## Kurumsal Kimlik — Saf Monokrom Editorial (Nisan 2026)
 
 **Tam kılavuz:** `docs/BRAND.md`
 
 | Öğe | Değer |
 |-----|-------|
-| Logo | `verim` (beyaz) + `io` (amber #F59E0B) — lowercase, bold |
-| Font | DM Sans (300–700) + DM Mono |
-| Dark BG | Midnight `#020617` · Slate-900 `#0F172A` · Slate-800 `#1E293B` |
-| Accent | Amber `#F59E0B` · Light Amber `#FBBF24` |
-| Support | Soft Blue `#60A5FA` |
-| Text | Slate-100 `#F1F5F9` · Slate-400 `#94A3B8` |
-| CTA butonu | Amber bg + midnight text + bold |
+| Logo | `verimio` — tek renk siyah, lowercase, bold |
+| Font | PP Neue Montreal (Book 300, Regular 400, Medium 500, Bold 700) |
+| Zemin | Saf beyaz `#FFFFFF` |
+| Birincil metin | `#0A0A0A` |
+| İkincil metin | `#5C5C5C` |
+| Üçüncül / disabled | `#A3A3A3` |
+| Border / divider | `#E5E5E5` |
+| CTA butonu | Siyah bg (#0A0A0A) + beyaz text (#FFFFFF) |
+| Vurgu rengi | YOK — hiçbir accent color kullanılmıyor |
 | Admin panel | Ayrı renk şeması (değişmedi) |
+
+**ESKİ:** ~~Midnight #020617 + Amber #F59E0B + DM Sans~~ → Nisan 2026'da kaldırıldı
 
 ---
 
