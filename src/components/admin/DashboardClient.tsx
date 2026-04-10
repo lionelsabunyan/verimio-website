@@ -24,7 +24,7 @@ interface Lead {
 const STATUS_COLORS: Record<string, string> = {
   new: 'bg-blue-100 text-blue-700',
   processing: 'bg-yellow-100 text-yellow-700',
-  report_sent: 'bg-purple-100 text-purple-700',
+  report_sent: 'bg-amber-100 text-amber-700',
   call_scheduled: 'bg-orange-100 text-orange-700',
   call_completed: 'bg-teal-100 text-teal-700',
   converted: 'bg-green-100 text-green-700',

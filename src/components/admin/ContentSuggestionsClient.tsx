@@ -22,7 +22,7 @@ interface Suggestion {
 const TYPE_CONFIG: Record<string, { label: string; icon: string; color: string }> = {
   blog:       { label: 'Blog',       icon: '📝', color: 'bg-blue-500/10 text-blue-400 border-blue-500/20' },
   linkedin:   { label: 'LinkedIn',   icon: '💼', color: 'bg-sky-500/10 text-sky-400 border-sky-500/20' },
-  script:     { label: 'Script',     icon: '🎬', color: 'bg-purple-500/10 text-purple-400 border-purple-500/20' },
+  script:     { label: 'Script',     icon: '🎬', color: 'bg-amber-500/10 text-amber-400 border-amber-500/20' },
   newsletter: { label: 'Newsletter', icon: '📧', color: 'bg-orange-500/10 text-orange-400 border-orange-500/20' },
   caption:    { label: 'Caption',    icon: '📱', color: 'bg-pink-500/10 text-pink-400 border-pink-500/20' },
 }

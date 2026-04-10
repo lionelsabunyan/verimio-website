@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const MODELS = [
-  { id: 'fal-ai/recraft/v3/text-to-image', label: 'Recraft V4', desc: 'Sosyal medya görselleri (önerilen)' },
+  { id: 'fal-ai/nano-banana-pro', label: 'Nano Banana Pro', desc: 'Monokrom line-art (önerilen)' },
   { id: 'fal-ai/flux/schnell', label: 'Flux Schnell', desc: 'Hızlı üretim, ucuz' },
   { id: 'fal-ai/flux/dev', label: 'Flux Dev', desc: 'Yüksek kalite, yavaş' },
 ]
@@ -20,20 +20,20 @@ const SIZE_PRESETS = [
 
 const PROMPT_TEMPLATES = [
   {
-    label: 'Logo (Hexagon)',
-    prompt: 'Minimalist tech logo, hexagonal icon outline in deep indigo #0F172A, thin diagonal line inside hexagon in vivid lime #F59E0B representing data flow, small circle at start, small arrow at end, "VERIMIO" wordmark in caps, Inter Bold font style, white background, SVG vector quality, no shadows, no gradients',
+    label: 'Blog Kapak',
+    prompt: 'Monochrome line art illustration on a very dark navy background (#020617). Professional business scene with desk and laptop. White line art outlines, single amber/gold (#F59E0B) accent on key element. Corporate minimalist style. No text, no words, no typography. 1200x630 composition.',
   },
   {
-    label: 'LinkedIn İnfografik',
-    prompt: 'Professional LinkedIn infographic, deep indigo #0F172A background, vivid lime #F59E0B accent elements, data visualization with charts, Turkish AI consulting theme, clean modern layout, white typography, geometric shapes, no text except numbers',
+    label: 'LinkedIn Post',
+    prompt: 'Monochrome line art illustration on a very dark navy background (#020617). Abstract data visualization with connected nodes and flowing lines. White line art outlines, single amber/gold (#F59E0B) accent. Professional corporate minimalist style. No text. 1200x628 composition.',
   },
   {
     label: 'Instagram Post',
-    prompt: 'Modern social media graphic, dark indigo background, lime green accents, minimalist data flow visualization, professional B2B tech aesthetic, square format, bold typography space, clean geometric design',
+    prompt: 'Monochrome line art illustration on a very dark navy background (#020617). AI and automation concept with circuit patterns and human silhouette. White line art outlines, single amber/gold (#F59E0B) accent. Minimalist corporate style. No text. Square 1080x1080.',
   },
   {
     label: 'YouTube Thumbnail',
-    prompt: 'YouTube thumbnail background, split design, left dark indigo half with bold typography placeholder, right half with abstract AI data visualization in lime green, high contrast, thumbnail-optimized composition',
+    prompt: 'Monochrome line art illustration on a very dark navy background (#020617). Bold split composition, abstract AI brain visualization. White line art, single amber/gold (#F59E0B) accent. High contrast, thumbnail-optimized. No text. 1280x720.',
   },
 ]
 

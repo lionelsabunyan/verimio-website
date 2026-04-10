@@ -30,9 +30,22 @@ export async function POST(request: Request) {
   const supabase = await createClient()
   const body = await request.json()
 
+  // Field allowlist — sadece izin verilen alanları kabul et
+  const { platform, status: postStatus, caption, hashtags, media_url, scheduled_at, post_type, blog_slug } = body
+  const safeBody = {
+    ...(platform && { platform }),
+    ...(postStatus && { status: postStatus }),
+    ...(caption && { caption }),
+    ...(hashtags && { hashtags }),
+    ...(media_url && { media_url }),
+    ...(scheduled_at && { scheduled_at }),
+    ...(post_type && { post_type }),
+    ...(blog_slug && { blog_slug }),
+  }
+
   const { data, error } = await supabase
     .from('social_posts')
-    .insert(body)
+    .insert(safeBody)
     .select()
     .single()
 
@@ -42,11 +55,19 @@ export async function POST(request: Request) {
 
 export async function PATCH(request: Request) {
   const supabase = await createClient()
-  const { id, ...updates } = await request.json()
+  const { id, ...rawUpdates } = await request.json()
+
+  // Field allowlist
+  const ALLOWED_FIELDS = ['platform', 'status', 'caption', 'hashtags', 'media_url', 'scheduled_at', 'post_type', 'blog_slug']
+  const updates: Record<string, unknown> = {}
+  for (const key of ALLOWED_FIELDS) {
+    if (key in rawUpdates) updates[key] = rawUpdates[key]
+  }
+  updates.updated_at = new Date().toISOString()
 
   const { data, error } = await supabase
     .from('social_posts')
-    .update({ ...updates, updated_at: new Date().toISOString() })
+    .update(updates)
     .eq('id', id)
     .select()
     .single()

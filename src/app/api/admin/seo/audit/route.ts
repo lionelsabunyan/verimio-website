@@ -88,10 +88,10 @@ function sleep(ms: number) {
 }
 
 export async function GET(request: Request) {
-  // Cron secret kontrolü
+  // Cron secret kontrolü — fail-closed: secret yoksa da engelle
   const authHeader = request.headers.get('authorization')
   const cronSecret = process.env.CRON_SECRET
-  if (cronSecret && authHeader !== `Bearer ${cronSecret}`) {
+  if (!cronSecret || authHeader !== `Bearer ${cronSecret}`) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 

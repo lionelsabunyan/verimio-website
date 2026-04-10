@@ -60,7 +60,7 @@ const COLORS = [
     roles: ['CTA buton', 'Vurgu metni', '"mio" wordmark', 'Aksan çizgi'],
   },
   {
-    name: 'Gradient Purple',
+    name: 'Gradient Amber',
     hex: '#F59E0B',
     cmyk: '—',
     usage: 'Web gradient başlangıcı (Indigo → Lime geçiş)',

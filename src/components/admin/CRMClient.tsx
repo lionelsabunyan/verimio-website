@@ -18,7 +18,7 @@ const STATUS_OPTIONS = [
 const STATUS_COLORS: Record<string, string> = {
   new: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
   processing: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30',
-  report_sent: 'bg-purple-500/20 text-purple-400 border-purple-500/30',
+  report_sent: 'bg-amber-500/20 text-amber-400 border-amber-500/30',
   call_scheduled: 'bg-orange-500/20 text-orange-400 border-orange-500/30',
   call_completed: 'bg-teal-500/20 text-teal-400 border-teal-500/30',
   converted: 'bg-green-500/20 text-green-400 border-green-500/30',

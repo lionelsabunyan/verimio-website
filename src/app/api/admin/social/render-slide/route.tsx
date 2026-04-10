@@ -54,8 +54,22 @@ export async function GET(request: NextRequest) {
     const type     = (p.get('type')     ?? 'point') as SlideType
     const index    = parseInt(p.get('index') ?? '1', 10)
     const total    = parseInt(p.get('total') ?? '8', 10)
-    const bgUrl    = p.get('bg_url')  ?? null
+    const rawBgUrl = p.get('bg_url')  ?? null
     const platform = (p.get('platform') ?? 'instagram') as Platform
+
+    // SSRF koruması — sadece bilinen CDN host'larına izin ver
+    let bgUrl: string | null = null
+    if (rawBgUrl) {
+      try {
+        const parsed = new URL(rawBgUrl)
+        const ALLOWED_HOSTS = ['fal.media', 'v3b.fal.media', 'storage.googleapis.com']
+        if (ALLOWED_HOSTS.some(h => parsed.hostname === h || parsed.hostname.endsWith(`.${h}`))) {
+          bgUrl = rawBgUrl
+        }
+      } catch {
+        // Geçersiz URL — bgUrl null kalır
+      }
+    }
 
     const isCover = type === 'cover'
     const key     = isCover ? 'cover' : 'carousel'

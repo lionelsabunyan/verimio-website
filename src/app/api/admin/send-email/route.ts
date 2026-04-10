@@ -10,6 +10,13 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'to ve type zorunlu' }, { status: 400 })
     }
 
+    // Email relay koruması — sadece bilinen alıcı domain'lerine izin ver
+    const emailDomain = to.split('@')[1]?.toLowerCase()
+    const ALLOWED_DOMAINS = ['verimio.com.tr', 'gmail.com', 'hotmail.com', 'outlook.com', 'yahoo.com', 'icloud.com']
+    if (!emailDomain || !ALLOWED_DOMAINS.some(d => emailDomain === d || emailDomain.endsWith(`.${d}`))) {
+      return NextResponse.json({ error: 'Bu email adresine gönderim yapılamaz' }, { status: 400 })
+    }
+
     let html: string
     let emailSubject: string
 

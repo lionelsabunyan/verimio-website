@@ -10,11 +10,6 @@ const ppNeueMontreal = localFont({
   src: [
     {
       path: "../../public/fonts/ppneuemontreal-book.woff2",
-      weight: "300",
-      style: "normal",
-    },
-    {
-      path: "../../public/fonts/ppneuemontreal-book.woff2",
       weight: "400",
       style: "normal",
     },

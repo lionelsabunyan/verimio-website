@@ -30,11 +30,19 @@ export async function GET(request: Request) {
 
 export async function PATCH(request: Request) {
   const supabase = await createClient()
-  const { id, ...updates } = await request.json()
+  const { id, ...rawUpdates } = await request.json()
+
+  // Field allowlist — sadece izin verilen alanları güncelle
+  const ALLOWED_FIELDS = ['status', 'notes', 'assigned_to', 'priority', 'tags', 'meeting_date', 'follow_up_date']
+  const updates: Record<string, unknown> = {}
+  for (const key of ALLOWED_FIELDS) {
+    if (key in rawUpdates) updates[key] = rawUpdates[key]
+  }
+  updates.updated_at = new Date().toISOString()
 
   const { data, error } = await supabase
     .from('leads')
-    .update({ ...updates, updated_at: new Date().toISOString() })
+    .update(updates)
     .eq('id', id)
     .select()
     .single()

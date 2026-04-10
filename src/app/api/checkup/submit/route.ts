@@ -230,7 +230,33 @@ async function createNotionPage(
   }
 }
 
+// Basit IP-bazlı rate limiter (5 istek/IP/saat)
+const rateLimit = new Map<string, { count: number; resetAt: number }>()
+
+function checkRateLimit(ip: string): boolean {
+  const now = Date.now()
+  const windowMs = 3600000 // 1 saat
+  const maxRequests = 5
+  const entry = rateLimit.get(ip)
+  if (!entry || now > entry.resetAt) {
+    rateLimit.set(ip, { count: 1, resetAt: now + windowMs })
+    return true
+  }
+  if (entry.count >= maxRequests) return false
+  entry.count++
+  return true
+}
+
 export async function POST(req: NextRequest) {
+  // Rate limiting
+  const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown'
+  if (!checkRateLimit(ip)) {
+    return NextResponse.json(
+      { error: 'Çok fazla istek gönderdiniz. Lütfen bir süre bekleyip tekrar deneyin.' },
+      { status: 429 }
+    )
+  }
+
   try {
     const body = await req.json()
     const { email, company_name, sector, team_size, tools, pain_points,

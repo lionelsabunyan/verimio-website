@@ -33,9 +33,18 @@ export async function middleware(request: NextRequest) {
 
   const { pathname } = request.nextUrl
 
-  // /admin rotalarını koru (render-slide hariç — public PNG endpoint)
-  if (pathname.startsWith('/admin') && !pathname.startsWith('/admin/login') && !pathname.startsWith('/api/admin/social/render-slide')) {
+  // render-slide public PNG endpoint — auth gerekmez
+  if (pathname.startsWith('/api/admin/social/render-slide')) {
+    return supabaseResponse
+  }
+
+  // /admin ve /api/admin rotalarını koru
+  if ((pathname.startsWith('/admin') || pathname.startsWith('/api/admin')) && !pathname.startsWith('/admin/login')) {
     if (!user) {
+      // API route'ları için redirect yerine 401 dön
+      if (pathname.startsWith('/api/')) {
+        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+      }
       const url = request.nextUrl.clone()
       url.pathname = '/admin/login'
       return NextResponse.redirect(url)
@@ -53,5 +62,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/admin/:path*'],
+  matcher: ['/admin/:path*', '/api/admin/:path*'],
 }

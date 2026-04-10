@@ -70,7 +70,7 @@ export default function BlogPage() {
                 className="group border-b border-border py-8 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-start"
               >
                 {/* Cover — small */}
-                <div className="md:col-span-3 overflow-hidden">
+                <div className="md:col-span-3 overflow-hidden border border-border bg-foreground/[0.02]">
                   <BlogCoverImage slug={post.slug} title={post.title} category={post.category} index={index} />
                 </div>
 

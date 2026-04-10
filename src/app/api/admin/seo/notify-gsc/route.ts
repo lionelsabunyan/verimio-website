@@ -26,9 +26,10 @@ function getGscAuth(scopes: string[]) {
  *   3. Ana sayfa + blog listesi için de URL_UPDATED (yeni yazı internal link'leri güncelliyor)
  */
 export async function POST(req: NextRequest) {
+  // Fail-closed: token yoksa da engelle
   const authHeader = req.headers.get('authorization')
   const expectedToken = process.env.ADMIN_API_TOKEN
-  if (expectedToken && authHeader !== `Bearer ${expectedToken}`) {
+  if (!expectedToken || authHeader !== `Bearer ${expectedToken}`) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 

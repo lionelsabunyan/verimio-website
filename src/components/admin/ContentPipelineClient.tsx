@@ -96,10 +96,10 @@ const STAGES = [
     label: 'Taslaklar',
     icon: '📄',
     desc: 'AI tarafından üretildi',
-    borderColor: 'border-purple-500/40',
-    headerBg: 'bg-purple-500/10',
-    headerText: 'text-purple-400',
-    countBg: 'bg-purple-500/20 text-purple-300',
+    borderColor: 'border-amber-500/40',
+    headerBg: 'bg-amber-500/10',
+    headerText: 'text-amber-400',
+    countBg: 'bg-amber-500/20 text-amber-300',
   },
   {
     id: 'published',
@@ -221,7 +221,7 @@ function CardActions({
         <Link
           href="/admin/content"
           onClick={(e) => e.stopPropagation()}
-          className="text-[10px] px-2 py-1 bg-purple-500/10 text-purple-400 border border-purple-500/20 rounded hover:bg-purple-500/20 transition-colors"
+          className="text-[10px] px-2 py-1 bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded hover:bg-amber-500/20 transition-colors"
         >
           👁 Önizle
         </Link>
