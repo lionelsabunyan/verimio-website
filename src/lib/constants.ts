@@ -187,6 +187,27 @@ export const FAQ_ITEMS = [
 
 export const BLOG_POSTS = [
   {
+    title: "n8n Rehberi: Türk Şirketleri İçin İş Otomasyonu A'dan Z'ye [2026]",
+    excerpt: "n8n nedir, nasıl kurulur, hangi iş süreçlerini otomatikleştirir? Türk KOBİ'leri için kapsamlı n8n rehberi — kurulum, maliyet, entegrasyon ve gerçek kullanım senaryoları.",
+    date: "10 Nisan 2026",
+    slug: "n8n-rehberi-turk-sirketleri-is-otomasyonu",
+    category: "tutorial" as const,
+  },
+  {
+    title: "Yapay Zeka Çağrı Merkezi: Türkiye'de Müşteri Hizmetlerinin Geleceği [2026]",
+    excerpt: "AI çağrı merkezi nedir, nasıl kurulur, maliyeti ne kadar? Türk şirketleri için yapay zeka destekli müşteri hizmetleri rehberi — chatbot, voice agent ve KVKK uyumu.",
+    date: "10 Nisan 2026",
+    slug: "yapay-zeka-cagri-merkezi-rehberi",
+    category: "customer" as const,
+  },
+  {
+    title: "AI Agent Nedir? Şirketiniz İçin Otonom Yapay Zeka Asistanları Rehberi [2026]",
+    excerpt: "AI agent nedir, chatbot'tan farkı ne, şirketler nasıl kullanır? Türk KOBİ'leri için kapsamlı AI agent rehberi — kullanım alanları, güvenlik, araçlar ve uygulama yol haritası.",
+    date: "10 Nisan 2026",
+    slug: "ai-agent-nedir-sirketler-icin-rehber",
+    category: "ai-tools" as const,
+  },
+  {
     title: "2026 Yapay Zeka Trendleri: KOBİ'ler İçin 5 Anahtar Strateji",
     excerpt: "2026 yapay zeka trendlerini KOBİ perspektifinden inceliyor, yönetişim, ölçeklenebilirlik odaklı stratejiler sunuyor, risk yönetimi ve kurumsal yetkinlik kazanma yollarını anlatıyoruz.",
     date: "8 Nisan 2026",

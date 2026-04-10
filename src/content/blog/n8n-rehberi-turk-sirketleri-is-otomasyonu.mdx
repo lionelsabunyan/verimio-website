@@ -1,0 +1,257 @@
+---
+title: "n8n Rehberi: Türk Şirketleri İçin İş Otomasyonu A'dan Z'ye [2026]"
+excerpt: "n8n nedir, nasıl kurulur, hangi iş süreçlerini otomatikleştirir? Türk KOBİ'leri için kapsamlı n8n rehberi — kurulum, maliyet, entegrasyon ve gerçek kullanım senaryoları."
+date: "10 Nisan 2026"
+category: "tutorial"
+readingTime: "18 dk"
+author: "Verimio Ekibi"
+---
+
+Türkiye'deki bir imalat firması, her ay 40 saatini sadece sipariş bilgilerini Excel'den ERP'ye taşımaya harcıyordu. n8n ile bu süreç 3 dakikaya düştü. Geriye kalan 39 saat 57 dakikayı stratejik işlere harcamaya başladılar.
+
+Bu bir istisna değil. Verimio'nun Check-Up sürecinde analiz ettiği Türk KOBİ'lerinin %70'inde en az bir süreç, hiçbir kod yazmadan otomatikleştirilebilir durumda. Sorun teknoloji değil — nereden başlayacağını bilmemek.
+
+Bu rehber, n8n'i sıfırdan tanımanızı, kurmanızı ve ilk otomasyonunuzu çalıştırmanızı sağlayacak. Teknik jargon minimum, pratik değer maksimum.
+
+> **Hızlı Özet:** n8n, açık kaynaklı ve self-hosted çalışabilen bir iş otomasyonu platformudur. Türk KOBİ'leri için özellikle cazip çünkü verileriniz kendi sunucunuzda kalır, aylık lisans maliyeti sıfıra yakın olabilir ve 400+ entegrasyonla mevcut araçlarınıza bağlanır. Zapier veya Make'e kıyasla daha esnektir ancak başlangıçta biraz teknik kurulum gerektirir.
+
+## n8n Nedir ve Neden Bu Kadar Konuşuluyor?
+
+n8n (okunuşu: "n-eight-n"), Berlin merkezli bir şirketin geliştirdiği açık kaynaklı workflow otomasyon aracıdır. 2019'da çıktı, 2024-2026 arasında özellikle AI entegrasyonlarıyla birlikte patladı.
+
+Basitçe: iki veya daha fazla uygulamayı birbirine bağlar ve aradaki manuel işi ortadan kaldırır. Bir e-posta geldiğinde CRM'e kayıt açar, bir form doldurulduğunda Slack'e bildirim gönderir, bir fatura kesildiğinde muhasebe yazılımına aktarır.
+
+### n8n'i Farklı Kılan 4 Özellik
+
+**1. Açık kaynak ve self-hosted:** Verileriniz sizin sunucunuzda kalır. KVKK hassasiyeti olan Türk şirketleri için kritik bir avantaj. Bulut versiyonu da var ama zorunlu değil.
+
+**2. 400+ entegrasyon:** Google Workspace, Slack, Notion, Supabase, WhatsApp Business, HubSpot, Parasut ve daha fazlası. Entegrasyonu olmayan araçlar için HTTP request ile her API'ye bağlanabilirsiniz.
+
+**3. AI-native:** ChatGPT, Claude, Gemini gibi AI modellerini doğrudan workflow'larınıza ekleyebilirsiniz. Gelen müşteri mesajını AI ile analiz edip kategorize eden, otomatik yanıt taslağı hazırlayan akışlar dakikalar içinde kurulur.
+
+**4. Kod yazabilirsiniz (ama zorunda değilsiniz):** Görsel sürükle-bırak arayüzüyle başlarsınız. Karmaşık mantık gerektiğinde JavaScript veya Python node'ları ekleyebilirsiniz. Bu esneklik, Make veya Zapier'da bulunmaz.
+
+### n8n Türkiye'de Ne Kadar Yaygın?
+
+Google arama verilerine göre "n8n" ve "n8n Türkiye" sorgularında son 6 ayda belirgin bir artış var. n8nkursu.com gibi Türkçe eğitim siteleri, YouTube'da Türkçe kurulum videoları (Dolunay Ozeren, Yusuf İpek gibi içerik üreticileri) ve yzforum.net gibi otomasyon forumları bu ilgiyi besliyor.
+
+Ancak Türkçe'de kapsamlı, iş odaklı bir n8n rehberi hâlâ eksik. Çoğu içerik ya teknik kuruluma odaklanıyor ya da genel bir tanıtım sunuyor. Bu rehber, ikisinin arasındaki boşluğu dolduruyor.
+
+## n8n vs Make vs Zapier: Türk Şirketleri Hangisini Seçmeli?
+
+Bu üç platformun hepsini danışmanlık süreçlerimizde değerlendirdik. Detaylı bir karşılaştırma için [Make vs n8n karşılaştırma yazımıza](/blog/make-vs-n8n-karsilastirma) bakabilirsiniz, ama kısa özet şöyle:
+
+| Kriter | n8n | Make | Zapier |
+|--------|-----|------|--------|
+| **Fiyat (başlangıç)** | Ücretsiz (self-hosted) | ~10$/ay | ~20$/ay |
+| **Self-hosting** | Evet | Hayır | Hayır |
+| **AI entegrasyonu** | Güçlü (native) | Orta | Temel |
+| **Kod yazma** | JS + Python | Sınırlı | Yok |
+| **Entegrasyon sayısı** | 400+ | 1000+ | 6000+ |
+| **Öğrenme eğrisi** | Orta | Düşük | Çok düşük |
+| **Veri lokasyonu** | Kendi sunucunuz | AB | ABD |
+| **Türkçe destek** | Topluluk | Yok | Yok |
+
+### Ne Zaman Hangisi?
+
+**n8n'i seçin:** Veri kontrolü önemliyse (KVKK), AI workflow'ları kuracaksanız, bütçe kısıtlıysa, teknik ekibiniz varsa veya karmaşık iş mantığı gerekiyorsa.
+
+**Make'i seçin:** Hızlı başlamak istiyorsanız, görsel arayüz öncelikliyse ve orta karmaşıklıkta akışlarınız varsa.
+
+**Zapier'ı seçin:** Çok basit, 2-3 adımlı otomasyonlar yeterli olacaksa ve entegrasyon çeşitliliği kritikse.
+
+Verimio'nun tavsiyesi: Türk KOBİ'lerinin çoğu için n8n, maliyet-performans açısından en iyi seçenek. Başlangıç eğrisi biraz dik ama 2-3 hafta içinde akıcı hale geliyor.
+
+## n8n Kurulumu: İlk Workflow'unuz 30 Dakikada
+
+n8n'i kurmanın üç yolu var. Hangi yolun size uygun olduğunu anlamak için [n8n ile basit otomasyon rehberimize](/blog/n8n-ile-basit-otomasyon) bakabilirsiniz. Burada hızlı bir özet:
+
+### Yol 1: n8n Cloud (En Hızlı Başlangıç)
+
+n8n.io'dan hesap açın, kredi kartı girin, 14 gün ücretsiz deneyin. Kurulum yok, sunucu yok — doğrudan tarayıcıda çalışır. Aylık maliyeti ~20€'dan başlar.
+
+**Kimin için:** Teknik ekibi olmayan, hemen denemek isteyen firmalar.
+
+### Yol 2: Docker ile Self-Hosting (Önerilen)
+
+Hetzner, DigitalOcean veya mevcut sunucunuza Docker ile kurulum. Aylık sunucu maliyeti 5-10€, n8n lisansı ücretsiz.
+
+```
+# Temel kurulum (5 dakika)
+docker run -d --name n8n -p 5678:5678 \
+  -v n8n_data:/home/node/.n8n \
+  n8nio/n8n
+```
+
+**Kimin için:** Veri kontrolü isteyen, KVKK'ya dikkat eden, bütçe bilincli firmalar.
+
+### Yol 3: Desktop Uygulaması (Test İçin)
+
+Mac veya Windows'a doğrudan kurun, lokal çalıştırın. Ücretsiz, kurulum basit. Ama 7/24 çalışmaz — bilgisayarınız açıkken çalışır.
+
+**Kimin için:** "Önce bir bakayım ne yapıyor" diyen karar vericiler.
+
+### İlk Workflow: Yeni Lead Geldiğinde Otomatik Bildirim
+
+Diyelim ki web sitenizde bir form var (Tally, Typeform veya basit bir HTML form). Birisi formu doldurduğunda:
+
+1. n8n form verilerini alır (Webhook trigger)
+2. CRM'inize (HubSpot, Notion veya Google Sheets) yeni kayıt ekler
+3. Slack/Teams/WhatsApp grubuna bildirim gönderir
+4. Kişiye otomatik onay e-postası atar
+
+Bu akışı kurmak, n8n'i ilk kez kullanan birinin bile 30 dakikada yapabileceği bir iştir.
+
+## 10 Gerçek Kullanım Alanı: Pazarlamadan Muhasebeye
+
+Verimio'nun Check-Up sürecinde karşılaştığımız en yaygın otomasyon fırsatları:
+
+### 1. E-posta Pazarlama Otomasyonu
+
+Yeni abone → hoş geldin serisi (3 e-posta, zamanlı) → segment bazlı içerik gönderimi. Mailchimp veya Resend ile entegre çalışır.
+
+### 2. Sosyal Medya İçerik Dağıtımı
+
+Blog yazısı yayınlandığında → LinkedIn, Twitter, Instagram için otomatik post taslağı oluşturur → onay kuyruğuna ekler → zamanlanmış paylaşım.
+
+### 3. Fatura ve Tahsilat Takibi
+
+Parasut veya e-Fatura sisteminden fatura kesildiğinde → ödeme tarihi yaklaşınca hatırlatma → ödeme geldiğinde kayıt güncelleme. [Raporlama otomasyonu hakkında detaylı bilgi](/blog/raporlama-otomasyonu-nedir).
+
+### 4. Müşteri Destek Otomasyonu
+
+Destek e-postası veya WhatsApp mesajı geldiğinde → AI ile kategorize et → ilgili ekibe yönlendir → çözüm süresini takip et. [Chatbot ve voice agent seçimi rehberimiz](/blog/chatbot-voice-agent-secimi) bu konuyu derinleştirir.
+
+### 5. Stok Uyarıları
+
+ERP veya Excel'deki stok seviyesi belirlenen eşiğin altına düştüğünde → satın alma ekibine uyarı → tedarikçiye otomatik sipariş taslağı.
+
+### 6. HR Süreçleri
+
+Yeni çalışan işe alındığında → IT'ye donanım talebi → e-posta hesabı oluşturma → oryantasyon takvimi gönderme → 30/60/90 gün check-in hatırlatmaları.
+
+### 7. Teklif ve Sözleşme Otomasyonu
+
+CRM'de "teklif" aşamasına geçen lead → şablondan teklif PDF'i oluştur → e-posta ile gönder → açılıp okunduğunda satış ekibini uyar.
+
+### 8. Veri Toplama ve Raporlama
+
+Google Analytics, CRM ve satış verilerini birleştirip haftalık PDF rapor oluşturma. [Excel'den yapay zekaya geçiş rehberimize](/blog/excelden-yapay-zekaya-raporlama-otomasyonu-ile-hata-payini-s) bakabilirsiniz.
+
+### 9. Randevu Yönetimi
+
+Müşteri online randevu aldığında → Google Calendar'a ekle → 24 saat önce hatırlatma → toplantı sonrası takip e-postası.
+
+### 10. AI Destekli İçerik Üretimi
+
+Konu girdisi → AI ile taslak oluştur → editöre gönder → onay sonrası CMS'e yayınla → sosyal medya dağıtımını tetikle.
+
+## n8n + AI: İş Otomasyonunun Yeni Seviyesi
+
+2025-2026'da n8n'in en büyük avantajı AI entegrasyonlarıdır. n8n, ChatGPT, Claude ve diğer LLM'leri doğrudan workflow'larınıza entegre eder.
+
+### Pratik AI + n8n Senaryoları
+
+**Müşteri mesajı analizi:** Gelen e-posta veya WhatsApp mesajını AI ile analiz et → aciliyet seviyesi belirle → ilgili departmana yönlendir → cevap taslağı hazırla.
+
+**Belge işleme:** PDF fatura veya sözleşme yüklendiğinde → AI ile anahtar bilgileri çıkar (tutar, tarih, taraflar) → veritabanına kaydet.
+
+**Lead skorlama:** Yeni lead geldiğinde → AI ile şirket bilgilerini analiz et → 1-10 skor ver → yüksek skorlu lead'leri öncelikli olarak işaretle.
+
+**İçerik özetleme:** Rakip blog yazılarını veya sektör haberlerini otomatik topla → AI ile özetle → haftalık digest olarak ekibe gönder.
+
+Bu tür AI destekli otomasyon akışlarını kurmak, n8n'in AI node'ları sayesinde 15-20 dakikada mümkün. Zapier veya Make'te aynı esnekliği elde etmek ya çok pahalı ya da mümkün değil.
+
+## Maliyet Analizi: n8n ile Ne Kadar Tasarruf Edersiniz?
+
+İş otomasyonunun [yatırım getirisini hesaplamak](/blog/ai-roi-hesaplama) için basit bir formül var:
+
+**Aylık tasarruf = (Harcanan saat × Saat maliyeti) − Otomasyon maliyeti**
+
+### Örnek Hesaplama
+
+Bir 15 kişilik pazarlama ajansı:
+
+| Süreç | Haftalık Manuel Süre | n8n ile | Tasarruf |
+|-------|---------------------|---------|----------|
+| Lead bildirim + CRM kaydı | 5 saat | 0 saat | 5 saat |
+| Sosyal medya post planlama | 3 saat | 0.5 saat | 2.5 saat |
+| Haftalık rapor hazırlama | 4 saat | 0.5 saat | 3.5 saat |
+| E-posta takip | 2 saat | 0 saat | 2 saat |
+| **Toplam** | **14 saat/hafta** | **1 saat/hafta** | **13 saat/hafta** |
+
+Ayda 52 saat tasarruf. Bir çalışanın saat maliyeti 200 TL ise, aylık 10.400 TL tasarruf. n8n self-hosted maliyeti: ~200 TL/ay (sunucu). Net kazanç: **~10.200 TL/ay.**
+
+İlk yıl ROI: kurulum maliyeti dahil bile 10x üzeri.
+
+## Yaygın Hatalar ve Nasıl Kaçınırsınız
+
+Yıllar içinde gördüğümüz en sık [otomasyon hataları](/blog/otomasyon-yanlislari):
+
+### 1. Her Şeyi Birden Otomatikleştirmeye Çalışmak
+
+Bir workflow ile başlayın, çalıştığını görün, sonra genişletin. İlk hafta 10 akış kurmaya çalışan firmalar genellikle 3. haftada hiçbirini kullanmıyor.
+
+### 2. Hata Yönetimini Unutmak
+
+Workflow'un "mutlu yolu" çalışır — peki API yanıt vermezse? Boş veri gelirse? Her workflow'a hata node'u ekleyin ve kendinize bildirim gönderin.
+
+### 3. Dokümantasyon Yapmamak
+
+Altı ay sonra o workflow'u neden kurduğunuzu, hangi API key'ini kullandığınızı unutacaksınız. Her workflow'a açıklama notu ekleyin.
+
+### 4. Güvenliği İhmal Etmek
+
+Self-hosted n8n'e SSL sertifikası olmadan erişim, API key'lerini düz metin saklama, webhook URL'lerini herkese açık bırakma — bunlar Türk KOBİ'lerinde çok sık görüyoruz.
+
+### 5. Tek Kişiye Bağımlı Kalmak
+
+"Ahmet gitti, kimse workflow'ları bilmiyor" senaryosu. En az iki kişi eğitilmeli, dokümantasyon tutulmalı.
+
+## n8n Türkiye Ekosistemi ve Yardım Kaynakları
+
+### Türkçe Kaynaklar
+- **n8nkursu.com** — Türkçe video eğitimler ve AI otomasyon rehberleri
+- **yzforum.net** — Otomasyon flow paylaşım forumu
+- **YouTube** — Dolunay Ozeren, Yusuf İpek kanalları (uygulamalı Türkçe videolar)
+
+### Resmi Kaynaklar
+- **n8n.io/docs** — Resmi dokümantasyon (İngilizce)
+- **community.n8n.io** — Topluluk forumu (İngilizce, ama sorulara hızlı yanıt)
+- **n8n Templates** — Hazır workflow şablonları (100+ adet)
+
+### Verimio n8n Danışmanlığı
+
+n8n kurulumu ve iş süreçlerinize entegrasyonu konusunda destek almak istiyorsanız, [Verimio Check-Up](/analiz) ile başlayabilirsiniz. Mevcut süreçlerinizi analiz eder, otomatikleştirilecek alanları belirler ve n8n kurulumunu birlikte yaparız.
+
+---
+
+## Sık Sorulan Sorular
+
+**n8n ücretsiz mi?**
+Evet, self-hosted versiyonu tamamen ücretsiz ve açık kaynak. Kendi sunucunuza kurarsınız, lisans ücreti yok. n8n Cloud (bulut) versiyonu ise ücretli — aylık ~20€'dan başlıyor. Çoğu Türk KOBİ için self-hosted versiyon hem maliyet hem veri kontrolü açısından daha mantıklı.
+
+**n8n öğrenmek zor mu?**
+Temel workflow'ları kurmak 1-2 gün, orta seviye akışları yönetmek 1-2 hafta sürer. Zapier'a göre biraz daha dik bir öğrenme eğrisi var ama YouTube'daki Türkçe eğitim videolarıyla hızla aşılabiliyor. Kod bilmek gerekmiyor — ama biliyorsanız çok daha güçlü akışlar kurabilirsiniz.
+
+**n8n ile hangi uygulamaları bağlayabilirim?**
+400'den fazla hazır entegrasyon var: Google Workspace, Slack, Notion, HubSpot, Mailchimp, Stripe, Supabase, WhatsApp Business API ve daha fazlası. Listede olmayan uygulamalar için HTTP Request node'uyla herhangi bir REST API'ye bağlanabilirsiniz.
+
+**n8n self-hosted güvenli mi? KVKK açısından sorun olur mu?**
+Self-hosted n8n, verilerinizin tamamen sizin kontrolünüzde olması anlamına gelir — KVKK açısından bu bir avantaj. Veriniz yurt dışına çıkmaz. Ama sunucu güvenliği sizin sorumluluğunuz: SSL sertifikası, güvenlik duvarı ve düzenli güncelleme şart.
+
+**n8n ile AI (ChatGPT/Claude) nasıl kullanılır?**
+n8n'de hazır AI node'ları var. OpenAI, Anthropic veya diğer sağlayıcıların API anahtarını girersiniz, workflow'unuza AI node'u eklersiniz. Gelen veriyi AI'a gönderir, cevabı alır ve sonraki adıma aktarırsınız. Örnek: Müşteri e-postasını AI ile özetle → CRM'e not olarak ekle.
+
+**Zapier'dan n8n'e geçiş zor mu?**
+Doğrudan "import" butonu yok ama mantığı aktarmak kolay. Zapier'daki Zap'lerinizin tetikleyici ve aksiyonlarını n8n'de yeniden kurarsınız. Çoğu basit Zap, n8n'de 10-15 dakikada yeniden oluşturulabilir. Karmaşık akışlarda bir danışman desteği faydalı olabilir.
+
+---
+
+## Sonuç
+
+n8n, Türk şirketleri için 2026'nın en değerli iş otomasyonu aracı. Ücretsiz, açık kaynak, veri kontrolü sizde ve AI entegrasyonlarıyla geleceğe hazır.
+
+Ama araç tek başına yeterli değil. Hangi süreçleri otomatikleştireceğinizi bilmek, doğru önceliklendirme yapmak ve ekibinizi bu dönüşüme hazırlamak en az teknolojiyi tanımak kadar önemli.
+
+Şirketinizin hangi süreçlerinin otomatikleştirilebileceğini merak ediyorsanız, [ücretsiz Check-Up'ımızla](/analiz) başlayabilirsiniz. Mevcut iş akışlarınızı analiz eder, n8n veya alternatif araçlarla neler kazanabileceğinizi somut rakamlarla gösteririz.
