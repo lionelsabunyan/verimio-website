@@ -10,7 +10,8 @@ import { BRAND, BLOG_POSTS } from "@/lib/constants";
 import { type BlogCategory } from "@/components/brand/BlogCardImage";
 import ArticleSchema from "@/components/seo/ArticleSchema";
 import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
-import TableOfContents, { extractTocItems } from "@/components/blog/TableOfContents";
+import TableOfContents from "@/components/blog/TableOfContents";
+import { extractTocItems } from "@/components/blog/toc-utils";
 
 const CONTENT_DIR = path.join(process.cwd(), "src/content/blog");
 
