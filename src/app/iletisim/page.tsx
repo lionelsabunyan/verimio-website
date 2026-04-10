@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { BRAND } from "@/lib/constants";
 import type { Metadata } from "next";
+import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
+import FAQSchema from "@/components/seo/FAQSchema";
 
 export const metadata: Metadata = {
   title: "İletişim - Bize Ulaşın",
@@ -38,6 +40,15 @@ const faqQuick = [
 export default function IletisimPage() {
   return (
     <main className="pt-24">
+      <BreadcrumbSchema
+        items={[
+          { name: "Ana Sayfa", url: "https://www.verimio.com.tr" },
+          { name: "İletişim", url: "https://www.verimio.com.tr/iletisim" },
+        ]}
+      />
+      <FAQSchema
+        items={faqQuick.map((f) => ({ question: f.q, answer: f.a }))}
+      />
       {/* Hero */}
       <section className="pb-24 md:pb-32">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">

@@ -10,6 +10,7 @@ import { BRAND, BLOG_POSTS } from "@/lib/constants";
 import { type BlogCategory } from "@/components/brand/BlogCardImage";
 import ArticleSchema from "@/components/seo/ArticleSchema";
 import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
+import TableOfContents, { extractTocItems } from "@/components/blog/TableOfContents";
 
 const CONTENT_DIR = path.join(process.cwd(), "src/content/blog");
 
@@ -39,6 +40,15 @@ function getPostSlugs(): string[] {
     .readdirSync(CONTENT_DIR)
     .filter((f) => f.endsWith(".mdx"))
     .map((f) => f.replace(/\.mdx$/, ""));
+}
+
+function findCoverImage(slug: string): string | null {
+  for (const ext of [".webp", ".jpg", ".jpeg", ".png"]) {
+    if (fs.existsSync(path.join(process.cwd(), "public/images/blog", `${slug}${ext}`))) {
+      return `/images/blog/${slug}${ext}`;
+    }
+  }
+  return null;
 }
 
 function getPost(
@@ -86,9 +96,7 @@ export async function generateMetadata({
   if (!post) return { title: "Yazı Bulunamadı" };
 
   const { frontmatter } = post;
-  const webpExists = fs.existsSync(
-    path.join(process.cwd(), "public/images/blog", `${slug}.webp`)
-  );
+  const coverImage = findCoverImage(slug);
   const isoDate = toISODate(frontmatter.date);
 
   return {
@@ -104,27 +112,41 @@ export async function generateMetadata({
       section: categoryLabels[frontmatter.category] ?? frontmatter.category,
       locale: "tr_TR",
       url: `https://www.verimio.com.tr/blog/${slug}`,
-      ...(webpExists
-        ? { images: [{ url: `/images/blog/${slug}.webp`, width: 1200, height: 630 }] }
+      ...(coverImage
+        ? { images: [{ url: coverImage, width: 1200, height: 630 }] }
         : {}),
     },
     twitter: {
       card: "summary_large_image",
       title: frontmatter.title,
       description: frontmatter.excerpt,
-      ...(webpExists ? { images: [`/images/blog/${slug}.webp`] } : {}),
+      ...(coverImage ? { images: [coverImage] } : {}),
     },
     alternates: { canonical: `https://www.verimio.com.tr/blog/${slug}` },
   };
 }
 
+function slugify(text: string): string {
+  return text
+    .toString()
+    .toLowerCase()
+    .replace(/[^\w\sğüşıöçĞÜŞİÖÇ-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
 const mdxComponents = {
-  h2: (props: { children?: React.ReactNode; [key: string]: unknown }) => (
-    <h2 className="text-2xl font-bold mt-12 mb-4 text-foreground leading-snug" {...props} />
-  ),
-  h3: (props: { children?: React.ReactNode; [key: string]: unknown }) => (
-    <h3 className="text-xl font-bold mt-8 mb-3 text-foreground" {...props} />
-  ),
+  h2: (props: { children?: React.ReactNode; [key: string]: unknown }) => {
+    const text = typeof props.children === "string" ? props.children : String(props.children ?? "");
+    const id = slugify(text);
+    return <h2 id={id} className="text-2xl font-bold mt-12 mb-4 text-foreground leading-snug scroll-mt-24" {...props} />;
+  },
+  h3: (props: { children?: React.ReactNode; [key: string]: unknown }) => {
+    const text = typeof props.children === "string" ? props.children : String(props.children ?? "");
+    const id = slugify(text);
+    return <h3 id={id} className="text-xl font-bold mt-8 mb-3 text-foreground scroll-mt-24" {...props} />;
+  },
   p: (props: { children?: React.ReactNode; [key: string]: unknown }) => (
     <p className="text-foreground-secondary leading-[1.8] mb-5" {...props} />
   ),
@@ -175,9 +197,7 @@ export default async function BlogPostPage({
     (p) => p.category === frontmatter.category && p.slug !== slug
   ).slice(0, 3);
 
-  const webpExists = fs.existsSync(
-    path.join(process.cwd(), "public/images/blog", `${slug}.webp`)
-  );
+  const coverImage = findCoverImage(slug);
 
   return (
     <main className="pt-24">
@@ -187,7 +207,7 @@ export default async function BlogPostPage({
         excerpt={frontmatter.excerpt}
         date={isoDate}
         author={frontmatter.author}
-        webpExists={webpExists}
+        coverImage={coverImage}
       />
       <BreadcrumbSchema
         items={[
@@ -231,6 +251,7 @@ export default async function BlogPostPage({
 
       {/* Article body — single column, narrow */}
       <article className="max-w-3xl mx-auto px-6 lg:px-8">
+        <TableOfContents items={extractTocItems(content)} />
         <MDXRemote source={content} components={mdxComponents} />
       </article>
 

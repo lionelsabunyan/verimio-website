@@ -4,7 +4,9 @@ interface ArticleSchemaProps {
   excerpt: string;
   date: string;
   author?: string;
+  /** @deprecated Use coverImage instead */
   webpExists?: boolean;
+  coverImage?: string | null;
 }
 
 export default function ArticleSchema({
@@ -14,7 +16,13 @@ export default function ArticleSchema({
   date,
   author,
   webpExists,
+  coverImage,
 }: ArticleSchemaProps) {
+  const hasImage = coverImage ? true : webpExists;
+  const imageUrl = coverImage
+    ? `https://www.verimio.com.tr${coverImage}`
+    : `https://www.verimio.com.tr/images/blog/${slug}.webp`;
+
   const schema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -50,11 +58,11 @@ export default function ArticleSchema({
       "@type": "SpeakableSpecification",
       cssSelector: ["article h1", "article h2", "article p:first-of-type"],
     },
-    ...(webpExists
+    ...(hasImage
       ? {
           image: {
             "@type": "ImageObject",
-            url: `https://www.verimio.com.tr/images/blog/${slug}.webp`,
+            url: imageUrl,
             width: 1200,
             height: 630,
           },

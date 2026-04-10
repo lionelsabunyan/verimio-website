@@ -114,6 +114,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
+  // Category pages — only categories that have posts
+  const categoriesWithPosts = [
+    ...new Set(blogEntries.map((e) => {
+      const raw = fs.readFileSync(path.join(BLOG_DIR, `${e.slug}.mdx`), "utf-8");
+      const { data } = matter(raw);
+      return data.category as string;
+    }).filter(Boolean)),
+  ];
+
+  const categoryPages: MetadataRoute.Sitemap = categoriesWithPosts.map((cat) => ({
+    url: `${BASE_URL}/blog/kategori/${cat}`,
+    lastModified: latestBlogDate,
+    changeFrequency: "weekly" as const,
+    priority: 0.6,
+  }));
+
   const blogPages: MetadataRoute.Sitemap = blogEntries.map((entry) => ({
     url: `${BASE_URL}/blog/${entry.slug}`,
     lastModified: entry.lastModified,
@@ -121,5 +137,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...blogPages];
+  return [...staticPages, ...categoryPages, ...blogPages];
 }

@@ -38,7 +38,7 @@ const ppNeueMontreal = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.verimio.com.tr"),
   title: {
-    default: "Verimio | AI Danışmanlık & Koçluk",
+    default: "Verimio | Yapay Zeka Danışmanlığı & AI Koçluk",
     template: "%s | Verimio",
   },
   description:

@@ -59,6 +59,28 @@ export default function BlogPage() {
         </div>
       </section>
 
+      {/* Category filters */}
+      <section className="border-t border-border">
+        <div className="max-w-5xl mx-auto px-6 lg:px-8 py-4">
+          <div className="flex flex-wrap gap-2">
+            <span className="px-3 py-1.5 text-xs bg-foreground text-background">
+              Tümü
+            </span>
+            {Object.entries(categoryLabels)
+              .filter(([key]) => BLOG_POSTS.some((p) => p.category === key))
+              .map(([key, label]) => (
+                <Link
+                  key={key}
+                  href={`/blog/kategori/${key}`}
+                  className="px-3 py-1.5 text-xs text-foreground-muted hover:text-foreground border border-border hover:border-foreground/20 transition-colors"
+                >
+                  {label}
+                </Link>
+              ))}
+          </div>
+        </div>
+      </section>
+
       {/* Blog Grid */}
       <section className="py-16 border-t border-border">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
@@ -70,7 +92,7 @@ export default function BlogPage() {
                 className="group border-b border-border py-8 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-start"
               >
                 {/* Cover — small */}
-                <div className="md:col-span-3 overflow-hidden border border-border bg-foreground/[0.02]">
+                <div className="md:col-span-3 overflow-hidden border border-border bg-foreground/[0.04] p-2">
                   <BlogCoverImage slug={post.slug} title={post.title} category={post.category} index={index} />
                 </div>
 

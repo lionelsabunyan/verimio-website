@@ -19,8 +19,8 @@ export const NAV_LINKS = [
 
 export const HERO_CONTENT = {
   badge: "AI Danışmanlık & Koçluk",
-  headline: "Süreçlerinizi netleştirin,",
-  headlineHighlight: "maliyetlerinizi düşürün.",
+  headline: "Yapay zeka ile",
+  headlineHighlight: "süreçlerinizi netleştirin, maliyetlerinizi düşürün.",
   subheadline:
     "Firmanızın operasyonel verimliliğini ve AI hazırlığını analiz eder, size özel yol haritası çizer — sonra birlikte uygularız. Strateji, eğitim ve sürekli destek tek elden.",
   ctaPrimary: "Ücretsiz Check-Up Başlatın",
@@ -222,8 +222,8 @@ export const BLOG_POSTS = [
     category: "strategy" as const,
   },
   {
-    title: "AI Koçluğu Nedir? Şirketler İçin Kapsamlı Rehber",
-    excerpt: "AI koçluğu, şirketinizin yapay zeka dönüşümüne sürekli eşlik eden kişiselleştirilmiş bir hizmettir. Danışmanlıktan farkı, nasıl çalıştığı ve neden ihtiyacınız olduğu.",
+    title: "AI Koçluğu Nedir? Şirketler İçin Kapsamlı Rehber [2026]",
+    excerpt: "AI koçluğu, şirketinizin yapay zeka dönüşümüne sürekli eşlik eden kişiselleştirilmiş bir hizmet. Danışmanlıktan farkı, maliyet avantajı ve 90 günlük süreç rehberi.",
     date: "26 Mart 2026",
     slug: "ai-koclugu-nedir",
     category: "strategy" as const,
@@ -320,8 +320,8 @@ export const BLOG_POSTS = [
     category: "automation" as const,
   },
   {
-    title: "AI Dönüşümü Bir 'IT' Projesi Değil, Bir Yönetim Vizyonudur",
-    excerpt: "Yapay zeka adaptasyonu, salt bir teknoloji projesi olmaktan öte, şirket kültürünü ve yönetim anlayışını dönüştüren stratejik bir vizyon gerektirir.",
+    title: "AI Dönüşümü Bir IT Projesi Değil, Bir Yönetim Vizyonudur — İşte Nedeni",
+    excerpt: "AI projelerinin %60'ı yönetim desteği eksikliğinden başarısız oluyor. Şirketinizde AI dönüşümünü doğru yönetmenin 4 adımı ve Türkiye'den gerçek örnekler.",
     date: "12 Mart 2026",
     slug: "ai-donusumu-bir-it-projesi-degil-bir-yonetim-vizyonudur",
     category: "strategy" as const,
@@ -334,8 +334,8 @@ export const BLOG_POSTS = [
     category: "strategy" as const,
   },
   {
-    title: "Ekibiniz Yapay Zekadan Korkmalı mı, Yoksa Onu Kucaklamalı mı?",
-    excerpt: "Yapay zeka, iş dünyasında bir dönüşüm rüzgarı estiriyor. Peki ekibiniz bu dönüşüme nasıl bakmalı? Korku mu, kucaklama mı? İşte liderlerin yol haritası.",
+    title: "Ekibiniz Yapay Zekadan Korkmalı mı, Yoksa Kucaklamalı mı? Lider Rehberi",
+    excerpt: "Çalışanların %60'ı AI'dan endişeli — ama veri aksini söylüyor. Ekibinizi AI dönüşümüne hazırlamanın 3 kanıtlanmış yöntemi ve liderler için yol haritası.",
     date: "12 Mart 2026",
     slug: "ekibiniz-yapay-zekadan-korkmali-mi-yoksa-onu-kucaklamali-mi",
     category: "strategy" as const,
@@ -355,15 +355,15 @@ export const BLOG_POSTS = [
     category: "automation" as const,
   },
   {
-    title: "Müşteri Hizmetlerinde AI Dönemi: 7/24 Yanıt Veren Akıllı Asistanlar",
-    excerpt: "Geleneksel çağrı merkezleri ve destek ekiplerinin yükünü %70 azaltan AI chatbot ve sesli asistan teknolojilerinin entegrasyon süreçleri ve müşteri memnuniyetine etkisi.",
+    title: "Müşteri Hizmetlerinde AI: 7/24 Akıllı Asistanlar ile %70 Maliyet Düşüşü",
+    excerpt: "AI chatbot ve sesli asistan ile destek ekibi yükünü %70 azaltın. Entegrasyon adımları, maliyet analizi ve Türk şirketlerinden başarı örnekleri.",
     date: "11 Mart 2026",
     slug: "musteri-hizmetlerinde-ai-donemi",
     category: "customer" as const,
   },
   {
-    title: "Verilerinizi Hazırlamadan AI Kullanmayın: Veri Kalitesi Rehberi",
-    excerpt: "AI projeleri neden beklenen sonucu veremiyor? Çoğu zaman yanıt verinin kendisinde gizli. Veri kalitesini nasıl değerlendirirsiniz ve hazırlık süreci nasıl işler?",
+    title: "Verilerinizi Hazırlamadan AI Kullanmayın: 6 Adımlık Veri Kalitesi Rehberi",
+    excerpt: "AI projelerinin başarısız olmasının 1 numaralı nedeni: kirli veri. Veri kalitenizi 6 adımda değerlendirin ve AI'ya hazır hale getirin — ücretsiz kontrol listesi.",
     date: "6 Mart 2026",
     slug: "ai-icin-veri-kalitesi",
     category: "data" as const,
@@ -383,24 +383,24 @@ export const BLOG_POSTS = [
     category: "roi" as const,
   },
   {
-    title: "Make vs n8n: Türk Şirketleri için Hangi Otomasyon Platformu?",
-    excerpt: "Make ve n8n'in güçlü-zayıf yanlarını, fiyatlandırma modellerini ve Türk şirketleri için hangisinin doğru olduğunu karşılaştırıyoruz.",
+    title: "Make vs n8n Karşılaştırma: Türk Şirketleri İçin Hangisi? [2026 Rehber]",
+    excerpt: "Make ve n8n fiyatlandırma, özellik ve Türkiye uyumluluğu karşılaştırması. n8n danışmanlığı ile doğru platformu seçmenin 5 kriteri ve maliyet analizi.",
     date: "3 Mart 2026",
     slug: "make-vs-n8n-karsilastirma",
     category: "ai-tools" as const,
   },
   {
-    title: "AI Danışmanlık Neden Farklıdır? Yazılım Satıcısından Strateji Ortağına",
+    title: "AI Danışmanlık Neden Farklıdır? Yazılım Satıcısı vs Strateji Ortağı [2026]",
     excerpt:
-      "AI danışmanlığı ile yazılım satışı arasındaki fark nedir? Şirketiniz için doğru yaklaşımı nasıl seçersiniz?",
+      "AI danışmanlığı ile yazılım satışı arasındaki 5 kritik fark — şirketiniz için doğru yaklaşımı seçmenin somut adımları ve maliyet karşılaştırması.",
     date: "2 Mart 2026",
     slug: "ai-danismanlik-neden-farklidir",
     category: "strategy" as const,
   },
   {
-    title: "n8n ile İlk Otomasyonunuzu Kurun: Teknik Bilgi Gerekmez",
+    title: "n8n Nedir? Türkiye'de İlk Otomasyonunuzu Kurun — Teknik Bilgi Gerekmez",
     excerpt:
-      "n8n nedir ve Türk şirketleri nasıl kullanır? Teknik olmayan yöneticiler için adım adım otomasyon kurulum rehberi.",
+      "n8n nedir, n8n Türkiye'de nasıl kullanılır? Teknik bilgisi olmayan yöneticiler için adım adım otomasyon kurulum rehberi ve n8n danışmanlığı rehberi.",
     date: "1 Mart 2026",
     slug: "n8n-ile-basit-otomasyon",
     category: "tutorial" as const,
