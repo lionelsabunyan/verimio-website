@@ -6,7 +6,7 @@ export const BRAND = {
   email: "analiz@verimio.com.tr",
   website: "www.verimio.com.tr",
   tallyFormUrl: "/analiz",
-  calendlyUrl: "#", // Cal.com URL — kurulum sonra güncellenecek
+  calendlyUrl: "https://calendly.com/verimio-info/30min",
 } as const;
 
 export const NAV_LINKS = [
@@ -63,7 +63,7 @@ export const HOW_IT_WORKS = [
     icon: "search",
     title: "Analiz Edip Raporlayalım",
     description:
-      "Uzman ekibimiz cevaplarınızı değerlendirir, fırsatları ve tasarruf potansiyelini somut rakamlarla ortaya koyar.",
+      "Cevaplarınızı analiz eder, fırsatları ve tasarruf potansiyelini somut rakamlarla ortaya koyarız.",
   },
   {
     step: "03",
@@ -136,7 +136,7 @@ export const FAQ_ITEMS = [
   {
     question: "Check-up süreci nasıl işliyor?",
     answer:
-      "Sektörünüze ve şirket yapınıza özel bir form dolduruyorsunuz. Uzman ekibimiz cevaplarınızı inceleyip en kısa sürede size özel bir analiz raporu hazırlayıp e-postanıza iletiyor. Süreç sizden yalnızca 15-20 dakika alıyor.",
+      "Sektörünüze ve şirket yapınıza özel bir form dolduruyorsunuz. Cevaplarınızı inceleyip en kısa sürede size özel bir analiz raporu hazırlayıp e-postanıza iletiyor. Süreç sizden yalnızca 15-20 dakika alıyor.",
   },
   {
     question: "Raporumda neler yer alıyor?",
