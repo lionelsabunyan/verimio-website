@@ -9,9 +9,12 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@ai-sdk/openai": "^3.0.52",
+    "@ai-sdk/react": "^3.0.160",
     "@next/third-parties": "^16.1.6",
     "@supabase/ssr": "^0.8.0",
     "@supabase/supabase-js": "^2.97.0",
+    "ai": "^6.0.158",
     "framer-motion": "^12.34.1",
     "googleapis": "^171.4.0",
     "gray-matter": "^4.0.3",

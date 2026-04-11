@@ -5,6 +5,7 @@ import NavbarWrapper from "@/components/layout/NavbarWrapper";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import OrganizationSchema from "@/components/seo/OrganizationSchema";
+import { ChatWidget } from "@/components/chatbot/ChatWidget";
 
 const ppNeueMontreal = localFont({
   src: [
@@ -90,9 +91,6 @@ export const metadata: Metadata = {
     types: {
       "application/rss+xml": "https://www.verimio.com.tr/feed.xml",
     },
-    languages: {
-      "tr-TR": "https://www.verimio.com.tr",
-    },
   },
 };
 
@@ -109,6 +107,7 @@ export default function RootLayout({
         <ThemeProvider>
           <NavbarWrapper>{children}</NavbarWrapper>
         </ThemeProvider>
+        <ChatWidget />
         <OrganizationSchema />
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID!} />
       </body>

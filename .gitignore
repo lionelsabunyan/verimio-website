@@ -39,6 +39,14 @@ yarn-error.log*
 # blog image backups (local only)
 public/images/blog/_backup/
 
+# test scrap
+test-cards-preview.html
+test-results/
+/playwright-report/
+
+# font source packs (woff2 runtime files live alongside)
+public/fonts/pp-neue-montreal-cufonfonts/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
