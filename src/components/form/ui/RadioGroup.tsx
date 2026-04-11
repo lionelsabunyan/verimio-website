@@ -48,10 +48,10 @@ export default function RadioGroup({
               onClick={() => onChange(option)}
               whileTap={{ scale: 0.97 }}
               transition={{ type: "spring", stiffness: 400, damping: 25 }}
-              className={`flex items-center gap-3 px-4 py-3 rounded-xl border text-sm text-left transition-colors duration-150 ${
+              className={`flex items-center gap-3 px-4 py-3 border text-sm text-left transition-colors duration-150 ${
                 selected
-                  ? "bg-foreground/5 border-foreground/40 text-foreground font-medium"
-                  : "border-border text-foreground-secondary hover:border-foreground/30 hover:bg-foreground/[0.02]"
+                  ? "border-foreground text-foreground font-medium"
+                  : "border-border text-foreground-secondary hover:border-foreground/40"
               }`}
             >
               <span

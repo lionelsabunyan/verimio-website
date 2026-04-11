@@ -29,22 +29,18 @@ export default function Textarea({
         {label}
         {required && <span className="ml-0.5 text-foreground">*</span>}
       </label>
-      <div
-        className={`rounded-xl border transition-all duration-200 ${
+      <textarea
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
+        maxLength={maxLength}
+        rows={rows}
+        className={`w-full px-4 py-3 bg-transparent text-sm text-foreground placeholder:text-foreground-muted outline-none resize-none border transition-colors duration-200 ${
           error
-            ? "border-red-400 ring-2 ring-red-400/10"
-            : "border-border focus-within:border-foreground focus-within:ring-2 focus-within:ring-foreground/15"
+            ? "border-red-400"
+            : "border-border focus:border-foreground"
         }`}
-      >
-        <textarea
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-          placeholder={placeholder}
-          maxLength={maxLength}
-          rows={rows}
-          className="w-full px-4 py-3 bg-surface text-sm text-foreground placeholder:text-foreground-muted outline-none resize-none rounded-xl"
-        />
-      </div>
+      />
       <div className="flex items-center justify-between">
         {error ? (
           <p className="text-xs text-red-500">{error}</p>

@@ -15,16 +15,19 @@ export default function Step4Contact({ formData }: Props) {
       title="Raporunuz hazır!"
       description={`${formData.companyName || 'Şirketiniz'} için analiz sonuçlarınızı ${formData.email} adresine göndereceğiz.`}
     >
-      <div className="rounded-xl bg-foreground/4 border border-border p-4 space-y-2">
-        <p className="text-sm text-foreground-secondary">
-          <span className="font-medium text-foreground">Şirket:</span> {formData.companyName}
-        </p>
-        <p className="text-sm text-foreground-secondary">
-          <span className="font-medium text-foreground">E-posta:</span> {formData.email}
-        </p>
-        <p className="text-sm text-foreground-secondary">
-          <span className="font-medium text-foreground">Telefon:</span> {formData.phone}
-        </p>
+      <div className="border border-border p-5 space-y-3">
+        <div className="flex items-baseline justify-between border-b border-border pb-3">
+          <span className="text-xs text-foreground-muted tracking-wide uppercase">Şirket</span>
+          <span className="text-sm text-foreground">{formData.companyName}</span>
+        </div>
+        <div className="flex items-baseline justify-between border-b border-border pb-3">
+          <span className="text-xs text-foreground-muted tracking-wide uppercase">E-posta</span>
+          <span className="text-sm text-foreground">{formData.email}</span>
+        </div>
+        <div className="flex items-baseline justify-between">
+          <span className="text-xs text-foreground-muted tracking-wide uppercase">Telefon</span>
+          <span className="text-sm text-foreground">{formData.phone}</span>
+        </div>
       </div>
     </FormStep>
   );

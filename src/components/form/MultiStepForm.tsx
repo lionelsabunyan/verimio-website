@@ -162,15 +162,15 @@ export default function MultiStepForm() {
   // Loading screen
   if (isSubmitting) {
     return (
-      <div className="flex flex-col items-center justify-center py-20 gap-6 text-center">
+      <div className="flex flex-col items-center justify-center py-24 gap-6">
         <motion.div
           animate={{ rotate: 360 }}
-          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-          className="w-12 h-12 rounded-full border-4 border-foreground/20 border-t-foreground"
+          transition={{ duration: 1.2, repeat: Infinity, ease: "linear" }}
+          className="w-10 h-10 rounded-full border-2 border-border border-t-foreground"
         />
         <div>
-          <h3 className="text-lg font-semibold text-foreground">
-            Analiziniz hazırlanıyor...
+          <h3 className="text-lg font-medium text-foreground">
+            Analiziniz hazırlanıyor
           </h3>
           <p className="text-sm text-foreground-secondary mt-1">
             Cevaplarınız işleniyor. Birkaç saniye sürebilir.
@@ -249,95 +249,84 @@ export default function MultiStepForm() {
 
       {/* Navigation */}
       {currentStep < TOTAL_STEPS ? (
-        <div className="flex items-center justify-between pt-2">
+        <div className="flex items-center justify-between pt-4">
           {currentStep > 1 ? (
-            <motion.button
+            <button
               type="button"
               onClick={goBack}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-1.5 px-4 py-2.5 text-sm font-medium text-foreground-secondary hover:text-foreground transition-colors rounded-xl hover:bg-foreground/5"
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 text-sm text-foreground-secondary hover:text-foreground transition-colors"
             >
               <ChevronLeft className="w-4 h-4" />
               Geri
-            </motion.button>
+            </button>
           ) : (
             <div />
           )}
-          <motion.button
+          <button
             type="button"
             onClick={goNext}
-            whileTap={{ scale: 0.96 }}
-            whileHover={{ scale: 1.02 }}
-            transition={{ type: "spring" as const, stiffness: 400, damping: 25 }}
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium bg-foreground text-background hover:opacity-90"
+            className="inline-flex items-center justify-center gap-2 px-7 py-3 text-sm font-medium bg-foreground text-background hover:opacity-90 transition-opacity"
           >
             Devam Et
-          </motion.button>
+          </button>
         </div>
       ) : (
         /* Step 4 — Dual CTA */
-        <div className="space-y-3 pt-2">
+        <div className="space-y-4 pt-4">
           {currentStep > 1 && (
-            <motion.button
+            <button
               type="button"
               onClick={goBack}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-foreground-secondary hover:text-foreground transition-colors rounded-xl hover:bg-foreground/5 mb-1"
+              className="inline-flex items-center gap-1.5 px-3 py-2 text-sm text-foreground-secondary hover:text-foreground transition-colors"
             >
               <ChevronLeft className="w-4 h-4" />
               Geri
-            </motion.button>
+            </button>
           )}
 
-          <div className="rounded-xl bg-foreground/4 border border-border px-4 py-3 text-sm text-foreground-secondary text-center">
+          <p className="text-sm text-foreground-secondary border-t border-border pt-4">
             Bilgilerinizi aldık — raporunuzu nasıl iletmemizi istersiniz?
-          </div>
+          </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {/* Option A: Get Report */}
-            <motion.button
+            <button
               type="button"
               onClick={handleSubmitReport}
               disabled={isSubmitting}
-              whileTap={{ scale: isSubmitting ? 1 : 0.97 }}
-              whileHover={{ scale: isSubmitting ? 1 : 1.01 }}
-              transition={{ type: "spring" as const, stiffness: 400, damping: 25 }}
-              className="flex flex-col items-center gap-2 px-5 py-4 border-2 border-border bg-background hover:border-foreground transition-colors duration-150 text-center disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex flex-col items-start gap-2 px-5 py-5 border border-border bg-background hover:border-foreground transition-colors duration-150 text-left disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <Mail className="w-5 h-5 text-foreground" />
               <div>
-                <p className="text-sm font-semibold text-foreground">
+                <p className="text-sm font-medium text-foreground">
                   Detaylı Raporumu Gönder
                 </p>
                 <p className="text-xs text-foreground-secondary mt-0.5">
                   Hemen hazırlanır, e-postanıza iletilir
                 </p>
               </div>
-            </motion.button>
+            </button>
 
             {/* Option B: Book Meeting */}
-            <motion.button
+            <button
               type="button"
               onClick={handleBookMeeting}
               disabled={isSubmitting}
-              whileTap={{ scale: isSubmitting ? 1 : 0.97 }}
-              whileHover={{ scale: isSubmitting ? 1 : 1.01 }}
-              transition={{ type: "spring" as const, stiffness: 400, damping: 25 }}
-              className="flex flex-col items-center gap-2 px-5 py-4 border-2 border-foreground bg-foreground hover:opacity-90 transition-opacity duration-150 text-center disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex flex-col items-start gap-2 px-5 py-5 border border-foreground bg-foreground hover:opacity-90 transition-opacity duration-150 text-left disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <Calendar className="w-5 h-5 text-background" />
               <div>
-                <p className="text-sm font-semibold text-background">
+                <p className="text-sm font-medium text-background">
                   Ücretsiz Görüşme Planla
                 </p>
                 <p className="text-xs text-background/70 mt-0.5">
                   20 dakika · Zoom · Hemen rezerve et
                 </p>
               </div>
-            </motion.button>
+            </button>
           </div>
 
-          <p className="text-xs text-foreground-muted text-center pt-1">
+          <p className="text-xs text-foreground-muted pt-1">
             İkisi de tamamen ücretsiz · Satış baskısı yok
           </p>
         </div>

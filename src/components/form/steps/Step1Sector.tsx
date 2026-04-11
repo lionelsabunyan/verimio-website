@@ -29,7 +29,7 @@ export default function Step1Sector({
         <p className="text-sm font-medium text-foreground-secondary mb-2">
           Sektörünüz
         </p>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
           {SECTORS.map((s) => {
             const selected = formData.sector === s.value;
             return (
@@ -39,15 +39,15 @@ export default function Step1Sector({
                 onClick={() => onSectorChange(s.value)}
                 whileTap={{ scale: 0.96 }}
                 transition={{ type: "spring" as const, stiffness: 400, damping: 25 }}
-                className={`flex flex-col items-center text-center gap-2 p-4 rounded-xl border transition-all duration-150 ${
+                className={`flex flex-col items-center text-center gap-2 p-4 border transition-colors duration-150 ${
                   selected
-                    ? "border-primary bg-primary/10 text-foreground dark:border-foreground dark:bg-foreground/10 dark:text-foreground"
-                    : "border-border dark:border-white/10 text-foreground-secondary hover:border-border-accent dark:hover:border-white/20 hover:text-foreground hover:bg-foreground/5"
+                    ? "border-foreground text-foreground"
+                    : "border-border text-foreground-secondary hover:border-foreground/40"
                 }`}
               >
                 <span className="text-2xl leading-none">{s.emoji}</span>
                 <div>
-                  <p className={`text-sm font-semibold leading-tight ${selected ? "text-foreground dark:text-foreground" : "text-foreground"}`}>
+                  <p className="text-sm font-medium leading-tight text-foreground">
                     {s.label}
                   </p>
                   <p className="text-xs text-foreground-muted mt-0.5 leading-tight">{s.sub}</p>
@@ -117,10 +117,10 @@ export default function Step1Sector({
                 onClick={() => updateField("teamSize", opt)}
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: "spring" as const, stiffness: 400, damping: 25 }}
-                className={`py-2.5 px-3 rounded-lg border text-xs font-medium text-center transition-colors duration-150 ${
+                className={`py-2.5 px-3 border text-xs font-medium text-center transition-colors duration-150 ${
                   selected
-                    ? "bg-foreground text-white border-primary dark:bg-foreground dark:border-foreground"
-                    : "border-border dark:border-white/10 text-foreground-secondary hover:border-border-accent dark:hover:border-white/20 hover:text-foreground"
+                    ? "bg-foreground text-background border-foreground"
+                    : "border-border text-foreground-secondary hover:border-foreground/40"
                 }`}
               >
                 {opt}

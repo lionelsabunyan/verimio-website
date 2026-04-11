@@ -18,44 +18,45 @@ export default function StepIndicator({
   return (
     <div className="space-y-4">
       {/* Progress bar */}
-      <div className="relative h-1 bg-border rounded-full overflow-hidden">
+      <div className="relative h-px bg-border overflow-hidden">
         <motion.div
-          className="absolute inset-y-0 left-0 bg-foreground rounded-full"
+          className="absolute inset-y-0 left-0 bg-foreground"
+          style={{ height: 2 }}
           initial={{ width: 0 }}
           animate={{ width: `${progress}%` }}
           transition={{ duration: 0.5, ease: [0.21, 0.47, 0.32, 0.98] }}
         />
       </div>
 
-      {/* Step dots + labels */}
+      {/* Step labels */}
       <div className="flex items-center justify-between">
         {STEP_LABELS.map((label, i) => {
           const stepNum = i + 1;
           const done = stepNum < currentStep;
           const active = stepNum === currentStep;
           return (
-            <div key={label} className="flex flex-col items-center gap-1.5">
-              <motion.div
-                className={`w-2.5 h-2.5 rounded-full transition-colors duration-300 ${
-                  done
-                    ? "bg-foreground"
-                    : active
-                    ? "bg-foreground ring-2 ring-foreground/15 ring-offset-1 ring-offset-background"
-                    : "bg-foreground-muted"
+            <div key={label} className="flex items-center gap-2">
+              <span
+                className={`text-xs tabular-nums transition-colors duration-200 ${
+                  active
+                    ? "text-foreground font-medium"
+                    : done
+                    ? "text-foreground-secondary"
+                    : "text-foreground-muted"
                 }`}
-                animate={{ scale: active ? 1.2 : 1 }}
-                transition={{ type: "spring", stiffness: 400, damping: 25 }}
                 aria-hidden="true"
-              />
+              >
+                {stepNum}
+              </span>
               <span className="sr-only">
                 {done ? `${label} — tamamlandı` : active ? `${label} — geçerli adım` : label}
               </span>
               <span
                 className={`hidden md:block text-xs transition-colors duration-200 ${
                   active
-                    ? "text-foreground font-semibold"
+                    ? "text-foreground font-medium"
                     : done
-                    ? "text-foreground-secondary font-medium"
+                    ? "text-foreground-secondary"
                     : "text-foreground-muted"
                 }`}
               >
@@ -67,9 +68,9 @@ export default function StepIndicator({
       </div>
 
       {/* Mobile label */}
-      <p className="md:hidden text-xs text-foreground-muted text-center">
+      <p className="md:hidden text-xs text-foreground-muted">
         Adım{" "}
-        <span className="font-semibold text-foreground dark:text-foreground">{currentStep}</span> /{" "}
+        <span className="font-medium text-foreground">{currentStep}</span> /{" "}
         {totalSteps} —{" "}
         <span className="text-foreground">{STEP_LABELS[currentStep - 1]}</span>
       </p>

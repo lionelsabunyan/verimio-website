@@ -30,21 +30,17 @@ export default function FormInput({
         )}
         {required && <span className="ml-0.5 text-foreground">*</span>}
       </label>
-      <div
-        className={`flex items-center rounded-xl border transition-all duration-200 ${
+      <input
+        type={type}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
+        className={`w-full px-4 py-3 bg-transparent text-sm text-foreground placeholder:text-foreground-muted outline-none border transition-colors duration-200 ${
           error
-            ? "border-red-400 ring-2 ring-red-400/10"
-            : "border-border focus-within:border-foreground focus-within:ring-2 focus-within:ring-foreground/15"
+            ? "border-red-400"
+            : "border-border focus:border-foreground"
         }`}
-      >
-        <input
-          type={type}
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-          placeholder={placeholder}
-          className="w-full px-4 py-3 bg-surface text-sm text-foreground placeholder:text-foreground-muted outline-none rounded-xl"
-        />
-      </div>
+      />
       {error && <p className="text-xs text-red-500 mt-1">{error}</p>}
     </div>
   );
