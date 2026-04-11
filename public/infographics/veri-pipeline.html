@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Raporlama Otomasyonu Pipeline — Verimio</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 1200px; height: 630px; overflow: hidden; font-family: 'DM Sans', sans-serif; background: #fff; color: #0A0A0A; }
+  .canvas { width: 1200px; height: 630px; padding: 48px 64px 36px; display: flex; flex-direction: column; }
+
+  .header { margin-bottom: 8px; }
+  .header h1 { font-size: 24px; font-weight: 700; letter-spacing: -0.03em; }
+  .header p { font-size: 13px; font-weight: 300; color: #5C5C5C; margin-top: 4px; }
+  .divider { height: 1px; background: #E5E5E5; margin: 16px 0 32px; }
+
+  .pipeline { flex: 1; display: flex; align-items: flex-start; gap: 0; }
+
+  .step { flex: 1; display: flex; flex-direction: column; align-items: flex-start; position: relative; }
+
+  .step-num { width: 36px; height: 36px; border: 2px solid #0A0A0A; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; margin-bottom: 14px; }
+
+  .step-title { font-size: 15px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.01em; }
+  .step-desc { font-size: 12px; font-weight: 300; color: #5C5C5C; line-height: 1.5; padding-right: 24px; }
+
+  .step-detail { font-size: 11px; font-weight: 300; color: #A3A3A3; margin-top: 10px; line-height: 1.5; padding-right: 24px; }
+
+  .arrow { position: absolute; top: 16px; right: 0; width: 40px; display: flex; align-items: center; justify-content: center; }
+  .arrow::after { content: '→'; font-size: 20px; color: #A3A3A3; font-weight: 300; }
+
+  .result { margin-top: auto; display: flex; gap: 40px; padding: 16px 0; border-top: 1px solid #E5E5E5; }
+  .result-item { display: flex; flex-direction: column; gap: 2px; }
+  .result-label { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: #A3A3A3; }
+  .result-value { font-size: 14px; font-weight: 700; }
+
+  .footer { display: flex; justify-content: space-between; align-items: flex-end; padding-top: 12px; }
+  .footer .url { font-size: 11px; color: #A3A3A3; font-weight: 300; }
+  .footer .logo { font-size: 15px; font-weight: 700; letter-spacing: -0.03em; }
+  .footer .logo span { font-weight: 300; color: #5C5C5C; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="header">
+    <h1>Raporlama Otomasyonu Pipeline</h1>
+    <p>Excel'den yapay zekaya — 4 adımlı otomatik veri akışı</p>
+  </div>
+  <div class="divider"></div>
+
+  <div class="pipeline">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-title">Veri Toplama</div>
+      <div class="step-desc">Tüm veri kaynaklarından otomatik çekim. ERP, CRM, Google Analytics.</div>
+      <div class="step-detail">Her gece saat 01:00'de belirlenen sıklıkta çalışır</div>
+      <div class="arrow"></div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-title">Veri Temizleme</div>
+      <div class="step-desc">Tutarsızlıklar, eksik alanlar, yanlış formatlar otomatik düzeltilir.</div>
+      <div class="step-detail">AI ile metin analizi, duygu tonu çıkarımı</div>
+      <div class="arrow"></div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-title">Veri Birleştirme</div>
+      <div class="step-desc">Temizlenmiş veriler merkezi veri havuzunda birleştirilir.</div>
+      <div class="step-detail">İlişkisel DB veya veri ambarı</div>
+      <div class="arrow"></div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-title">Rapor Oluşturma</div>
+      <div class="step-desc">Şablonlar veya AI destekli araçlarla otomatik rapor üretimi.</div>
+      <div class="step-detail">İnteraktif panel, PDF, e-posta</div>
+    </div>
+  </div>
+
+  <div class="result">
+    <div class="result-item">
+      <span class="result-label">Manuel müdahale</span>
+      <span class="result-value">Sıfır</span>
+    </div>
+    <div class="result-item">
+      <span class="result-label">İnsan hatası riski</span>
+      <span class="result-value">Sıfır</span>
+    </div>
+    <div class="result-item">
+      <span class="result-label">Veri güncelliği</span>
+      <span class="result-value">Gerçek zamanlı</span>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span class="url">verimio.com.tr/blog</span>
+    <span class="logo">verim<span>io</span></span>
+  </div>
+</div>
+</body>
+</html>

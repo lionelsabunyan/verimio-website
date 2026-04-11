@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>n8n vs Make vs Zapier — Verimio</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 1200px; height: 630px; overflow: hidden; font-family: 'DM Sans', sans-serif; background: #fff; color: #0A0A0A; }
+  .canvas { width: 1200px; height: 630px; padding: 44px 56px 32px; display: flex; flex-direction: column; }
+
+  .header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 20px; }
+  .header h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.03em; }
+  .header h1 span { font-weight: 300; color: #5C5C5C; }
+  .header .line { flex: 1; height: 1px; background: #E5E5E5; }
+
+  .grid { display: grid; grid-template-columns: 140px 1fr 1fr 1fr; flex: 1; }
+
+  .col-head { padding: 10px 0; border-bottom: 2px solid #0A0A0A; }
+  .col-head.cx { padding-left: 20px; }
+  .col-head.brd { border-left: 1px solid #E5E5E5; }
+  .col-head h2 { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.12em; color: #A3A3A3; }
+  .col-head h2.bold { color: #0A0A0A; font-weight: 700; font-size: 12px; }
+
+  .cell { padding: 9px 0; border-bottom: 1px solid #E5E5E5; display: flex; align-items: center; gap: 6px; font-size: 12px; }
+  .cell.c1 { font-weight: 700; font-size: 11px; }
+  .cell.cx { padding-left: 20px; }
+  .cell.brd { border-left: 1px solid #E5E5E5; }
+  .cell .v { font-weight: 300; color: #5C5C5C; }
+  .cell .v.strong { font-weight: 500; color: #0A0A0A; }
+
+  .tag { display: inline-block; font-size: 10px; font-weight: 500; padding: 1px 6px; border-radius: 2px; }
+  .tag.yes { background: #0A0A0A; color: #fff; }
+  .tag.no { background: #F5F5F5; color: #A3A3A3; }
+  .tag.part { background: #E5E5E5; color: #5C5C5C; }
+
+  .footer { display: flex; justify-content: space-between; align-items: flex-end; padding-top: 12px; }
+  .footer .url { font-size: 10px; color: #A3A3A3; font-weight: 300; }
+  .footer .logo { font-size: 14px; font-weight: 700; letter-spacing: -0.03em; }
+  .footer .logo span { font-weight: 300; color: #5C5C5C; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="header">
+    <h1>n8n <span>vs</span> Make <span>vs</span> Zapier</h1>
+    <div class="line"></div>
+  </div>
+
+  <div class="grid">
+    <div class="col-head"><h2>Kriter</h2></div>
+    <div class="col-head cx brd"><h2 class="bold">n8n</h2></div>
+    <div class="col-head cx brd"><h2>Make</h2></div>
+    <div class="col-head cx brd"><h2>Zapier</h2></div>
+
+    <div class="cell c1">Fiyat (başlangıç)</div>
+    <div class="cell cx brd"><span class="v strong">Ücretsiz (self-host)</span></div>
+    <div class="cell cx brd"><span class="v">~10$/ay</span></div>
+    <div class="cell cx brd"><span class="v">~20$/ay</span></div>
+
+    <div class="cell c1">Self-hosting</div>
+    <div class="cell cx brd"><span class="tag yes">Evet</span></div>
+    <div class="cell cx brd"><span class="tag no">Hayır</span></div>
+    <div class="cell cx brd"><span class="tag no">Hayır</span></div>
+
+    <div class="cell c1">AI entegrasyonu</div>
+    <div class="cell cx brd"><span class="v strong">Güçlü (native)</span></div>
+    <div class="cell cx brd"><span class="v">Orta</span></div>
+    <div class="cell cx brd"><span class="v">Temel</span></div>
+
+    <div class="cell c1">Kod yazma</div>
+    <div class="cell cx brd"><span class="v strong">JS + Python</span></div>
+    <div class="cell cx brd"><span class="v">Sınırlı</span></div>
+    <div class="cell cx brd"><span class="v">Yok</span></div>
+
+    <div class="cell c1">Entegrasyon sayısı</div>
+    <div class="cell cx brd"><span class="v">400+</span></div>
+    <div class="cell cx brd"><span class="v">1000+</span></div>
+    <div class="cell cx brd"><span class="v strong">6000+</span></div>
+
+    <div class="cell c1">Öğrenme eğrisi</div>
+    <div class="cell cx brd"><span class="v">Orta</span></div>
+    <div class="cell cx brd"><span class="v strong">Düşük</span></div>
+    <div class="cell cx brd"><span class="v strong">Çok düşük</span></div>
+
+    <div class="cell c1">Veri lokasyonu</div>
+    <div class="cell cx brd"><span class="v strong">Kendi sunucunuz</span></div>
+    <div class="cell cx brd"><span class="v">AB</span></div>
+    <div class="cell cx brd"><span class="v">ABD</span></div>
+
+    <div class="cell c1" style="border-bottom:none">Türkçe destek</div>
+    <div class="cell cx brd" style="border-bottom:none"><span class="tag part">Topluluk</span></div>
+    <div class="cell cx brd" style="border-bottom:none"><span class="tag no">Yok</span></div>
+    <div class="cell cx brd" style="border-bottom:none"><span class="tag no">Yok</span></div>
+  </div>
+
+  <div class="footer">
+    <span class="url">verimio.com.tr/blog</span>
+    <span class="logo">verim<span>io</span></span>
+  </div>
+</div>
+</body>
+</html>

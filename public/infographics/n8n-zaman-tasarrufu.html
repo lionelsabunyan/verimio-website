@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>n8n Zaman Tasarrufu — Verimio</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 1200px; height: 630px; overflow: hidden; font-family: 'DM Sans', sans-serif; background: #fff; color: #0A0A0A; }
+  .canvas { width: 1200px; height: 630px; padding: 48px 64px 36px; display: flex; flex-direction: column; }
+
+  .header { margin-bottom: 8px; }
+  .header h1 { font-size: 24px; font-weight: 700; letter-spacing: -0.03em; }
+  .header p { font-size: 13px; font-weight: 300; color: #5C5C5C; margin-top: 4px; }
+  .divider { height: 1px; background: #E5E5E5; margin: 16px 0 24px; }
+
+  .rows { flex: 1; display: flex; flex-direction: column; gap: 0; }
+
+  .row-head { display: grid; grid-template-columns: 240px 1fr 80px; padding: 10px 0; border-bottom: 2px solid #0A0A0A; }
+  .row-head span { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: #A3A3A3; }
+  .row-head span:last-child { text-align: right; }
+
+  .row { display: grid; grid-template-columns: 240px 1fr 80px; padding: 14px 0; border-bottom: 1px solid #E5E5E5; align-items: center; }
+  .row:last-child { border-bottom: 2px solid #0A0A0A; }
+
+  .row-label { font-size: 13px; font-weight: 500; }
+  .row-bars { display: flex; align-items: center; gap: 12px; }
+  .bar-group { display: flex; flex-direction: column; gap: 4px; }
+  .bar-line { display: flex; align-items: center; gap: 8px; }
+  .bar { height: 8px; border-radius: 1px; }
+  .bar.manual { background: #E5E5E5; }
+  .bar.auto { background: #0A0A0A; }
+  .bar-label { font-size: 10px; font-weight: 300; color: #A3A3A3; white-space: nowrap; }
+  .bar-label.dark { color: #0A0A0A; font-weight: 500; }
+
+  .row-save { font-size: 15px; font-weight: 700; text-align: right; }
+
+  .total-row { display: grid; grid-template-columns: 240px 1fr 80px; padding: 16px 0; align-items: center; }
+  .total-row .row-label { font-size: 14px; font-weight: 700; }
+  .total-row .row-save { font-size: 20px; }
+
+  .highlight { margin-top: auto; display: flex; align-items: baseline; gap: 12px; padding: 14px 0; border-top: 1px solid #E5E5E5; }
+  .highlight .big { font-size: 36px; font-weight: 700; letter-spacing: -0.03em; }
+  .highlight .text { font-size: 14px; font-weight: 300; color: #5C5C5C; }
+
+  .footer { display: flex; justify-content: space-between; align-items: flex-end; padding-top: 12px; }
+  .footer .url { font-size: 11px; color: #A3A3A3; font-weight: 300; }
+  .footer .logo { font-size: 15px; font-weight: 700; letter-spacing: -0.03em; }
+  .footer .logo span { font-weight: 300; color: #5C5C5C; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="header">
+    <h1>n8n ile Haftalık Zaman Tasarrufu</h1>
+    <p>15 kişilik pazarlama ajansı örneği</p>
+  </div>
+  <div class="divider"></div>
+
+  <div class="rows">
+    <div class="row-head">
+      <span>Süreç</span>
+      <span>Manuel → Otomatik</span>
+      <span style="text-align:right">Tasarruf</span>
+    </div>
+
+    <div class="row">
+      <div class="row-label">Lead bildirim + CRM</div>
+      <div class="row-bars">
+        <div class="bar-group">
+          <div class="bar-line"><div class="bar manual" style="width:200px"></div><span class="bar-label">5 saat</span></div>
+          <div class="bar-line"><div class="bar auto" style="width:0px"></div><span class="bar-label dark">0 saat</span></div>
+        </div>
+      </div>
+      <div class="row-save">5 saat</div>
+    </div>
+
+    <div class="row">
+      <div class="row-label">SM post planlama</div>
+      <div class="row-bars">
+        <div class="bar-group">
+          <div class="bar-line"><div class="bar manual" style="width:120px"></div><span class="bar-label">3 saat</span></div>
+          <div class="bar-line"><div class="bar auto" style="width:20px"></div><span class="bar-label dark">0.5 saat</span></div>
+        </div>
+      </div>
+      <div class="row-save">2.5 saat</div>
+    </div>
+
+    <div class="row">
+      <div class="row-label">Haftalık rapor</div>
+      <div class="row-bars">
+        <div class="bar-group">
+          <div class="bar-line"><div class="bar manual" style="width:160px"></div><span class="bar-label">4 saat</span></div>
+          <div class="bar-line"><div class="bar auto" style="width:20px"></div><span class="bar-label dark">0.5 saat</span></div>
+        </div>
+      </div>
+      <div class="row-save">3.5 saat</div>
+    </div>
+
+    <div class="row">
+      <div class="row-label">E-posta takip</div>
+      <div class="row-bars">
+        <div class="bar-group">
+          <div class="bar-line"><div class="bar manual" style="width:80px"></div><span class="bar-label">2 saat</span></div>
+          <div class="bar-line"><div class="bar auto" style="width:0px"></div><span class="bar-label dark">0 saat</span></div>
+        </div>
+      </div>
+      <div class="row-save">2 saat</div>
+    </div>
+
+    <div class="total-row">
+      <div class="row-label">Toplam</div>
+      <div class="row-bars">
+        <div class="bar-group">
+          <div class="bar-line"><div class="bar manual" style="width:280px"></div><span class="bar-label">14 saat/hafta</span></div>
+          <div class="bar-line"><div class="bar auto" style="width:20px"></div><span class="bar-label dark">1 saat/hafta</span></div>
+        </div>
+      </div>
+      <div class="row-save">13 saat</div>
+    </div>
+  </div>
+
+  <div class="highlight">
+    <span class="big">%93</span>
+    <span class="text">zaman tasarrufu — haftada 13 saat, yılda 676 saat</span>
+  </div>
+
+  <div class="footer">
+    <span class="url">verimio.com.tr/blog</span>
+    <span class="logo">verim<span>io</span></span>
+  </div>
+</div>
+</body>
+</html>

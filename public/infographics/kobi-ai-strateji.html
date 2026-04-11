@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 1200px; height: 630px; overflow: hidden; font-family: 'DM Sans', sans-serif; background: #fff; color: #0A0A0A; }
+  .canvas { width: 1200px; height: 630px; padding: 48px 64px 36px; display: flex; flex-direction: column; }
+  .header h1 { font-size: 24px; font-weight: 700; letter-spacing: -0.03em; }
+  .header p { font-size: 13px; font-weight: 300; color: #5C5C5C; margin-top: 4px; }
+  .divider { height: 1px; background: #E5E5E5; margin: 16px 0 24px; }
+  .steps { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 4px 48px; }
+  .step { display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid #E5E5E5; }
+  .step:nth-child(5) { grid-column: 1 / -1; max-width: 520px; }
+  .step-num { width: 28px; height: 28px; border: 1.5px solid #0A0A0A; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; }
+  .step-content { flex: 1; }
+  .step-title { font-size: 14px; font-weight: 700; margin-bottom: 3px; }
+  .step-desc { font-size: 12px; font-weight: 300; color: #5C5C5C; line-height: 1.4; }
+  .footer { display: flex; justify-content: space-between; align-items: flex-end; padding-top: 16px; margin-top: auto; }
+  .footer .url { font-size: 11px; color: #A3A3A3; font-weight: 300; }
+  .footer .logo { font-size: 15px; font-weight: 700; letter-spacing: -0.03em; }
+  .footer .logo span { font-weight: 300; color: #5C5C5C; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="header">
+    <h1>KOBİ'ler İçin AI Yol Haritası</h1>
+    <p>Yapay zeka dönüşümü için 5 pratik adım</p>
+  </div>
+  <div class="divider"></div>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-content"><div class="step-title">Eğitim ve Farkındalık</div><div class="step-desc">Şirket içinde AI okuryazarlığını artırın. Yöneticilerden çalışanlara herkes AI'ın ne olduğunu anlamalı.</div></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-content"><div class="step-title">Pilot Projelerle Başlangıç</div><div class="step-desc">Küçük ölçekli, yönetilebilir projelerle başlayın. İlk başarı hikayeleri motivasyonu artırır.</div></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-content"><div class="step-title">Veri Kalitesine Yatırım</div><div class="step-desc">AI'ın yakıtı veridir. Doğru, güncel ve yapılandırılmış veri olmadan AI çalışmaz.</div></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-content"><div class="step-title">İş Süreçlerini Analiz Edin</div><div class="step-desc">Tekrar eden, zaman alıcı, hata potansiyelli süreçleri belirleyin — otomasyon adayları bunlar.</div></div></div>
+    <div class="step"><div class="step-num">5</div><div class="step-content"><div class="step-title">Esneklik ve Ölçeklenebilirlik</div><div class="step-desc">Küçük bir modülle başlayıp, başarılı oldukça kapsamını genişletin.</div></div></div>
+  </div>
+  <div class="footer"><span class="url">verimio.com.tr/blog</span><span class="logo">verim<span>io</span></span></div>
+</div>
+</body>
+</html>

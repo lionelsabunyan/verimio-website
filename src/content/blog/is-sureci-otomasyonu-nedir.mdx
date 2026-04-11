@@ -1,0 +1,175 @@
+---
+title: "İş Süreci Otomasyonu Nedir? Türk KOBİ'leri İçin Sıfırdan Başlangıç Rehberi [2026]"
+excerpt: "İş süreci otomasyonu nedir, nasıl başlanır, hangi süreçler otomatikleşir? Türk KOBİ'leri için BPM, RPA ve AI destekli otomasyon arasındaki farkları ve uygulama yol haritasını anlatan pratik rehber."
+date: "11 Nisan 2026"
+category: "automation"
+readingTime: "11 dk"
+author: "Verimio Ekibi"
+---
+
+"İş süreci otomasyonu" kelimesi yöneticilerin çoğuna hâlâ "pahalı, karmaşık, aylar süren bir proje" gibi geliyor. 2026 yılında bu algı artık gerçeği yansıtmıyor. Doğru araçlarla bir pilot proje 2-3 haftada hayata geçebiliyor, ilk aydan itibaren net ROI üretiyor.
+
+Bu yazı, iş süreci otomasyonunu baştan sona anlamanızı ve şirketinizde nereden başlayacağınıza karar vermenizi sağlayacak. Jargonsuz, örneklerle, Türkçe terminolojiyle.
+
+> **Hızlı Özet:** İş süreci otomasyonu, bir şirketteki tekrarlı ve kurallı görevlerin makineler tarafından yapılmasıdır. Eskiden pahalı BPM yazılımları gerektiren bu iş, bugün n8n, Make, Zapier gibi araçlarla 1-2 haftada kurulabiliyor. En yüksek ROI getiren alanlar: veri girişi, raporlama, e-posta yönetimi, fatura işleme, müşteri yanıtlama ve belge akışları. Tipik bir KOBİ ilk 3 ayda aylık 40-100 saat kazanıyor.
+
+## İş Süreci Otomasyonu Nedir?
+
+Çok kısaca: **bir işi yapmak için uygulanan adım zincirinin makine tarafından otomatik gerçekleştirilmesi.**
+
+Örnek bir süreç — "müşteriden form gelince ne oluyor?":
+
+1. Form geliyor (bugün kimse farkına varmıyor)
+2. Biri e-postayı görüyor
+3. Bilgileri Excel'e yazıyor
+4. Satış ekibine haber veriyor
+5. Satış ekibi cevap için müşteriye e-posta atıyor
+6. CRM'e kayıt açılıyor
+7. Takip tarihi ajandaya giriyor
+
+Bu 7 adım bugün genellikle **45-90 dakika** sürüyor, çünkü farklı insanlar, farklı sistemler, farklı zamanlar. Otomasyonla? **30 saniye**, sıfır insan dokunuşu, sıfır hata.
+
+İş süreci otomasyonu özünde **iki uygulama arasındaki boşluğu kapatmaktır**. Formunuzdaki bilgi CRM'e geçmiyorsa, birileri her gün manuel taşıyor. Otomasyon bu taşıma işini siliyor.
+
+## 3 Ana Otomasyon Türü
+
+Pazarda dolaşan terimleri netleştirelim:
+
+### 1. Workflow Automation (Akış Otomasyonu)
+En yaygın ve erişilebilir tür. Uygulamalar arası veri akışını yönetir. Araçlar: **n8n, Make, Zapier, Power Automate.**
+
+Tipik kullanım: CRM ↔ e-posta ↔ Slack ↔ takvim ↔ muhasebe yazılımı. Günlük ofis işlerinin %70'ini bu kategori kapsar.
+
+[n8n Rehberi — Türk Şirketleri İçin İş Otomasyonu](/blog/n8n-rehberi-turk-sirketleri-is-otomasyonu) yazımızda bu yöne odaklandık.
+
+### 2. RPA — Robotic Process Automation (Robotik Süreç Otomasyonu)
+API'si olmayan eski masaüstü yazılımlarını (SAP eski sürümleri, Logo masaüstü, banka web sayfaları) bir robot gibi tıklayarak otomatikleştirir. Araçlar: **UiPath, Automation Anywhere, Microsoft Power Automate Desktop.**
+
+Tipik kullanım: 20 yıllık ERP'den her sabah rapor indirme, eski bir web sitesine veri girme, legacy yazılımlar arası köprü kurma.
+
+**Uyarı:** RPA genellikle pahalıdır ve kırılgandır. API tabanlı çözüm varken RPA seçmeyin.
+
+### 3. AI Destekli Akıllı Otomasyon
+Klasik otomasyonun yapay zekayla desteklenmiş hali. Karar noktaları, yapılandırılmamış veri (PDF, e-posta, görüntü), doğal dil işleme içeren akışlar. Araçlar: **n8n + OpenAI, Langflow, LangChain, özel AI agent mimarileri.**
+
+Tipik kullanım: Gelen e-postayı sınıflandırma, fatura PDF'ini okuma, müşteri mesajına otomatik yanıt taslağı, sözleşmeden bilgi çıkarma.
+
+Bu yönün derinine [AI Agent Nedir?](/blog/ai-agent-nedir-sirketler-icin-rehber) ve [n8n ChatGPT Entegrasyonu](/blog/n8n-chatgpt-entegrasyonu-rehberi) yazılarımızda indik.
+
+## Otomatikleştirilebilecek İş Kategorileri
+
+Şirketinizin hangi departmanında ne kadar fırsat olduğuna dair genel bir harita:
+
+### Satış ve Pazarlama — Yüksek Öncelik
+- Lead girişi ve atama (website formu → CRM → temsilci)
+- Lead skorlama ve öncelik belirleme
+- E-posta dizisi takibi
+- Sosyal medya zamanlaması
+- Teklif hazırlığı ön-dolumu
+- Rakip takibi ve rapor
+
+### Müşteri Hizmetleri — Yüksek Öncelik
+- Gelen mesaj sınıflandırma
+- Sık sorulara otomatik yanıt
+- Ticket açma/atama
+- Memnuniyet anketi otomasyonu
+- Çağrı merkezi entegrasyonu
+
+Bu alanı derinlemesine [Müşteri Hizmetlerinde AI Dönemi](/blog/musteri-hizmetlerinde-ai-donemi) ve [Yapay Zeka Çağrı Merkezi Rehberi](/blog/yapay-zeka-cagri-merkezi-rehberi) yazılarımızda işledik.
+
+### Finans ve Muhasebe — Çok Yüksek ROI
+- Fatura işleme
+- Banka mutabakatı
+- Cari takip
+- Masraf yönetimi
+- Raporlama otomasyonu
+
+Muhasebe tarafının detaylı haritası: [Muhasebe Otomasyonu — 7 Süreç](/blog/muhasebe-otomasyonu-kobi-rehberi)
+
+### İnsan Kaynakları — Orta Öncelik
+- CV eleme ve sıralama
+- Yeni çalışan onboarding akışı
+- İzin/avans talep yönetimi
+- PDKS entegrasyonu
+- Performans değerlendirme hazırlığı
+
+İK için derinlemesine analiz: [İnsan Kaynaklarında AI Devrimi](/blog/insan-kaynaklarinda-ai-devrimi-ise-alimdan-calisan-bagliligi)
+
+### Operasyon — Sektöre Göre Değişken
+- Sipariş işleme
+- Stok takibi ve uyarı
+- Tedarikçi iletişimi
+- Lojistik takibi
+- Kalite kontrol raporlama
+
+## Otomasyona Nereden Başlanmalı?
+
+Bu en sık sorulan soru ve doğru cevap aslında basit: **En çok tekrar eden, en çok zaman yakıcı, en az muhakeme gerektiren süreçten başlayın.**
+
+Pratik bir seçim matrisi:
+
+| Kriter | Ağırlık |
+|--------|---------|
+| Sıklık (günde kaç kere?) | Yüksek → yüksek öncelik |
+| Süre (her seferde kaç dakika?) | Yüksek → yüksek öncelik |
+| Kurallı mı? (yes/no mantığı) | Evet → yüksek öncelik |
+| Hata riski yüksek mi? | Yüksek → yüksek öncelik |
+| Çalışanın en sevmediği iş mi? | Evet → bonus (moral etkisi) |
+
+Örnek: "Günde 50 sefer tekrarlanan, her seferinde 3 dakika süren, tamamen kurallı, hatası pahalı olan ve çalışanın en nefret ettiği iş" — bu tam bir otomasyon altın madeni.
+
+## Uygulamanın 6 Adımı
+
+### 1. Keşif ve Haritalama (1 hafta)
+Mevcut süreçleri yazın. Sadece "ne yapılıyor" değil, "kim, hangi araçla, ne kadar sürede, ne sıklıkta". Bu adımın çıktısı otomasyon önceliklerinizi netleştirecektir.
+
+### 2. Araç Seçimi (2-3 gün)
+Genel KOBİ için tavsiye: **n8n.** Teknik ekibiniz yoksa Zapier ile başlayabilirsiniz. Karşılaştırma için [n8n vs Zapier](/blog/n8n-vs-zapier-karsilastirma) yazımıza bakın.
+
+### 3. Pilot Süreç Seçimi (1 hafta)
+3-5 adaydan biri seçilir. Kriter: **düşük risk + yüksek görünürlük.** Çalışırsa başarı hikâyesi çıkar, çalışmazsa büyük bir şey yıkılmaz.
+
+### 4. Pilot Kurulum (1-2 hafta)
+Akış kurulur. Test verileriyle defalarca denenir. Köşe durumlar (edge case) düşünülür. Hata senaryoları kurulur.
+
+### 5. Canlıya Alma ve Gözlem (2-4 hafta)
+İlk hafta yakın takip, her çalıştırma gözden geçirilir. Sonraki haftalarda uzaktan izleme. Log'lar önemli.
+
+### 6. Ölçüm ve Genişletme
+ROI ölçülür (kazanılan saat × saatlik maliyet − araç maliyeti). Başarılıysa ikinci süreç eklenir. Başarısızsa nedeni analiz edilir.
+
+## En Sık Yapılan Hatalar
+
+**Hata 1: Önce aracı seçmek.** "n8n kuralım, sonra düşünürüz" yaklaşımı. Önce süreç haritası, sonra araç.
+
+**Hata 2: Çok karmaşık bir süreçle başlamak.** İlk otomasyonunuz basit olmalı. Başarı, ekibi ikna eder.
+
+**Hata 3: İnsanı tamamen çıkarmak.** İlk 3-6 ay "insan onaylı otomasyon" çalıştırın. Sonra güvendiğiniz adımları tam otomatiğe çevirin.
+
+**Hata 4: Belgelemeden ilerlemek.** 6 ay sonra "bu akış ne yapıyor" sorusuna kimse cevap veremez.
+
+**Hata 5: ROI ölçmemek.** "İyi gidiyor galiba" değil, somut sayılar lazım. Yoksa bütçe savunamazsınız.
+
+[Otomasyon Yanlışları](/blog/otomasyon-yanlislari) yazımızda bu hataları detaylandırdık.
+
+## KOBİ Gerçekçi Bütçe
+
+**3 ay pilot bütçesi:**
+- Araç lisansı (n8n self-hosted + AI API): 50-100 USD/ay
+- Dış danışman (başlangıç desteği): 1.500-5.000 USD (tek seferlik)
+- İç zaman yatırımı: 1 kişi × haftada 8-10 saat
+- Donanım/altyapı: İhmal edilebilir (VPS: 5-20 USD/ay)
+
+**Amortisman:** Doğru seçilmiş pilot süreçte tipik olarak 2-4 ay.
+
+## Sonuç: Otomasyon Bir Proje Değil, Bir Kültür
+
+Şirketler otomasyonu genellikle "bir kere yapılıp bitirilecek proje" olarak düşünüyor. Gerçekte daha çok "bir kere kurulduktan sonra sürekli büyüyen bir alışkanlık" gibi.
+
+Bir ay 3 süreç otomatikleşiyor. Ertesi ay 5. Altı ay sonra bakıyorsunuz şirketin günlük işleyişi tamamen değişmiş. Çalışanlar "veri girişi" yerine "analiz ve strateji" yapıyor. Müşterilere yanıt süreleri saatten dakikaya düşmüş. Hata oranı yarıya inmiş.
+
+Bu dönüşüm başlamadan "zor" görünür, başladıktan sonra "neden daha önce yapmadık" hissi verir.
+
+[Şirket Check-Up](/analiz) süreciyle, şirketinizin otomasyon haritasını 60 dakikada çıkarıyoruz. Hangi süreç ne kadar zaman yakıyor, hangisi otomatikleşebilir, öncelik sırası ne olmalı — hepsi somut sayılarla, tek bir rapor olarak elinize geçiyor.
+
+En kötü otomasyon kararı, hiç karar vermemektir. Çünkü rakipleriniz şu anda düşünüyor.

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 1200px; height: 630px; overflow: hidden; font-family: 'DM Sans', sans-serif; background: #fff; color: #0A0A0A; }
+  .canvas { width: 1200px; height: 630px; padding: 48px 64px 36px; display: flex; flex-direction: column; }
+  .header h1 { font-size: 24px; font-weight: 700; letter-spacing: -0.03em; }
+  .header p { font-size: 13px; font-weight: 300; color: #5C5C5C; margin-top: 4px; }
+  .divider { height: 1px; background: #E5E5E5; margin: 16px 0 24px; }
+
+  .steps { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 4px 48px; }
+  .step { display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid #E5E5E5; }
+  .step-num { width: 28px; height: 28px; border: 1.5px solid #0A0A0A; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; }
+  .step-content { flex: 1; }
+  .step-title { font-size: 14px; font-weight: 700; margin-bottom: 3px; }
+  .step-desc { font-size: 12px; font-weight: 300; color: #5C5C5C; line-height: 1.4; }
+
+  .benefits { margin-top: auto; display: flex; gap: 40px; padding: 14px 0; border-top: 1px solid #E5E5E5; }
+  .benefit { display: flex; flex-direction: column; gap: 2px; }
+  .benefit-value { font-size: 16px; font-weight: 700; }
+  .benefit-label { font-size: 11px; font-weight: 300; color: #5C5C5C; }
+
+  .footer { display: flex; justify-content: space-between; align-items: flex-end; padding-top: 12px; }
+  .footer .url { font-size: 11px; color: #A3A3A3; font-weight: 300; }
+  .footer .logo { font-size: 15px; font-weight: 700; letter-spacing: -0.03em; }
+  .footer .logo span { font-weight: 300; color: #5C5C5C; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="header">
+    <h1>Raporlama Otomasyonuna Geçiş Süreci</h1>
+    <p>Excel'den dashboard'a — adım adım rehber</p>
+  </div>
+  <div class="divider"></div>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-content"><div class="step-title">İhtiyaçlarınızı Belirleyin</div><div class="step-desc">Hangi KPI'ları takip etmek istiyorsunuz? Hangi verilere ihtiyacınız var? Raporları kim kullanacak?</div></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-content"><div class="step-title">Veri Kaynaklarını Entegre Edin</div><div class="step-desc">CRM, ERP, muhasebe yazılımı, web sitesi — API veya veritabanı bağlantısı ile entegrasyon.</div></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-content"><div class="step-title">Dashboard Tasarlayın</div><div class="step-desc">Power BI, Tableau veya n8n ile görsel dashboard'lar oluşturun. Raporları otomatik dağıtın.</div></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-content"><div class="step-title">AI ile Zenginleştirin</div><div class="step-desc">Anomali tespiti, tahminsel analiz, doğal dil özetleri. Raporlar sadece göstermez, yorumlar.</div></div></div>
+  </div>
+  <div class="benefits">
+    <div class="benefit"><span class="benefit-value">%20</span><span class="benefit-label">operasyonel verimlilik artışı (McKinsey)</span></div>
+    <div class="benefit"><span class="benefit-value">%15</span><span class="benefit-label">daha yüksek karlılık (Forrester)</span></div>
+    <div class="benefit"><span class="benefit-value">Sıfır</span><span class="benefit-label">manuel veri girişi hatası</span></div>
+  </div>
+  <div class="footer"><span class="url">verimio.com.tr/blog</span><span class="logo">verim<span>io</span></span></div>
+</div>
+</body>
+</html>

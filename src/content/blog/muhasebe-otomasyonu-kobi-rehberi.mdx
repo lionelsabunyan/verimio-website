@@ -1,0 +1,167 @@
+---
+title: "Muhasebe Otomasyonu: Türk KOBİ'leri İçin Aylık 80 Saat Kazandıran 7 Süreç [2026]"
+excerpt: "Fatura işleme, cari takibi, KDV beyannamesi hazırlığı, banka mutabakatı — muhasebe otomasyonu ile hangi işler otomatikleşir? Türk KOBİ'leri için pratik rehber."
+date: "11 Nisan 2026"
+category: "automation"
+readingTime: "10 dk"
+author: "Verimio Ekibi"
+---
+
+İzmir'de bir yedek parça firması, mali müşavire her ayın ilk haftasında kutu kutu fatura teslim ediyordu. Muhasebe temsilcisi haftada 3 gün sadece bu kutuları işliyordu. Şimdi fatura PDF'i geldiği anda n8n akışı devreye giriyor, bilgi otomatik çıkarılıyor, muhasebe yazılımına düşüyor, temsilci sadece istisnalara bakıyor. Aylık kazanç: yaklaşık 80 saat.
+
+Muhasebe otomasyonu, Türk KOBİ'lerinin AI'dan en hızlı ve en somut geri dönüş aldığı alanlardan biri. Çünkü işin büyük kısmı tekrarlı, kurallı ve yapılandırılmış. Bu yazıda hangi süreçlerin otomatikleşebileceğini ve hangi araçların işe yaradığını anlatıyorum.
+
+> **Hızlı Özet:** Muhasebe otomasyonu "muhasebeciyi işten çıkarma" değil, "muhasebeciyi veri girişinden kurtarıp denetime odaklama" projesidir. Fatura işleme, cari ekstre kontrolü, banka mutabakatı, bordro hazırlığı ve rapor otomasyonu en yüksek ROI sunan 5 alandır. Tipik bir KOBİ ilk 6 ayda aylık 60-120 saat arası kazanç görüyor.
+
+## Neden Muhasebe Otomasyonu Yüksek Öncelik?
+
+Türkiye'deki tipik bir KOBİ muhasebe departmanının iş dağılımına bakın:
+
+- **%45** — Veri girişi (fatura, fiş, ekstre, masraf)
+- **%20** — Kontrol/mutabakat (banka, cari, stok)
+- **%15** — Resmi beyanname hazırlığı (KDV, muhtasar, SGK)
+- **%10** — Yönetim raporlaması
+- **%10** — Danışma/denetim/problem çözme
+
+İlk 3 kategori (%80) kurallı ve tekrarlı. Bu demek oluyor ki muhasebe departmanınızın zamanının %80'i, gerçekte makinelerin çok daha hızlı ve daha az hata ile yapabileceği işlere gidiyor.
+
+Otomatikleştirince insan, kategoride 5'in olduğu "gerçek danışmanlık" işine odaklanabiliyor. Bu hem çalışan tatminini artırıyor hem şirketi daha az hata ile çalıştırıyor.
+
+İlgili ROI hesaplama metodolojisi için [AI ROI Hesaplama](/blog/ai-roi-hesaplama) yazımıza bakabilirsiniz.
+
+## Otomatikleşebilecek 7 Muhasebe Süreci
+
+### 1. Gelen Fatura İşleme (En Yüksek ROI)
+
+**Problem:** Tedarikçi fatura PDF'i e-postayla geliyor. Biri indirip, okuyup, Luca/Mikro/Netsis/Parasut'a manuel yazıyor. Firma başına 2-5 dakika. Ayda 500 fatura = 25-40 saat.
+
+**Çözüm mimarisi:** Gmail → PDF Extract → OCR → AI (bilgi çıkarımı) → Muhasebe yazılımı API → İnsan onay istisnada
+
+**Kullanılan araçlar:** n8n + ChatGPT + Parasut API (veya Mikro web servisi)
+
+**Gerçek kazanç:** Ayda 25-40 saat. 3 ay amortismanla araç maliyeti çıkıyor.
+
+Detaylı uygulama için [n8n ChatGPT Entegrasyonu Rehberi](/blog/n8n-chatgpt-entegrasyonu-rehberi) yazımızdaki "Fatura ve Sözleşme Bilgisi Çıkarma" bölümüne bakabilirsiniz.
+
+### 2. Banka Ekstre Mutabakatı
+
+**Problem:** Her ay sonunda banka ekstresi ile muhasebe kayıtları karşılaştırılıyor. Manuel Excel'de, satır satır. 3-4 banka hesabı varsa 1-2 gün sürüyor.
+
+**Çözüm mimarisi:** Banka API (Akbank, Garanti, İş Bankası açık bankacılık API'leri var) → n8n karşılaştırma akışı → Uyuşmayan kayıtları liste olarak raporla
+
+**Kullanılan araçlar:** n8n + banka açık API + Supabase geçici tablo
+
+**Gerçek kazanç:** Ayda 8-16 saat, hata oranı neredeyse sıfıra iniyor.
+
+### 3. Cari Hesap Ekstre Gönderimi ve Takibi
+
+**Problem:** Müşterilere periyodik cari ekstre gönderme. Manuel hazırlanıyor, e-postayla gönderiliyor, yanıt takibi yapılmıyor.
+
+**Çözüm mimarisi:** Scheduled trigger (ayda bir) → Muhasebe yazılımından veri çek → PDF ekstre oluştur → Müşteriye e-posta + WhatsApp → 7 gün sonra yanıt yoksa hatırlatma
+
+**Kullanılan araçlar:** n8n + Parasut/Mikro + SendGrid/Resend + WhatsApp Business API
+
+**Gerçek kazanç:** Ayda 6-10 saat + tahsilat hızında %15-25 artış.
+
+### 4. Masraf Fişi ve Seyahat Harcaması Yönetimi
+
+**Problem:** Çalışanlar fiş biriktiriyor, bir klasörde topluyor, ay sonu muhasebeye getiriyor. Kaybolma, kategorilendirme karmaşası, gecikmiş geri ödemeler.
+
+**Çözüm mimarisi:** Çalışan fişin fotoğrafını Telegram/WhatsApp bot'una gönderir → AI (Vision API) bilgiyi çıkarır → Onay adımı → Muhasebe yazılımı + geri ödeme sistemi
+
+**Kullanılan araçlar:** n8n + Telegram Bot + OpenAI Vision + Parasut/SAP
+
+**Gerçek kazanç:** Ayda 4-8 saat + çalışan memnuniyeti + kayıp fiş sorununun bitmesi.
+
+### 5. KDV/Muhtasar Beyanname Hazırlık Asistanı
+
+**Problem:** Her ay sonu mali müşavir veya muhasebe departmanı KDV, muhtasar, SGK hazırlığı için manuel veri topluyor.
+
+**Çözüm mimarisi:** n8n akışı muhasebe yazılımından tüm verileri çeker, kategorize eder, mizan benzeri özet çıkarır, excel/pdf olarak mali müşavire gönderir.
+
+**Kullanılan araçlar:** n8n + Parasut/Mikro API + Excel/PDF export
+
+**Gerçek kazanç:** Ayda 6-12 saat + beyanname zamanında hazır olma garantisi.
+
+**Kritik uyarı:** Resmi beyannamenin kendisini otomatik göndermeyin. Hazırlık yapın, insan göz gezdirsin, insan gönderseni. KDV iadesi hatası pahalıya patlar.
+
+### 6. Bordro ve SGK İşlemleri Ön Hazırlığı
+
+**Problem:** Aylık bordro hazırlığı sürecinde puantaj, avans, prim, kesinti bilgileri farklı sistemlerden toplanıyor.
+
+**Çözüm mimarisi:** n8n akışı PDKS sistemi → avans talep sistemi → satış primi sistemi verilerini toplar, bordro yazılımına yüklemeye hazır format çıkarır.
+
+**Kullanılan araçlar:** n8n + Logo/Mikro + Excel + onay adımı
+
+**Gerçek kazanç:** Ayda 4-8 saat + hata azalması.
+
+### 7. Yönetim Raporlaması
+
+**Problem:** Her ayın ilk haftasında yönetim için P&L, nakit akışı, tahsilat raporu hazırlanıyor. Muhasebeciden birinin 2 günü gidiyor.
+
+**Çözüm mimarisi:** n8n (veya özel rapor aracı) muhasebe verisini çekiyor, şablon rapora dönüştürüyor, CEO'ya e-posta olarak gönderiyor.
+
+Raporlama otomasyonunun detaylarını [Raporlama Otomasyonu Nedir?](/blog/raporlama-otomasyonu-nedir) ve [Excel'den Yapay Zekaya Raporlama Otomasyonu](/blog/excelden-yapay-zekaya-raporlama-otomasyonu-ile-hata-payini-s) yazılarımızda işledik.
+
+**Gerçek kazanç:** Ayda 8-16 saat + yönetim daha hızlı karar veriyor.
+
+## Hangi Araçlarla?
+
+### KOBİ Stack Önerisi (0-50 kişi)
+
+- **Otomasyon motoru:** n8n (self-hosted veya Cloud)
+- **AI:** ChatGPT API (GPT-4o-mini yeterli, maliyet düşük)
+- **Muhasebe yazılımı:** Parasut, Logo, Mikro, Netsis (API desteği olması kritik)
+- **Dosya işleme:** OCR için Google Vision veya Tesseract, PDF için n8n'in built-in node'ları
+- **Bildirim:** Telegram Bot veya Slack
+- **Onay akışı:** n8n manual approval + e-posta
+
+Toplam aylık maliyet: ~30-80 USD (VPS + API kullanımı dahil).
+
+### Orta Ölçek Öneri (50-200 kişi)
+
+- **Otomasyon motoru:** n8n Enterprise veya Make
+- **AI:** ChatGPT API + özel fine-tuned model (Türk muhasebe için)
+- **Muhasebe yazılımı:** Logo, Mikro, SAP Business One
+- **Belge yönetim:** Ayrı DMS sistemi
+- **Onay akışı:** Formal workflow engine
+
+Toplam aylık maliyet: ~200-800 USD.
+
+## Hangi İşler Otomatikleşmemeli?
+
+Bu da en az otomatikleştirilecekler kadar önemli:
+
+- **Vergi planlaması** — Karmaşık, rejim değişikliklerinden etkilenir, uzman yorumu gerekir
+- **Transfer fiyatlandırması** — Grup şirketleri arası fiyatlama, hukuki boyutu var
+- **SGK uyuşmazlıkları** — İnsan iletişimi gerekiyor
+- **Denetim cevapları** — Kurum denetimine verilecek yanıtlar asla otomatik olmamalı
+- **KDV iade süreçleri** — Hata tolerance çok düşük, insan kontrolü zorunlu
+
+Altın kural: **"Kurallı ve tekrarlıysa otomatikleştir. Muhakeme gerektiriyorsa insanda kalsın."**
+
+## Başlama Stratejisi — 3 Ay Plan
+
+### Ay 1 — Analiz ve Pilot
+- En büyük zaman yakıcı süreci seç (tipik olarak: gelen fatura işleme)
+- Mevcut durum haritası çıkar (kaç saat, kaç hata)
+- n8n ve gerekli API erişimlerini kur
+- Pilot akışı canlıya al
+
+### Ay 2 — Genişletme
+- Pilotun verisini gözden geçir
+- 2 ek süreci otomatikleştir (örn. banka mutabakatı + masraf fişi)
+- Ekip eğitimi
+
+### Ay 3 — Olgunlaştırma
+- Hata senaryolarını kapat
+- Raporlama dashboard'u kur
+- ROI raporu hazırla, yönetime sun
+
+## Sonuç
+
+Muhasebe departmanınızda kaç saat veri girişi yapıldığını biliyor musunuz? Çoğu CEO bilmiyor. O zaman otomasyon fırsatlarını da göremiyorlar.
+
+[Şirket Check-Up](/analiz) süreciyle, muhasebe dahil tüm departmanlarınızda otomasyon fırsatlarını somut saat ve para olarak ölçüyoruz. Bir saatlik görüşmenin ardından önünüzde "şu süreci otomatikleştir, ayda 40 saat kazan" gibi net bir liste oluyor.
+
+Muhasebe otomasyonu, AI dönüşümünün en sıkıcı ama en kârlı kısmıdır. Reklamdan değil, faturadan para kazanılır.

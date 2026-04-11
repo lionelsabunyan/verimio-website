@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Çağrı Merkezi Maliyet Karşılaştırması — Verimio</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 1200px; height: 630px; overflow: hidden; font-family: 'DM Sans', sans-serif; background: #fff; color: #0A0A0A; }
+  .canvas { width: 1200px; height: 630px; padding: 48px 64px 36px; display: flex; flex-direction: column; }
+
+  .header { margin-bottom: 12px; }
+  .header h1 { font-size: 24px; font-weight: 700; letter-spacing: -0.03em; }
+  .header p { font-size: 13px; font-weight: 300; color: #5C5C5C; margin-top: 4px; }
+  .divider { height: 1px; background: #E5E5E5; margin: 16px 0 24px; }
+
+  .columns { display: grid; grid-template-columns: 1fr 40px 1fr; flex: 1; gap: 0; }
+
+  .col { display: flex; flex-direction: column; gap: 16px; }
+  .col-title { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding-bottom: 10px; border-bottom: 2px solid #0A0A0A; }
+  .col-title.dim { color: #A3A3A3; border-color: #E5E5E5; }
+
+  .vs { display: flex; align-items: center; justify-content: center; }
+  .vs span { font-size: 14px; font-weight: 300; color: #A3A3A3; }
+
+  .item { display: flex; flex-direction: column; gap: 2px; }
+  .item-label { font-size: 11px; font-weight: 500; color: #A3A3A3; text-transform: uppercase; letter-spacing: 0.06em; }
+  .item-value { font-size: 20px; font-weight: 700; letter-spacing: -0.02em; }
+  .item-value.dim { color: #A3A3A3; font-weight: 300; font-size: 18px; }
+  .item-note { font-size: 11px; font-weight: 300; color: #5C5C5C; }
+
+  .bar-wrap { margin-top: 4px; }
+  .bar { height: 6px; border-radius: 2px; }
+  .bar.full { background: #0A0A0A; }
+  .bar.light { background: #E5E5E5; }
+
+  .total-box { margin-top: auto; padding: 16px 0; border-top: 2px solid #0A0A0A; }
+  .total-box.dim { border-color: #E5E5E5; }
+  .total-label { font-size: 11px; font-weight: 500; color: #A3A3A3; text-transform: uppercase; letter-spacing: 0.06em; }
+  .total-value { font-size: 28px; font-weight: 700; letter-spacing: -0.03em; margin-top: 2px; }
+  .total-value.dim { color: #A3A3A3; }
+
+  .savings { margin-top: 8px; padding: 10px 16px; border: 2px solid #0A0A0A; display: inline-flex; align-items: baseline; gap: 8px; align-self: flex-start; }
+  .savings .pct { font-size: 32px; font-weight: 700; letter-spacing: -0.03em; }
+  .savings .text { font-size: 13px; font-weight: 300; color: #5C5C5C; }
+
+  .footer { display: flex; justify-content: space-between; align-items: flex-end; padding-top: 16px; }
+  .footer .url { font-size: 11px; color: #A3A3A3; font-weight: 300; }
+  .footer .logo { font-size: 15px; font-weight: 700; letter-spacing: -0.03em; }
+  .footer .logo span { font-weight: 300; color: #5C5C5C; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="header">
+    <h1>Çağrı Merkezi Maliyet Karşılaştırması</h1>
+    <p>Günde 200 çağrı alan orta ölçekli Türk şirketi için tahmini aylık maliyet</p>
+  </div>
+  <div class="divider"></div>
+
+  <div class="columns">
+    <!-- Geleneksel -->
+    <div class="col">
+      <div class="col-title dim">Geleneksel — 10 Operatör</div>
+
+      <div class="item">
+        <span class="item-label">Personel maliyeti</span>
+        <span class="item-value">~250.000 ₺</span>
+        <div class="bar-wrap"><div class="bar full" style="width: 100%;"></div></div>
+      </div>
+
+      <div class="item">
+        <span class="item-label">AI platform lisansı</span>
+        <span class="item-value dim">—</span>
+      </div>
+
+      <div class="item">
+        <span class="item-label">Altyapı</span>
+        <span class="item-value">~15.000 ₺</span>
+        <div class="bar-wrap"><div class="bar full" style="width: 30%;"></div></div>
+      </div>
+
+      <div class="total-box dim">
+        <span class="total-label">Toplam aylık</span>
+        <span class="total-value dim">~265.000 ₺</span>
+      </div>
+    </div>
+
+    <!-- VS -->
+    <div class="vs"><span>vs</span></div>
+
+    <!-- AI Destekli -->
+    <div class="col">
+      <div class="col-title">AI Destekli — 3 Operatör + AI</div>
+
+      <div class="item">
+        <span class="item-label">Personel maliyeti</span>
+        <span class="item-value">~75.000 ₺</span>
+        <div class="bar-wrap"><div class="bar full" style="width: 30%;"></div></div>
+      </div>
+
+      <div class="item">
+        <span class="item-label">AI platform lisansı</span>
+        <span class="item-value">~15.000–30.000 ₺</span>
+        <div class="bar-wrap"><div class="bar full" style="width: 18%;"></div></div>
+      </div>
+
+      <div class="item">
+        <span class="item-label">Altyapı</span>
+        <span class="item-value">~10.000 ₺</span>
+        <div class="bar-wrap"><div class="bar full" style="width: 12%;"></div></div>
+      </div>
+
+      <div class="total-box">
+        <span class="total-label">Toplam aylık</span>
+        <span class="total-value">~100.000–115.000 ₺</span>
+      </div>
+
+      <div class="savings">
+        <span class="pct">~%57</span>
+        <span class="text">maliyet düşüşü</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span class="url">verimio.com.tr/blog</span>
+    <span class="logo">verim<span>io</span></span>
+  </div>
+</div>
+</body>
+</html>

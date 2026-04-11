@@ -1,0 +1,142 @@
+---
+title: "n8n ChatGPT Entegrasyonu: Adım Adım Kurulum ve İş Senaryoları [2026]"
+excerpt: "n8n ile ChatGPT nasıl entegre edilir? API key'den ilk akışa, maliyet yönetiminden gerçek iş senaryolarına kadar Türk KOBİ'leri için pratik n8n + ChatGPT rehberi."
+date: "11 Nisan 2026"
+category: "tutorial"
+readingTime: "12 dk"
+author: "Verimio Ekibi"
+---
+
+Bir ithalat firması, haftada 200+ tedarikçi e-postasını manuel okuyup kategorize ediyordu. İki kişi, yarım gün. n8n'e ChatGPT'yi bağladıktan sonra bu işi 4 dakikada bitiren bir akış kurduk. İnsanlar sadece kritik olanlara bakıyor şimdi.
+
+Bu yazının amacı tam olarak bu: n8n ile ChatGPT'yi nasıl bağlayacağınızı, ilk çalışan akışı nasıl kuracağınızı ve hangi iş senaryolarında gerçekten fark yarattığını göstermek. Kod yok, akademik jargon yok.
+
+> **Hızlı Özet:** n8n'e ChatGPT'yi eklemek için sadece bir OpenAI API key'ine ihtiyacınız var. 10 dakikada ilk çalışan akışı kurabilirsiniz. En yüksek değer e-posta sınıflandırma, müşteri mesajı analizi, içerik özetleme ve otomatik yanıt taslaklama senaryolarında çıkıyor. Maliyet kontrolü için model seçimi ve cache stratejisi kritik.
+
+## n8n ve ChatGPT Neden İyi Bir Çift?
+
+n8n, uygulamalar arası veri akışını yönetir. ChatGPT ise bu veriyi "anlar" — kategorize eder, özetler, yanıt taslağı hazırlar, bilgi çıkarır. Klasik otomasyon araçları "eğer-o-zaman" mantığıyla çalışır, ChatGPT ise doğal dili anlayarak "bu e-posta aslında şikâyet mi, sipariş mi, spam mı?" gibi kararları verebilir.
+
+Bu kombinasyon üç büyük sorunu çözer:
+- **Yapılandırılmamış veri sorunu** — E-postalar, PDF'ler, müşteri mesajları artık işlenebilir hale gelir
+- **Manuel karar noktaları** — İnsan gözünün baktığı binlerce küçük karar otomatikleşir
+- **Dil bariyeri** — Türkçe, İngilizce, Almanca karışık gelen içerikler tek akışta yönetilir
+
+n8n'in temel mantığını ve diğer kullanım alanlarını merak ediyorsanız [n8n Rehberi — Türk Şirketleri İçin İş Otomasyonu](/blog/n8n-rehberi-turk-sirketleri-is-otomasyonu) yazımızdan başlayabilirsiniz.
+
+## Başlamadan Önce İhtiyacınız Olanlar
+
+1. **Çalışan bir n8n kurulumu** — Self-hosted (Docker/VPS) veya n8n Cloud farketmez
+2. **OpenAI API hesabı** — `platform.openai.com` üzerinden
+3. **API Key** — Hesap menüsünden "API Keys" bölümünden oluşturulur
+4. **Başlangıç kredisi** — Yeni hesaplar için genellikle 5 USD yeterli, ilk ay 10-20 USD bütçeleyin
+
+API key'i kopyaladığınız anda kasadaki altın gibi saklayın. Bir daha göremezsiniz, sadece yeniden oluşturabilirsiniz.
+
+## Adım Adım ChatGPT Entegrasyonu
+
+### 1. n8n'de Credential Tanımlama
+
+n8n arayüzünde sol menüden **Credentials → New → OpenAI** yolunu izleyin. "API Key" alanına kopyaladığınız anahtarı yapıştırın, isim verin (örn. "OpenAI — Üretim"), kaydedin.
+
+Küçük ipucu: Üretim ve test için ayrı credential'lar oluşturun. Hata durumunda hangi akışın ne kadar harcadığını ayırt etmek kolaylaşır.
+
+### 2. İlk OpenAI Node'unu Ekleme
+
+Yeni bir workflow açın. "+" butonuyla node ekleyin, arama kutusuna **OpenAI** yazın. Karşınıza birkaç seçenek çıkacak:
+
+- **OpenAI Chat Model** — GPT-4, GPT-4o, GPT-4o-mini gibi modellerle sohbet
+- **OpenAI Message a Model** — Tek seferlik prompt gönderme
+- **OpenAI Assistants** — Thread bazlı, hafızalı asistanlar
+
+KOBİ senaryolarının %80'inde ihtiyacınız olan ilk iki seçenektir. Başlangıç için "Message a Model" yeterli.
+
+### 3. Model Seçimi ve Maliyet Dengesi
+
+| Model | Kullanım Alanı | Yaklaşık Maliyet |
+|-------|----------------|-------------------|
+| GPT-4o-mini | Sınıflandırma, kısa yanıt, etiketleme | Çok düşük — binlerce istek birkaç dolara |
+| GPT-4o | Kompleks analiz, uzun metin özetleme | Orta — dikkatli kullanılmalı |
+| GPT-4-turbo | İleri muhakeme, çok adımlı akıl yürütme | Yüksek — sadece gerçekten gerekirse |
+
+**Altın kural:** Önce en küçük modelle deneyin. Çoğu iş e-postası sınıflandırma, CRM etiketleme ve mesaj özetleme işini GPT-4o-mini sorunsuz yapar. Pahalı modele ancak kalite düştüğünde geçin.
+
+### 4. Prompt Alanını Doldurma
+
+Node'un "Messages" alanına iki şey girersiniz:
+
+**System Message** (akışın karakterini tanımlar):
+```
+Sen bir müşteri hizmetleri analistisisin. Sana gelen e-postayı oku,
+sadece şu üç kategoriden birine sınıflandır: SIKAYET, SORU, SATIS.
+Sadece kategori adını döndür, başka hiçbir şey yazma.
+```
+
+**User Message** (asıl veri — n8n ifadesi olarak):
+```
+{{ $json.body }}
+```
+
+`{{ }}` içine yazdığınız şey, önceki node'dan gelen veriye referans verir. Örneğin Gmail node'undan gelen e-postanın gövdesini buraya aktarır.
+
+### 5. Test ve İlk Çalışma
+
+Node'u seçili tutarken sağ üstteki "Execute Node" butonuna basın. Test verisi önceki node'dan gelecek, ChatGPT cevabı "message.content" altında görünecek. Cevap beklediğiniz gibiyse tebrikler — ilk entegrasyonunuz çalışıyor.
+
+## 4 Gerçek İş Senaryosu
+
+### 1. E-posta Sınıflandırma ve Öncelik Belirleme
+
+**Akış:** Gmail Trigger → OpenAI (kategori + aciliyet skoru) → IF node → Slack bildirimi veya CRM kaydı
+
+Gelen e-posta, saniyeler içinde "kategori + 1-5 arası aciliyet" ile etiketlenir. Acil olanlar Slack'e anında düşer, diğerleri CRM'e sessizce yazılır. Haftada 15-20 saat el işinden kurtulan firmalarımız var.
+
+### 2. Müşteri Mesajı Özetleme ve Yanıt Taslağı
+
+**Akış:** WhatsApp/Form Trigger → OpenAI (özet + taslak yanıt) → HubSpot kartı + Slack bildirimi
+
+Müşteri hizmetleri temsilcisi, 800 kelimelik karmaşık mesajı okumak yerine 3 cümlelik özeti ve hazır taslağı görür. Yanıt süresi 4 saatten 20 dakikaya düşüyor. Bu yaklaşımın genişletilmiş halini [Chatbot ve Voice Agent Seçimi](/blog/chatbot-voice-agent-secimi) yazımızda bulabilirsiniz.
+
+### 3. Rakip ve Pazar Haberi Özetleme
+
+**Akış:** RSS Feed → OpenAI (Türkçe özet + anahtar bilgi çıkarımı) → Notion database
+
+Sektörünüzdeki 30 blog ve haber sitesini takip edip sabah 08:00'da masanıza 5 cümlelik Türkçe özet getiren bir akış kurmak 1 saat sürüyor. Pazarlama ekipleri için altın değerinde.
+
+### 4. Fatura ve Sözleşme Bilgisi Çıkarma
+
+**Akış:** E-posta eki → PDF Extract → OpenAI (yapılandırılmış JSON çıkarımı) → Muhasebe yazılımı
+
+PDF faturayı okuyup "firma, tutar, KDV, vade tarihi" şeklinde temiz JSON döndüren akışlar, muhasebe departmanlarında aylık 50-80 saat kazandırıyor. Kurumsal ChatGPT kullanımının güvenlik boyutu içinse [Şirketinizin Gizli Verileri Güvende mi?](/blog/sirketinizin-gizli-verileri-guvende-mi-kurumsal-chatgpt-kull) yazımız kritik uyarılar içeriyor.
+
+## Maliyet Kontrolü: Cebinizi Korumanın 5 Yolu
+
+ChatGPT API faturaları, kontrolsüz bırakıldığında hızla şişebilir. Gerçek müşterilerimizde gördüğümüz 5 kritik pratik:
+
+**1. Doğru modeli seçin.** Sınıflandırma gibi basit işler için GPT-4o yerine GPT-4o-mini kullanın. Maliyet farkı 20 kata varabilir, kalite farkı ise ihmal edilebilir düzeyde kalır.
+
+**2. Prompt'ları kısa tutun.** Gönderdiğiniz her karakter fatura. "Lütfen dikkatli ve profesyonel bir şekilde..." gibi süsler yerine doğrudan görev tanımı yazın.
+
+**3. Max token sınırı koyun.** OpenAI node'unda "Max Tokens" alanını 200-500 arası tutun. Model savrulmadan kısa yanıt verir.
+
+**4. Cache mantığı ekleyin.** Aynı e-posta tekrar geldiğinde tekrar API çağrısı yapmayın. n8n'de basit bir Supabase/Redis check'i bu sorunu çözer.
+
+**5. OpenAI dashboard'da limit belirleyin.** Aylık hard limit 50 USD gibi bir rakam olsun. Bir akış çıldırırsa kasanızı boşaltmasın.
+
+## Sık Yapılan Hatalar
+
+**Hata 1: Yanıtı doğrudan müşteriye gönderme.** İlk aşamada ChatGPT yanıtını daima bir insanın onayından geçirin. "Taslak hazırlar, insan onaylar, gönderir" akışı 3-6 ay çalıştıktan sonra full otomatiğe dönüştürülebilir.
+
+**Hata 2: Türkçe sonuçları garanti sanmak.** Prompt'a mutlaka "Yanıtı sadece Türkçe ver, başka dil kullanma." ibaresi ekleyin. Aksi halde model karışık yanıt verebilir.
+
+**Hata 3: Hassas veriyi prompt'a koymak.** Kimlik numarası, sağlık bilgisi, müşteri şifreleri gibi verileri asla ChatGPT'ye göndermeyin. OpenAI kurumsal plan bile bu alanda yeterli olmayabilir. KVKK açısından riskli veriler için [ai-danismanlik-neden-farklidir](/blog/ai-danismanlik-neden-farklidir) yazımızda detaylı uyarılar var.
+
+**Hata 4: Tek büyük prompt yerine parçalama.** 3 işi tek prompt'a yığmak yerine her iş için ayrı node kullanın. Hem kalite artar, hem hata tespiti kolaylaşır.
+
+## Sonraki Adım
+
+İlk çalışan akışınızı kurduktan sonra, n8n'in ChatGPT ile birleşen daha güçlü senaryolarına — AI agent'lara — geçebilirsiniz. Hazır olduğunuzda [AI Agent Nedir? Şirketiniz İçin Otonom Yapay Zeka Asistanları Rehberi](/blog/ai-agent-nedir-sirketler-icin-rehber) yazımız bir sonraki durak.
+
+Firmanızın hangi süreçlerinde n8n + ChatGPT kombinasyonunun gerçek ROI yaratacağını bilmek isterseniz, [Şirket Check-Up](/analiz) süreciyle 60 dakika içinde net bir yol haritası çıkarıyoruz. Otomatikleştirilmesi mümkün ama henüz dokunulmamış süreçlerinizi listeliyoruz, her biri için tahmini saat ve maliyet kazancını hesaplıyoruz.
+
+Otomasyon, nereden başlayacağını bilenler için küçük bir yatırım. Başlamayanlar için her geçen ay büyüyen bir fatura.

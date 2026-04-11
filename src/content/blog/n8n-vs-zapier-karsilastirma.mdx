@@ -1,0 +1,163 @@
+---
+title: "n8n vs Zapier: Türk Şirketleri İçin Hangisi Daha Doğru? [2026 Karşılaştırması]"
+excerpt: "n8n mi Zapier mı? Fiyat, esneklik, KVKK uyumu, entegrasyon sayısı ve KOBİ senaryolarıyla iki platformun dürüst karşılaştırması. Hangi durumda hangisi doğru seçim?"
+date: "11 Nisan 2026"
+category: "ai-tools"
+readingTime: "11 dk"
+author: "Verimio Ekibi"
+---
+
+Bir müşterimiz Zapier ile ayda 380 USD fatura ödüyordu. 12 aktif otomasyon, 30.000 task/ay. n8n'e geçtikten sonra aylık toplam maliyet 35 USD'ye düştü — sadece VPS kirası. Yaptıkları iş aynıydı, sonuç aynıydı.
+
+Ama hikâye her zaman bu kadar net değil. Başka bir müşterimiz için Zapier hâlâ doğru araç. Bu yazı tam olarak bu kararı nasıl vereceğinizi netleştirmek için yazıldı.
+
+> **Hızlı Özet:** Zapier, teknik ekibi olmayan, hızlı başlamak isteyen ve aylık 20.000 task altında kalan ekipler için hâlâ mükemmel bir seçim. n8n ise KVKK hassasiyeti olan, veri egemenliği isteyen, kompleks akışlar kuran ve hacmi büyük olan şirketler için üstün. Doğru soru "hangisi iyi" değil, "sizin için hangi aşamada hangisi doğru"dur.
+
+## Kısa Tanımlar
+
+**Zapier:** 2011'de kurulan, tamamen bulut tabanlı, "zero-setup" otomasyon platformu. 8.000+ uygulama entegrasyonu. Ana hedef: teknik olmayan kullanıcıyı 5 dakikada aksiyona geçirmek.
+
+**n8n:** 2019'da Berlin'de kurulan, açık kaynaklı, self-hosted çalışabilen workflow automation aracı. 400+ entegrasyon ama HTTP request ile pratikte sınırsız. Ana hedef: teknik kullanıcıya tam kontrol vermek.
+
+İkisi de **iki uygulamayı birbirine bağlar ve aradaki manuel işi ortadan kaldırır**. Ama yaklaşımları çok farklı.
+
+Yeni başlıyorsanız önce [n8n Rehberi — Türk Şirketleri İçin İş Otomasyonu](/blog/n8n-rehberi-turk-sirketleri-is-otomasyonu) yazımız n8n tarafını baştan anlatıyor. Make (eski Integromat) ile kafası karışanlar için [Make vs n8n Karşılaştırması](/blog/make-vs-n8n-karsilastirma) yazımız da mevcut.
+
+## 1. Fiyatlandırma — En Büyük Fark
+
+### Zapier
+
+Kullanım bazlı "task" sistemi. Her node/adım bir task sayılır.
+
+| Plan | Aylık Fiyat | Task Limiti |
+|------|-------------|-------------|
+| Free | 0 USD | 100 task |
+| Starter | ~20 USD | 750 task |
+| Professional | ~50 USD | 2.000 task |
+| Team | ~70-400 USD | 50.000 task'a kadar |
+| Company | Custom | Yüksek hacim |
+
+Pratikte: Bir akışta 5 node'unuz varsa ve günde 100 kere tetikleniyorsa aylık 15.000 task kullanırsınız. Hızla pahalıya patlayabilir.
+
+### n8n
+
+| Seçenek | Aylık Maliyet | Task Limiti |
+|---------|---------------|-------------|
+| Self-hosted (VPS) | 5-50 USD | Sınırsız |
+| n8n Cloud Starter | ~20 EUR | 2.500 workflow execution |
+| n8n Cloud Pro | ~50 EUR | 10.000 workflow execution |
+| n8n Cloud Business | ~667 EUR | 100.000 workflow execution |
+
+**Kritik fark:** Self-hosted sürüm tamamen ücretsiz. Sadece çalıştığı sunucu maliyeti var (Hetzner'da 5 EUR/ay, DigitalOcean'da 6 USD/ay). Hacim ne olursa olsun bu rakam değişmiyor.
+
+**Kaba kural:** Aylık 5.000 execution'ı geçiyorsanız n8n self-hosted almanız kârlı hale gelir. 20.000 execution'da n8n ezici üstünlükte.
+
+## 2. Entegrasyon Sayısı — Yanıltıcı Bir Metrik
+
+Zapier 8.000+ entegrasyon, n8n 400+. İlk bakışta Zapier'in 20 kat önde görünüyor. Ama gerçek şu:
+
+- Zapier'deki 8.000 entegrasyonun büyük kısmı niche ve nadir kullanılan araçlar
+- n8n'in 400+ entegrasyonu en popüler %95'i zaten kapsıyor
+- **n8n'in HTTP Request node'u her REST API'ye bağlanabilir** — pratikte sınırsız entegrasyon
+
+**Asıl soru:** Kullandığınız 5-10 araç ikisinde de var mı? Büyük ihtimalle evet. O zaman bu metrik anlamsız.
+
+**İstisna:** Çok özgün bir Türk yazılımı kullanıyorsanız (örn. küçük bir e-ticaret altyapısı), Zapier hazır entegrasyon sunmayabilir ama n8n HTTP Request ile 20 dakikada çözersiniz.
+
+## 3. KVKK ve Veri Egemenliği
+
+Türk şirketleri için bu belki de en önemli kriter.
+
+**Zapier:** Sunucular ABD'de. Verileriniz Amerikan bir şirketin bulut altyapısında işleniyor. Bu KVKK açısından yurtdışı aktarım kategorisine girer ve Kurul izni gerekebilir. Sağlık, finans, hukuk gibi hassas sektörler için bu bir "hayır" demektir.
+
+**n8n (self-hosted):** Verileriniz kendi sunucunuzda kalır. Hatta şirket içi bir sunucuda çalıştırıp dışarıya hiç çıkmayabilirsiniz. KVKK açısından en temiz çözüm. Sağlık, banka, sigorta, hukuk sektörleri için tek uygun seçenek.
+
+Kurumsal ChatGPT kullanımıyla benzer veri sorumlulukları var — detayı [Şirketinizin Gizli Verileri Güvende mi?](/blog/sirketinizin-gizli-verileri-guvende-mi-kurumsal-chatgpt-kull) yazımızda işledik.
+
+## 4. Kurulum ve Öğrenme Eğrisi
+
+### Zapier
+- Kurulum: 0 dakika (sadece üye ol)
+- İlk akış: 5-10 dakika
+- Öğrenme eğrisi: Minimal — sürükle-bırak, Türkçe dokümantasyon iyi
+- Teknik ekip ihtiyacı: Yok
+
+### n8n
+- Kurulum (self-hosted): 30-60 dakika (Docker, VPS, domain, SSL)
+- İlk akış: 15-20 dakika
+- Öğrenme eğrisi: Orta — JSON yapısı ve n8n ifadelerini öğrenmeniz gerekir
+- Teknik ekip ihtiyacı: En az temel Linux/Docker bilgisi olan biri
+
+**Pratik gerçek:** Teknik ekibiniz yoksa ve öğrenmeye vaktiniz yoksa, **Zapier ile başlayın**. Aylık fatura 200 USD'yi geçtiğinde veya KVKK engeline takıldığınızda n8n'e geçiş düşünebilirsiniz.
+
+## 5. Karmaşık Akışlar ve Mantık
+
+Basit "şu olursa bunu yap" akışları için ikisi de yeterli. Ama karmaşıklaşmaya başladığında fark açılıyor.
+
+**Zapier güçlü yanı:** Kullanım kolaylığı. "Paths" ile koşullu dallanma, "Filter" ile engelleme, "Formatter" ile veri dönüştürme. Teknik olmayan kişi için hâlâ yönetilebilir.
+
+**n8n güçlü yanı:** Tam kontrol. JavaScript "Function" node'ları ile sınırsız özelleştirme, döngüler, iç içe akışlar, error handling, merge/split operasyonları. AI agent akışları için özel node'lar. Gerçekten "kod yazmadan programlama" hissi.
+
+Örnek: "30 farklı müşteri kaynağından veri çek, her birini farklı formata çevir, dedupe yap, CRM'e yaz, hata varsa yeniden dene" gibi bir akış Zapier'de acı verici, n8n'de doğal.
+
+## 6. AI Entegrasyonu
+
+Bu, 2024-2026 arasında en hızlı değişen alan.
+
+**Zapier AI:** Zapier AI Actions, ChatGPT ve diğer modeller için kullanıma hazır node'lar sunar. Zapier Tables ile hafif veritabanı, Zapier Chatbot ile hızlı sohbet akışları kurulabilir. Entegrasyon gerçekten sorunsuz.
+
+**n8n AI:** LangChain node'ları, AI Agent node'u, vector store entegrasyonları (Pinecone, Supabase, Qdrant), RAG yapıları için gelişmiş araçlar. Kompleks AI agent mimarileri için açık ara üstün. [AI Agent rehberimiz](/blog/ai-agent-nedir-sirketler-icin-rehber) bu yönü detaylıca anlatıyor.
+
+**ChatGPT entegrasyonu pratik örneği:** [n8n ChatGPT Entegrasyonu Rehberi](/blog/n8n-chatgpt-entegrasyonu-rehberi) yazımızda adım adım anlattık.
+
+## Karar Matrisi — Hangi Durumda Hangisi?
+
+### Zapier sizin için doğru ise:
+- Teknik ekibiniz yok veya minimal
+- Aylık otomasyon hacminiz düşük (5.000 task altı)
+- KVKK hassasiyetiniz düşük (genel pazarlama, satış süreçleri)
+- "Yarın çalışır durumda olsun" aciliyetiniz var
+- Basit-orta karmaşıklıkta akışlar kuracaksınız
+- Niş bir Amerikan SaaS aracıyla entegrasyon gerekiyor
+
+### n8n sizin için doğru ise:
+- Temel Linux/Docker bilen biriniz var
+- Aylık hacim yüksek (>10.000 execution) veya hızla büyüyecek
+- KVKK/veri egemenliği kritik (sağlık, finans, hukuk, kamu)
+- Kompleks AI agent mimarileri, RAG, vector DB gibi ileri senaryolar planlıyorsunuz
+- Özel iç araçlara veya Türk yazılımlarına HTTP ile bağlanmanız gerekiyor
+- Maliyet öngörülebilir ve sabit olsun istiyorsunuz
+
+## Gerçek KOBİ Senaryoları
+
+**E-ticaret firması (50 sipariş/gün):** Zapier uygun. Shopify → Slack → HubSpot akışı dakikada kurulur, aylık fatura 20-50 USD civarı kalır.
+
+**B2B satış ekibi (karmaşık lead scoring + CRM):** n8n daha iyi. Karmaşık mantık, çok kaynaklı veri, özel scoring, hızlı büyüme — n8n daha uzun vadede kazandırır.
+
+**Sağlık kliniği (hasta verisi otomasyonu):** n8n zorunlu. Hasta verisini ABD sunucusuna göndermek KVKK ihlali, Zapier opsiyonu yok.
+
+**Tek kişilik ajans (içerik + sosyal medya):** Zapier yeterli. Düşük hacim, hızlı kurulum, teknik bilgiye gerek yok.
+
+**İthalat/ihracat firması (ERP + belge otomasyonu):** n8n daha mantıklı. PDF extraction, çoklu sistem entegrasyonu, özel mantık hep n8n'in güçlü olduğu alanlar.
+
+## Her İki Dünyayı Kullanmak Mümkün mü?
+
+Evet ve bu gerçekten iyi bir strateji. Bazı müşterilerimiz ikisini birden kullanıyor:
+
+- **Zapier**: Pazarlama ve satış gibi düşük hassasiyetli, yüksek hızlı akışlar
+- **n8n**: Müşteri verisi, belge işleme, AI agent'lar, yüksek hacimli iç süreçler
+
+Bu hibrit yaklaşım, ekibin öğrenme yükünü dağıtıyor ve her aracı güçlü olduğu yerde kullanmanızı sağlıyor.
+
+## Sonuç: Doğru Soruyu Sorun
+
+"n8n mı Zapier mı" sorusu genellikle yanlış sorudur. Doğru sorular şunlar:
+
+1. Teknik ekibim var mı? Yoksa önümüzdeki 3 ay içinde olur mu?
+2. Hassas veri işliyor muyum? KVKK açısından konumum ne?
+3. Aylık kaç otomasyon execute ediyorum? 6 ayda bu ikiye katlanır mı?
+4. Kurduğum akışlar hangi karmaşıklıkta? Basit if/then mi, agentic AI mı?
+
+Bu soruların cevapları doğal olarak sizi birine yönlendirecek. Hâlâ emin değilseniz — ki olağan bir durum — [Şirket Check-Up](/analiz) süreciyle otomasyon haritanızı çıkarıp hangi aracın sizin aşamanızda doğru olduğunu somut sayılarla gösteriyoruz.
+
+Yanlış araç seçmek felaket değildir. Ama 6 ay sonra geçiş yapmak zorunda kalmak pahalı bir ders olabilir.
