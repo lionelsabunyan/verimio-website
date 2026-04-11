@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import Script from "next/script";
 import "./globals.css";
 import NavbarWrapper from "@/components/layout/NavbarWrapper";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
-import { GoogleAnalytics } from "@next/third-parties/google";
 import OrganizationSchema from "@/components/seo/OrganizationSchema";
 import ChatWidgetLoader from "@/components/chatbot/ChatWidgetLoader";
 
@@ -109,7 +109,17 @@ export default function RootLayout({
         </ThemeProvider>
         <ChatWidgetLoader />
         <OrganizationSchema />
-        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID!} />
+        {process.env.NEXT_PUBLIC_GA_ID ? (
+          <>
+            <Script
+              strategy="lazyOnload"
+              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+            />
+            <Script id="ga4-init" strategy="lazyOnload">
+              {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${process.env.NEXT_PUBLIC_GA_ID}');`}
+            </Script>
+          </>
+        ) : null}
       </body>
     </html>
   );

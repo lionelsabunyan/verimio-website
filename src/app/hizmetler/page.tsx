@@ -178,7 +178,7 @@ export default function HizmetlerPage() {
             {steps.map((item, index) => (
               <div key={index} className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8">
                 <div className="md:col-span-1">
-                  <span aria-hidden="true" className="text-4xl font-bold text-border">{item.step}</span>
+                  <span aria-hidden="true" className="text-4xl font-bold text-[#8F8F8F]">{item.step}</span>
                 </div>
                 <div className="md:col-span-5">
                   <h3 className="text-xl font-bold mb-2">{item.title}</h3>
