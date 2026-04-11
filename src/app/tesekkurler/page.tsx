@@ -2,156 +2,136 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-const ArrowLeft = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={className}><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12,19 5,12 12,5"/></svg>
-);
-const Mail = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={className}><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,6 12,13 2,6"/></svg>
-);
-const Clock = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={className}><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
-);
-const Calendar = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={className}><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-);
 import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
 
 function TesekkurlerContent() {
   const searchParams = useSearchParams();
-  const tip = searchParams.get("tip"); // "rapor" | "gorusme"
+  const tip = searchParams.get("tip");
   const isGorusme = tip === "gorusme";
 
+  const items = isGorusme
+    ? [
+        {
+          label: "20 dakikalık ücretsiz görüşme",
+          desc: "Zoom üzerinden, size uygun bir saatte.",
+        },
+        {
+          label: "Davet e-postanıza gelecek",
+          desc: "Spam klasörünü de kontrol etmeyi unutmayın.",
+        },
+      ]
+    : [
+        {
+          label: "Raporunuz hazırlanıyor",
+          desc: "Check-up raporunuz en kısa sürede e-postanıza iletilecek.",
+        },
+        {
+          label: "Spam klasörünü kontrol edin",
+          desc: "Bazen filtrelere takılabiliyor.",
+        },
+      ];
+
   return (
-    <div className="min-h-screen bg-background pt-20 flex items-center justify-center px-4 relative overflow-hidden">
-      <div className="max-w-md w-full text-center space-y-8">
-        {/* Animated check */}
-        <motion.div
-          initial={{ scale: 0.5, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.5, ease: [0.21, 0.47, 0.32, 0.98] }}
-          className="flex items-center justify-center"
-        >
-          <div className="relative w-24 h-24">
-            <svg viewBox="0 0 100 100" className="w-24 h-24">
-              <motion.circle
-                cx="50"
-                cy="50"
-                r="44"
-                fill="none"
-                stroke="#0A0A0A"
-                strokeWidth="5"
-                strokeLinecap="round"
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-              />
-              <motion.path
-                d="M28 52 L43 67 L72 36"
-                fill="none"
-                stroke="#0A0A0A"
-                strokeWidth="5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{ duration: 0.4, delay: 0.5, ease: "easeOut" }}
-              />
-            </svg>
-          </div>
-        </motion.div>
-
-        {/* Text */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.5 }}
-          className="space-y-3"
-        >
-          <h1 className="text-3xl font-bold text-foreground">
-            {isGorusme ? "Görüşme Talebiniz Alındı!" : "Teşekkürler!"}
-          </h1>
-          <p className="text-foreground-secondary leading-relaxed">
-            {isGorusme
-              ? "Ücretsiz görüşme talebiniz alındı. Zoom davet linki e-posta adresinize gönderilecek."
-              : "Cevaplarınız alındı. Şirketinize özel AI analiz raporunuz hazırlanıyor."}
-          </p>
-        </motion.div>
-
-        {/* Info cards */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.5 }}
-          className="space-y-3"
-        >
-          {isGorusme ? (
-            <>
-              <div className="flex items-center gap-3 p-4 rounded-xl bg-background border border-border text-left">
-                <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <Calendar className="w-4 h-4 text-foreground dark:text-foreground" />
-                </div>
-                <div>
-                  <p className="text-sm font-medium text-foreground">20 dakikalık ücretsiz görüşme</p>
-                  <p className="text-xs text-foreground-secondary">Zoom üzerinden, size uygun saatte</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3 p-4 rounded-xl bg-background border border-border text-left">
-                <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <Mail className="w-4 h-4 text-foreground dark:text-foreground" />
-                </div>
-                <div>
-                  <p className="text-sm font-medium text-foreground">Davet e-postanıza gelecek</p>
-                  <p className="text-xs text-foreground-secondary">Spam klasörünüzü de kontrol edin</p>
-                </div>
-              </div>
-            </>
-          ) : (
-            <>
-              <div className="flex items-center gap-3 p-4 rounded-xl bg-background border border-border text-left">
-                <div className="w-9 h-9 rounded-xl bg-foreground/15 flex items-center justify-center flex-shrink-0">
-                  <Clock className="w-4 h-4 text-foreground dark:text-foreground" />
-                </div>
-                <div>
-                  <p className="text-sm font-medium text-foreground">Raporunuz hazırlanıyor</p>
-                  <p className="text-xs text-foreground-secondary">Check-up raporunuz en kısa sürede e-postanıza iletilecek</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3 p-4 rounded-xl bg-background border border-border text-left">
-                <div className="w-9 h-9 rounded-xl bg-foreground/15 flex items-center justify-center flex-shrink-0">
-                  <Mail className="w-4 h-4 text-foreground dark:text-foreground" />
-                </div>
-                <div>
-                  <p className="text-sm font-medium text-foreground">Spam klasörünüzü kontrol edin</p>
-                  <p className="text-xs text-foreground-secondary">Bazen filtrelere takılabiliyor</p>
-                </div>
-              </div>
-            </>
-          )}
-        </motion.div>
-
-        {/* Back link */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8, duration: 0.4 }}
-        >
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-sm text-foreground-secondary hover:text-foreground transition-colors"
+    <main className="pt-24">
+      <section className="pb-24 md:pb-32">
+        <div className="max-w-5xl mx-auto px-6 lg:px-8">
+          {/* Check mark — subtle, left-aligned */}
+          <motion.svg
+            viewBox="0 0 100 100"
+            className="w-16 h-16 mb-10"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
+            aria-hidden
           >
-            <ArrowLeft className="w-4 h-4" />
-            Ana sayfaya dön
-          </Link>
-        </motion.div>
-      </div>
-    </div>
+            <motion.circle
+              cx="50"
+              cy="50"
+              r="44"
+              fill="none"
+              stroke="#0A0A0A"
+              strokeWidth="4"
+              strokeLinecap="round"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            />
+            <motion.path
+              d="M28 52 L43 67 L72 36"
+              fill="none"
+              stroke="#0A0A0A"
+              strokeWidth="4"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ duration: 0.4, delay: 0.5, ease: "easeOut" }}
+            />
+          </motion.svg>
+
+          <p className="text-xs font-medium text-foreground-muted tracking-[0.15em] uppercase mb-4">
+            {isGorusme ? "Görüşme talebiniz alındı" : "Teşekkürler"}
+          </p>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 max-w-3xl">
+            {isGorusme
+              ? "En kısa sürede size uygun bir saat önereceğiz."
+              : "Cevaplarınız bizde, rapor yolda."}
+          </h1>
+          <p className="text-lg text-foreground-secondary leading-relaxed max-w-2xl">
+            {isGorusme
+              ? "Ücretsiz görüşme talebinizi aldık. Zoom davet linki e-posta adresinize iletilecek."
+              : "Şirketinize özel AI analiz raporunuz hazırlanıyor ve birazdan e-postanıza düşecek."}
+          </p>
+        </div>
+      </section>
+
+      <section className="py-16 md:py-24 border-t border-border">
+        <div className="max-w-5xl mx-auto px-6 lg:px-8">
+          <p className="text-xs font-medium text-foreground-muted tracking-[0.15em] uppercase mb-8">
+            Sıradakiler
+          </p>
+          <div className="space-y-0">
+            {items.map((item, index) => (
+              <div
+                key={index}
+                className="border-t border-border py-8 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8"
+              >
+                <div className="md:col-span-1">
+                  <span className="text-sm text-foreground-muted tabular-nums">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                </div>
+                <div className="md:col-span-4">
+                  <h2 className="text-xl font-bold">{item.label}</h2>
+                </div>
+                <div className="md:col-span-7">
+                  <p className="text-foreground-secondary leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+            <div className="border-t border-border" />
+          </div>
+
+          <div className="mt-12">
+            <Link
+              href="/"
+              className="text-sm text-foreground underline underline-offset-4 decoration-border hover:decoration-foreground transition-colors"
+            >
+              ← Ana sayfaya dön
+            </Link>
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }
 
 export default function TesekkurlerPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen" />}>
+    <Suspense fallback={<div className="min-h-screen pt-24" />}>
       <TesekkurlerContent />
     </Suspense>
   );

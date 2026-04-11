@@ -7,7 +7,7 @@ import FAQSchema from "@/components/seo/FAQSchema";
 import ServiceSchema from "@/components/seo/ServiceSchema";
 
 export const metadata: Metadata = {
-  title: "AI Koçluğu — Strateji ve Uygulama Tek Elden | Verimio",
+  title: "AI Koçluğu — Strateji ve Uygulama Tek Elden",
   description:
     "AI koçluğu ile şirketinizin yapay zeka dönüşümüne birebir eşlik ediyoruz. Strateji, uygulama ve sürekli destek — hepsi tek elden.",
   keywords:
