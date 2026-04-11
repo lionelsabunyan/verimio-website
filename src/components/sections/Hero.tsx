@@ -9,7 +9,7 @@ export default function Hero() {
           {HERO_CONTENT.badge}
         </p>
 
-        <h1 className="text-[clamp(3rem,7.5vw,7.5rem)] font-bold leading-[1.02] tracking-tight text-foreground mb-6">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.08] tracking-tight text-foreground mb-6">
           {HERO_CONTENT.headline}
           <br />
           {HERO_CONTENT.headlineHighlight}
