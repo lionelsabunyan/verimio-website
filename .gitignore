@@ -36,6 +36,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# blog image backups (local only)
+public/images/blog/_backup/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
