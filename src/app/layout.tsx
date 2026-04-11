@@ -5,7 +5,7 @@ import NavbarWrapper from "@/components/layout/NavbarWrapper";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import OrganizationSchema from "@/components/seo/OrganizationSchema";
-import { ChatWidget } from "@/components/chatbot/ChatWidget";
+import ChatWidgetLoader from "@/components/chatbot/ChatWidgetLoader";
 
 const ppNeueMontreal = localFont({
   src: [
@@ -107,7 +107,7 @@ export default function RootLayout({
         <ThemeProvider>
           <NavbarWrapper>{children}</NavbarWrapper>
         </ThemeProvider>
-        <ChatWidget />
+        <ChatWidgetLoader />
         <OrganizationSchema />
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID!} />
       </body>

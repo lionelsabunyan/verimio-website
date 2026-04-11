@@ -16,7 +16,7 @@ export default function Process() {
             <div key={index} className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8">
               {/* Number */}
               <div className="md:col-span-1">
-                <span className="text-5xl md:text-6xl font-bold text-border">
+                <span aria-hidden="true" className="text-5xl md:text-6xl font-bold text-border">
                   {step.step}
                 </span>
               </div>
