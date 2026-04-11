@@ -117,7 +117,7 @@ export default function SSSPage() {
               E-posta Gönderin
             </a>
             <Link
-              href={BRAND.tallyFormUrl}
+              href={BRAND.checkupUrl}
               className="inline-flex items-center px-5 py-2.5 bg-foreground text-background font-medium text-sm hover:opacity-90 transition-opacity"
             >
               Check-Up Başlatın

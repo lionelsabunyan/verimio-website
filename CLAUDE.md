@@ -92,7 +92,7 @@ src/
 │   ├── sections/   → Ana sayfa bölümleri (Hero, Services, FAQ, vb.)
 │   ├── seo/        → OrganizationSchema, BreadcrumbSchema, ArticleSchema, FAQSchema
 │   ├── brand/      → BlogCoverImage, sosyal medya templates
-│   ├── form/       → Tally form bileşenleri
+│   ├── form/       → Check-up form bileşenleri
 │   ├── ui/         → Genel UI bileşenleri
 │   ├── providers/  → Context providers
 │   └── admin/      → Tüm admin panel bileşenleri + command/ alt klasörü
@@ -247,7 +247,7 @@ monthly-launcher → seo-researcher → blog-outliner → blog-writer → blog-p
 ### Tablolar
 
 ```
-leads            → Tally.so formdan gelen lead'ler
+leads            → Check-up formdan gelen lead'ler
 social_posts     → Sosyal medya post taslakları
 media_assets     → fal.ai görselleri (Supabase Storage URL)
 content_drafts   → Claude ile üretilen taslaklar

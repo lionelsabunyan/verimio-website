@@ -157,7 +157,7 @@ author: "Verimio Ekibi"
 ${draft.body || ''}
 `
 
-    // 4. Generate cover image via Nano Banana Pro (Google AI Studio)
+    // 4. Generate cover image via Nano Banana 2 (Google AI Studio)
     let coverBase64: string | null = null
     let coverMimeType: string | null = null
     const googleAiKey = process.env.GOOGLE_AI_KEY
@@ -165,7 +165,7 @@ ${draft.body || ''}
       const imagePrompt = `Ultra-minimal single-weight black line drawing on pure white background. Editorial magazine illustration style. Subject related to: ${title.slice(0, 80)}. Extremely sparse, lots of white space, hair-thin lines only. No shading, no fill, no color, no gradients. No text, no words, no typography anywhere. Landscape 1200x630.`
 
       const aiRes = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/nano-banana-pro-preview:generateContent?key=${googleAiKey}`,
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-image-preview:generateContent?key=${googleAiKey}`,
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -202,7 +202,7 @@ ${draft.body || ''}
 
     // 6. Upload cover image to GitHub (if generated)
     if (coverBase64) {
-      // Nano Banana Pro genellikle JPEG döndürür
+      // Nano Banana 2 genellikle JPEG döndürür
       const imgExt = coverMimeType?.includes('png') ? 'png' : 'jpg'
       const imgPath = `public/images/blog/${slug}.${imgExt}`
       const existingImg = await githubGet(imgPath, githubToken)

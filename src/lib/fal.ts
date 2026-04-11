@@ -1,6 +1,6 @@
 // AI görsel üretim model sabitleri ve boyut presetleri
-// Birincil: Google AI Studio (Nano Banana Pro) — monokrom line-art illüstrasyon
-// Fallback: fal.ai (Nano Banana Pro veya Recraft)
+// Birincil: Google AI Studio (Nano Banana 2) — monokrom line-art illüstrasyon
+// Fallback: Nano Banana Pro veya fal.ai
 
 // Google AI Studio — birincil görsel üretim
 export const GOOGLE_AI = {

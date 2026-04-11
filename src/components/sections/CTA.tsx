@@ -15,7 +15,7 @@ export default function CTA() {
 
         <div className="flex flex-wrap items-center gap-4">
           <a
-            href={BRAND.tallyFormUrl}
+            href={BRAND.checkupUrl}
             className="inline-flex items-center px-7 py-3.5 bg-background text-foreground font-medium rounded-none hover:opacity-90 transition-opacity text-sm"
           >
             {CTA_CONTENT.ctaPrimary}

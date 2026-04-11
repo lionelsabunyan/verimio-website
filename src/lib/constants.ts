@@ -5,7 +5,7 @@ export const BRAND = {
   tagline: "Süreçlerinizi netleştirin, maliyetlerinizi düşürün.",
   email: "analiz@verimio.com.tr",
   website: "www.verimio.com.tr",
-  tallyFormUrl: "/analiz",
+  checkupUrl: "/analiz",
   calendlyUrl: "https://calendly.com/verimio-info/30min",
 } as const;
 
@@ -74,13 +74,23 @@ export const HOW_IT_WORKS = [
   },
 ] as const;
 
-export const BENEFITS = [
-  "Toplam otomasyon potansiyeli (saat/hafta)",
-  "Tahmini maliyet tasarrufu (₺/ay)",
-  "Öncelikli aksiyon alanları",
-  "Her alan için somut çözüm önerileri",
-  "Araç ve platform tavsiyeleri (fiyatlarıyla)",
-  "90 günlük uygulama yol haritası",
+export const REPORT_SECTIONS = [
+  {
+    title: "AI Hazırlık Skoru",
+    description: "Şirketinizin mevcut durumunu 10 üzerinden değerlendiriyoruz. Nerede olduğunuzu net görün.",
+  },
+  {
+    title: "En Büyük Fırsat",
+    description: "Cevaplarınıza göre en somut kazanım alanını ve tahmini tasarruf potansiyelini belirliyoruz.",
+  },
+  {
+    title: "5 Öncelikli Aksiyon",
+    description: "Farklı iş alanlarında uygulanabilir, birbirinden bağımsız 5 somut çözüm önerisi.",
+  },
+  {
+    title: "Uygulama Yol Haritası",
+    description: "Nereden başlayacağınızı gösteren adım adım plan. Gerçekçi süre tahminiyle.",
+  },
 ] as const;
 
 export const TESTIMONIALS = [
@@ -186,6 +196,34 @@ export const FAQ_ITEMS = [
 ] as const;
 
 export const BLOG_POSTS = [
+  {
+    title: "İş Süreci Otomasyonu Nedir? Türk KOBİ'leri İçin Sıfırdan Başlangıç Rehberi [2026]",
+    excerpt: "İş süreci otomasyonu nedir, nasıl başlanır, hangi süreçler otomatikleşir? Türk KOBİ'leri için BPM, RPA ve AI destekli otomasyon arasındaki farkları ve uygulama yol haritasını anlatan pratik rehber.",
+    date: "11 Nisan 2026",
+    slug: "is-sureci-otomasyonu-nedir",
+    category: "automation" as const,
+  },
+  {
+    title: "Muhasebe Otomasyonu: Türk KOBİ'leri İçin Aylık 80 Saat Kazandıran 7 Süreç [2026]",
+    excerpt: "Fatura işleme, cari takibi, KDV beyannamesi hazırlığı, banka mutabakatı — muhasebe otomasyonu ile hangi işler otomatikleşir? Türk KOBİ'leri için pratik rehber.",
+    date: "11 Nisan 2026",
+    slug: "muhasebe-otomasyonu-kobi-rehberi",
+    category: "automation" as const,
+  },
+  {
+    title: "n8n vs Zapier: Türk Şirketleri İçin Hangisi Daha Doğru? [2026 Karşılaştırması]",
+    excerpt: "n8n mi Zapier mı? Fiyat, esneklik, KVKK uyumu, entegrasyon sayısı ve KOBİ senaryolarıyla iki platformun dürüst karşılaştırması. Hangi durumda hangisi doğru seçim?",
+    date: "11 Nisan 2026",
+    slug: "n8n-vs-zapier-karsilastirma",
+    category: "ai-tools" as const,
+  },
+  {
+    title: "n8n ChatGPT Entegrasyonu: Adım Adım Kurulum ve İş Senaryoları [2026]",
+    excerpt: "n8n ile ChatGPT nasıl entegre edilir? API key'den ilk akışa, maliyet yönetiminden gerçek iş senaryolarına kadar Türk KOBİ'leri için pratik n8n + ChatGPT rehberi.",
+    date: "11 Nisan 2026",
+    slug: "n8n-chatgpt-entegrasyonu-rehberi",
+    category: "tutorial" as const,
+  },
   {
     title: "n8n Rehberi: Türk Şirketleri İçin İş Otomasyonu A'dan Z'ye [2026]",
     excerpt: "n8n nedir, nasıl kurulur, hangi iş süreçlerini otomatikleştirir? Türk KOBİ'leri için kapsamlı n8n rehberi — kurulum, maliyet, entegrasyon ve gerçek kullanım senaryoları.",

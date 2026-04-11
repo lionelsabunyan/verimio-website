@@ -54,7 +54,7 @@ export default function Navbar() {
 
         {/* Desktop CTA */}
         <Link
-          href={BRAND.tallyFormUrl}
+          href={BRAND.checkupUrl}
           className="hidden md:inline-flex items-center px-5 py-2 bg-foreground text-background text-[13px] font-medium hover:opacity-90 transition-opacity"
         >
           Check-Up Başlatın
@@ -97,7 +97,7 @@ export default function Navbar() {
             ))}
             <div className="pt-4">
               <Link
-                href={BRAND.tallyFormUrl}
+                href={BRAND.checkupUrl}
                 onClick={() => setIsOpen(false)}
                 className="block w-full text-center px-5 py-2.5 bg-foreground text-background text-sm font-medium"
               >

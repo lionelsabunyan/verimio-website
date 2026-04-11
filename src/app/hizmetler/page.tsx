@@ -127,7 +127,7 @@ export default function HizmetlerPage() {
           <p className="text-lg text-foreground-secondary leading-relaxed mb-8 max-w-2xl">
             Her hizmet alanımız, önce doğru analiz — sonra somut ROI hesabı — ardından uygulama sıralamasıyla çalışır.
           </p>
-          <Button href={BRAND.tallyFormUrl} size="md">
+          <Button href={BRAND.checkupUrl} size="md">
             Hangi çözüm bana uygun?
           </Button>
         </div>

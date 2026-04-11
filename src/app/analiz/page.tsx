@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import MultiStepForm from "@/components/form/MultiStepForm";
-import { BENEFITS } from "@/lib/constants";
+import { REPORT_SECTIONS } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Şirket Check-Up'ı - Ücretsiz AI Hazırlık Analizi",
@@ -23,40 +23,55 @@ export const metadata: Metadata = {
 export default function AnalizPage() {
   return (
     <main className="pt-24">
-      <div className="max-w-2xl mx-auto px-6 py-10 pb-20">
-        {/* Header */}
-        <div className="mb-10">
+      {/* Hero */}
+      <section className="pb-16 md:pb-24">
+        <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <p className="text-xs font-medium text-foreground-muted tracking-[0.15em] uppercase mb-4">
-            Ücretsiz
+            Ücretsiz analiz
           </p>
-          <h1 className="text-3xl sm:text-4xl font-bold mb-3">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 max-w-3xl">
             Şirket Check-Up&apos;ı
           </h1>
-          <p className="text-foreground-secondary leading-relaxed">
-            Şirketinizi tanıyoruz, eksiklerinizi analiz ediyoruz. Size özel otomasyon
-            fırsatlarını, tasarruf potansiyelini ve 90 günlük yol haritasını içeren
-            raporunuzu alın.
+          <p className="text-lg text-foreground-secondary leading-relaxed max-w-2xl">
+            Birkaç soru, birkaç dakika. Şirketinize özel AI hazırlık raporu
+            — somut fırsatlar, öncelikli aksiyonlar ve uygulama yol haritası —
+            doğrudan e-postanıza gelsin.
           </p>
         </div>
+      </section>
 
-        {/* Form */}
-        <MultiStepForm />
-      </div>
+      {/* Form */}
+      <section className="pb-24 md:pb-32">
+        <div className="max-w-2xl mx-auto px-6 lg:px-8">
+          <MultiStepForm />
+        </div>
+      </section>
 
-      {/* Benefits */}
-      <section className="py-24 border-t border-border">
+      {/* What's in the report */}
+      <section className="py-24 md:py-32 border-t border-border">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <p className="text-xs font-medium text-foreground-muted tracking-[0.15em] uppercase mb-4">
             Raporunuzda neler var
           </p>
-          <ul className="space-y-3 mt-6">
-            {BENEFITS.map((item, index) => (
-              <li key={index} className="flex items-start gap-3 text-foreground-secondary">
-                <span className="w-1 h-1 rounded-full bg-foreground-muted mt-2.5 shrink-0" />
-                {item}
-              </li>
+          <h2 className="text-2xl sm:text-3xl font-bold mb-12 max-w-xl">
+            Formu doldurun, e-postanıza gelsin.
+          </h2>
+          <div className="space-y-0">
+            {REPORT_SECTIONS.map((section, index) => (
+              <div key={index} className="border-t border-border py-8 grid grid-cols-1 md:grid-cols-[2rem_1fr] gap-x-6 gap-y-1">
+                <span className="text-xs tabular-nums text-foreground-muted pt-1 hidden md:block">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <div>
+                  <h3 className="text-lg font-bold mb-1">{section.title}</h3>
+                  <p className="text-foreground-secondary leading-relaxed max-w-lg">
+                    {section.description}
+                  </p>
+                </div>
+              </div>
             ))}
-          </ul>
+            <div className="border-t border-border" />
+          </div>
         </div>
       </section>
     </main>

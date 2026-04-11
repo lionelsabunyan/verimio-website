@@ -222,7 +222,7 @@ export default async function CategoryPage({
             check-up ile keşfedin.
           </p>
           <Link
-            href={BRAND.tallyFormUrl}
+            href={BRAND.checkupUrl}
             className="inline-flex items-center px-7 py-3.5 bg-background text-foreground font-medium text-sm hover:opacity-90 transition-opacity"
           >
             Ücretsiz Check-Up Başlatın

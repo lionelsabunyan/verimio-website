@@ -10,6 +10,7 @@ import { BRAND, BLOG_POSTS } from "@/lib/constants";
 import { type BlogCategory } from "@/components/brand/BlogCardImage";
 import ArticleSchema from "@/components/seo/ArticleSchema";
 import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
+import InlineImage from "@/components/blog/InlineImage";
 import TableOfContents from "@/components/blog/TableOfContents";
 import { extractTocItems } from "@/components/blog/toc-utils";
 
@@ -176,6 +177,9 @@ const mdxComponents = {
     <pre className="bg-foreground/[0.03] border border-border p-5 my-6 overflow-x-auto text-sm" {...props} />
   ),
   hr: () => <hr className="border-border my-12" />,
+  img: (props: { src?: string; alt?: string }) => (
+    <InlineImage src={props.src} alt={props.alt} />
+  ),
   a: (props: { children?: React.ReactNode; href?: string; [key: string]: unknown }) => (
     <a className="text-foreground underline underline-offset-4 decoration-border hover:decoration-foreground transition-colors" {...props} />
   ),
@@ -292,7 +296,7 @@ export default async function BlogPostPage({
             ücretsiz check-up ile keşfedin.
           </p>
           <Link
-            href={BRAND.tallyFormUrl}
+            href={BRAND.checkupUrl}
             className="inline-flex items-center px-6 py-3 bg-background text-foreground font-medium text-sm hover:opacity-90 transition-opacity"
           >
             Ücretsiz Check-Up Başlatın

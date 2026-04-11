@@ -48,7 +48,7 @@ function getScheduledAt(platform: 'linkedin' | 'instagram' | 'twitter', offset: 
   return target.toISOString()
 }
 
-// Minimal beyaz line-art illüstrasyon — Nano Banana Pro (Google AI Studio)
+// Minimal beyaz line-art illüstrasyon — Nano Banana 2 (Google AI Studio)
 // Beyaz arka plan + siyah ince çizgi, editorial stil
 const GOOGLE_AI_KEY = process.env.GOOGLE_AI_KEY
 
@@ -57,12 +57,12 @@ function buildBgPrompt(topicHint: string): string {
 }
 
 async function generateVisual(prompt: string, _platform: 'linkedin' | 'instagram' | 'twitter'): Promise<string | null> {
-  // Prefer Google AI Studio (Nano Banana Pro), fallback to fal.ai
+  // Prefer Google AI Studio (Nano Banana 2), fallback to fal.ai
   if (GOOGLE_AI_KEY) {
     try {
       const bgPrompt = buildBgPrompt(prompt)
       const res = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/nano-banana-pro-preview:generateContent?key=${GOOGLE_AI_KEY}`,
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-image-preview:generateContent?key=${GOOGLE_AI_KEY}`,
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
