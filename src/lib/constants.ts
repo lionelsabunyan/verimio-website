@@ -197,18 +197,11 @@ export const FAQ_ITEMS = [
 
 export const BLOG_POSTS = [
   {
-    title: "KVKK Uyumlu Voice AI: Çağrı Merkezinde Güvenlik",
-    excerpt: "KVKK uyumlu Voice AI ile çağrı merkezi süreçlerinizi geliştirin. Veri güvenliğini sağlarken operasyonel verimliliği artırın ve maliyetleri düşürün.",
-    date: "13 Nisan 2026",
-    slug: "kvkk-uyumlu-voice-ai-cagri-merkezinde-guvenlik",
-    category: "security" as const,
-  },
-  {
-    title: "Emlak Sektöründe Yapay Zeka: Gayrimenkul Danışmanları İçin AI Rehberi",
-    excerpt: "Bu rehber, emlak sektöründe faaliyet gösteren gayrimenkul danışmanları için yapay zekanın temel kullanım alanlarını ve stratejik faydalarını inceliyor.",
-    date: "13 Nisan 2026",
-    slug: "emlak-sektorunde-yapay-zeka-gayrimenkul-danismanlari-icin-ai",
-    category: "tutorial" as const,
+    title: "Türkiye AI Etkinliği: KOBİ'ler İçin Yenilikçi Uygulamalar",
+    excerpt: "Türkiye AI etkinliğinde KOBİ'lerin yapay zeka entegrasyonu, yerel fırsatlar ve pratik stratejiler masaya yatırıldı. Geleceğin KOBİ'leri için yol haritası.",
+    date: "14 Nisan 2026",
+    slug: "turkiye-ai-etkinligi-kobiler-icin-yenilikci-uygulamalar",
+    category: "strategy" as const,
   },
   {
     title: "İş Süreci Otomasyonu Nedir? Türk KOBİ'leri İçin Sıfırdan Başlangıç Rehberi [2026]",
