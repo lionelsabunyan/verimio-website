@@ -5,6 +5,21 @@ date: "1 Mart 2026"
 category: "tutorial"
 readingTime: "7 dk"
 author: "Verimio Ekibi"
+howto:
+  name: "n8n ile İlk Otomasyon Akışınızı Kurmak"
+  description: "Teknik bilgi gerektirmeden şirketinizde tekrarlayan bir süreci n8n ile otomatize etmek için uçtan uca adım adım uygulama rehberi."
+  totalTime: "PT2H"
+  steps:
+    - name: "Otomatize edilecek süreci belirleyin"
+      text: "Manuel yapılan, tekrar eden ve net bir tetikleyicisi olan bir iş akışı seçin. Form başvurusu, e-posta yönlendirme, rapor üretimi gibi kural tabanlı süreçler başlangıç için idealdir."
+    - name: "n8n hesabını kurun"
+      text: "n8n.cloud üzerinden ücretsiz hesap açın veya Docker ile self-hosted olarak kurun. İlk projelerde cloud sürümü yeterlidir."
+    - name: "Tetikleyici node'u seçin"
+      text: "Akışın ne zaman başlayacağını belirleyin: Schedule, Webhook, Form Trigger veya uygulama-spesifik tetikleyiciler arasından iş akışınıza uygun olanı seçin."
+    - name: "Akışın adımlarını node'larla ekleyin"
+      text: "Görsel arayüzde node'ları sürükleyerek veri dönüşümleri, HTTP istekleri ve koşullu dallanmalar ekleyin. Mevcut 400+ hazır entegrasyondan faydalanın."
+    - name: "Test edin ve yayına alın"
+      text: "Akışı birkaç örnek veriyle Execute ederek çıktıları doğrulayın. Sorun yoksa Activate edip canlıya alın; ilk hafta execution log'larını düzenli takip edin."
 ---
 
 Bir satış ekibi her yeni müşteri için aynı 6 adımı tekrarlıyor: form doldur, CRM'e ekle, Slack'e bildir, karşılama e-postası gönder, takip tarihi belirle, rapor güncelle. Hepsi 15 dakika. Haftada 20 müşteri — 5 saat. Yılda 250 saat, tek bir ekip için.

@@ -3,6 +3,14 @@
     {
       "path": "/api/admin/seo/audit",
       "schedule": "0 6 * * 1"
+    },
+    {
+      "path": "/api/admin/seo/snapshot",
+      "schedule": "0 6 * * *"
+    },
+    {
+      "path": "/api/admin/seo/geo-monitor",
+      "schedule": "0 7 * * 1"
     }
   ]
 }

@@ -5,6 +5,23 @@ date: "11 Nisan 2026"
 category: "tutorial"
 readingTime: "12 dk"
 author: "Verimio Ekibi"
+howto:
+  name: "n8n'e ChatGPT Entegre Etmek"
+  description: "n8n üzerinde ChatGPT API'sini kullanıp ilk çalışan AI iş akışını kurmak için 10 dakikalık uygulama rehberi."
+  totalTime: "PT10M"
+  steps:
+    - name: "OpenAI API key edinin"
+      text: "platform.openai.com üzerinden hesap açıp API Keys bölümünden yeni bir key oluşturun. Organization billing limit'i düşük bir değere set edin."
+    - name: "n8n'de OpenAI credential ekleyin"
+      text: "n8n'de Credentials > New > OpenAI API seçerek key'i girin. Credential adını ekibinizin tanıyacağı bir şekilde isimlendirin."
+    - name: "OpenAI node'unu akışa ekleyin"
+      text: "Yeni bir workflow oluşturup tetikleyici node'dan sonra OpenAI / Chat Completion node'unu ekleyin, oluşturduğunuz credential'ı seçin."
+    - name: "Prompt şablonunu hazırlayın"
+      text: "Sistem mesajında görev tanımını, user mesajında değişkenleri yazın. {{$json.field}} sözdizimiyle önceki node'dan gelen veriyi prompt'a enjekte edin."
+    - name: "Çıktıyı sonraki node'a bağlayın"
+      text: "ChatGPT yanıtını parse edip CRM'e kaydetme, e-posta gönderme veya Slack bildirimi gibi sonraki adımlara yönlendirin."
+    - name: "Maliyet kontrolü ekleyin"
+      text: "Production'a almadan önce gpt-4o-mini gibi ucuz model seçin, temperature'ı düşük tutun, tekrarlanan sorgular için cache / IF node ile duplicate check kurun."
 ---
 
 Bir ithalat firması, haftada 200+ tedarikçi e-postasını manuel okuyup kategorize ediyordu. İki kişi, yarım gün. n8n'e ChatGPT'yi bağladıktan sonra bu işi 4 dakikada bitiren bir akış kurduk. İnsanlar sadece kritik olanlara bakıyor şimdi.

@@ -10,11 +10,19 @@ import { BRAND, BLOG_POSTS } from "@/lib/constants";
 import { type BlogCategory } from "@/components/brand/BlogCardImage";
 import ArticleSchema from "@/components/seo/ArticleSchema";
 import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
+import FAQSchema from "@/components/seo/FAQSchema";
+import HowToSchema from "@/components/seo/HowToSchema";
 import InlineImage from "@/components/blog/InlineImage";
 import TableOfContents from "@/components/blog/TableOfContents";
 import { extractTocItems } from "@/components/blog/toc-utils";
+import { extractFaqFromContent } from "@/lib/blog-schema-extract";
 
 const CONTENT_DIR = path.join(process.cwd(), "src/content/blog");
+
+interface HowToStepFrontmatter {
+  name: string;
+  text: string;
+}
 
 interface PostFrontmatter {
   title: string;
@@ -23,6 +31,12 @@ interface PostFrontmatter {
   category: BlogCategory;
   readingTime?: string;
   author?: string;
+  howto?: {
+    name?: string;
+    description?: string;
+    totalTime?: string;
+    steps: HowToStepFrontmatter[];
+  };
 }
 
 const categoryLabels: Record<string, string> = {
@@ -203,6 +217,8 @@ export default async function BlogPostPage({
   ).slice(0, 3);
 
   const coverImage = findCoverImage(slug);
+  const faqItems = extractFaqFromContent(content);
+  const canonicalUrl = `https://www.verimio.com.tr/blog/${slug}`;
 
   return (
     <main className="pt-24">
@@ -218,9 +234,19 @@ export default async function BlogPostPage({
         items={[
           { name: "Ana Sayfa", url: "https://www.verimio.com.tr" },
           { name: "Blog", url: "https://www.verimio.com.tr/blog" },
-          { name: frontmatter.title, url: `https://www.verimio.com.tr/blog/${slug}` },
+          { name: frontmatter.title, url: canonicalUrl },
         ]}
       />
+      {faqItems.length > 0 && <FAQSchema items={faqItems} />}
+      {frontmatter.howto && frontmatter.howto.steps?.length > 0 && (
+        <HowToSchema
+          name={frontmatter.howto.name ?? frontmatter.title}
+          description={frontmatter.howto.description ?? frontmatter.excerpt}
+          steps={frontmatter.howto.steps}
+          totalTime={frontmatter.howto.totalTime}
+          url={canonicalUrl}
+        />
+      )}
 
       {/* Article header */}
       <div className="max-w-3xl mx-auto px-6 lg:px-8">
