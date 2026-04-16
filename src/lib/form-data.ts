@@ -355,11 +355,10 @@ export const SECTOR_QUESTION_LABELS: Record<
 // — Step 3 Sabitleri —
 
 export const PRIORITY_AREA_OPTIONS = [
-  "Süreç Analizi & Optimizasyonu",
-  "İş Akışı Otomasyonu",
-  "Müşteri Deneyimi Otomasyonu",
+  "Operasyon Otomasyonu (n8n / Make)",
+  "Müşteri Hizmetleri AI'ı (voice / chatbot)",
   "Veri & Raporlama Otomasyonu",
-  "AI Strateji & Entegrasyon",
+  "AI Strateji & Agent Kurulumu",
 ] as const;
 
 export const EXPECTATION_OPTIONS = [

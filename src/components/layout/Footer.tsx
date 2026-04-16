@@ -28,7 +28,7 @@ export default function Footer() {
               verimio
             </Link>
             <p className="mt-4 text-sm text-foreground-secondary leading-relaxed">
-              Şirketler için AI danışmanlığı ve dönüşüm koçluğu.
+              Yapay zeka, ekibinizin en verimli üyesi.
             </p>
             <a
               href={`mailto:${BRAND.email}`}

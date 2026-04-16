@@ -1,5 +1,4 @@
 import { CTA_CONTENT, BRAND } from "@/lib/constants";
-import Button from "@/components/ui/Button";
 
 export default function CTA() {
   return (
@@ -21,10 +20,18 @@ export default function CTA() {
             {CTA_CONTENT.ctaPrimary}
           </a>
           <a
-            href="/hizmetler"
+            href={BRAND.calendlyUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center px-7 py-3.5 border border-background/30 text-background font-medium rounded-none hover:border-background transition-colors text-sm"
           >
             {CTA_CONTENT.ctaSecondary}
+          </a>
+          <a
+            href="/hizmetler"
+            className="inline-flex items-center text-sm text-background/70 hover:text-background underline underline-offset-4 decoration-background/30 hover:decoration-background transition-colors"
+          >
+            {CTA_CONTENT.ctaTertiary}
           </a>
         </div>
       </div>

@@ -2,11 +2,11 @@
 
 export const BRAND = {
   name: "Verimio",
-  tagline: "Süreçlerinizi netleştirin, maliyetlerinizi düşürün.",
+  tagline: "Yapay zeka, ekibinizin en verimli üyesi.",
   email: "analiz@verimio.com.tr",
   website: "www.verimio.com.tr",
   checkupUrl: "/analiz",
-  calendlyUrl: "https://calendly.com/verimio-info/30min",
+  calendlyUrl: "https://calendly.com/verimio/30min",
 } as const;
 
 export const NAV_LINKS = [
@@ -18,11 +18,11 @@ export const NAV_LINKS = [
 ] as const;
 
 export const HERO_CONTENT = {
-  badge: "AI Danışmanlık & Koçluk",
-  headline: "Yapay zeka ile",
-  headlineHighlight: "süreçlerinizi netleştirin, maliyetlerinizi düşürün.",
+  badge: "AI Dönüşüm Danışmanlığı",
+  headline: "Yapay zeka,",
+  headlineHighlight: "ekibinizin en verimli üyesi.",
   subheadline:
-    "Firmanızın operasyonel verimliliğini ve AI hazırlığını analiz eder, size özel yol haritası çizer — sonra birlikte uygularız. Strateji, eğitim ve sürekli destek tek elden.",
+    "Verimio, operasyonunuzun hangi noktasında yapay zekadan nasıl verim alacağınızı haritalıyor — sonra birlikte uyguluyoruz. Dört uzmanlık alanımız var: operasyon otomasyonu, müşteri hizmetleri AI'ı, veri & raporlama ve AI strateji & agent kurulumu.",
   ctaPrimary: "Ücretsiz Check-Up Başlatın",
   ctaSecondary: "Nasıl Çalışır?",
   cards: [
@@ -37,15 +37,17 @@ export const HERO_CONTENT = {
         "Kaynak israfını tespit edin, operasyonel maliyetinizi düşürün.",
     },
     {
-      title: "Net Yol Haritası",
-      description: "90 günlük, önceliklendirilmiş uygulama planınızı alın.",
+      title: "Şeffaf Süreç",
+      description: "Check-up'tan uygulamaya beş adımlı, açık ve netleşmiş yol.",
     },
   ],
 } as const;
 
 export const ABOUT_CONTENT = {
-  label: "Biz Kimiz?",
-  text: "İş süreçlerinizi analiz eder, verimliliği engelleyen darboğazları tespit eder ve size özel çözümlerle hem zamanınızı hem bütçenizi koruruz. AI dönüşümünde tek muhatabınız — danışman ve koçunuz — oluyoruz. Stratejiyi çizer, birlikte uygularız.",
+  label: "Hakkımızda",
+  heading:
+    "Yapay zekayla çalışan bir ekip, yapay zeka dönüşümünü anlatır.",
+  text: "Verimio, yapay zekayla çalışan bir danışmanlık ekibidir — müşterilerimize önerdiğimiz dönüşümü kendi operasyonumuzda da uyguladık. İçerik üretimimizin büyük bölümü otomatik pipeline'larla hazırlanıyor; blog yazılarımızın çoğu insan yönetiminde ama AI-asistanlı süreçlerden geçiyor. Bu bir yöntem değil, kanıt: operasyonunu gerçekten AI ile dönüştürmüş bir ekibin, başka şirketlere nasıl dönüşebileceğini anlatması en samimi pozisyondur.",
   ctaPrimary: "Hakkımızda",
   ctaSecondary: "Hizmetlerimize Bakın",
 } as const;
@@ -54,23 +56,37 @@ export const HOW_IT_WORKS = [
   {
     step: "01",
     icon: "clipboard-list",
-    title: "Şirketinizi Tanıyalım",
+    title: "Check-Up",
     description:
-      "Sektörünüze ve yapınıza özel sorularla başlıyoruz. Hedef: operasyonunuzu gerçekten anlamak.",
+      "Sektörünüze özel 15-20 dakikalık ücretsiz form. Operasyonunuzu gerçekten anlamak için doğru soruları soruyoruz.",
   },
   {
     step: "02",
-    icon: "search",
-    title: "Analiz Edip Raporlayalım",
+    icon: "file-text",
+    title: "Size Özel Rapor",
     description:
-      "Cevaplarınızı analiz eder, fırsatları ve tasarruf potansiyelini somut rakamlarla ortaya koyarız.",
+      "Otomasyon potansiyeli, tahmini tasarruf ve öncelikli aksiyonlar — e-postanıza somut rakamlarla gelir.",
   },
   {
     step: "03",
-    icon: "rocket",
-    title: "Birlikte Harekete Geçelim",
+    icon: "phone",
+    title: "30 Dakikalık Görüşme",
     description:
-      "Öncelik matrisine göre planı hayata geçiriyoruz. Her adımda yanınızdayız — danışmanlık, sadece rapor değil.",
+      "Calendly üzerinden ücretsiz görüşme. Raporu birlikte değerlendirir, sorularınızı cevaplar, kapsamı netleştiririz.",
+  },
+  {
+    step: "04",
+    icon: "file-check",
+    title: "Teklif",
+    description:
+      "İhtiyacınıza göre şekillenmiş, kapsamı ve zaman çizelgesi belli bir teklif. Sürpriz maliyet yok.",
+  },
+  {
+    step: "05",
+    icon: "rocket",
+    title: "Uygulama & Takip",
+    description:
+      "Çözümleri birlikte hayata geçiriyor, KPI'ları takip ediyor, ince ayar ve sürekli iyileştirme yapıyoruz.",
   },
 ] as const;
 
@@ -93,52 +109,66 @@ export const REPORT_SECTIONS = [
   },
 ] as const;
 
-export const TESTIMONIALS = [
-  {
-    quote:
-      "Operasyon süreçlerimizde ciddi darboğazlar vardı. Verimio'nun analizi bu noktaları net şekilde ortaya koydu ve uyguladığımız çözümlerle kayda değer bir verimlilik artışı sağladık.",
-    name: "Ahmet Y.",
-    role: "Operasyon Direktörü, Lojistik Sektörü",
-  },
-  {
-    quote:
-      "Raporlama altyapımızı otomatize ettik. Ekibimizin harcadığı zaman dramatik biçimde azaldı; o zamanı artık analiz ve stratejiye ayırabiliyoruz.",
-    name: "Elif K.",
-    role: "Genel Müdür, Profesyonel Hizmetler",
-  },
-  {
-    quote:
-      "Verimio sadece analiz yapan bir firma değil, süreci başından sonuna kadar bizimle birlikte yürüyen bir danışman gibi çalıştı. Bu fark gerçekten hissedildi.",
-    name: "Murat S.",
-    role: "İş Geliştirme Yöneticisi, B2B Hizmetler",
-  },
-] as const;
-
 export const EXPERTISE_ITEMS = [
   {
-    title: "Süreç Analizi & Optimizasyonu",
+    slug: "operasyon-otomasyonu",
+    title: "Operasyon Otomasyonu",
+    tagline: "n8n & Make ile süreçleri birbirine bağlayın.",
     description:
-      "İş süreçlerinizi uçtan uca haritalıyor, zaman ve kaynak kaybına yol açan adımları tespit edip operasyonunuzu sade ve ölçeklenebilir hale getiriyoruz.",
+      "Süreç analizi ve iş akışı otomasyonunu tek başlık altında topluyoruz: operasyonunuzu uçtan uca haritalıyor, tekrarlayan görevleri n8n veya Make üzerinde otomatize ediyor, sistemleriniz arasında veri akışını kuruyoruz.",
+    features: [
+      "Uçtan uca iş akışı analizi ve darboğaz haritası",
+      "n8n / Make / Zapier platform seçimi ve kurulumu",
+      "Sistemler arası veri entegrasyonu (CRM, muhasebe, ERP)",
+      "Otomatik bildirim, onay akışı ve takip mekanizmaları",
+    ],
+    pillarSlug: "n8n-rehberi-turk-sirketleri-is-otomasyonu",
+    pillarLabel: "n8n rehberini oku",
   },
   {
-    title: "İş Akışı Otomasyonu",
+    slug: "musteri-hizmetleri-ai",
+    title: "Müşteri Hizmetleri AI'ı",
+    tagline: "Voice agent ve chatbot — 7/24, KVKK uyumlu.",
     description:
-      "Tekrarlayan, manuel görevleri otomatize ediyoruz. Ekibiniz rutin işler yerine stratejik çalışmaya vakit ayırsın.",
+      "Firmanıza özel eğitilmiş voice agent ve chatbot çözümleri. Çoklu kanal (web, WhatsApp, telefon, e-posta) üzerinden 7/24 çalışır, canlı ekibin yükünü azaltır, memnuniyet skorunu yukarı çeker.",
+    features: [
+      "Voice agent tasarımı (Türkçe, KVKK uyumlu)",
+      "Firmanıza özel eğitilmiş chatbot",
+      "Çoklu kanal desteği: web, WhatsApp, telefon, e-posta",
+      "Canlı destek entegrasyonu ve eskalasyon akışları",
+    ],
+    pillarSlug: "yapay-zeka-cagri-merkezi-rehberi",
+    pillarLabel: "AI çağrı merkezi rehberini oku",
   },
   {
-    title: "Müşteri Deneyimi Otomasyonu",
-    description:
-      "7/24 müşteri desteği sağlayan akıllı çözümler. Sık sorulan soruları otomatik yanıtlayın, memnuniyeti artırın.",
-  },
-  {
+    slug: "veri-raporlama",
     title: "Veri & Raporlama Otomasyonu",
+    tagline: "Dağınık veriden otomatik dashboard'a.",
     description:
-      "Dağınık verilerinizi anlamlı bilgilere dönüştürün. Gerçek zamanlı dashboard'lar ve otomatik raporlarla karar alma sürecinizi hızlandırın.",
+      "Farklı sistemlere dağılmış verinizi toplayıp birleştiriyor, gerçek zamanlı dashboard'lara ve otomatik periyodik raporlara dönüştürüyoruz. Excel hâlâ her yerde — ama karar verici Excel'den kurtulmuş olur.",
+    features: [
+      "Otomatik veri toplama ve birleştirme pipeline'ları",
+      "Gerçek zamanlı dashboard tasarımı",
+      "KPI takibi ve periyodik otomatik rapor",
+      "Veri temizleme, yapılandırma, görselleştirme",
+    ],
+    pillarSlug: "raporlama-otomasyonu-nedir",
+    pillarLabel: "Raporlama otomasyonu rehberini oku",
   },
   {
-    title: "AI Strateji & Entegrasyon",
+    slug: "ai-strateji-agent",
+    title: "AI Strateji & Agent Kurulumu",
+    tagline: "Doğru araçla, doğru süreçte, doğru zamanda.",
     description:
-      "Doğru araçla, doğru süreçte, doğru zamanda AI kullanın. Firmanıza en uygun teknolojiyi seçip entegrasyon sürecini yönetiyoruz.",
+      "AI stratejisi ve agent mimarisi tek başlık altında: firmanıza en uygun araç ve platformları bağımsız olarak seçiyor, otonom görev yapan agent'lar tasarlıyor, ekip eğitimi ve değişim yönetimini birlikte yürütüyoruz.",
+    features: [
+      "AI kullanım alanlarının önceliklendirilmesi ve ROI haritası",
+      "Bağımsız araç/platform tavsiyesi (satıcı değiliz)",
+      "AI agent tasarımı ve kurulumu (otonom görev asistanları)",
+      "Departman bazlı eğitim ve değişim yönetimi",
+    ],
+    pillarSlug: "ai-agent-nedir-sirketler-icin-rehber",
+    pillarLabel: "AI agent rehberini oku",
   },
 ] as const;
 
@@ -157,6 +187,16 @@ export const FAQ_ITEMS = [
     question: "Danışmanlık ve koçluk ayrı mı satın alınıyor?",
     answer:
       "Hayır. Verimio'da danışmanlık ve koçluk aynı sürecin parçasıdır. Check-up ile başlar, strateji çizeriz, sonra birlikte uygularız. Ekibinizi eğitir, sonuçları ölçeriz. Ayrı ayrı satın almanıza gerek yok.",
+  },
+  {
+    question: "Check-up sonrası ne oluyor?",
+    answer:
+      "Rapor e-postanıza ulaştıktan sonra beş adımlı bir süreç izliyoruz: (1) raporu inceliyorsunuz, (2) Calendly üzerinden ücretsiz 30 dakikalık görüşme alıyorsunuz, (3) görüşmede kapsamı birlikte netleştiriyoruz, (4) size özel bir teklif hazırlıyoruz — sürpriz maliyet yok, (5) uygulamaya geçiyoruz ve KPI'ları birlikte takip ediyoruz.",
+  },
+  {
+    question: "Ekibiniz kaç kişi? AI-native derken ne kastediyorsunuz?",
+    answer:
+      "Operasyonumuzun büyük bölümü AI-asistanlı pipeline'larla yürüyor. İçerik üretimi, görsel üretim ve iş akışlarımızın çoğu insan yönetiminde ama AI yardımıyla işliyor. Müşterilerimize önerdiğimiz dönüşümü kendi üzerimizde uyguladık — bu bir yöntem değil, kanıt. Esnek ve verimli bir yapı, satış baskısız ve araç-bağımsız bir danışmanlık.",
   },
   {
     question: "Süreç ne kadar sürer?",
@@ -507,9 +547,10 @@ export const CTA_CONTENT = {
   label: "Bir Sonraki Adım",
   headline: "İlk Adımı Birlikte Atalım",
   description:
-    "Firmanızın verimliliğini ve AI hazırlığını analiz ediyoruz. Formu doldurun, size özel yol haritanız e-postanıza gelsin.",
+    "Ücretsiz check-up ile başlayın, isterseniz doğrudan 30 dakikalık görüşmeye geçin. İki yol da açık.",
   ctaPrimary: "Ücretsiz Check-Up Başlatın",
-  ctaSecondary: "Hizmetlerimizi İnceleyin",
+  ctaSecondary: "30 Dakikalık Görüşme Planla",
+  ctaTertiary: "Hizmetlerimizi İnceleyin",
 } as const;
 
 // Geriye dönük uyumluluk için (kullanımda olanlar)

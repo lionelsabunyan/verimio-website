@@ -1,4 +1,5 @@
-import { BRAND } from "@/lib/constants";
+import Link from "next/link";
+import { BRAND, EXPERTISE_ITEMS, HOW_IT_WORKS } from "@/lib/constants";
 import CTA from "@/components/sections/CTA";
 import Button from "@/components/ui/Button";
 import type { Metadata } from "next";
@@ -6,98 +7,22 @@ import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 import ServiceSchema from "@/components/seo/ServiceSchema";
 
 export const metadata: Metadata = {
-  title: "Hizmetler - Kurumsal AI Danışmanlığı",
+  title: "Hizmetler - Dört uzmanlık alanı",
   description:
-    "Süreç analizi, iş akışı otomasyonu, müşteri deneyimi, veri otomasyonu, AI strateji danışmanlığı ve AI dönüşüm koçluğu. Şirketinize özel, ölçülebilir sonuçlar.",
+    "Operasyon Otomasyonu (n8n/Make), Müşteri Hizmetleri AI'ı (voice + chatbot), Veri & Raporlama Otomasyonu, AI Strateji & Agent Kurulumu. Tek çatı altında dört somut uzmanlık.",
   openGraph: {
-    title: "Hizmetler - Kurumsal AI Danışmanlığı",
-    description: "Süreç analizi, iş akışı otomasyonu, müşteri deneyimi, veri otomasyonu ve AI strateji danışmanlığı.",
+    title: "Hizmetler - Dört uzmanlık alanı",
+    description: "Operasyon otomasyonu, müşteri hizmetleri AI'ı, veri & raporlama ve AI strateji & agent kurulumu.",
     type: "website",
     url: "https://www.verimio.com.tr/hizmetler",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hizmetler - Kurumsal AI Danışmanlığı",
-    description: "Süreç analizi, iş akışı otomasyonu, müşteri deneyimi, veri otomasyonu ve AI strateji danışmanlığı.",
+    title: "Hizmetler - Dört uzmanlık alanı",
+    description: "Operasyon otomasyonu, müşteri hizmetleri AI'ı, veri & raporlama ve AI strateji & agent kurulumu.",
   },
   alternates: { canonical: "https://www.verimio.com.tr/hizmetler" },
 };
-
-const services = [
-  {
-    title: "Süreç Analizi & Optimizasyonu",
-    description:
-      "İş süreçlerinizi uçtan uca haritalıyoruz. Zaman ve kaynak kaybına yol açan adımları tespit edip, operasyonunuzu sade ve ölçeklenebilir hale getiriyoruz.",
-    features: [
-      "Uçtan uca iş akışı analizi ve haritalama",
-      "Darboğaz ve israf noktalarının tespiti",
-      "Belge ve bilgi yönetimi sistemleri",
-      "Onay ve yetkilendirme süreçlerinin dijitalleştirilmesi",
-    ],
-  },
-  {
-    title: "İş Akışı Otomasyonu",
-    description:
-      "Tekrarlayan, manuel görevleri otomatize ediyoruz. Ekibiniz rutin işler yerine stratejik çalışmaya vakit ayırsın.",
-    features: [
-      "Manuel süreçlerin otomasyona alınması",
-      "Sistemler arası veri entegrasyonu",
-      "Otomatik bildirim ve takip mekanizmaları",
-      "Araç ve platform entegrasyonu",
-    ],
-  },
-  {
-    title: "Müşteri Deneyimi Otomasyonu",
-    description:
-      "7/24 müşteri desteği sağlayan akıllı çözümler. Sık sorulan soruları otomatik yanıtlayın, ekibinizin yükünü azaltın, memnuniyeti artırın.",
-    features: [
-      "Firmanıza özel eğitilmiş dijital asistan",
-      "Çoklu kanal desteği (web, WhatsApp, e-posta)",
-      "Canlı destek sistemi entegrasyonu",
-      "Performans izleme ve sürekli iyileştirme",
-    ],
-  },
-  {
-    title: "Veri & Raporlama Otomasyonu",
-    description:
-      "Dağınık verilerinizi anlamlı bilgilere dönüştürün. Gerçek zamanlı dashboard'lar ve otomatik raporlarla karar alma sürecinizi hızlandırın.",
-    features: [
-      "Otomatik veri toplama ve birleştirme",
-      "Gerçek zamanlı dashboard tasarımı",
-      "KPI takibi ve periyodik rapor oluşturma",
-      "Veri temizleme, yapılandırma ve görselleştirme",
-    ],
-  },
-  {
-    title: "AI Strateji & Entegrasyon",
-    description:
-      "Doğru araçla, doğru süreçte, doğru zamanda AI kullanın. Bağımsız danışmanlar olarak firmanıza en uygun teknolojiyi seçip entegrasyon sürecini yönetiyoruz.",
-    features: [
-      "AI kullanım alanlarının önceliklendirilmesi",
-      "Bağımsız araç ve platform tavsiyesi",
-      "Entegrasyon stratejisi ve yol haritası",
-      "Ekip eğitimi ve adaptasyon desteği",
-    ],
-  },
-  {
-    title: "AI Dönüşüm Koçluğu",
-    description:
-      "Strateji de uygulama da tek elden. Analiz eder, yol haritası çizer — sonra birlikte uygular, ekibinizi eğitir ve sonuçları ölçeriz. 3-12 ay boyunca yanınızdayız.",
-    features: [
-      "Sürekli eşlik: stratejiden uygulamaya tek ortak",
-      "İş başında, departman bazlı AI eğitimi",
-      "Değişim yönetimi ve ekip adaptasyonu",
-      "KPI takibi ve sürekli iyileştirme döngüsü",
-    ],
-  },
-];
-
-const steps = [
-  { step: "01", title: "Check-up ile başlar", description: "Sektörünüze ve yapınıza özel sorularla firmanızı tanıyoruz." },
-  { step: "02", title: "Size özel analiz raporu", description: "Otomasyon potansiyelinizi ve tasarruf tahminlerinizi somut rakamlarla ortaya koyuyoruz." },
-  { step: "03", title: "Strateji görüşmesi", description: "Raporu birlikte değerlendiriyoruz. Yol haritasını netleştiriyoruz." },
-  { step: "04", title: "Uygulama ve takip", description: "Çözümleri hayata geçiriyoruz. Sonuçları ölçüyor, her adımda yanınızda duruyoruz." },
-];
 
 export default function HizmetlerPage() {
   return (
@@ -109,7 +34,7 @@ export default function HizmetlerPage() {
         ]}
       />
       <ServiceSchema
-        services={services.map((s) => ({
+        services={EXPERTISE_ITEMS.map((s) => ({
           name: s.title,
           description: s.description,
         }))}
@@ -122,10 +47,10 @@ export default function HizmetlerPage() {
             Hizmetler
           </p>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 max-w-3xl">
-            Operasyonunuzu ölçülebilir şekilde iyileştiriyoruz.
+            Dört uzmanlık alanı, tek çatı altında.
           </h1>
           <p className="text-lg text-foreground-secondary leading-relaxed mb-8 max-w-2xl">
-            Her hizmet alanımız, önce doğru analiz — sonra somut ROI hesabı — ardından uygulama sıralamasıyla çalışır.
+            Her uzmanlık alanımız, önce doğru analiz — sonra somut ROI hesabı — ardından uygulama sıralamasıyla çalışır. Danışmanlık ve koçluk aynı sürecin parçası.
           </p>
           <Button href={BRAND.checkupUrl} size="md">
             Hangi çözüm bana uygun?
@@ -133,20 +58,33 @@ export default function HizmetlerPage() {
         </div>
       </section>
 
-      {/* Services — liste formatı */}
+      {/* Services — 4 uzmanlık alanı */}
       <section className="py-24 md:py-32 border-t border-border">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <div className="space-y-16">
-            {services.map((service, index) => (
-              <div key={index} className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12">
+            {EXPERTISE_ITEMS.map((service, index) => (
+              <div
+                key={service.slug}
+                id={service.slug}
+                className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 scroll-mt-28"
+              >
                 <div className="md:col-span-1">
                   <span className="text-sm text-foreground-muted tabular-nums">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                 </div>
                 <div className="md:col-span-5">
-                  <h2 className="text-2xl font-bold mb-3">{service.title}</h2>
-                  <p className="text-foreground-secondary leading-relaxed">{service.description}</p>
+                  <h2 className="text-2xl font-bold mb-2">{service.title}</h2>
+                  <p className="text-sm text-foreground-muted mb-3">{service.tagline}</p>
+                  <p className="text-foreground-secondary leading-relaxed mb-4">
+                    {service.description}
+                  </p>
+                  <Link
+                    href={`/blog/${service.pillarSlug}`}
+                    className="text-sm text-foreground underline underline-offset-4 decoration-border hover:decoration-foreground transition-colors"
+                  >
+                    {service.pillarLabel} →
+                  </Link>
                 </div>
                 <div className="md:col-span-6">
                   <ul className="space-y-2">
@@ -164,23 +102,23 @@ export default function HizmetlerPage() {
         </div>
       </section>
 
-      {/* Süreç — 4 adım */}
+      {/* Süreç — 5 adım */}
       <section className="py-24 md:py-32 border-t border-border">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <p className="text-xs font-medium text-foreground-muted tracking-[0.15em] uppercase mb-4">
             Süreç
           </p>
           <h2 className="text-3xl sm:text-4xl font-bold mb-16 max-w-2xl">
-            Tanıdan uygulamaya dört adım
+            Tanıdan uygulamaya beş adım
           </h2>
 
           <div className="space-y-12">
-            {steps.map((item, index) => (
-              <div key={index} className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8">
+            {HOW_IT_WORKS.map((item) => (
+              <div key={item.step} className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8">
                 <div className="md:col-span-1">
                   <span aria-hidden="true" className="text-4xl font-bold text-[#8F8F8F]">{item.step}</span>
                 </div>
-                <div className="md:col-span-5">
+                <div className="md:col-span-8">
                   <h3 className="text-xl font-bold mb-2">{item.title}</h3>
                   <p className="text-foreground-secondary leading-relaxed">{item.description}</p>
                 </div>

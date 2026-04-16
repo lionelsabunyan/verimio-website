@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ABOUT_CONTENT } from "@/lib/constants";
 
 export default function About() {
   return (
@@ -6,13 +7,13 @@ export default function About() {
       <div className="max-w-5xl mx-auto px-6 lg:px-8">
         <div className="max-w-3xl">
           <p className="text-xs font-medium text-foreground-muted tracking-[0.15em] uppercase mb-4">
-            Hakkımızda
+            {ABOUT_CONTENT.label}
           </p>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-snug mb-8">
-            İş süreçlerinizi analiz eder, verimliliği engelleyen darboğazları tespit eder ve size özel çözümlerle hem zamanınızı hem bütçenizi koruruz.
+            {ABOUT_CONTENT.heading}
           </h2>
           <p className="text-foreground-secondary leading-relaxed mb-8">
-            AI dönüşümünde tek muhatabınız oluyoruz. Stratejiyi çizeriz, birlikte uygularız. Danışmanlık ve koçluk aynı sürecin parçası — ayrı ayrı satın almanıza gerek yok.
+            {ABOUT_CONTENT.text}
           </p>
           <Link
             href="/hakkimizda"

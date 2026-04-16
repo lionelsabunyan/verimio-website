@@ -114,8 +114,11 @@ export default function OGImage() {
             fontWeight: 700,
             lineHeight: 1.1,
             letterSpacing: '-0.03em',
+            display: 'flex',
+            flexDirection: 'column',
           }}>
-            İş Süreçlerinizi AI ile Dönüştürün
+            <span>Yapay zeka,</span>
+            <span>ekibinizin en verimli üyesi.</span>
           </div>
           <div style={{
             color: '#5C5C5C',
@@ -123,7 +126,7 @@ export default function OGImage() {
             fontWeight: 400,
             lineHeight: 1.4,
           }}>
-            Şirketinizin operasyonel verimliliğini ve AI hazırlığını analiz ediyoruz.
+            Operasyon otomasyonu, müşteri hizmetleri AI'ı, veri & raporlama, strateji & agent kurulumu.
           </div>
         </div>
 

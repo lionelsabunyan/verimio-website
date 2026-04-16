@@ -39,22 +39,24 @@ const ppNeueMontreal = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.verimio.com.tr"),
   title: {
-    default: "Verimio | Yapay Zeka Danışmanlığı & AI Koçluk",
+    default: "Verimio | Yapay zeka, ekibinizin en verimli üyesi",
     template: "%s | Verimio",
   },
   description:
-    "Şirketinizin AI hazırlığını analiz eder, yol haritası çizer, birlikte uygularız. Danışmanlık ve koçluk tek elden — strateji, eğitim, sürekli destek.",
+    "Verimio, yapay zekayla çalışan bir danışmanlık ekibidir. Operasyon otomasyonu, müşteri hizmetleri AI'ı, veri & raporlama, AI strateji & agent kurulumu — dört uzmanlık alanı tek elden.",
   keywords: [
     "AI danışmanlık",
     "yapay zeka danışmanlığı",
-    "iş süreci otomasyonu",
+    "operasyon otomasyonu",
+    "n8n danışmanlık",
+    "voice agent",
+    "AI çağrı merkezi",
+    "AI agent",
+    "raporlama otomasyonu",
     "kurumsal AI",
-    "dijital dönüşüm",
     "verimlilik artırma",
-    "süreç analizi",
     "Türkiye AI",
-    "AI koçluğu",
-    "yapay zeka koçu",
+    "AI strateji",
     "kurumsal AI eğitimi",
   ],
   robots: {
@@ -63,9 +65,9 @@ export const metadata: Metadata = {
     googleBot: { index: true, follow: true },
   },
   openGraph: {
-    title: "Verimio | Kurumsal AI Danışmanlığı",
+    title: "Verimio | Yapay zeka, ekibinizin en verimli üyesi",
     description:
-      "Şirketinizin AI hazırlığını analiz ediyoruz. Formu doldurun, size özel yol haritanız e-postanıza gelsin.",
+      "AI dönüşüm danışmanlığı — dört somut uzmanlık: operasyon otomasyonu, müşteri hizmetleri AI'ı, veri & raporlama, AI strateji & agent kurulumu.",
     type: "website",
     locale: "tr_TR",
     url: "https://www.verimio.com.tr",
@@ -75,15 +77,15 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Verimio | Kurumsal AI Danışmanlığı",
+        alt: "Verimio | Yapay zeka, ekibinizin en verimli üyesi",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Verimio | Kurumsal AI Danışmanlığı",
+    title: "Verimio | Yapay zeka, ekibinizin en verimli üyesi",
     description:
-      "Şirketinizin operasyonel verimliliğini ve AI hazırlığını analiz ediyoruz.",
+      "Yapay zekayla çalışan bir danışmanlık ekibi. Dört somut uzmanlık, şeffaf süreç, ölçülebilir sonuç.",
     images: ["/opengraph-image"],
   },
   alternates: {
