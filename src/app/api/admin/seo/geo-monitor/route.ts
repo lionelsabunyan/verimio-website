@@ -112,28 +112,6 @@ function analyzeMention(response: OpenRouterResponse): MentionAnalysis {
   }
 }
 
-async function getPreviousWeekCount(
-  supabase: ReturnType<typeof createClient>
-): Promise<{ mentioned: number; total: number } | null> {
-  const prevEnd = new Date()
-  prevEnd.setDate(prevEnd.getDate() - 2)
-  const prevStart = new Date()
-  prevStart.setDate(prevStart.getDate() - 9)
-
-  const { data, error } = await supabase
-    .from('brand_mentions')
-    .select('mentioned')
-    .eq('platform', 'perplexity')
-    .gte('checked_at', prevStart.toISOString())
-    .lte('checked_at', prevEnd.toISOString())
-
-  if (error || !data || data.length === 0) return null
-  return {
-    mentioned: data.filter((r) => (r as { mentioned: boolean }).mentioned).length,
-    total: data.length,
-  }
-}
-
 function escapeHtml(s: string): string {
   return s
     .replace(/&/g, '&amp;')
@@ -217,8 +195,29 @@ export async function GET(request: Request) {
   const mentionCount = results.filter((r) => r.mentioned).length
   const citedCount = results.filter((r) => r.citationUrl !== null).length
 
-  // Önceki hafta karşılaştırma
-  const prev = await getPreviousWeekCount(supabase)
+  // Önceki hafta karşılaştırma — inline
+  let prev: { mentioned: number; total: number } | null = null
+  {
+    const prevEnd = new Date()
+    prevEnd.setDate(prevEnd.getDate() - 2)
+    const prevStart = new Date()
+    prevStart.setDate(prevStart.getDate() - 9)
+
+    const { data } = await supabase
+      .from('brand_mentions')
+      .select('mentioned')
+      .eq('platform', 'perplexity')
+      .gte('checked_at', prevStart.toISOString())
+      .lte('checked_at', prevEnd.toISOString())
+
+    if (data && data.length > 0) {
+      prev = {
+        mentioned: data.filter((r) => r.mentioned === true).length,
+        total: data.length,
+      }
+    }
+  }
+
   let trendLine = ''
   if (prev && prev.total > 0) {
     const diff = mentionCount - prev.mentioned
