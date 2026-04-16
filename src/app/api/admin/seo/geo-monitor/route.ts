@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
 
-export const maxDuration = 60
+export const maxDuration = 120
 
 const TRACKED_QUERIES = [
   'Türkiye KOBİ AI danışmanlık firmaları',
@@ -14,82 +14,141 @@ const TRACKED_QUERIES = [
 ]
 
 const VERIMIO_DOMAIN = 'verimio.com.tr'
+const MODEL = 'perplexity/sonar'
+const OPENROUTER_URL = 'https://openrouter.ai/api/v1/chat/completions'
 
-interface PerplexityCitation {
-  url?: string
-  title?: string
+interface OpenRouterAnnotation {
+  type?: string
+  url_citation?: { url?: string; title?: string; content?: string }
 }
 
-interface PerplexityResponse {
+interface OpenRouterResponse {
   id?: string
+  model?: string
   choices?: Array<{
-    message?: { content?: string }
+    message?: {
+      content?: string
+      annotations?: OpenRouterAnnotation[]
+    }
   }>
-  citations?: Array<string | PerplexityCitation>
+  citations?: string[]
+  usage?: { total_tokens?: number }
 }
 
-async function queryPerplexity(query: string, apiKey: string): Promise<PerplexityResponse | null> {
-  const res = await fetch('https://api.perplexity.ai/chat/completions', {
+async function queryOpenRouter(
+  query: string,
+  apiKey: string
+): Promise<OpenRouterResponse | null> {
+  const res = await fetch(OPENROUTER_URL, {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${apiKey}`,
       'Content-Type': 'application/json',
+      'HTTP-Referer': 'https://www.verimio.com.tr',
+      'X-Title': 'Verimio GEO Monitor',
     },
     body: JSON.stringify({
-      model: 'sonar',
+      model: MODEL,
       messages: [
         {
           role: 'system',
           content:
-            'Türkçe cevap ver. Kaynak URL listesi döndür. Cevabın Türk kullanıcılarına yönelik olsun.',
+            'Türkçe yanıt ver. Türkiye pazarına yönelik firmaları ve kaynakları öne çıkar. Mümkün olduğunca spesifik şirket isimleri ve URL ver.',
         },
         { role: 'user', content: query },
       ],
-      return_citations: true,
     }),
   })
   if (!res.ok) {
-    console.error('[geo-monitor] Perplexity error:', res.status, await res.text().catch(() => ''))
+    const text = await res.text().catch(() => '')
+    console.error('[geo-monitor] OpenRouter error:', res.status, text.slice(0, 200))
     return null
   }
   return res.json()
 }
 
-function analyzeMention(response: PerplexityResponse): {
+interface MentionAnalysis {
   mentioned: boolean
   rank: number | null
   citationUrl: string | null
   excerpt: string
-} {
-  const citations = response.citations ?? []
+  allCitations: string[]
+}
+
+function analyzeMention(response: OpenRouterResponse): MentionAnalysis {
+  const choice = response.choices?.[0]?.message
+  const content = choice?.content ?? ''
+
+  // OpenRouter Perplexity responses: citations ya choices[0].message.annotations
+  // (url_citation tipinde) ya da top-level `citations` alanında dizi olarak gelir.
+  const urlsFromAnnotations = (choice?.annotations ?? [])
+    .map((a) => a.url_citation?.url)
+    .filter((u): u is string => typeof u === 'string')
+
+  const urlsFromTopLevel = Array.isArray(response.citations)
+    ? response.citations
+    : []
+
+  const allCitations = Array.from(
+    new Set([...urlsFromAnnotations, ...urlsFromTopLevel])
+  )
+
   let rank: number | null = null
   let citationUrl: string | null = null
-
-  citations.forEach((c, i) => {
-    const url = typeof c === 'string' ? c : c.url
-    if (url?.includes(VERIMIO_DOMAIN) && rank === null) {
+  allCitations.forEach((url, i) => {
+    if (url.includes(VERIMIO_DOMAIN) && rank === null) {
       rank = i + 1
       citationUrl = url
     }
   })
 
-  const content = response.choices?.[0]?.message?.content ?? ''
   const mentionedInText = /verimio/i.test(content)
-  const mentioned = rank !== null || mentionedInText
-
   return {
-    mentioned,
+    mentioned: rank !== null || mentionedInText,
     rank,
     citationUrl,
-    excerpt: content.slice(0, 400),
+    excerpt: content.replace(/\s+/g, ' ').trim().slice(0, 300),
+    allCitations,
   }
+}
+
+async function getPreviousWeekCount(
+  supabase: ReturnType<typeof createClient>
+): Promise<{ mentioned: number; total: number } | null> {
+  const prevEnd = new Date()
+  prevEnd.setDate(prevEnd.getDate() - 2)
+  const prevStart = new Date()
+  prevStart.setDate(prevStart.getDate() - 9)
+
+  const { data, error } = await supabase
+    .from('brand_mentions')
+    .select('mentioned')
+    .eq('platform', 'perplexity')
+    .gte('checked_at', prevStart.toISOString())
+    .lte('checked_at', prevEnd.toISOString())
+
+  if (error || !data || data.length === 0) return null
+  return {
+    mentioned: data.filter((r) => (r as { mentioned: boolean }).mentioned).length,
+    total: data.length,
+  }
+}
+
+function escapeHtml(s: string): string {
+  return s
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
 }
 
 /**
  * GET /api/admin/seo/geo-monitor
  *
- * Perplexity'de takip edilen sorguları çalıştırır, Verimio bahsi varsa brand_mentions tablosuna kaydeder.
- * Cron: Haftada bir (Pazartesi 10:00 TR). Auth: Bearer CRON_SECRET.
+ * OpenRouter üzerinden Perplexity sonar'a 7 takip sorgusu sorar, Verimio bahsi
+ * var mı / citation listesinde var mı analiz eder, brand_mentions tablosuna kaydeder,
+ * Telegram'a zengin özet gönderir.
+ *
+ * Cron: Pazartesi 07:00 UTC (10:00 TR). Auth: Bearer CRON_SECRET.
  */
 export async function GET(request: Request) {
   const authHeader = request.headers.get('authorization')
@@ -98,10 +157,10 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 
-  const perplexityKey = process.env.PERPLEXITY_API_KEY
-  if (!perplexityKey) {
+  const apiKey = process.env.OPENROUTER_API_KEY
+  if (!apiKey) {
     return NextResponse.json(
-      { error: 'PERPLEXITY_API_KEY eksik — endpoint hazır ama key bekliyor' },
+      { error: 'OPENROUTER_API_KEY eksik' },
       { status: 503 }
     )
   }
@@ -117,12 +176,19 @@ export async function GET(request: Request) {
     mentioned: boolean
     rank: number | null
     citationUrl: string | null
+    excerpt: string
   }> = []
 
   for (const query of TRACKED_QUERIES) {
-    const response = await queryPerplexity(query, perplexityKey)
+    const response = await queryOpenRouter(query, apiKey)
     if (!response) {
-      results.push({ query, mentioned: false, rank: null, citationUrl: null })
+      results.push({
+        query,
+        mentioned: false,
+        rank: null,
+        citationUrl: null,
+        excerpt: 'API hatası',
+      })
       continue
     }
 
@@ -132,6 +198,7 @@ export async function GET(request: Request) {
       mentioned: analysis.mentioned,
       rank: analysis.rank,
       citationUrl: analysis.citationUrl,
+      excerpt: analysis.excerpt,
     })
 
     await supabase.from('brand_mentions').insert({
@@ -144,39 +211,82 @@ export async function GET(request: Request) {
       raw_response: response as unknown as Record<string, unknown>,
     })
 
-    // Rate limit koruma
     await new Promise((r) => setTimeout(r, 1500))
   }
 
   const mentionCount = results.filter((r) => r.mentioned).length
+  const citedCount = results.filter((r) => r.citationUrl !== null).length
 
-  // Telegram özet
+  // Önceki hafta karşılaştırma
+  const prev = await getPreviousWeekCount(supabase)
+  let trendLine = ''
+  if (prev && prev.total > 0) {
+    const diff = mentionCount - prev.mentioned
+    const arrow = diff > 0 ? '↑' : diff < 0 ? '↓' : '→'
+    trendLine = `\n📊 Geçen hafta: ${prev.mentioned}/${prev.total} ${arrow} bu hafta: ${mentionCount}/${results.length}`
+  }
+
+  // Telegram özeti
   const telegramToken = process.env.TELEGRAM_BOT_TOKEN
   const telegramChat = process.env.TELEGRAM_CHAT_ID
   if (telegramToken && telegramChat) {
-    const lines = results.map((r) =>
-      r.mentioned
-        ? `✅ ${r.query}${r.rank ? ` (rank ${r.rank})` : ''}`
-        : `❌ ${r.query}`
-    )
-    const text = `<b>🔍 Perplexity Brand Mention</b>\n\n${mentionCount}/${results.length} sorguda Verimio bahsi.\n\n${lines.join('\n')}`
-    await fetch(`https://api.telegram.org/bot${telegramToken}/sendMessage`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        chat_id: telegramChat,
-        text,
-        parse_mode: 'HTML',
-        disable_web_page_preview: true,
-      }),
+    const date = new Date().toLocaleDateString('tr-TR', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
     })
+
+    const lines = results.map((r) => {
+      const icon = r.mentioned ? '✅' : '⬜'
+      const rankPart = r.rank !== null ? ` <b>[kaynak #${r.rank}]</b>` : ''
+      const citationPart = r.citationUrl
+        ? `\n    🔗 <code>${escapeHtml(r.citationUrl.replace('https://www.', '').replace('https://', ''))}</code>`
+        : ''
+      return `${icon} ${escapeHtml(r.query)}${rankPart}${citationPart}`
+    })
+
+    const text = [
+      `<b>🔍 GEO Monitor — Perplexity</b>`,
+      `<i>${date}</i>`,
+      ``,
+      `<b>${mentionCount}/${results.length}</b> sorguda Verimio bahsi`,
+      citedCount > 0 ? `<b>${citedCount}/${results.length}</b> sorguda kaynak olarak alıntı` : '',
+      trendLine,
+      ``,
+      lines.join('\n'),
+      ``,
+      mentionCount === 0
+        ? `<i>Hiçbir sorguda görünmüyorsun. İçerik + backlink + llms-full.txt fırsatı.</i>`
+        : mentionCount < results.length / 2
+          ? `<i>Yarıdan az sorguda görünüyorsun. Hedef sorgular için pillar içerik düşün.</i>`
+          : `<i>Güçlü GEO görünürlüğü — bu hafta kazanılan sorguları not al.</i>`,
+    ]
+      .filter(Boolean)
+      .join('\n')
+
+    await fetch(
+      `https://api.telegram.org/bot${telegramToken}/sendMessage`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: telegramChat,
+          text,
+          parse_mode: 'HTML',
+          disable_web_page_preview: true,
+        }),
+      }
+    )
   }
 
   return NextResponse.json({
     success: true,
     checkedAt: new Date().toISOString(),
+    model: MODEL,
     totalQueries: results.length,
     mentionCount,
+    citedCount,
+    previousWeek: prev,
     results,
   })
 }
