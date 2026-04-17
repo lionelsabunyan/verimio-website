@@ -69,7 +69,7 @@ export const HOW_IT_WORKS = [
     icon: "phone",
     title: "30 Dakikalık Görüşme",
     description:
-      "Calendly'den ücretsiz randevu. Raporu birlikte okuruz, soruları cevaplarız.",
+      "Size uygun saatte ücretsiz randevu. Raporu birlikte okuruz, soruları cevaplarız.",
   },
   {
     step: "04",
@@ -112,7 +112,7 @@ export const EXPERTISE_ITEMS = [
     title: "Operasyon Otomasyonu",
     tagline: "Tekrarlayan işler kendi kendine çalışsın.",
     description:
-      "Muhasebeci haftada 8 saat Excel kopyalıyor. Satışçı her teklifi elle giriyor. Bu tür işleri otomatik sistemlere taşıyoruz. Bir kez kurun, sonrasında kendi çalışır.",
+      "Muhasebe ekibi haftada 8 saat Excel kopyalıyor. Satış ekibi her teklifi elle giriyor. Bu tür işleri otomatik sistemlere taşıyoruz. Bir kez kurun, sonrasında kendi çalışır.",
     features: [
       "Hangi süreç otomasyona uygun, tek tek bakıyoruz",
       "Doğru aracı seçiyoruz (n8n, Make, Zapier)",
