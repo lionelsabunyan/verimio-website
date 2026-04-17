@@ -36,7 +36,7 @@ const additionalFaqs = [
   {
     question: "Uygulama danışmanlığına geçmek için ne yapmalıyım?",
     answer:
-      "Check-up raporunuzu aldıktan sonra bizimle iletişime geçmeniz yeterli. Sürpriz maliyet veya paket dayatması yok.",
+      "Check-Up raporunuzu aldıktan sonra bizimle iletişime geçmeniz yeterli. Sürpriz maliyet veya paket dayatması yok.",
   },
 ];
 
@@ -63,7 +63,7 @@ export default function SSSPage() {
             Sık Sorulan Sorular
           </h1>
           <p className="text-lg text-foreground-secondary leading-relaxed max-w-2xl">
-            Check-up süreci, danışmanlık kapsamı, fiyatlandırma ve gizlilik hakkında
+            Check-Up süreci, danışmanlık kapsamı, fiyatlandırma ve gizlilik hakkında
             en çok merak edilen soruları yanıtladık.{" "}
             <Link href="/iletisim" className="text-foreground underline underline-offset-4 decoration-border hover:decoration-foreground transition-colors">
               Bulamadığınız varsa bize yazın.

@@ -36,7 +36,7 @@ export const HERO_CONTENT = {
     },
     {
       title: "Şeffaf Süreç",
-      description: "Check-up'tan uygulamaya beş adım. Her adımı önceden bilirsiniz.",
+      description: "Check-Up'tan uygulamaya beş adım. Her adımı önceden bilirsiniz.",
     },
   ],
 } as const;
@@ -55,35 +55,35 @@ export const HOW_IT_WORKS = [
     icon: "clipboard-list",
     title: "Check-Up",
     description:
-      "15-20 dakikalık ücretsiz form. Sektörünüze özel sorular — şirketinizi tanıyalım.",
+      "15-20 dakika. Sektörünüze özel sorular. Şirketinizi bu soruların cevaplarından tanıyoruz.",
   },
   {
     step: "02",
     icon: "file-text",
     title: "Size Özel Rapor",
     description:
-      "Nerelerde ne kadar kazanabilirsiniz, nereden başlarsınız — rapor e-postanıza gelir.",
+      "Nerede ne kadar kazanabilirsiniz, nereden başlarsınız. Rapor e-postanıza gelir.",
   },
   {
     step: "03",
     icon: "phone",
     title: "30 Dakikalık Görüşme",
     description:
-      "Ücretsiz 30 dakika. Raporu birlikte okuruz, sorularınızı cevaplarız.",
+      "Calendly'den ücretsiz randevu. Raporu birlikte okuruz, soruları cevaplarız.",
   },
   {
     step: "04",
     icon: "file-check",
     title: "Teklif",
     description:
-      "Size özel teklif. Ne yapılacak, ne kadar sürecek, ne kadar tutar — hepsi önceden belli.",
+      "Ne yapılacak, ne kadar sürecek, ne kadar tutacak — hepsi önceden belli. Sürpriz yok.",
   },
   {
     step: "05",
     icon: "rocket",
     title: "Uygulama & Takip",
     description:
-      "Birlikte kuruyoruz. Sonra düzenli bakıyoruz: işe yarıyor mu, nerede aksıyor.",
+      "Birlikte kurarız. Sonra düzenli bakarız: işe yarıyor mu, nerede aksıyor.",
   },
 ] as const;
 
@@ -142,7 +142,7 @@ export const EXPERTISE_ITEMS = [
     title: "Veri ve Raporlama Otomasyonu",
     tagline: "Dağınık veriden otomatik panoya.",
     description:
-      "Veriniz üç ayrı sistemde duruyor. Pazartesi raporu için birisi dört saatini veriyor. Verinizi topluyor, birleştiriyor, otomatik raporlara ve canlı panolara çeviriyoruz. Karar verici Excel'den kurtulur.",
+      "Veriniz üç ayrı sistemde duruyor. Pazartesi raporu için birisi dört saat harcıyor. Verinizi topluyor, birleştiriyor, otomatik raporlara ve canlı kontrol panolarına çeviriyoruz. Karar verici Excel'den kurtulur.",
     features: [
       "Farklı sistemlerden otomatik veri toplama",
       "Gerçek zamanlı kontrol panoları",
@@ -157,10 +157,10 @@ export const EXPERTISE_ITEMS = [
     title: "Yapay Zeka Stratejisi ve Kurulum",
     tagline: "Doğru araçla, doğru süreçte, doğru zamanda.",
     description:
-      "Yapay zeka pazarında her ay yeni bir araç çıkıyor. Size uyanı seçmek zor. Sektörünüze bakıyoruz, doğru araçları öneriyoruz, şirketinize özel iş asistanları kuruyoruz. Ekibinize kullanmayı da öğretiyoruz.",
+      "Yapay zeka pazarında her ay yeni bir araç çıkıyor. Size uyanı seçmek zor. Sektörünüze bakıyor, uygun olanları gösteriyor, şirketinize özel iş asistanları kuruyoruz. Ekibinize kullanmayı da öğretiyoruz.",
     features: [
       "Nereden başlanacak, yatırım getirisi ne — haritasını çıkarıyoruz",
-      "Bağımsız araç önerisi (satıcı değiliz)",
+      "Bağımsız araç rehberliği (satıcı değiliz)",
       "Otomatik iş asistanları kurulumu",
       "Departman bazlı eğitim",
     ],
@@ -171,7 +171,7 @@ export const EXPERTISE_ITEMS = [
 
 export const FAQ_ITEMS = [
   {
-    question: "Check-up süreci nasıl işliyor?",
+    question: "Check-Up süreci nasıl işliyor?",
     answer:
       "Sektörünüze özel bir form dolduruyorsunuz. 15-20 dakika sürüyor. Cevaplarınızı inceliyor, size özel bir rapor hazırlıyor, e-postanıza gönderiyoruz.",
   },
@@ -181,12 +181,12 @@ export const FAQ_ITEMS = [
       "Haftada kaç saat kazanırsınız, ayda ne kadar tasarruf edersiniz, önce nereden başlarsınız, 90 günlük adım adım plan. Hepsi şirketinize özel — jenerik rapor değil.",
   },
   {
-    question: "Danışmanlık ve koçluk ayrı mı satın alınıyor?",
+    question: "Danışmanlık ve koçluk ayrı mı alınıyor?",
     answer:
-      "Hayır, ikisi birlikte. Check-up yapıyoruz, strateji çiziyoruz, birlikte uyguluyoruz, ekibinizi eğitiyoruz. Tek paket.",
+      "Hayır, ikisi birlikte. Check-Up yapıyoruz, strateji çiziyoruz, birlikte uyguluyoruz, ekibinizi eğitiyoruz. Tek paket.",
   },
   {
-    question: "Check-up sonrası ne oluyor?",
+    question: "Check-Up sonrası ne oluyor?",
     answer:
       "Rapor size ulaşır. İsterseniz 30 dakikalık ücretsiz görüşme alırsınız — raporu birlikte okuruz, sorularınızı cevaplarız. Sonra size özel bir teklif hazırlıyoruz. Beğenirseniz uygulamaya geçiyoruz.",
   },
@@ -198,12 +198,12 @@ export const FAQ_ITEMS = [
   {
     question: "Süreç ne kadar sürer?",
     answer:
-      "Check-up raporu birkaç iş günü içinde e-postanıza gelir. Uygulama ise projenin boyutuna göre değişir — birkaç haftadan birkaç aya kadar. Kapsam belli olunca net bir zaman çizelgesi veriyoruz.",
+      "Check-Up raporu birkaç iş günü içinde e-postanıza gelir. Uygulama ise projenin boyutuna göre değişir — birkaç haftadan birkaç aya kadar. Kapsam belli olunca net bir zaman çizelgesi veriyoruz.",
   },
   {
     question: "Fiyatlandırma nasıl?",
     answer:
-      "Check-up tamamen ücretsiz. Uygulama için fiyat, işin kapsamına göre değişir. Görüşme sonrası size özel teklif hazırlıyoruz — sürpriz maliyet yok, her şey önceden belli.",
+      "Check-Up tamamen ücretsiz. Uygulama için fiyat, işin kapsamına göre değişir. Görüşme sonrası size özel teklif hazırlıyoruz — sürpriz maliyet yok, her şey önceden belli.",
   },
   {
     question: "Ne zaman sonuç görürüz?",

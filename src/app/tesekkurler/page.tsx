@@ -24,7 +24,7 @@ function TesekkurlerContent() {
     : [
         {
           label: "Raporunuz hazırlanıyor",
-          desc: "Check-up raporunuz en kısa sürede e-postanıza iletilecek.",
+          desc: "Check-Up raporunuz en kısa sürede e-postanıza iletilecek.",
         },
         {
           label: "Spam klasörünü kontrol edin",

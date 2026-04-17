@@ -100,8 +100,8 @@ export const SECTOR_QUESTIONS: Record<
 > = {
   "E-ticaret": {
     s6: [
-      "Manuel yanıt (WhatsApp, e-posta, tek tek)",
-      "Şablonlarımız var ama yine de manuel",
+      "WhatsApp/e-posta'da her müşteriye ayrı ayrı cevap yazıyoruz",
+      "Şablonlarımız var ama yine de elle yollanıyor",
       "Kısmen otomatik (chatbot veya hazır yanıtlar)",
       "Tamamen otomatik sistem kurulu",
     ],
@@ -140,8 +140,8 @@ export const SECTOR_QUESTIONS: Record<
   },
   "Ajans (Reklam / Dijital / Kreatif)": {
     s6: [
-      "Manuel, her müşteri için ayrı (saatler sürüyor)",
-      "Şablonumuz var ama veri toplama manuel",
+      "Her müşteri için ayrı hazırlıyoruz, birkaç saat sürüyor",
+      "Şablonumuz var ama veriyi elle topluyoruz",
       "Araçlarla kısmen otomatik (Looker Studio vb.)",
       "Otomatik dashboard'lar, müşteri kendi erişiyor",
     ],

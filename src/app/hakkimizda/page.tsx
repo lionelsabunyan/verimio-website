@@ -89,7 +89,7 @@ export default function HakkimizdaPage() {
                 iş akışlarımız — çoğunu yapay zekayla yürütüyoruz.
               </p>
               <p className="text-foreground-secondary leading-relaxed">
-                Anlattığımız şeyi önce kendimizde kanıtladık.
+                Anlattığımız yöntemi önce kendimizde denedik.
               </p>
             </div>
             <div>
@@ -97,14 +97,13 @@ export default function HakkimizdaPage() {
                 Bu size ne anlatır
               </p>
               <h2 className="text-2xl font-bold mb-4">
-                Kendi işini otomatize edememiş bir danışman sizi edemez.
+                Kendi işini hızlandıramamış bir danışman, sizinkini zor hızlandırır.
               </h2>
               <p className="text-foreground-secondary leading-relaxed mb-4">
-                Öğrenme maliyetini kendi üzerimize aldık. Size sunduğumuz her
-                öneri, daha önce bizzat denediğimiz bir yöntem.
+                Öğrenme maliyetini önce kendimizde aldık. Size sunduğumuz her öneri, daha önce bizzat denediğimiz bir yöntem.
               </p>
               <p className="text-foreground-secondary leading-relaxed">
-                Slayt değil, çalışmış pratik. Ve her öneri, somut bir yatırım getirisi hesabına dayanıyor.
+                Slayt değil, çalışmış iş. Her öneri bir yatırım getirisi hesabına dayanıyor.
               </p>
             </div>
           </div>

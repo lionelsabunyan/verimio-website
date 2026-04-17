@@ -77,8 +77,8 @@ export default function AnalizPage() {
             Şirket Check-Up&apos;ı
           </h1>
           <p className="text-lg text-foreground-secondary leading-relaxed max-w-2xl">
-            Birkaç soru, birkaç dakika. Şirketinize özel bir rapor — nereden başlayın,
-            nerede ne kazanırsınız — e-postanıza gelir.
+            15-20 dakika, sektörünüze özel sorular. Size özel bir rapor — nereden
+            başlayın, nerede ne kazanırsınız — e-postanıza gelir.
           </p>
         </div>
       </section>
