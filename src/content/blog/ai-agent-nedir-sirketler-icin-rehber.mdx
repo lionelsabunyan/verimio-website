@@ -11,9 +11,9 @@ author: "Verimio Ekibi"
 
 Bu, bir chatbot'un yapabileceğinin çok ötesinde. Chatbot cevap verir, AI agent iş yapar.
 
-Türkiye'de "AI agent" kavramı hızla yayılıyor. Google aramalarında son 6 ayda belirgin artış var, Turkcell'den KOBİ'lere kadar herkes bu teknolojiyi anlamaya çalışıyor. Ama Türkçe'de iş odaklı, kapsamlı bir rehber hâlâ yok. Bu yazı o boşluğu dolduruyor.
+Türkiye'de "AI agent" — ya da Türkçe karşılığıyla "yapay zeka ajanı" — kavramı hızla yayılıyor. "AI agent nedir", "yapay zeka agent nedir", "ai agent otomasyonu" ve "agent teknolojisi" sorguları Google'da son 6 ayda belirgin biçimde arttı. Turkcell'den KOBİ'lere kadar herkes bu teknolojiyi anlamaya çalışıyor. Ama Türkçe'de iş odaklı, kapsamlı bir rehber hâlâ yok. Bu yazı o boşluğu dolduruyor.
 
-> **Hızlı Özet:** AI agent, tek bir komutla birden fazla adımı otonom olarak gerçekleştirebilen yapay zeka sistemidir. Chatbot'tan farkı: chatbot soruya cevap verir, AI agent bir görevi baştan sona yürütür — veri toplar, karar verir, aksiyon alır. Türk KOBİ'leri n8n, LangChain veya hazır platformlarla kendi AI agent'larını kurabilir.
+> **Hızlı Özet:** AI agent (yapay zeka ajanı), tek bir komutla birden fazla adımı otonom olarak gerçekleştirebilen yapay zeka sistemidir. Chatbot'tan farkı: chatbot soruya cevap verir, AI agent bir görevi baştan sona yürütür — veri toplar, karar verir, aksiyon alır. Bu, AI agent otomasyonunun şirketler için yeni bir uygulama katmanı açmasının temel sebebi. Türk KOBİ'leri n8n, LangChain veya hazır platformlarla — çoğu zaman kod yazmadan — kendi AI agent'larını kurabilir.
 
 ### Kısa Sözlük
 
@@ -281,6 +281,12 @@ Basit bir e-posta triage agent'ı aylık 300-500 TL'ye çalışabilir (n8n self-
 
 **Türkçe AI agent mümkün mü?**
 Evet — ChatGPT, Claude ve Gemini gibi büyük dil modelleri Türkçe'yi yüksek kalitede destekliyor. n8n veya LangChain ile kurduğunuz agent, Türkçe komut alabilir, Türkçe çıktı üretebilir ve Türkçe müşterilerle etkileşime girebilir. Ses tabanlı agent'larda Türkçe kalitesi hâlâ gelişiyor ama metin tabanlı iletişimde sorun yok.
+
+**AI agent otomasyonu nedir, iş süreci otomasyonundan farkı ne?**
+Klasik iş süreci otomasyonu (örneğin n8n veya Zapier ile kurduğunuz akışlar), önceden tanımlanmış adımları sırayla çalıştırır — "e-posta gelince şunu yap" gibi deterministik mantıkla ilerler. AI agent otomasyonu ise bir hedef verildiğinde adımları kendi planlayabilen, duruma göre karar alabilen sistemlerdir. "Müşteriye en uygun paket teklifini hazırla" dediğinizde AI agent; CRM'i okur, müşterinin geçmişine bakar, uygun paketi seçer, teklifi hazırlar. [İş süreci otomasyonu rehberimizde](/blog/is-sureci-otomasyonu-nedir) klasik otomasyon ile AI destekli otomasyon arasındaki farkları detaylandırıyoruz.
+
+**Agent teknolojisi kod yazmadan nasıl kullanılır?**
+Agent teknolojisine başlamak için artık yazılım geliştirme bilgisi şart değil. n8n'in AI agent node'u, Kuika veya AgentGPT gibi platformlar, görsel arayüzle agent kurmanızı sağlar. Kod yazmadan uygulama yapma akımı, iş ekiplerinin doğrudan kendi otomasyon ve agent çözümlerini geliştirmesine olanak tanıyor. Yine de üretim ortamında çalışacak ciddi bir agent için iyi bir prompt tasarımı, güvenlik kontrolleri ve sürüm yönetimi gerekiyor — bu noktada bir danışman desteği hata maliyetini düşürür.
 
 ---
 
