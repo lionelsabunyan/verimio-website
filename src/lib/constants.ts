@@ -22,7 +22,7 @@ export const HERO_CONTENT = {
   headline: "Yapay zeka,",
   headlineHighlight: "ekibinizin en verimli üyesi.",
   subheadline:
-    "Yapay zekayı şirketinizde nereye koyacağınız belli değil. Önce bunu çıkarıyoruz. Sonra birlikte kuruyoruz. Rapor teslim edip çekilmiyoruz.",
+    "AI, otomasyon, ajanlar... Terimler her yerde, nereden başlayacağınız belirsiz. Doğru noktayı birlikte buluyoruz. İşinize entegre ediyoruz. Kurulumdan sonra da yanınızdayız.",
   ctaPrimary: "Ücretsiz Check-Up Başlatın",
   ctaSecondary: "Nasıl Çalışır?",
   cards: [
