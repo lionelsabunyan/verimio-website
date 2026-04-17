@@ -66,8 +66,8 @@ export default function HakkimizdaPage() {
           </h1>
           <p className="text-lg text-foreground-secondary leading-relaxed max-w-2xl">
             Yazılarımız, tasarımlarımız, iş akışlarımız — çoğu otomatik.
-            Müşterilerimize anlattığımız yöntemi önce kendimizde denedik.
-            Rapor teslim edip çekilmiyoruz; uygulamaya kadar yanınızdayız.
+            Müşteriye anlattığımız yöntemi önce kendimizde denedik.
+            Bu yüzden önerilerimizin arkasında bir slayt değil, çalışan bir sistem var.
           </p>
         </div>
       </section>
@@ -84,12 +84,11 @@ export default function HakkimizdaPage() {
                 Çoğu AI danışmanı slayt satıyor.
               </h2>
               <p className="text-foreground-secondary leading-relaxed mb-4">
-                AI dönüşümünden bahseden çoğu firma bunu kendi işinde uygulamamış. Önce
-                size deniyor. Biz tersini yaptık. Yazılarımız, tasarımlarımız,
-                iş akışlarımız — çoğunu yapay zekayla yürütüyoruz.
+                AI dönüşümünden bahseden çoğu firma bunu kendi işinde uygulamamış.
+                Önce size deniyor, sizinkinde öğreniyor. Biz tersini yaptık.
               </p>
               <p className="text-foreground-secondary leading-relaxed">
-                Anlattığımız yöntemi önce kendimizde denedik.
+                Biz kullanmadan önermiyoruz.
               </p>
             </div>
             <div>

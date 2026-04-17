@@ -52,7 +52,7 @@ export default function HizmetlerPage() {
             Dört alan, tek çatı.
           </h1>
           <p className="text-lg text-foreground-secondary leading-relaxed mb-8 max-w-2xl">
-            Önce sizi tanıyoruz. Sonra nereden başlayacağınızı söylüyoruz.
+            Önce sizi tanıyoruz. Sonra nereden başlayacağınızı gösteriyoruz.
             Ardından birlikte kuruyoruz. Danışmanlık, koçluk, eğitim — hepsi aynı paket.
           </p>
           <Button href={BRAND.checkupUrl} size="md">
