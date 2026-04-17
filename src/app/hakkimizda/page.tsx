@@ -67,7 +67,7 @@ export default function HakkimizdaPage() {
           <p className="text-lg text-foreground-secondary leading-relaxed max-w-2xl">
             Yazılarımız, tasarımlarımız, iş akışlarımız — çoğu otomatik.
             Müşteriye anlattığımız yöntemi önce kendimizde denedik.
-            Bu yüzden önerilerimizin arkasında bir slayt değil, çalışan bir sistem var.
+            Size önerdiğimiz her araç, bizde zaten çalışıyor.
           </p>
         </div>
       </section>
@@ -102,7 +102,7 @@ export default function HakkimizdaPage() {
                 Öğrenme maliyetini önce kendimizde aldık. Size sunduğumuz her öneri, daha önce bizzat denediğimiz bir yöntem.
               </p>
               <p className="text-foreground-secondary leading-relaxed">
-                Slayt değil, çalışmış iş. Her öneri bir yatırım getirisi hesabına dayanıyor.
+                Teori değil, denenmiş yöntem. Her öneri bir yatırım getirisi hesabına dayanıyor.
               </p>
             </div>
           </div>
