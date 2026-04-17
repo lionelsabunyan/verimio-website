@@ -91,8 +91,8 @@ export default function BlogPage() {
                 href={`/blog/${post.slug}`}
                 className="group border-b border-border py-8 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-start"
               >
-                {/* Cover — small */}
-                <div className="md:col-span-3 overflow-hidden border border-border bg-foreground/[0.04] p-2">
+                {/* Cover — mobilde gizli, masa\u00fst\u00fcnde k\u00fc\u00e7\u00fck */}
+                <div className="hidden md:block md:col-span-3 overflow-hidden border border-border bg-foreground/[0.04] p-2">
                   <BlogCoverImage slug={post.slug} title={post.title} category={post.category} index={index} />
                 </div>
 

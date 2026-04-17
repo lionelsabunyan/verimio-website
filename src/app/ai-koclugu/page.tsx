@@ -30,8 +30,8 @@ export const metadata: Metadata = {
 const processSteps = [
   { phase: "Faz 1", title: "Keşif & Durum Analizi", description: "Şirketinizin mevcut süreçlerini, veri altyapısını ve ekip yetkinliklerini haritalıyoruz. AI hazırlık seviyenizi belirliyor, en yüksek etkili fırsat alanlarını ortaya çıkarıyoruz.", duration: "1-2 hafta" },
   { phase: "Faz 2", title: "Strateji & Yol Haritası", description: "Size özel bir AI dönüşüm yol haritası oluşturuyoruz. Hangi süreçte hangi araç, hangi sırayla uygulanacak, beklenen ROI ne olacak — hepsi somut ve ölçülebilir.", duration: "1-2 hafta" },
-  { phase: "Faz 3", title: "Uygulama & Koçluk", description: "Pilot projeleri birlikte hayata geçiriyoruz. Ekibinize birebir eğitim veriyor, araçları tanıtıyor ve her adımda yanınızda oluyoruz.", duration: "4-8 hafta" },
-  { phase: "Faz 4", title: "Ölçümleme & Sürekli İyileştirme", description: "Sonuçları birlikte takip ediyoruz. KPI'lar üzerinden performansı ölçüyor, yeni fırsatları tespit ediyor ve dönüşümü sürdürülebilir kılıyoruz.", duration: "Sürekli" },
+  { phase: "Faz 3", title: "Uygulama & Koçluk", description: "Pilot projeleri birlikte kurarız. Ekibinize araçları bizzat gösteririz. Her hafta bir saat beraber çalışırız — kaybolmazsınız.", duration: "4-8 hafta" },
+  { phase: "Faz 4", title: "Ölçümleme & Sürekli İyileştirme", description: "Sonuçları birlikte takip ederiz. Neyin işe yaradığını görürüz. İşlemeyeni değiştiririz.", duration: "Sürekli" },
 ];
 
 const departments = [
@@ -52,7 +52,7 @@ const comparisons = [
 ];
 
 const faqItems = [
-  { question: "AI koçluğu nedir?", answer: "AI koçluğu, şirketinizin yapay zeka dönüşümüne sürekli ve kişiselleştirilmiş eşlik eden bir hizmettir. Verimio'da danışmanlık ve koçluk aynı sürecin parçasıdır — strateji çizer, birlikte uygular, sonuçları ölçeriz." },
+  { question: "AI koçluğu nedir?", answer: "AI koçluğu, şirketinizin yapay zeka dönüşümüne sürekli ve kişiselleştirilmiş eşlik eden bir hizmettir. Verimio'da ikisini aynı kişi yapar — strateji çizer, birlikte uygular, sonuçları ölçer." },
   { question: "AI koçluğu ile AI danışmanlığı arasındaki fark nedir?", answer: "Geleneksel danışmanlık genellikle proje bazlıdır: analiz yapılır, rapor teslim edilir. Verimio'da ise danışmanlık ve koçluk tek süreçtir — hem stratejiyi çizer hem birlikte uygularız." },
   { question: "Süreç ne kadar sürer?", answer: "Tipik bir süreç 3-12 ay arasındadır. İlk keşif ve strateji 2-4 hafta, pilot uygulamalar 4-8 hafta, sürekli iyileştirme devam eden bir süreçtir." },
   { question: "Hangi departmanlar faydalanabilir?", answer: "İK, pazarlama, satış, operasyon, finans ve müşteri hizmetleri dahil tüm departmanlar. Her departman için ayrı kullanım senaryoları sunuyoruz." },
@@ -92,7 +92,7 @@ export default function AIKocluguPage() {
             Strateji de uygulama da tek elden.
           </h1>
           <p className="text-lg text-foreground-secondary leading-relaxed mb-8 max-w-2xl">
-            Verimio&apos;da danışmanlık ve koçluk aynı sürecin parçasıdır. Analiz eder, yol haritası çizer — sonra birlikte uygular, ekibinizi eğitir ve sonuçları ölçeriz.
+            Verimio&apos;da ikisini aynı kişi yapar. Analiz eder, yol haritası çizer. Sonra birlikte uygular, ekibinizi eğitir.
           </p>
           <Button href="/analiz" size="md">Ücretsiz Check-Up Başlat</Button>
         </div>

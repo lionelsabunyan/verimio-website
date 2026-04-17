@@ -93,15 +93,6 @@ export default function Step1Sector({
         required
       />
 
-      {/* Company website */}
-      <FormInput
-        label="Şirket websitesi"
-        value={formData.companyWebsite}
-        onChange={(v) => updateField("companyWebsite", v)}
-        placeholder="Örn: www.firma.com"
-        optional
-      />
-
       {/* Team size */}
       <div>
         <p className="text-sm font-medium text-foreground-secondary mb-2">
@@ -132,6 +123,15 @@ export default function Step1Sector({
           <p className="text-xs text-red-500 mt-2">{errors.teamSize}</p>
         )}
       </div>
+
+      {/* Company website — opsiyonel, zorunlu akışın sonunda */}
+      <FormInput
+        label="Şirket websitesi"
+        value={formData.companyWebsite}
+        onChange={(v) => updateField("companyWebsite", v)}
+        placeholder="Örn: www.firma.com"
+        optional
+      />
     </FormStep>
   );
 }

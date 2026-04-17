@@ -289,37 +289,37 @@ export default function MultiStepForm() {
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {/* Option A: Get Report */}
+            {/* Option A: Get Report — birincil */}
             <button
               type="button"
               onClick={handleSubmitReport}
               disabled={isSubmitting}
-              className="flex flex-col items-start gap-2 px-5 py-5 border border-border bg-background hover:border-foreground transition-colors duration-150 text-left disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex flex-col items-start gap-2 px-5 py-5 border border-foreground bg-foreground hover:opacity-90 transition-opacity duration-150 text-left disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <Mail className="w-5 h-5 text-foreground" />
+              <Mail className="w-5 h-5 text-background" />
               <div>
-                <p className="text-sm font-medium text-foreground">
+                <p className="text-sm font-medium text-background">
                   Detaylı Raporumu Gönder
                 </p>
-                <p className="text-xs text-foreground-secondary mt-0.5">
+                <p className="text-xs text-background/70 mt-0.5">
                   Hemen hazırlanır, e-postanıza iletilir
                 </p>
               </div>
             </button>
 
-            {/* Option B: Book Meeting */}
+            {/* Option B: Book Meeting — ikincil */}
             <button
               type="button"
               onClick={handleBookMeeting}
               disabled={isSubmitting}
-              className="flex flex-col items-start gap-2 px-5 py-5 border border-foreground bg-foreground hover:opacity-90 transition-opacity duration-150 text-left disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex flex-col items-start gap-2 px-5 py-5 border border-border bg-background hover:border-foreground transition-colors duration-150 text-left disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <Calendar className="w-5 h-5 text-background" />
+              <Calendar className="w-5 h-5 text-foreground" />
               <div>
-                <p className="text-sm font-medium text-background">
+                <p className="text-sm font-medium text-foreground">
                   Ücretsiz Görüşme Planla
                 </p>
-                <p className="text-xs text-background/70 mt-0.5">
+                <p className="text-xs text-foreground-secondary mt-0.5">
                   20 dakika · Zoom · Hemen rezerve et
                 </p>
               </div>

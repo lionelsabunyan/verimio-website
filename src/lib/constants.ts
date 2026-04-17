@@ -22,7 +22,7 @@ export const HERO_CONTENT = {
   headline: "Yapay zeka,",
   headlineHighlight: "ekibinizin en verimli üyesi.",
   subheadline:
-    "AI, otomasyon, ajanlar... Terimler her yerde, nereden başlayacağınız belirsiz. Doğru noktayı birlikte buluyoruz. İşinize entegre ediyoruz. Kurulumdan sonra da yanınızdayız.",
+    "AI, otomasyon, ajanlar... Terimler her yerde, nereden başlayacağınız belirsiz. Doğru noktayı birlikte buluyoruz, işinize entegre ediyoruz. Kurulumdan sonra da buradayız.",
   ctaPrimary: "Ücretsiz Check-Up Başlatın",
   ctaSecondary: "Nasıl Çalışır?",
   cards: [
@@ -181,9 +181,9 @@ export const FAQ_ITEMS = [
       "Haftada kaç saat kazanırsınız, ayda ne kadar tasarruf edersiniz, önce nereden başlarsınız, 90 günlük adım adım plan. Hepsi şirketinize özel — jenerik rapor değil.",
   },
   {
-    question: "Danışmanlık ve koçluk ayrı mı alınıyor?",
+    question: "Danışmanlık mı, koçluk mu?",
     answer:
-      "Hayır, ikisi birlikte. Check-Up yapıyoruz, strateji çiziyoruz, birlikte uyguluyoruz, ekibinizi eğitiyoruz. Tek paket.",
+      "İkisi birlikte. Check-Up yaparız, strateji çizeriz, birlikte uygularız, ekibinizi eğitiriz. Tek paket.",
   },
   {
     question: "Check-Up sonrası ne oluyor?",

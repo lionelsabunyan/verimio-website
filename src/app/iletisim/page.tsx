@@ -98,9 +98,12 @@ export default function IletisimPage() {
           <h2 className="text-3xl sm:text-4xl font-bold text-background mb-4 max-w-2xl">
             En hızlı başlangıç: ücretsiz check-up
           </h2>
-          <p className="text-background/70 leading-relaxed mb-8 max-w-xl">
+          <p className="text-background/70 leading-relaxed mb-4 max-w-xl">
             Formu doldurun, size özel analiz raporunuz hemen hazırlanıp e-postanıza iletilsin.
             Sonra isterseniz görüşme planlayın.
+          </p>
+          <p className="text-background/50 text-sm leading-relaxed mb-8 max-w-xl">
+            Check-up sonrası ne olur? Raporu okursunuz, sorularınızı yazarsınız, isterseniz 30 dakikalık görüşmede birlikte açarız. Baskı yok.
           </p>
           <Link
             href={BRAND.checkupUrl}
