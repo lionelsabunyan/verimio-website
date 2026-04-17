@@ -234,6 +234,13 @@ export const FAQ_ITEMS = [
 
 export const BLOG_POSTS = [
   {
+    title: "AI Agent vs Chatbot: İşletmeniz İçin Hangisi Doğru?",
+    excerpt: "İşletmeniz için AI Agent mı yoksa Chatbot mu daha uygun? Bu yazıda iki teknolojinin farklarını, uygulama alanlarını ve hangi durumda hangisine yatırım yapmanız gerektiğini inceliyoruz.",
+    date: "17 Nisan 2026",
+    slug: "ai-agent-vs-chatbot-isletmeniz-icin-hangisi-dogru",
+    category: "ai-tools" as const,
+  },
+  {
     title: "KVKK Uyumlu Voice AI: Çağrı Merkezinde Güvenlik",
     excerpt: "KVKK uyumlu Voice AI ile çağrı merkezi süreçlerinizi geliştirin. Veri güvenliğini sağlarken operasyonel verimliliği artırın ve maliyetleri düşürün.",
     date: "13 Nisan 2026",
