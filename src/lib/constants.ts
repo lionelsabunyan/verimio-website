@@ -44,7 +44,7 @@ export const HERO_CONTENT = {
 export const ABOUT_CONTENT = {
   label: "Hakkımızda",
   heading: "Kendi işimizi yapay zekayla yürütüyoruz.",
-  text: "Yazılarımız, tasarımlarımız, iş akışlarımız — çoğu otomatik. Müşterilerimize anlattığımız yöntemi önce kendi üzerimizde denedik. Rapor teslim edip çekilmiyoruz; uygulamaya kadar yanınızdayız.",
+  text: "Yazılarımız, tasarımlarımız, iş akışlarımız — çoğu otomatik. Müşteriye anlattığımız yöntemi önce kendi üzerimizde denedik. Bu yüzden önerilerimizin arkasında bir slayt değil, çalışan bir sistem var.",
   ctaPrimary: "Hakkımızda",
   ctaSecondary: "Hizmetlerimize Bakın",
 } as const;
@@ -125,11 +125,11 @@ export const EXPERTISE_ITEMS = [
   {
     slug: "musteri-hizmetleri-ai",
     title: "Müşteri Hizmetleri Asistanı",
-    tagline: "Sesli ve yazılı dijital asistan — 7/24, KVKK uyumlu.",
+    tagline: "Müşteri yazar, arar, konuşur — asistan cevaplar.",
     description:
       "Müşteri 'siparişim nerede' diye elli kez arıyor. Ekibiniz boğuluyor. Şirketinize özel eğitilmiş bir dijital asistan kuruyoruz. Web, WhatsApp, telefon, e-posta — dört kanal, tek ses.",
     features: [
-      "Sesli asistan (Türkçe, KVKK uyumlu)",
+      "Sesli asistan — Türkçe ve KVKK uyumlu",
       "Şirketinize özel eğitilmiş sohbet asistanı",
       "Web, WhatsApp, telefon, e-posta — dört kanal",
       "Gerektiğinde canlı ekibe devir",
@@ -142,7 +142,7 @@ export const EXPERTISE_ITEMS = [
     title: "Veri ve Raporlama Otomasyonu",
     tagline: "Dağınık veriden otomatik panoya.",
     description:
-      "Veriniz üç ayrı sistemde duruyor. Pazartesi raporu için birisi dört saat harcıyor. Verinizi topluyor, birleştiriyor, otomatik raporlara ve canlı kontrol panolarına çeviriyoruz. Karar verici Excel'den kurtulur.",
+      "Veriniz üç ayrı sistemde duruyor. Pazartesi raporu için birisi dört saat harcıyor. Verinizi topluyor, birleştiriyor, otomatik raporlara ve canlı kontrol panolarına çeviriyoruz. Karar alan kişi Excel'e bağlı kalmaz.",
     features: [
       "Farklı sistemlerden otomatik veri toplama",
       "Gerçek zamanlı kontrol panoları",
