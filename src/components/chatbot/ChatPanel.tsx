@@ -31,6 +31,18 @@ export function ChatPanel() {
     }
   }, [isOpen, sessionId, initializing, visitorId, setSessionId]);
 
+  // Mobilde panel fullscreen — body scroll'u arka planda kilitle
+  useEffect(() => {
+    if (!isOpen) return;
+    const isMobile = window.matchMedia('(max-width: 767px)').matches;
+    if (!isMobile) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [isOpen]);
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -240,6 +252,7 @@ const QUICK_ACTIONS = [
   'Verimio ne yapıyor?',
   'Şirketim için AI check-up yaptırmak istiyorum',
   'Ücretsiz görüşme almak istiyorum',
+  'Mesaj bırakmak istiyorum',
 ];
 
 function renderMarkdown(text: string, isUser: boolean): React.ReactNode[] {

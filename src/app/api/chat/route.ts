@@ -1,6 +1,66 @@
 import { createServiceClient } from '@/lib/supabase/service';
 import { buildChatbotSystemPrompt } from '@/lib/chatbot/system-prompt';
 import { finalizeChatSession } from '@/lib/chatbot/notion-sync';
+import { getResend, FROM_ADDRESS, generalEmailHtml } from '@/lib/email';
+
+const LEAD_NOTIFY_TO = 'info@verimio.com.tr';
+
+interface ChatLead {
+  name: string;
+  email: string;
+  message: string;
+}
+
+function parseLeadMarker(text: string): ChatLead | null {
+  const match = text.match(/\[\[LEAD\|([^\]]+)\]\]/);
+  if (!match) return null;
+  const fields: Record<string, string> = {};
+  for (const part of match[1].split('|')) {
+    const eq = part.indexOf('=');
+    if (eq === -1) continue;
+    fields[part.slice(0, eq).trim()] = part.slice(eq + 1).trim();
+  }
+  if (!fields.ad || !fields.email || !fields.mesaj) return null;
+  if (!fields.email.includes('@') || !fields.email.includes('.')) return null;
+  return { name: fields.ad, email: fields.email, message: fields.mesaj };
+}
+
+async function handleChatLead(
+  supabase: ReturnType<typeof createServiceClient>,
+  sessionId: string | undefined,
+  lead: ChatLead
+) {
+  try {
+    if (sessionId) {
+      await supabase
+        .from('chat_sessions')
+        .update({
+          metadata: {
+            lead: { ...lead, captured_at: new Date().toISOString() },
+          },
+        })
+        .eq('id', sessionId);
+    }
+
+    const subject = `Chat üzerinden yeni mesaj — ${lead.name}`;
+    const body = `Chat widget üzerinden bir ziyaretçi size mesaj bıraktı.\n\nAd: ${lead.name}\nE-posta: ${lead.email}\n\nMesaj:\n${lead.message}\n\nSession: ${sessionId ?? 'bilinmiyor'}`;
+
+    await getResend().emails.send({
+      from: FROM_ADDRESS,
+      to: LEAD_NOTIFY_TO,
+      replyTo: lead.email,
+      subject,
+      html: generalEmailHtml({
+        recipientEmail: LEAD_NOTIFY_TO,
+        subject,
+        message: body,
+      }),
+    });
+    console.log('[Chat] Lead captured:', lead.email);
+  } catch (err) {
+    console.error('[Chat] Lead handle hatası:', err);
+  }
+}
 
 // UIMessage tipini inline tanımlıyoruz — AI SDK'nın karmaşıklığından kaçınmak için
 interface ClientMessage {
@@ -124,10 +184,22 @@ export async function POST(req: Request) {
       );
     }
 
-    // OpenRouter SSE stream → plain text stream
+    // OpenRouter SSE stream → plain text stream (marker-aware)
     const encoder = new TextEncoder();
     const decoder = new TextDecoder();
     let fullText = '';
+
+    // Stream cleanup: model bazen marker'ı markdown code block içinde ve duplicate
+    // onay cümlesiyle üretiyor. Bu fonksiyon final metni temizler: code fence'leri,
+    // marker'ı ve arka arkaya tekrarlanan onay cümlelerini kaldırır.
+    const cleanFinalText = (text: string): string => {
+      let out = text;
+      out = out.replace(/```[a-zA-Z]*\s*\n?([\s\S]*?)\n?```/g, (_m, inner) => inner);
+      out = out.replace(/\[\[LEAD\|[^\]]*\]\]/g, '');
+      out = out.replace(/(Teşekkürler\.\s*Mesajınızı ilettim[^\n]*?)(\s*\n+\s*\1)+/g, '$1');
+      out = out.replace(/\n{3,}/g, '\n\n');
+      return out.trim();
+    };
 
     const stream = new ReadableStream({
       async start(controller) {
@@ -138,6 +210,42 @@ export async function POST(req: Request) {
         }
 
         let buffer = '';
+        // Stream'i ikiye ayır: güvenli kısım (hemen yayınla) + frozen kısım
+        // (marker veya code fence başlığı görüldü, stream sonu temizliğinde işle).
+        let pending = '';
+        let frozen = '';
+        let frozenMode = false;
+        const FREEZE_TRIGGERS = ['[[', '```'];
+
+        const emitSafe = (s: string) => {
+          if (s) controller.enqueue(encoder.encode(s));
+        };
+
+        const flush = () => {
+          if (frozenMode) {
+            frozen += pending;
+            pending = '';
+            return;
+          }
+          let earliest = -1;
+          for (const trig of FREEZE_TRIGGERS) {
+            const idx = pending.indexOf(trig);
+            if (idx !== -1 && (earliest === -1 || idx < earliest)) earliest = idx;
+          }
+          if (earliest !== -1) {
+            emitSafe(pending.slice(0, earliest));
+            frozen = pending.slice(earliest);
+            pending = '';
+            frozenMode = true;
+            return;
+          }
+          // Son 2 karakteri tut — '[[' veya '``' başlangıcı olabilir diye
+          if (pending.length > 2) {
+            emitSafe(pending.slice(0, -2));
+            pending = pending.slice(-2);
+          }
+        };
+
         try {
           while (true) {
             const { done, value } = await reader.read();
@@ -158,7 +266,8 @@ export async function POST(req: Request) {
                 const delta = parsed.choices?.[0]?.delta?.content;
                 if (delta) {
                   fullText += delta;
-                  controller.enqueue(encoder.encode(delta));
+                  pending += delta;
+                  flush();
                 }
               } catch {
                 // JSON parse hatası — satır atla
@@ -166,12 +275,33 @@ export async function POST(req: Request) {
             }
           }
 
-          // Asistan mesajını kaydet
+          // Stream bitti — pending'deki son safe içeriği yayınla,
+          // frozen bölümü temizle ve tek seferde gönder
+          if (!frozenMode) {
+            emitSafe(pending);
+            pending = '';
+          } else {
+            frozen += pending;
+            pending = '';
+          }
+          if (frozen) {
+            const cleaned = cleanFinalText(frozen);
+            emitSafe(cleaned);
+          }
+
+          // Marker'ı fullText üzerinden parse et ve lead'i işle
+          const lead = parseLeadMarker(fullText);
+          if (lead) {
+            await handleChatLead(supabase, sessionId, lead);
+          }
+
+          // Asistan mesajını kaydet (marker + fence + duplicate temizlenmiş)
           if (sessionId && fullText) {
+            const clean = cleanFinalText(fullText);
             await supabase.from('chat_messages').insert({
               session_id: sessionId,
               role: 'assistant',
-              content: fullText,
+              content: clean,
             });
           }
         } catch (err) {

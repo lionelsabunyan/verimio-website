@@ -81,9 +81,9 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile menu — fullscreen overlay, chatbot bubble üstünde (z-[60]) */}
       {isOpen && (
-        <div className="md:hidden border-t border-border bg-background">
+        <div className="md:hidden fixed left-0 right-0 top-16 bottom-0 bg-background border-t border-border z-[60] overflow-y-auto">
           <div className="px-6 py-6 space-y-1">
             {NAV_LINKS.map((link) => (
               <Link
