@@ -324,7 +324,18 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    // 3. Notion'da müşteri sayfası oluştur (paralel, hata kritik değil)
+    // 3. Analiz JSON'unu lead kaydına yaz (admin panel ve denetim için)
+    if (lead?.id) {
+      await supabase
+        .from('leads')
+        .update({ analysis_json: analysis })
+        .eq('id', lead.id)
+        .then(({ error }) => {
+          if (error) console.error('Supabase analysis_json update error:', error)
+        })
+    }
+
+    // 4. Notion'da müşteri sayfası oluştur (paralel, hata kritik değil)
     createNotionPage(body, analysis).catch((err) => console.error('[Notion] createNotionPage hatası:', err))
 
     // 4. Müşteriye rapor emaili gönder
