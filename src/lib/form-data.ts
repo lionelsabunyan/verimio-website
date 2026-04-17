@@ -280,19 +280,25 @@ export const SECTOR_QUESTIONS: Record<
   },
   Diğer: {
     s6: [
-      "Müşteri iletişimi / destek",
-      "Raporlama ve analiz",
-      "İçerik üretimi ve pazarlama",
-      "Belge ve dosya yönetimi",
-      "Veri girişi ve takip",
+      "Tek kişi / 2-5 kişi (mikro)",
+      "6-20 kişi (küçük)",
+      "21-100 kişi (orta)",
+      "100+ kişi (büyük)",
     ],
     s7: [
-      "Tamamen manuel (hiç araç yok)",
-      "Bazı araçlar var ama yine de çok zaman alıyor",
-      "Kısmen otomatik, iyileştirmeye açık",
-      "Büyük ölçüde otomatik",
+      "B2B (kurumsal müşteri)",
+      "B2C (bireysel müşteri)",
+      "Karma (B2B + B2C)",
+      "Abonelik / üyelik bazlı",
+      "Proje bazlı (tek seferlik)",
     ],
-    s8: [],
+    s8: [
+      "Müşteri adayı bulma ve dönüşüm",
+      "Sipariş / rezervasyon / iş emri yönetimi",
+      "Tedarik zinciri ve stok",
+      "Raporlama ve finansal takip",
+      "Ekip koordinasyonu ve görev dağılımı",
+    ],
   },
 };
 
@@ -346,9 +352,9 @@ export const SECTOR_QUESTION_LABELS: Record<
     s8: "En çok vakit kaybettiğiniz alan hangisi?",
   },
   Diğer: {
-    s6: "En çok zaman aldığını düşündüğünüz iş süreci hangisi?",
-    s7: "Bu süreci şu an nasıl yönetiyorsunuz?",
-    s8: "",
+    s6: "İşletmenizin ölçeğini en iyi anlatan hangisi?",
+    s7: "Gelir modelinizin ağırlığı hangi yönde?",
+    s8: "Operasyonunuzda en çok enerjinizi tüketen alan hangisi?",
   },
 };
 

@@ -16,7 +16,6 @@ export default function Step2Questions({ formData, errors, updateField }: Props)
   const sector = formData.sector as Sector;
   const questions = SECTOR_QUESTIONS[sector];
   const labels = SECTOR_QUESTION_LABELS[sector];
-  const isDiger = sector === "Diğer";
 
   return (
     <FormStep
@@ -39,7 +38,7 @@ export default function Step2Questions({ formData, errors, updateField }: Props)
         error={errors.s7}
       />
 
-      {!isDiger && questions.s8.length > 0 && (
+      {questions.s8.length > 0 && (
         <RadioGroup
           label={labels.s8}
           options={questions.s8}
