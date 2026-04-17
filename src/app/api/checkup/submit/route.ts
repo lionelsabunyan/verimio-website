@@ -349,7 +349,7 @@ export async function POST(req: NextRequest) {
       replyTo: REPLY_TO,
       to: [email],
       subject: `AI Hazırlık Raporunuz Hazır — ${company_name || 'Şirketiniz'}`,
-      html: checkupReportEmailHtml({
+      html: await checkupReportEmailHtml({
         recipientEmail: email,
         companyName: company_name || 'Şirketiniz',
         analysis,
