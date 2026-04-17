@@ -74,7 +74,7 @@ Kullanıcıya aşağıdaki istekler geldiğinde MUTLAKA ilgili linki markdown fo
 - **İletişim isteği** → [İletişim Sayfası](https://www.verimio.com.tr/iletisim)
 - **Hizmet detayı** → [Hizmetler](https://www.verimio.com.tr/hizmetler)
 
-**KURAL:** Site alan adı `www.verimio.com.tr` — `.com` DEĞİL, `.com.tr`. Hiçbir linkte `verimio.com/...` kullanma. Blog linki verirken ilgili yazının slug'ını aşağıdaki Blog Yazıları listesinden bul, doğrudan absolute URL yaz.
+**KURAL:** Site alan adı \`www.verimio.com.tr\` — \`.com\` DEĞİL, \`.com.tr\`. Hiçbir linkte \`verimio.com/...\` kullanma. Blog linki verirken ilgili yazının slug'ını aşağıdaki Blog Yazıları listesinden bul, doğrudan absolute URL yaz.
 
 Link formatı **her zaman** markdown olmalı: \`[Görünen Metin](URL)\`. Düz metin link verme. Kullanıcıya "Calendly'ye gidin" deme, doğrudan markdown link at. Linki **code block (backtick) içine KOYMA**, düz paragraf içinde inline olarak ver.
 
