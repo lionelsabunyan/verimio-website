@@ -102,7 +102,7 @@ export default function HakkimizdaPage() {
                 Öğrenme maliyetini önce kendimizde aldık. Size sunduğumuz her öneri, daha önce bizzat denediğimiz bir yöntem.
               </p>
               <p className="text-foreground-secondary leading-relaxed">
-                Teori değil, denenmiş yöntem. Her öneri bir yatırım getirisi hesabına dayanıyor.
+                Sözle değil, sayıyla. Her öneri bir yatırım getirisi hesabına dayanıyor.
               </p>
             </div>
           </div>
