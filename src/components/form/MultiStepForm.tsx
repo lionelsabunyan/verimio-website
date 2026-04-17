@@ -81,6 +81,7 @@ export default function MultiStepForm() {
       s6: "",
       s7: "",
       s8: "",
+      s9: "",
     }));
     if (errors.sector) setErrors((prev) => ({ ...prev, sector: undefined }));
   };
@@ -115,7 +116,8 @@ export default function MultiStepForm() {
     pain_points: {
       s6: data.s6,
       s7: data.s7,
-      ...(data.sector !== "Diğer" && { s8: data.s8 }),
+      s8: data.s8,
+      s9: data.s9,
     },
     biggest_pain: data.biggestPain,
     priority_area: data.priorityArea,

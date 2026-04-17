@@ -48,6 +48,16 @@ export default function Step2Questions({ formData, errors, updateField }: Props)
         />
       )}
 
+      {questions.s9.length > 0 && (
+        <RadioGroup
+          label={labels.s9}
+          options={questions.s9}
+          value={formData.s9}
+          onChange={(v) => updateField("s9", v)}
+          error={errors.s9}
+        />
+      )}
+
       <CheckboxGroup
         label="Şu an hangi araçları kullanıyorsunuz? (birden fazla seçebilirsiniz)"
         options={TOOLS_OPTIONS}

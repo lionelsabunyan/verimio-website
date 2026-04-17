@@ -27,6 +27,7 @@ export function validateStep(step: number, data: FormData): ValidationErrors {
     if (!data.s6) errors.s6 = "Lütfen bir seçenek işaretleyin";
     if (!data.s7) errors.s7 = "Lütfen bir seçenek işaretleyin";
     if (!data.s8) errors.s8 = "Lütfen bir seçenek işaretleyin";
+    if (!data.s9) errors.s9 = "Lütfen bir seçenek işaretleyin";
     if (data.tools.length === 0) errors.tools = "En az bir araç seçin";
   }
 

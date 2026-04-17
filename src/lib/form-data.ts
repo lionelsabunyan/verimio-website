@@ -21,7 +21,8 @@ export interface FormData {
   // Step 2 — Operasyonel Durum
   s6: string;
   s7: string;
-  s8: string; // Diğer sektöründe boş
+  s8: string;
+  s9: string; // Sektör-spesifik kritik metrik (iade %, no-show %, renewal %, ERP adı vs)
   tools: string[];
   // Step 3 — Hedef & Öncelik
   biggestPain: string;
@@ -41,6 +42,7 @@ export const INITIAL_FORM_DATA: FormData = {
   s6: "",
   s7: "",
   s8: "",
+  s9: "",
   tools: [],
   biggestPain: "",
   priorityArea: "",
@@ -93,17 +95,17 @@ export const TOOLS_OPTIONS = [
   "Hiçbiri",
 ];
 
-// Sektörel sorular: s6=operasyonel süreç, s7=hacim/ölçek proxy, s8=vakit kaybı
+// Sektörel sorular: s6=operasyonel yapı/süreç, s7=hacim/ölçek, s8=enerji kaybı, s9=sektör-spesifik kritik metrik
 export const SECTOR_QUESTIONS: Record<
   Sector,
-  { s6: string[]; s7: string[]; s8: string[] }
+  { s6: string[]; s7: string[]; s8: string[]; s9: string[] }
 > = {
   "E-ticaret": {
     s6: [
-      "WhatsApp/e-posta'da her müşteriye ayrı ayrı cevap yazıyoruz",
-      "Şablonlarımız var ama yine de elle yollanıyor",
-      "Kısmen otomatik (chatbot veya hazır yanıtlar)",
-      "Tamamen otomatik sistem kurulu",
+      "Sadece kendi web sitemiz",
+      "1 marketplace + kendi sitemiz",
+      "2-3 marketplace entegre çalışıyoruz",
+      "4+ kanal, OMS/entegrasyon yazılımı kullanıyoruz",
     ],
     s7: [
       "1-100 sipariş",
@@ -112,38 +114,52 @@ export const SECTOR_QUESTIONS: Record<
       "2.000+ sipariş",
     ],
     s8: [
-      "Müşteri iletişimi ve destek",
-      "Ürün listeleme ve içerik üretimi",
-      "Sipariş / iade / kargo takibi",
-      "Raporlama ve analiz",
+      "Ürün listeleme ve varyant yönetimi",
+      "İade yönetimi ve iade oranı",
+      "Müşteri destek ve marketplace mesajları",
+      "Reklam/kampanya yönetimi ve creative üretimi",
+    ],
+    s9: [
+      "%5 altı (sağlıklı)",
+      "%5-15 (normal)",
+      "%15-30 (kronik sorun)",
+      "%30+ (acil müdahale)",
+      "Takip etmiyoruz",
     ],
   },
   "Perakende / Mağaza": {
     s6: [
-      "Manuel (kağıt, defter, Excel)",
-      "POS sistemi var ama stok takibi ayrı",
-      "Entegre POS + stok sistemi",
-      "Otomatik sipariş ve stok yenileme sistemi",
+      "Tek mağaza (bağımsız operasyon)",
+      "2-5 şube (sahibi hâlâ günlük operasyona dokunuyor)",
+      "6-20 şube (profesyonel operasyon ekibi var)",
+      "20+ şube veya franchise yapısı",
     ],
     s7: [
-      "1-30 işlem",
-      "30-100 işlem",
-      "100-500 işlem",
+      "Şube başına 50 altı işlem",
+      "50-200 işlem",
+      "200-500 işlem",
       "500+ işlem",
     ],
     s8: [
-      "Stok sayımı ve sipariş yönetimi",
-      "Müşteri sadakat ve iletişim",
-      "Personel vardiya ve performans takibi",
-      "Raporlama ve analiz",
+      "Şubeler arası stok dengesizliği ve transfer",
+      "Personel devir hızı, vardiya ve eğitim",
+      "Müşteri sadakati ve kampanya etkinliği",
+      "Fire, kayıp ve envanter tutarsızlığı",
+    ],
+    s9: [
+      "Logo / Netsis",
+      "Mikro / Eta",
+      "SAP / Oracle",
+      "Kendi yazılım",
+      "POS var ama ERP yok",
     ],
   },
   "Ajans (Reklam / Dijital / Kreatif)": {
     s6: [
-      "Her müşteri için ayrı hazırlıyoruz, birkaç saat sürüyor",
-      "Şablonumuz var ama veriyi elle topluyoruz",
-      "Araçlarla kısmen otomatik (Looker Studio vb.)",
-      "Otomatik dashboard'lar, müşteri kendi erişiyor",
+      "Takip etmiyoruz, hissen yönetiyoruz",
+      "Takip ediyoruz, %60 altında (kronik düşük)",
+      "Takip ediyoruz, %60-75 arası (normal)",
+      "Takip ediyoruz, %75 üstü (sağlıklı)",
     ],
     s7: [
       "1-5 müşteri",
@@ -152,18 +168,25 @@ export const SECTOR_QUESTIONS: Record<
       "40+ müşteri",
     ],
     s8: [
-      "Müşteri takibi ve brief alma süreci",
-      "İçerik üretimi ve onay süreçleri",
-      "Raporlama ve performans analizi",
-      "Fatura, teklif ve muhasebe",
+      "İçerik üretim hacmi (copy, görsel, video yetmiyor)",
+      "Revizyon döngüleri ve scope creep",
+      "İç koordinasyon ve proje yönetimi",
+      "Raporlama ve müşteri iletişimi",
+    ],
+    s9: [
+      "Full-service (her hizmet)",
+      "Performance ağırlıklı (reklam)",
+      "Kreatif butik (tasarım/video)",
+      "Sosyal medya / influencer",
+      "PR / iletişim",
     ],
   },
   "B2B Hizmet (Danışmanlık / Muhasebe / Hukuk)": {
     s6: [
-      "Klasörler ve e-posta (bulmak zaman alıyor)",
-      "Bulut depolama (Drive, Dropbox) ama düzensiz",
-      "Organize belge yönetim sistemi",
-      "DMS (Document Management System) kullanıyoruz",
+      "WhatsApp ve e-posta (dağınık, dönem sonu kaos)",
+      "Klasör + cloud (Drive/Dropbox) ama aramak zaman alıyor",
+      "Muhasebe yazılımının arşiv modülü (Luca/Zirve/Mikro)",
+      "Müvekkil portalı var, belge kendileri yüklüyor",
     ],
     s7: [
       "1-10 müşteri/dosya",
@@ -172,18 +195,25 @@ export const SECTOR_QUESTIONS: Record<
       "80+ müşteri/dosya",
     ],
     s8: [
-      "Müşteri takibi ve hatırlatmalar",
-      "Teklif ve sözleşme hazırlama",
-      "Belge ve dosya yönetimi",
-      "Raporlama ve analiz",
+      "Belge toplama ve tasnif (müvekkilden gelen fatura/makbuz)",
+      "Beyanname hazırlama ve dönemsel yoğunluk",
+      "Müvekkil soru-cevap ve mevzuat açıklaması",
+      "GİB / e-Fatura / e-Defter entegrasyon arızaları",
+    ],
+    s9: [
+      "Luca",
+      "Zirve",
+      "Mikro / Logo",
+      "Eta / Diğer",
+      "Kullanmıyorum / Excel",
     ],
   },
   "Üretim / Lojistik": {
     s6: [
-      "Manuel kayıt (kağıt, defter, Excel)",
-      "Basit yazılım ama entegrasyon yok",
-      "ERP sistemi var (SAP, Logo vb.)",
-      "Otomatik sensör / IoT entegrasyonu",
+      "Kağıt formlar + Excel (vardiya sonu manuel toplama)",
+      "ERP var ama saha verisi geç giriliyor",
+      "ERP + barkod/terminal (saha canlı veri giriyor)",
+      "MES / IoT kurulu, makineler canlı veri gönderiyor",
     ],
     s7: [
       "1-100 birim/sipariş",
@@ -192,30 +222,45 @@ export const SECTOR_QUESTIONS: Record<
       "2.000+ birim/sipariş",
     ],
     s8: [
-      "Stok ve üretim planlaması",
-      "Tedarikçi iletişimi ve sipariş",
-      "Sevkiyat ve lojistik takibi",
-      "Kalite kontrol ve raporlama",
+      "Üretim planlama ve termin uyumu",
+      "Makine duruşları ve bakım",
+      "Fire / kalite geri dönüşleri",
+      "Tedarikçi teslim gecikmeleri",
+      "Vardiya raporlama ve iç veri akışı",
+    ],
+    s9: [
+      "SAP",
+      "Logo / Netsis",
+      "Mikro / Eta",
+      "Sadece Excel",
+      "ERP yok",
     ],
   },
   "Teknoloji / Yazılım": {
     s6: [
-      "E-posta ve Slack (dağınık, takip zor)",
-      "Ticket sistemi (Freshdesk, Zendesk vb.)",
-      "AI destekli chatbot + insan desteği",
-      "Self-serve dokümantasyon + otomatik yanıtlar",
+      "Slack + e-posta (ticket tanımı yok)",
+      "Ticket sistemi (Zendesk/Freshdesk) — manuel triage",
+      "Ticket + AI triage / auto-response (kısmen otomatik)",
+      "AI agent + self-serve + agent handoff (olgun kurulum)",
     ],
     s7: [
-      "1-100",
+      "1-100 destek talebi/ay",
       "100-1.000",
       "1.000-10.000",
       "10.000+",
     ],
     s8: [
-      "Müşteri desteği ve ticketing",
-      "Deployment ve test süreçleri",
-      "İç raporlama ve proje takibi",
-      "Fatura ve muhasebe süreçleri",
+      "Ticket triage ve tekrarlayan soru cevaplama",
+      "Müşteri-reported bug tekrar üretimi ve dev'e aktarma",
+      "Onboarding ve eğitim (time-to-value)",
+      "Churn / kullanım analizi ve müdahale",
+      "Release/deployment ve incident response",
+    ],
+    s9: [
+      "Pre-revenue / < 500K USD",
+      "500K - 2M USD, çoğunluk SMB",
+      "2M - 10M USD, mid-market ağırlıklı",
+      "10M+ USD, enterprise ağırlıklı",
     ],
   },
   "Sağlık / Klinik": {
@@ -232,18 +277,25 @@ export const SECTOR_QUESTIONS: Record<
       "80+ hasta/danışan",
     ],
     s8: [
-      "Randevu yönetimi ve hasta iletişimi",
-      "Reçete, rapor ve evrak işleri",
-      "Fatura ve sigorta süreçleri",
-      "Stok ve medikal malzeme takibi",
+      "Randevu, no-show ve hasta hatırlatma",
+      "SGK ve özel sigorta provizyon süreçleri",
+      "Reçete, rapor ve tetkik sonuç bildirimi",
+      "Hasta dosyası ve KVKK uyumlu arşivleme",
+    ],
+    s9: [
+      "%5 altı (sorun yok)",
+      "%5-15 (orta)",
+      "%15-25 (ciddi)",
+      "%25+ (kayıp büyük)",
+      "Takip etmiyoruz",
     ],
   },
   "Finans / Sigorta": {
     s6: [
-      "Manuel formlar ve e-posta",
-      "Dijital form var ama onay süreci manuel",
-      "Kısmen otomatik iş akışı",
-      "Tam dijital, uçtan uca otomatik",
+      "Manuel: e-posta, Excel, telefon hâkim",
+      "Kısmi dijital: form var, onay + hasar manuel",
+      "Acente yazılımı var ama şirketlerle entegrasyon kopuk",
+      "Uçtan uca entegre (başvuru + poliçe + hasar)",
     ],
     s7: [
       "1-50 dosya/başvuru",
@@ -252,30 +304,44 @@ export const SECTOR_QUESTIONS: Record<
       "1.000+ dosya/başvuru",
     ],
     s8: [
-      "Müşteri onboarding ve belge toplama",
-      "Risk değerlendirme ve analiz",
-      "Uyum (compliance) ve raporlama",
-      "Müşteri iletişimi ve takip",
+      "Yenileme takibi ve müşteri kaybı önleme",
+      "Hasar (claims) dosya takibi ve iletişim",
+      "Komisyon mutabakatı ve sigorta şirketi ekstreleri",
+      "Compliance raporlaması (BDDK/SEDDK/MASAK/KVKK)",
+    ],
+    s9: [
+      "%85 üstü (sağlıklı)",
+      "%70-85 (normal)",
+      "%50-70 (düşük)",
+      "%50 altı (kritik)",
+      "Takip etmiyoruz",
     ],
   },
   Gayrimenkul: {
     s6: [
-      "Manuel (tek tek sitelere giriyoruz)",
-      "Toplu ilan aracı var ama güncelleme manuel",
-      "CRM ile portföy takibi",
-      "Otomatik ilan dağıtım ve güncelleme sistemi",
+      "Her portal için tek tek manuel giriş",
+      "Toplu ilan aracı var, güncelleme hâlâ elle",
+      "CRM + ilan entegrasyonu kısmen otomatik",
+      "Otomatik dağıtım + fiyat/durum senkronu",
     ],
     s7: [
-      "1-20 ilan",
-      "20-80 ilan",
-      "80-200 ilan",
-      "200+ ilan",
+      "Aylık 20 altı lead",
+      "20-100 lead",
+      "100-300 lead",
+      "300+ lead",
     ],
     s8: [
-      "İlan yayınlama ve güncelleme",
-      "Müşteri adayı takibi ve eşleştirme",
-      "Sözleşme ve evrak süreçleri",
-      "Raporlama ve piyasa analizi",
+      "Lead'e hızlı dönüş ve nitelik filtreleme",
+      "Portföyün birden fazla portalda güncel tutulması",
+      "Sözleşme, ekspertiz ve tapu süreçleri",
+      "Danışman performans takibi ve komisyon paylaşımı",
+    ],
+    s9: [
+      "5 dk içinde",
+      "1 saat içinde",
+      "Aynı gün",
+      "24 saat+",
+      "Takip etmiyoruz",
     ],
   },
   Diğer: {
@@ -299,62 +365,79 @@ export const SECTOR_QUESTIONS: Record<
       "Raporlama ve finansal takip",
       "Ekip koordinasyonu ve görev dağılımı",
     ],
+    s9: [
+      "Aylık 10 altı müşteri/iş emri",
+      "10-50",
+      "50-200",
+      "200-1.000",
+      "1.000+",
+    ],
   },
 };
 
 export const SECTOR_QUESTION_LABELS: Record<
   Sector,
-  { s6: string; s7: string; s8: string }
+  { s6: string; s7: string; s8: string; s9: string }
 > = {
   "E-ticaret": {
-    s6: "Müşteri sorularını ve destek taleplerini nasıl yönetiyorsunuz?",
+    s6: "Kaç satış kanalında aktif olarak satış yapıyorsunuz?",
     s7: "Aylık ortalama sipariş hacminiz nedir?",
-    s8: "En çok vakit kaybettiğiniz alan hangisi?",
+    s8: "Operasyonunuzda en çok kan kaybettiğiniz alan hangisi?",
+    s9: "Son 3 ayda aylık ortalama iade oranınız yaklaşık yüzde kaç?",
   },
   "Perakende / Mağaza": {
-    s6: "Stok ve satış takibinizi nasıl yapıyorsunuz?",
-    s7: "Günlük ortalama müşteri / işlem sayınız nedir?",
-    s8: "En çok vakit kaybettiğiniz alan hangisi?",
+    s6: "Şube sayınız ve operasyon yapınız?",
+    s7: "Şube başına günlük ortalama işlem sayısı?",
+    s8: "Operasyonda en çok para / zaman kaybettiğiniz alan?",
+    s9: "Kullandığınız ana ERP/POS sistemi?",
   },
   "Ajans (Reklam / Dijital / Kreatif)": {
-    s6: "Müşteri raporlarını nasıl hazırlıyorsunuz?",
+    s6: "Ekibinizin aylık utilization (doluluk) oranını biliyor musunuz?",
     s7: "Kaç aktif müşteriyle çalışıyorsunuz?",
-    s8: "En çok vakit kaybettiğiniz alan hangisi?",
+    s8: "Ajans marjınızı en çok eriten alan hangisi?",
+    s9: "Hizmet karışımınızın ağırlığı hangisinde?",
   },
   "B2B Hizmet (Danışmanlık / Muhasebe / Hukuk)": {
-    s6: "Müşteri belgelerini ve dosyaları nasıl yönetiyorsunuz?",
+    s6: "Müvekkilinizle belge akışı nasıl işliyor?",
     s7: "Aylık aktif müşteri/dosya sayınız nedir?",
-    s8: "En çok vakit kaybettiğiniz alan hangisi?",
+    s8: "Ofisinizde en çok zamanı yiyen iş hangisi?",
+    s9: "Şu an hangi muhasebe yazılımını kullanıyorsunuz?",
   },
   "Üretim / Lojistik": {
-    s6: "Stok ve üretim takibini nasıl yapıyorsunuz?",
+    s6: "Üretim ve stok verinizi nasıl topluyorsunuz?",
     s7: "Aylık üretim veya sevkiyat hacminiz nedir?",
-    s8: "En çok vakit kaybettiğiniz alan hangisi?",
+    s8: "Üretiminizde en çok zaman/para kaybettiren alan?",
+    s9: "Mevcut ERP sisteminiz?",
   },
   "Teknoloji / Yazılım": {
-    s6: "Müşteri/kullanıcı desteğinizi nasıl yönetiyorsunuz?",
+    s6: "Müşteri başarısı ve destek operasyonunuz nasıl?",
     s7: "Aylık aktif kullanıcı veya destek talebi sayınız?",
-    s8: "En çok vakit kaybettiğiniz alan hangisi?",
+    s8: "Ekip olarak en çok nereye saat yakıyorsunuz?",
+    s9: "ARR ve müşteri segmentiniz?",
   },
   "Sağlık / Klinik": {
     s6: "Hasta randevu ve takip süreciniz nasıl işliyor?",
     s7: "Günlük ortalama hasta/danışan sayınız nedir?",
-    s8: "En çok vakit kaybettiğiniz alan hangisi?",
+    s8: "Sağlık operasyonunuzda en çok enerjinizi tüketen alan hangisi?",
+    s9: "Aylık ortalama no-show (gelmeyen hasta) oranınız?",
   },
   "Finans / Sigorta": {
-    s6: "Müşteri başvuru ve dosya süreciniz nasıl?",
+    s6: "Başvurudan poliçeye ve hasara kadar süreç nasıl işliyor?",
     s7: "Aylık işlem gören dosya/başvuru sayınız?",
-    s8: "En çok vakit kaybettiğiniz alan hangisi?",
+    s8: "Operasyonda en çok kaynağınızı tüketen alan hangisi?",
+    s9: "Yıllık yenileme (renewal) oranınız?",
   },
   Gayrimenkul: {
-    s6: "İlan ve portföy yönetiminiz nasıl?",
-    s7: "Aylık aktif ilan / portföy sayınız?",
-    s8: "En çok vakit kaybettiğiniz alan hangisi?",
+    s6: "Portföy ve ilan süreciniz nasıl işliyor?",
+    s7: "Aylık ortalama gelen müşteri adayı (lead) sayınız?",
+    s8: "Günlük işinizde en çok enerjinizi hangi alan alıyor?",
+    s9: "Ortalama lead dönüş süreniz?",
   },
   Diğer: {
     s6: "İşletmenizin ölçeğini en iyi anlatan hangisi?",
     s7: "Gelir modelinizin ağırlığı hangi yönde?",
     s8: "Operasyonunuzda en çok enerjinizi tüketen alan hangisi?",
+    s9: "Aylık müşteri veya iş emri hacminiz yaklaşık?",
   },
 };
 

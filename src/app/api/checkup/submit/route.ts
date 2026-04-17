@@ -18,13 +18,17 @@ Müşteri teknik değil — teknoloji veya yazılım geçmişi yok. Bu yüzden:
 SADECE geçerli JSON döndür, başka hiçbir şey yazma.`
 
 function buildAnalysisPrompt(data: Record<string, unknown>): string {
+  const pain = (data.pain_points || {}) as Record<string, string>
   return `Aşağıdaki şirket verilerine göre AI hazırlık analizi yap:
 
 Şirket: ${data.company_name || 'Belirtilmemiş'}
 Sektör: ${data.sector}
 Ekip büyüklüğü: ${data.team_size}
 Mevcut araçlar: ${Array.isArray(data.tools) ? data.tools.join(', ') : data.tools || 'Belirtilmemiş'}
-Ağrı noktaları: ${JSON.stringify(data.pain_points)}
+Operasyonel yapı (s6): ${pain.s6 || 'Belirtilmemiş'}
+Hacim/ölçek (s7): ${pain.s7 || 'Belirtilmemiş'}
+Enerji kaybı alanı (s8): ${pain.s8 || 'Belirtilmemiş'}
+Sektör-spesifik metrik (s9): ${pain.s9 || 'Belirtilmemiş'}
 En büyük sorun: ${data.biggest_pain}
 Öncelik alanı: ${data.priority_area}
 Beklenti: ${data.expectation}
