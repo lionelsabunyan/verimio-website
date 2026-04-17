@@ -14,7 +14,9 @@ import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 import FAQSchema from "@/components/seo/FAQSchema";
 import HowToSchema from "@/components/seo/HowToSchema";
 import InlineImage from "@/components/blog/InlineImage";
+import InlineVideo from "@/components/blog/InlineVideo";
 import TableOfContents from "@/components/blog/TableOfContents";
+import VideoObjectSchema from "@/components/seo/VideoObjectSchema";
 import { extractTocItems } from "@/components/blog/toc-utils";
 import { extractFaqFromContent } from "@/lib/blog-schema-extract";
 
@@ -66,6 +68,24 @@ function findCoverImage(slug: string): string | null {
     }
   }
   return null;
+}
+
+function findBlogVideo(
+  slug: string
+): { videoUrl: string; posterUrl: string | null } | null {
+  const videoPath = path.join(process.cwd(), "public/videos/blog", `${slug}.mp4`);
+  if (!fs.existsSync(videoPath)) return null;
+  const posterPath = path.join(
+    process.cwd(),
+    "public/videos/blog/posters",
+    `${slug}.webp`
+  );
+  return {
+    videoUrl: `/videos/blog/${slug}.mp4`,
+    posterUrl: fs.existsSync(posterPath)
+      ? `/videos/blog/posters/${slug}.webp`
+      : null,
+  };
 }
 
 function getPost(
@@ -195,6 +215,7 @@ const mdxComponents = {
   img: (props: { src?: string; alt?: string }) => (
     <InlineImage src={props.src} alt={props.alt} />
   ),
+  InlineVideo: InlineVideo,
   a: (props: { children?: React.ReactNode; href?: string; [key: string]: unknown }) => (
     <a className="text-foreground underline underline-offset-4 decoration-border hover:decoration-foreground transition-colors" {...props} />
   ),
@@ -218,6 +239,7 @@ export default async function BlogPostPage({
   ).slice(0, 3);
 
   const coverImage = findCoverImage(slug);
+  const blogVideo = findBlogVideo(slug);
   const faqItems = extractFaqFromContent(content);
   const canonicalUrl = `https://www.verimio.com.tr/blog/${slug}`;
 
@@ -239,6 +261,16 @@ export default async function BlogPostPage({
         ]}
       />
       {faqItems.length > 0 && <FAQSchema items={faqItems} />}
+      {blogVideo && (
+        <VideoObjectSchema
+          name={frontmatter.title}
+          description={frontmatter.excerpt}
+          thumbnailUrl={`https://www.verimio.com.tr${blogVideo.posterUrl ?? coverImage ?? ""}`}
+          contentUrl={`https://www.verimio.com.tr${blogVideo.videoUrl}`}
+          uploadDate={isoDate}
+          duration="PT20S"
+        />
+      )}
       {frontmatter.howto && frontmatter.howto.steps?.length > 0 && (
         <HowToSchema
           name={frontmatter.howto.name ?? frontmatter.title}
