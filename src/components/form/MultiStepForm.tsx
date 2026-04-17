@@ -143,6 +143,24 @@ export default function MultiStepForm() {
         body: JSON.stringify(payload),
       });
       if (!res.ok) throw new Error("submit failed");
+      const data = await res.json();
+      // Te\u015fekk\u00fcr sayfas\u0131 raporu an\u0131nda g\u00f6sterebilsin diye localStorage'a koy
+      if (data.analysis && typeof window !== "undefined") {
+        try {
+          window.sessionStorage.setItem(
+            "verimio_last_report",
+            JSON.stringify({
+              companyName: formData.companyName,
+              email: formData.email,
+              sector: formData.sector,
+              analysis: data.analysis,
+              timestamp: Date.now(),
+            })
+          );
+        } catch {
+          // sessionStorage yoksa sessizce ge\u00e7
+        }
+      }
       router.push("/tesekkurler?tip=rapor");
     } catch {
       setSubmitError("Bir hata oluştu. Lütfen tekrar deneyin.");

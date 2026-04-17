@@ -379,7 +379,7 @@ export async function POST(req: NextRequest) {
       </div>`,
     }).catch(() => {})
 
-    return NextResponse.json({ success: true, leadId: lead?.id })
+    return NextResponse.json({ success: true, leadId: lead?.id, analysis })
   } catch (err) {
     console.error('checkup/submit error:', err)
     return NextResponse.json({ error: 'Sunucu hatası' }, { status: 500 })
