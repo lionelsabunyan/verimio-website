@@ -39,12 +39,14 @@ export default function Step2Questions({ formData, errors, updateField }: Props)
       />
 
       {questions.s8.length > 0 && (
-        <RadioGroup
+        <CheckboxGroup
           label={labels.s8}
+          hint="En fazla 3 alan seçebilirsiniz"
           options={questions.s8}
-          value={formData.s8}
+          values={formData.s8}
           onChange={(v) => updateField("s8", v)}
           error={errors.s8}
+          maxSelections={3}
         />
       )}
 

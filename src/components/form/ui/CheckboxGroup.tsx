@@ -12,6 +12,8 @@ interface CheckboxGroupProps {
   onChange: (values: string[]) => void;
   error?: string;
   columns?: 1 | 2;
+  maxSelections?: number;
+  hint?: string;
 }
 
 export default function CheckboxGroup({
@@ -21,18 +23,29 @@ export default function CheckboxGroup({
   onChange,
   error,
   columns = 1,
+  maxSelections,
+  hint,
 }: CheckboxGroupProps) {
   const toggle = (option: string) => {
-    const next = values.includes(option)
+    const isSelected = values.includes(option);
+    if (!isSelected && maxSelections && values.length >= maxSelections) {
+      return; // sınır aşılmasın, sessizce engelle
+    }
+    const next = isSelected
       ? values.filter((v) => v !== option)
       : [...values, option];
     onChange(next);
   };
 
+  const atLimit = maxSelections !== undefined && values.length >= maxSelections;
+
   return (
     <div className="space-y-2">
       {label && (
         <p className="text-sm font-medium text-foreground-secondary">{label}</p>
+      )}
+      {hint && (
+        <p className="text-xs text-foreground-muted">{hint}</p>
       )}
       <div
         className={
@@ -43,17 +56,21 @@ export default function CheckboxGroup({
       >
         {options.map((option) => {
           const checked = values.includes(option);
+          const disabled = !checked && atLimit;
           return (
             <motion.button
               key={option}
               type="button"
               onClick={() => toggle(option)}
-              whileTap={{ scale: 0.97 }}
+              disabled={disabled}
+              whileTap={disabled ? undefined : { scale: 0.97 }}
               transition={{ type: "spring", stiffness: 400, damping: 25 }}
               className={`flex items-center gap-3 px-4 py-3 border text-sm text-left transition-colors duration-150 ${
                 checked
                   ? "border-foreground text-foreground font-medium"
-                  : "border-border text-foreground-secondary hover:border-foreground/40"
+                  : disabled
+                    ? "border-border/50 text-foreground-muted cursor-not-allowed opacity-50"
+                    : "border-border text-foreground-secondary hover:border-foreground/40"
               }`}
             >
               <span

@@ -21,7 +21,7 @@ export interface FormData {
   // Step 2 — Operasyonel Durum
   s6: string;
   s7: string;
-  s8: string;
+  s8: string[]; // Enerji kaybı alanları — çoklu seçim (max 3), KOBİ'nin genelde 2-3 derdi aynı anda var
   s9: string; // Sektör-spesifik kritik metrik (iade %, no-show %, renewal %, ERP adı vs)
   tools: string[];
   // Step 3 — Hedef & Öncelik
@@ -41,7 +41,7 @@ export const INITIAL_FORM_DATA: FormData = {
   teamSize: "",
   s6: "",
   s7: "",
-  s8: "",
+  s8: [],
   s9: "",
   tools: [],
   biggestPain: "",

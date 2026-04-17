@@ -80,7 +80,7 @@ export default function MultiStepForm() {
       sector,
       s6: "",
       s7: "",
-      s8: "",
+      s8: [],
       s9: "",
     }));
     if (errors.sector) setErrors((prev) => ({ ...prev, sector: undefined }));

@@ -18,7 +18,10 @@ Müşteri teknik değil — teknoloji veya yazılım geçmişi yok. Bu yüzden:
 SADECE geçerli JSON döndür, başka hiçbir şey yazma.`
 
 function buildAnalysisPrompt(data: Record<string, unknown>): string {
-  const pain = (data.pain_points || {}) as Record<string, string>
+  const pain = (data.pain_points || {}) as Record<string, string | string[]>
+  const s8List = Array.isArray(pain.s8) ? pain.s8 : pain.s8 ? [pain.s8] : []
+  const s8Text = s8List.length > 0 ? s8List.join(' + ') : 'Belirtilmemiş'
+  const s8Note = s8List.length > 1 ? ` (${s8List.length} alan birden işaretlendi — her birini önerilere yansıt)` : ''
   return `Aşağıdaki şirket verilerine göre AI hazırlık analizi yap:
 
 Şirket: ${data.company_name || 'Belirtilmemiş'}
@@ -27,7 +30,7 @@ Ekip büyüklüğü: ${data.team_size}
 Mevcut araçlar: ${Array.isArray(data.tools) ? data.tools.join(', ') : data.tools || 'Belirtilmemiş'}
 Operasyonel yapı (s6): ${pain.s6 || 'Belirtilmemiş'}
 Hacim/ölçek (s7): ${pain.s7 || 'Belirtilmemiş'}
-Enerji kaybı alanı (s8): ${pain.s8 || 'Belirtilmemiş'}
+Enerji kaybı alanları (s8): ${s8Text}${s8Note}
 Sektör-spesifik metrik (s9): ${pain.s9 || 'Belirtilmemiş'}
 En büyük sorun: ${data.biggest_pain}
 Öncelik alanı: ${data.priority_area}
