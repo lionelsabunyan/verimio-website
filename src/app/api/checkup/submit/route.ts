@@ -32,24 +32,22 @@ Zaman çizelgesi: ${data.timeline}
 
 KURALLAR:
 1. Dil: Sade Türkçe, jargon yok. Müşteri KOBİ sahibi, teknik değil.
-2. Öneriler birbirinden farklı iş alanlarında olmalı: müşteri iletişimi, raporlama/takip, iç süreçler, stok/sipariş, satış/pazarlama, insan kaynakları, maliyet kontrolü gibi. Aynı konuyu tekrarlama.
+2. Öneriler 3-5 adet olsun. Her öneri sektör-spesifik ve uygulanabilir olmalı — sayıyı doldurmak için dolgu ekleme, 3 güçlü öneri 5 vasat öneriden değerlidir. Öneriler birbirinden farklı iş alanlarında olmalı (müşteri iletişimi, raporlama/takip, iç süreçler, stok/sipariş, satış/pazarlama, insan kaynakları, maliyet kontrolü gibi). Aynı konuyu tekrarlama.
 3. Yol haritası gerçekçi olsun. Her şey 2-4 haftada bitecekse sadece phase1 yeterli. Zorla 3 faz üretme.
 4. timeline_label: Gerçekçi toplam süre tahmini ("2-4 hafta" / "1-2 ay" / "2-3 ay" / "3+ ay").
+5. Öneri başlıklarında "Akıllı", "Otomatik", "Sistem", "Yapı" kelimelerini art arda kullanma. Her başlık farklı bir eylem fiili veya somut metafor içersin. İyi örnek: "Kargo Sorusunu Sizden Almak" / "Raporu Kendi Kendine Yazdır" / "Muhasebeciyi Rahatlatmak". Kötü örnek: "Akıllı Kargo Sistemi" / "Otomatik Rapor Yapısı" / "Akıllı Cevap Yardımcısı".
 
-Şu JSON formatını döndür:
+Şu JSON formatını döndür (recommendations dizisi 3-5 eleman içerebilir — dolgu yapma):
 {
   "score": <1-10 arası sayı>,
   "score_label": "<Yeni başlıyorsunuz / Adım adım ilerliyorsunuz / Hazır durumdasınız / İleri bir noktadasınız>",
   "top_opportunity": "<tek cümle, sade dille en somut kazanım fırsatı>",
-  "estimated_saving": "<tahmini zaman veya para tasarrufu, Türk KOBİ'leri için gerçekçi rakamlar>",
+  "estimated_saving": "<tahmini tasarruf — MUTLAKA spesifik saat veya TL rakamı içersin. Örnek iyi: 'Ayda 120 saat personel mesaisi + 40.000 TL gelir kaybı önlenir'. Örnek kötü: 'Mesai %60 azalır' (yalnız yüzde yetmez). Türk KOBİ'leri için gerçekçi rakamlar>",
   "timeline_label": "<gerçekçi toplam süre: '2-4 hafta' / '1-2 ay' / '2-3 ay' / '3+ ay'>",
   "summary": "<2-3 cümle özet, şirkete özel, sade dil>",
   "recommendations": [
-    {"title": "<başlık>", "description": "<2-3 cümle, nasıl uygulanır, sade dil>"},
-    {"title": "<başlık>", "description": "<2-3 cümle>"},
-    {"title": "<başlık>", "description": "<2-3 cümle>"},
-    {"title": "<başlık>", "description": "<2-3 cümle>"},
-    {"title": "<başlık>", "description": "<2-3 cümle>"}
+    {"title": "<başlık — Kural 5'e uy>", "description": "<2-3 cümle, nasıl uygulanır, sade dil>"}
+    /* ... 3-5 eleman arası, sektör-spesifik değilse ekleme */
   ],
   "roadmap": {
     "phase1": "<ilk adım — her zaman dolu, hemen başlanabilir>",
