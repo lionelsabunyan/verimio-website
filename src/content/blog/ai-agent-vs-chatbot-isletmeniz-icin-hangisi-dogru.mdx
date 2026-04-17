@@ -45,18 +45,15 @@ AI Agent'lar, karmaşık iş akışlarını otomatikleştirerek insan müdahales
 
 ## Temel Farklar: Chatbot vs AI Agent
 
-İki teknolojiyi daha net anlamak için temel farklarına bir göz atalım:
+İki teknoloji arasındaki yapısal farkı en iyi özetleyen şey, işleyiş biçimleridir. Chatbot tek bir döngüdür: kullanıcı sorar, chatbot yanıtlar, döngü kapanır. AI Agent ise bir hedef alır, o hedefe ulaşmak için birden fazla sistemle eşzamanlı konuşur, ara kararlar alır, geri besleme döngüsüyle kendini düzeltir.
 
-| Özellik         | Chatbot                                              | AI Agent                                                                      |
-| :-------------- | :--------------------------------------------------- | :---------------------------------------------------------------------------- |
-| **Amaç**        | Önceden tanımlanmış soruları yanıtlama, bilgi sağlama | Belirli bir hedefi gerçekleştirmek, karmaşık görevleri tamamlama            |
-| **Kapasite**    | Kural tabanlı, senaryo odaklı, tek adımlı görevler | Hedef odaklı, planlama, çok adımlı görevler, dış sistem entegrasyonu            |
-| **İnisiyatif**  | Kullanıcıdan gelen talebe reaktif yanıt verir         | Kendi başına karar alabilir, problem çözme yeteneğine sahip                    |
-| **Öğrenme**     | Genellikle sınırlı (konuşma geçmişinden), güncellemeyle | Sürekli öğrenme, deneyimlerinden ders çıkarma, adaptasyon                      |
-| **Entegrasyon** | Genellikle tek bir veritabanı veya API ile sınırlı | Veritabanları, CRM, ERP, e-posta, proje yönetim araçları vb. birden çok sistemle |
-| **Karmaşıklık** | Düşük-Orta                                           | Orta-Yüksek                                                                   |
-| **Maliyet**     | Düşük-Orta                                           | Orta-Yüksek (başlangıç ve işletme)                                             |
-| **Örnek**       | SSS botu, randevu alma asistanı                      | Satış otomasyonu, tedarik zinciri optimizasyonu, kişiselleştirilmiş pazarlama |
+![Chatbot tek döngü vs AI Agent çok sistemli akış](/images/blog/inline/chatbot-vs-ai-agent-akis.webp)
+
+**Chatbot özetle:** Reaktif, kural tabanlı, tek adımlı, tek sisteme bağlı. Amaç: önceden tanımlanmış soruları yanıtlamak. Örnek: SSS botu, randevu asistanı.
+
+**AI Agent özetle:** Proaktif, hedef odaklı, çok adımlı, birden fazla sistemle entegre (CRM, ERP, e-posta, veritabanı). Amaç: bir hedefi baştan sona tamamlamak. Örnek: satış otomasyonu, tedarik zinciri yönetimi.
+
+Maliyet tarafında da fark net: Chatbot kurulum ve işletme olarak düşük-orta bantta; AI Agent orta-yüksek. Ama AI Agent'ların çoklu sistem entegrasyonu ve öğrenme kapasitesi, uzun vadede çok daha yüksek getiri sağlar.
 
 ## İşletmeniz İçin Hangi Teknoloji Doğru?
 

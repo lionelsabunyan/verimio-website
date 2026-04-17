@@ -2,6 +2,7 @@ import type React from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
 import matter from "gray-matter";
 import fs from "fs";
 import path from "path";
@@ -283,7 +284,11 @@ export default async function BlogPostPage({
       {/* Article body — single column, narrow */}
       <article className="max-w-3xl mx-auto px-6 lg:px-8">
         <TableOfContents items={extractTocItems(content)} />
-        <MDXRemote source={content} components={mdxComponents} />
+        <MDXRemote
+          source={content}
+          components={mdxComponents}
+          options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+        />
       </article>
 
       {/* Related posts */}
