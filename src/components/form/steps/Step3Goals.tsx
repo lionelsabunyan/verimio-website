@@ -3,9 +3,11 @@
 import FormStep from "../FormStep";
 import RadioGroup from "../ui/RadioGroup";
 import Textarea from "../ui/Textarea";
-import type { FormData } from "@/lib/form-data";
+import type { FormData, Sector } from "@/lib/form-data";
 import {
   PRIORITY_AREA_OPTIONS,
+  SECTOR_PRIORITY_AREAS,
+  SECTOR_PAIN_PLACEHOLDERS,
   EXPECTATION_OPTIONS,
   TIMELINE_OPTIONS,
 } from "@/lib/form-data";
@@ -17,6 +19,14 @@ interface Props {
 }
 
 export default function Step3Goals({ formData, errors, updateField }: Props) {
+  const sector = formData.sector as Sector;
+  const priorityOptions = sector
+    ? SECTOR_PRIORITY_AREAS[sector]
+    : [...PRIORITY_AREA_OPTIONS];
+  const painPlaceholder = sector
+    ? SECTOR_PAIN_PLACEHOLDERS[sector]
+    : "Örn: Müşteri sorularına yetişemiyoruz, her rapor için saatlerce Excel'le uğraşıyoruz, ekip koordinasyonu çok zor...";
+
   return (
     <FormStep
       title="Öncelikleriniz"
@@ -27,14 +37,14 @@ export default function Step3Goals({ formData, errors, updateField }: Props) {
         value={formData.biggestPain}
         onChange={(v) => updateField("biggestPain", v)}
         error={errors.biggestPain}
-        placeholder="Örn: Müşteri sorularına yetişemiyoruz, her rapor için saatlerce Excel'le uğraşıyoruz, ekip koordinasyonu çok zor..."
+        placeholder={painPlaceholder}
         maxLength={500}
         required
       />
 
       <RadioGroup
         label="Hangi alanda destek almak istersiniz?"
-        options={[...PRIORITY_AREA_OPTIONS]}
+        options={priorityOptions}
         value={formData.priorityArea}
         onChange={(v) => updateField("priorityArea", v)}
         error={errors.priorityArea}

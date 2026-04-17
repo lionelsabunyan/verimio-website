@@ -450,6 +450,105 @@ export const PRIORITY_AREA_OPTIONS = [
   "AI Strateji & Agent Kurulumu",
 ] as const;
 
+// Sektör bazlı öncelik alanları — "priority_area" Step 3'te sektör seçimine göre dinamikleşir.
+// Her sektörde 4 sektör-spesifik seçenek + 1 ortak "Başka bir alan".
+export const SECTOR_PRIORITY_AREAS: Record<Sector, string[]> = {
+  "E-ticaret": [
+    "Marketplace ve ürün listeleme otomasyonu",
+    "Müşteri destek AI'ı (chatbot / WhatsApp)",
+    "Reklam ve kampanya optimizasyonu",
+    "Veri ve satış raporlama otomasyonu",
+    "Başka bir alan (aşağıda açıklayayım)",
+  ],
+  "Perakende / Mağaza": [
+    "Stok optimizasyonu ve talep tahmini",
+    "Müşteri sadakat ve CRM otomasyonu",
+    "Personel performans ve vardiya yönetimi",
+    "Veri ve satış raporlama otomasyonu",
+    "Başka bir alan (aşağıda açıklayayım)",
+  ],
+  "Ajans (Reklam / Dijital / Kreatif)": [
+    "İçerik üretim hızlandırma (copy + görsel + video)",
+    "İç operasyon ve proje yönetimi",
+    "Otomatik raporlama ve müşteri dashboard'ları",
+    "AI kampanya analizi ve öneri sistemi",
+    "Başka bir alan (aşağıda açıklayayım)",
+  ],
+  "B2B Hizmet (Danışmanlık / Muhasebe / Hukuk)": [
+    "Belge/müvekkil takip otomasyonu",
+    "Müşteri iletişimi ve hatırlatma AI'ı",
+    "Mevzuat ve beyanname süreç hızlandırma",
+    "Veri ve raporlama otomasyonu",
+    "Başka bir alan (aşağıda açıklayayım)",
+  ],
+  "Üretim / Lojistik": [
+    "Üretim planlama ve OEE optimizasyonu",
+    "Tedarik zinciri otomasyonu",
+    "Kalite kontrol ve fire yönetimi",
+    "Veri ve raporlama otomasyonu",
+    "Başka bir alan (aşağıda açıklayayım)",
+  ],
+  "Teknoloji / Yazılım": [
+    "AI destek / ticket triage",
+    "Product analytics & churn önleme",
+    "Developer productivity AI",
+    "İç raporlama ve veri otomasyonu",
+    "Başka bir alan (aşağıda açıklayayım)",
+  ],
+  "Sağlık / Klinik": [
+    "Randevu ve no-show önleme otomasyonu",
+    "SGK / sigorta provizyon otomasyonu",
+    "KVKK uyumlu doküman ve hasta yönetimi",
+    "Veri ve raporlama otomasyonu",
+    "Başka bir alan (aşağıda açıklayayım)",
+  ],
+  "Finans / Sigorta": [
+    "Renewal / claims süreç otomasyonu",
+    "Compliance ve regülasyon raporlaması",
+    "Dijital belge toplama ve KVKK",
+    "Komisyon mutabakatı ve veri akışı",
+    "Başka bir alan (aşağıda açıklayayım)",
+  ],
+  Gayrimenkul: [
+    "Lead yönetimi ve CRM otomasyonu",
+    "İlan dağıtım ve güncelleme otomasyonu",
+    "Müşteri-portföy akıllı eşleştirme",
+    "Danışman performans ve raporlama",
+    "Başka bir alan (aşağıda açıklayayım)",
+  ],
+  Diğer: [
+    "Operasyon otomasyonu (n8n / Make)",
+    "Müşteri hizmetleri AI'ı (chatbot / voice)",
+    "Veri ve raporlama otomasyonu",
+    "AI strateji ve agent kurulumu",
+    "Başka bir alan (aşağıda açıklayayım)",
+  ],
+};
+
+// Sektör bazlı biggest_pain textarea placeholder'ı — ziyaretçiye örnek veriyor.
+export const SECTOR_PAIN_PLACEHOLDERS: Record<Sector, string> = {
+  "E-ticaret":
+    "Örn: İade oranımız %18, marketplace mesajlarına yetişemiyoruz, SKU sayımız 3.000 ama 500'ü hiç satmıyor, reklam maliyeti çok yüksek...",
+  "Perakende / Mağaza":
+    "Örn: 8 şube arası stok transfer sıkıntılı, personel devir hızı %40, fire oranımız yüksek, kampanya etkisini ölçemiyoruz...",
+  "Ajans (Reklam / Dijital / Kreatif)":
+    "Örn: Ekip utilization %55, aylık raporlar 100 saat alıyor, 3 müşteri son 6 ayda churn oldu, scope creep hakim...",
+  "B2B Hizmet (Danışmanlık / Muhasebe / Hukuk)":
+    "Örn: Beyanname dönemlerinde ekip 80 saat haftaya çıkıyor, müvekkil belgeleri WhatsApp'tan dağınık geliyor, GİB entegrasyon sık bozuluyor...",
+  "Üretim / Lojistik":
+    "Örn: OEE %58, fire oranı %7, ERP ile Excel konuşmuyor, tedarikçi teslim gecikmeleri üretim planını altüst ediyor...",
+  "Teknoloji / Yazılım":
+    "Örn: Aylık 2000 ticket, churn %12, onboarding 3 hafta, 4 kişilik CS yetmiyor, enterprise müşteri SOC2 istiyor...",
+  "Sağlık / Klinik":
+    "Örn: Günde 8 hasta no-show, SGK provizyon takibi 4 saat/gün, KVKK audit yaklaşıyor, doktor notları elle yazılıyor...",
+  "Finans / Sigorta":
+    "Örn: Renewal %68, komisyon mutabakatı ayda 3 gün alıyor, 15 sigorta şirketi ekstresi Excel'de, hasar dosya takibi kötü...",
+  Gayrimenkul:
+    "Örn: Sahibinden lead'lerinin %70'i sahte, dönüş süremiz 2 saat, 3 portala tek tek ilan giriyoruz, danışmanlar müşteri alıp gidiyor...",
+  Diğer:
+    "Örn: Manuel takip yüzünden müşteri kaçırıyorum, Excel artık ayak bağı, WhatsApp'tan gelen kayıtlar organize değil, ödeme takibi zor...",
+};
+
 export const EXPECTATION_OPTIONS = [
   "Rapor yeterli — kendi ekibimizle ilerleriz",
   "Uygulama desteği de istiyorum",
