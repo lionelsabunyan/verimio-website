@@ -18,36 +18,33 @@ export const NAV_LINKS = [
 ] as const;
 
 export const HERO_CONTENT = {
-  badge: "AI Dönüşüm Danışmanlığı",
+  badge: "AI Danışmanlığı",
   headline: "Yapay zeka,",
   headlineHighlight: "ekibinizin en verimli üyesi.",
   subheadline:
-    "Verimio, operasyonunuzun hangi noktasında yapay zekadan nasıl verim alacağınızı haritalıyor — sonra birlikte uyguluyoruz. Dört uzmanlık alanımız var: operasyon otomasyonu, müşteri hizmetleri AI'ı, veri & raporlama ve AI strateji & agent kurulumu.",
+    "Yapay zekayı şirketinizde nereye koyacağınız belli değil. Önce bunu çıkarıyoruz. Sonra birlikte kuruyoruz. Rapor teslim edip çekilmiyoruz.",
   ctaPrimary: "Ücretsiz Check-Up Başlatın",
   ctaSecondary: "Nasıl Çalışır?",
   cards: [
     {
       title: "Zaman Tasarrufu",
-      description:
-        "Tekrarlayan süreçleri kaldırın, ekibiniz stratejik işlere odaklansın.",
+      description: "Tekrarlayan işlerden kurtulun. Ekibiniz esas işine baksın.",
     },
     {
       title: "Maliyet Kontrolü",
-      description:
-        "Kaynak israfını tespit edin, operasyonel maliyetinizi düşürün.",
+      description: "Nerede kaybediyorsunuz, görün. Duruma göre karar verin.",
     },
     {
       title: "Şeffaf Süreç",
-      description: "Check-up'tan uygulamaya beş adımlı, açık ve netleşmiş yol.",
+      description: "Check-up'tan uygulamaya beş adım. Her adımı önceden bilirsiniz.",
     },
   ],
 } as const;
 
 export const ABOUT_CONTENT = {
   label: "Hakkımızda",
-  heading:
-    "Yapay zekayla çalışan bir ekip, yapay zeka dönüşümünü anlatır.",
-  text: "Verimio, yapay zekayla çalışan bir danışmanlık ekibidir — müşterilerimize önerdiğimiz dönüşümü kendi operasyonumuzda da uyguladık. İçerik üretimimizin büyük bölümü otomatik pipeline'larla hazırlanıyor; blog yazılarımızın çoğu insan yönetiminde ama AI-asistanlı süreçlerden geçiyor. Bu bir yöntem değil, kanıt: operasyonunu gerçekten AI ile dönüştürmüş bir ekibin, başka şirketlere nasıl dönüşebileceğini anlatması en samimi pozisyondur.",
+  heading: "Kendi işimizi yapay zekayla yürütüyoruz.",
+  text: "Yazılarımız, tasarımlarımız, iş akışlarımız — çoğu otomatik. Müşterilerimize anlattığımız yöntemi önce kendi üzerimizde denedik. Rapor teslim edip çekilmiyoruz; uygulamaya kadar yanınızdayız.",
   ctaPrimary: "Hakkımızda",
   ctaSecondary: "Hizmetlerimize Bakın",
 } as const;
@@ -58,54 +55,54 @@ export const HOW_IT_WORKS = [
     icon: "clipboard-list",
     title: "Check-Up",
     description:
-      "Sektörünüze özel 15-20 dakikalık ücretsiz form. Operasyonunuzu gerçekten anlamak için doğru soruları soruyoruz.",
+      "15-20 dakikalık ücretsiz form. Sektörünüze özel sorular — şirketinizi tanıyalım.",
   },
   {
     step: "02",
     icon: "file-text",
     title: "Size Özel Rapor",
     description:
-      "Otomasyon potansiyeli, tahmini tasarruf ve öncelikli aksiyonlar — e-postanıza somut rakamlarla gelir.",
+      "Nerelerde ne kadar kazanabilirsiniz, nereden başlarsınız — rapor e-postanıza gelir.",
   },
   {
     step: "03",
     icon: "phone",
     title: "30 Dakikalık Görüşme",
     description:
-      "Calendly üzerinden ücretsiz görüşme. Raporu birlikte değerlendirir, sorularınızı cevaplar, kapsamı netleştiririz.",
+      "Ücretsiz 30 dakika. Raporu birlikte okuruz, sorularınızı cevaplarız.",
   },
   {
     step: "04",
     icon: "file-check",
     title: "Teklif",
     description:
-      "İhtiyacınıza göre şekillenmiş, kapsamı ve zaman çizelgesi belli bir teklif. Sürpriz maliyet yok.",
+      "Size özel teklif. Ne yapılacak, ne kadar sürecek, ne kadar tutar — hepsi önceden belli.",
   },
   {
     step: "05",
     icon: "rocket",
     title: "Uygulama & Takip",
     description:
-      "Çözümleri birlikte hayata geçiriyor, KPI'ları takip ediyor, ince ayar ve sürekli iyileştirme yapıyoruz.",
+      "Birlikte kuruyoruz. Sonra düzenli bakıyoruz: işe yarıyor mu, nerede aksıyor.",
   },
 ] as const;
 
 export const REPORT_SECTIONS = [
   {
-    title: "AI Hazırlık Skoru",
-    description: "Şirketinizin mevcut durumunu 10 üzerinden değerlendiriyoruz. Nerede olduğunuzu net görün.",
+    title: "Yapay Zeka Hazırlık Skoru",
+    description: "Şirketiniz şu an nerede? 10 üzerinden tek rakam, açıklamasıyla.",
   },
   {
     title: "En Büyük Fırsat",
-    description: "Cevaplarınıza göre en somut kazanım alanını ve tahmini tasarruf potansiyelini belirliyoruz.",
+    description: "Cevaplarınıza göre en çok kazanabileceğiniz alan. Tahmini tasarruf rakamıyla.",
   },
   {
     title: "5 Öncelikli Aksiyon",
-    description: "Farklı iş alanlarında uygulanabilir, birbirinden bağımsız 5 somut çözüm önerisi.",
+    description: "Birbirinden bağımsız beş çözüm önerisi. Her biri tek başına uygulanabilir.",
   },
   {
     title: "Uygulama Yol Haritası",
-    description: "Nereden başlayacağınızı gösteren adım adım plan. Gerçekçi süre tahminiyle.",
+    description: "Nereden başlayın, sonra ne yapın — adım adım. Gerçekçi süre tahminleriyle.",
   },
 ] as const;
 
@@ -113,62 +110,62 @@ export const EXPERTISE_ITEMS = [
   {
     slug: "operasyon-otomasyonu",
     title: "Operasyon Otomasyonu",
-    tagline: "n8n & Make ile süreçleri birbirine bağlayın.",
+    tagline: "Tekrarlayan işler kendi kendine çalışsın.",
     description:
-      "Süreç analizi ve iş akışı otomasyonunu tek başlık altında topluyoruz: operasyonunuzu uçtan uca haritalıyor, tekrarlayan görevleri n8n veya Make üzerinde otomatize ediyor, sistemleriniz arasında veri akışını kuruyoruz.",
+      "Muhasebeci haftada 8 saat Excel kopyalıyor. Satışçı her teklifi elle giriyor. Bu tür işleri otomatik sistemlere taşıyoruz. Bir kez kurun, sonrasında kendi çalışır.",
     features: [
-      "Uçtan uca iş akışı analizi ve darboğaz haritası",
-      "n8n / Make / Zapier platform seçimi ve kurulumu",
-      "Sistemler arası veri entegrasyonu (CRM, muhasebe, ERP)",
-      "Otomatik bildirim, onay akışı ve takip mekanizmaları",
+      "Hangi süreç otomasyona uygun, tek tek bakıyoruz",
+      "Doğru aracı seçiyoruz (n8n, Make, Zapier)",
+      "Sistemleriniz arasında veri akıyor (CRM, muhasebe, ERP)",
+      "Otomatik bildirimler, onaylar, hatırlatmalar",
     ],
     pillarSlug: "n8n-rehberi-turk-sirketleri-is-otomasyonu",
     pillarLabel: "n8n rehberini oku",
   },
   {
     slug: "musteri-hizmetleri-ai",
-    title: "Müşteri Hizmetleri AI'ı",
-    tagline: "Voice agent ve chatbot — 7/24, KVKK uyumlu.",
+    title: "Müşteri Hizmetleri Asistanı",
+    tagline: "Sesli ve yazılı dijital asistan — 7/24, KVKK uyumlu.",
     description:
-      "Firmanıza özel eğitilmiş voice agent ve chatbot çözümleri. Çoklu kanal (web, WhatsApp, telefon, e-posta) üzerinden 7/24 çalışır, canlı ekibin yükünü azaltır, memnuniyet skorunu yukarı çeker.",
+      "Müşteri 'siparişim nerede' diye elli kez arıyor. Ekibiniz boğuluyor. Şirketinize özel eğitilmiş bir dijital asistan kuruyoruz. Web, WhatsApp, telefon, e-posta — dört kanal, tek ses.",
     features: [
-      "Voice agent tasarımı (Türkçe, KVKK uyumlu)",
-      "Firmanıza özel eğitilmiş chatbot",
-      "Çoklu kanal desteği: web, WhatsApp, telefon, e-posta",
-      "Canlı destek entegrasyonu ve eskalasyon akışları",
+      "Sesli asistan (Türkçe, KVKK uyumlu)",
+      "Şirketinize özel eğitilmiş sohbet asistanı",
+      "Web, WhatsApp, telefon, e-posta — dört kanal",
+      "Gerektiğinde canlı ekibe devir",
     ],
     pillarSlug: "yapay-zeka-cagri-merkezi-rehberi",
-    pillarLabel: "AI çağrı merkezi rehberini oku",
+    pillarLabel: "Yapay zeka çağrı merkezi rehberini oku",
   },
   {
     slug: "veri-raporlama",
-    title: "Veri & Raporlama Otomasyonu",
-    tagline: "Dağınık veriden otomatik dashboard'a.",
+    title: "Veri ve Raporlama Otomasyonu",
+    tagline: "Dağınık veriden otomatik panoya.",
     description:
-      "Farklı sistemlere dağılmış verinizi toplayıp birleştiriyor, gerçek zamanlı dashboard'lara ve otomatik periyodik raporlara dönüştürüyoruz. Excel hâlâ her yerde — ama karar verici Excel'den kurtulmuş olur.",
+      "Veriniz üç ayrı sistemde duruyor. Pazartesi raporu için birisi dört saatini veriyor. Verinizi topluyor, birleştiriyor, otomatik raporlara ve canlı panolara çeviriyoruz. Karar verici Excel'den kurtulur.",
     features: [
-      "Otomatik veri toplama ve birleştirme pipeline'ları",
-      "Gerçek zamanlı dashboard tasarımı",
-      "KPI takibi ve periyodik otomatik rapor",
-      "Veri temizleme, yapılandırma, görselleştirme",
+      "Farklı sistemlerden otomatik veri toplama",
+      "Gerçek zamanlı kontrol panoları",
+      "Düzenli otomatik raporlar (günlük, haftalık, aylık)",
+      "Veri temizliği ve görselleştirme",
     ],
     pillarSlug: "raporlama-otomasyonu-nedir",
     pillarLabel: "Raporlama otomasyonu rehberini oku",
   },
   {
     slug: "ai-strateji-agent",
-    title: "AI Strateji & Agent Kurulumu",
+    title: "Yapay Zeka Stratejisi ve Kurulum",
     tagline: "Doğru araçla, doğru süreçte, doğru zamanda.",
     description:
-      "AI stratejisi ve agent mimarisi tek başlık altında: firmanıza en uygun araç ve platformları bağımsız olarak seçiyor, otonom görev yapan agent'lar tasarlıyor, ekip eğitimi ve değişim yönetimini birlikte yürütüyoruz.",
+      "Yapay zeka pazarında her ay yeni bir araç çıkıyor. Size uyanı seçmek zor. Sektörünüze bakıyoruz, doğru araçları öneriyoruz, şirketinize özel iş asistanları kuruyoruz. Ekibinize kullanmayı da öğretiyoruz.",
     features: [
-      "AI kullanım alanlarının önceliklendirilmesi ve ROI haritası",
-      "Bağımsız araç/platform tavsiyesi (satıcı değiliz)",
-      "AI agent tasarımı ve kurulumu (otonom görev asistanları)",
-      "Departman bazlı eğitim ve değişim yönetimi",
+      "Nereden başlanacak, yatırım getirisi ne — haritasını çıkarıyoruz",
+      "Bağımsız araç önerisi (satıcı değiliz)",
+      "Otomatik iş asistanları kurulumu",
+      "Departman bazlı eğitim",
     ],
     pillarSlug: "ai-agent-nedir-sirketler-icin-rehber",
-    pillarLabel: "AI agent rehberini oku",
+    pillarLabel: "Yapay zeka asistanı rehberini oku",
   },
 ] as const;
 
@@ -176,62 +173,62 @@ export const FAQ_ITEMS = [
   {
     question: "Check-up süreci nasıl işliyor?",
     answer:
-      "Sektörünüze ve şirket yapınıza özel bir form dolduruyorsunuz. Cevaplarınızı inceleyip en kısa sürede size özel bir analiz raporu hazırlayıp e-postanıza iletiyor. Süreç sizden yalnızca 15-20 dakika alıyor.",
+      "Sektörünüze özel bir form dolduruyorsunuz. 15-20 dakika sürüyor. Cevaplarınızı inceliyor, size özel bir rapor hazırlıyor, e-postanıza gönderiyoruz.",
   },
   {
-    question: "Raporumda neler yer alıyor?",
+    question: "Raporda neler var?",
     answer:
-      "Otomasyon potansiyeliniz (saat/hafta), tahmini maliyet tasarrufu (₺/ay), öncelikli aksiyon alanları, her alan için somut çözüm önerileri ve 90 günlük uygulama yol haritası. Genel değerlendirme değil — firmanıza ve operasyonunuza özel bulgular.",
+      "Haftada kaç saat kazanırsınız, ayda ne kadar tasarruf edersiniz, önce nereden başlarsınız, 90 günlük adım adım plan. Hepsi şirketinize özel — jenerik rapor değil.",
   },
   {
     question: "Danışmanlık ve koçluk ayrı mı satın alınıyor?",
     answer:
-      "Hayır. Verimio'da danışmanlık ve koçluk aynı sürecin parçasıdır. Check-up ile başlar, strateji çizeriz, sonra birlikte uygularız. Ekibinizi eğitir, sonuçları ölçeriz. Ayrı ayrı satın almanıza gerek yok.",
+      "Hayır, ikisi birlikte. Check-up yapıyoruz, strateji çiziyoruz, birlikte uyguluyoruz, ekibinizi eğitiyoruz. Tek paket.",
   },
   {
     question: "Check-up sonrası ne oluyor?",
     answer:
-      "Rapor e-postanıza ulaştıktan sonra beş adımlı bir süreç izliyoruz: (1) raporu inceliyorsunuz, (2) Calendly üzerinden ücretsiz 30 dakikalık görüşme alıyorsunuz, (3) görüşmede kapsamı birlikte netleştiriyoruz, (4) size özel bir teklif hazırlıyoruz — sürpriz maliyet yok, (5) uygulamaya geçiyoruz ve KPI'ları birlikte takip ediyoruz.",
+      "Rapor size ulaşır. İsterseniz 30 dakikalık ücretsiz görüşme alırsınız — raporu birlikte okuruz, sorularınızı cevaplarız. Sonra size özel bir teklif hazırlıyoruz. Beğenirseniz uygulamaya geçiyoruz.",
   },
   {
-    question: "Ekibiniz kaç kişi? AI-native derken ne kastediyorsunuz?",
+    question: "Ekibiniz kaç kişi?",
     answer:
-      "Operasyonumuzun büyük bölümü AI-asistanlı pipeline'larla yürüyor. İçerik üretimi, görsel üretim ve iş akışlarımızın çoğu insan yönetiminde ama AI yardımıyla işliyor. Müşterilerimize önerdiğimiz dönüşümü kendi üzerimizde uyguladık — bu bir yöntem değil, kanıt. Esnek ve verimli bir yapı, satış baskısız ve araç-bağımsız bir danışmanlık.",
+      "Küçük ve esnek bir ekibiz. İşimizin büyük bölümünü yapay zekayla yürütüyoruz — size anlattığımız yöntemi önce kendimizde denedik. Az kişiyle hızlı çalışıyoruz.",
   },
   {
     question: "Süreç ne kadar sürer?",
     answer:
-      "Bu, firmanızın ihtiyacına göre değişir. Check-up raporu formunuzu doldurmanızın hemen ardından hazırlanıp e-postanıza iletilir. Uygulama koçluğu ise projenin kapsamına göre birkaç haftadan birkaç aya kadar uzanabilir. Her süreç netleştirildikten sonra size özel bir zaman çizelgesi hazırlanır.",
+      "Check-up raporu birkaç iş günü içinde e-postanıza gelir. Uygulama ise projenin boyutuna göre değişir — birkaç haftadan birkaç aya kadar. Kapsam belli olunca net bir zaman çizelgesi veriyoruz.",
   },
   {
     question: "Fiyatlandırma nasıl?",
     answer:
-      "Şirket Check-Up'ı ücretsizdir. Uygulama danışmanlığı için fiyatlandırma, projenin kapsamına ve sürekliliğine göre belirlenir. Check-up raporunun ardından ihtiyacınıza göre bir teklif sunuyoruz — sürpriz maliyet yok.",
+      "Check-up tamamen ücretsiz. Uygulama için fiyat, işin kapsamına göre değişir. Görüşme sonrası size özel teklif hazırlıyoruz — sürpriz maliyet yok, her şey önceden belli.",
   },
   {
     question: "Ne zaman sonuç görürüz?",
     answer:
-      "İlk somut etkiler, genellikle uygulama başladıktan 4-8 hafta içinde ölçülebilir hale gelir. ROI hesabı ve beklentiler, check-up raporunda firmanıza özel olarak ortaya konur.",
+      "İlk etkileri genellikle 4-8 hafta içinde görmeye başlıyorsunuz. Tam rakamlar raporunuzda — her sektör ve her şirket farklı hızlanıyor.",
   },
   {
-    question: "Belirli araçlara ya da platformlara bağlı mısınız?",
+    question: "Belirli araçlara bağlı mısınız?",
     answer:
-      "Hayır. Firmaya özgü en uygun çözümü öneriyoruz. Belirli bir yazılım veya platform satmıyoruz; bağımsız bir danışman olarak yalnızca firmanızın çıkarına en iyi hizmet eden araçları tavsiye ediyoruz.",
+      "Hayır, bağımsız danışmanız. Yazılım veya platform satmıyoruz. Size en uygun ne ise onu öneriyoruz.",
   },
   {
     question: "Hangi sektörlerde çalışıyorsunuz?",
     answer:
-      "Üretim, lojistik, profesyonel hizmetler, finans, e-ticaret ve teknoloji başta olmak üzere kurumsal yapıdaki her sektörde hizmet veriyoruz. Ortak nokta: operasyonel verimliliği artırmak isteyen, büyüme odaklı firmalar.",
+      "Üretim, lojistik, hizmet, finans, e-ticaret, teknoloji. Ortak nokta: verimliliği artırmak isteyen, büyümeye bakan şirketler.",
   },
   {
-    question: "Uygulama sonrasında destek sağlıyor musunuz?",
+    question: "Uygulama sonrasında destek veriyor musunuz?",
     answer:
-      "Evet. Danışmanlık ilişkimiz rapor teslimiyle bitmiyor. Uygulama sürecinde takip, ince ayar ve gerektiğinde yeniden planlama desteği sunuyoruz. Süreci birlikte tamamlamak temel çalışma biçimimiz.",
+      "Evet. Rapor teslim edip çekilmiyoruz. Uygulama boyunca takip ediyoruz, ince ayar yapıyoruz, gerekirse yeniden planlıyoruz. Birlikte bitiriyoruz.",
   },
   {
-    question: "Verilerimizin gizliliği nasıl korunuyor?",
+    question: "Verilerimin gizliliği nasıl?",
     answer:
-      "Paylaştığınız bilgiler yalnızca analiz amacıyla kullanılır, şifrelenerek saklanır ve kesinlikle üçüncü taraflarla paylaşılmaz. Talep etmeniz halinde analiz öncesinde NDA imzalayabiliriz.",
+      "Paylaştığınız bilgiler sadece analiz için kullanılır, şifrelenir, üçüncü taraflarla paylaşılmaz. İsterseniz analiz öncesi NDA imzalıyoruz.",
   },
 ] as const;
 
@@ -544,10 +541,10 @@ export const BLOG_POSTS = [
 ] as const;
 
 export const CTA_CONTENT = {
-  label: "Bir Sonraki Adım",
-  headline: "İlk Adımı Birlikte Atalım",
+  label: "Sonraki Adım",
+  headline: "Başlayalım.",
   description:
-    "Ücretsiz check-up ile başlayın, isterseniz doğrudan 30 dakikalık görüşmeye geçin. İki yol da açık.",
+    "Önce check-up yapın, isterseniz doğrudan görüşmeye gelin. Hangisi size hızlı geliyorsa.",
   ctaPrimary: "Ücretsiz Check-Up Başlatın",
   ctaSecondary: "30 Dakikalık Görüşme Planla",
   ctaTertiary: "Hizmetlerimizi İnceleyin",
@@ -555,17 +552,17 @@ export const CTA_CONTENT = {
 
 // Geriye dönük uyumluluk için (kullanımda olanlar)
 export const TRUST_BADGES = [
-  { icon: "check", text: "Ücretsiz İlk Görüşme" },
-  { icon: "layers", text: "Sektöre Özel Analiz" },
-  { icon: "shield", text: "NDA ile Gizlilik" },
-  { icon: "phone-off", text: "Satış Baskısı Yok" },
+  { icon: "check", text: "Ücretsiz görüşme" },
+  { icon: "layers", text: "Sektöre özel analiz" },
+  { icon: "shield", text: "NDA ile gizlilik" },
+  { icon: "phone-off", text: "Satış baskısı yok" },
 ] as const;
 
 export const STATS = [
-  { value: "10+", label: "Firma Analiz Edildi" },
-  { value: "%60+", label: "Ortalama Otomasyon Potansiyeli" },
-  { value: "4 Alan", label: "Hizmet Kategorisi" },
-  { value: "Hızlı", label: "Rapor Teslimi" },
+  { value: "10+", label: "Analiz edilen şirket" },
+  { value: "%60+", label: "Ortalama otomasyon potansiyeli" },
+  { value: "4", label: "Uzmanlık alanı" },
+  { value: "Birkaç gün", label: "Rapor teslim süresi" },
 ] as const;
 
 export const SUCCESS_STORIES = [

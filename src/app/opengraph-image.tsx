@@ -126,7 +126,7 @@ export default function OGImage() {
             fontWeight: 400,
             lineHeight: 1.4,
           }}>
-            Operasyon otomasyonu, müşteri hizmetleri AI'ı, veri & raporlama, strateji & agent kurulumu.
+            Yapay zekayla çalışan bir danışmanlık ekibi.
           </div>
         </div>
 

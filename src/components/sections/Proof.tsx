@@ -12,7 +12,7 @@ export default function Proof() {
           Konuştuğumuzu yazıyoruz.
         </h2>
         <p className="text-foreground-secondary leading-relaxed mb-16 max-w-2xl">
-          Her uzmanlık alanımız için uçtan uca, Türk şirketlerine özel yazılmış kapsamlı rehberlerimiz var. Danışmanlık ilişkisi başlamadan önce konuyu bizimle derinleşecek kadar tanıyın.
+          Her alan için Türk şirketlerine özel yazdığımız rehberler var. Önce okuyun, sonra konuşalım.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-0 border-t border-border">

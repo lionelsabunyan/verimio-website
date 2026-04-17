@@ -8,7 +8,7 @@ export default function Process() {
           Süreç
         </p>
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-16 max-w-2xl">
-          Nasıl çalışıyoruz
+          Beş adım, hepsi önceden belli
         </h2>
 
         <div className="space-y-12 md:space-y-16">

@@ -77,9 +77,8 @@ export default function AnalizPage() {
             Şirket Check-Up&apos;ı
           </h1>
           <p className="text-lg text-foreground-secondary leading-relaxed max-w-2xl">
-            Birkaç soru, birkaç dakika. Şirketinize özel AI hazırlık raporu
-            — somut fırsatlar, öncelikli aksiyonlar ve uygulama yol haritası —
-            doğrudan e-postanıza gelsin.
+            Birkaç soru, birkaç dakika. Şirketinize özel bir rapor — nereden başlayın,
+            nerede ne kazanırsınız — e-postanıza gelir.
           </p>
         </div>
       </section>
@@ -95,10 +94,10 @@ export default function AnalizPage() {
       <section className="py-24 md:py-32 border-t border-border">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <p className="text-xs font-medium text-foreground-muted tracking-[0.15em] uppercase mb-4">
-            Raporunuzda neler var
+            Raporda neler var
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold mb-12 max-w-xl">
-            Formu doldurun, e-postanıza gelsin.
+            Şirketinize özel, dört bölüm.
           </h2>
           <div className="space-y-0">
             {REPORT_SECTIONS.map((section, index) => (
@@ -126,12 +125,11 @@ export default function AnalizPage() {
             Sonraki adım
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold mb-4 max-w-2xl">
-            Rapor e-postanıza ulaştıktan sonra
+            Rapor geldikten sonra
           </h2>
           <p className="text-foreground-secondary leading-relaxed mb-16 max-w-2xl">
-            Süreç burada bitmiyor. Rapor sonrası beş adımlı bir akışımız var — fiyat
-            şeffaf değil ama kapsam tamamen şeffaf. İsterseniz doğrudan 30 dakikalık
-            görüşmeye geçebilirsiniz.
+            Rapor bitmiyor. Beş adımlı bir akışımız var — fiyatı sakladık ama süreci
+            değil. İsterseniz doğrudan 30 dakikalık görüşmeye gelin.
           </p>
 
           <div className="space-y-12 mb-16">

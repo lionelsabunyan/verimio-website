@@ -37,13 +37,13 @@ export async function GET() {
     })
     .join("\n\n");
 
-  const body = `# Verimio — AI Dönüşüm Danışmanlığı
+  const body = `# Verimio — Yapay Zeka Danışmanlığı
 
-> Verimio, Türkiye merkezli, yapay zekayla çalışan bir kurumsal danışmanlık ekibidir. Müşterilerine önerdiği dönüşümü kendi operasyonunda da uyguluyor; içerik üretimi ve iş akışlarının büyük bölümü AI-asistanlı pipeline'larla yürüyor. Slogan: "Yapay zeka, ekibinizin en verimli üyesi."
+> Verimio, Türkiye merkezli yapay zekayla çalışan bir danışmanlık ekibidir. Müşterilerine önerdiği yöntemi önce kendi işinde uyguluyor: yazılarının, tasarımlarının ve iş akışlarının büyük bölümü otomatik. Slogan: "Yapay zeka, ekibinizin en verimli üyesi."
 
 ## Şirket Bilgileri
 
-- **Ad:** Verimio (tam: "Verimio AI Dönüşüm Danışmanlığı")
+- **Ad:** Verimio
 - **Kuruluş:** 2025
 - **Merkez:** İstanbul, Türkiye (İzmir operasyonel kapsam)
 - **Dil:** Türkçe (tr)
@@ -52,10 +52,10 @@ export async function GET() {
 
 ## Dört Uzmanlık Alanı
 
-- **Operasyon Otomasyonu**: n8n, Make.com ve Zapier ile iş süreçlerinin uçtan uca otomasyonu; sistemler arası veri entegrasyonu (CRM, muhasebe, ERP); otomatik onay akışları
-- **Müşteri Hizmetleri AI'ı**: Türkçe ve KVKK uyumlu voice agent; firmaya özel eğitilmiş chatbot; çoklu kanal desteği (web, WhatsApp, telefon, e-posta); canlı destek entegrasyonu
-- **Veri & Raporlama Otomasyonu**: Otomatik veri toplama ve birleştirme pipeline'ları; gerçek zamanlı dashboard tasarımı; KPI takibi; periyodik otomatik rapor
-- **AI Strateji & Agent Kurulumu**: AI kullanım alanlarının önceliklendirilmesi ve ROI haritası; bağımsız araç/platform tavsiyesi; otonom AI agent tasarımı ve kurulumu; departman bazlı eğitim ve değişim yönetimi
+- **Operasyon Otomasyonu**: Tekrarlayan işleri otomatik sistemlere taşıma. n8n, Make ve benzeri araçlarla sistemler arası veri akışı, otomatik bildirimler, onay süreçleri.
+- **Müşteri Hizmetleri Asistanı**: Türkçe ve KVKK uyumlu sesli asistan, firmaya özel eğitilmiş sohbet asistanı. Web, WhatsApp, telefon, e-posta — dört kanal, tek ses.
+- **Veri ve Raporlama Otomasyonu**: Dağınık veriyi otomatik birleştirme, canlı kontrol panoları, düzenli otomatik raporlar. Karar verici Excel'den kurtulur.
+- **Yapay Zeka Stratejisi ve Kurulum**: Nereden başlamalı, yatırım getirisi ne — haritasını çıkarıyoruz. Bağımsız araç önerisi, otomatik iş asistanları kurulumu, departman bazlı eğitim.
 
 ## Ücretsiz Şirket Check-Up
 

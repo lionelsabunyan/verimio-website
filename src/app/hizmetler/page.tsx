@@ -7,19 +7,21 @@ import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 import ServiceSchema from "@/components/seo/ServiceSchema";
 
 export const metadata: Metadata = {
-  title: "Hizmetler - Dört uzmanlık alanı",
+  title: "Hizmetler",
   description:
-    "Operasyon Otomasyonu (n8n/Make), Müşteri Hizmetleri AI'ı (voice + chatbot), Veri & Raporlama Otomasyonu, AI Strateji & Agent Kurulumu. Tek çatı altında dört somut uzmanlık.",
+    "Operasyon otomasyonu, müşteri hizmetleri asistanı, veri ve raporlama otomasyonu, yapay zeka stratejisi ve kurulum. Dört alan, tek çatı.",
   openGraph: {
-    title: "Hizmetler - Dört uzmanlık alanı",
-    description: "Operasyon otomasyonu, müşteri hizmetleri AI'ı, veri & raporlama ve AI strateji & agent kurulumu.",
+    title: "Hizmetler",
+    description:
+      "Dört alan: operasyon otomasyonu, müşteri hizmetleri asistanı, veri ve raporlama, yapay zeka stratejisi.",
     type: "website",
     url: "https://www.verimio.com.tr/hizmetler",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hizmetler - Dört uzmanlık alanı",
-    description: "Operasyon otomasyonu, müşteri hizmetleri AI'ı, veri & raporlama ve AI strateji & agent kurulumu.",
+    title: "Hizmetler",
+    description:
+      "Dört alan: operasyon otomasyonu, müşteri hizmetleri asistanı, veri ve raporlama, yapay zeka stratejisi.",
   },
   alternates: { canonical: "https://www.verimio.com.tr/hizmetler" },
 };
@@ -47,10 +49,11 @@ export default function HizmetlerPage() {
             Hizmetler
           </p>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 max-w-3xl">
-            Dört uzmanlık alanı, tek çatı altında.
+            Dört alan, tek çatı.
           </h1>
           <p className="text-lg text-foreground-secondary leading-relaxed mb-8 max-w-2xl">
-            Her uzmanlık alanımız, önce doğru analiz — sonra somut ROI hesabı — ardından uygulama sıralamasıyla çalışır. Danışmanlık ve koçluk aynı sürecin parçası.
+            Önce sizi tanıyoruz. Sonra nereden başlayacağınızı söylüyoruz.
+            Ardından birlikte kuruyoruz. Danışmanlık, koçluk, eğitim — hepsi aynı paket.
           </p>
           <Button href={BRAND.checkupUrl} size="md">
             Hangi çözüm bana uygun?
@@ -109,7 +112,7 @@ export default function HizmetlerPage() {
             Süreç
           </p>
           <h2 className="text-3xl sm:text-4xl font-bold mb-16 max-w-2xl">
-            Tanıdan uygulamaya beş adım
+            Beş adım, hepsi önceden belli
           </h2>
 
           <div className="space-y-12">
