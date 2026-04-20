@@ -36,7 +36,7 @@ const principles = [
   {
     title: "Ölçülebilir sonuç",
     description:
-      "Soyut vaatler değil, rakamlar. Tasarruf, yatırım getirisi, önceliklerin hepsi sayıyla.",
+      "Vaat değil, rakam. Tasarruf, yatırım getirisi, öncelik — hepsi sayıyla ölçülü.",
   },
   {
     title: "Küçük ekip, hızlı iş",

@@ -126,7 +126,7 @@ Tarayıcı ayarlarınızdan çerezleri devre dışı bırakabilirsiniz. Bu durum
   {
     id: "degisiklikler",
     title: "10. Politika Değişiklikleri",
-    content: `Bu Gizlilik Politikası zaman zaman güncellenebilir. Önemli değişiklikler söz konusu olduğunda ilgili taraflar e-posta ile bilgilendirilecektir. Politikanın güncel versiyonu her zaman bu sayfada yayınlanır.
+    content: `Bu Gizlilik Politikası zaman zaman güncellenebilir. Önemli değişiklikler olduğunda ilgili tarafları e-posta ile bilgilendiririz. Politikanın güncel versiyonu her zaman bu sayfada yayınlanır.
 
 Son güncelleme: Şubat 2026`,
   },

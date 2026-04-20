@@ -418,25 +418,25 @@ export const SECTOR_QUESTION_LABELS: Record<
   "Sağlık / Klinik": {
     s6: "Hasta randevu ve takip süreciniz nasıl işliyor?",
     s7: "Günlük ortalama hasta/danışan sayınız nedir?",
-    s8: "Sağlık operasyonunuzda en çok enerjinizi tüketen alan hangisi?",
+    s8: "Sağlık işinde en çok zamanı hangi alan yiyor?",
     s9: "Aylık ortalama no-show (gelmeyen hasta) oranınız?",
   },
   "Finans / Sigorta": {
     s6: "Başvurudan poliçeye ve hasara kadar süreç nasıl işliyor?",
     s7: "Aylık işlem gören dosya/başvuru sayınız?",
-    s8: "Operasyonda en çok kaynağınızı tüketen alan hangisi?",
+    s8: "Finans operasyonunda en çok zamanı hangi alan yiyor?",
     s9: "Yıllık yenileme (renewal) oranınız?",
   },
   Gayrimenkul: {
     s6: "Portföy ve ilan süreciniz nasıl işliyor?",
     s7: "Aylık ortalama gelen müşteri adayı (lead) sayınız?",
-    s8: "Günlük işinizde en çok enerjinizi hangi alan alıyor?",
+    s8: "Günlük işinizde en çok zamanı hangi alan alıyor?",
     s9: "Ortalama lead dönüş süreniz?",
   },
   Diğer: {
     s6: "İşletmenizin ölçeğini en iyi anlatan hangisi?",
     s7: "Gelir modelinizin ağırlığı hangi yönde?",
-    s8: "Operasyonunuzda en çok enerjinizi tüketen alan hangisi?",
+    s8: "Operasyonunuzda en çok zamanı hangi alan yiyor?",
     s9: "Aylık müşteri veya iş emri hacminiz yaklaşık?",
   },
 };
