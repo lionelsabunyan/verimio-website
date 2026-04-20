@@ -234,6 +234,13 @@ export const FAQ_ITEMS = [
 
 export const BLOG_POSTS = [
   {
+    title: "KOBİ'lerde YZ Tabanlı İş Akışları 2026 Rehberi",
+    excerpt: "Bu rehber, KOBİ'lerin 2026'da yapay zeka tabanlı iş akışlarını nasıl kuracağını, verimliliği artıracağını ve operasyonel hataları nasıl azaltacağını anlatıyor.",
+    date: "20 Nisan 2026",
+    slug: "kobilerde-yz-tabanli-is-akislari-2026-rehberi",
+    category: "tutorial" as const,
+  },
+  {
     title: "AI Agent vs Chatbot: İşletmeniz İçin Hangisi Doğru?",
     excerpt: "İşletmeniz için AI Agent mı yoksa Chatbot mu daha uygun? Bu yazıda iki teknolojinin farklarını, uygulama alanlarını ve hangi durumda hangisine yatırım yapmanız gerektiğini inceliyoruz.",
     date: "17 Nisan 2026",
