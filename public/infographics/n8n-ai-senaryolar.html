@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>n8n + AI Senaryoları — Verimio</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 1200px; height: 630px; overflow: hidden; font-family: 'DM Sans', sans-serif; background: #fff; color: #0A0A0A; }
+  .canvas { width: 1200px; height: 630px; padding: 44px 64px 32px; display: flex; flex-direction: column; }
+
+  .header { display: flex; align-items: baseline; gap: 20px; margin-bottom: 8px; }
+  .header h1 { font-size: 24px; font-weight: 700; letter-spacing: -0.03em; }
+  .header h1 span { font-weight: 300; color: #5C5C5C; }
+  .header .line { flex: 1; height: 1px; background: #E5E5E5; }
+  .subtitle { font-size: 12px; font-weight: 300; color: #5C5C5C; margin-bottom: 24px; letter-spacing: 0.02em; }
+
+  .rows { flex: 1; display: flex; flex-direction: column; }
+
+  .head-row { display: grid; grid-template-columns: 220px 1fr 1fr 1fr 110px; padding: 10px 0; border-bottom: 2px solid #0A0A0A; margin-bottom: 6px; }
+  .head-row .hcell { padding-left: 14px; }
+  .head-row .hcell:first-child { padding-left: 0; }
+  .head-label { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.12em; color: #A3A3A3; }
+
+  .row { display: grid; grid-template-columns: 220px 1fr 1fr 1fr 110px; align-items: center; padding: 16px 0; border-bottom: 1px solid #E5E5E5; }
+  .row.last { border-bottom: none; }
+  .row > div { padding-left: 14px; }
+  .row > div:first-child { padding-left: 0; }
+
+  .senaryo { font-size: 15px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.15; }
+  .senaryo .sub { display: block; font-size: 10px; font-weight: 400; color: #A3A3A3; text-transform: uppercase; letter-spacing: 0.14em; margin-top: 3px; }
+
+  .step { font-size: 12px; font-weight: 400; color: #0A0A0A; line-height: 1.3; }
+  .step .dim { color: #A3A3A3; display: block; font-size: 10px; font-weight: 400; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 2px; }
+
+  .time { font-size: 14px; font-weight: 700; letter-spacing: -0.01em; text-align: right; padding-right: 0 !important; }
+  .time .lbl { display: block; font-size: 9px; font-weight: 400; color: #A3A3A3; text-transform: uppercase; letter-spacing: 0.16em; margin-top: 2px; }
+
+  .footer { display: flex; justify-content: space-between; align-items: flex-end; padding-top: 12px; }
+  .footer .url { font-size: 11px; color: #A3A3A3; font-weight: 300; }
+  .footer .logo { font-size: 15px; font-weight: 700; letter-spacing: -0.03em; }
+  .footer .logo span { font-weight: 300; color: #5C5C5C; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="header">
+    <h1>n8n + AI Senaryoları <span>— dakikalar içinde kurulum</span></h1>
+    <div class="line"></div>
+  </div>
+  <div class="subtitle">ChatGPT, Claude veya Gemini node'ları ile workflow'a anında AI katmanı</div>
+
+  <div class="rows">
+    <div class="head-row">
+      <div class="hcell"><span class="head-label">Senaryo</span></div>
+      <div class="hcell"><span class="head-label">Tetikleyici</span></div>
+      <div class="hcell"><span class="head-label">AI Aksiyonu</span></div>
+      <div class="hcell"><span class="head-label">Çıktı</span></div>
+      <div class="hcell" style="text-align:right"><span class="head-label">Kurulum</span></div>
+    </div>
+
+    <div class="row">
+      <div class="senaryo">Müşteri mesajı analizi<span class="sub">Destek akışı</span></div>
+      <div class="step"><span class="dim">Girdi</span>E-posta / WhatsApp</div>
+      <div class="step"><span class="dim">Model</span>Aciliyet + niyet sınıfla</div>
+      <div class="step"><span class="dim">Sonuç</span>Departman + yanıt taslağı</div>
+      <div class="time">15 dk<span class="lbl">Kurulum</span></div>
+    </div>
+
+    <div class="row">
+      <div class="senaryo">Belge işleme<span class="sub">Fatura / sözleşme</span></div>
+      <div class="step"><span class="dim">Girdi</span>PDF yükleme</div>
+      <div class="step"><span class="dim">Model</span>Anahtar alanları çıkar</div>
+      <div class="step"><span class="dim">Sonuç</span>Veritabanına kayıt</div>
+      <div class="time">20 dk<span class="lbl">Kurulum</span></div>
+    </div>
+
+    <div class="row">
+      <div class="senaryo">Lead skorlama<span class="sub">Satış kuyruğu</span></div>
+      <div class="step"><span class="dim">Girdi</span>Form / CRM kaydı</div>
+      <div class="step"><span class="dim">Model</span>Şirket profilini skorla</div>
+      <div class="step"><span class="dim">Sonuç</span>1–10 öncelik etiketi</div>
+      <div class="time">15 dk<span class="lbl">Kurulum</span></div>
+    </div>
+
+    <div class="row last">
+      <div class="senaryo">İçerik özetleme<span class="sub">Haber takibi</span></div>
+      <div class="step"><span class="dim">Girdi</span>Rakip blog / RSS</div>
+      <div class="step"><span class="dim">Model</span>Özet + anahtar çıkarım</div>
+      <div class="step"><span class="dim">Sonuç</span>Haftalık digest e-posta</div>
+      <div class="time">20 dk<span class="lbl">Kurulum</span></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span class="url">verimio.com.tr/blog</span>
+    <span class="logo">verim<span>io</span></span>
+  </div>
+</div>
+</body>
+</html>
