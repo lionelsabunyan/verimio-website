@@ -49,7 +49,7 @@ export default function HizmetlerPage() {
             Hizmetler
           </p>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 max-w-3xl">
-            Dört alan, tek çatı.
+            Operasyon, müşteri, veri, strateji.
           </h1>
           <p className="text-lg text-foreground-secondary leading-relaxed mb-8 max-w-2xl">
             Önce sizi tanıyoruz. Sonra nereden başlayacağınızı gösteriyoruz.

@@ -74,7 +74,7 @@ export default function AnalizPage() {
             Ücretsiz analiz
           </p>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 max-w-3xl">
-            Şirket Check-Up&apos;ı
+            15 dakikada size özel AI yol haritası.
           </h1>
           <p className="text-lg text-foreground-secondary leading-relaxed max-w-2xl">
             15-20 dakika, sektörünüze özel sorular. Size özel bir rapor — nereden

@@ -62,7 +62,7 @@ export default function HakkimizdaPage() {
             Hakkımızda
           </p>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 max-w-3xl">
-            Kendi işimizi yapay zekayla yürütüyoruz.
+            Kullanmadığımız bir aracı size önermiyoruz.
           </h1>
           <p className="text-lg text-foreground-secondary leading-relaxed max-w-2xl">
             Yazılarımız, tasarımlarımız, iş akışlarımız — çoğu otomatik.
@@ -116,7 +116,7 @@ export default function HakkimizdaPage() {
             İlkeler
           </p>
           <h2 className="text-3xl sm:text-4xl font-bold mb-16 max-w-2xl">
-            Bizi farklı kılan dört şey
+            Neyi farklı yapıyoruz
           </h2>
 
           <div className="space-y-0">
