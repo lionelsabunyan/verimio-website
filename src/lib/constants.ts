@@ -44,7 +44,7 @@ export const HERO_CONTENT = {
 export const ABOUT_CONTENT = {
   label: "Hakkımızda",
   heading: "Kendi işimizi yapay zekayla yürütüyoruz.",
-  text: "Yazılarımız, tasarımlarımız, iş akışlarımız — çoğu otomatik. Müşteriye anlattığımız yöntemi önce kendi üzerimizde denedik. Bu yüzden önerilerimizin arkasında bir slayt değil, çalışan bir sistem var.",
+  text: "Yazılarımız, tasarımlarımız, iş akışlarımız — çoğu otomatik. Müşteriye anlattığımız yöntemi önce kendi üzerimizde denedik. Bu yüzden önerilerimizin arkasında bir slayt değil, çalışan bir sistem var. Bu sayfanın blog'u da kapak görselleri de bizim kurduğumuz otomatik hattan çıktı.",
   ctaPrimary: "Hakkımızda",
   ctaSecondary: "Hizmetlerimize Bakın",
 } as const;
@@ -582,7 +582,6 @@ export const CTA_CONTENT = {
     "Önce check-up yapın, isterseniz doğrudan görüşmeye gelin. Hangisi size uygunsa.",
   ctaPrimary: "Ücretsiz Check-Up Başlatın",
   ctaSecondary: "30 Dakikalık Görüşme Planla",
-  ctaTertiary: "Hizmetlerimizi İnceleyin",
 } as const;
 
 // Geriye dönük uyumluluk için (kullanımda olanlar)

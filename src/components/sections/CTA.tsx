@@ -27,12 +27,6 @@ export default function CTA() {
           >
             {CTA_CONTENT.ctaSecondary}
           </a>
-          <a
-            href="/hizmetler"
-            className="inline-flex items-center text-sm text-background/70 hover:text-background underline underline-offset-4 decoration-background/30 hover:decoration-background transition-colors"
-          >
-            {CTA_CONTENT.ctaTertiary}
-          </a>
         </div>
       </div>
     </section>

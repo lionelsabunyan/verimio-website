@@ -9,7 +9,7 @@ export default function Services() {
           Hizmetler
         </p>
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-16 max-w-2xl">
-          Dört alan, tek çatı
+          Operasyon, müşteri, veri, strateji.
         </h2>
 
         <div className="space-y-0">

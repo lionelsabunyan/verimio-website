@@ -19,7 +19,7 @@ export default function About() {
             href="/hakkimizda"
             className="text-sm text-foreground underline underline-offset-4 decoration-border hover:decoration-foreground transition-colors"
           >
-            Daha fazla bilgi
+            Nasıl çalıştığımızı anlatıyoruz
           </Link>
         </div>
       </div>
