@@ -56,7 +56,7 @@ export default function IletisimPage() {
             İletişim
           </p>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 max-w-3xl">
-            Sorulardan doğru yere ulaşın.
+            Doğrudan başlayın veya bize yazın.
           </h1>
           <p className="text-lg text-foreground-secondary leading-relaxed mb-12 max-w-2xl">
             Check-up'a hazırsanız formu doldurmanız yeterli — size özel

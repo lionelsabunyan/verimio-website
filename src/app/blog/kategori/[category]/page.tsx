@@ -9,7 +9,7 @@ const CATEGORIES: Record<string, { label: string; description: string }> = {
   strategy: {
     label: "Strateji",
     description:
-      "Kurumsal AI stratejisi, dijital dönüşüm yol haritaları ve yönetim vizyonu hakkında içerikler.",
+      "Kurumsal AI stratejisi, uygulama yol haritaları ve yönetim vizyonu hakkında içerikler.",
   },
   automation: {
     label: "Otomasyon",

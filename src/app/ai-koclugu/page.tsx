@@ -188,7 +188,7 @@ export default function AIKocluguPage() {
       <section className="py-24 md:py-32 border-t border-border">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <p className="text-xs font-medium text-foreground-muted tracking-[0.15em] uppercase mb-4">Hedef Kitle</p>
-          <h2 className="text-3xl sm:text-4xl font-bold mb-8 max-w-2xl">AI Koçluğu kime göre</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-8 max-w-2xl">Kimler için uygun</h2>
           <ul className="space-y-4">
             {targetAudience.map((item, i) => (
               <li key={i} className="flex items-start gap-3 text-foreground-secondary leading-relaxed">
