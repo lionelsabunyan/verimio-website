@@ -234,6 +234,27 @@ export const FAQ_ITEMS = [
 
 export const BLOG_POSTS = [
   {
+    title: "KOBİ AI Agent Örnekleri: Türk Şirketlerinde 7 Gerçek Kullanım Alanı [2026]",
+    excerpt: "AI agent bir KOBİ'de ne iş yapar? Muhasebeden satışa, İK'dan stok yönetimine — 7 somut örnek ve hangisinin size uyduğunu nasıl anlarsınız.",
+    date: "20 Nisan 2026",
+    slug: "kobi-ai-agent-ornekleri",
+    category: "ai-tools" as const,
+  },
+  {
+    title: "WhatsApp'ta AI ile Müşteri Yanıtı: Türk KOBİ'leri İçin Pratik Rehber [2026]",
+    excerpt: "WhatsApp'a gelen mesajlara AI mı cevap verir? Kurulum, KVKK, maliyet ve 5 somut kullanım senaryosu — Türk KOBİ için pratik rehber.",
+    date: "20 Nisan 2026",
+    slug: "whatsapp-ai-musteri-yanit",
+    category: "customer" as const,
+  },
+  {
+    title: "n8n ile AI Agent Oluşturma: Türk KOBİ'leri İçin Adım Adım Rehber [2026]",
+    excerpt: "n8n ile AI agent kurmak nasıl yapılır? Kurulum, AI node'u, tool kullanımı, hafıza — Türk KOBİ'si için somut adımlar ve ilk agent örneği.",
+    date: "20 Nisan 2026",
+    slug: "n8n-ai-agent-olusturma",
+    category: "tutorial" as const,
+  },
+  {
     title: "KOBİ'lerde YZ Tabanlı İş Akışları 2026 Rehberi",
     excerpt: "KOBİ'niz 2026'da yapay zeka iş akışını nereden kuracak? Hangi süreç önce gider, ekip nasıl uyum sağlar — adım adım pratik rehber.",
     date: "20 Nisan 2026",

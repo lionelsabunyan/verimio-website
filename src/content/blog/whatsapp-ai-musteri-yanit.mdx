@@ -1,0 +1,158 @@
+---
+title: "WhatsApp'ta AI ile Müşteri Yanıtı: Türk KOBİ'leri İçin Pratik Rehber [2026]"
+excerpt: "WhatsApp'a gelen mesajlara AI mı cevap verir? Kurulum, KVKK, maliyet ve 5 somut kullanım senaryosu — Türk KOBİ için pratik rehber."
+date: "20 Nisan 2026"
+category: "customer"
+readingTime: "9 dk"
+author: "Verimio Ekibi"
+---
+
+Cumartesi gece 23:40. Patron WhatsApp'ı açıyor. 237 okunmamış mesaj. Üçü "ne zaman açıksınız?", biri acil sipariş, biri "iade edeceğim", ikisi yanlış numaraya düşmüş, geri kalanı müşteri grubu. Hangisi önce okunur? Hangisi pazartesiye kalır? Pazartesi açıldığında üç müşteri rakibe gitmiş oluyor. Tanıdık geliyorsa bu yazı sizin için.
+
+Türkiye'de WhatsApp müşteri iletişiminin merkezi — %87 KOBİ ilk temas kanalı olarak kullanıyor. Telefon ikinci sırada bile değil. Ama mesaj hacmi artınca tek insan yetmiyor. AI burada devreye giriyor.
+
+> **Hızlı Özet:** WhatsApp AI, Business API üzerinden gelen mesajları bir AI modeline bağlar — model niyeti anlar, basit soruları kendi yanıtlar (stok, fiyat, çalışma saati), karmaşık olanları insana yönlendirir. Kurulum 2-4 hafta, aylık maliyet 2.000-8.000 TL (mesaj hacmine göre), ortalama 3-4 ayda kendini öder. KVKK uyumlu kurulum mümkün — şart hangi sunucuda hangi veri durur.
+
+## WhatsApp AI Tam Olarak Ne Yapar?
+
+Temiz bir ayrım: WhatsApp AI = WhatsApp Business API + bir AI modeli (Claude, GPT, Gemini) + sizin sisteminizle entegrasyon.
+
+**Yapar:**
+- Müşteri mesajını okur, anlar, doğru kategoriye atar (sipariş, fiyat, randevu, şikayet)
+- Sipariş takip numarası sorulduğunda kargo sistemine bakar, gerçek cevap verir
+- Ürün stok bilgisini envantere bakarak söyler — "ne zaman gelir" değil, "3 adet Kadıköy deposunda"
+- Çalışma saati, adres, iade politikası gibi statik bilgiyi anında verir
+- Randevu alır, takvime yazar, hatırlatma gönderir
+- Karmaşık veya duygusal mesajı insan temsilciye özetle aktarır
+
+**Yapmaz (ya da yapmamalı):**
+- Kritik satış kararı (özel indirim onayı)
+- Hukuki bağlayıcı söz (garanti uzatma taahhüdü)
+- Duygusal destek gereken şikayet yönetimi
+- KVKK kapsamına giren veri (TC kimlik, kart numarası) talebi
+
+Temel kural: bir insan 30 saniyede cevap verebiliyorsa AI versin. 5 dakika düşünmesi gereken bir şeyse insana aktarsın. [AI Agent vs Chatbot](/blog/ai-agent-vs-chatbot-isletmeniz-icin-hangisi-dogru) yazısında bu ayrımı ayrıntılı yazdık.
+
+## 5 Gerçek Kullanım Senaryosu
+
+### 1. Sipariş Durumu Sorgulama — E-ticaret
+
+Müşteri: "Kargom nerede?"
+AI: Müşterinin son siparişini Shopify/Ticimax'ten çeker. Aras/Yurtiçi API'sine takip numarasıyla sorar. "Bugün 14:30'da şubeye geldi, yarın teslimat" diye cevap yazar.
+
+Bir haftada 200 kargo sorusu gelen e-ticaret firmasında bu tek senaryo iki destek temsilcisinin yükünü yarıya indirir.
+
+### 2. Rezervasyon ve Randevu — Hizmet Sektörü
+
+Müşteri: "Cumartesi 15:00 kuaför randevusu alabilir miyim?"
+AI: Google Takvim'e bakar. Boş değilse en yakın iki seçeneği önerir. Müşteri onay verince randevuyu yazar, müşteriye ve kuaföre bildirim atar. Randevudan 24 saat önce hatırlatma.
+
+Güzellik salonu, veteriner, diş hekimi, teknik servis — randevu temelli tüm hizmetlerde çalışır.
+
+### 3. Ürün ve Fiyat Bilgisi — Perakende
+
+Müşteri: "Samsung 55 inç TV ne kadar? Stokta var mı?"
+AI: Ürün kataloğunu arar. En yakın üç modelin fiyatını ve stok durumunu söyler. Müşteri "Kadıköy'de görebilir miyim?" diye sorarsa en yakın şubenin adresini ve envanterini verir.
+
+Zincir perakende mağazalar için özellikle güçlü — her şubeyi aramak zorunda kalmayan müşteri aynı anda 10 şubenin stoğunu öğreniyor.
+
+### 4. Müşteri Servisi Triage — B2B / B2C Karma
+
+Müşteri mesajı gelir. AI üç saniyede sınıflandırır:
+- **"Sipariş nerede?"** → AI kendi cevaplar
+- **"İade edeceğim"** → AI iade sürecini başlatır, kargo linki gönderir
+- **"Ürün bozuk çıktı, param iade"** → AI "özür dilerim, 2 dakika içinde müşteri ilişkileri sizi arayacak" der, insana aktarır
+- **"Merhaba"** → AI nazik selamlar, nasıl yardım edebileceğini sorar
+
+İnsan temsilci gelen mesajın sadece %30'unu görür — o da özetli, geçmiş siparişle birlikte.
+
+### 5. Post-satış Feedback ve Anket
+
+Sipariş tesliminden 3 gün sonra AI otomatik mesaj atar: "Ürününüzü aldınız mı? 1-5 arası değerlendirir misiniz?" 
+1-3 arası puan → otomatik "Sorun nedir?" takibi → insan temsilci
+4-5 arası puan → "Google'da yorum bırakmak ister misiniz?" linki
+
+Google yorum sayısı aylık 3'ten 40'a çıkıyor. Yerel SEO sinyali yükseliyor, Google Business Profile rank artıyor.
+
+## Kurulum — 4 Adım
+
+### Adım 1: WhatsApp Business Platform Doğrulaması
+
+Meta'nın WhatsApp Business Platform'una başvurursunuz. Şirket bilgilerinizi doğrularlar. 2-7 gün sürer. Ücretsiz ama vergi levhası, web sitesi ve kurumsal e-posta zorunlu. Bireysel WhatsApp hesabı işe yaramaz — ayrı bir numara gerekir.
+
+**Dikkat:** Mevcut WhatsApp Business uygulaması (sarı renkli) ile Business Platform (API) farklı. İkincisine geçince birincisi kullanılamaz. Kurulumdan önce karar verin.
+
+### Adım 2: Mesaj Şablonu (Template) Onayı
+
+WhatsApp sizin müşteriye ilk mesaj atmanıza izin verir (müşteri önce size yazmadan). Ama bu mesajların Meta tarafından önceden onaylı bir şablondan olması gerekir. "Sipariş teslim edildi" gibi. Spam kategorisindeki şablonları reddeder.
+
+Onay 1-3 gün sürüyor. 2026 başında Meta daha sıkılaştı — promosyon şablonları artık onay almak zor.
+
+### Adım 3: AI Katmanı
+
+Seçeneğiniz var:
+- **Hazır platform:** Chatwoot, Zoko, Wati — aylık 500-2.000 TL, hızlı kurulum, sınırlı özelleştirme
+- **n8n + Claude API:** Ayda daha ucuz çıkar, tam kontrol, teknik bilgi gerektirir
+- **Özel yazılım:** Size özel geliştirme, en pahalı, en esnek
+
+KOBİ için orta yol genellikle n8n + Claude. [n8n Rehberi: Türk Şirketleri İçin İş Otomasyonu A'dan Z'ye](/blog/n8n-rehberi-turk-sirketleri-is-otomasyonu) yazımız altyapıyı anlatıyor.
+
+### Adım 4: Test ve Devreye Alma
+
+Önce kapalı grup (5-10 gerçek müşteri) ile test edin. Ne yanlış cevap veriyor? Hangi niyeti anlamıyor? Hangi durumda insana aktarmıyor?
+
+2-4 hafta test, sonra açılış. Mağrur açılış yapmayın — gün birinci 10 müşterinin %20'si hataya denk gelir. Sessizce başlayın, düzeltin, sonra tanıtın.
+
+## KVKK ve Yasal Çerçeve
+
+İki ana soru:
+
+**1. Mesaj verisi nerede durur?**
+WhatsApp mesajları Meta'nın sunucularında geçer — bu sizin tercihiniz değil, WhatsApp'ın yapısı. Meta'nın Türkiye'den veri aktarım kurallarına uyduğu iddia ediliyor ama bunu kendi hukuki danışmanınızla doğrulayın. AI modelinizin (Claude, GPT) veri işleme politikası da ayrı: Claude AB/ABD, GPT ABD, Gemini ABD.
+
+**2. Müşteri onayı nasıl alınır?**
+İlk mesajın başında bir bilgilendirme: "Mesajlarınız otomatik asistan tarafından işlenir. Onay vermiyorsanız yazın: İPTAL." Bu minimum.
+
+Daha sıkı uyum için on-premise (kendi sunucunuzda) AI modeli kurabilirsiniz — DeepSeek, Llama 3.3 açık kaynak. Türkiye'deki sunucuda çalıştırmak mümkün. Maliyet yüksek ama veri egemenliği garantisi veriyor. [KVKK Uyumlu Voice AI](/blog/kvkk-uyumlu-voice-ai-cagri-merkezinde-guvenlik) yazımızda benzer düşünce çerçevesi var.
+
+## Maliyet ve ROI
+
+| Kalem | Aylık (TL) |
+|-------|-----------|
+| WhatsApp Business Platform — mesaj bazlı | 1.500-4.000 |
+| AI model çağrıları (Claude/GPT, 10K mesaj) | 800-2.500 |
+| Platform/altyapı (Chatwoot, n8n, sunucu) | 500-1.500 |
+| **Toplam operasyon** | **2.800-8.000** |
+
+Kurulum maliyeti: 40.000-180.000 TL (projenin karmaşıklığına göre).
+
+**ROI hesabı:** Tek bir destek temsilcisi maliyeti aylık 28.000-45.000 TL (maaş + SGK + ekipman). AI bir temsilcinin işinin %70'ini yapıyorsa ayda 20.000-30.000 TL kazanç. 3-6 ayda kendini ödüyor.
+
+Ama paradan önce gelen fayda: müşteri 3 dakikada değil 10 saniyede cevap alıyor. Terk oranı düşüyor. Bu ölçmek zor ama para bırakıyor. [Müşteri Hizmetlerinde AI Dönemi](/blog/musteri-hizmetlerinde-ai-donemi) yazımızda daha ayrıntılı.
+
+## Sık Sorulan Sorular
+
+**WhatsApp'ta AI cevap verirken müşteri farkında mı?**
+İyi kurulumlarda evet — ilk mesajda "otomatik asistanınız" diye tanıtırız. Müşteriyi kandırmak hem etik değil hem ters tepiyor. Dürüst kurulumlar "AI asistan cevap veriyor, bağlanamadığınız soru olursa insan temsilciyi istiyorum yazın" der. Müşteriler genellikle memnun — hızlı cevap aldıkları için.
+
+**Türkçe mesaj desteği nasıl?**
+Claude ve Gemini Türkçe'de oldukça iyi — argoyu, kısaltmayı ("slm", "trm") anlıyor. GPT-4 eşit iyi. 2022'deki durum kötüydü, 2025'ten itibaren Türkçe artık sorun değil. Yine de canlıya almadan önce 100 gerçek müşteri mesajıyla test edin.
+
+**Meta hesabımız askıya alınır mı?**
+Spam davranışı gösterirseniz evet — Meta agresif. Kurallar: müşterinin onay vermediği mesaj yok, promosyon için onaylı şablon, istek dışı mesajda hemen "STOP" seçeneği. Bu üçüne uyarsanız problem olmaz. AI'nin "her müşteriye aynı kalıp mesaj" atması spam sayılır, dikkat edin.
+
+**WhatsApp yerine Telegram veya Instagram DM daha iyi mi?**
+Türkiye'de kullanıcı sayısı açısından WhatsApp açık ara önde. Instagram gençlere, Telegram teknik kullanıcılara ulaşır ama çoğunluk WhatsApp'ta. Hedef kitleniz B2B teknik ise Telegram'ı eklemek mantıklı, e-ticaret veya KOBİ hizmetiyse WhatsApp yeterli.
+
+**Aynı AI sistemi hem WhatsApp hem web sitemdeki chatbot olabilir mi?**
+Evet — altyapı aynı, sadece kanal farklı. Tek bir Claude bağlantısı WhatsApp + sitenizdeki chat + Instagram DM'i besleyebilir. Bu çoğunluk tercih edilen kurulum şekli. Müşteri hangi kanaldan yazarsa yazsın aynı kalitede yanıt alır.
+
+## Sonuç
+
+WhatsApp'ta AI, iki kişilik destek ekibini dört kişiye çıkarmanın yolu değil. İki kişilik ekibin makul çalışmasını sağlamanın yolu. Gelen mesajın %60-70'i basit, tekrarlayan, AI'nin 10 saniyede yanıtladığı şeyler. İnsan temsilci zor işe bakar, memnun kalır, şirkette kalır.
+
+Yanlış kurulumda zararlıdır — müşteri yanıtlanmayan sorudan daha çok kötü yanıttan rahatsız olur. Doğru kurulum iki ay test gerektirir. O zamanı ayırmadan yayına almayın.
+
+---
+
+Süreçlerinizde WhatsApp AI'ın nasıl çalışacağını değerlendirmek isterseniz, ücretsiz [Şirket Check-Up](/analiz) ile başlayabilirsiniz. Mevcut durumunuzu analiz eder, öncelikli aksiyon alanlarını somut bulgularla raporlarız.

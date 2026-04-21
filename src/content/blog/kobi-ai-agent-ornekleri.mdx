@@ -1,0 +1,144 @@
+---
+title: "KOBİ AI Agent Örnekleri: Türk Şirketlerinde 7 Gerçek Kullanım Alanı [2026]"
+excerpt: "AI agent bir KOBİ'de ne iş yapar? Muhasebeden satışa, İK'dan stok yönetimine — 7 somut örnek ve hangisinin size uyduğunu nasıl anlarsınız."
+date: "20 Nisan 2026"
+category: "ai-tools"
+readingTime: "10 dk"
+author: "Verimio Ekibi"
+---
+
+Muhasebe ofisinde pazartesi sabahı. Eleman bilgisayarı açar, e-postadaki 40 faturayı tek tek PDF olarak indirir, her birini Logo'ya elle girer, cari hesabı açar, ödeme vadesini not eder. İki saat sonra öğleye kadar aynı döngü. Aynı ofis bir ay sonra bir AI agent kurdu: agent her sabah 07:30'da gmail'i tarar, eki okur, Logo'ya yazar, vade yaklaşınca SMS atar. Eleman geldiğinde iş bitmiş — fincanı alıp analiz yapmaya başlıyor. Agent tatilde değil, hasta değil, "unutmuş" değil.
+
+> **Hızlı Özet:** AI agent sohbet botu değildir — bir hedef verirsiniz, birden fazla sistemle konuşur, ara kararlar alır, işi bitirir. Türk KOBİ'lerinde en sık kurulan 7 örnek muhasebe, satış teklifi, müşteri servisi, İK, stok, rapor üretimi ve onboarding üzerine. Hangisi size uyar? Şirketinizde bir insan haftada 6 saatten fazla aynı işi tekrar ediyorsa, o işin adayıdır.
+
+## Önce Kısa: AI Agent Nedir?
+
+Sohbet botu tek döngüdür — sorarsınız, cevap verir, kapanır. AI agent bir hedef alır. Hedefi parçalar, araç seçer, birini arar, diğerini tetikler, sonucu kontrol eder. Yanlış yaptıysa geri döner. Bitince raporlar.
+
+Tek kelimeyle: dijital bir stajyer. Ama yorulmayan, uyumayan, aynı işi 3000 kez aynı doğrulukla yapan bir stajyer. Tam rehber için [AI Agent Nedir? Şirketiniz İçin Otonom Yapay Zeka Asistanları Rehberi](/blog/ai-agent-nedir-sirketler-icin-rehber) yazısı devreye giriyor.
+
+Sohbet botu ile farkı [AI Agent vs Chatbot](/blog/ai-agent-vs-chatbot-isletmeniz-icin-hangisi-dogru) yazısında ayrıntılı inceledik. Bu yazıda somut örneklere bakıyoruz.
+
+## 7 Gerçek AI Agent Örneği
+
+Aşağıdaki yedi senaryo, Verimio'nun Türkiye'deki KOBİ'lerde karşılaştığı en sık ihtiyaçlardan. Her biri için: kim için, ne yapar, hangi araçlar, hangi sonuç.
+
+### 1. Fatura İşleme Agent'ı — Muhasebe Ofisi
+
+**Kim için:** Aylık 500+ fatura işleyen muhasebe departmanı veya mali müşavir.
+
+Agent her sabah e-postayı ve entegre e-fatura kanalını tarar. PDF veya XML farketmez, içindeki VKN, tutar, KDV, vade tarihini çıkarır. Logo veya Mikro'ya yazar. Cari hesabı açıp güncellediğini doğrular. Anormal tutar varsa (ortalamanın 5 katı gibi) muhasebeciye Slack'ten sorar: "Bu fatura normal mi?"
+
+**Araçlar:** Gmail API + Claude + Logo/Mikro API + Slack
+**Sonuç:** Muhasebeci haftada 8 saat fatura girişinden kurtulur. Bu saatler analiz ve danışmanlığa kayar.
+
+Detay için [Muhasebe Otomasyonu: Türk KOBİ'leri İçin Aylık 80 Saat Kazandıran 7 Süreç](/blog/muhasebe-otomasyonu-kobi-rehberi) yazısına bakın.
+
+### 2. Teklif Hazırlama Agent'ı — B2B Satış
+
+**Kim için:** Günlük 5-20 teklif hazırlayan KOBİ satış ekibi.
+
+Müşteri aday CRM'e düşer düşmez agent devreye girer. Geçmiş siparişlere bakar, benzer müşterilerin aldığı paketi önerir, fiyat aralığını şirket iskonto politikasına göre hesaplar. Word şablonunu doldurur, teklifi PDF yapar, satış temsilcisine "taslak hazır" diye gönderir. Temsilci bir bakar, onaylar veya düzeltir, yollar.
+
+**Araçlar:** HubSpot/Pipedrive + Claude + Google Docs + Gmail
+**Sonuç:** Teklif hazırlama süresi 45 dakikadan 5 dakikaya düşer. Satış temsilcisi 4 yerine 12 teklif yolluyor.
+
+### 3. Müşteri Servisi Triage Agent'ı — E-ticaret
+
+**Kim için:** Günlük 200+ müşteri mesajı alan perakende veya e-ticaret.
+
+Gelen WhatsApp, e-posta, Instagram DM hepsi agent'a düşer. Agent niyeti sınıflar: iade, kargo takibi, ürün sorusu, şikayet. İlk üçü kendi yanıtlar (stok sistemine bağlanıp gerçek cevabı verir). Şikayeti insan ekibe aktarır — özetle, geçmiş siparişle, önerilen çözümle. İnsan temsilci sadece onay veriyor.
+
+**Araçlar:** WhatsApp Business API + Instagram Graph + Gmail + Shopify/Ticimax + Claude
+**Sonuç:** 4 kişilik destek ekibi 2 kişiye iner. Kalan 2 kişi sadece gerçekten karmaşık konulara bakar.
+
+### 4. Servis Takip Agent'ı — Hizmet Sektörü
+
+**Kim için:** Saha ekibi gönderen teknik servis, klima bakım, asansör firmaları.
+
+Agent sabah bir teknisyene gününün randevularını iletir. Öğleden sonra arayıp "Kadıköy'deki işi bitirdiniz mi?" diye sorar. "Evet" cevabını alınca müşteriye otomatik anket gönderir. Anket dönerse şikayet varsa yöneticiyi arar. Hafta sonu bölgesel rapor çıkarır: hangi teknisyen hangi tip işte hızlı, hangisi yavaş.
+
+**Araçlar:** Takvim + WhatsApp + Claude + Looker/Excel
+**Sonuç:** Patron sahayı gezmeden sahanın ne yaptığını bilir. "Yolda" diyen teknisyen gerçekten yolda mı — agent sorar.
+
+### 5. Özgeçmiş Tarama Agent'ı — İK
+
+**Kim için:** İlan başına 200+ başvuru alan orta ölçek KOBİ.
+
+LinkedIn ve kariyer.net'e ilan konduğu andan itibaren agent başvuruları toplar. Her CV'yi ilan kriterlerine göre okur: "X yıl deneyim", "Y yazılım bilgisi", "Z sektör". Puan verir, üst yüzde 20'yi özetleyip İK'ya gönderir. Kalanlara otomatik nazik ret e-postası yollar.
+
+**Araçlar:** LinkedIn + Kariyer.net API + Claude + HR şablonları
+**Sonuç:** İK müdürü 200 CV'yi 2 günde 40'a indiriyor. Bu 40'ı kendi okuyor, görüşmeye çağırıyor. Toplam süre 5 günden 1 güne.
+
+### 6. Stok-Sipariş Agent'ı — Tedarik Zinciri
+
+**Kim için:** 500+ SKU yöneten perakende veya üretim KOBİ'si.
+
+Agent stok veritabanını saat başı kontrol eder. Kritik eşiğin altına düşen ürünü görür görmez tedarikçinin fiyatını çeker (önceden anlaşmalı), sipariş taslağı hazırlar, satın alma müdürüne onay için yollar. Müdür Slack'ten "onayla" der, agent gönderir. Teslimat takibini de agent yapar — gecikme varsa müdürü uyarır.
+
+**Araçlar:** ERP + Tedarikçi API'ler + Slack + Claude
+**Sonuç:** Stok yok satması %60 düşer. Satın alma müdürü "nereden aldığım neyse gitmiş?" soran müdürden "bu hafta ne stratejik yapayım?" diye soran müdüre döner.
+
+### 7. Haftalık Rapor Agent'ı — Yönetim
+
+**Kim için:** Haftanın sonunda CEO'ya rapor hazırlayan orta kademe yönetici.
+
+Cuma akşam 17:00'da agent devreye girer. Satış (CRM), finans (muhasebe yazılımı), müşteri servisi (destek sistemi), operasyon (ERP) dört sistemi okur. Haftayı önceki hafta ile kıyaslar. Anomalileri işaretler: "Perşembe satış %40 düştü", "iade oranı 2 kat arttı", "A müşterisi 6 aydır ilk kez sipariş verdi". Özetli PDF patrona gider.
+
+**Araçlar:** CRM + ERP + Muhasebe + Destek sistemi + Claude + PDF
+**Sonuç:** Patronun haftalık "ne durumdayız?" çağrısı 30 dakikadan 5 dakikaya iner. Karar hızlanır.
+
+## Hangi Örnek Size Uyar?
+
+Liste kafa karıştırıcı gelebilir. Bir sadeleştirme:
+
+- **Muhasebeciniz Excel'de boğuluyorsa:** 1 numara (fatura agent'ı)
+- **Satış ekibi teklif yetiştiremiyorsa:** 2 numara
+- **Müşteri hizmetleri yüzüstü düşmüşse:** 3 numara
+- **Saha ekibini kontrol edemiyorsanız:** 4 numara
+- **CV okumaktan işe bakamıyorsanız:** 5 numara
+- **Stok bitti haberini müşteriden alıyorsanız:** 6 numara
+- **Pazartesi "geçen hafta ne oldu?" sorusuyla başlıyorsanız:** 7 numara
+
+Sedat'ın kuralı: **Bir insan haftada 6 saatten fazla aynı ekranda, aynı hareketi tekrar ediyorsa o iş agent adayı.** 6 saat eşiği neden? Altında kalanlar genelde agent'ın kurulum maliyetini amorti edemez. Üstündekiler 3-6 ayda kendini öder.
+
+## Nereden Başlarsınız?
+
+Yedi örneğin hepsini aynı anda kurmak hata. Verimio'nun Check-Up sürecinde gördüğümüz pattern: KOBİ'ler tek bir agent'ta 90 gün kalsın, sonuç alsın, sonra ikincisi. Bir kerede birden fazla sistemi değiştirmek ekibi yorar, şirket geri adım atar.
+
+**Adım 1 — Haritalayın.** Şirketteki 3-5 temel süreci listele. Her birinin haftalık insan saati ne kadar?
+
+**Adım 2 — En pahalıyı seçin.** Haftada 15 saatten fazla süren, tekrar eden, kural bazlı olanı. "Kreatiflik gerektiriyor" dediğiniz iş adayı değil — insanlar o işte zaten mutlu.
+
+**Adım 3 — Bir agent kurun, 90 gün çalışsın.** Excel'de insan saatleri azaldı mı? Hata oranı düştü mü? Ekibin morali nasıl? Üçü de yeşilse ikinci agent'a geçin.
+
+**Adım 4 — Altyapıya yatırım.** İlk agent çalıştıktan sonra aynı veri kaynaklarına ikinci, üçüncü agent bağlanır. İlk yatırım pahalı — sonrakilerin çoğu öncekini kullanır.
+
+n8n altyapısıyla agent kurmak için [n8n Rehberi: Türk Şirketleri İçin İş Otomasyonu A'dan Z'ye](/blog/n8n-rehberi-turk-sirketleri-is-otomasyonu) yazısına bakın. İş süreçlerinin ilk otomasyonu için [İş Süreci Otomasyonu Nedir?](/blog/is-sureci-otomasyonu-nedir) rehberi de faydalı.
+
+## Sık Sorulan Sorular
+
+**KOBİ için en yaygın AI agent kullanım alanı nedir?**
+Türkiye'deki KOBİ'lerde en sık kurulan üç agent fatura işleme (muhasebe), müşteri servisi triage (e-ticaret ve hizmet), ve teklif hazırlama (B2B satış). Bu üçü birden çok çalışanın haftada 10+ saatini aldığı, kural bazlı, tekrarlayan işler. Yatırımı 3-6 ayda amorti eder.
+
+**AI agent kurmak ne kadar sürer?**
+Tek bir agent için 2-6 hafta realistik. Süre sistemin karmaşıklığına bağlı. Hazır sistemlere (Logo, Mikro, HubSpot) bağlanmak hızlı, kendi iç yazılımınıza bağlanmak uzun. İlk agent'tan sonra ikincisi çok daha hızlıdır çünkü altyapı kurulmuş oluyor.
+
+**AI agent insanı işten çıkarır mı?**
+Verimio'nun gördüğü pattern: işten çıkarma değil, iş kayması. Muhasebeci fatura yazmak yerine analiz yapıyor. İK'cı CV okumak yerine görüşme yapıyor. Satış temsilcisi teklif yazmak yerine müşteri ilişkisi kuruyor. Agent "angarya" dedikleri işi alıyor, insan değer ürettiği işte kalıyor. Ama agent kurduktan sonra iş yükü planlaması gerekir — yeni pozisyonlar tanımlanmalı.
+
+**Hangi agent ilk kurulmalı?**
+Kural şu: Şirketteki herhangi bir çalışan "bu işi ne kadar sıkıcı, her gün aynı şey" diye yakınıyorsa o iş ilk aday. Sıkıcı iş = tekrarlayan iş = kural bazlı = agent'a uygun. Haftada 8-10 saatten fazla süren tek bir süreç seçin.
+
+**AI agent kurulumu ne kadar tutar?**
+Türkiye'deki KOBİ ölçeğinde ilk agent için 80.000-250.000 TL aralığında. Kurulum + ilk yıl bakım dahil. Küçük çaplı (muhasebe gibi tek sistemli) alt bant, karmaşık (multi-system tedarik zinciri gibi) üst bant. Bu rakam ürünün kendisi değil, sizin sisteminize özel entegrasyon maliyeti.
+
+## Sonuç
+
+AI agent bir ürün değil, bir yaklaşım. Sihirli çözüm satan bir yazılım değil, şirketinizdeki tekrarlayan işi birden fazla sistemle konuşarak bitiren bir dijital asistan.
+
+Yedi örnekten biri size uyduysa iyi haber: muhtemelen zaten var olan sistemlerinizle (Logo, Gmail, WhatsApp, ERP) kurulabilir. Yeni bir yazılım satın almak zorunda değilsiniz — var olanları birbirine bağlamak yeter. Ama yanlış süreci seçerseniz 6 ay emek boşa gider. Doğru süreci seçmek ilk ve en önemli iş.
+
+---
+
+Süreçlerinizde hangi işin agent'a uygun olduğunu değerlendirmek isterseniz, ücretsiz [Şirket Check-Up](/analiz) ile başlayabilirsiniz. Mevcut durumunuzu analiz eder, öncelikli aksiyon alanlarını somut bulgularla raporlarız.

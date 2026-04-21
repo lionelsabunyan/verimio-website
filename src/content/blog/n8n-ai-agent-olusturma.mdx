@@ -1,0 +1,192 @@
+---
+title: "n8n ile AI Agent Oluşturma: Türk KOBİ'leri İçin Adım Adım Rehber [2026]"
+excerpt: "n8n ile AI agent kurmak nasıl yapılır? Kurulum, AI node'u, tool kullanımı, hafıza — Türk KOBİ'si için somut adımlar ve ilk agent örneği."
+date: "20 Nisan 2026"
+category: "tutorial"
+readingTime: "11 dk"
+author: "Verimio Ekibi"
+---
+
+Bir muhasebe yazılımcısı arkadaşımız yaşıyor. 14 yıldır SQL, VB, sonra Python yazıyor. Geçen ay bize geldi: "AI agent denedim, anlamadım. Python koduyla tek bir şey bile çalıştıramadım." İki saat n8n açtık. Akşam eve bir çalışan agent ile gitti. Gelen e-postaları okuyan, ekteki faturaları Logo'ya yazan, anormal tutarı Slack'te soran bir sistem. Hiç Python yazmadı. Sürükle-bırak.
+
+n8n'in gücü burada: AI agent için yazılımcı olmak şart değil. Mantığı anlayan, ara yüzde düşünen herkes kurabilir.
+
+> **Hızlı Özet:** n8n AI agent bir workflow'dur — AI modeli (Claude, GPT) karar verir, n8n node'ları bu kararı sistemlere çevirir. Kurulum şu: n8n self-hosted, AI node aktif, API key, agent node, tool'lar (Gmail, Slack, HTTP), hafıza. İlk çalışan agent'ı 2-4 saatte kurarsınız. Production-ready hale gelmesi 2-4 hafta test alır.
+
+## AI Agent ve n8n: Tam Olarak Ne İlişki?
+
+n8n bir iş akışı (workflow) aracı. Gmail'deki mesajı alıp Slack'e gönderir, sipariş gelince muhasebe yazılımına yazar — aralarında iletken. [n8n Rehberi](/blog/n8n-rehberi-turk-sirketleri-is-otomasyonu) yazısı altyapıyı ayrıntılı anlatıyor.
+
+AI agent ise "kendi başına karar veren" bir sistem. Basit n8n workflow'u "X olursa Y yap" der. AI agent "X aldım, durum buysa Y, değilse Z, hiçbiri değilse şu insanı çağır" der.
+
+İkisini birleştirince şu oluyor: AI modeli düşünür ("bu mesaj şikayet mi soru mu?"), n8n aksiyonu alır (Claude "şikayet" derse şikayet node'u çalışır). [AI Agent Nedir?](/blog/ai-agent-nedir-sirketler-icin-rehber) pillar yazımızda kavram üzerinde duruyoruz.
+
+2024 sonunda n8n "Agent" node'unu ekledi. O zamana kadar AI agent kurmak için her şeyi sıfırdan bağlamak gerekiyordu. Şimdi hazır node ile başlanıyor, saatler değil dakikalar alıyor.
+
+## Kurulum — Adım Adım
+
+### Adım 1: n8n'i Kurun
+
+İki seçenek:
+
+**Self-hosted (KOBİ için önerilir):** DigitalOcean, Hetzner, AWS gibi bir sunucuya Docker ile kurarsınız. Aylık 5-20 USD. Veriler sizde kalır, sınırsız workflow, sınırsız node.
+
+```bash
+docker run -it --rm --name n8n \
+  -p 5678:5678 \
+  -v n8n_data:/home/node/.n8n \
+  docker.n8n.io/n8nio/n8n
+```
+
+Tarayıcıda `localhost:5678` açın, admin hesap yaratın. Bitti.
+
+**n8n Cloud:** Aylık 20-50 USD, ama bazı AI node'ları Pro planda. KOBİ'ye Hetzner sunucuya self-hosted daha ekonomik ve esnek. [n8n vs Zapier Karşılaştırması](/blog/n8n-vs-zapier-karsilastirma) yazımızda bu kararı ayrıntılı yazdık.
+
+### Adım 2: AI Node'larını Aktif Edin
+
+n8n 1.40+ sürümünden itibaren "LangChain" kategorisinde AI node'ları var:
+- **Agent** — karar veren ana node
+- **Chat Model** — Claude, OpenAI, Gemini
+- **Memory** — konuşma hafızası
+- **Tools** — agent'ın kullanabileceği araçlar
+- **Output Parser** — AI cevabını yapılandırılmış hale getirir
+
+n8n'in sol panelinden "Advanced AI" kategorisini açarak hepsini görürsünüz.
+
+### Adım 3: AI Model API Key'ini Bağlayın
+
+Claude kullanacaksanız console.anthropic.com'dan key alın. GPT için platform.openai.com. Gemini için aistudio.google.com.
+
+n8n'de Credentials → New → "Anthropic API" seçin, key'i yapıştırın. Tek seferlik iş. Artık tüm workflow'larda kullanılabilir.
+
+**Maliyet uyarısı:** Claude 3.5 Sonnet milyon input token için 3 USD, output için 15 USD. Agent'ınız her ay 5 milyon token işliyorsa aylık 50-100 USD. GPT-4o biraz daha pahalı, Gemini 1.5 biraz daha ucuz. İlk ay gözle görünür şekilde düşük başlayıp artıyor — dikkatli izleyin. [n8n ChatGPT Entegrasyonu](/blog/n8n-chatgpt-entegrasyonu-rehberi) yazımızda maliyet kontrolü ayrıntılı.
+
+### Adım 4: İlk Agent Node'unu Ekleyin
+
+n8n canvas'ında yeni workflow açın. Sağ üstten "+" butonu → AI → Agent. Sürükleyip bırakın.
+
+Agent node üç şey ister:
+- **Chat Model** (Claude 3.5 Sonnet önerilir)
+- **Memory** (başlangıçta "Buffer Memory" yeter)
+- **Tools** (bir sonraki adım)
+
+Chat Model'e bağlanın (Agent → Chat Model → Anthropic → Claude 3.5 Sonnet). Memory için "Window Buffer Memory" ekleyin, son 10 mesajı tutsun.
+
+### Adım 5: Tool Ekleyin (Agent'ın Yetenekleri)
+
+Tool, agent'ın "yapabileceği şey"lerdir. Bazı örnekler:
+
+- **Gmail Tool:** Agent e-posta gönderebilir, okuyabilir
+- **HTTP Request Tool:** Agent herhangi bir API'yi arayabilir (Logo, Mikro, Shopify)
+- **Slack Tool:** Agent mesaj atabilir
+- **Calculator Tool:** Agent matematik yapabilir
+- **Custom Tool:** Kendi yazdığınız fonksiyonu çağırabilir
+
+Her tool'a bir **description** yazarsınız. Bu description agent'ın hangi tool'u ne zaman kullanacağını anlaması için kritik.
+
+```
+Tool: check_invoice_status
+Description: "Bir fatura numarası verildiğinde Logo'dan fatura durumunu sorgular. 
+Parametreler: invoice_number (string). Cevap: {status, amount, due_date}"
+```
+
+Description ne kadar net olursa agent o kadar doğru çağırır. Muğlak açıklama = agent yanlış tool'u tetikler.
+
+### Adım 6: Tetikleyici (Trigger) Bağlayın
+
+Agent ne zaman çalışacak? Üç yaygın seçenek:
+
+- **Webhook:** WhatsApp API veya form gönderiminden tetiklenir
+- **Schedule:** Her saat/gün belirli zamanda çalışır
+- **Email Trigger:** Bir e-posta gelince tetiklenir
+
+Test için önce **Manual Trigger** kullanın — sağ altta "Execute Workflow" dedikçe çalışır.
+
+## İlk Çalışan Agent — Tam Örnek
+
+Senaryomuz: Bir e-ticaret firması. Müşteri WhatsApp'tan mesaj yazıyor. Agent cevap vermeli — sipariş durumu veya ürün stoğu soruluyorsa kendi yanıtlıyor, karmaşıksa insana aktarıyor.
+
+**Workflow adımları:**
+
+1. **Webhook Trigger** — WhatsApp Business Platform mesajı buraya düşer
+2. **Agent Node** — Claude 3.5 Sonnet + Buffer Memory
+3. **Tools:**
+   - `get_order_status(order_number)` — Shopify'a bakar
+   - `get_product_stock(product_name)` — envanter API'sine bakar
+   - `escalate_to_human(reason)` — Slack'e mesaj atar
+4. **Response Node** — WhatsApp API'sine cevabı yollar
+
+**Sistem promptu (Agent'a verilen talimat):**
+
+```
+Sen X Mağazası'nın müşteri hizmetleri asistanısın. 
+Türkçe konuşursun, samimi ama profesyonelsin.
+Sipariş durumu ve ürün stoğu sorularını kendi yanıtla.
+İade, şikayet, özel talep gelince escalate_to_human tool'unu çağır.
+Müşteri kişisel bilgi (TC, kart numarası) yazarsa "bunu yazmayın" uyarısı ver.
+Her cevap 2-3 cümleyi geçmesin.
+```
+
+İlk test: Manual trigger, JSON data olarak `{"message": "Siparişim nerede? Sipariş no 12345"}` gönderin. Agent:
+1. "Sipariş sorusu" kararını verir
+2. `get_order_status("12345")` tool'unu çağırır
+3. Shopify "yolda, yarın teslim" cevabını döner
+4. Agent müşteriye "Siparişiniz yarın teslim edilecek. Kargo şirketi Aras. Takip: XYZ123" yazar
+
+Bu akış ilk kurulumda 2-4 saat alır. Production'a çıkmadan önce 2 hafta gerçek veriyle test edin.
+
+## Hafıza (Memory) — Neden Kritik?
+
+Hafızasız agent balık gibidir — her mesajı ilk defa görmüş olur. Müşteri "bir dakika önce sorduğum şey ne oldu?" derse, agent anlamaz.
+
+n8n'de iki memory seçeneği:
+
+**1. Window Buffer Memory:** Son N mesajı RAM'de tutar. Hızlı, ücretsiz, basit. Kısıt: n8n restart olursa unutur. Küçük KOBİ için genelde yeter.
+
+**2. Redis Memory:** Kalıcı hafıza. Redis sunucusunda saklar, restart korunur. Aylık 5-15 USD ek, ama ciddi trafiğiniz varsa şart.
+
+Kurulumda **conversation ID** kullanın — her müşteriye unique bir ID, böylece agent hangi müşteriyle konuştuğunu ayırır. WhatsApp'ta telefon numarası conversation ID olabilir.
+
+## Yaygın 5 Hata
+
+### 1. Tool Description Muğlak
+"Bu tool fatura çeker" yetmez. "invoice_number (string) alır, Logo'dan durum bilgisini döner" demek gerek. Agent muğlak description'la çağırmaz, yanlış çağırır.
+
+### 2. Sistem Promptu Çok Uzun
+1000 kelimelik sistem promptu agent'ı kafası karıştırır. 5-10 cümle yeter: rolü, tonu, hangi tool'lar, ne zaman insana aktar.
+
+### 3. API Hata Yönetimi Yok
+Logo API düştüğünde ne olacak? Tool'un cevabı `null` dönse agent karışır. Her tool'a error handler ekleyin — "sistem geçici olarak ulaşılamaz" yazsın.
+
+### 4. Test Olmadan Yayına Çıkmak
+İlk gün 100 gerçek müşteri = 15 hata = şirket imajına zarar. İki hafta kapalı grupta test, sonra dışa açın.
+
+### 5. Maliyet İzlenmiyor
+Her 1000 agent çağrısının size maliyeti ne? Claude, GPT, Gemini — n8n execution log'undan saat başı kontrol edin. Viral olan bir agent bir gecede 500 USD fatura yapabilir. [İş Süreci Otomasyonu Nedir?](/blog/is-sureci-otomasyonu-nedir) yazımızda maliyet kontrolü prensiplerine bakın.
+
+## Sık Sorulan Sorular
+
+**n8n AI agent ile Python ile agent yazmak arasındaki fark nedir?**
+n8n görsel altyapı — sürükle-bırak, kod yok. Python (LangChain, LangGraph) kodlu — her şey esnek ama programcı lazım. KOBİ için n8n daha hızlı ve düşük bakım maliyeti. Karmaşık araştırma projesi veya özel model entegrasyonları gerekiyorsa Python daha esnek. %80 KOBİ ihtiyacı n8n ile karşılanır.
+
+**n8n agent hangi AI modellerini destekler?**
+Claude (Anthropic), GPT (OpenAI), Gemini (Google), Mistral, Llama 3 (açık kaynak), DeepSeek ve daha fazlası. Local (Ollama ile) model de koşturulabilir — veri hiç dışarı çıkmaz. KVKK kaygısı varsa Ollama + Llama 3.3 veya DeepSeek kombinasyonu mantıklı.
+
+**Agent'ın yanlış karar vermesi riski ne?**
+Her AI agent'ta vardır. Azaltma yolları: (1) net sistem promptu, (2) tool description'ları ayrıntılı, (3) kritik aksiyonlarda insan onayı gerektiren "approval" adımı, (4) 2-4 haftalık test süreci, (5) günlük log incelemesi ilk ayda. Mali, hukuki, geri alınamaz işleri asla tamamen agent'a bırakmayın.
+
+**n8n cloud mu self-hosted mı KOBİ için?**
+KVKK kaygısı yoksa ve hızlı başlangıç istiyorsanız Cloud. Verinin sizde kalması gerekliyse veya 50+ workflow çalıştırıyorsanız self-hosted Hetzner (Almanya) veya DigitalOcean Frankfurt. Maliyet açısından 20+ workflow'dan sonra self-hosted daha ucuz.
+
+**Agent'ın kurulum ve ilk yıl maliyeti yaklaşık ne?**
+Self-hosted n8n + Claude API tek agent için: Kurulum 30.000-90.000 TL (danışmanlık + geliştirme), aylık işletme 2.500-7.000 TL (sunucu + API + izleme). Yıllık toplam 60.000-175.000 TL aralığında. İnsan kaynağı tasarrufuyla 4-8 ayda amorti olur.
+
+## Sonuç
+
+n8n ile AI agent kurmak iki yıl önce imkansızdı. Şimdi bir öğleden sonra işi. Ama "kurmak" ile "işe yaramak" farklı iki şey. Kurulum teknik, işe yaramak ise süreci doğru anlamakla ilgili.
+
+İlk agent'ınız muhtemelen sadece bir iş yapsın — tüm şirketi otomatikleştirmek istiyorsanız ilk sürüm hayal kırıklığı olur. Bir süreç alın, iki hafta test edin, 90 gün üretim ortamında çalıştırın. Ölçer, iyileştirir, genişletirsiniz. Hızla genişletmek 2026'nın en yaygın hatası.
+
+---
+
+Süreçlerinizde n8n AI agent'ın nereden başlayacağını değerlendirmek isterseniz, ücretsiz [Şirket Check-Up](/analiz) ile başlayabilirsiniz. Mevcut durumunuzu analiz eder, öncelikli aksiyon alanlarını somut bulgularla raporlarız.
