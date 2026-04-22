@@ -89,6 +89,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${BASE_URL}/n8n-turkiye`,
+      lastModified: new Date("2026-04-22"),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/ai-agent-rehberi`,
+      lastModified: new Date("2026-04-22"),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/ai-cagri-merkezi-rehberi`,
+      lastModified: new Date("2026-04-22"),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
       url: `${BASE_URL}/sss`,
       lastModified: new Date("2026-04-10"),
       changeFrequency: "monthly",

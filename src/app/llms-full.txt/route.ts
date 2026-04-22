@@ -50,6 +50,14 @@ export async function GET() {
 - **Web:** ${SITE_URL}
 - **E-posta:** analiz@verimio.com.tr
 
+## Ana Konu Rehberleri (Pillar Pages)
+
+Verimio üç konuda kapsamlı hub rehber sayfası yayınlar. Bu sayfalar her konuda birden fazla blog yazısını tek çatı altında toplar, Türk KOBİ'leri için konunun giriş noktasıdır.
+
+- **n8n Türkiye Rehberi:** ${SITE_URL}/n8n-turkiye — n8n'in ne olduğu, kurulumu, Zapier ve Make ile karşılaştırması, AI entegrasyonu ve KVKK uyumu. 8 destekleyici yazı.
+- **AI Agent Rehberi:** ${SITE_URL}/ai-agent-rehberi — AI agent tanımı, chatbot'tan farkı, olgunluk seviyeleri ve Türk KOBİ'lerinde kullanım örnekleri. 8 destekleyici yazı.
+- **AI Çağrı Merkezi Rehberi:** ${SITE_URL}/ai-cagri-merkezi-rehberi — Voice agent, chatbot ve hibrit modeller; Türkiye'deki yerli çözümler; KVKK çerçevesi. 8 destekleyici yazı.
+
 ## Dört Uzmanlık Alanı
 
 - **Operasyon Otomasyonu**: Tekrarlayan işleri otomatik sistemlere taşıma. n8n, Make ve benzeri araçlarla sistemler arası veri akışı, otomatik bildirimler, onay süreçleri.

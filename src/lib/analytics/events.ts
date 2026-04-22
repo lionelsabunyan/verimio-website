@@ -1,11 +1,11 @@
 /**
- * GA4 event tracking helper — minimal, tip-güvenli wrapper.
+ * Çok yönlü event tracking — GA4 + Meta Pixel + LinkedIn Insight Tag.
  *
  * Kullanım:
  *   import { track } from '@/lib/analytics/events'
  *   track('checkup_form_submit', { source: 'analiz_page' })
  *
- * NEXT_PUBLIC_GA_ID env var tanımlı değilse sessizce hiçbir şey yapmaz.
+ * Her pixel yalnızca env var tanımlıysa çağrılır; yoksa sessizce atlanır.
  */
 
 type GAEventName =
@@ -29,10 +29,33 @@ type GtagFunction = (
   params: GAEventParams
 ) => void
 
+type FbqFunction = (
+  command: 'track' | 'trackCustom',
+  eventName: string,
+  params?: Record<string, unknown>
+) => void
+
+type LintrkFunction = (
+  command: 'track',
+  params: { conversion_id: number }
+) => void
+
 function getGtag(): GtagFunction | null {
   if (typeof window === 'undefined') return null
   const w = window as unknown as { gtag?: GtagFunction }
   return w.gtag ?? null
+}
+
+function getFbq(): FbqFunction | null {
+  if (typeof window === 'undefined') return null
+  const w = window as unknown as { fbq?: FbqFunction }
+  return w.fbq ?? null
+}
+
+function getLintrk(): LintrkFunction | null {
+  if (typeof window === 'undefined') return null
+  const w = window as unknown as { lintrk?: LintrkFunction }
+  return w.lintrk ?? null
 }
 
 export function track(name: GAEventName, params: GAEventParams = {}) {
@@ -42,6 +65,29 @@ export function track(name: GAEventName, params: GAEventParams = {}) {
     ...params,
     send_to: process.env.NEXT_PUBLIC_GA_ID,
   })
+}
+
+/**
+ * Meta Pixel standart event. Conversion API uyumlu standart isimler:
+ * Lead, CompleteRegistration, Contact, Schedule, SubmitApplication.
+ */
+export function trackMeta(
+  eventName: string,
+  params: Record<string, unknown> = {}
+) {
+  const fbq = getFbq()
+  if (!fbq) return
+  fbq('track', eventName, params)
+}
+
+/**
+ * LinkedIn conversion — conversion_id LinkedIn Campaign Manager'dan alınır.
+ * Her önemli conversion için ayrı bir conversion_id tanımlanır.
+ */
+export function trackLinkedIn(conversionId: number) {
+  const lintrk = getLintrk()
+  if (!lintrk) return
+  lintrk('track', { conversion_id: conversionId })
 }
 
 /**
@@ -60,6 +106,9 @@ export function trackCheckupStep(step: number, total: number) {
 
 export function trackCheckupSubmit(sector?: string) {
   track('checkup_form_submit', { sector: sector ?? 'unknown' })
+  trackMeta('Lead', { content_name: 'Check-up Form', content_category: sector ?? 'unknown' })
+  const linkedInId = process.env.NEXT_PUBLIC_LINKEDIN_CONVERSION_ID_LEAD
+  if (linkedInId) trackLinkedIn(Number(linkedInId))
 }
 
 export function trackCheckupError(reason: string) {
@@ -71,4 +120,5 @@ export function trackCheckupError(reason: string) {
  */
 export function trackCtaClick(label: string, location: string) {
   track('cta_click', { label, location })
+  trackMeta('Contact', { content_name: label, content_category: location })
 }

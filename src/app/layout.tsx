@@ -5,6 +5,8 @@ import "./globals.css";
 import NavbarWrapper from "@/components/layout/NavbarWrapper";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import OrganizationSchema from "@/components/seo/OrganizationSchema";
+import MetaPixel from "@/components/seo/MetaPixel";
+import LinkedInInsightTag from "@/components/seo/LinkedInInsightTag";
 import ChatWidgetLoader from "@/components/chatbot/ChatWidgetLoader";
 
 const ppNeueMontreal = localFont({
@@ -122,6 +124,8 @@ export default function RootLayout({
             </Script>
           </>
         ) : null}
+        <MetaPixel />
+        <LinkedInInsightTag />
       </body>
     </html>
   );
