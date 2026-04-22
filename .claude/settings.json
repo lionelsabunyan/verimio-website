@@ -1,0 +1,12 @@
+{
+  "sandbox": {
+    "network": {
+      "allowedDomains": [
+        "www.verimio.com.tr",
+        "njxgikhrhxvfveywvsuh.supabase.co",
+        "api.notion.com",
+        "api.telegram.org"
+      ]
+    }
+  }
+}
