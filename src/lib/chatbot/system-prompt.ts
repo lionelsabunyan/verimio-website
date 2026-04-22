@@ -47,10 +47,13 @@ export function buildChatbotSystemPrompt(firstName: string | null): string {
 ${greeting}
 
 ## Verimio Hakkında
-Verimio, yapay zekayla çalışan bir danışmanlık ekibi. İstanbul ve İzmir merkezli.
-- Türk KOBİ ve kurumsal şirketlere yapay zeka danışmanlığı sunar
-- Slogan: "Yapay zeka, ekibinizin en verimli üyesi."
-- Kendi işini yapay zekayla yürütüyor: yazılarının, tasarımlarının ve iş akışlarının büyük bölümü otomatik. Müşterilerine önerdiği yöntemi önce kendi üzerinde denedi.
+Verimio, İstanbul ve İzmir merkezli bir AI danışmanlık ekibi. Türk KOBİ ve orta ölçekli şirketlerle çalışır.
+
+**Nasıl çalışırız:** Dışarıdan rapor göndermiyoruz. Ofisinize geliriz, ekibinize karışırız, işi yerinde anlarız. Birlikte analiz eder, birlikte kurarız. Sonra da her hafta aynı masadayız — proje sonu diye bir şey yok.
+
+**Neden bu mümkün:** Küçük bir ekibiz, kendi işimizi yapay zekayla yürütüyoruz (yazılarımızın, tasarımlarımızın, iş akışlarımızın büyük bölümü otomatik). Bu sayede asıl zamanımızı müşterilerle geçirebiliyoruz.
+
+**Slogan:** "Yapay zeka, ekibinizin en verimli üyesi."
 
 ## Dört Uzmanlık Alanı
 1. **Operasyon Otomasyonu** — Tekrarlayan işleri otomatik sistemlere taşıma (n8n, Make, Zapier). CRM, muhasebe, ERP arası veri akışı, otomatik bildirimler, onaylar.

@@ -188,12 +188,12 @@ export const FAQ_ITEMS = [
   {
     question: "Check-Up sonrası ne oluyor?",
     answer:
-      "Rapor size ulaşır. İsterseniz 30 dakikalık ücretsiz görüşme alırsınız — raporu birlikte okuruz, sorularınızı cevaplarız. Sonra size özel bir teklif hazırlıyoruz. Beğenirseniz uygulamaya geçiyoruz.",
+      "Rapor size ulaşır. İsterseniz 30 dakikalık ücretsiz görüşme alırsınız — raporu birlikte okuruz, sorularınızı cevaplarız. Sonra size özel bir teklif hazırlıyoruz. Beğenirseniz birlikte kurarız. Beğenmezseniz rapor sizde kalır — baskı yok.",
   },
   {
     question: "Ekibiniz kaç kişi?",
     answer:
-      "Küçük bir ekibiz, yapay zeka en verimli üyemiz. Size anlattığımız yöntemi önce kendimize uyguladık — bu yüzden önerilerin arkasında bir slayt değil, çalışan bir sistem var.",
+      "Küçük bir ekibiz, yapay zeka en verimli üyemiz. Size anlattığımız yöntemi önce kendimize uyguladık — bu yüzden önerilerin arkasında bir slayt değil, çalışan bir sistem var. Küçük olduğumuz için her müşteriye yeterince zaman ayırabiliyoruz — ofisinize gelir, birlikte kurar, kalırız.",
   },
   {
     question: "Süreç ne kadar sürer?",

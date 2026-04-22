@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     template: "%s | Verimio",
   },
   description:
-    "Kendi işimizi yapay zekayla yürütüyoruz. Operasyon otomasyonu, müşteri hizmetleri, veri raporlama, AI stratejisi — size önerdiğimizi önce kendimizde denedik.",
+    "Dışarıda bir ofis değil, yanınıza gelen bir ekibiz. Ofisinize gelir, birlikte kurar, her hafta aynı masadayız. Kendi işimizi yapay zekayla yürüttüğümüz için zamanımızı sizinle geçiriyoruz.",
   keywords: [
     "AI danışmanlık",
     "yapay zeka danışmanlığı",
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Verimio | Yapay zeka, ekibinizin en verimli üyesi",
     description:
-      "Kendi işimizi yapay zekayla yürütüyoruz. Önce kendimizde denedik, size öneriyoruz.",
+      "Dışarıda bir ofis değil, yanınıza gelen bir ekibiz. Ofisinize gelir, birlikte kurar, her hafta aynı masadayız.",
     type: "website",
     locale: "tr_TR",
     url: "https://www.verimio.com.tr",
@@ -85,7 +85,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Verimio | Yapay zeka, ekibinizin en verimli üyesi",
     description:
-      "Kendi işimizi yapay zekayla yürütüyoruz. Önce kendimizde denedik, size öneriyoruz.",
+      "Dışarıda bir ofis değil, yanınıza gelen bir ekibiz. Ofisinize gelir, birlikte kurar, her hafta aynı masadayız.",
     images: ["/opengraph-image"],
   },
   alternates: {
