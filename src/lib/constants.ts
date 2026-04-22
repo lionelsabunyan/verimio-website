@@ -269,8 +269,8 @@ export const BLOG_POSTS = [
     category: "ai-tools" as const,
   },
   {
-    title: "KVKK Uyumlu Voice AI: Çağrı Merkezinde Güvenlik",
-    excerpt: "Çağrı merkeziniz KVKK'ya uyumlu mu? Voice AI kurarken veri güvenliğini nasıl sağlarsınız, maliyet ne kadar düşer — pratik rehber.",
+    title: "KVKK Uyumlu Voice AI Çağrı Merkezi: Kurulum ve Güvenlik Rehberi",
+    excerpt: "KVKK uyumlu Voice AI çağrı merkezi nasıl kurulur? Verimio sistemi Türkiye'de kurar, KVKK uyumunu sağlar, operasyonunu sürekli işletir.",
     date: "13 Nisan 2026",
     slug: "kvkk-uyumlu-voice-ai-cagri-merkezinde-guvenlik",
     category: "security" as const,
@@ -325,8 +325,8 @@ export const BLOG_POSTS = [
     category: "tutorial" as const,
   },
   {
-    title: "Yapay Zeka Çağrı Merkezi: Türkiye'de Müşteri Hizmetlerinin Geleceği [2026]",
-    excerpt: "AI çağrı merkezi nedir, maliyeti ne kadar, KVKK uyumu nasıl sağlanır? Sohbet botu ve sesli asistan ile kurulum rehberi.",
+    title: "Yapay Zeka Çağrı Merkezi: Kurulum ve İşletme Rehberi [2026]",
+    excerpt: "Yapay zeka çağrı merkezi nedir, nasıl kurulur, aylık maliyeti ne? Verimio sisteminizi kurar, KVKK uyumunu sağlar, operasyonunu sizinle sürdürür.",
     date: "10 Nisan 2026",
     slug: "yapay-zeka-cagri-merkezi-rehberi",
     category: "customer" as const,
@@ -522,7 +522,7 @@ export const BLOG_POSTS = [
   },
   {
     title: "Chatbot mu, Voice Agent mi? Müşteri İletişiminde Doğru Seçim",
-    excerpt: "Chatbot mu, sesli asistan mı? Biri yazışır, diğeri telefonu açar. Müşteri hizmetiniz için hangisi doğru seçim — karar rehberi.",
+    excerpt: "Chatbot ve voice agent arasında nasıl karar verilir? Seçim kriterleri ve Verimio'nun kurulumdan işletmeye uzanan ortaklık modeli — Türk KOBİ'leri için rehber.",
     date: "5 Mart 2026",
     slug: "chatbot-voice-agent-secimi",
     category: "customer" as const,
