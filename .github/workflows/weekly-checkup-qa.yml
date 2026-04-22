@@ -1,0 +1,273 @@
+name: Weekly Check-Up QA
+
+'on':
+  schedule:
+    - cron: '0 6 * * 1'  # Her Pazartesi 09:00 Türkiye saati (UTC+3)
+  workflow_dispatch:      # Manuel tetikleme
+
+jobs:
+  qa-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Submit test lead
+        id: submit
+        run: |
+          RESPONSE=$(curl -s -w "\n%{http_code}" -X POST "https://www.verimio.com.tr/api/checkup/submit" \
+            -H "Content-Type: application/json" \
+            -H "Origin: https://www.verimio.com.tr" \
+            -H "Referer: https://www.verimio.com.tr/analiz" \
+            -d '{
+              "email": "weekly-qa-bot@verimio.com.tr",
+              "company_name": "QA Bot Haftalık Test",
+              "sector": "Teknoloji / Yazılım",
+              "team_size": "2-5 kişi",
+              "tools": ["Excel / Google Sheets", "CRM (Salesforce, HubSpot vb.)"],
+              "pain_points": {"s6": "Raporlama yavaş", "s7": "Müşteri takibi zor", "s8": "Veri dağınık"},
+              "biggest_pain": "Bu otomatik haftalık QA testidir — lütfen göz ardı edin.",
+              "priority_area": "Veri & Raporlama Otomasyonu",
+              "expectation": "Rapor yeterli",
+              "timeline": "Araştırma aşamasındayım",
+              "phone": "05001112233"
+            }')
+
+          HTTP_STATUS=$(echo "$RESPONSE" | tail -1)
+          BODY=$(echo "$RESPONSE" | head -1)
+
+          echo "http_status=$HTTP_STATUS" >> $GITHUB_OUTPUT
+          echo "body=$BODY" >> $GITHUB_OUTPUT
+
+          echo "API Response: $BODY (HTTP $HTTP_STATUS)"
+
+          if [ "$HTTP_STATUS" != "200" ]; then
+            echo "submit_ok=false" >> $GITHUB_OUTPUT
+            echo "submit_detail=HTTP $HTTP_STATUS — $BODY" >> $GITHUB_OUTPUT
+          else
+            SUCCESS=$(echo "$BODY" | python3 -c "import sys,json; d=json.load(sys.stdin); print(str(d.get('success',False)).lower())" 2>/dev/null || echo "false")
+            LEAD_ID=$(echo "$BODY" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('leadId',''))" 2>/dev/null || echo "")
+            if [ "$SUCCESS" = "true" ]; then
+              echo "submit_ok=true" >> $GITHUB_OUTPUT
+              echo "submit_detail=leadId: $LEAD_ID" >> $GITHUB_OUTPUT
+              echo "lead_id=$LEAD_ID" >> $GITHUB_OUTPUT
+            else
+              echo "submit_ok=false" >> $GITHUB_OUTPUT
+              echo "submit_detail=success=false — $BODY" >> $GITHUB_OUTPUT
+            fi
+          fi
+
+      - name: Wait for async processing
+        run: sleep 15
+
+      - name: Verify Supabase insert
+        id: supabase
+        env:
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        run: |
+          RESPONSE=$(curl -s -w "\n%{http_code}" \
+            "https://njxgikhrhxvfveywvsuh.supabase.co/rest/v1/leads?email=eq.weekly-qa-bot%40verimio.com.tr&order=created_at.desc&limit=1&select=id,email,company_name,sector,status,created_at" \
+            -H "apikey: $SUPABASE_ANON_KEY" \
+            -H "Authorization: Bearer $SUPABASE_ANON_KEY")
+
+          HTTP_STATUS=$(echo "$RESPONSE" | tail -1)
+          BODY=$(echo "$RESPONSE" | head -1)
+
+          echo "HTTP $HTTP_STATUS — $BODY"
+
+          COUNT=$(echo "$BODY" | python3 -c "import sys,json; d=json.load(sys.stdin); print(len(d))" 2>/dev/null || echo "0")
+          if [ "$COUNT" -ge "1" ] 2>/dev/null; then
+            STATUS_VAL=$(echo "$BODY" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d[0].get('status',''))" 2>/dev/null || echo "")
+            COMPANY=$(echo "$BODY" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d[0].get('company_name',''))" 2>/dev/null || echo "")
+            DB_ID=$(echo "$BODY" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d[0].get('id',''))" 2>/dev/null || echo "")
+            echo "supabase_ok=true" >> $GITHUB_OUTPUT
+            echo "supabase_detail=status=$STATUS_VAL, company=$COMPANY" >> $GITHUB_OUTPUT
+            echo "supabase_record_id=$DB_ID" >> $GITHUB_OUTPUT
+          else
+            echo "supabase_ok=false" >> $GITHUB_OUTPUT
+            echo "supabase_detail=Kayıt bulunamadı (HTTP $HTTP_STATUS)" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Verify Notion page
+        id: notion
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+        run: |
+          NOTION_DB_ID="2aa3c18723714c2e8a062b58b5a5b69d"
+
+          RESPONSE=$(curl -s -w "\n%{http_code}" -X POST "https://api.notion.com/v1/databases/$NOTION_DB_ID/query" \
+            -H "Authorization: Bearer $NOTION_TOKEN" \
+            -H "Notion-Version: 2022-06-28" \
+            -H "Content-Type: application/json" \
+            --data '{"filter":{"property":"Email","email":{"equals":"weekly-qa-bot@verimio.com.tr"}},"page_size":5}')
+
+          HTTP_STATUS=$(echo "$RESPONSE" | tail -1)
+          BODY=$(echo "$RESPONSE" | head -1)
+
+          # 10sn daha bekle ve tekrar dene yoksa
+          if [ "$HTTP_STATUS" = "200" ]; then
+            COUNT=$(echo "$BODY" | python3 -c "import sys,json; d=json.load(sys.stdin); print(len(d.get('results',[])))" 2>/dev/null || echo "0")
+          else
+            COUNT="0"
+          fi
+
+          if [ "$COUNT" = "0" ] || [ "$HTTP_STATUS" != "200" ]; then
+            echo "Notion'da bulunamadı, 10sn daha bekleniyor..."
+            sleep 10
+            RESPONSE=$(curl -s -w "\n%{http_code}" -X POST "https://api.notion.com/v1/databases/$NOTION_DB_ID/query" \
+              -H "Authorization: Bearer $NOTION_TOKEN" \
+              -H "Notion-Version: 2022-06-28" \
+              -H "Content-Type: application/json" \
+              --data '{"filter":{"property":"Email","email":{"equals":"weekly-qa-bot@verimio.com.tr"}},"page_size":5}')
+            HTTP_STATUS=$(echo "$RESPONSE" | tail -1)
+            BODY=$(echo "$RESPONSE" | head -1)
+          fi
+
+          echo "Notion HTTP $HTTP_STATUS"
+
+          COUNT=$(echo "$BODY" | python3 -c "import sys,json; d=json.load(sys.stdin); print(len(d.get('results',[])))" 2>/dev/null || echo "0")
+
+          if [ "$COUNT" -ge "1" ] 2>/dev/null; then
+            SCORE=$(echo "$BODY" | python3 -c "import sys,json; d=json.load(sys.stdin); r=d['results'][0]; print(r['properties'].get('Skor',{}).get('number','?'))" 2>/dev/null || echo "?")
+            PAGE_IDS=$(echo "$BODY" | python3 -c "import sys,json; d=json.load(sys.stdin); print('\n'.join([r['id'] for r in d['results']]))" 2>/dev/null || echo "")
+
+            echo "notion_ok=true" >> $GITHUB_OUTPUT
+            echo "notion_score=$SCORE" >> $GITHUB_OUTPUT
+            echo "notion_page_ids<<EOF" >> $GITHUB_OUTPUT
+            echo "$PAGE_IDS" >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
+
+            if [ "$SCORE" = "5" ]; then
+              echo "notion_llm_fallback=true" >> $GITHUB_OUTPUT
+            else
+              echo "notion_llm_fallback=false" >> $GITHUB_OUTPUT
+            fi
+          else
+            echo "notion_ok=false" >> $GITHUB_OUTPUT
+            echo "notion_score=?" >> $GITHUB_OUTPUT
+            echo "notion_llm_fallback=false" >> $GITHUB_OUTPUT
+            echo "notion_page_ids=" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Cleanup — Supabase delete
+        if: always()
+        id: cleanup_supabase
+        env:
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        run: |
+          RESPONSE=$(curl -s -w "\n%{http_code}" -X DELETE \
+            "https://njxgikhrhxvfveywvsuh.supabase.co/rest/v1/leads?email=eq.weekly-qa-bot%40verimio.com.tr" \
+            -H "apikey: $SUPABASE_ANON_KEY" \
+            -H "Authorization: Bearer $SUPABASE_ANON_KEY")
+          HTTP_STATUS=$(echo "$RESPONSE" | tail -1)
+          echo "Supabase delete HTTP $HTTP_STATUS"
+          if [ "$HTTP_STATUS" = "204" ] || [ "$HTTP_STATUS" = "200" ]; then
+            echo "cleanup_supabase_ok=true" >> $GITHUB_OUTPUT
+          else
+            echo "cleanup_supabase_ok=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Cleanup — Notion archive
+        if: always()
+        id: cleanup_notion
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_PAGE_IDS: ${{ steps.notion.outputs.notion_page_ids }}
+        run: |
+          if [ -z "$NOTION_PAGE_IDS" ]; then
+            echo "Arşivlenecek Notion sayfası yok."
+            echo "cleanup_notion_ok=true" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          ALL_OK=true
+          while IFS= read -r PAGE_ID; do
+            [ -z "$PAGE_ID" ] && continue
+            HTTP=$(curl -s -o /dev/null -w "%{http_code}" -X PATCH "https://api.notion.com/v1/pages/$PAGE_ID" \
+              -H "Authorization: Bearer $NOTION_TOKEN" \
+              -H "Notion-Version: 2022-06-28" \
+              -H "Content-Type: application/json" \
+              --data '{"archived": true}')
+            echo "Notion archive $PAGE_ID — HTTP $HTTP"
+            [ "$HTTP" != "200" ] && ALL_OK=false
+          done <<< "$NOTION_PAGE_IDS"
+
+          echo "cleanup_notion_ok=$ALL_OK" >> $GITHUB_OUTPUT
+
+      - name: Send Telegram notification
+        if: always()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          SUBMIT_OK: ${{ steps.submit.outputs.submit_ok }}
+          SUBMIT_DETAIL: ${{ steps.submit.outputs.submit_detail }}
+          SUPABASE_OK: ${{ steps.supabase.outputs.supabase_ok }}
+          SUPABASE_DETAIL: ${{ steps.supabase.outputs.supabase_detail }}
+          NOTION_OK: ${{ steps.notion.outputs.notion_ok }}
+          NOTION_SCORE: ${{ steps.notion.outputs.notion_score }}
+          NOTION_LLM_FALLBACK: ${{ steps.notion.outputs.notion_llm_fallback }}
+          CLEANUP_SUPABASE_OK: ${{ steps.cleanup_supabase.outputs.cleanup_supabase_ok }}
+          CLEANUP_NOTION_OK: ${{ steps.cleanup_notion.outputs.cleanup_notion_ok }}
+        run: |
+          python3 << 'PYEOF'
+          import os, json, urllib.request, datetime
+
+          def ok(val): return "✅" if val == "true" else "❌"
+
+          submit_ok = os.environ.get("SUBMIT_OK", "false")
+          submit_detail = os.environ.get("SUBMIT_DETAIL", "")
+          supabase_ok = os.environ.get("SUPABASE_OK", "false")
+          supabase_detail = os.environ.get("SUPABASE_DETAIL", "")
+          notion_ok = os.environ.get("NOTION_OK", "false")
+          notion_score = os.environ.get("NOTION_SCORE", "?")
+          llm_fallback = os.environ.get("NOTION_LLM_FALLBACK", "false")
+          cleanup_sb = os.environ.get("CLEANUP_SUPABASE_OK", "false")
+          cleanup_nt = os.environ.get("CLEANUP_NOTION_OK", "false")
+          token = os.environ.get("TELEGRAM_BOT_TOKEN", "")
+
+          date_str = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=3))).strftime("%d %B %Y, %H:%M")
+
+          if llm_fallback == "true":
+              llm_status = "⚠️ Fallback (Skor=5, OpenRouter key kontrol et)"
+          elif notion_ok == "true":
+              llm_status = f"✅ Gerçek analiz (Skor: {notion_score}/10)"
+          else:
+              llm_status = "❓ Notion bulunamadı"
+
+          cleanup_status = "✅" if cleanup_sb == "true" and cleanup_nt == "true" else f"⚠️ Kısmi (SB:{cleanup_sb}, Notion:{cleanup_nt})"
+
+          all_pass = submit_ok == "true" and supabase_ok == "true" and notion_ok == "true" and llm_fallback != "true"
+          warn_only = submit_ok == "true" and supabase_ok == "true" and notion_ok == "true" and llm_fallback == "true"
+
+          if all_pass:
+              header = "✅ Verimio Haftalık QA — TÜM TESTLER GEÇTİ"
+              footer = "Sonraki test: Gelecek Pazartesi 09:00"
+          elif warn_only:
+              header = "⚠️ Verimio Haftalık QA — UYARI (LLM fallback)"
+              footer = "OpenRouter API anahtarını kontrol et."
+          else:
+              header = "🚨 Verimio Haftalık QA — HATA TESPİT EDİLDİ"
+              footer = "ACİL MÜDAHALE GEREKİYOR"
+
+          lines = [
+              header,
+              f"📅 Tarih: {date_str}",
+              "",
+              f"• API Submit: {ok(submit_ok)} {submit_detail}",
+              f"• Supabase Insert: {ok(supabase_ok)} {supabase_detail}",
+              f"• Notion Page: {ok(notion_ok)}",
+              f"• LLM Analiz: {llm_status}",
+              f"• Temizlik: {cleanup_status}",
+              "",
+              footer,
+          ]
+          message = "\n".join(lines)
+
+          payload = json.dumps({"chat_id": "72989348", "text": message}).encode()
+          req = urllib.request.Request(
+              f"https://api.telegram.org/bot{token}/sendMessage",
+              data=payload,
+              headers={"Content-Type": "application/json"},
+          )
+          try:
+              with urllib.request.urlopen(req, timeout=10) as resp:
+                  print("Telegram OK:", resp.status)
+          except Exception as e:
+              print("Telegram hata:", e)
+          PYEOF
