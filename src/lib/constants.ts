@@ -43,8 +43,8 @@ export const HERO_CONTENT = {
 
 export const ABOUT_CONTENT = {
   label: "Hakkımızda",
-  heading: "Kendi işimizi yapay zekayla yürütüyoruz.",
-  text: "Yazılarımız, tasarımlarımız, iş akışlarımız — çoğu otomatik. Müşteriye anlattığımız yöntemi önce kendi üzerimizde denedik. Bu yüzden önerilerimizin arkasında bir slayt değil, çalışan bir sistem var. Bu sayfanın blog'u da kapak görselleri de bizim kurduğumuz otomatik hattan çıktı.",
+  heading: "Dışarıdan değil, yanınızda.",
+  text: "Rapor yazıp çekilmeyiz. Ofisinize gelir, ekibinizle tanışır, işi yerinde anlarız. Birlikte analiz eder, birlikte kurar, birlikte oturturuz. Sonra da her hafta aynı masadayız — proje sonu diye bir şey yok.",
   ctaPrimary: "Hakkımızda",
   ctaSecondary: "Hizmetlerimize Bakın",
 } as const;
