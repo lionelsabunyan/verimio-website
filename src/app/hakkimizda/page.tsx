@@ -3,21 +3,21 @@ import type { Metadata } from "next";
 import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 
 export const metadata: Metadata = {
-  title: "Hakkımızda - Yapay zekayla çalışan bir danışmanlık ekibi",
+  title: "Hakkımızda - Yanınızda çalışan AI danışmanlık ekibi",
   description:
-    "Kendi işimizi yapay zekayla yürütüyoruz. Müşterilerimize anlattığımız yöntemi önce kendimizde denedik.",
+    "Dışarıda bir ofis değil, yanınıza gelen bir ekibiz. Kendi işimizi yapay zekayla yürüttüğümüz için asıl zamanımızı sizinle geçirebiliyoruz.",
   openGraph: {
-    title: "Hakkımızda - Yapay zekayla çalışan bir danışmanlık ekibi",
+    title: "Hakkımızda - Yanınızda çalışan AI danışmanlık ekibi",
     description:
-      "Kendi işimizi yapay zekayla yürütüyoruz. Müşterilerimize anlattığımız yöntemi önce kendimizde denedik.",
+      "Dışarıda bir ofis değil, yanınıza gelen bir ekibiz. Kendi işimizi yapay zekayla yürüttüğümüz için asıl zamanımızı sizinle geçirebiliyoruz.",
     type: "website",
     url: "https://www.verimio.com.tr/hakkimizda",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hakkımızda - Yapay zekayla çalışan bir danışmanlık ekibi",
+    title: "Hakkımızda - Yanınızda çalışan AI danışmanlık ekibi",
     description:
-      "Kendi işimizi yapay zekayla yürütüyoruz.",
+      "Ofisinize gelen, birlikte kuran, her hafta aynı masada olan bir ekibiz.",
   },
   alternates: { canonical: "https://www.verimio.com.tr/hakkimizda" },
 };
@@ -62,12 +62,12 @@ export default function HakkimizdaPage() {
             Hakkımızda
           </p>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 max-w-3xl">
-            Kullanmadığımız bir aracı size önermiyoruz.
+            Yanınıza geliriz. Çünkü yerimiz olduğunu biliyoruz.
           </h1>
           <p className="text-lg text-foreground-secondary leading-relaxed max-w-2xl">
-            Yazılarımız, tasarımlarımız, iş akışlarımız — çoğu otomatik.
-            Müşteriye anlattığımız yöntemi önce kendimizde denedik.
-            Size önerdiğimiz her araç, bizde zaten çalışıyor.
+            Kendi işimizi yapay zekayla yürütüyoruz — raporları, tasarımları, akışları.
+            Bu yüzden asıl zamanımızı sizinle geçirmeye ayırabiliyoruz. Ofisinize gelir,
+            ekibinize karışır, birlikte kurarız. Sonra da kalırız.
           </p>
         </div>
       </section>
