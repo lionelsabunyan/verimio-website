@@ -88,7 +88,7 @@ export default function HakkimizdaPage() {
                 Önce size deniyor, sizinkinde öğreniyor. Biz tersini yaptık.
               </p>
               <p className="text-foreground-secondary leading-relaxed">
-                Biz kullanmadan önermiyoruz.
+                AI&apos;ın neyi gerçekten çözdüğünü kendi işimizde gördük.
               </p>
             </div>
             <div>
@@ -99,7 +99,7 @@ export default function HakkimizdaPage() {
                 Kendi işini hızlandıramamış bir danışman, sizinkini zor hızlandırır.
               </h2>
               <p className="text-foreground-secondary leading-relaxed mb-4">
-                Öğrenme maliyetini önce kendimizde aldık. Size sunduğumuz her öneri, daha önce bizzat denediğimiz bir yöntem.
+                Her projede araç farklı. Disiplin aynı. Kendi işimizi AI&apos;la yürüttüğümüz için neyin işe yaradığını, neyin zor olduğunu birinci ağızdan biliyoruz.
               </p>
               <p className="text-foreground-secondary leading-relaxed">
                 Sözle değil, sayıyla. Her öneri bir yatırım getirisi hesabına dayanıyor.

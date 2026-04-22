@@ -193,7 +193,7 @@ export const FAQ_ITEMS = [
   {
     question: "Ekibiniz kaç kişi?",
     answer:
-      "Küçük bir ekibiz, yapay zeka en verimli üyemiz. Size anlattığımız yöntemi önce kendimize uyguladık — bu yüzden önerilerin arkasında bir slayt değil, çalışan bir sistem var. Küçük olduğumuz için her müşteriye yeterince zaman ayırabiliyoruz — ofisinize gelir, birlikte kurar, kalırız.",
+      "Küçük bir ekibiz, yapay zeka en verimli üyemiz. Kendi işimizi AI'la yürütüyoruz — önerilerin arkasında teori değil, kullandığımız bir altyapı var. Küçük olduğumuz için her müşteriye yeterince zaman ayırabiliyoruz — ofisinize gelir, birlikte kurar, kalırız.",
   },
   {
     question: "Süreç ne kadar sürer?",
