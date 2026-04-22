@@ -7,6 +7,15 @@ interface VideoObjectSchemaProps {
   duration: string;
 }
 
+// Google VideoObject: uploadDate must be ISO 8601 with timezone.
+// Plain YYYY-MM-DD is rejected as invalid datetime.
+function toIsoDateTime(input: string): string {
+  if (/^\d{4}-\d{2}-\d{2}$/.test(input)) {
+    return `${input}T09:00:00+03:00`;
+  }
+  return input;
+}
+
 export default function VideoObjectSchema({
   name,
   description,
@@ -22,7 +31,7 @@ export default function VideoObjectSchema({
     description,
     thumbnailUrl,
     contentUrl,
-    uploadDate,
+    uploadDate: toIsoDateTime(uploadDate),
     duration,
     publisher: {
       "@type": "Organization",

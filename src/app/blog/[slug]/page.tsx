@@ -117,7 +117,9 @@ function toISODate(dateStr: string): string {
     const month = TURKISH_MONTHS[parts[1]];
     const year = parseInt(parts[2], 10);
     if (!isNaN(day) && month !== undefined && !isNaN(year)) {
-      return new Date(year, month, day).toISOString().slice(0, 10);
+      const mm = String(month + 1).padStart(2, "0");
+      const dd = String(day).padStart(2, "0");
+      return `${year}-${mm}-${dd}`;
     }
   }
   return new Date().toISOString().slice(0, 10);
