@@ -6,6 +6,21 @@ import { getResend, FROM_ADDRESS, REPLY_TO, checkupReportEmailHtml, type Checkup
 const CALENDLY_URL = process.env.NEXT_PUBLIC_CALENDLY_URL || ''
 const NOTION_TOKEN = process.env.NOTION_TOKEN || ''
 const NOTION_LEADS_DB_ID = process.env.NOTION_LEADS_DB_ID || ''
+const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN || ''
+const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID || ''
+
+// Sessiz Telegram alert — başarısız Supabase insert / Resend / Notion kritik failure
+// Önceki davranış: console.error + sessiz devam. Lead kaybolduğu fark edilmiyordu.
+async function alertTelegram(text: string) {
+  if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) return
+  try {
+    await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text, parse_mode: 'HTML' }),
+    })
+  } catch { /* alert fail bile sessiz */ }
+}
 
 const ANALYSIS_SYSTEM = `Sen Verimio'nun kıdemli danışmanısın. Türk KOBİ sahiplerine ve yöneticilerine AI dönüşüm analizi yapıyorsun.
 
@@ -286,6 +301,15 @@ export async function POST(req: NextRequest) {
 
     if (dbError) {
       console.error('Supabase insert error:', dbError)
+      // Lead Supabase'e yazılamadı — kaybolmasın, sahibe anında bildir
+      await alertTelegram(
+        `🚨 <b>Lead kaydı başarısız</b>\n\n` +
+        `📧 ${email}\n` +
+        `🏢 ${company_name || '—'}\n` +
+        `🏭 ${sector}\n\n` +
+        `💥 Supabase insert hatası:\n${(dbError.message || String(dbError)).slice(0, 250)}\n\n` +
+        `Lead'i manuel kaydetmen gerekebilir. Email zaten gönderildi.`
+      )
     }
 
     // 2. LLM ile analiz üret
@@ -340,8 +364,15 @@ export async function POST(req: NextRequest) {
         })
     }
 
-    // 4. Notion'da müşteri sayfası oluştur (paralel, hata kritik değil)
-    createNotionPage(body, analysis).catch((err) => console.error('[Notion] createNotionPage hatası:', err))
+    // 4. Notion'da müşteri sayfası oluştur (paralel, hata Telegram'a düşer)
+    createNotionPage(body, analysis).catch((err) => {
+      console.error('[Notion] createNotionPage hatası:', err)
+      alertTelegram(
+        `⚠️ <b>Notion lead sayfası oluşturulamadı</b>\n\n` +
+        `📧 ${email}\n💥 ${String(err?.message || err).slice(0, 200)}\n\n` +
+        `Lead Supabase'de var, Notion'a manuel düşürmek isteyebilirsin.`
+      )
+    })
 
     // 4. Müşteriye rapor emaili gönder
     const { error: emailError } = await getResend().emails.send({
@@ -359,6 +390,11 @@ export async function POST(req: NextRequest) {
 
     if (emailError) {
       console.error('Resend error:', emailError)
+      await alertTelegram(
+        `⚠️ <b>Müşteriye rapor maili gönderilemedi</b>\n\n` +
+        `📧 ${email}\n💥 ${String(emailError.message || emailError).slice(0, 200)}\n\n` +
+        `Müşteri raporunu beklerken eline geçmedi. Manuel takip et.`
+      )
     }
 
     // 5. Bana bildirim gönder
