@@ -234,6 +234,13 @@ export const FAQ_ITEMS = [
 
 export const BLOG_POSTS = [
   {
+    title: "KVKK ve Yapay Zeka: Müşteri Verilerini Nasıl Korursunuz?",
+    excerpt: "Yapay zeka uygulamalarında KVKK uyumluluğu kritiktir. Bu rehber, Türk KOBİ'leri için müşteri verilerini korumanın pratik yollarını sunar ve riskleri azaltır.",
+    date: "8 Mayıs 2026",
+    slug: "kvkk-ve-yapay-zeka-musteri-verilerini-nasil-korursunuz",
+    category: "tutorial" as const,
+  },
+  {
     title: "KOBİ AI Agent Örnekleri: Türk Şirketlerinde 7 Gerçek Kullanım Alanı [2026]",
     excerpt: "AI agent bir KOBİ'de ne iş yapar? Muhasebeden satışa, İK'dan stok yönetimine — 7 somut örnek ve hangisinin size uyduğunu nasıl anlarsınız.",
     date: "20 Nisan 2026",
