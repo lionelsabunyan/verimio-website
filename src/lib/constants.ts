@@ -234,6 +234,13 @@ export const FAQ_ITEMS = [
 
 export const BLOG_POSTS = [
   {
+    title: "Türkiyede KOBİlerde Yapay Zeka Kullanımı %37 Arttı",
+    excerpt: "Türkiye'deki KOBİ'ler yapay zeka kullanımında hızlı bir yükseliş trendi sergiliyor. Verimlilik artışı ve maliyet optimizasyonu için AI entegrasyon adımlarını inceleyin.",
+    date: "8 Mayıs 2026",
+    slug: "turkiyede-kobilerde-yapay-zeka-kullanimi-37-artti",
+    category: "strategy" as const,
+  },
+  {
     title: "KVKK ve Yapay Zeka: Müşteri Verilerini Nasıl Korursunuz?",
     excerpt: "Yapay zeka uygulamalarında KVKK uyumluluğu kritiktir. Bu rehber, Türk KOBİ'leri için müşteri verilerini korumanın pratik yollarını sunar ve riskleri azaltır.",
     date: "8 Mayıs 2026",
