@@ -234,6 +234,13 @@ export const FAQ_ITEMS = [
 
 export const BLOG_POSTS = [
   {
+    title: "Türk KOBİ'leri İçin Yapay Zeka Tabanlı Satış Tahminleri",
+    excerpt: "Yapay zeka ile satış tahminlerini optimize edin, isabetli kararlar alın ve karlılığınızı artırın.",
+    date: "11 Mayıs 2026",
+    slug: "turk-kobileri-icin-yapay-zeka-tabanli-satis-tahminleri",
+    category: "strategy" as const,
+  },
+  {
     title: "Türkiyede KOBİlerde Yapay Zeka Kullanımı %37 Arttı",
     excerpt: "Türkiye'deki KOBİ'ler yapay zeka kullanımında hızlı bir yükseliş trendi sergiliyor. Verimlilik artışı ve maliyet optimizasyonu için AI entegrasyon adımlarını inceleyin.",
     date: "8 Mayıs 2026",
