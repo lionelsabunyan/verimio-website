@@ -234,6 +234,13 @@ export const FAQ_ITEMS = [
 
 export const BLOG_POSTS = [
   {
+    title: "AI Projesi Bütçesi: KOBİ'ler Ne Kadar Harcamalı?",
+    excerpt: "Yapay zeka yatırımlarınız için ne kadar bütçe ayırmalısınız? KOBİ'ler için reel AI proje maliyetleri ve ROI beklentileri bu yazıda.",
+    date: "12 Mayıs 2026",
+    slug: "ai-projesi-butcesi-kobiler-ne-kadar-harcamali",
+    category: "strategy" as const,
+  },
+  {
     title: "Türk KOBİ'leri İçin Yapay Zeka Tabanlı Satış Tahminleri",
     excerpt: "Yapay zeka ile satış tahminlerini optimize edin, isabetli kararlar alın ve karlılığınızı artırın.",
     date: "11 Mayıs 2026",
