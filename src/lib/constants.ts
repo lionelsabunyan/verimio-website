@@ -234,6 +234,13 @@ export const FAQ_ITEMS = [
 
 export const BLOG_POSTS = [
   {
+    title: "Sağlık Sektöründe Yapay Zeka: Klinikler ve Medikal Turizm İçin AI Rehberi",
+    excerpt: "Sağlık sektöründe yapay zeka uygulamalarıyla klinik operasyonlarını optimize edin, hasta deneyimini iyileştirin ve medikal turizmde rekabet avantajı yakalayın.",
+    date: "15 Mayıs 2026",
+    slug: "saglik-sektorunde-yapay-zeka-klinikler-ve-medikal-turizm-ici",
+    category: "tutorial" as const,
+  },
+  {
     title: "AI Projesi Bütçesi: KOBİ'ler Ne Kadar Harcamalı?",
     excerpt: "Yapay zeka yatırımlarınız için ne kadar bütçe ayırmalısınız? KOBİ'ler için reel AI proje maliyetleri ve ROI beklentileri bu yazıda.",
     date: "12 Mayıs 2026",
