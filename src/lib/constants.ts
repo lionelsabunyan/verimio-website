@@ -234,6 +234,13 @@ export const FAQ_ITEMS = [
 
 export const BLOG_POSTS = [
   {
+    title: "Lojistik Sektöründe Yapay Zeka: Rota Optimizasyonundan Depo Yönetimine",
+    excerpt: "Lojistik sektöründe yapay zeka ile rota optimizasyonu, depo yönetimi ve talep tahminleri. KOBİ'ler için AI çözümleri ve uygulama senaryoları.",
+    date: "22 Mayıs 2026",
+    slug: "lojistik-sektorunde-yapay-zeka-rota-optimizasyonundan-depo-y",
+    category: "strategy" as const,
+  },
+  {
     title: "Sağlık Sektöründe Yapay Zeka: Klinikler ve Medikal Turizm İçin AI Rehberi",
     excerpt: "Sağlık sektöründe yapay zeka uygulamalarıyla klinik operasyonlarını optimize edin, hasta deneyimini iyileştirin ve medikal turizmde rekabet avantajı yakalayın.",
     date: "15 Mayıs 2026",
