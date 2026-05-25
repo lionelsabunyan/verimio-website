@@ -234,6 +234,13 @@ export const FAQ_ITEMS = [
 
 export const BLOG_POSTS = [
   {
+    title: "Türk KOBİ’leri için üretken yapay zekalı ofis otomasyonu rehberi",
+    excerpt: "Bu rehberle Türk KOBİ'leri, üretken yapay zeka ile ofis otomasyonunu nasıl başaracaklarını, uygun maliyetli araçları ve çalışan direncini yönetme stratejilerini öğrenecek.",
+    date: "25 Mayıs 2026",
+    slug: "turk-kobileri-icin-uretken-yapay-zekali-ofis-otomasyonu-rehb",
+    category: "automation" as const,
+  },
+  {
     title: "Lojistik Sektöründe Yapay Zeka: Rota Optimizasyonundan Depo Yönetimine",
     excerpt: "Lojistik sektöründe yapay zeka ile rota optimizasyonu, depo yönetimi ve talep tahminleri. KOBİ'ler için AI çözümleri ve uygulama senaryoları.",
     date: "22 Mayıs 2026",
