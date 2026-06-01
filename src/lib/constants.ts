@@ -234,6 +234,13 @@ export const FAQ_ITEMS = [
 
 export const BLOG_POSTS = [
   {
+    title: "KOBİ’ler için 2026'da Öne Çıkan AI Fırsatları",
+    excerpt: "2026'da Türk KOBİ'lerinin düşük bütçeyle hemen uygulayabileceği yapay zeka fırsatları: Müşteri hizmetleri, raporlama, belge işleme ve tahminleme.",
+    date: "1 Haziran 2026",
+    slug: "kobiler-icin-2026da-one-cikan-ai-firsatlari",
+    category: "strategy" as const,
+  },
+  {
     title: "Türk KOBİ’leri için üretken yapay zekalı ofis otomasyonu rehberi",
     excerpt: "Bu rehberle Türk KOBİ'leri, üretken yapay zeka ile ofis otomasyonunu nasıl başaracaklarını, uygun maliyetli araçları ve çalışan direncini yönetme stratejilerini öğrenecek.",
     date: "25 Mayıs 2026",
