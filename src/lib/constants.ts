@@ -234,6 +234,13 @@ export const FAQ_ITEMS = [
 
 export const BLOG_POSTS = [
   {
+    title: "Türk KOBİ’ler için AI destekli satış hunisi: Lead’den sözleşmeye otomasyon",
+    excerpt: "Yapay zeka sayesinde satış süreçlerinizi otomatikleştirerek verimliliği artırın ve müşteri adaylarını hızla kazanca dönüştürün.",
+    date: "8 Haziran 2026",
+    slug: "turk-kobiler-icin-ai-destekli-satis-hunisi-leadden-sozlesmey",
+    category: "automation" as const,
+  },
+  {
     title: "Türk KOBİ’ler için e-posta otomasyonu: AI ile satış ve tahsilat takibi",
     excerpt: "Yapay zeka destekli e-posta otomasyonu ile Türk KOBİ'ler satış ve tahsilat süreçlerini verimli hale getirebilir, hata payını azaltabilir ve müşteri takibini güçlendirebilir.",
     date: "8 Haziran 2026",
