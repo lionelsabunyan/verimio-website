@@ -234,6 +234,13 @@ export const FAQ_ITEMS = [
 
 export const BLOG_POSTS = [
   {
+    title: "Türk KOBİ’ler için e-posta otomasyonu: AI ile satış ve tahsilat takibi",
+    excerpt: "Yapay zeka destekli e-posta otomasyonu ile Türk KOBİ'ler satış ve tahsilat süreçlerini verimli hale getirebilir, hata payını azaltabilir ve müşteri takibini güçlendirebilir.",
+    date: "8 Haziran 2026",
+    slug: "turk-kobiler-icin-e-posta-otomasyonu-ai-ile-satis-ve-tahsila",
+    category: "automation" as const,
+  },
+  {
     title: "KOBİ’ler için 2026'da Öne Çıkan AI Fırsatları",
     excerpt: "2026'da Türk KOBİ'lerinin düşük bütçeyle hemen uygulayabileceği yapay zeka fırsatları: Müşteri hizmetleri, raporlama, belge işleme ve tahminleme.",
     date: "1 Haziran 2026",
